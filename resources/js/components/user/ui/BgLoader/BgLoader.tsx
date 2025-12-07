@@ -26,8 +26,8 @@ export default function BgLoader({
     prtClass,
     imgClass,
     alt = '',
-    mbMinWidth = 768,
-    tabletMinWidth = 1200,
+    mbMinWidth = 1110,
+    tabletMinWidth = 1680,
 }: BgLoaderProps) {
     const [isLoading, setIsLoading] = useState(true);
 

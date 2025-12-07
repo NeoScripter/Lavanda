@@ -6,7 +6,7 @@ import css from './AppHeader.module.scss';
 const AppHeader: FC<NodeProps> = ({ className }) => {
     return (
         <header class={cn(css.wrapper, className)}>
-            this is header
+            {/* this is header */}
         </header>
     );
 };

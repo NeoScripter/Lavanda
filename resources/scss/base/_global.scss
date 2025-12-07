@@ -25,6 +25,8 @@ body {
     font-family:
         'Montserrat', 'Verdana', 'Tahoma', ui-sans-serif, system-ui, sans-serif,
         'Apple Color Emoji';
+
+    @include u.rm(text, 14, 16, 20, 24);
 }
 
 button {
@@ -42,6 +44,7 @@ button {
 h1 {
     color: u.clr('primary', 'strong');
     font-weight: 900;
+    text-transform: uppercase;
     text-wrap: balance;
     @include u.rm(text, 28, 48, 56, 56);
     @include u.px(mb, 22, 32, 32, 32);
@@ -66,7 +69,8 @@ h2 {
     gap: 0.4em;
     padding-block: 1em;
     padding-inline: 1.4em;
-    @include u.rm(text, 12, 16, 16, 16);
+    /* @include u.rm(text, 12, 16, 16, 16); */
+    font-size: inherit;
     border: 1px solid white;
     @include u.shadow(2);
     @include u.shine;
