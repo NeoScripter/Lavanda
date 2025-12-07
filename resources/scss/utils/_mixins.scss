@@ -1,9 +1,9 @@
-@use "sass:list";
-@use "sass:meta";
-@use "sass:map";
-@use "utils/functions" as f;
-@use "variables/breakpoints" as b;
-@use "variables/css-properties" as p;
+@use 'sass:list';
+@use 'sass:meta';
+@use 'sass:map';
+@use 'utils/functions' as f;
+@use 'variables/breakpoints' as b;
+@use 'variables/css-properties' as p;
 
 @mixin mw($breakpoint: sm) {
     @if map.has-key(b.$breakpoints, $breakpoint) {
@@ -23,7 +23,7 @@
 
     $css-property: map.get(p.$css-properties, $property);
 
-    $breakpoint-keys: ("sm", "md", "lg", "xl");
+    $breakpoint-keys: ('sm', 'md', 'lg', 'xl');
 
     $figma-values: map.values(b.$figma-bps);
     $bp-values: map.values(b.$breakpoints);
@@ -63,7 +63,7 @@
 
     $css-property: map.get(p.$css-properties, $property);
 
-    $breakpoint-keys: ("sm", "md", "lg", "xl");
+    $breakpoint-keys: ('sm', 'md', 'lg', 'xl');
     $figma-values: map.values(b.$figma-bps);
     $bp-values: map.values(b.$breakpoints);
 
@@ -116,5 +116,37 @@
         @warn "Invalid $depth `#{$depth}` for mixin `shadow`.";
     } @else {
         box-shadow: bottom-shadow($depth), top-shadow($depth);
+    }
+}
+
+@mixin shine {
+    position: relative;
+    overflow: hidden;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -75%;
+        z-index: 2;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(
+            to right,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.3) 100%
+        );
+        transform: skewX(-25deg);
+        pointer-events: none;
+    }
+
+    &:hover::after {
+        animation: shine 750ms forwards;
+    }
+}
+
+@keyframes shine {
+    100% {
+        left: 125%;
     }
 }

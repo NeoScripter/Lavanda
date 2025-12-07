@@ -11,6 +11,15 @@ $colors: (
     "primary": (
         "strong": hsla(256, 28%, 43%, 1),
     ),
+    "background": (
+        "muted": hsla(240, 32%, 90%, 1),
+    )
+);
+
+$gradients: (
+    "background": (
+        "muted": hsla(240, 32%, 90%, 1),
+    )
 );
 
 @function _list-color-paths($map, $prefix: ()) {
@@ -49,6 +58,27 @@ $colors: (
     @if meta.type-of($value) == "map" {
         $available: _list-color-paths($colors);
         @error "Color '#{$keys}' is incomplete. Available full color paths: #{$available}";
+    }
+
+    @return $value;
+}
+
+@function gd($keys...) {
+    $value: $gradients;
+
+    @each $key in $keys {
+        @if map.has-key($value, $key) {
+            $value: map.get($value, $key);
+        } @else {
+            $available: _list-color-paths($gradients);
+            @error "Gradient '#{$keys}' not found. Available gradients: #{$available}";
+        }
+    }
+
+    // If the final result is not a color → user didn't specify enough keys
+    @if meta.type-of($value) == "map" {
+        $available: _list-color-paths($gradients);
+        @error "Gradient '#{$keys}' is incomplete. Available full gradient paths: #{$available}";
     }
 
     @return $value;

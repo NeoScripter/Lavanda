@@ -1,0 +1,58 @@
+@use 'core' as u;
+
+.wrapper {
+    pointer-events: none;
+    isolation: isolate;
+    position: relative;
+    inset: 0;
+    z-index: -5;
+    overflow: hidden;
+    overflow: clip;
+    user-select: none;
+}
+
+.picture {
+    display: block;
+    transition: opacity 500ms ease-in-out;
+    object-fit: cover;
+    object-position: top center;
+    width: 100%;
+    height: 100%;
+}
+
+.pictureLoading {
+    opacity: 0;
+}
+
+.loadingOverlay {
+    position: absolute;
+    inset: 0;
+    z-index: -5;
+    display: flex;
+    height: 100%;
+    max-height: 100vh;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.loadingOverlayHidden {
+    opacity: 0;
+}
+
+.skeleton {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    background-color: rgba(229, 231, 235, 0.5);
+}
+
+.image {
+    display: block;
+    object-fit: cover;
+    object-position: top center;
+    width: 100%;
+    height: 100%;
+}

@@ -1,1 +1,1 @@
-This is my initial starter package for a Preact + Inertia project
+Spiritual practice service created with Laravel and Preact

@@ -1,12 +1,15 @@
-@use "core" as u;
+@use 'core' as u;
 
 .wrapper {
-    @include u.rm(text, 16, 16, 16, 16);
-    color: u.clr("foreground", "strong");
-    @include u.rm(max-w, 300);
-    margin-inline: auto;
 }
 
-.test {
-    font-size: u.px-to-vw(375, 10);
+.layout {
+    background: u.clr('background', 'muted');
+    position: relative;
+    isolation: isolate;
+}
+
+.bgLoader {
+    position: absolute;
+    inset: 0;
 }

@@ -1,4 +1,4 @@
-@use "core" as u;
+@use 'core' as u;
 
 :root {
     --root-base: 1;
@@ -9,7 +9,7 @@
     height: 100%;
 }
 #app > * {
-	min-height: 100%;
+    min-height: 100%;
 }
 
 html,
@@ -21,13 +21,79 @@ body {
 
 body {
     min-height: 100vh;
+    line-height: 1.4;
     font-family:
-        'Montserrat', 'Verdana', 'Tahoma', ui-sans-serif, system-ui,
-        sans-serif, 'Apple Color Emoji';
+        'Montserrat', 'Verdana', 'Tahoma', ui-sans-serif, system-ui, sans-serif,
+        'Apple Color Emoji';
 }
 
 button {
+    --transition-duration: 0.25s;
     color: inherit;
     cursor: pointer;
+    transition:
+        color var(--transition-duration) ease,
+        background-color var(--transition-duration) ease,
+        border-color var(--transition-duration) ease,
+        box-shadow var(--transition-duration) ease,
+        scale var(--transition-duration) ease;
 }
 
+h1 {
+    color: u.clr('primary', 'strong');
+    font-weight: 900;
+    text-wrap: balance;
+    @include u.rm(text, 28, 48, 56, 56);
+    @include u.px(mb, 22, 32, 32, 32);
+}
+
+h2 {
+    color: u.clr('primary', 'strong');
+    font-weight: 600;
+    text-wrap: balance;
+    @include u.rm(text, 28, 40, 48, 48);
+    @include u.px(mb, 36, 42, 36, 42);
+}
+
+.primary-btn {
+    color: white;
+    display: flex;
+    align-items: center;
+    background-color: u.clr('primary', 'strong');
+    justify-content: center;
+    border-radius: 2em;
+    font-weight: 500;
+    gap: 0.4em;
+    padding-block: 1em;
+    padding-inline: 1.4em;
+    @include u.rm(text, 12, 16, 16, 16);
+    border: 1px solid white;
+    @include u.shadow(2);
+    @include u.shine;
+
+    &:hover,
+    &:focus-visible {
+        scale: 1.04;
+        @include u.shadow(3);
+    }
+}
+
+.full-bleed-parent {
+    --padding: 0;
+
+    @include u.px(--padding, 13, 38, 43, 166);
+
+    display: grid;
+    align-items: start;
+    align-content: start;
+    grid-template-columns: var(--padding) 1fr var(--padding);
+
+    > * {
+        grid-column: 2;
+    }
+
+    > *.full-bleed {
+        width: 100%;
+        grid-column: 1 / 4;
+    }
+}

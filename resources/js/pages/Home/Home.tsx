@@ -1,13 +1,29 @@
-import { FC } from "preact/compat";
-import css from "./Home.module.scss";
-import AppLayout from "@/layouts/user/AppLayout/AppLayout";
+import BgDkTiny from '@/assets/images/home/bg-dk-tiny.webp';
+import BgDk from '@/assets/images/home/bg-dk.webp';
+import BgMbTiny from '@/assets/images/home/bg-mb-tiny.webp';
+import BgMb from '@/assets/images/home/bg-mb.webp';
+import BgTbTiny from '@/assets/images/home/bg-tb-tiny.webp';
+import BgTb from '@/assets/images/home/bg-tb.webp';
+import BgLoader from '@/components/user/ui/BgLoader/BgLoader';
+import AppLayout from '@/layouts/user/AppLayout/AppLayout';
+import css from './Home.module.scss';
+import { cn } from '@/utils/cn';
 
-const Home: FC<{ className?: string }> = ({ className }) => {
+const Home = () => {
     return (
-        <AppLayout>
+        <AppLayout className={css.layout}>
+            <BgLoader
+                prtClass={cn(css.bgLoader, 'full-bleed')}
+                dk={BgDk}
+                dkTiny={BgDkTiny}
+                tb={BgTb}
+                tbTiny={BgTbTiny}
+                mb={BgMb}
+                mbTiny={BgMbTiny}
+            />
             <div class={css.wrapper}>
                 Hello world
-                <p class={ css.test }>Test</p>
+                <p class={css.test}>Test</p>
             </div>
         </AppLayout>
     );

@@ -1,5 +1,7 @@
 @use 'core' as u;
 
 .wrapper {
-
+    margin-inline: auto;
+    max-width: u.rem(1920);
+    color: u.clr('foreground', 'neutral');
 }
