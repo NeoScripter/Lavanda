@@ -1,0 +1,33 @@
+@use "core" as u;
+
+:root {
+    --root-base: 1;
+    --test: 1rem;
+}
+
+#app {
+    height: 100%;
+}
+#app > * {
+	min-height: 100%;
+}
+
+html,
+body {
+    overflow-x: hidden;
+    overflow-x: clip;
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    font-family:
+        'Montserrat', 'Verdana', 'Tahoma', ui-sans-serif, system-ui,
+        sans-serif, 'Apple Color Emoji';
+}
+
+button {
+    color: inherit;
+    cursor: pointer;
+}
+

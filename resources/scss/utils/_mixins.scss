@@ -1,0 +1,120 @@
+@use "sass:list";
+@use "sass:meta";
+@use "sass:map";
+@use "utils/functions" as f;
+@use "variables/breakpoints" as b;
+@use "variables/css-properties" as p;
+
+@mixin mw($breakpoint: sm) {
+    @if map.has-key(b.$breakpoints, $breakpoint) {
+        @media (min-width: f.rem(map.get(b.$breakpoints, $breakpoint))) {
+            @content;
+        }
+    } @else {
+        @warn "Breakpoint '#{$breakpoint}' not found in $breakpoints map.";
+    }
+}
+
+@mixin rm($property, $sizes...) {
+    @if not map.has-key(p.$css-properties, $property) {
+        @error "Unknown CSS property `#{$property}`. "
+                 + "It is not in p.$css-properties and is not a valid CSS identifier.";
+    }
+
+    $css-property: map.get(p.$css-properties, $property);
+
+    $breakpoint-keys: ("sm", "md", "lg", "xl");
+
+    $figma-values: map.values(b.$figma-bps);
+    $bp-values: map.values(b.$breakpoints);
+
+    @for $i from 1 through list.length($sizes) {
+        $size: list.nth($sizes, $i);
+
+        @if $size != null {
+            $figma-breakpoint: list.nth($figma-values, $i);
+            $bp-breakpoint: list.nth($bp-values, $i);
+
+            @if $i == 1 {
+                #{$css-property}: f.calc-adaptive-rm(
+                    $size,
+                    $figma-breakpoint,
+                    $bp-breakpoint
+                );
+            } @else {
+                $breakpoint-key: list.nth($breakpoint-keys, $i - 1);
+                @include mw($breakpoint-key) {
+                    #{$css-property}: f.calc-adaptive-rm(
+                        $size,
+                        $figma-breakpoint,
+                        $bp-breakpoint
+                    );
+                }
+            }
+        }
+    }
+}
+
+@mixin px($property, $sizes...) {
+    @if not map.has-key(p.$css-properties, $property) {
+        @error "Unknown CSS property `#{$property}`. "
+                 + "It is not in p.$css-properties and is not a valid CSS identifier.";
+    }
+
+    $css-property: map.get(p.$css-properties, $property);
+
+    $breakpoint-keys: ("sm", "md", "lg", "xl");
+    $figma-values: map.values(b.$figma-bps);
+    $bp-values: map.values(b.$breakpoints);
+
+    @for $i from 1 through list.length($sizes) {
+        $size: list.nth($sizes, $i);
+        @if $size != null {
+            $figma-breakpoint: list.nth($figma-values, $i);
+            $bp-breakpoint: list.nth($bp-values, $i);
+
+            @if $i == 1 {
+                #{$css-property}: f.calc-adaptive-px(
+                    $size,
+                    $figma-breakpoint,
+                    $bp-breakpoint
+                );
+            } @else {
+                $breakpoint-key: list.nth($breakpoint-keys, $i - 1);
+                @include mw($breakpoint-key) {
+                    #{$css-property}: f.calc-adaptive-px(
+                        $size,
+                        $figma-breakpoint,
+                        $bp-breakpoint
+                    );
+                }
+            }
+        }
+    }
+}
+
+@function top-shadow($depth) {
+    $primary-offset: nth(1.5 3 10 14 19, $depth) * 1px;
+    $blur: nth(1.5 3 10 14 19, $depth) * 4px;
+    $color: rgba(black, nth(0.12 0.16 0.19 0.25 0.3, $depth));
+
+    @return 0 $primary-offset $blur $color;
+}
+
+@function bottom-shadow($depth) {
+    $primary-offset: nth(1.5 3 6 10 15, $depth) * 1px;
+    $blur: nth(1 3 3 5 6, $depth) * 4px;
+    $color: rgba(black, nth(0.24 0.23 0.23 0.22 0.22, $depth));
+
+    @return 0 $primary-offset $blur $color;
+}
+
+@mixin shadow($depth) {
+    @if $depth < 1 {
+        box-shadow: none;
+    } @else if $depth > 5 {
+        @warn "Invalid $depth `#{$depth}` for mixin `shadow`.";
+    } @else {
+        box-shadow: bottom-shadow($depth), top-shadow($depth);
+    }
+}

@@ -1,0 +1,55 @@
+@use "sass:map";
+@use "sass:list";
+@use "sass:meta";
+
+$colors: (
+    "foreground": (
+        "strong": hsla(240, 17%, 8%, 1),
+        "neutral": hsla(240, 3%, 17%, 1),
+        "muted": hsla(0, 0%, 30%, 1),
+    ),
+    "primary": (
+        "strong": hsla(256, 28%, 43%, 1),
+    ),
+);
+
+@function _list-color-paths($map, $prefix: ()) {
+    $paths: ();
+
+    @each $key, $value in $map {
+        $current: list.append($prefix, $key);
+
+        @if meta.type-of($value) == "map" {
+            $paths: list.join(
+                $paths,
+                _list-color-paths($value, $current),
+                comma
+            );
+        } @else {
+            $paths: list.append($paths, $current, comma);
+        }
+    }
+
+    @return $paths;
+}
+
+@function clr($keys...) {
+    $value: $colors;
+
+    @each $key in $keys {
+        @if map.has-key($value, $key) {
+            $value: map.get($value, $key);
+        } @else {
+            $available: _list-color-paths($colors);
+            @error "Color '#{$keys}' not found. Available colors: #{$available}";
+        }
+    }
+
+    // If the final result is not a color → user didn't specify enough keys
+    @if meta.type-of($value) == "map" {
+        $available: _list-color-paths($colors);
+        @error "Color '#{$keys}' is incomplete. Available full color paths: #{$available}";
+    }
+
+    @return $value;
+}

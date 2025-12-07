@@ -1,0 +1,45 @@
+@use 'sass:list';
+@use 'sass:map';
+
+$figma-bps: (
+    "sm": 360,
+    "md": 780,
+    "lg": 1440,
+    "xl": 1920,
+);
+
+@function calculate-breakpoints($figma-breakpoints) {
+    $result: ();
+    $keys: map.keys($figma-breakpoints);
+    $values: map.values($figma-breakpoints);
+    $length: list.length($keys);
+
+    @for $i from 1 through $length {
+        $key: list.nth($keys, $i);
+        $current-value: list.nth($values, $i);
+
+        @if $i < $length {
+            // Calculate middle point between current and next breakpoint
+            $next-value: list.nth($values, $i + 1);
+            $middle: round(($current-value + $next-value) / 2);
+            $result: map.merge(
+                $result,
+                (
+                    $key: $middle,
+                )
+            );
+        } @else {
+            // Last breakpoint stays the same
+            $result: map.merge(
+                $result,
+                (
+                    $key: $current-value,
+                )
+            );
+        }
+    }
+
+    @return $result;
+}
+
+$breakpoints: calculate-breakpoints($figma-bps);

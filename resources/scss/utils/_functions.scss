@@ -1,0 +1,61 @@
+@use "sass:math";
+@use "sass:string";
+
+@function px-to-vw($current-screen-width, $size) {
+    $result: math.div($size, $current-screen-width) * 100;
+    $rounded: math.div(math.round($result * 100), 100);
+    @return $rounded * 1vw;
+}
+
+@function round_to_decimal($value) {
+    @return math.div(math.round($value * 100), 100);
+}
+
+@function rem($value_in_px, $base_font_size: 16) {
+    $raw_result: math.div($value_in_px, $base_font_size);
+    $rounded: round_to_decimal($raw_result);
+    @return $rounded * 1rem;
+}
+
+@function calc2-adaptive-rm($size_in_px, $rel-width, $upper-limit-px) {
+    $vw-value: px-to-vw($rel-width, $size_in_px);
+    $size-at-limit: math.div($size_in_px, $rel-width) * $upper-limit-px;
+    $size-at-limit-rem: round_to_decimal(math.div($size-at-limit, 16)) * 1rem;
+    @return min($size-at-limit-rem, $vw-value);
+}
+
+@function calc-adaptive-rm($size_in_px, $rel-width, $upper-limit-px) {
+    $vw-numeric: round_to_decimal(math.div($size_in_px, $rel-width) * 100);
+    $size-at-limit: math.div($size_in_px, $rel-width) * $upper-limit-px;
+    $size-at-limit-rem: round_to_decimal(math.div($size-at-limit, 16)) * 1rem;
+    $initial-size-rem: round_to_decimal(math.div($size_in_px, 16)) * 1rem;
+
+    @return string.unquote(
+        "min(#{$size-at-limit-rem}, max(#{ $initial-size-rem }, calc(#{$vw-numeric}vw * var(--root-base))))"
+    );
+}
+
+@function calc-adaptive-px($size_in_px, $rel-width, $upper-limit-px) {
+    $vw-value: px-to-vw($rel-width, $size_in_px);
+    $size-at-limit: math.div($size_in_px, $rel-width) * $upper-limit-px;
+    $size-at-limit-px: round_to_decimal($size-at-limit) * 1px;
+    @return min($size-at-limit-px, max(#{$size_in_px}px, $vw-value));
+}
+
+@function lighten($color, $percentage) {
+    @return color-mix(in oklch, white $percentage, $color);
+}
+
+@function darken($color, $percentage) {
+    @return color-mix(in oklch, black $percentage, $color);
+}
+
+@function opacify($color, $opacity) {
+    $normalized-opacity: if($opacity > 1, $opacity / 100, $opacity);
+
+    @return color-mix(
+        in oklch,
+        $color percentage($normalized-opacity),
+        transparent
+    );
+}
