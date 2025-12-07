@@ -8,6 +8,7 @@ import BgLoader from '@/components/user/ui/BgLoader/BgLoader';
 import AppLayout from '@/layouts/user/AppLayout/AppLayout';
 import css from './Home.module.scss';
 import { cn } from '@/utils/cn';
+import HeroSection from './partials/HeroSection/HeroSection';
 
 const Home = () => {
     return (
@@ -21,10 +22,8 @@ const Home = () => {
                 mb={BgMb}
                 mbTiny={BgMbTiny}
             />
-            <div class={css.wrapper}>
-                Hello world
-                <p class={css.test}>Test</p>
-            </div>
+
+            <HeroSection />
         </AppLayout>
     );
 };
