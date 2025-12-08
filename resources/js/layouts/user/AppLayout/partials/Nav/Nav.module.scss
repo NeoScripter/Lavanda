@@ -1,0 +1,92 @@
+@use 'core' as u;
+
+.loginBtn {
+    color: u.clr('primary', 'strong');
+    @include u.px(w, 143, 0);
+    margin-inline: auto;
+    flex-direction: column;
+    font-weight: inherit;
+    font-size: inherit;
+    text-align: center;
+    @include u.fxc();
+    @include u.px(pb, 9, 0);
+    transition: opacity 0.25s;
+    border-bottom: 2px solid currentColor;
+
+    &:hover,
+    &:focus-visible {
+        opacity: 0.8;
+    }
+
+    > svg {
+        display: block;
+        margin-inline: auto;
+        @include u.px(w, 35, 0);
+        @include u.px(h, 35, 0);
+        @include u.px(mb, 5, 0);
+        flex-shrink: 0;
+    }
+}
+
+.nav {
+    color: u.clr('primary', 'strong');
+    font-weight: bold;
+    @include u.rm(text, 16, 16, 16, 16);
+}
+
+.navLinks {
+    @include u.fxc();
+    flex-direction: column;
+    @include u.px(gap, 31, 0);
+    @include u.px(pt, 27, 0);
+    @include u.px(pb, 60, 0);
+}
+.popoverBtn {
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+    @include u.fxc();
+    gap: 0.3em;
+}
+
+.popoverPanel {
+    @include u.fxc();
+    flex-direction: column;
+    transition: opacity 0.2s ease-in, transform 0.2s ease-in;
+    @include u.px(gap, 21, 0);
+    background-color: u.opacify(white, 92);
+    @include u.px(p, 14, 14, 14, 14);
+    @include u.px(rounded, 14, 14, 14, 14);
+    color: u.clr('primary', 'strong');
+}
+
+.popoverPanel[data-closed] {
+    opacity: 0;
+    transform: scale(30%);
+}
+
+.popoverLink {
+    @include u.underline-slide();
+    font-size: 0.8em;
+    text-wrap: balance;
+    max-width: 70%;
+    text-align: center;
+
+    &:after {
+        height: 1px;
+    }
+}
+
+.plainNavLink {
+    @include u.underline-slide();
+}
+
+.chevron {
+    margin-top: 0.2em;
+    transition: transform 0.3s ease-in-out;
+}
+.chevronFlipped {
+    transform-origin: center;
+    transform: rotateX(180deg);
+}
+

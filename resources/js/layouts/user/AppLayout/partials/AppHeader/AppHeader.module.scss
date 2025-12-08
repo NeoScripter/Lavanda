@@ -3,11 +3,13 @@
 .wrapper {
     position: fixed;
     z-index: 2;
+    background-color: u.opacify(white, 82);
     left: 50%;
     transform: translateX(-50%);
     backdrop-filter: blur(5px);
     @include u.px(top, 22, 22, 77, 53);
     @include u.px(w, 328, 657, 1280, 1585);
+    @include u.px(rounded, 20, 35, 40, 45);
 }
 
 .topBar {
@@ -17,14 +19,33 @@
     background: u.gd('primary', 'muted');
     @include u.px(px, 14, 18, 18, 26);
     @include u.px(py, 4, 7, 10, 10);
-    @include u.px(rounded, 20, 35, 40, 45);
+    border-radius: inherit;
 }
 
 .burger {
     @include u.px(w, 24);
     @include u.px(h, 24);
+    margin-right: 0.75em;
 
     @include u.mw(sm) {
         display: none;
+    }
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    @include u.px(pt, 27, 0, null, null);
+    @include u.px(pb, 59, 0, null, null);
+}
+
+.loginBtn {
+    display: none;
+    padding-block: 0.65em;
+
+    @include u.mw(sm) {
+        display: flex;
     }
 }

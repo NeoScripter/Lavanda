@@ -19,6 +19,8 @@ $colors: (
 $gradients: (
     'background': (
         'muted': hsla(240, 32%, 90%, 1),
+        'header': (lightgray -51.5px 0px / 131.402% 89.979% no-repeat,
+        #fff),
     ),
     'primary': (
         'muted': linear-gradient(

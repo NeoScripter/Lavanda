@@ -1,11 +1,13 @@
 import BurgerMenu from '@/components/user/nav/BurgerMenu/BurgerMenu';
 import Logo from '@/components/user/ui/Logo/Logo';
 import { useClickOutside } from '@/hooks/useClickOutside';
+import { useEscapeKey } from '@/hooks/useEscapeKey';
 import { NodeProps } from '@/types/nodeProps';
 import { cn } from '@/utils/cn';
 import { FC } from 'preact/compat';
 import css from './AppHeader.module.scss';
-import { useEscapeKey } from '@/hooks/useEscapeKey';
+import { CircleUser } from 'lucide-preact';
+import Nav from '../Nav/Nav';
 
 const AppHeader: FC<NodeProps> = ({ className }) => {
     const { show: showMenu, setShow: setShowMenu } = useClickOutside([
@@ -31,8 +33,14 @@ const AppHeader: FC<NodeProps> = ({ className }) => {
                     aria-expanded={showMenu}
                     className={css.burger}
                 />
+
+                <button class={cn(css.loginBtn, 'primary-btn')}>
+                    <CircleUser />
+                    Войти
+                </button>
             </div>
-            <div></div>
+
+            <Nav />
         </header>
     );
 };

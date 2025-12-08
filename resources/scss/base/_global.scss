@@ -84,6 +84,11 @@ h2 {
         transform: scale(1.04);
         @include u.shadow(3);
     }
+
+    > svg {
+        @include u.px(w, 20, 20, 20, 24);
+        flex-shrink: 0;
+    }
 }
 
 .full-bleed-parent {
