@@ -1,0 +1,89 @@
+@use 'core' as u;
+
+.wrapper {
+    background-color: u.opacify(white, 82);
+    backdrop-filter: blur(2px);
+    border-radius: 16px;
+    border: 1px solid black;
+    margin-inline: auto;
+
+    @include u.px(max-w, 344, 583, 583, 583);
+    @include u.px(px, 32, 56, 56, 56);
+    @include u.px(py, 31, 32, 32, 32);
+
+    @include u.mw(md) {
+        position: absolute;
+    }
+    &:first-child {
+        transform: rotate(-10.666deg);
+        z-index: 1;
+        @include u.px(mb, 20, 0, null, null);
+        @include u.mw(sm) {
+            z-index: 0;
+        }
+        @include u.mw(md) {
+            transform: rotate(-10.666deg);
+            right: 0;
+            top: 5%;
+        }
+    }
+    &:nth-child(2) {
+        transform: rotate(1.324deg);
+        @include u.mw(sm) {
+            margin-block: -20%;
+            margin-left: 15%;
+        }
+        @include u.mw(md) {
+            left: 25%;
+            transform: rotate(1.324deg);
+            bottom: 0;
+            margin-block: 0%;
+            margin-left: 0%;
+        }
+        @include u.mw(lg) {
+            transform: rotate(1.324deg);
+        }
+    }
+    &:last-child {
+        transform: rotate(-8.966deg);
+
+        @include u.mw(sm) {
+            margin-top: -10%;
+            transform: rotate(9.658deg);
+        }
+        @include u.mw(md) {
+            transform: rotate(9.658deg);
+            margin-top: 0%;
+            left: 5%;
+            top: 25%;
+            z-index: -1;
+        }
+        @include u.mw(lg) {
+            transform: rotate(5.214deg);
+            left: 0%;
+            top: 30%;
+        }
+    }
+}
+
+.content {
+    @include u.px(mb, 32, 32, 32, 32);
+    @include u.rm(text, 12, 18, 18, 18);
+}
+
+.authorData {
+    display: flex;
+    align-items: center;
+    @include u.px(gap, 15, 15, 15, 15);
+    @include u.rm(text, 12, 14, 14, 14);
+}
+
+.avatar {
+    @include u.px(w, 35, 35, 35, 35);
+    @include u.px(h, 35, 35, 35, 35);
+
+    > img {
+        width: 100%;
+        height: 100%;
+    }
+}

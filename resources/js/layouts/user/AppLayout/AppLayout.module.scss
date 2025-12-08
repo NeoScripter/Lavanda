@@ -2,6 +2,9 @@
 
 .wrapper {
     margin-inline: auto;
-    max-width: u.rem(1920);
+    max-width: u.bp('xl');
+    overflow-x: hidden;
+    overflow-x: clip;
+    isolation: isolate;
     color: u.clr('foreground', 'neutral');
 }

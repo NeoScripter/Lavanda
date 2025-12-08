@@ -17,14 +17,19 @@
     @return $rounded * 1rem;
 }
 
-@function calc-adaptive-rm($size_in_px, $rel-width, $upper-limit-px) {
+@function calc2-adaptive-rm($size_in_px, $rel-width, $upper-limit-px) {
     $vw-value: px-to-vw($rel-width, $size_in_px);
     $size-at-limit: math.div($size_in_px, $rel-width) * $upper-limit-px;
     $size-at-limit-rem: round_to_decimal(math.div($size-at-limit, 16)) * 1rem;
     @return min($size-at-limit-rem, $vw-value);
 }
 
-@function calc2-adaptive-rm($size_in_px, $rel-width, $upper-limit-px) {
+@function adaptive-size-at-width($size_in_px, $figma_bp, $current_width) {
+    $scaled: math.div($size_in_px, $figma_bp) * $current_width;
+    @return round_to_decimal(math.div($scaled, 16)) * 1rem;
+}
+
+@function calc-adaptive-rm($size_in_px, $rel-width, $upper-limit-px) {
     $vw-numeric: round_to_decimal(math.div($size_in_px, $rel-width) * 100);
     $size-at-limit: math.div($size_in_px, $rel-width) * $upper-limit-px;
     $size-at-limit-rem: round_to_decimal(math.div($size-at-limit, 16)) * 1rem;

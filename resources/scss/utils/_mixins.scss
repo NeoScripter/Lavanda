@@ -7,13 +7,14 @@
 
 @mixin mw($breakpoint: sm) {
     @if map.has-key(b.$breakpoints, $breakpoint) {
-        @media (min-width: f.rem(map.get(b.$breakpoints, $breakpoint))) {
+        @media (min-width: #{map.get(b.$breakpoints, $breakpoint)}px) {
             @content;
         }
     } @else {
         @warn "Breakpoint '#{$breakpoint}' not found in $breakpoints map.";
     }
 }
+/* @media (min-width: f.rem(map.get(b.$breakpoints, $breakpoint))) { */
 
 @mixin rm($property, $sizes...) {
     @if not map.has-key(p.$css-properties, $property) {
@@ -148,5 +149,33 @@
 @keyframes shine {
     100% {
         left: 125%;
+    }
+}
+
+@mixin fxc() {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin underline-slide() {
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -0.2em;
+        left: 0;
+        width: 0%;
+        height: 0.1em;
+        background-color: currentColor;
+        opacity: 1;
+        transition:
+            width 300ms;
+    }
+
+    &:hover::after,
+    &:focus::after {
+        width: 100%;
     }
 }

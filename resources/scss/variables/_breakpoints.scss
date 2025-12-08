@@ -43,3 +43,23 @@ $figma-bps: (
 }
 
 $breakpoints: calculate-breakpoints($figma-bps);
+
+@function _list-bp-keys($map) {
+    $keys: ();
+
+    @each $key, $value in $map {
+        $keys: list.append($keys, $key, comma);
+    }
+
+    @return $keys;
+}
+
+@function bp($key) {
+    @if map.has-key($breakpoints, $key) {
+        @return map.get($breakpoints, $key) * 1px;
+    }
+
+    // Error: show available keys
+    $available: _list-bp-keys($breakpoints);
+    @error "Breakpoint '#{$key}' not found. Available breakpoints: #{$available}";
+}

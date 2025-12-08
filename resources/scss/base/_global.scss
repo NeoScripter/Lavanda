@@ -38,7 +38,7 @@ button {
         background-color var(--transition-duration) ease,
         border-color var(--transition-duration) ease,
         box-shadow var(--transition-duration) ease,
-        scale var(--transition-duration) ease;
+        transform var(--transition-duration) ease-in-out;
 }
 
 h1 {
@@ -69,15 +69,14 @@ h2 {
     gap: 0.4em;
     padding-block: 1em;
     padding-inline: 1.4em;
-    /* @include u.rm(text, 12, 16, 16, 16); */
-    font-size: inherit;
+    @include u.rm(text, 12, 16, 16, 16);
     border: 1px solid white;
     @include u.shadow(2);
     @include u.shine;
 
     &:hover,
     &:focus-visible {
-        scale: 1.04;
+        transform: scale(1.04);
         @include u.shadow(3);
     }
 }

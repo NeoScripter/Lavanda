@@ -2,16 +2,13 @@
 
 .wrapper {
     --padding: 0;
-    overflow: hidden;
-    overflow: clip;
     position: relative;
     isolation: isolate;
     max-width: calc(100% - (var(--padding) * 2));
     margin-inline: auto;
     @include u.px(mt, null, null, 37, 32);
     @include u.px(--padding, null, null, 27, 45);
-    @include u.px(rounded, null, null, 36, 36);
-    @include u.px(min-h, 905, 1350, 799, 1032);
+    @include u.px(min-h, 905, 1350, 1022, 1032);
     @include u.px(pt, 97, 210, 120, 172);
     @include u.px(pl, null, null, 73, 132);
 }
@@ -22,26 +19,34 @@
 
 .bgLoader {
     position: absolute;
+    @include u.px(rounded, null, null, 36, 36);
+    overflow: hidden;
+    overflow: clip;
     inset: 0;
 }
 
 .fgLoader {
     margin-top: auto;
+    margin-bottom: 10%;
     z-index: 14;
     bottom: 0;
     inset-inline: 0;
     position: absolute;
     width: 100%;
-    @include u.rm(h, 521, 834, null, null);
-    @include u.rm(w, null, null, 853, 1099);
+    @include u.px(h, 521, 834, 901, 1005);
+    @include u.px(w, null, null, 853, 1099);
+
+
+    @include u.mw(sm) {
+        margin-bottom: 5%;
+    }
     @include u.mw(md) {
         margin-left: auto;
-        height: auto;
+        margin-bottom: 0%;
     }
 }
 .fgImage {
     @include u.mw(md) {
-        object-fit: contain;
         object-position: bottom;
     }
 }
@@ -59,7 +64,7 @@
 .content {
     text-align: center;
     margin-inline: auto;
-    @include u.rm(w, 307, 585, 585, 632);
+    @include u.px(w, 307, 585, 610, 632);
     text-wrap: pretty;
 
     @include u.mw(md) {
@@ -72,4 +77,64 @@
     font-weight: 500;
     text-wrap: balance;
     @include u.px(mb, 26, 34, 38, 46);
+}
+
+.infoBtn {
+    color: u.clr('primary', 'strong');
+    position: relative;
+    font-weight: 500;
+    transition: transform 0.3s ease-in-out;
+    @include u.px(gap, 5, 9, 9, 9);
+    @include u.fxc();
+    @include u.rm(text, 12, 16, 16, 16);
+
+    &:hover,
+    &:focus-visible {
+        transform: scale(1.05);
+
+        .underline::after {
+            width: 100%;
+        }
+    }
+
+    > svg {
+        flex-shrink: 0;
+        @include u.px(w, 35, 35, 35, 35);
+        @include u.px(h, 35, 35, 35, 35);
+    }
+}
+
+.underline {
+    @include u.underline-slide();
+}
+
+.decor {
+    display: none;
+
+    @include u.mw(md) {
+        display: block;
+        position: absolute;
+        z-index: 20;
+        right: 0;
+        bottom: 0;
+        transform: translate(15%, 40%);
+    }
+
+    @include u.px(w, null, null, 243, 343);
+}
+
+.cards {
+    --offsetY: 25%;
+    pointer-events: none;
+    position: absolute;
+    isolation: isolate;
+    display: grid;
+    align-items: start;
+    z-index: 20;
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%, var(--offsetY));
+    @include u.px(--offsetY, 291, 351, 60, 70);
+    @include u.px(h, 557, 767, 553, 529);
+    @include u.px(w, 358, 668, 1172, 1338);
 }
