@@ -1,0 +1,69 @@
+@use 'core' as u;
+
+.wrapper {
+    z-index: 5;
+    transition: transform 150ms ease-in;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transform-origin: center;
+}
+
+.icon {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.burgerOpen {
+    transition:
+        translate 200ms ease-in,
+        rotate 150ms ease-in 200ms;
+}
+
+.burgerClose {
+    transition:
+        translate 200ms ease-in 200ms,
+        rotate 150ms ease-in;
+}
+
+/* All lines must define base individual properties */
+.line {
+    translate: 0 0;
+    rotate: 0deg;
+    transform-origin: 18px 18px;
+}
+
+/* top initial */
+.lineTop {
+    translate: 0 -11px;
+}
+
+/* bottom initial */
+.lineBottom {
+    translate: 0 11px;
+}
+
+/* top open */
+.lineTopOpen {
+    translate: 0px -2px;
+    rotate: 45deg;
+}
+
+/* bottom open */
+.lineBottomOpen {
+    translate: 0px -2px;
+    rotate: -45deg;
+}
+
+.lineMiddle {
+    transition: opacity 150ms ease-in;
+}
+
+.hidden {
+    opacity: 0;
+}
+

@@ -9,7 +9,8 @@
     @include u.px(mt, null, null, 37, 32);
     @include u.px(--padding, null, null, 27, 45);
     @include u.px(min-h, 905, 1350, 1022, 1032);
-    @include u.px(pt, 97, 210, 120, 172);
+    @include u.px(pt, 97, 210, 140, 172);
+    @include u.px(pb, 27, 30, 30, 30);
     @include u.px(pl, null, null, 73, 132);
 }
 
@@ -28,7 +29,6 @@
 .fgLoader {
     margin-top: auto;
     margin-bottom: 10%;
-    z-index: 14;
     bottom: 0;
     inset-inline: 0;
     position: absolute;
@@ -130,7 +130,7 @@
     isolation: isolate;
     display: grid;
     align-items: start;
-    z-index: 20;
+    /* z-index: 20; */
     left: 50%;
     bottom: 0;
     transform: translate(-50%, var(--offsetY));

@@ -56,11 +56,11 @@
 }
 
 @function opacify($color, $opacity) {
-    $normalized-opacity: if($opacity > 1, $opacity / 100, $opacity);
+    $normalized-opacity: if($opacity > 1, math.div($opacity, 100), $opacity);
 
     @return color-mix(
         in oklch,
-        $color percentage($normalized-opacity),
+        $color math.percentage($normalized-opacity),
         transparent
     );
 }

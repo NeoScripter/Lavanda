@@ -1,0 +1,10 @@
+@use 'core' as u;
+
+.image {
+    object-fit: contain;
+}
+
+.wrapper {
+    @include u.px(w, 161, 265, 235, 276);
+    @include u.px(h, 39, 67, 44, 67);
+}

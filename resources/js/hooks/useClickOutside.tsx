@@ -18,3 +18,4 @@ export const useClickOutside = (selectors: string[], initialState = false) => {
 
     return { show, setShow };
 };
+

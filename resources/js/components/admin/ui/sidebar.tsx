@@ -1,7 +1,7 @@
 import SidebarLink from "@/components/admin/nav/sidebar-link";
 import AppLogo from "@/components/admin/ui/app-logo";
-import { useClickOutside } from "@/hooks/use-click-outside";
-import { useEscapeKey } from "@/hooks/use-escape-key";
+import { useClickOutside } from "@/hooks/useClickOutside";
+import { useEscapeKey } from "@/hooks/useEscapeKey";
 import { hide, isHidden, isMini, isWide } from "@/signals/sidebar-state";
 import { cn } from "@/utils/cn";
 import { ChevronsUpDown, LayoutGrid } from "lucide-preact";

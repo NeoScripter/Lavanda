@@ -46,6 +46,15 @@ const HeroSection = () => {
                 prtClass={css.decor}
             />
 
+            <ul class={css.cards}>
+                {heroCards.map((card) => (
+                    <Card
+                        key={card.id}
+                        card={card}
+                    />
+                ))}
+            </ul>
+
             <div class={css.content}>
                 <h1>Пространство для поддержки и вдохновения</h1>
 
@@ -63,15 +72,6 @@ const HeroSection = () => {
                     </button>
                 </div>
             </div>
-
-            <ul class={css.cards}>
-                {heroCards.map((card) => (
-                    <Card
-                        key={card.id}
-                        card={card}
-                    />
-                ))}
-            </ul>
         </section>
     );
 };
