@@ -72,7 +72,7 @@ h2 {
     font-weight: 500;
     gap: 0.4em;
     @include u.px(py, 12, 16, 16, 16);
-    @include u.px(px, 16, 20, 20, 20);
+    @include u.px(px, 16, 22, 22, 22);
     @include u.rm(text, 12, 16, 16, 16);
     border: 1px solid white;
     @include u.shadow(2);

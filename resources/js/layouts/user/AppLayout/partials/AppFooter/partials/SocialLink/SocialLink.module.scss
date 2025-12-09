@@ -1,0 +1,24 @@
+@use 'core' as u;
+@use 'sass:color';
+
+.socialLink {
+    background-color: u.clr('primary', 'muted');
+    @include u.px(w, 29, 44, 44, 44);
+    @include u.px(h, 29, 44, 44, 44);
+    @include u.px(rounded, 8, 8, 8, 8);
+    transition: background-color 0.25s;
+    @include u.fxc();
+
+    &:hover,
+    &:focus-visible {
+        background-color: color.scale(
+            u.clr('primary', 'muted'),
+            $saturation: 30%
+        );
+    }
+
+    > img {
+        width: 60%;
+        height: 60%;
+    }
+}

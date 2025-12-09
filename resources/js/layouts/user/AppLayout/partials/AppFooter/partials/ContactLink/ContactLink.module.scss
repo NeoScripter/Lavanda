@@ -1,0 +1,18 @@
+@use 'core' as u;
+
+.contactLink {
+    @include u.fxc();
+    gap: 0.5em;
+    @include u.underline-slide();
+    margin-inline: auto;
+    width: fit-content;
+
+    @include u.mw(sm) {
+        font-size: inherit;
+        margin-inline: 0;
+    }
+
+    > img {
+        width: 1em;
+    }
+}

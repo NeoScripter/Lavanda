@@ -7,9 +7,11 @@ $colors: (
         'strong': hsla(240, 17%, 8%, 1),
         'neutral': hsla(240, 3%, 17%, 1),
         'muted': hsla(0, 0%, 30%, 1),
+        'pale': hsla(0, 0%, 87%, 1),
     ),
     'primary': (
         'strong': hsla(256, 28%, 43%, 1),
+        'muted': hsla(269, 18%, 55%, 1),
     ),
     'background': (
         'muted': hsla(240, 32%, 90%, 1),
@@ -19,8 +21,10 @@ $colors: (
 $gradients: (
     'background': (
         'muted': hsla(240, 32%, 90%, 1),
-        'header': (lightgray -51.5px 0px / 131.402% 89.979% no-repeat,
-        #fff),
+        'header': (
+            lightgray -51.5px 0px / 131.402% 89.979% no-repeat,
+            #fff,
+        ),
     ),
     'primary': (
         'muted': linear-gradient(

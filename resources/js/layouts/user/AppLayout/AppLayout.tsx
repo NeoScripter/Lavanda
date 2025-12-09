@@ -4,6 +4,7 @@ import { FC } from 'preact/compat';
 import '../../../../scss/app.scss';
 import css from './AppLayout.module.scss';
 import AppHeader from './partials/AppHeader/AppHeader';
+import AppFooter from './partials/AppFooter/AppFooter';
 
 const AppLayout: FC<NodeProps> = ({ className, children }) => {
     return (
@@ -11,6 +12,8 @@ const AppLayout: FC<NodeProps> = ({ className, children }) => {
             <AppHeader />
 
             {children}
+
+            <AppFooter />
         </div>
     );
 };

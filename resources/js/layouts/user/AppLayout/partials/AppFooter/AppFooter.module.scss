@@ -1,0 +1,72 @@
+@use 'core' as u;
+
+.footer {
+    color: u.clr('foreground', 'pale');
+    background-color: u.clr('primary', 'strong');
+    @include u.rm(text, 14, 20, 20, 20);
+    @include u.px(pt, 70, 80, 97, 89);
+    @include u.px(pb, 77, 98, 77, 74);
+    @include u.px(px, 31, 70, 50, 144);
+    @include u.px('rounded-tl', 36, 36, 36, 36);
+    @include u.px('rounded-tr', 36, 36, 36, 36);
+
+    @include u.mw(md) {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+.logoWrapper {
+    > * {
+        margin-inline: auto;
+        text-align: center;
+
+        @include u.mw(sm) {
+            margin-inline: 0;
+            text-align: left;
+        }
+    }
+}
+
+.logo {
+    @include u.px(mb, 35, 47, 21, 24);
+    @include u.px(w, 183, 273, 313, 334);
+    @include u.px(h, 31, 47, 54, 57);
+
+    @include u.mw(md) {
+        margin-left: -0.75em;
+    }
+}
+
+.contacts {
+    display: grid;
+    @include u.px(gap, 8, 16, 16, 16);
+    @include u.px(mb, 24, 42, 0, 0);
+    @include u.rm(text, 12, 20, 20, 20);
+}
+
+.socialLinks {
+    @include u.fxc();
+    @include u.px(mb, 33, 34, 0);
+    @include u.px(gap, 6, 8, 8, 8);
+
+    @include u.mw(sm) {
+        justify-content: start;
+    }
+    @include u.mw(md) {
+        order: 2;
+    }
+}
+
+.copyright {
+    font-size: inherit;
+}
+
+.linkWrapper {
+    @include u.mw(md) {
+        display: grid;
+    }
+
+    @include u.px(gap, 0, 0, 22, 22);
+    @include u.px(mr, 0, 0, 22, 0);
+}
