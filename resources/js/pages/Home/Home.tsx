@@ -9,6 +9,7 @@ import AppLayout from '@/layouts/user/AppLayout/AppLayout';
 import css from './Home.module.scss';
 import { cn } from '@/utils/cn';
 import HeroSection from './partials/HeroSection/HeroSection';
+import FAQSection from './partials/FAQSection/FAQSection';
 
 const Home = () => {
     return (
@@ -24,6 +25,8 @@ const Home = () => {
             />
 
             <HeroSection />
+
+            <FAQSection />
         </AppLayout>
     );
 };

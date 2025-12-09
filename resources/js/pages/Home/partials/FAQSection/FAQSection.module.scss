@@ -1,0 +1,88 @@
+@use 'core' as u;
+
+.faqWrapper {
+    margin-top: 50rem;
+    @include u.px(mb, 123, 117, 118, 115);
+}
+
+.heading {
+    text-transform: uppercase;
+    color: u.clr('foreground', 'strong');
+    @include u.px(mb, 28, 36, 36, 36);
+}
+
+.details {
+    background-color: u.opacify(white, 82);
+    @include u.px(py, 16, 20, 20, 20);
+    @include u.px(px, 22, 26, 26, 26);
+    @include u.px(rounded, 24, 24, 24, 24);
+    overflow: clip;
+}
+
+.details::details-content {
+    block-size: 0;
+    transition:
+        block-size 0.5s,
+        content-visibility 0.5s;
+    transition-behavior: allow-discrete;
+}
+
+.details:open::details-content {
+    block-size: auto;
+}
+
+.summary {
+    font-weight: bold;
+    @include u.rm(text, 16, 24, 24, 24);
+    cursor: pointer;
+
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: 1em;
+    list-style-position: outside;
+}
+
+.summary::marker {
+    display: none;
+}
+
+.answer {
+    @include u.rm(text, 12, 16, 16, 20);
+    @include u.px(pt, 12, 16, 14, 14);
+
+    @include u.mw(md) {
+        max-width: 80%;
+    }
+}
+
+.faqs {
+    > * + * {
+        @include u.px(mt, 8, 8, 8, 8);
+    }
+}
+
+.icon {
+    transform: translateY(0.1em);
+    flex-shrink: 0;
+    @include u.px(w, 16, 32, 32, 32);
+    @include u.px(h, 16, 32, 32, 32);
+}
+
+.path {
+    transform-origin: 16px 16px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .path {
+        transition: transform 0.3s ease-in-out;
+    }
+}
+
+.rotated {
+    transform: rotate(135deg);
+}
+
+.static {
+    transform: rotate(0deg);
+}

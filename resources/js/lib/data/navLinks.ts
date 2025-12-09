@@ -21,6 +21,12 @@ export const navLinks: NavLinkType[] = [
         links: [
             {
                 id: crypto.randomUUID(),
+                label: 'Решение',
+                type: 'link',
+                href: '/',
+            },
+            {
+                id: crypto.randomUUID(),
                 label: 'Практика',
                 type: 'link',
                 href: '/',
@@ -68,6 +74,12 @@ export const navLinks: NavLinkType[] = [
         label: 'Мне грустно',
         type: 'popover',
         links: [
+            {
+                id: crypto.randomUUID(),
+                label: 'Мне грустно',
+                type: 'link',
+                href: '/',
+            },
             {
                 id: crypto.randomUUID(),
                 label: 'Руны',
