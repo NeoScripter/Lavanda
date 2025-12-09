@@ -2,7 +2,6 @@
 
 :root {
     --root-base: 1;
-    --test: 1rem;
 }
 
 #app {
@@ -72,8 +71,8 @@ h2 {
     border-radius: 2em;
     font-weight: 500;
     gap: 0.4em;
-    padding-block: 1em;
-    padding-inline: 1.4em;
+    @include u.px(py, 12, 16, 16, 16);
+    @include u.px(px, 16, 20, 20, 20);
     @include u.rm(text, 12, 16, 16, 16);
     border: 1px solid white;
     @include u.shadow(2);

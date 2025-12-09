@@ -20,14 +20,14 @@
 
 .burgerOpen {
     transition:
-        translate 200ms ease-in,
-        rotate 150ms ease-in 200ms;
+        translate 150ms ease-in,
+        rotate 100ms ease-in 150ms;
 }
 
 .burgerClose {
     transition:
-        translate 200ms ease-in 200ms,
-        rotate 150ms ease-in;
+        translate 150ms ease-in 150ms,
+        rotate 100ms ease-in;
 }
 
 /* All lines must define base individual properties */

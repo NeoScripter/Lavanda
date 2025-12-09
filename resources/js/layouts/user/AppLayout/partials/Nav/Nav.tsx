@@ -40,7 +40,7 @@ const NavLink: FC<{ navLink: NavLinkType }> = ({ navLink }) => {
                     {navLink.label}
                 </Link>
             ) : (
-                <Popover className="group">
+                <Popover>
                     {({ open }) => (
                         <>
                             <PopoverButton class={css.popoverBtn}>

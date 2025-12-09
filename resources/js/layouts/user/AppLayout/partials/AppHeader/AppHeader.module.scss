@@ -3,13 +3,17 @@
 .wrapper {
     position: fixed;
     z-index: 2;
-    background-color: u.opacify(white, 82);
     left: 50%;
+    background-color: u.opacify(white, 82);
     transform: translateX(-50%);
     backdrop-filter: blur(5px);
     @include u.px(top, 22, 22, 77, 53);
     @include u.px(w, 328, 657, 1280, 1585);
     @include u.px(rounded, 20, 35, 40, 45);
+
+    @include u.mw(sm) {
+        background-color: transparent;
+    }
 }
 
 .topBar {
@@ -20,6 +24,9 @@
     @include u.px(px, 14, 18, 18, 26);
     @include u.px(py, 4, 7, 10, 10);
     border-radius: inherit;
+    @include u.mw(sm) {
+        background: none;
+    }
 }
 
 .burger {
@@ -47,5 +54,37 @@
 
     @include u.mw(sm) {
         display: flex;
+    }
+}
+
+.mbNav {
+    overflow-y: auto;
+    @include u.px(py, null, 12);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .navOpen {
+        transition:
+            max-height var(--toast-hiding-easing) var(--toast-hiding-duration),
+            padding var(--toast-hiding-easing) var(--toast-hiding-duration);
+    }
+    .navClosed {
+        transition:
+            max-height var(--toast-appear-easing) var(--toast-appear-duration),
+            padding var(--toast-appear-easing) var(--toast-appear-duration);
+    }
+}
+
+.navOpen {
+    @include u.px(max-h, 800);
+}
+
+.navClosed {
+    max-height: 0rem;
+    padding-block: 0rem;
+
+    @include u.mw(sm) {
+        max-height: 100%;
+        @include u.px(py, null, 12);
     }
 }

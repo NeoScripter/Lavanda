@@ -2,17 +2,20 @@ import BurgerMenu from '@/components/user/nav/BurgerMenu/BurgerMenu';
 import Logo from '@/components/user/ui/Logo/Logo';
 import { useClickOutside } from '@/hooks/useClickOutside';
 import { useEscapeKey } from '@/hooks/useEscapeKey';
+import useMediaQuery from '@/hooks/useMediaQuery';
 import { NodeProps } from '@/types/nodeProps';
 import { cn } from '@/utils/cn';
-import { FC } from 'preact/compat';
-import css from './AppHeader.module.scss';
 import { CircleUser } from 'lucide-preact';
+import { FC } from 'preact/compat';
 import Nav from '../Nav/Nav';
+import css from './AppHeader.module.scss';
 
 const AppHeader: FC<NodeProps> = ({ className }) => {
     const { show: showMenu, setShow: setShowMenu } = useClickOutside([
         '#header',
     ]);
+
+    const isDesktop = useMediaQuery('(min-width: 1110px)');
 
     useEscapeKey(() => setShowMenu(false));
 
@@ -34,13 +37,22 @@ const AppHeader: FC<NodeProps> = ({ className }) => {
                     className={css.burger}
                 />
 
+                {isDesktop && <Nav className={cn(css.dkNav)} />}
+
                 <button class={cn(css.loginBtn, 'primary-btn')}>
                     <CircleUser />
                     Войти
                 </button>
             </div>
 
-            <Nav />
+            {!isDesktop && (
+                <Nav
+                    className={cn(css.mbNav, {
+                        [css.navOpen]: showMenu,
+                        [css.navClosed]: !showMenu,
+                    })}
+                />
+            )}
         </header>
     );
 };

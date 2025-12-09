@@ -9,13 +9,13 @@
     font-size: inherit;
     text-align: center;
     @include u.fxc();
-    @include u.px(pb, 9, 0);
-    transition: opacity 0.25s;
-    border-bottom: 2px solid currentColor;
+    @include u.px(py, 9, 0);
+    transition: opacity 0.25s, scale 0.25s;
+    @include u.underline-slide();
 
     &:hover,
     &:focus-visible {
-        opacity: 0.8;
+        scale: 1.03;
     }
 
     > svg {
@@ -26,38 +26,76 @@
         @include u.px(mb, 5, 0);
         flex-shrink: 0;
     }
+
+    @include u.mw(sm) {
+        display: none;
+    }
 }
 
 .nav {
     color: u.clr('primary', 'strong');
     font-weight: bold;
-    @include u.rm(text, 16, 16, 16, 16);
+    border-radius: inherit;
+    @include u.rm(text, 16, 12, 16, 16);
+
+    @include u.mw(sm) {
+        color: u.clr('foreground', 'muted');
+        font-weight: 500;
+        @include u.px(mt, null, 16, 0, 0);
+        border-radius: inherit;
+        background-color: u.opacify(white, 82);
+    }
+    @include u.mw(md) {
+        max-width: 68%;
+    }
 }
 
 .navLinks {
     @include u.fxc();
     flex-direction: column;
-    @include u.px(gap, 31, 0);
-    @include u.px(pt, 27, 0);
-    @include u.px(pb, 60, 0);
+    @include u.px(gap, 31, 26, 25, 39);
+    @include u.px(pt, 27, 0, 14, 14);
+    @include u.px(pb, 60, 0, 14, 14);
+
+    @include u.mw(sm) {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    @include u.px(px, null, null, 40, 40);
 }
 .popoverBtn {
     font-size: inherit;
     font-weight: inherit;
     color: inherit;
     @include u.fxc();
+    @include u.underline-slide();
     gap: 0.3em;
+
+    &:focus-visible {
+        outline: none;
+        box-shadow: none;
+        border: none;
+    }
 }
 
 .popoverPanel {
     @include u.fxc();
     flex-direction: column;
-    transition: opacity 0.2s ease-in, transform 0.2s ease-in;
-    @include u.px(gap, 21, 0);
+    width: 70%;
+    transition:
+        opacity 0.2s ease-in,
+        transform 0.2s ease-in;
+    @include u.px(gap, 21, 14, 14, 14);
     background-color: u.opacify(white, 92);
     @include u.px(p, 14, 14, 14, 14);
     @include u.px(rounded, 14, 14, 14, 14);
     color: u.clr('primary', 'strong');
+    @include u.px(w, null, 186, 246, 286);
+    transform-origin: top;
+
+    @include u.mw(sm) {
+        color: u.clr('foreground', 'muted');
+    }
 }
 
 .popoverPanel[data-closed] {
@@ -69,24 +107,41 @@
     @include u.underline-slide();
     font-size: 0.8em;
     text-wrap: balance;
-    max-width: 70%;
+    max-width: 60%;
     text-align: center;
 
+    @include u.mw(sm) {
+        max-width: 100%;
+    }
     &:after {
         height: 1px;
+    }
+
+    &:focus-visible {
+        outline: none;
+        box-shadow: none;
+        border: none;
     }
 }
 
 .plainNavLink {
     @include u.underline-slide();
+
+    &:focus-visible {
+        outline: none;
+        box-shadow: none;
+        border: none;
+    }
 }
 
 .chevron {
-    margin-top: 0.2em;
+    width: 1.2em;
+    height: 1.2em;
+    flex-shrink: 0;
+    transform: translateY(0.1em);
     transition: transform 0.3s ease-in-out;
 }
 .chevronFlipped {
     transform-origin: center;
     transform: rotateX(180deg);
 }
-
