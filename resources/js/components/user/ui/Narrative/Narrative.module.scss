@@ -1,0 +1,25 @@
+@use 'core' as u;
+
+.wrapper {
+    @include u.px(mb, 60, 92, 130, 84);
+    text-align: center;
+    position: relative;
+
+    > * {
+      margin-inline: auto;
+    }
+}
+
+.heading {
+    @include u.px(mb, 60, 60, 44, 52);
+    @include u.px(max-w, null, 621, 1180, 1180);
+}
+
+.prgsParent {
+    @include u.px(max-w, null, 600, 700, 1230);
+    text-wrap: pretty;
+
+    > * + * {
+      margin-top: 1.5em;
+    }
+}

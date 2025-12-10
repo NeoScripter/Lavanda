@@ -12,6 +12,8 @@
     @include u.px(pt, 97, 210, 140, 172);
     @include u.px(pb, 27, 30, 30, 30);
     @include u.px(pl, null, null, 73, 132);
+    @include u.px(mb, 328, 376, 196, 182);
+
 }
 
 .bgImage {
@@ -28,18 +30,13 @@
 
 .fgLoader {
     margin-top: auto;
-    margin-bottom: 10%;
     bottom: 0;
     inset-inline: 0;
     position: absolute;
     width: 100%;
-    @include u.px(h, 521, 834, 901, 1005);
+    @include u.px(h, 561, 760, 901, 1005);
     @include u.px(w, null, null, 853, 1099);
 
-
-    @include u.mw(sm) {
-        margin-bottom: 5%;
-    }
     @include u.mw(md) {
         margin-left: auto;
         margin-bottom: 0%;

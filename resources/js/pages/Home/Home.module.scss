@@ -7,9 +7,39 @@
     background: u.clr('background', 'muted');
     position: relative;
     isolation: isolate;
+
+    > section {
+        isolation: isolate;
+    }
 }
 
 .bgLoader {
     position: absolute;
     inset: 0;
+}
+
+.narrativeDecor {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-40%, -60%);
+
+    @include u.px(w, 423, 423, 470, 648);
+    @include u.px(h, 423, 423, 470, 648);
+
+    @include u.mw(sm) {
+        top: 50%;
+        display: block;
+        transform: translate(-30%, 0%);
+    }
+    @include u.mw(md) {
+        top: 40%;
+        display: block;
+        transform: translate(-40%, 0%);
+    }
+
+    > img {
+        object-fit: contain;
+    }
 }
