@@ -1,5 +1,6 @@
 @use 'sass:math';
 @use 'sass:string';
+@use 'sass:color';
 
 @function px-to-vw($current-screen-width, $size) {
     $result: math.div($size, $current-screen-width) * 100;
@@ -24,12 +25,7 @@
     @return min($size-at-limit-rem, $vw-value);
 }
 
-@function adaptive-size-at-width($size_in_px, $figma_bp, $current_width) {
-    $scaled: math.div($size_in_px, $figma_bp) * $current_width;
-    @return round_to_decimal(math.div($scaled, 16)) * 1rem;
-}
-
-@function calc-adaptive-rm($size_in_px, $rel-width, $upper-limit-px) {
+@function calc4-adaptive-rm($size_in_px, $rel-width, $upper-limit-px) {
     $vw-numeric: round_to_decimal(math.div($size_in_px, $rel-width) * 100);
     $size-at-limit: math.div($size_in_px, $rel-width) * $upper-limit-px;
     $size-at-limit-rem: round_to_decimal(math.div($size-at-limit, 16)) * 1rem;
@@ -40,11 +36,28 @@
     );
 }
 
-@function calc-adaptive-px($size_in_px, $rel-width, $upper-limit-px) {
-    $vw-value: px-to-vw($rel-width, $size_in_px);
-    $size-at-limit: math.div($size_in_px, $rel-width) * $upper-limit-px;
-    $size-at-limit-px: round_to_decimal($size-at-limit) * 1px;
-    @return min($size-at-limit-px, $vw-value);
+@function calc-adaptive-rm($base-px, $ref-width, $max-width, $min-width) {
+    $vw: px-to-vw($ref-width, $base-px);
+
+    $max-rem: round_to_decimal(
+            math.div(math.div($base-px, $ref-width) * $max-width, 16)
+        ) *
+        1rem;
+    $min-rem: round_to_decimal(
+            math.div(math.div($base-px, $ref-width) * $min-width, 16)
+        ) *
+        1rem;
+
+    @return clamp($min-rem, calc(#{$vw} * var(--root-base)), $max-rem);
+}
+
+@function calc-adaptive-px($base-px, $ref-width, $max-width, $min-width) {
+    $vw: px-to-vw($ref-width, $base-px);
+
+    $max-px: round_to_decimal(math.div($base-px, $ref-width) * $max-width) * 1px;
+    $min-px: round_to_decimal(math.div($base-px, $ref-width) * $min-width) * 1px;
+
+    @return clamp($min-px, $vw, $max-px);
 }
 
 @function lighten($color, $percentage) {
@@ -63,4 +76,16 @@
         $color math.percentage($normalized-opacity),
         transparent
     );
+}
+
+@function saturate($color, $amount) {
+    $new-sat: color.saturation($color) + $amount;
+
+    @if $new-sat < 0 {
+        $new-sat: 0;
+    } @else if $new-sat > 100 {
+        $new-sat: 100;
+    }
+
+    @return color.change($color, $saturation: $new-sat);
 }

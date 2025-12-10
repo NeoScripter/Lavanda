@@ -35,12 +35,14 @@
         @if $size != null {
             $figma-breakpoint: list.nth($figma-values, $i);
             $bp-breakpoint: list.nth($bp-values, $i);
+            $lower-limit: if($i == 1, 200, list.nth($bp-values, $i - 1));
 
             @if $i == 1 {
                 #{$css-property}: f.calc-adaptive-rm(
                     $size,
                     $figma-breakpoint,
-                    $bp-breakpoint
+                    $bp-breakpoint,
+                    $lower-limit
                 );
             } @else {
                 $breakpoint-key: list.nth($breakpoint-keys, $i - 1);
@@ -48,7 +50,8 @@
                     #{$css-property}: f.calc-adaptive-rm(
                         $size,
                         $figma-breakpoint,
-                        $bp-breakpoint
+                        $bp-breakpoint,
+                        $lower-limit
                     );
                 }
             }
@@ -73,12 +76,14 @@
         @if $size != null {
             $figma-breakpoint: list.nth($figma-values, $i);
             $bp-breakpoint: list.nth($bp-values, $i);
+            $lower-limit: if($i == 1, 200, list.nth($bp-values, $i - 1));
 
             @if $i == 1 {
                 #{$css-property}: f.calc-adaptive-px(
                     $size,
                     $figma-breakpoint,
-                    $bp-breakpoint
+                    $bp-breakpoint,
+                    $lower-limit
                 );
             } @else {
                 $breakpoint-key: list.nth($breakpoint-keys, $i - 1);
@@ -86,7 +91,8 @@
                     #{$css-property}: f.calc-adaptive-px(
                         $size,
                         $figma-breakpoint,
-                        $bp-breakpoint
+                        $bp-breakpoint,
+                        $lower-limit
                     );
                 }
             }
@@ -171,8 +177,7 @@
         flex-shrink: 0;
         background-color: currentColor;
         opacity: 1;
-        transition:
-            width 300ms;
+        transition: width 300ms;
     }
 
     &:hover::after,

@@ -1,7 +1,6 @@
 @use 'core' as u;
 
 .faqWrapper {
-    margin-top: 50rem;
     @include u.px(mb, 123, 117, 118, 115);
 }
 

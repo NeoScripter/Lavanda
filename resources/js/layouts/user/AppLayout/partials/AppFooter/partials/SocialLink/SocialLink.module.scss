@@ -11,10 +11,7 @@
 
     &:hover,
     &:focus-visible {
-        background-color: color.scale(
-            u.clr('primary', 'muted'),
-            $saturation: 30%
-        );
+        background-color: u.saturate(u.clr('primary', 'muted'), 30%);
     }
 
     > img {

@@ -66,6 +66,7 @@
 .popoverBtn {
     font-size: inherit;
     font-weight: inherit;
+    font-family: inherit;
     color: inherit;
     @include u.fxc();
     @include u.underline-slide();
