@@ -61,9 +61,9 @@ $css-properties: (
     "tracking": "letter-spacing",
 
     // Spacing - Inset (Positioning)
-    "inset": "top right bottom left",
-    "inset-x": "left right",
-    "inset-y": "top bottom",
+    "inset": "inset",
+    "inset-x": "inset-inline",
+    "inset-y": "inset-block",
     "top": "top",
     "right": "right",
     "bottom": "bottom",

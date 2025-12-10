@@ -21,10 +21,15 @@ $colors: (
 $gradients: (
     'background': (
         'muted': hsla(240, 32%, 90%, 1),
-        'header': (
-            lightgray -51.5px 0px / 131.402% 89.979% no-repeat,
-            #fff,
-        ),
+        'header': linear-gradient(
+                lightgray -51.5px 0px / 131.402% 89.979% no-repeat,
+                #fff
+            ),
+        'card': linear-gradient(
+                92deg,
+                rgba(255, 255, 255, 0.95) 10.95%,
+                rgba(255, 255, 255, 0) 71.87%
+            ),
     ),
     'primary': (
         'muted': linear-gradient(

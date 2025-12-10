@@ -10,7 +10,9 @@
     text-align: center;
     @include u.fxc();
     @include u.px(py, 9, 0);
-    transition: opacity 0.25s, scale 0.25s;
+    transition:
+        opacity 0.25s,
+        scale 0.25s;
     @include u.underline-slide();
 
     &:hover,
@@ -33,10 +35,11 @@
 }
 
 .nav {
+    user-select: none;
     color: u.clr('primary', 'strong');
     font-weight: bold;
     border-radius: inherit;
-    @include u.rm(text, 16, 12, 16, 16);
+    @include u.rm(text, 16, 12, 18, 18);
 
     @include u.mw(sm) {
         color: u.clr('foreground', 'muted');
@@ -45,17 +48,14 @@
         border-radius: inherit;
         background-color: u.opacify(white, 82);
     }
-    @include u.mw(md) {
-        max-width: 68%;
-    }
 }
 
 .navLinks {
     @include u.fxc();
     flex-direction: column;
     @include u.px(gap, 31, 26, 25, 39);
-    @include u.px(pt, 27, 0, 14, 14);
-    @include u.px(pb, 60, 0, 14, 14);
+    @include u.px(pt, 27, 0, 13, 13);
+    @include u.px(pb, 60, 0, 13, 13);
 
     @include u.mw(sm) {
         flex-direction: row;

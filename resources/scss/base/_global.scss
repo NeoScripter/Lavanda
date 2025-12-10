@@ -73,8 +73,8 @@ h2 {
     font-weight: 500;
     gap: 0.4em;
     @include u.px(py, 12, 16, 16, 16);
-    @include u.px(px, 16, 22, 22, 22);
-    @include u.rm(text, 12, 16, 16, 16);
+    @include u.px(px, 18, 24, 24, 24);
+    @include u.rm(text, 12, 16, 18, 18);
     border: 1px solid white;
     @include u.shadow(2);
     @include u.shine;
@@ -87,6 +87,39 @@ h2 {
 
     > svg {
         @include u.px(w, 20, 20, 20, 24);
+        flex-shrink: 0;
+    }
+}
+
+.secondary-btn {
+    --color: #{u.clr('primary', 'strong')};
+    --bg-color: white;
+    color: var(--color);
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-color);
+    justify-content: center;
+    border-radius: 2em;
+    font-weight: 500;
+    gap: 0.4em;
+    @include u.px(py, 12, 16, 16, 16);
+    @include u.px(pl, 18, 24, 24, 24);
+    @include u.px(pr, 14, 20, 20, 20);
+    @include u.rm(text, 12, 16, 18, 18);
+    border: 2px solid var(--color);
+    @include u.shadow(2);
+
+    &:hover,
+    &:focus-visible {
+        @include u.shadow(3);
+        background-color: var(--color);
+        color: var(--bg-color);
+        border-color: var(--bg-color);
+    }
+
+    > svg {
+        @include u.px(w, 20, 20, 20, 24);
+        transform: translateY(0.05em);
         flex-shrink: 0;
     }
 }

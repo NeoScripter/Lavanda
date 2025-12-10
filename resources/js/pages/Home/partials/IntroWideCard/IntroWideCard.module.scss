@@ -1,0 +1,44 @@
+@use 'core' as u;
+
+.wrapper {
+    isolation: isolate;
+    @include u.shadow(3);
+    position: relative;
+    overflow: clip;
+    @include u.px(rounded, 32, 32, 32, 32);
+    @include u.px(min-h, null, 566, 553, 553);
+
+    @include u.mw(sm) {
+        display: flex;
+        align-items: center;
+
+        &::before {
+            position: absolute;
+            content: '';
+            inset: 0;
+            background: u.gd('background', 'card');
+            pointer-events: none;
+            z-index: -1;
+        }
+    }
+}
+
+.imageWrapper {
+    position: static;
+    @include u.px(p, 8, 0);
+
+    @include u.mw(sm) {
+        position: absolute;
+        inset: 0;
+    }
+}
+.image {
+    position: static;
+}
+
+.content {
+    @include u.px(px, 26, 54, 88, 102);
+    @include u.px(pb, 50, 50, 100, 100);
+    @include u.px(pt, 30, 30, 70, 70);
+
+}

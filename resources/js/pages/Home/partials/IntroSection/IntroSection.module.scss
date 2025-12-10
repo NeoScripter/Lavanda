@@ -1,0 +1,68 @@
+@use 'core' as u;
+
+.wrapper {
+    @include u.px(mb, 50, 106, 67, 63);
+
+    > * + * {
+        @include u.px(mt, 60, 60, 45, 45);
+    }
+
+    > section h3 {
+        color: inherit;
+        font-weight: 700;
+        @include u.px(mb, 20, 25, 35, 50);
+        @include u.rm(text, 28, 36, 48, 48);
+    }
+    > section p {
+        color: inherit;
+        @include u.px(mb, 24, 40, 35, 40);
+    }
+}
+
+.violetText {
+    color: u.clr('primary', 'strong');
+    background-color: u.opacify(white, 75);
+
+    button {
+        --color: #{u.clr('primary', 'strong')};
+        --bg-color: white;
+        background-color: transparent;
+    }
+}
+
+.intro1 {
+    & div:has(p) {
+        @include u.mw(sm) {
+            max-width: 70%;
+        }
+        @include u.mw(md) {
+            max-width: 50%;
+        }
+    }
+    & > div img {
+        object-position: right;
+    }
+}
+
+.intro2 {
+    & div:has(p) {
+        @include u.mw(sm) {
+            max-width: 68%;
+            margin-left: auto;
+        }
+        @include u.mw(md) {
+            max-width: 55%;
+        }
+        @include u.mw(lg) {
+            max-width: 60%;
+        }
+    }
+
+    &::before {
+        transform: rotate(180deg);
+    }
+
+    & > div img {
+        object-position: left;
+    }
+}

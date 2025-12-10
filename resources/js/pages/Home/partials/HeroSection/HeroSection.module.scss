@@ -52,7 +52,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    @include u.px(gap, 17, 48, 19, 26);
+    @include u.px(gap, 17, 48, 30, 35);
 
     @include u.mw(md) {
         justify-content: start;
@@ -82,9 +82,9 @@
     font-weight: 500;
     transition: transform 0.3s ease-in-out;
     backdrop-filter: blur(5px);
-    @include u.px(gap, 5, 9, 9, 9);
+    @include u.px(gap, 5, 9, 12, 12);
     @include u.fxc();
-    @include u.rm(text, 12, 16, 16, 16);
+    @include u.rm(text, 12, 16, 18, 18);
 
     &:hover,
     &:focus-visible {
@@ -97,8 +97,8 @@
 
     > svg {
         flex-shrink: 0;
-        @include u.px(w, 35, 35, 35, 35);
-        @include u.px(h, 35, 35, 35, 35);
+        @include u.px(w, 35, 35, 45, 45);
+        @include u.px(h, 35, 35, 45, 45);
     }
 }
 

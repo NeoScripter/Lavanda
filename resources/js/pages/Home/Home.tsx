@@ -14,6 +14,7 @@ import { cn } from '@/utils/cn';
 import css from './Home.module.scss';
 import FAQSection from './partials/FAQSection/FAQSection';
 import HeroSection from './partials/HeroSection/HeroSection';
+import IntroSection from './partials/IntroSection/IntroSection';
 
 const Home = () => {
     return (
@@ -42,6 +43,8 @@ const Home = () => {
                     tinyImg={NarrativeDecorTiny}
                 />
             </Narrative>
+
+            <IntroSection />
 
             <FAQSection />
         </AppLayout>
