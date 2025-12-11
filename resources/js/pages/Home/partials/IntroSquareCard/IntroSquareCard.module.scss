@@ -1,0 +1,128 @@
+@use 'core' as u;
+
+.wrapper {
+    isolation: isolate;
+    @include u.shadow(3);
+    position: relative;
+    overflow: clip;
+    color: u.clr('primary', 'strong');
+    background-color: u.opacify(white, 75);
+
+    @include u.px(rounded, 32, 32, 32, 32);
+    @include u.px(min-h, null, 566, 553, 553);
+
+    @include u.mw(sm) {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        &::before {
+            position: absolute;
+            content: '';
+            inset: 0;
+            background: u.gd('background', 'card');
+            pointer-events: none;
+            z-index: -1;
+        }
+    }
+
+    @include u.mw(md) {
+        background-color: transparent;
+        box-shadow: none;
+
+        &::before {
+            content: none;
+        }
+    }
+
+    &:nth-child(even) div:has(p) {
+        @include u.mw(sm) {
+            margin-left: auto;
+        }
+        @include u.mw(md) {
+            margin-left: 0;
+        }
+    }
+    &:nth-child(odd) .imageWrapper {
+        @include u.mw(md) {
+            order: 2;
+        }
+    }
+    &:nth-child(2) div:has(p) {
+        @include u.mw(sm) {
+            button {
+                --color: #{u.clr('primary', 'strong')};
+                --bg-color: white;
+                background-color: transparent;
+
+                &:hover,
+                &:focus {
+                    background-color: u.clr('primary', 'strong');
+                }
+            }
+        }
+    }
+    &:not(:nth-child(2)) div:has(p) {
+        @include u.mw(md) {
+            color: white;
+
+            button {
+                --color: white;
+                --bg-color: #{u.clr('primary', 'strong')};
+                background-color: transparent;
+
+                &:hover,
+                &:focus {
+                    background-color: white;
+                }
+            }
+        }
+    }
+}
+
+.imageWrapper {
+    position: static;
+    @include u.px(p, 8, 0);
+    @include u.px(w, null, null, 583, 583);
+    @include u.px(h, null, null, 583, 583);
+    @include u.px(rounded, 32, 32, 32, 32);
+
+    @include u.mw(sm) {
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+    }
+    @include u.mw(md) {
+        position: static;
+        flex-shrink: 0;
+    }
+}
+.image {
+    position: static;
+    @include u.px(rounded, 26, 0);
+}
+
+.content {
+    @include u.px(px, 26, 54, 88, 49);
+    @include u.px(pb, 50, 50, 100, 100);
+    @include u.px(pt, 30, 30, 70, 70);
+
+    @include u.mw(sm) {
+        max-width: 68%;
+    }
+    @include u.mw(md) {
+        max-width: 100%;
+    }
+    @include u.mw(lg) {
+        max-width: 55%;
+    }
+}
+
+.link {
+    @include u.mw(sm) {
+        background-color: transparent;
+    }
+    @include u.mw(md) {
+        background-color: inherit;
+    }
+}

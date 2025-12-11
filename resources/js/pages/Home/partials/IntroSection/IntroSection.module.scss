@@ -4,7 +4,7 @@
     @include u.px(mb, 50, 106, 67, 63);
 
     > * + * {
-        @include u.px(mt, 60, 60, 45, 45);
+        @include u.px(mt, 60, 60, 60, 60);
     }
 
     > section h3 {
@@ -17,6 +17,27 @@
         color: inherit;
         @include u.px(mb, 24, 40, 35, 40);
     }
+
+    > section:nth-child(even) {
+        color: white;
+        background-color: u.clr('primary', 'strong');
+
+        button {
+            --color: white;
+            --bg-color: #{u.clr('primary', 'strong')};
+        }
+
+        @include u.mw(sm) {
+            color: u.clr('primary', 'strong');
+            background-color: transparent;
+
+            button {
+                --color: #{u.clr('primary', 'strong')};
+                --bg-color: white;
+            }
+        }
+    }
+
 }
 
 .violetText {

@@ -5,6 +5,9 @@
     @include u.shadow(3);
     position: relative;
     overflow: clip;
+    color: u.clr('primary', 'strong');
+    background-color: u.opacify(white, 75);
+
     @include u.px(rounded, 32, 32, 32, 32);
     @include u.px(min-h, null, 566, 553, 553);
 
@@ -19,6 +22,21 @@
             background: u.gd('background', 'card');
             pointer-events: none;
             z-index: -1;
+        }
+    }
+    button {
+        --color: #{u.clr('primary', 'strong')};
+        --bg-color: white;
+        background-color: transparent;
+    }
+
+    &:nth-child(even) {
+        color: white;
+        background-color: u.clr('primary', 'strong');
+
+        @include u.mw(sm) {
+            color: u.clr('primary', 'strong');
+            background-color: u.opacify(white, 75);
         }
     }
 }
@@ -40,5 +58,4 @@
     @include u.px(px, 26, 54, 88, 102);
     @include u.px(pb, 50, 50, 100, 100);
     @include u.px(pt, 30, 30, 70, 70);
-
 }
