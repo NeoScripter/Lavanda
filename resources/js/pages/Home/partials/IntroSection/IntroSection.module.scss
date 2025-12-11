@@ -20,11 +20,11 @@
 
     > section:nth-child(even) {
         color: white;
-        background-color: u.clr('primary', 'strong');
+        background-color: u.clr('primary', 'muted');
 
         button {
             --color: white;
-            --bg-color: #{u.clr('primary', 'strong')};
+            --bg-color: #{u.clr('primary', 'muted')};
         }
 
         @include u.mw(sm) {
@@ -37,7 +37,6 @@
             }
         }
     }
-
 }
 
 .violetText {
@@ -65,7 +64,7 @@
     }
 }
 
-.intro2 {
+.intro4 {
     & div:has(p) {
         @include u.mw(sm) {
             max-width: 68%;
@@ -85,5 +84,76 @@
 
     & > div img {
         object-position: left;
+    }
+}
+
+.decorIntro3 {
+    display: none;
+
+    @include u.mw(sm) {
+        display: block;
+        position: absolute;
+        z-index: 20;
+        right: 0;
+        bottom: 0;
+        transform-origin: center;
+        transform: translate(20%, 50%);
+        rotate: -35deg;
+    }
+    @include u.mw(md) {
+        transform: translate(40%, 40%);
+        rotate: 0deg;
+    }
+    @include u.mw(md) {
+        transform: translate(70%, 50%);
+    }
+
+    @include u.px(w, null, 274, 390, 548);
+}
+
+.decorIntro5 {
+    display: none;
+
+    @include u.mw(md) {
+        display: block;
+        position: absolute;
+        z-index: 20;
+        left: 0;
+        top: 0;
+        transform: translate(-50%, 0%);
+    }
+    @include u.mw(lg) {
+        transform: translate(-70%, 5%);
+    }
+
+    @include u.px(w, null, null, 357, 548);
+}
+
+.freeLabel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-5%, -20%);
+    text-transform: uppercase;
+    color: white;
+    display: flex;
+    align-items: center;
+    background-color: u.clr('primary', 'strong');
+    justify-content: center;
+    border-radius: 2em;
+    font-weight: 500;
+    padding-block: 0.85em;
+    padding-inline: 1.5em;
+    @include u.rm(text, 15, 24, 24, 24);
+    @include u.shadow(2);
+
+    @include u.mw(sm) {
+        transform: translate(-10%, -30%);
+    }
+    @include u.mw(md) {
+        transform: translate(-10%, 30%);
+    }
+    @include u.mw(lg) {
+        transform: translate(-15%, 20%);
     }
 }

@@ -51,7 +51,7 @@
 <body>
     @inertia
     <div id="portal-container"></div>
-    <div aria-hidden="true" id="beacon"></div>
+    <div id="modals"></div>
 </body>
 
 </html>

@@ -22,11 +22,16 @@ import {
     default as Img5,
     default as Img5Tiny,
 } from '@/assets/images/home/intro-5.webp';
+import CrystalTiny from '@/assets/images/home/intro-crystal-tiny.webp';
+import Crystal from '@/assets/images/home/intro-crystal.webp';
+import KeyTiny from '@/assets/images/home/intro-key-tiny.webp';
+import Key from '@/assets/images/home/intro-key.webp';
 
 import {
     default as Img6,
     default as Img6Tiny,
 } from '@/assets/images/home/intro-6.webp';
+import LazyImage from '@/components/user/ui/LazyImage/LazyImage';
 import { NodeProps } from '@/types/nodeProps';
 import { cn } from '@/utils/cn';
 import { FC } from 'preact/compat';
@@ -67,10 +72,16 @@ const IntroSection: FC<NodeProps> = ({ className }) => {
                 alt="Элегантные женские руки в нежном жесте на фоне струящейся белой ткани с мягким освещением"
                 img={Img3}
                 tinyImg={Img3Tiny}
-            />
+            >
+                <LazyImage
+                    img={Crystal}
+                    tinyImg={CrystalTiny}
+                    prtClass={css.decorIntro3}
+                />
+            </IntroSquareCard>
 
             <IntroWideCard
-                className={cn(css.intro2)}
+                className={cn(css.intro4)}
                 heading="Хочу расслабиться"
                 content="Мы часто думаем о том, что должны быть продуктивными, сильными, собранными. Но не меньшее значение имеет умение отдыхать. Здесь собрана подборка ресурсов, которые помогут расслабиться и восстановить силы: музыка, медитации, дыхательные практики, статьи о заботе о себе. Это пространство, где можно замедлиться и позволить себе просто быть."
                 url="/"
@@ -90,7 +101,13 @@ const IntroSection: FC<NodeProps> = ({ className }) => {
                 alt="Мощные белые волны с брызгами, замершие в момент удара."
                 img={Img5}
                 tinyImg={Img5Tiny}
-            />
+            >
+                <LazyImage
+                    img={Key}
+                    tinyImg={KeyTiny}
+                    prtClass={css.decorIntro5}
+                />
+            </IntroSquareCard>
 
             <IntroSquareCard
                 heading="БОНУС: экспресс-карта от Lavanda.Space"
@@ -99,7 +116,9 @@ const IntroSection: FC<NodeProps> = ({ className }) => {
                 alt="Светлый коридор с повторяющимися арками, уходящий вдаль."
                 img={Img6}
                 tinyImg={Img6Tiny}
-            />
+            >
+                <span class={cn(css.freeLabel)}>Бесплатно</span>
+            </IntroSquareCard>
         </div>
     );
 };

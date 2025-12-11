@@ -1,10 +1,8 @@
 @use 'core' as u;
 
 .wrapper {
-    isolation: isolate;
     @include u.shadow(3);
     position: relative;
-    overflow: clip;
     color: u.clr('primary', 'strong');
     background-color: u.opacify(white, 75);
 
@@ -15,24 +13,11 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-
-        &::before {
-            position: absolute;
-            content: '';
-            inset: 0;
-            background: u.gd('background', 'card');
-            pointer-events: none;
-            z-index: -1;
-        }
     }
 
     @include u.mw(md) {
         background-color: transparent;
         box-shadow: none;
-
-        &::before {
-            content: none;
-        }
     }
 
     &:nth-child(even) div:has(p) {
