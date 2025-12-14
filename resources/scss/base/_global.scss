@@ -21,7 +21,7 @@ body {
 
 body {
     min-height: 100vh;
-    line-height: 1.4;
+    line-height: 1.6;
     font-family:
         'Montserrat', 'Verdana', 'Tahoma', ui-sans-serif, system-ui, sans-serif,
         'Apple Color Emoji';
@@ -49,6 +49,7 @@ img {
 h1 {
     color: u.clr('primary', 'strong');
     font-weight: 900;
+    line-height: 1.4;
     text-transform: uppercase;
     text-wrap: balance;
     @include u.px(text, 28, 48, 56, 56);
@@ -58,9 +59,14 @@ h1 {
 h2 {
     color: u.clr('primary', 'strong');
     font-weight: 600;
+    line-height: 1.4;
     text-wrap: balance;
     @include u.px(text, 28, 40, 48, 48);
     @include u.px(mb, 36, 42, 36, 42);
+}
+
+h3 {
+    line-height: normal;
 }
 
 .primary-btn {

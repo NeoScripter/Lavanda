@@ -80,6 +80,7 @@
     @include u.mw(md) {
         position: static;
         flex-shrink: 0;
+        @include u.shadow(3);
     }
 }
 .image {

@@ -1,0 +1,53 @@
+@use 'core' as u;
+
+.wrapper {
+    background-color: white;
+    @include u.px(rounded, 32, 32, 32, 32);
+    @include u.px(mb, 158, 207, 171, 32);
+    @include u.px(pl, 25, 50, 67, 116);
+    @include u.px(pr, 25, 50, 41, 44);
+    @include u.px(pt, 38, 62, 46, 46);
+    @include u.px(pb, 32, 46, 59, 59);
+    @include u.px(gap, null, null, 257, 321);
+    @include u.shadow(3);
+
+    @include u.mw(md) {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+.description {
+    @include u.px(mb, 20, 48, 0);
+}
+
+.heading {
+    font-weight: 900;
+    text-transform: uppercase;
+    @include u.px(text, 28, 48, 56, 56);
+    @include u.px(mb, 20, 15, 15, 15);
+}
+
+.imgWrapper {
+    flex-shrink: 0;
+    position: relative;
+    margin-left: auto;
+    @include u.px(rounded, 28, 28, 28, 28);
+    @include u.px(w, 171, 334, 334, 334);
+    @include u.px(h, 232, 380, 380, 380);
+}
+
+.fgParent {
+    position: absolute;
+    border-radius: inherit;
+    @include u.px(top, 48, 66, 66, 66);
+    @include u.px(right, 52, 97, 97, 97);
+    border: 6px solid white;
+    @include u.size(120%);
+}
+
+.bgParent {
+    @include u.size(100%);
+    border: 6px solid white;
+    border-radius: inherit;
+}

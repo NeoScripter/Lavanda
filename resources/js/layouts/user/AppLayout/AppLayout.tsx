@@ -9,7 +9,10 @@ import AppHeader from './partials/AppHeader/AppHeader';
 const AppLayout: FC<NodeProps> = ({ className, children }) => {
     return (
         <div class={cn('full-bleed-parent', css.wrapper, className)}>
-            {createPortal(<AppHeader />, document.getElementById('modals')!)}
+            {createPortal(
+                <AppHeader />,
+                document.getElementById('portal-container')!,
+            )}
 
             {children}
 

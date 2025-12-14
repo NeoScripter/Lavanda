@@ -15,6 +15,7 @@ import css from './Home.module.scss';
 import FAQSection from './partials/FAQSection/FAQSection';
 import HeroSection from './partials/HeroSection/HeroSection';
 import IntroSection from './partials/IntroSection/IntroSection';
+import AboutSection from './partials/AboutSection/AboutSection';
 
 const Home = () => {
     return (
@@ -45,6 +46,8 @@ const Home = () => {
             </Narrative>
 
             <IntroSection />
+
+            <AboutSection />
 
             <FAQSection />
         </AppLayout>
