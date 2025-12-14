@@ -2,7 +2,7 @@ import { createInertiaApp } from "@inertiajs/react";
 import { createRoot } from "preact/compat/client";
 
 createInertiaApp({
-    title: (title) => (title ? `${title} - Lavanda` : "Lavanda"),
+    title: (title) => (title ? `${title} - Лаванда` : "Лаванда"),
     resolve: (name) => {
         const pages = import.meta.glob("./pages/**/*.tsx");
         return pages[`./pages/${name}.tsx`]();

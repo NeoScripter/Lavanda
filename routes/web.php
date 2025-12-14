@@ -1,12 +1,9 @@
 <?php
 
-use App\Http\Controllers\LocaleController;
+use App\Http\Controllers\User\HomeController;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
-Route::get('/', function () {
-    return Inertia::render('Home/Home');
-})->name('home');
+Route::get('/', HomeController::class)->name('home');
 
 
 require __DIR__.'/auth.php';

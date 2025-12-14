@@ -12,14 +12,18 @@ import Narrative from '@/components/user/ui/Narrative/Narrative';
 import AppLayout from '@/layouts/user/AppLayout/AppLayout';
 import { cn } from '@/utils/cn';
 import css from './Home.module.scss';
+import AboutSection from './partials/AboutSection/AboutSection';
 import FAQSection from './partials/FAQSection/FAQSection';
 import HeroSection from './partials/HeroSection/HeroSection';
 import IntroSection from './partials/IntroSection/IntroSection';
-import AboutSection from './partials/AboutSection/AboutSection';
+import PlanSection from './partials/PlanSection/PlanSection';
+import { Head } from '@inertiajs/react';
 
 const Home = () => {
     return (
         <AppLayout className={css.layout}>
+            <Head title="Главная" />
+
             <BgLoader
                 prtClass={cn(css.bgLoader, 'full-bleed')}
                 dk={BgDk}
@@ -48,6 +52,8 @@ const Home = () => {
             <IntroSection />
 
             <AboutSection />
+
+            <PlanSection />
 
             <FAQSection />
         </AppLayout>

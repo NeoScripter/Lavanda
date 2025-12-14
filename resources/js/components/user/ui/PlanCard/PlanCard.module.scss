@@ -1,0 +1,66 @@
+@use 'core' as u;
+
+.wrapper {
+    background-color: white;
+    text-align: center;
+    @include u.px(rounded, 32, 32, 32, 32);
+    @include u.shadow(3);
+    @include u.px(px, 21, 46, 46, 46);
+    @include u.px(pt, 44, 44, 44, 44);
+    @include u.px(pb, 57, 57, 57, 70);
+}
+
+.title {
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    @include u.rm(text, 19, 19, 19, 24);
+}
+
+.duration {
+    @include u.rm(text, 15, 15, 15, 15);
+    @include u.px(mb, 17, 17, 17, 17);
+}
+
+.price {
+    font-weight: 500;
+    @include u.px(text, 45, 45, 45, 45);
+    @include u.px(mb, 17, 17, 17, 17);
+}
+
+.button {
+    margin-inline: auto;
+    border: none;
+    @include u.px(mb, 36, 36, 36, 36);
+    @include u.rm(text, 15, 15, 15, 15);
+}
+
+.perks {
+    display: grid;
+    text-align: left;
+    width: 90%;
+    margin-inline: auto;
+    @include u.px(gap, 18, 18, 18, 18);
+    @include u.rm(text, 13, 13, 13, 16);
+
+    @include u.mw(lg) {
+      width: 100%;
+    }
+}
+
+.perk {
+    display: flex;
+    align-items: start;
+    gap: 1ch;
+}
+
+.icon {
+    display: block;
+    flex-shrink: 0;
+    margin-top: 0.4ch;
+    @include u.px(w, 16, 16, 16, 16);
+    @include u.px(h, 16, 16, 16, 16);
+
+    > svg {
+        @include u.size(100%);
+    }
+}

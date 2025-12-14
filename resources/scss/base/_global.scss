@@ -73,7 +73,7 @@ h3 {
     color: white;
     display: flex;
     align-items: center;
-    background-color: u.clr('primary', 'strong');
+    background: u.gd('primary', 'strong');
     justify-content: center;
     border-radius: 2em;
     font-weight: 500;
@@ -148,4 +148,15 @@ h3 {
         width: 100%;
         grid-column: 1 / 4;
     }
+}
+
+.sr-only {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
 }
