@@ -1,0 +1,68 @@
+@use 'core' as u;
+
+.wrapper {
+    position: absolute;
+    inset-inline: 0;
+    margin-inline: auto;
+    background-color: white;
+    color: u.clr('foreground', 'muted');
+
+    @include u.px(bottom, 358, 465, 263, 283);
+    @include u.px(rounded, 32, 32, 24, 24);
+    @include u.px(pt, 58, 49, 40, 40);
+    @include u.px(pb, 53, 38, 44, 37);
+    @include u.px(px, 41, 43, 64, 64);
+    @include u.px(w, 300, 631, 1202, 1427);
+    @include u.shadow(2);
+}
+
+.links {
+    display: grid;
+
+    @include u.mw(sm) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    @include u.mw(md) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    @include u.px(gap-y, 41, 42);
+    @include u.px(gap-x, 64, 64, 92, 92);
+}
+
+.footerLink {
+    --size: 0;
+    color: u.clr('primary', 'strong');
+    font-weight: 600;
+    position: relative;
+    display: block;
+    width: fit-content;
+
+    @include u.rm(text, 16, 24, 24, 24);
+    @include u.px(--size, 12, 12, 12, 12);
+
+    padding-bottom: var(--size);
+    margin-bottom: var(--size);
+    transition: color 0.2s ease-in-out;
+
+    &:hover {
+        color: u.saturate(u.clr('primary', 'muted'), 30%);
+    }
+
+    &::after {
+        position: absolute;
+        content: '';
+        bottom: 0;
+        left: 0;
+        width: 50%;
+        background-color: currentColor;
+        height: 3px;
+        transition: width 300ms;
+    }
+    &:hover::after {
+        width: 100%;
+    }
+}
+
+.linkDescription {
+    @include u.rm(text, 10, 12, 12, 14);
+}

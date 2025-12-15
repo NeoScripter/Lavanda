@@ -22,7 +22,7 @@
 }
 
 .heading {
-    font-weight: 900;
+    font-weight: 600;
     text-transform: uppercase;
     @include u.px(text, 28, 48, 56, 56);
     @include u.px(mb, 20, 15, 15, 15);

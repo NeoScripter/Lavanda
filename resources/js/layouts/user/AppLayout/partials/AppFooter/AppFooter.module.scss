@@ -3,6 +3,7 @@
 .footer {
     color: u.clr('foreground', 'pale');
     background-color: u.clr('primary', 'strong');
+    position: relative;
     @include u.rm(text, 14, 20, 20, 20);
     @include u.px(pt, 70, 80, 97, 89);
     @include u.px(pb, 77, 98, 77, 74);
