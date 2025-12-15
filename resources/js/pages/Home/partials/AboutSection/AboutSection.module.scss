@@ -3,7 +3,7 @@
 .wrapper {
     background-color: white;
     @include u.px(rounded, 32, 32, 32, 32);
-    @include u.px(mb, 158, 207, 171, 32);
+    @include u.px(mb, 158, 207, 171, 168);
     @include u.px(pl, 25, 50, 67, 116);
     @include u.px(pr, 25, 50, 41, 44);
     @include u.px(pt, 38, 62, 46, 46);
