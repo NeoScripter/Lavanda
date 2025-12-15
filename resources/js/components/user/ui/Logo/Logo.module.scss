@@ -2,6 +2,7 @@
 
 .image {
     object-fit: contain;
+    @include u.size(100%);
 }
 
 .wrapper {

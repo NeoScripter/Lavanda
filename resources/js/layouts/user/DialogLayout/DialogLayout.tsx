@@ -35,9 +35,9 @@ export default function DialogLayout({
                 {showBtn && (
                     <button
                         onClick={onClose}
-                        className={css.close}
+                        className={css.closeBtn}
                     >
-                        <X className={css.closeIcon} />
+                        <X stroke-width={2.5} className={css.closeIcon} />
                     </button>
                 )}
                 {children}

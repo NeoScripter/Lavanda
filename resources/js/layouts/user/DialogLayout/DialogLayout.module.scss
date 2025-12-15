@@ -4,7 +4,6 @@
     position: fixed;
     inset: 0;
     margin-inline: auto;
-    z-index: 150;
     isolation: isolate;
     display: flex;
     flex-wrap: wrap;
@@ -27,15 +26,34 @@
 .panel {
     position: relative;
     margin-inline: auto;
-    z-index: 50;
     margin: auto;
-    height: max-content;
-    max-width: 90%;
+    height: 100vh;
+    height: 100svh;
     width: 100%;
-    border-radius: 2rem;
+    display: flex;
+    flex-wrap: wrap;
     background-color: white;
     transition-duration: 300ms;
     transition-timing-function: ease-in-out;
+
+    @include u.mw(sm) {
+        height: max-content;
+        /* @include u.px(rounded, null, 32, 32, 32); */
+        border-radius: 32px;
+        /* @include u.px(max-w, null, 603, 704, 704); */
+        max-width: 603px;
+        @include u.shadow(2);
+        border: 1px solid u.clr('primary', 'muted');
+
+        @include u.mw(sm) {
+            max-width: 704px;
+        }
+    }
+
+    > div {
+        width: 100%;
+        margin: auto;
+    }
 }
 
 .panel[data-closed] {
@@ -43,26 +61,38 @@
     opacity: 0;
 }
 
-.close {
+.closeBtn {
+    --size: 0;
     position: absolute;
-    top: 1.25rem;
-    right: 1.25rem;
-    z-index: 20;
     display: flex;
     align-items: center;
+    flex-shrink: 0;
     justify-content: center;
     cursor: pointer;
     transition-property: opacity;
     transition-duration: 200ms;
     transition-timing-function: ease-in;
+    right: 25px;
+    top: 26px;
+
+    /* @include u.px(top, 26, 20, 20, 20); */
+    /* @include u.px(right, 25, 22, 22, 22); */
+    /* @include u.px(--size, 32, 42, 42, 42); */
+
+    @include u.size(32px);
+
+    @include u.mw(sm) {
+        right: 24px;
+        top: 24px;
+        @include u.size(42px);
+    }
 }
 
-.close:hover {
+.closeBtn:hover {
     opacity: 0.75;
 }
 
 .closeIcon {
-    width: 1.5rem;
-    height: 1.5rem;
+    color: hsla(128, 7%, 50%);
+    @include u.size(100%);
 }
-
