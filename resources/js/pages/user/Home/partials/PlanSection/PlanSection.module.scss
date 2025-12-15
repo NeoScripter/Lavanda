@@ -2,6 +2,8 @@
 
 .wrapper {
     @include u.px(mb, 77, 153, 113, 100);
+    position: relative;
+    isolation: isolate;
 }
 
 .textWrapper {
@@ -36,4 +38,73 @@
     @include u.mw(md) {
         grid-template-columns: repeat(3, var(--col));
     }
+}
+
+.decorPlans1 {
+    display: none;
+
+    @include u.mw(sm) {
+        display: block;
+        position: absolute;
+        z-index: -20;
+        right: 0;
+        top: 0;
+        transform-origin: center;
+        transform: translate(20%, 50%);
+        rotate: -15deg;
+    }
+    @include u.mw(md) {
+        transform: translate(20%, -10%);
+        rotate: -25deg;
+    }
+    @include u.mw(lg) {
+        transform: translate(60%, 0%);
+    }
+
+    @include u.px(w, null, 331, 331, 493);
+}
+
+.decorPlans2 {
+    display: none;
+
+    @include u.mw(sm) {
+        display: block;
+        position: absolute;
+        z-index: -20;
+        left: 0;
+        top: 50%;
+        transform-origin: center;
+        transform: translate(-60%, -40%);
+        rotate: 15deg;
+    }
+    @include u.mw(md) {
+        transform: translate(-40%, 45%);
+        z-index: 10;
+        top: auto;
+        bottom: 0;
+    }
+    @include u.mw(lg) {
+        transform: translate(-35%, 35%);
+    }
+
+    @include u.px(w, null, 352, 360, 498);
+}
+
+.decorPlans3 {
+    display: none;
+
+    @include u.mw(sm) {
+        display: block;
+        position: absolute;
+        z-index: 20;
+        right: 0;
+        bottom: 0%;
+        transform-origin: center;
+        transform: translate(15%, 40%);
+    }
+    @include u.mw(md) {
+        display: none;
+    }
+
+    @include u.px(w, null, 313);
 }
