@@ -8,3 +8,7 @@
     isolation: isolate;
     color: u.clr('foreground', 'neutral');
 }
+
+.loginDialog {
+    max-width: 30rem;
+}

@@ -6,11 +6,17 @@ import { Link } from '@inertiajs/react';
 import { ChevronDown, UserCircle } from 'lucide-preact';
 import { FC } from 'preact/compat';
 import css from './Nav.module.scss';
+import { useLoginModal } from '@/providers/LoginContext';
 
 const Nav: FC<NodeProps> = ({ className }) => {
+    const { showLoginModal } = useLoginModal();
+
     return (
         <nav class={cn(css.nav, className)}>
-            <button class={css.loginBtn}>
+            <button
+                onClick={() => (showLoginModal.value = true)}
+                class={css.loginBtn}
+            >
                 <UserCircle stroke-width={2} />
                 Войти
             </button>

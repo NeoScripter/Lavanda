@@ -3,8 +3,11 @@ import Logo from '@/components/user/ui/Logo/Logo';
 import { useClickOutside } from '@/hooks/useClickOutside';
 import { useEscapeKey } from '@/hooks/useEscapeKey';
 import useMediaQuery from '@/hooks/useMediaQuery';
+import { useLoginModal } from '@/providers/LoginContext';
+import { Auth } from '@/types/auth';
 import { NodeProps } from '@/types/nodeProps';
 import { cn } from '@/utils/cn';
+import { router, usePage } from '@inertiajs/react';
 import { CircleUser } from 'lucide-preact';
 import { FC } from 'preact/compat';
 import Nav from '../Nav/Nav';
@@ -15,11 +18,24 @@ const AppHeader: FC<NodeProps> = ({ className }) => {
         '#header',
     ]);
 
+    const {
+        auth: { user },
+    } = usePage<{ auth: Auth }>().props;
+    const { showLoginModal } = useLoginModal();
+
     const isDesktop = useMediaQuery('(min-width: 1110px)');
 
     useEscapeKey(() => setShowMenu(false));
 
     const toggleMenu = () => setShowMenu((p) => !p);
+
+    const handleLoginClick = () => {
+        if (user != null) {
+            router.visit(route('account'));
+        } else {
+            showLoginModal.value = true;
+        }
+    };
 
     return (
         <header
@@ -39,9 +55,12 @@ const AppHeader: FC<NodeProps> = ({ className }) => {
 
                 {isDesktop && <Nav className={cn(css.dkNav)} />}
 
-                <button class={cn(css.loginBtn, 'primary-btn')}>
+                <button
+                    onClick={handleLoginClick}
+                    class={cn(css.loginBtn, 'primary-btn')}
+                >
                     <CircleUser />
-                    Войти
+                    {!user ? 'Войти' : user.name}
                 </button>
             </div>
 

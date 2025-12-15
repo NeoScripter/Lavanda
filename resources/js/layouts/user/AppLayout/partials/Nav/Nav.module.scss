@@ -39,7 +39,7 @@
     color: u.clr('primary', 'strong');
     font-weight: bold;
     border-radius: inherit;
-    @include u.rm(text, 16, 12, 18, 18);
+    @include u.rm(text, 16, 12, 16, 16);
 
     @include u.mw(sm) {
         color: u.clr('foreground', 'muted');

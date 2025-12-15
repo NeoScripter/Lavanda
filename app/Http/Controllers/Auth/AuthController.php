@@ -33,8 +33,9 @@ class AuthController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('dashboard'))
-            ->with('message', 'Logged in successfully');
+        return redirect()->back();
+        // return redirect()->intended(route('dashboard'))
+        //     ->with('message', 'Logged in successfully');
     }
 
     /**
@@ -54,7 +55,7 @@ class AuthController extends Controller
             Session::put('locale', $lang);
         }
 
-        return redirect()->route('login')
+        return redirect()->route('home')
             ->with('message', 'Logged out successfully');
     }
 }

@@ -1,0 +1,92 @@
+@use 'core' as u;
+
+.wrapper {
+    padding-block: 2rem;
+}
+
+.layout {
+    margin-inline: auto;
+    display: grid;
+    width: 100%;
+    max-width: 90%;
+    gap: 0.75rem;
+    padding-inline: 0.5rem;
+}
+
+.layout {
+    @include u.mw(sm) {
+        width: 80%;
+        max-width: 100%;
+        gap: 1rem;
+        padding-inline: 0;
+    }
+}
+
+.fieldset {
+    display: grid;
+    gap: 0.5rem;
+}
+
+.title {
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+
+    @media (min-width: 1024px) {
+        font-size: 1.875rem;
+    }
+
+    @media (min-width: 1280px) {
+        font-size: 1.875rem;
+    }
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.input {
+    @media (min-width: 640px) {
+        font-size: 1rem;
+    }
+}
+
+.submit {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0.75rem;
+    width: fit-content;
+    padding-left: 4em;
+    padding-right: 4em;
+}
+
+.loader {
+    margin-right: 0.75rem;
+    width: 1rem;
+    height: 1rem;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.signupPrompt {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    font-size: 0.875rem;
+}
+
+.signupLink {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}

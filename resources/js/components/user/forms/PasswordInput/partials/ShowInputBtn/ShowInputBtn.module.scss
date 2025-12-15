@@ -1,0 +1,15 @@
+@use 'core' as u;
+
+.button {
+    position: absolute;
+    right: 1.25rem;
+    bottom: 50%;
+    transform: translateY(50%);
+    cursor: pointer;
+}
+
+.icon {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+

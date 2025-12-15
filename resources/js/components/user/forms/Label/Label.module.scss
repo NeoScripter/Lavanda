@@ -1,0 +1,21 @@
+@use 'core' as u;
+
+.label {
+    line-height: 1;
+    font-size: 1.125rem;
+    text-align: center;
+    font-weight: 700;
+    user-select: none;
+}
+
+.label:has(+ [disabled]),
+.label[data-disabled='true'] {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+:has(> .label) [disabled] ~ .label {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+

@@ -1,0 +1,68 @@
+@use 'core' as u;
+
+.wrapper {
+    position: fixed;
+    inset: 0;
+    margin-inline: auto;
+    z-index: 150;
+    isolation: isolate;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    outline: none;
+}
+
+.backdrop {
+    position: fixed;
+    inset: 0;
+    backdrop-filter: blur(4px);
+    transition-duration: 300ms;
+    transition-timing-function: ease-in-out;
+}
+
+.backdrop[data-closed] {
+    opacity: 0;
+}
+
+.panel {
+    position: relative;
+    margin-inline: auto;
+    z-index: 50;
+    margin: auto;
+    height: max-content;
+    max-width: 90%;
+    width: 100%;
+    border-radius: 2rem;
+    background-color: white;
+    transition-duration: 300ms;
+    transition-timing-function: ease-in-out;
+}
+
+.panel[data-closed] {
+    scale: 0.4;
+    opacity: 0;
+}
+
+.close {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition-property: opacity;
+    transition-duration: 200ms;
+    transition-timing-function: ease-in;
+}
+
+.close:hover {
+    opacity: 0.75;
+}
+
+.closeIcon {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
