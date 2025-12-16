@@ -1,0 +1,46 @@
+@use 'core' as u;
+
+.bgLoader {
+    position: absolute;
+    inset: 0;
+}
+
+.heroDecor {
+    position: absolute;
+    z-index: 20;
+    left: 70%;
+    bottom: 0;
+    transform: translate(-20%, 100%);
+    @include u.mw(sm) {
+        left: 50%;
+        transform: translate(-60%, 65%);
+    }
+    @include u.mw(md) {
+        left: 50%;
+        transform: translate(-35%, 35%);
+    }
+
+    @include u.px(w, 126, 188, 241, 314);
+}
+
+.footerDecor {
+    position: absolute;
+    bottom: 12%;
+    left: 50%;
+    z-index: 20;
+    transform: translate(-10%, -55%);
+    @include u.mw(sm) {
+        left: 10%;
+        bottom: 9%;
+        transform: translate(15%, -55%);
+    }
+    @include u.mw(md) {
+        bottom: 6%;
+        transform: translate(5%, -45%);
+    }
+    @include u.mw(lg) {
+        bottom: 5%;
+    }
+
+    @include u.px(w, 175, 262, 335, 374);
+}

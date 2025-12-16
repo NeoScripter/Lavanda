@@ -23,7 +23,7 @@ export const navLinks: NavLinkType[] = [
                 id: crypto.randomUUID(),
                 label: 'Решение',
                 type: 'link',
-                href: '/decision',
+                href: route('decision.index'),
             },
             {
                 id: crypto.randomUUID(),
@@ -78,7 +78,7 @@ export const navLinks: NavLinkType[] = [
                 id: crypto.randomUUID(),
                 label: 'Мне грустно',
                 type: 'link',
-                href: '/',
+                href: route('sadness.index'),
             },
             {
                 id: crypto.randomUUID(),
