@@ -17,6 +17,10 @@
         justify-content: space-between;
     }
 }
+
+.footerWithMenu {
+    @include u.px(pt, 258, 232, 180, 195);
+}
 .logoWrapper {
     > * {
         margin-inline: auto;

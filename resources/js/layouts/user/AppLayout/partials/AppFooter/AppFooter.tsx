@@ -2,18 +2,20 @@ import Logo from '@/components/user/ui/Logo/Logo';
 import useMediaQuery from '@/hooks/useMediaQuery';
 import { contactLinks, socialLinks } from '@/lib/data/footerLinks';
 import { cn } from '@/utils/cn';
+import { FC } from 'react-dom/src';
 import css from './AppFooter.module.scss';
 import ContactLink from './partials/ContactLink/ContactLink';
-import SocialLink from './partials/SocialLink/SocialLink';
 import FooterMenu from './partials/FooterMenu/FooterMenu';
+import SocialLink from './partials/SocialLink/SocialLink';
 
-const AppFooter = () => {
+const AppFooter: FC<{ hasMenu?: boolean }> = ({ hasMenu = true }) => {
     const isDesktop = useMediaQuery('(min-width: 1110px)');
 
     return (
-        <footer class={cn(css.footer, 'full-bleed')}>
-
-            <FooterMenu />
+        <footer
+            class={cn(css.footer, 'full-bleed', hasMenu && css.footerWithMenu)}
+        >
+            {hasMenu && <FooterMenu />}
 
             <div class={css.logoWrapper}>
                 <Logo

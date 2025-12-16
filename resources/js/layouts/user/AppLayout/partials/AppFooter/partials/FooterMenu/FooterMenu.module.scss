@@ -6,14 +6,19 @@
     margin-inline: auto;
     background-color: white;
     color: u.clr('foreground', 'muted');
+    bottom: 100%;
+    transform: translateY(35%);
 
-    @include u.px(bottom, 358, 465, 263, 283);
     @include u.px(rounded, 32, 32, 24, 24);
     @include u.px(pt, 58, 49, 40, 40);
     @include u.px(pb, 53, 38, 44, 37);
     @include u.px(px, 41, 43, 64, 64);
     @include u.px(w, 300, 631, 1202, 1427);
     @include u.shadow(2);
+
+    @include u.mw(sm) {
+        transform: translateY(50%);
+    }
 }
 
 .links {
