@@ -3,15 +3,17 @@
 .wrapper {
     position: relative;
     display: inline-block;
+    isolation: isolate;
 }
 
 .svgWrapper {
     position: absolute;
     display: block;
+    z-index: -1;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 120%;
+    width: 110%;
 
     > svg {
         @include u.size(100%);

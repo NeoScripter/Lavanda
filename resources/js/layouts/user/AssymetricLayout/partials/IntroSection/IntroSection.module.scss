@@ -8,7 +8,7 @@
     @include u.mw(md) {
         display: flex;
         align-items: start;
-        justify-content: space-between;
+        justify-content: center;
         text-align: left;
     }
 }
@@ -18,10 +18,11 @@
     @include u.px(mb, 50, 50, 0);
     @include u.px(w, null, null, 537, 590);
     @include u.px(bottom, null, null, 95, 189);
-
 }
 
 .intro {
     display: grid;
     gap: 2ch;
+    flex-shrink: 0;
+    @include u.px(w, null, null, 554, 759);
 }

@@ -5,7 +5,7 @@
     inset: 0;
 }
 
-.decor {
+.heroDecor {
     position: absolute;
     z-index: 20;
     left: 0;
@@ -21,4 +21,21 @@
     }
 
     @include u.px(w, 196, 291, 349, 371);
+}
+
+.footerDecor {
+    display: none;
+
+    @include u.mw(md) {
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        transform: translate(15%, -55%);
+    }
+    @include u.mw(lg) {
+        transform: translate(15%, -45%);
+    }
+
+    @include u.px(w, null, null, 514, 580);
 }
