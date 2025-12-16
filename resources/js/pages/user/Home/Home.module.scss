@@ -1,13 +1,6 @@
 @use 'core' as u;
 
-.wrapper {
-}
-
 .layout {
-    background: u.clr('background', 'muted');
-    position: relative;
-    isolation: isolate;
-
     > section {
         isolation: isolate;
     }

@@ -1,0 +1,51 @@
+@use 'core' as u;
+
+.wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.svgWrapper {
+    position: absolute;
+    display: block;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 120%;
+
+    > svg {
+        @include u.size(100%);
+        overflow: visible;
+    }
+}
+
+.foreground {
+    stroke-linecap: round;
+    stroke-dasharray: 100, 1000;
+    stroke-dashoffset: 100px;
+}
+
+@keyframes draw {
+    to {
+        stroke-dashoffset: 0px;
+    }
+}
+
+.foreground {
+    animation-duration: 0ms;
+    animation-name: draw;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+@media (prefers-reduced-motion: no-preference) {
+    .foreground {
+        animation-duration: 500ms;
+    }
+}
+
+.background {
+    stroke: transparent;
+}
+.foreground {
+    stroke: hsla(256, 20%, 75%, 1);
+}

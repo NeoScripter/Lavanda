@@ -39,7 +39,10 @@ export default function Login() {
 
     return (
         <div class={css.wrapper}>
-            <Logo className={css.logo} />
+            <Logo
+                className={css.logo}
+                isLink={false}
+            />
             <h2 className={css.title}>Добро пожаловать!</h2>
 
             <p class={css.notice}>

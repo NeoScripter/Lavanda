@@ -21,6 +21,7 @@ const AppFooter: FC<{ hasMenu?: boolean }> = ({ hasMenu = true }) => {
                 <Logo
                     variation="white"
                     className={css.logo}
+                    isLink={false}
                 />
 
                 {!isDesktop && <Links />}

@@ -1,4 +1,5 @@
 import { navLinks, NavLinkType } from '@/lib/data/navLinks';
+import { useLoginModal } from '@/providers/LoginContext';
 import { NodeProps } from '@/types/nodeProps';
 import { cn } from '@/utils/cn';
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/react';
@@ -6,7 +7,6 @@ import { Link } from '@inertiajs/react';
 import { ChevronDown, UserCircle } from 'lucide-preact';
 import { FC } from 'preact/compat';
 import css from './Nav.module.scss';
-import { useLoginModal } from '@/providers/LoginContext';
 
 const Nav: FC<NodeProps> = ({ className }) => {
     const { showLoginModal } = useLoginModal();
@@ -40,6 +40,7 @@ const NavLink: FC<{ navLink: NavLinkType }> = ({ navLink }) => {
         <li>
             {navLink.type === 'link' ? (
                 <Link
+                    prefetch
                     class={css.plainNavLink}
                     href={navLink.href}
                 >
@@ -66,6 +67,7 @@ const NavLink: FC<{ navLink: NavLinkType }> = ({ navLink }) => {
                             >
                                 {navLink.links.map((link) => (
                                     <Link
+                                        prefetch
                                         key={link.id}
                                         href={link.href}
                                         class={css.popoverLink}

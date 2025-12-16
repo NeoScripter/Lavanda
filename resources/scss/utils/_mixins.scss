@@ -190,3 +190,36 @@
     width: $width;
     height: $height;
 }
+
+@mixin circled-text($color) {
+    --circled-padding: -0.5ch;
+
+    position: relative;
+    white-space: nowrap;
+
+    & {
+        mix-blend-mode: multiply;
+    }
+
+    &::before,
+    &::after {
+        border: 4px solid $color;
+        content: '';
+        inset-inline: calc(var(--circled-padding)* 3);
+        inset-block: calc(var(--circled-padding));
+        position: absolute;
+    }
+
+    &::before {
+        border-inline-end: none;
+        border-radius: 100% 0 0 75% / 50% 0 0 50%;
+        inset-inline-end: 30%;
+    }
+
+    &::after {
+        border-inline-start: none;
+        border-radius: 0 100% 75% 0 / 0 50% 50% 0;
+        inset-block-start: calc(var(--circled-padding) / 2);
+        inset-inline-start: 50%;
+    }
+}
