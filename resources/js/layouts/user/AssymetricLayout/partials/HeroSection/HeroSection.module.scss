@@ -7,6 +7,7 @@
     background-color: white;
     max-width: calc(100% - (var(--padding) * 2));
     margin-inline: auto;
+    @include u.px(rounded, null, null, 36, 36);
     @include u.px(mt, null, null, 37, 32);
     @include u.px(--padding, null, null, 27, 45);
     @include u.px(min-h, 745, 745, 722, 797);
@@ -39,7 +40,6 @@
     position: absolute;
     height: fit-content;
     transform: translateY(var(--offsetY));
-    /* @include u.px(h, 561, 760, 901, 1005); */
     @include u.px(w, 249, 328, 502, 579);
     @include u.px(rounded, 20, 20, 20, 20);
     @include u.px(--offsetY, 91, 155, 148, 182);
@@ -61,7 +61,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    @include u.px(gap, 17, 48, 30, 35);
 
     @include u.mw(sm) {
         justify-content: start;
@@ -81,33 +80,9 @@
     }
 }
 
-.heading {
-}
-
 .intro {
     font-weight: 500;
     text-wrap: balance;
     @include u.px(mb, 26, 34, 38, 46);
 }
 
-.underline {
-    @include u.underline-slide();
-}
-
-.decor {
-    position: absolute;
-    z-index: 20;
-    left: 0;
-    bottom: 0;
-    transform: translate(-15%, 70%);
-    @include u.mw(sm) {
-        left: 50%;
-        transform: translate(-60%, 65%);
-    }
-    @include u.mw(md) {
-        left: 50%;
-        transform: translate(-45%, 45%);
-    }
-
-    @include u.px(w, 196, 291, 349, 371);
-}

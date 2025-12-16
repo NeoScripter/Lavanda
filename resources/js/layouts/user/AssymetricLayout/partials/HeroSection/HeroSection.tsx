@@ -6,21 +6,21 @@ import BgMbTiny from '@/assets/images/assymetric-layout/hero-bg-mb-tiny.webp';
 import BgMb from '@/assets/images/assymetric-layout/hero-bg-mb.webp';
 import BgTbTiny from '@/assets/images/assymetric-layout/hero-bg-tb-tiny.webp';
 import BgTb from '@/assets/images/assymetric-layout/hero-bg-tb.webp';
-import HeroDecorTiny from '@/assets/images/decision/hero-decor-tiny.webp';
-import HeroDecor from '@/assets/images/decision/hero-decor.webp';
-import FgDkTiny from '@/assets/images/decision/hero-fg-dk-tiny.webp';
-import FgDk from '@/assets/images/decision/hero-fg-dk.webp';
-import FgMbTiny from '@/assets/images/decision/hero-fg-mb-tiny.webp';
-import FgMb from '@/assets/images/decision/hero-fg-mb.webp';
-import FgTbTiny from '@/assets/images/decision/hero-fg-tb-tiny.webp';
-import FgTb from '@/assets/images/decision/hero-fg-tb.webp';
 import AnimatedOutline from '@/components/user/ui/AnimatedOutline/AnimatedOutline';
 import BgLoader from '@/components/user/ui/BgLoader/BgLoader';
-import LazyImage from '@/components/user/ui/LazyImage/LazyImage';
 import { cn } from '@/utils/cn';
+import { FC } from 'react-dom/src';
+import { AssymetricHeroSectionProps } from '../../AssymetricLayout';
 import css from './HeroSection.module.scss';
 
-const HeroSection = () => {
+const HeroSection: FC<AssymetricHeroSectionProps> = ({
+    heading,
+    description,
+    fgImg,
+    decorImg,
+}) => {
+    const parts = heading.split(' ');
+
     return (
         <section class={cn(css.wrapper, 'full-bleed')}>
             <BgLoader
@@ -37,30 +37,23 @@ const HeroSection = () => {
             <BgLoader
                 prtClass={cn(css.fgLoader)}
                 imgClass={css.fgImage}
-                dk={FgDk}
-                dkTiny={FgDkTiny}
-                tb={FgTb}
-                tbTiny={FgTbTiny}
-                mb={FgMb}
-                mbTiny={FgMbTiny}
+                dk={fgImg.dk}
+                dkTiny={fgImg.dkTiny}
+                tb={fgImg.tb}
+                tbTiny={fgImg.tbTiny}
+                mb={fgImg.mb}
+                mbTiny={fgImg.mbTiny}
             />
 
-            <LazyImage
-                img={HeroDecor}
-                tinyImg={HeroDecorTiny}
-                prtClass={css.decor}
-            />
+            {decorImg}
 
             <div class={css.content}>
                 <h1 class={css.heading}>
-                    Принять <AnimatedOutline>решение</AnimatedOutline>
+                    {parts.slice(0, -1)}{' '}
+                    <AnimatedOutline>{parts.at(-1)}</AnimatedOutline>
                 </h1>
 
-                <p class={css.intro}>
-                    Когда трудно выбрать путь — остановись и послушай себя.
-                    Здесь ты найдёшь поддержку, чтобы принять решение спокойно и
-                    уверенно.
-                </p>
+                <p class={css.intro}>{description}</p>
 
                 <div class={css.btnGroup}>
                     <button class={'primary-btn'}>Купить подписку</button>
