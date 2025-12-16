@@ -9,12 +9,11 @@
     margin-inline: auto;
     @include u.px(mt, null, null, 37, 32);
     @include u.px(--padding, null, null, 27, 45);
-    @include u.px(min-h, 905, 1350, 1022, 1032);
-    @include u.px(pt, 97, 210, 140, 172);
+    @include u.px(min-h, 745, 745, 722, 797);
+    @include u.px(pt, 113, 212, 212, 233);
     @include u.px(pb, 27, 30, 30, 30);
     @include u.px(pl, null, null, 73, 132);
-    @include u.px(mb, 402, 376, 196, 182);
-
+    @include u.px(mb, 162, 249, 248, 266);
 }
 
 .bgImage {
@@ -32,21 +31,27 @@
 }
 
 .fgLoader {
-    margin-top: auto;
-    display: none;
+    --offsetY: 0;
     bottom: 0;
+    top: auto;
     inset-inline: 0;
+    margin-inline: auto;
     position: absolute;
-    width: 100%;
-    @include u.px(h, 561, 760, 901, 1005);
-    @include u.px(w, null, null, 853, 1099);
+    height: fit-content;
+    transform: translateY(var(--offsetY));
+    /* @include u.px(h, 561, 760, 901, 1005); */
+    @include u.px(w, 249, 328, 502, 579);
+    @include u.px(rounded, 20, 20, 20, 20);
+    @include u.px(--offsetY, 91, 155, 148, 182);
+    overflow: clip;
+    @include u.shadow(3);
 
-    @include u.mw(md) {
-        margin-left: auto;
-        margin-bottom: 0%;
+    @include u.mw(sm) {
+        @include u.px(mr, null, 35, 100, 248);
     }
 }
 .fgImage {
+    object-fit: contain;
     @include u.mw(md) {
         object-position: bottom;
     }
@@ -58,20 +63,25 @@
     justify-content: center;
     @include u.px(gap, 17, 48, 30, 35);
 
-    @include u.mw(md) {
+    @include u.mw(sm) {
         justify-content: start;
     }
 }
 .content {
     text-align: center;
     margin-inline: auto;
-    @include u.px(w, 307, 585, 610, 632);
+    @include u.px(w, 299, 585, 640, 652);
     text-wrap: pretty;
 
-    @include u.mw(md) {
+    @include u.mw(sm) {
         text-align: left;
+    }
+    @include u.mw(md) {
         margin-left: 0;
     }
+}
+
+.heading {
 }
 
 .intro {
@@ -85,20 +95,19 @@
 }
 
 .decor {
-    display: none;
-
+    position: absolute;
+    z-index: 20;
+    left: 0;
+    bottom: 0;
+    transform: translate(-15%, 70%);
+    @include u.mw(sm) {
+        left: 50%;
+        transform: translate(-60%, 65%);
+    }
     @include u.mw(md) {
-        display: block;
-        position: absolute;
-        z-index: 20;
-        right: 0;
-        bottom: 0;
-        transform: translate(15%, 40%);
+        left: 50%;
+        transform: translate(-45%, 45%);
     }
 
-    @include u.px(w, null, null, 243, 343);
-}
-
-.heading {
-
+    @include u.px(w, 196, 291, 349, 371);
 }

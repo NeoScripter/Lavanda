@@ -11,3 +11,11 @@
     position: relative;
     isolation: isolate;
 }
+
+.darkHeader {
+    :global(#navigation) {
+        @include u.mw(sm) {
+            background-color: u.clr('background', 'muted');
+        }
+    }
+}

@@ -9,14 +9,19 @@ import css from './AppLayout.module.scss';
 import AppFooter from './partials/AppFooter/AppFooter';
 import AppHeader from './partials/AppHeader/AppHeader';
 
-const AppLayout: FC<NodeProps<{ extendedFooter?: boolean }>> = ({
-    className,
-    children,
-    extendedFooter,
-}) => {
+const AppLayout: FC<
+    NodeProps<{ extendedFooter?: boolean; variation?: string }>
+> = ({ className, children, extendedFooter, variation = 'dark' }) => {
     return (
         <LoginProvider>
-            <div class={cn('full-bleed-parent', css.wrapper, className)}>
+            <div
+                class={cn(
+                    'full-bleed-parent',
+                    css.wrapper,
+                    variation === 'dark' && css.darkHeader,
+                    className,
+                )}
+            >
                 {children}
                 <AppHeader />
 

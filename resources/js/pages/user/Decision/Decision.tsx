@@ -13,7 +13,7 @@ import BgMbTiny from '@/assets/images/assymetric-layout/mb-bg-tiny.webp';
 
 const Decision = () => {
     return (
-        <AppLayout>
+        <AppLayout extendedFooter={false}>
             <Head title="Решение" />
 
             <BgLoader

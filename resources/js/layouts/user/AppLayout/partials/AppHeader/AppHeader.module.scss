@@ -7,12 +7,21 @@
     background-color: u.opacify(white, 82);
     transform: translateX(-50%);
     backdrop-filter: blur(5px);
+    transition: box-shadow 0.2s ease-in-out;
     @include u.px(top, 22, 22, 77, 53);
     @include u.px(w, 328, 657, 1360, 1585);
     @include u.px(rounded, 20, 35, 40, 45);
 
     @include u.mw(sm) {
         background-color: transparent;
+    }
+}
+
+.shadow {
+    @include u.shadow(2);
+
+    @include u.mw(sm) {
+        @include u.shadow(0);
     }
 }
 

@@ -12,7 +12,10 @@ const Nav: FC<NodeProps> = ({ className }) => {
     const { showLoginModal } = useLoginModal();
 
     return (
-        <nav class={cn(css.nav, className)}>
+        <nav
+            id="navigation"
+            class={cn(css.nav, className)}
+        >
             <button
                 onClick={() => (showLoginModal.value = true)}
                 class={css.loginBtn}

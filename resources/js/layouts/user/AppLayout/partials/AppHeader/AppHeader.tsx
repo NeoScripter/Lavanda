@@ -40,7 +40,7 @@ const AppHeader: FC<NodeProps> = ({ className }) => {
     return (
         <header
             id="header"
-            class={cn(css.wrapper, className)}
+            class={cn(css.wrapper, showMenu && css.shadow, className)}
         >
             <div class={css.topBar}>
                 <Logo />

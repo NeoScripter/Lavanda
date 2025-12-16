@@ -24,6 +24,7 @@ const Home = () => {
         <AppLayout
             extendedFooter={false}
             className={css.layout}
+            variation='light'
         >
             <Head title="Главная" />
 
