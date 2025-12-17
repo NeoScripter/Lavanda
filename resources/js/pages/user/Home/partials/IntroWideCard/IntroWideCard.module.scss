@@ -6,6 +6,7 @@
     position: relative;
     overflow: clip;
     color: u.clr('primary', 'strong');
+    background-color: white;
     background-color: u.opacify(white, 75);
 
     @include u.px(rounded, 32, 32, 32, 32);
@@ -36,6 +37,7 @@
 
         @include u.mw(sm) {
             color: u.clr('primary', 'strong');
+            background-color: white;
             background-color: u.opacify(white, 75);
         }
     }

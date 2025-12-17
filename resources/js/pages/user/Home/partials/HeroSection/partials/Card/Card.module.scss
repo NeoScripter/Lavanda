@@ -1,6 +1,7 @@
 @use 'core' as u;
 
 .wrapper {
+    background-color: white;
     background-color: u.opacify(white, 82);
     backdrop-filter: blur(2px);
     border-radius: 16px;

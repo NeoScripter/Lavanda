@@ -11,23 +11,30 @@
 }
 
 .details {
+    background-color: white;
     background-color: u.opacify(white, 82);
     @include u.px(py, 16, 20, 20, 20);
     @include u.px(px, 22, 26, 26, 26);
     @include u.px(rounded, 24, 24, 24, 24);
-    overflow: clip;
 }
 
-.details::details-content {
-    block-size: 0;
-    transition:
-        block-size 0.5s,
-        content-visibility 0.5s;
-    transition-behavior: allow-discrete;
-}
+@supports selector(::details-content) {
+    .details {
+        overflow: hidden;
+        overflow: clip;
+    }
 
-.details:open::details-content {
-    block-size: auto;
+    .details::details-content {
+        block-size: 0;
+        transition:
+            block-size 0.5s,
+            content-visibility 0.5s;
+        transition-behavior: allow-discrete;
+    }
+
+    .details:open::details-content {
+        block-size: auto;
+    }
 }
 
 .summary {

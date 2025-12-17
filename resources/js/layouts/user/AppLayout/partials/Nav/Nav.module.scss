@@ -46,6 +46,7 @@
         font-weight: 500;
         @include u.px(mt, null, 16, 0, 0);
         border-radius: inherit;
+        background-color: white;
         background-color: u.opacify(white, 82);
     }
 }
@@ -87,6 +88,7 @@
         opacity 0.2s ease-in,
         transform 0.2s ease-in;
     @include u.px(gap, 21, 14, 14, 14);
+    background-color: white;
     background-color: u.opacify(white, 92);
     @include u.px(p, 14, 14, 14, 14);
     @include u.px(rounded, 14, 14, 14, 14);

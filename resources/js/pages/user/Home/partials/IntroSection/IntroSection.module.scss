@@ -41,6 +41,7 @@
 
 .violetText {
     color: u.clr('primary', 'strong');
+    background-color: white;
     background-color: u.opacify(white, 75);
 
     button {
