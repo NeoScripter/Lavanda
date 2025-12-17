@@ -1,0 +1,89 @@
+@use 'core' as u;
+
+.wrapper {
+    --padding: 0;
+    position: relative;
+    isolation: isolate;
+    background-color: white;
+    max-width: calc(100% - (var(--padding) * 2));
+    margin-inline: auto;
+    @include u.px(rounded, null, null, 36, 36);
+    @include u.px(mt, null, null, 37, 32);
+    @include u.px(--padding, null, null, 27, 45);
+    @include u.px(min-h, 745, 745, 722, 797);
+    @include u.px(pt, 113, 212, 212, 233);
+    @include u.px(pb, 27, 30, 30, 30);
+    @include u.px(pl, null, null, 73, 132);
+    @include u.px(mb, 162, 249, 248, 266);
+}
+
+.bgImage {
+    object-position: bottom center;
+    object-fit: contain;
+}
+
+.bgLoader {
+    position: absolute;
+    @include u.px(rounded, null, null, 36, 36);
+    overflow: hidden;
+    overflow: clip;
+    inset-inline: 0;
+    bottom: 0;
+}
+
+.fgLoader {
+    --offsetY: 0;
+    bottom: 0;
+    top: auto;
+    z-index: 0;
+    inset-inline: 0;
+    margin-inline: auto;
+    position: absolute;
+    height: auto;
+    transform: translateY(var(--offsetY));
+    @include u.px(w, 249, 328, 502, 579);
+    @include u.px(rounded, 20, 20, 20, 20);
+    @include u.px(--offsetY, 91, 155, 148, 182);
+    overflow: hidden;
+    overflow: clip;
+    @include u.shadow(3);
+
+    @include u.mw(sm) {
+        @include u.px(mr, null, 35, 100, 248);
+    }
+}
+.fgImage {
+    object-fit: contain;
+    @include u.mw(md) {
+        object-position: bottom;
+    }
+}
+
+.btnGroup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include u.mw(sm) {
+        justify-content: start;
+    }
+}
+.content {
+    text-align: center;
+    margin-inline: auto;
+    @include u.px(w, 299, 585, 640, 652);
+    text-wrap: pretty;
+
+    @include u.mw(sm) {
+        text-align: left;
+    }
+    @include u.mw(md) {
+        margin-left: 0;
+    }
+}
+
+.intro {
+    font-weight: 500;
+    text-wrap: balance;
+    @include u.px(mb, 26, 34, 38, 46);
+}

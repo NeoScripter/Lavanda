@@ -1,0 +1,41 @@
+@use 'core' as u;
+
+.bgLoader {
+    position: absolute;
+    inset: 0;
+}
+
+.heroDecor {
+    position: absolute;
+    z-index: 20;
+    left: 0;
+    bottom: 0;
+    transform: translate(-15%, 70%);
+    @include u.mw(sm) {
+        left: 50%;
+        transform: translate(-60%, 65%);
+    }
+    @include u.mw(md) {
+        left: 50%;
+        transform: translate(-45%, 45%);
+    }
+
+    @include u.px(w, 196, 291, 349, 371);
+}
+
+.footerDecor {
+    display: none;
+
+    @include u.mw(md) {
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        transform: translate(15%, -55%);
+    }
+    @include u.mw(lg) {
+        transform: translate(15%, -45%);
+    }
+
+    @include u.px(w, null, null, 514, 580);
+}

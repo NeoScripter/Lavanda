@@ -1,0 +1,63 @@
+@use 'core' as u;
+
+.wrapper {
+    --offsetY: 0;
+    @include u.px(mb, 503, 416, 242, 263);
+    @include u.px(--offsetY, null, null, 180, 201);
+
+    @include u.mw(md) {
+        margin-top: calc(var(--offsetY) * -1);
+    }
+}
+
+.grid {
+    display: grid;
+    margin-inline: auto;
+    @include u.px(w, null, 567, 1189, 1408);
+    @include u.px(gap-y, 59, 68, 49, 65);
+    @include u.px(gap-x, null, null, 55, 58);
+
+    @include u.mw(md) {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(13, 1fr);
+
+        > * {
+            grid-row: span 4;
+        }
+        > *:nth-child(1) {
+            grid-row: 1 / 5;
+        }
+        > *:nth-child(2) {
+            grid-row: 2 / 6;
+        }
+    }
+}
+
+.cardWrapper {
+    text-align: center;
+    text-wrap: pretty;
+    background-color: white;
+    @include u.shadow(3);
+    @include u.px(rounded, 32, 32, 32, 32);
+    @include u.px(pt, 44, 57, 59, 67);
+    @include u.px(pb, 50, 46, 46, 56);
+    @include u.px(px, 23, 43, 41, 40);
+}
+
+.cardImgWrapper {
+    margin-inline: auto;
+    @include u.px(h, 228, 286, 288, 338);
+    @include u.px(mb, 40, 45, 47, 24);
+}
+
+.cardTitle {
+    font-weight: 700;
+    color: u.clr('primary', 'strong');
+    text-transform: uppercase;
+    @include u.px(mb, 15, 15, 15, 18);
+    @include u.rm(text, 32, 32, 32, 36);
+}
+
+.cardImg {
+    object-fit: contain;
+}

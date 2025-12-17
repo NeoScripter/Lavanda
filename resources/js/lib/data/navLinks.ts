@@ -122,13 +122,13 @@ export const navLinks: NavLinkType[] = [
         id: crypto.randomUUID(),
         label: 'Расслабиться',
         type: 'link',
-        href: '/',
+        href: route('relaxation'),
     },
     {
         id: crypto.randomUUID(),
         label: 'Ресурсы',
         type: 'link',
-        href: '/',
+        href: route('toolkit'),
     },
     {
         id: crypto.randomUUID(),
