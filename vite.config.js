@@ -4,6 +4,9 @@ import laravel from 'laravel-vite-plugin';
 import path from 'path';
 import { defineConfig } from 'vite';
 
+import autoprefixer from 'autoprefixer';
+import postcssPresetEnv from 'postcss-preset-env';
+
 export default defineConfig({
     plugins: [
         preact(),
@@ -24,6 +27,16 @@ export default defineConfig({
                 loadPaths: ['resources/scss'],
             },
         },
+        postcss: {
+            plugins: [
+                postcssPresetEnv({
+                    stage: 3,
+                    features: {
+                        'nesting-rules': false,
+                    },
+                }),
+                autoprefixer(),
+            ],
+        },
     },
 });
-

@@ -12,12 +12,13 @@ import { cn } from '@/utils/cn';
 import { FC } from 'react-dom/src';
 import css from './HeroSection.module.scss';
 import { BgLoaderImg } from '@/lib/types/shared';
+import { ComponentChildren } from 'preact';
 
 type AssymetricHeroSectionProps = {
     heading: string;
     description: string;
     fgImg: BgLoaderImg;
-    decorImg: string;
+    decorImg: ComponentChildren;
 };
 
 const HeroSection: FC<AssymetricHeroSectionProps> = ({

@@ -39,7 +39,7 @@
     inset-inline: 0;
     margin-inline: auto;
     position: absolute;
-    height: fit-content;
+    height: auto;
     transform: translateY(var(--offsetY));
     @include u.px(w, 249, 328, 502, 579);
     @include u.px(rounded, 20, 20, 20, 20);
