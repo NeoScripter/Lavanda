@@ -24,3 +24,27 @@
     @include u.px(w, 175, 319, 369, 431);
 }
 
+.footerDecor {
+    display: none;
+
+    @include u.mw(sm) {
+        display: block;
+        position: absolute;
+        bottom: 30%;
+        left: 0%;
+        z-index: 20;
+        transform-origin: center;
+        transform: translate(-50%, 10%);
+        rotate: 23deg;
+    }
+    @include u.mw(md) {
+        rotate: 9deg;
+        bottom: 15%;
+        transform: translate(-60%, -10%);
+    }
+    @include u.mw(lg) {
+        transform: translate(-80%, 0%);
+    }
+
+    @include u.px(w, null, 302, 400, 400);
+}

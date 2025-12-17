@@ -2,6 +2,9 @@ import HeroDecorTiny from '@/assets/images/relaxation/hero-decor-tiny.webp';
 import HeroDecor from '@/assets/images/relaxation/hero-decor.webp';
 import LazyImage from '@/components/user/ui/LazyImage/LazyImage';
 import WellnessTipLayout from '@/layouts/user/WellnessTipLayout/WellnessTipLayout';
+import FooterDecorTiny from '@/assets/images/relaxation/footer-decor-tiny.webp';
+import FooterDecor from '@/assets/images/relaxation/footer-decor.webp';
+
 import {
     foregroundImage,
     heroDescription,
@@ -27,7 +30,13 @@ const Relaxation = () => {
             }
             introHeading={introHeading}
             introIntros={introParts}
-        />
+        >
+            <LazyImage
+                img={FooterDecor}
+                tinyImg={FooterDecorTiny}
+                prtClass={css.footerDecor}
+            />
+        </WellnessTipLayout>
     );
 };
 export default Relaxation;

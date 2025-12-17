@@ -14,9 +14,6 @@ import { FC } from 'react-dom/src';
 import css from './WellnessTipLayout.module.scss';
 import HeroSection from './partials/HeroSection/HeroSection';
 import IntroSection from './partials/IntroSection/IntroSection';
-import LinkSection, {
-    AssymetricSectionLink,
-} from './partials/LinkSection/LinkSection';
 
 export type WellnessTipLayout = {
     headTitle: string;
@@ -24,8 +21,8 @@ export type WellnessTipLayout = {
     heroDescription: string;
     heroFgImg: BgLoaderImg;
     heroDecor: ComponentChildren;
-    introHeading: string;
-    introIntros: string[];
+    introHeading?: string;
+    introIntros?: string[];
     children?: ComponentChildren;
 };
 
@@ -40,7 +37,7 @@ const WellnessTipLayout: FC<WellnessTipLayout> = ({
     children,
 }) => {
     return (
-        <AppLayout extendedFooter={false}>
+        <AppLayout extendedFooter={true}>
             <Head title={headTitle} />
             <BgLoader
                 prtClass={cn(css.bgLoader, 'full-bleed')}
@@ -57,10 +54,12 @@ const WellnessTipLayout: FC<WellnessTipLayout> = ({
                 fgImg={heroFgImg}
                 decorImg={heroDecor}
             />
-            <IntroSection
-                heading={introHeading}
-                intros={introIntros}
-            />
+            {introHeading && introIntros && (
+                <IntroSection
+                    heading={introHeading}
+                    intros={introIntros}
+                />
+            )}
             {/* <LinkSection links={sectionLinks} /> */}
             {children}
         </AppLayout>

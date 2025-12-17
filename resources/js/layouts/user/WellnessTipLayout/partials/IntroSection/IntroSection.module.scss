@@ -4,15 +4,19 @@
     text-align: center;
     @include u.px(gap, null, null, 111, 230);
     /* @include u.px(px, null, 53 - 38, 95, 125); */
-    @include u.px(mb, 92, 88, 139, 125);
+    @include u.px(mb, 34, 83, 66, 92);
 }
 .headingWrapper {
     flex-shrink: 0;
-    @include u.px(mb, 50, 50, 0);
+    margin-inline: auto;
+    @include u.px(mb, 30, 50, 36, 52);
+    @include u.px(w, null, 705, 1096, 1409);
 }
 
 .intro {
     display: grid;
     gap: 2ch;
     flex-shrink: 0;
+    margin-inline: auto;
+    @include u.px(w, null, 583, 906, 1309);
 }
