@@ -10,8 +10,15 @@ import AnimatedOutline from '@/components/user/ui/AnimatedOutline/AnimatedOutlin
 import BgLoader from '@/components/user/ui/BgLoader/BgLoader';
 import { cn } from '@/utils/cn';
 import { FC } from 'react-dom/src';
-import { AssymetricHeroSectionProps } from '../../AssymetricLayout';
 import css from './HeroSection.module.scss';
+import { BgLoaderImg } from '@/lib/types/shared';
+
+type AssymetricHeroSectionProps = {
+    heading: string;
+    description: string;
+    fgImg: BgLoaderImg;
+    decorImg: string;
+};
 
 const HeroSection: FC<AssymetricHeroSectionProps> = ({
     heading,

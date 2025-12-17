@@ -18,7 +18,7 @@ import LinkSection, {
     AssymetricSectionLink,
 } from './partials/LinkSection/LinkSection';
 
-type AssymetricLayoutProps = {
+export type AssymetricLayoutProps = {
     headTitle: string;
     heroHeading: string;
     heroDescription: string;

@@ -4,6 +4,7 @@
     isolation: isolate;
     @include u.shadow(3);
     position: relative;
+    overflow: hidden;
     overflow: clip;
     color: u.clr('primary', 'strong');
     background-color: white;

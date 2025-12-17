@@ -35,6 +35,7 @@
     --offsetY: 0;
     bottom: 0;
     top: auto;
+    z-index: 0;
     inset-inline: 0;
     margin-inline: auto;
     position: absolute;
@@ -43,6 +44,7 @@
     @include u.px(w, 249, 328, 502, 579);
     @include u.px(rounded, 20, 20, 20, 20);
     @include u.px(--offsetY, 91, 155, 148, 182);
+    overflow: hidden;
     overflow: clip;
     @include u.shadow(3);
 
@@ -85,4 +87,3 @@
     text-wrap: balance;
     @include u.px(mb, 26, 34, 38, 46);
 }
-
