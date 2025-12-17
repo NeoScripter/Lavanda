@@ -10,15 +10,20 @@
     @include u.px(rounded, null, null, 36, 36);
     @include u.px(mt, null, null, 37, 32);
     @include u.px(--padding, null, null, 27, 45);
-    @include u.px(min-h, 745, 745, 722, 797);
-    @include u.px(pt, 113, 212, 212, 233);
-    @include u.px(pb, 27, 30, 30, 30);
-    @include u.px(pl, null, null, 73, 132);
-    @include u.px(mb, 162, 249, 248, 266);
+    @include u.px(min-h, 608, 785, 742, 830);
+    @include u.px(pt, 103, 227, 180, 190);
+    @include u.px(px, 11, 64, 100, 180);
+    @include u.px(mb, 274, 316, 100, 100);
+
+    @include u.mw(md) {
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+    }
 }
 
 .bgImage {
-    object-position: bottom center;
+    object-position: bottom left;
     object-fit: contain;
 }
 
@@ -41,22 +46,21 @@
     position: absolute;
     height: auto;
     transform: translateY(var(--offsetY));
-    @include u.px(w, 249, 328, 502, 579);
+    @include u.px(w, 281, 475, 433, 498);
+    @include u.px(h, 321, 431, 494, 558);
     @include u.px(rounded, 20, 20, 20, 20);
-    @include u.px(--offsetY, 91, 155, 148, 182);
+    @include u.px(--offsetY, 224, 245, 0);
     overflow: hidden;
     overflow: clip;
     @include u.shadow(3);
 
-    @include u.mw(sm) {
-        @include u.px(mr, null, 35, 100, 248);
+    @include u.mw(md) {
+        margin-inline: 0;
+        position: relative;
     }
 }
 .fgImage {
-    object-fit: contain;
-    @include u.mw(md) {
-        object-position: bottom;
-    }
+    object-position: center;
 }
 
 .btnGroup {
@@ -71,7 +75,7 @@
 .content {
     text-align: center;
     margin-inline: auto;
-    @include u.px(w, 299, 585, 640, 652);
+    @include u.px(w, 321, 650, 652, 652);
     text-wrap: pretty;
 
     @include u.mw(sm) {
@@ -85,5 +89,13 @@
 .intro {
     font-weight: 500;
     text-wrap: balance;
-    @include u.px(mb, 26, 34, 38, 46);
+    @include u.px(mb, 30, 30, 50, 50);
+}
+
+.animated {
+    @include u.circled-text(hsla(256, 20%, 75%, 1));
+}
+
+.heading {
+    @include u.rm(text, 32, 48, 48, 48);
 }

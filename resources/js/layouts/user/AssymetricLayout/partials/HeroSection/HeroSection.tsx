@@ -1,7 +1,7 @@
 import {
     default as BgDk,
     default as BgDkTiny,
-} from '@/assets/images/assymetric-layout/hero-bg-dk-tiny.webp';
+} from '@/assets/images/assymetric-layout/hero-bg-dk.webp';
 import BgMbTiny from '@/assets/images/assymetric-layout/hero-bg-mb-tiny.webp';
 import BgMb from '@/assets/images/assymetric-layout/hero-bg-mb.webp';
 import BgTbTiny from '@/assets/images/assymetric-layout/hero-bg-tb-tiny.webp';

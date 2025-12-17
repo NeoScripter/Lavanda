@@ -5,24 +5,14 @@
     @include u.px(gap, null, null, 111, 230);
     /* @include u.px(px, null, 53 - 38, 95, 125); */
     @include u.px(mb, 92, 88, 139, 125);
-    @include u.mw(md) {
-        display: flex;
-        align-items: start;
-        justify-content: center;
-        text-align: left;
-    }
 }
 .headingWrapper {
     flex-shrink: 0;
-    position: relative;
     @include u.px(mb, 50, 50, 0);
-    @include u.px(w, null, null, 537, 590);
-    @include u.px(bottom, null, null, 95, 189);
 }
 
 .intro {
     display: grid;
     gap: 2ch;
     flex-shrink: 0;
-    @include u.px(w, null, null, 554, 759);
 }

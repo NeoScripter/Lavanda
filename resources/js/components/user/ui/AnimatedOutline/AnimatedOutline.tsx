@@ -20,7 +20,7 @@ const AnimatedOutline: FC<NodeProps> = ({ className, children }) => {
                             id="path-template"
                             pathLength="100"
                             d="M54.5258 26.6493 C137.219 -7.52242 307.375 19.2348 301.768 58.9426 C296.558 95.8364 129.461 116.288 35.6483 83.3516 C-46.7721 54.4151 36.9856 -6.07122 124.326 2.77335"
-                            stroke-width="5"
+                            stroke-width="3"
                         />
                     </defs>
                     <use

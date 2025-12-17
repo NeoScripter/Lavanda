@@ -40,7 +40,7 @@ const WellnessTipLayout: FC<WellnessTipLayout> = ({
     children,
 }) => {
     return (
-        <AppLayout>
+        <AppLayout extendedFooter={false}>
             <Head title={headTitle} />
             <BgLoader
                 prtClass={cn(css.bgLoader, 'full-bleed')}
