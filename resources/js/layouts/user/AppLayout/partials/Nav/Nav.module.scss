@@ -148,3 +148,11 @@
     transform-origin: center;
     transform: rotateX(180deg);
 }
+
+.currentPage {
+    color: u.clr('primary', 'strong');
+
+    &::after {
+        width: 100%;
+    }
+}
