@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Enums\WellnessTipType;
 use App\Http\Controllers\Controller;
+use App\Models\WellnessTip;
 use Inertia\Inertia;
 
 class ToolkitController extends Controller
@@ -12,6 +14,10 @@ class ToolkitController extends Controller
      */
     public function __invoke()
     {
-        return Inertia::render('user/Toolkit/Toolkit');
+        $tips = WellnessTip::where('type', WellnessTipType::TOOLKIT)->limit(6)->get();
+
+        return Inertia::render('user/ToolKit/ToolKit', [
+            'tips' => $tips
+        ]);
     }
 }
