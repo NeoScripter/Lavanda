@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Enums\WellnessTipType;
 use App\Http\Controllers\Controller;
+use App\Models\WellnessTip;
 use Inertia\Inertia;
 
 class RelaxationController extends Controller
@@ -12,6 +14,10 @@ class RelaxationController extends Controller
      */
     public function __invoke()
     {
-        return Inertia::render('user/Relaxation/Relaxation');
+        $tips = WellnessTip::where('type', WellnessTipType::RELAXATION)->limit(6)->get();
+
+        return Inertia::render('user/Relaxation/Relaxation', [
+            'tips' => $tips
+        ]);
     }
 }

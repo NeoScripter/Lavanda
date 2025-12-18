@@ -2,62 +2,76 @@
 
 .wrapper {
     --offsetY: 0;
-    @include u.px(mb, 503, 416, 242, 263);
-    @include u.px(--offsetY, null, null, 180, 201);
-
-    @include u.mw(md) {
-        margin-top: calc(var(--offsetY) * -1);
-    }
+    @include u.px(mb, 567, 287, 180, 172);
 }
 
 .grid {
     display: grid;
-    margin-inline: auto;
-    @include u.px(w, null, 567, 1189, 1408);
-    @include u.px(gap-y, 59, 68, 49, 65);
-    @include u.px(gap-x, null, null, 55, 58);
+    /* margin-inline: auto; */
+    /* @include u.px(w, null, 567, 1189, 1408); */
+    @include u.px(gap-y, 32, 25, 17, 49);
+    @include u.px(gap-x, null, 17, 17, 57);
+    @include u.px(mb, 71, 69, 42, 45);
 
-    @include u.mw(md) {
+    @include u.mw(sm) {
         grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(13, 1fr);
-
-        > * {
-            grid-row: span 4;
-        }
-        > *:nth-child(1) {
-            grid-row: 1 / 5;
-        }
-        > *:nth-child(2) {
-            grid-row: 2 / 6;
-        }
+    }
+    @include u.mw(md) {
+        grid-template-columns: repeat(4, 1fr);
     }
 }
 
 .cardWrapper {
-    text-align: center;
     text-wrap: pretty;
     background-color: white;
+    display: flex;
+    flex-direction: column;
     @include u.shadow(3);
-    @include u.px(rounded, 32, 32, 32, 32);
-    @include u.px(pt, 44, 57, 59, 67);
-    @include u.px(pb, 50, 46, 46, 56);
-    @include u.px(px, 23, 43, 41, 40);
+    @include u.px(rounded, 12, 12, 12, 12);
+    @include u.px(p, 32, 32, 32, 32);
 }
 
 .cardImgWrapper {
-    margin-inline: auto;
-    @include u.px(h, 228, 286, 288, 338);
-    @include u.px(mb, 40, 45, 47, 24);
-}
-
-.cardTitle {
-    font-weight: 700;
-    color: u.clr('primary', 'strong');
-    text-transform: uppercase;
-    @include u.px(mb, 15, 15, 15, 18);
-    @include u.rm(text, 32, 32, 32, 36);
+    @include u.px(h, 181, 181, 181, 181);
+    @include u.px(mb, 30, 30, 30, 30);
+    width: 100%;
+    @include u.px(rounded, 10, 10, 10, 10);
 }
 
 .cardImg {
-    object-fit: contain;
+    object-position: center;
+}
+
+.description {
+    @include u.px(mb, 30, 30, 30, 30);
+    @include u.rm(text, 14, 14, 14, 14);
+}
+
+.cardLink {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    font-weight: 700;
+    gap: 0.5em;
+    padding: 0.5em 1.5em;
+    padding-right: 1.1em;
+    border: 1px solid rgba(112, 115, 147, 0.22);
+    background: rgba(112, 115, 147, 0.1);
+    backdrop-filter: blur(10px);
+    transition:
+        color,
+        background-color 0.2s ease-in-out;
+    @include u.rm(text, 14, 14, 14, 14);
+    @include u.px(rounded, 40, 40, 40, 40);
+
+    > svg {
+        @include u.size(1.2em);
+    }
+
+    &:hover {
+        background: rgba(112, 115, 147, 0.2);
+        color: u.clr('primary', 'strong');
+    }
 }

@@ -1,3 +1,15 @@
+export type Image = {
+    id: number;
+    path: string;
+    tiny_path: string;
+    alt: string;
+    imageable_type: string;
+    imageable_id: number;
+    type: string;
+    created_at?: string;
+    updated_at?: string;
+    imageable?: any;
+};
 export type Plan = {
     id: number;
     title: string;
@@ -8,19 +20,22 @@ export type Plan = {
     created_at?: string;
     updated_at?: string;
     human_duration: any;
-    users?: User[];
 };
-export type User = {
+export type WellnessTip = {
     id: number;
-    name: string;
-    email: string;
-    email_verified_at?: string;
+    type: WellnessTipType;
+    description: string;
+    url: string;
     created_at?: string;
     updated_at?: string;
-    tiers?: Plan[];
+    image?: Image;
 };
 export enum PlanTier {
     BASE = "base",
     STANDARD = "standard",
     PROFI = "profi"
+}
+export enum WellnessTipType {
+    TOOLKIT = "toolkit",
+    RELAXATION = "relaxation"
 }

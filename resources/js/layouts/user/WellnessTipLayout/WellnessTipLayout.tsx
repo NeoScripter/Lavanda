@@ -7,6 +7,7 @@ import BgTb from '@/assets/images/assymetric-layout/tb-bg.webp';
 import BgLoader from '@/components/user/ui/BgLoader/BgLoader';
 import AppLayout from '@/layouts/user/AppLayout/AppLayout';
 import { BgLoaderImg } from '@/lib/types/shared';
+import { WellnessTip } from '@/types/model';
 import { cn } from '@/utils/cn';
 import { Head } from '@inertiajs/react';
 import { ComponentChildren } from 'preact';
@@ -14,6 +15,7 @@ import { FC } from 'react-dom/src';
 import css from './WellnessTipLayout.module.scss';
 import HeroSection from './partials/HeroSection/HeroSection';
 import IntroSection from './partials/IntroSection/IntroSection';
+import WellnessTipSection from './partials/LinkSection/LinkSection';
 
 export type WellnessTipLayout = {
     headTitle: string;
@@ -23,6 +25,7 @@ export type WellnessTipLayout = {
     heroDecor: ComponentChildren;
     introHeading?: string;
     introIntros?: string[];
+    wellnessTips: WellnessTip[];
     children?: ComponentChildren;
 };
 
@@ -34,6 +37,7 @@ const WellnessTipLayout: FC<WellnessTipLayout> = ({
     heroDecor,
     introHeading,
     introIntros,
+    wellnessTips,
     children,
 }) => {
     return (
@@ -60,7 +64,7 @@ const WellnessTipLayout: FC<WellnessTipLayout> = ({
                     intros={introIntros}
                 />
             )}
-            {/* <LinkSection links={sectionLinks} /> */}
+            <WellnessTipSection tips={wellnessTips} />
             {children}
         </AppLayout>
     );

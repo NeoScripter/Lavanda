@@ -17,7 +17,8 @@ class WellnessTipFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'url' => fake()->url(),
+            'description' => fake()->sentence(2),
         ];
     }
 }

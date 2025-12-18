@@ -40,11 +40,11 @@
     @include u.mw(md) {
         rotate: 9deg;
         bottom: 15%;
-        transform: translate(-60%, -10%);
+        transform: translate(-50%, 50%);
     }
     @include u.mw(lg) {
-        transform: translate(-80%, 0%);
+        transform: translate(-80%, 50%);
     }
 
-    @include u.px(w, null, 302, 400, 400);
+    @include u.px(w, null, 302, 350, 380);
 }

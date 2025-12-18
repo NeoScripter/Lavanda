@@ -1,46 +1,50 @@
 import LazyImage from '@/components/user/ui/LazyImage/LazyImage';
+import { WellnessTip } from '@/types/model';
+import { ArrowUpRight } from 'lucide-preact';
 import { FC } from 'react-dom/src';
 import css from './LinkSection.module.scss';
 
-export type AssymetricSectionLink = {
-    id: string;
-    title: string;
-    description: string;
-    img: string;
-    imgTiny: string;
-    alt: string;
-    url: string;
-};
-
-const LinkSection: FC<{ links: AssymetricSectionLink[] }> = ({ links }) => {
+const WellnessTipSection: FC<{ tips: WellnessTip[] }> = ({ tips }) => {
     return (
         <section class={css.wrapper}>
             <ul class={css.grid}>
-                {links.map((link) => (
-                    <LinkCard
-                        key={link.id}
-                        link={link}
+                {tips.map((tip) => (
+                    <WellnessTipCard
+                        key={tip.id}
+                        tip={tip}
                     />
                 ))}
             </ul>
+
+            <p style={{ textAlign: 'center' }}>TODO Pagination</p>
         </section>
     );
 };
 
-export default LinkSection;
+export default WellnessTipSection;
 
-const LinkCard: FC<{ link: AssymetricSectionLink }> = ({ link }) => {
+const WellnessTipCard: FC<{ tip: WellnessTip }> = ({ tip }) => {
     return (
         <li class={css.cardWrapper}>
-            <LazyImage
-                prtClass={css.cardImgWrapper}
-                imgClass={css.cardImg}
-                img={link.img}
-                tinyImg={link.imgTiny}
-                alt={link.alt}
-            />
-            <h4 class={css.cardTitle}>{link.title}</h4>
-            <p>{link.description}</p>
+            {tip.image != null && (
+                <LazyImage
+                    prtClass={css.cardImgWrapper}
+                    imgClass={css.cardImg}
+                    img={tip.image.path}
+                    tinyImg={tip.image.tiny_path}
+                    alt={tip.image.alt}
+                />
+            )}
+            <p class={css.description}>{tip.description}</p>
+
+            <a
+                target="_blank"
+                href={tip.url}
+                class={css.cardLink}
+            >
+                Перейти
+                <ArrowUpRight />
+            </a>
         </li>
     );
 };

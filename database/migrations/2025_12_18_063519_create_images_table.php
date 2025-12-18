@@ -1,6 +1,5 @@
 <?php
 
-use App\Enums\WellnessTipType;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -12,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('wellness_tips', function (Blueprint $table) {
+        Schema::create('images', function (Blueprint $table) {
             $table->id();
-            $table->string("type")->index()->default(WellnessTipType::RELAXATION->value);
-            $table->string("description");
-            $table->string("url");
+            $table->string('path');
+            $table->string('tiny_path');
+            $table->text('alt');
+            $table->morphs('imageable');
+            $table->string('type')->default('image');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('wellness_tips');
+        Schema::dropIfExists('images');
     }
 };

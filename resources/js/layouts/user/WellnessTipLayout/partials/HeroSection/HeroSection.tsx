@@ -12,6 +12,7 @@ import { cn } from '@/utils/cn';
 import { ComponentChildren } from 'preact';
 import { FC } from 'react-dom/src';
 import css from './HeroSection.module.scss';
+import AnimatedOutline from '@/components/user/ui/AnimatedOutline/AnimatedOutline';
 
 type AssymetricHeroSectionProps = {
     heading: string;
@@ -44,7 +45,7 @@ const HeroSection: FC<AssymetricHeroSectionProps> = ({
             <div class={css.content}>
                 <h1 class={css.heading}>
                     {parts.slice(0, -1)}{' '}
-                    <span class={css.animated}>{parts.at(-1)}</span>
+                    <AnimatedOutline>{parts.at(-1)}</AnimatedOutline>
                 </h1>
 
                 <p class={css.intro}>{description}</p>
