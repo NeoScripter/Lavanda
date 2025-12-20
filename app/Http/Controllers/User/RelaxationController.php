@@ -14,7 +14,7 @@ class RelaxationController extends Controller
      */
     public function __invoke()
     {
-        $tips = WellnessTip::where('type', WellnessTipType::RELAXATION)->limit(6)->get();
+        $tips = WellnessTip::where('type', WellnessTipType::RELAXATION)->paginate(6);
 
         return Inertia::render('user/Relaxation/Relaxation', [
             'tips' => $tips

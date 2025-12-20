@@ -1,0 +1,98 @@
+@use 'core' as u;
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav {
+    background-color: u.opacify(white, 50);
+    isolation: isolate;
+    border-radius: 1em;
+    padding: 0.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+
+    @include u.px(rounded, 25, 25, 25, 25);
+}
+
+.chevronIcon {
+    --size: 0;
+
+    @include u.px(--size, 25, 25, 25, 25);
+    @include u.size(var(--size));
+}
+.listItem {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    @media screen and (max-width: 571px) {
+        display: none;
+
+        &:first-child,
+        &:nth-child(2),
+        &:nth-child(3),
+        &:nth-last-child(2),
+        &:nth-last-child(3),
+        &:last-child,
+        &.active,
+        &.disabled {
+            @include u.fxc();
+        }
+    }
+}
+
+.paginationBtn {
+    --size: 0;
+
+    @include u.rm(text, 16, 16, 16, 16);
+    @include u.px(--size, 32, 32, 32, 32);
+    @include u.size(var(--size));
+    @include u.px(rounded, 10, 10, 10, 10);
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    transition-property: all;
+    transition-duration: 200ms;
+    transition-timing-function: ease-in;
+    border: none;
+    cursor: pointer;
+
+    &:has(svg) {
+        @include u.px(rounded, 25, 25, 25, 25);
+        background-color: transparent;
+    }
+}
+
+.active {
+    background-color: white;
+    color: u.clr('primary', 'muted');
+    font-weight: 600;
+    outline: transparent;
+}
+
+.inactive {
+    box-shadow: inherit;
+    cursor: pointer;
+    outline: inherit;
+
+    &:hover {
+        background-color: u.opacify(white, 60);
+    }
+}
+
+.navigationBtn {
+    background-color: white;
+    outline: transparent;
+}
+
+.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

@@ -7,8 +7,10 @@
 
 .grid {
     display: grid;
-    /* margin-inline: auto; */
-    /* @include u.px(w, null, 567, 1189, 1408); */
+    --size: 0;
+    scroll-margin-bottom: var(--size);
+
+    @include u.px(--size, 200, 150, 130, 140);
     @include u.px(gap-y, 32, 25, 17, 49);
     @include u.px(gap-x, null, 17, 17, 57);
     @include u.px(mb, 71, 69, 42, 45);

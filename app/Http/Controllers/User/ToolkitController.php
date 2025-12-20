@@ -14,7 +14,7 @@ class ToolkitController extends Controller
      */
     public function __invoke()
     {
-        $tips = WellnessTip::where('type', WellnessTipType::TOOLKIT)->limit(6)->get();
+        $tips = WellnessTip::where('type', WellnessTipType::TOOLKIT)->paginate(6);
 
         return Inertia::render('user/ToolKit/ToolKit', [
             'tips' => $tips

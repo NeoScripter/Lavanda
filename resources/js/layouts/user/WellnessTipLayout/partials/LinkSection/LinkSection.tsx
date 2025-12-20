@@ -1,14 +1,26 @@
 import LazyImage from '@/components/user/ui/LazyImage/LazyImage';
+import Pagination from '@/components/user/ui/Pagination/Pagination';
 import { WellnessTip } from '@/types/model';
+import { PaginationMeta } from '@/types/pagination';
+import { usePage } from '@inertiajs/react';
 import { ArrowUpRight } from 'lucide-preact';
-import { FC } from 'react-dom/src';
+import { FC, useId } from 'preact/compat';
 import css from './LinkSection.module.scss';
 
-const WellnessTipSection: FC<{ tips: WellnessTip[] }> = ({ tips }) => {
+const WellnessTipSection = () => {
+    const { tips } = usePage<{
+        tips: PaginationMeta<WellnessTip>;
+    }>().props;
+
+    const id = useId();
+
     return (
         <section class={css.wrapper}>
-            <ul class={css.grid}>
-                {tips.map((tip) => (
+            <ul
+                id={id}
+                class={css.grid}
+            >
+                {tips.data.map((tip) => (
                     <WellnessTipCard
                         key={tip.id}
                         tip={tip}
@@ -16,7 +28,11 @@ const WellnessTipSection: FC<{ tips: WellnessTip[] }> = ({ tips }) => {
                 ))}
             </ul>
 
-            <p style={{ textAlign: 'center' }}>TODO Pagination</p>
+            <Pagination
+                shouldScroll={false}
+                scrollElementId={id}
+                meta={tips}
+            />
         </section>
     );
 };
