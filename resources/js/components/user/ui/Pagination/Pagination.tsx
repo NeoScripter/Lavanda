@@ -5,7 +5,6 @@ import css from './Pagination.module.scss';
 
 type PaginationProps = {
     meta: Omit<PaginationMeta<unknown>, 'data'>;
-    label?: string;
     className?: string;
     shouldScroll?: boolean;
     scrollElementId?: string;
@@ -13,7 +12,6 @@ type PaginationProps = {
 
 export default function Pagination({
     meta,
-    label,
     className,
     shouldScroll = true,
     scrollElementId,

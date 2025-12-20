@@ -64,7 +64,7 @@ const WellnessTipLayout: FC<WellnessTipLayout> = ({
                     intros={introIntros}
                 />
             )}
-            <WellnessTipSection tips={wellnessTips} />
+            <WellnessTipSection />
             {children}
         </AppLayout>
     );

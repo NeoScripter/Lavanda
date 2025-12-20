@@ -4,6 +4,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    @include u.px(mb, 193, 102, 52, 132);
 }
 
 .nav {

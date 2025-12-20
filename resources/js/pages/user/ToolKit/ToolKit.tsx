@@ -1,5 +1,7 @@
 import FooterDecorTiny from '@/assets/images/toolkit/footer-decor-tiny.webp';
 import FooterDecor from '@/assets/images/toolkit/footer-decor.webp';
+import LeftDecorTiny from '@/assets/images/toolkit/left-decor-tiny.webp';
+import LeftDecor from '@/assets/images/toolkit/left-decor.webp'
 import HeroDecorTiny from '@/assets/images/toolkit/hero-decor-tiny.webp';
 import HeroDecor from '@/assets/images/toolkit/hero-decor.webp';
 import LazyImage from '@/components/user/ui/LazyImage/LazyImage';
@@ -36,6 +38,11 @@ const Toolkit = () => {
                 img={FooterDecor}
                 tinyImg={FooterDecorTiny}
                 prtClass={css.footerDecor}
+            />
+            <LazyImage
+                img={LeftDecor}
+                tinyImg={LeftDecorTiny}
+                prtClass={css.leftDecor}
             />
         </WellnessTipLayout>
     );

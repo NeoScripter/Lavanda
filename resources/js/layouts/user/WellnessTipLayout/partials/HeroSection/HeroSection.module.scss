@@ -44,7 +44,6 @@
     inset-inline: 0;
     margin-inline: auto;
     position: absolute;
-    height: auto;
     transform: translateY(var(--offsetY));
     @include u.px(w, 281, 475, 433, 498);
     @include u.px(h, 321, 431, 494, 558);
