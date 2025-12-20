@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\ExperienceItem;
 use App\Models\WellnessTip;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
@@ -29,6 +30,7 @@ class AppServiceProvider extends ServiceProvider
 
         Relation::enforceMorphMap([
             'wellnessTip' => WellnessTip::class,
+            'experienceItem' => ExperienceItem::class,
         ]);
     }
 }

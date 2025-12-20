@@ -1,0 +1,41 @@
+@use 'core' as u;
+
+.items {
+    --size: 0;
+    display: grid;
+    place-content: center;
+    gap: 2rem;
+    @include u.px(--size, 336, 411, 411, 411);
+    @include u.px(gap, 56, 60, 40, 70);
+
+    grid-template-columns: repeat(1, var(--size));
+
+    @include u.mw(md) {
+        grid-template-columns: repeat(3, var(--size));
+    }
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: end;
+    @include u.px(h, 344, 344, 344, 344);
+    @include u.px(rounded, 30, 30, 30, 30);
+    @include u.px(pb, 29, 40, 40, 40);
+    @include u.px(px, 24, 24, 24, 24);
+    @include u.shadow(3);
+}
+
+.cardHeading {
+    @include u.rm(text, 24, 24, 24, 24);
+    @include u.px(mb, 11, 11, 11, 11);
+}
+
+.cardDescription {
+    @include u.rm(text, 14, 14, 14, 14);
+}
+
+.wrapper {
+    @include u.px(mb, 506, 276, 165, 199);
+}

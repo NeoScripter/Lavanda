@@ -1,0 +1,7 @@
+@use 'core' as u;
+
+.layout {
+    > section {
+        isolation: isolate;
+    }
+}

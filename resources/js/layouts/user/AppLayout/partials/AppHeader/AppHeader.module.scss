@@ -32,7 +32,7 @@
     gap: 1em;
     justify-content: space-between;
     background: u.gd('primary', 'muted');
-    @include u.px(px, 14, 18, 18, 26);
+    @include u.px(px, 14, 0);
     @include u.px(py, 4, 7, 10, 10);
     border-radius: inherit;
     @include u.mw(sm) {
@@ -59,13 +59,17 @@
     @include u.px(pb, 59, 0, null, null);
 }
 
-.loginBtn {
+.loginBtnWrapper {
     display: none;
-    padding-block: 0.65em;
+    @include u.px(min-w, 126, 207, 240, 240);
 
     @include u.mw(sm) {
         display: flex;
     }
+}
+.loginBtn {
+    padding-block: 0.65em;
+    margin-left: auto;
 }
 
 .mbNav {

@@ -1,3 +1,14 @@
+export type ExperienceItem = {
+    id: number;
+    title: string;
+    description: string;
+    heading: string;
+    body: string;
+    html: string;
+    created_at?: string;
+    updated_at?: string;
+    image?: Image;
+};
 export type Image = {
     id: number;
     path: string;

@@ -35,7 +35,7 @@ export const navLinks: NavLinkType[] = [
                 id: crypto.randomUUID(),
                 label: 'Опыт автора',
                 type: 'link',
-                href: '/',
+                href: route('decision.experience'),
             },
             {
                 id: crypto.randomUUID(),

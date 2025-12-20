@@ -8,6 +8,6 @@
 .wrapper {
     user-select: none;
     display: block;
-    @include u.px(w, 161, 265, 235, 276);
+    @include u.px(w, 126, 207, 240, 240);
     @include u.px(h, 39, 67, 44, 67);
 }

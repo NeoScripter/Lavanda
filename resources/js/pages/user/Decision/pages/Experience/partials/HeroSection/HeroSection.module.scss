@@ -1,0 +1,34 @@
+@use 'core' as u;
+
+.wrapper {
+    position: relative;
+    @include u.px(pt, 205, 248, 245, 246);
+    @include u.px(mb, 64, 90, 84, 70);
+}
+
+.foreground {
+    @include u.px(rounded, null, null, 30, 30);
+    @include u.shadow(3);
+}
+
+.banner {
+  --size: 0;
+
+  width: 100%;
+  position: absolute;
+  top: 0;
+  inset-inline: 0;
+  text-align: center;
+  border-radius: 0 0 var(--size) var(--size);
+  background-color: white;
+  background-color: u.opacify(white, 91);
+  margin-inline: auto;
+
+  @include u.px(w, null, 709, 853, 1051);
+  @include u.px(pt, 92, 190, 168, 161);
+  @include u.px(pb, 56, 62, 59, 56);
+  @include u.px(px, 28, 63, 72, 63);
+  @include u.px(--size, 30, 30, 30, 30);
+
+}
+

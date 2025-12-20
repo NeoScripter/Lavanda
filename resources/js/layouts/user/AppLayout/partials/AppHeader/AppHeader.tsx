@@ -55,13 +55,15 @@ const AppHeader: FC<NodeProps> = ({ className }) => {
 
                 {isDesktop && <Nav className={cn(css.dkNav)} />}
 
-                <button
-                    onClick={handleLoginClick}
-                    class={cn(css.loginBtn, 'primary-btn')}
-                >
-                    <CircleUser />
-                    {!user ? 'Войти' : user.name}
-                </button>
+                <div class={css.loginBtnWrapper}>
+                    <button
+                        onClick={handleLoginClick}
+                        class={cn(css.loginBtn, 'primary-btn')}
+                    >
+                        <CircleUser />
+                        {!user ? 'Войти' : user.name}
+                    </button>
+                </div>
             </div>
 
             {!isDesktop && (
