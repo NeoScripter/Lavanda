@@ -10,5 +10,5 @@ export default function isCurrentPage(
 
     if (!linkHref) return false;
 
-    return linkHref.includes(rawPageUrl);
+    return rawPageUrl !== '/' && linkHref.includes(rawPageUrl);
 }
