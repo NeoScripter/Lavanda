@@ -14,7 +14,7 @@ class ExperienceController extends Controller
      */
     public function __invoke()
     {
-        $items = ExperienceItem::all();
+        $items = ExperienceItem::limit(9)->get();
 
         return Inertia::render('user/Decision/pages/Experience/Experience', [
             'items' => $items
