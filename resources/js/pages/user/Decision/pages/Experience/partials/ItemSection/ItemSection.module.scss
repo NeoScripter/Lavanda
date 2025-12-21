@@ -16,18 +16,75 @@
 }
 
 .card {
+    isolation: isolate;
+    overflow: clip;
     display: flex;
+    position: relative;
     flex-direction: column;
     align-items: start;
     justify-content: end;
+    transition:
+        color,
+        background-color 0.25s ease-in-out;
     @include u.px(h, 344, 344, 344, 344);
     @include u.px(rounded, 30, 30, 30, 30);
     @include u.px(pb, 29, 40, 40, 40);
     @include u.px(px, 24, 24, 24, 24);
     @include u.shadow(3);
+
+    > * {
+        transition: color 0.25s ease-in-out;
+    }
+    &:hover {
+        color: white;
+
+        > * {
+            color: white;
+        }
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0) -27.8%,
+            #fff 99.82%
+        );
+        transition: opacity 0.25s ease-in-out;
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0) -27.8%,
+            #5f4e8c 99.82%
+        );
+        opacity: 0;
+        transition: opacity 0.25s ease-in-out;
+    }
+
+    &:hover::before {
+        opacity: 1;
+    }
+    &:hover::after {
+        opacity: 0;
+    }
 }
 
+.cardOverlay {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+}
 .cardHeading {
+    text-transform: uppercase;
     @include u.rm(text, 24, 24, 24, 24);
     @include u.px(mb, 11, 11, 11, 11);
 }
