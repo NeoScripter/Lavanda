@@ -16,7 +16,7 @@ const Accordion: FC<{ items: PracticeItemFaq[] }> = ({ items }) => {
             <h5 className={css.heading}>Пошаговая инструкция</h5>
 
             <div className={css.faqs}>
-                {items.map((faq) => (
+                {items.map((faq, idx) => (
                     <details
                         key={faq.id}
                         open={openId === faq.id}
@@ -29,6 +29,23 @@ const Accordion: FC<{ items: PracticeItemFaq[] }> = ({ items }) => {
                             }}
                             className={css.summary}
                         >
+                            <span className={css.animtedNumber}>
+                                <svg
+                                    width="100%"
+                                    height="100%"
+                                    viewBox="0 0 22 22"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    preserveAspectRatio="none"
+                                >
+                                    <path
+                                        d="M8.75549 1.17943C3.19042 -0.625584 -2.14636 11.7186 3.10521 17.624C9.08268 24.3457 19.7296 20.1719 20.0615 12.6425C20.4188 4.53892 9.577 -0.921747 4.30802 6.05208"
+                                        stroke="#B9B2CB"
+                                        stroke-width="2"
+                                    />
+                                </svg>
+                                {idx + 1}
+                            </span>
                             {faq.question}
                             <span className={css.icon}>
                                 <svg

@@ -88,3 +88,22 @@
 .static {
     transform: rotate(0deg);
 }
+
+.animtedNumber {
+    --size: 20px;
+    flex-shrink: 0;
+    align-self: start;
+    position: relative;
+    @include u.size(var(--size));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include u.px(--size, 25, 25, 25, 30);
+
+    > svg {
+        position: absolute;
+        inset: 0;
+        @include u.size(100%);
+    }
+}

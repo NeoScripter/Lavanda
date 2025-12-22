@@ -6,3 +6,6 @@
     }
 }
 
+.foregroundImage {
+    @include u.px(min-h, 630, 573, 573, 657);
+}

@@ -16,6 +16,7 @@ export type CardLayoutProps = {
     heroFgImg: BgLoaderImg;
     children?: ComponentChildren;
     isHigh?: boolean;
+    imgClass?: string;
 };
 
 const CardLayout: FC<CardLayoutProps> = ({
@@ -24,7 +25,8 @@ const CardLayout: FC<CardLayoutProps> = ({
     heroDescription,
     heroFgImg,
     children,
-    isHigh = false
+    isHigh = false,
+    imgClass
 }) => {
     return (
         <AppLayout className={css.layout}>
@@ -33,7 +35,7 @@ const CardLayout: FC<CardLayoutProps> = ({
                 heading={heroHeading}
                 description={heroDescription}
                 fgImg={heroFgImg}
-                imgClass={cn(isHigh ? css.noShadow : '')}
+                imgClass={cn(imgClass, isHigh ? css.noShadow : '')}
             />
             <CurrentSlideProvider>
                 <ItemSection className={cn(isHigh ? css.shifted : '')}>{children}</ItemSection>
