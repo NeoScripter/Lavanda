@@ -10,7 +10,7 @@ import {
     heroHeading,
     introHeading,
     introParts,
-} from '@/lib/data/relaxationPageData';
+} from './pageData';
 import { WellnessTip } from '@/types/model';
 import { usePage } from '@inertiajs/react';
 import css from './Relaxation.module.scss';

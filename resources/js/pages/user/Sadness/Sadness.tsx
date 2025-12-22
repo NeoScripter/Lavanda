@@ -11,7 +11,7 @@ import {
     heroHeading,
     introHeading,
     introParts,
-} from '@/lib/data/sadnessPageData';
+} from './pageData';
 import css from './Sadness.module.scss';
 
 const Sadness = () => {

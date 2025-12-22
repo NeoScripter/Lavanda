@@ -11,7 +11,7 @@ import {
     foregroundImage,
     heroDescription,
     heroHeading,
-} from '@/lib/data/toolkitPageData';
+} from './pageData';
 import { WellnessTip } from '@/types/model';
 import { usePage } from '@inertiajs/react';
 import css from './ToolKit.module.scss';

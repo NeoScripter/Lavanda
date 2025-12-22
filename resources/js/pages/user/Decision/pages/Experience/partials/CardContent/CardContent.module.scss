@@ -1,0 +1,39 @@
+@use 'core' as u;
+
+.wrapper {
+    width: 100%;
+    background-color: u.opacify(white, 50);
+    @include u.px(pb, 52, 99, 80, 80);
+    @include u.px(px, 18, 47, 87, 327);
+    @include u.px(pt, 22, 93, 49, 70);
+}
+
+.content {
+    h4 {
+        @include u.rm(text, 24, 24, 24, 24);
+        margin-block: 1.5ch;
+    }
+    p {
+        margin-block: 1.5ch;
+    }
+}
+
+.heading {
+    color: u.clr('primary', 'strong');
+    @include u.px(mb, 30, 60, 60, 60);
+    @include u.rm(text, 32, 48, 48, 56);
+}
+
+.foregroundWrapper {
+    @include u.px(w, 321, 290, 536, 536);
+    @include u.px(h, 229, 529, 328, 328);
+    @include u.px(mb, 45, 48, 30, 30);
+    @include u.px(ml, null, 56, 104, 104);
+
+    @include u.mw(sm) {
+        float: right;
+    }
+}
+.foreground {
+    object-fit: cover;
+}

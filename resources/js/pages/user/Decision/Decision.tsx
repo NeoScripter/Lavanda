@@ -11,7 +11,7 @@ import {
     heroHeading,
     introHeading,
     introParts,
-} from '@/lib/data/decisionPageData';
+} from './pageData';
 import css from './Decision.module.scss';
 
 const Decision = () => {

@@ -1,15 +1,17 @@
-import AppLayout from '@/layouts/user/AppLayout/AppLayout';
-import css from './Experience.module.scss';
-import HeroSection from './partials/HeroSection';
-import ItemSection from './partials/ItemSection';
+import CardLayout from '@/layouts/user/CardLayout/CardLayout';
+import { foregroundImage, heroDescription, heroHeading } from './pageData';
+import CardContent from './partials/CardContent';
 
 const Experience = () => {
     return (
-        <AppLayout className={css.layout}>
-            <HeroSection />
-
-            <ItemSection />
-        </AppLayout>
+        <CardLayout
+            headTitle="Опыт автора"
+            heroHeading={heroHeading}
+            heroDescription={heroDescription}
+            heroFgImg={foregroundImage}
+        >
+            <CardContent />
+        </CardLayout>
     );
 };
 

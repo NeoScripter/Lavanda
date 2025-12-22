@@ -1,22 +1,22 @@
-import Item1 from '@/assets/images/experience/experience-item-1.webp';
 import Item1Tiny from '@/assets/images/experience/experience-item-1-tiny.webp';
-import Item2 from '@/assets/images/experience/experience-item-2.webp';
+import Item1 from '@/assets/images/experience/experience-item-1.webp';
 import Item2Tiny from '@/assets/images/experience/experience-item-2-tiny.webp';
-import Item3 from '@/assets/images/experience/experience-item-3.webp';
+import Item2 from '@/assets/images/experience/experience-item-2.webp';
 import Item3Tiny from '@/assets/images/experience/experience-item-3-tiny.webp';
-import Item4 from '@/assets/images/experience/experience-item-4.webp';
+import Item3 from '@/assets/images/experience/experience-item-3.webp';
 import Item4Tiny from '@/assets/images/experience/experience-item-4-tiny.webp';
-import Item5 from '@/assets/images/experience/experience-item-5.webp';
+import Item4 from '@/assets/images/experience/experience-item-4.webp';
 import Item5Tiny from '@/assets/images/experience/experience-item-5-tiny.webp';
-import Item6 from '@/assets/images/experience/experience-item-6.webp';
+import Item5 from '@/assets/images/experience/experience-item-5.webp';
 import Item6Tiny from '@/assets/images/experience/experience-item-6-tiny.webp';
+import Item6 from '@/assets/images/experience/experience-item-6.webp';
 
 export type ImageObj = {
     id: string;
     img: string;
     tinyImg: string;
     alt: string;
-}
+};
 
 export const images: ImageObj[] = [
     {
