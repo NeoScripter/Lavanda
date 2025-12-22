@@ -5,3 +5,14 @@
         isolation: isolate;
     }
 }
+
+.noShadow {
+    box-shadow: none !important;
+}
+
+.shifted {
+    --offsetY: 0;
+    @include u.px(--offsetY, 404, 394, 427, 417);
+
+    margin-top: calc(var(--offsetY) * -1);
+}

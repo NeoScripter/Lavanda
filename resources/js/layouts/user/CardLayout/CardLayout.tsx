@@ -7,6 +7,7 @@ import css from './CardLayout.module.scss';
 import { CurrentSlideProvider } from './CurrentSlideProvider';
 import HeroSection from './partials/HeroSection';
 import ItemSection from './partials/ItemSection';
+import { cn } from '@/utils/cn';
 
 export type CardLayoutProps = {
     headTitle: string;
@@ -14,6 +15,7 @@ export type CardLayoutProps = {
     heroDescription: string;
     heroFgImg: BgLoaderImg;
     children?: ComponentChildren;
+    isHigh?: boolean;
 };
 
 const CardLayout: FC<CardLayoutProps> = ({
@@ -22,6 +24,7 @@ const CardLayout: FC<CardLayoutProps> = ({
     heroDescription,
     heroFgImg,
     children,
+    isHigh = false
 }) => {
     return (
         <AppLayout className={css.layout}>
@@ -30,9 +33,10 @@ const CardLayout: FC<CardLayoutProps> = ({
                 heading={heroHeading}
                 description={heroDescription}
                 fgImg={heroFgImg}
+                imgClass={cn(isHigh ? css.noShadow : '')}
             />
             <CurrentSlideProvider>
-                <ItemSection>{children}</ItemSection>
+                <ItemSection className={cn(isHigh ? css.shifted : '')}>{children}</ItemSection>
             </CurrentSlideProvider>
         </AppLayout>
     );

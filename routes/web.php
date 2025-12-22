@@ -3,6 +3,7 @@
 use App\Http\Controllers\User\AccountController;
 use App\Http\Controllers\User\Decision\DecisionController;
 use App\Http\Controllers\User\Decision\ExperienceController;
+use App\Http\Controllers\User\Decision\PracticeController;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\RelaxationController;
 use App\Http\Controllers\User\Sadness\SadnessController;
@@ -14,7 +15,7 @@ Route::get('/account', AccountController::class)->middleware('auth')->name('acco
 
 Route::prefix('/decision')->name('decision.')->group(function () {
     Route::get('/', DecisionController::class)->name('index'); // решение
-    // Route::get('/practice', ...)->name('practice');// практика
+    Route::get('/practice', PracticeController::class)->name('practice'); // практика
     Route::get('/experience', ExperienceController::class)->name('experience'); // опыт автора
     // Route::get('/runes', ...)->name('runes');// руны
     // Route::get('/readings', ...)->name('readings'); // расклад карт

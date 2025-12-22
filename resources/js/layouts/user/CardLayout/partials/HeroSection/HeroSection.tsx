@@ -10,6 +10,7 @@ type CardHeroSectionProps = {
     heading: string;
     description: string;
     fgImg: BgLoaderImg;
+    imgClass?: string;
 };
 
 const HeroSection: FC<NodeProps<CardHeroSectionProps>> = ({
@@ -17,13 +18,14 @@ const HeroSection: FC<NodeProps<CardHeroSectionProps>> = ({
     heading,
     description,
     fgImg,
+    imgClass
 }) => {
     const isDesktop = useMediaQuery('(min-width: 1110px)');
 
     return (
         <section class={cn(css.wrapper, !isDesktop && 'full-bleed', className)}>
             <BgLoader
-                prtClass={css.foreground}
+                prtClass={cn(css.foreground, imgClass)}
                 dk={fgImg.dk}
                 dkTiny={fgImg.dkTiny}
                 tb={fgImg.tb}
