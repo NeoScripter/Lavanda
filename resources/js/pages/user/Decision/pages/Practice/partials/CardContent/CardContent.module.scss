@@ -3,37 +3,49 @@
 .wrapper {
     width: 100%;
     background-color: u.opacify(white, 50);
-    @include u.px(pb, 52, 99, 80, 80);
-    @include u.px(px, 18, 47, 87, 327);
-    @include u.px(pt, 22, 93, 49, 70);
+    @include u.px(pb, 77, 80, 59, 55);
+    @include u.px(px, 22, 125, 81, 69);
+    @include u.px(pt, 27, 41, 49, 52);
+    @include u.px(gap, null, null, 92, 196);
+
+    @include u.mw(md) {
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+    }
 }
 
-.content {
-    h4 {
-        @include u.rm(text, 24, 24, 24, 24);
-        margin-block: 1.5ch;
-    }
-    p {
-        margin-block: 1.5ch;
+.contentWrapper {
+    text-align: center;
+
+    @include u.mw(md) {
+        text-align: left;
     }
 }
 
 .heading {
     color: u.clr('primary', 'strong');
-    @include u.px(mb, 30, 60, 60, 60);
     @include u.rm(text, 32, 48, 48, 56);
+    @include u.px(mb, 32, 20, 40, 30);
+}
+.cardDescription {
+    @include u.px(mb, 46, 31, 32, 31);
 }
 
 .foregroundWrapper {
-    @include u.px(w, 321, 290, 536, 536);
-    @include u.px(h, 229, 529, 328, 328);
-    @include u.px(mb, 45, 48, 30, 30);
-    @include u.px(ml, null, 56, 104, 104);
+    background-color: u.clr('background', 'muted');
+    @include u.px(rounded, 20, 20, 20, 20);
+    @include u.px(w, 329, 500, 673, 673);
+    @include u.px(h, 329, 500, 746, 746);
+    @include u.px(mb, 48, 48, 0);
+    margin-inline: auto;
 
-    @include u.mw(sm) {
-        float: right;
+    @include u.mw(md) {
+        margin-inline: 0;
+        order: 2;
+        flex-shrink: 0;
     }
 }
 .foreground {
-    object-fit: cover;
+    object-fit: contain;
 }

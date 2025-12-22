@@ -12,7 +12,7 @@ class PracticeItem extends Model
     /** @use HasFactory<\Database\Factories\PracticeItemFactory> */
     use HasFactory;
 
-    protected $with = ['image'];
+    protected $with = ['image', 'faqs'];
 
     public function image(): MorphOne
     {

@@ -32,6 +32,26 @@ export type Plan = {
     updated_at?: string;
     human_duration: any;
 };
+export type PracticeItem = {
+    id: number;
+    title: string;
+    description: string;
+    heading: string;
+    body: string;
+    created_at?: string;
+    updated_at?: string;
+    image?: Image;
+    faqs?: PracticeItemFaq[];
+};
+export type PracticeItemFaq = {
+    id: number;
+    practice_item_id: number;
+    question: string;
+    answer: string;
+    created_at?: string;
+    updated_at?: string;
+    practice_item?: PracticeItem;
+};
 export type WellnessTip = {
     id: number;
     type: WellnessTipType;

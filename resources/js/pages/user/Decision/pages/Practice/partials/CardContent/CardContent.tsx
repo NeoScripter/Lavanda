@@ -1,11 +1,12 @@
 import LazyImage from '@/components/user/ui/LazyImage/LazyImage';
 import { useCurrentSlideId } from '@/layouts/user/CardLayout/CurrentSlideProvider';
-import { ExperienceItem } from '@/types/model';
+import { PracticeItem } from '@/types/model';
 import { usePage } from '@inertiajs/react';
 import css from './CardContent.module.scss';
+import Accordion from './partials/Accordion';
 
 const CardContent = () => {
-    const { items } = usePage<{ items: ExperienceItem[] }>().props;
+    const { items } = usePage<{ items: PracticeItem[] }>().props;
     const { currentSlideId } = useCurrentSlideId();
 
     const item = items.find((i) => i.id === currentSlideId.value);
@@ -14,8 +15,6 @@ const CardContent = () => {
 
     return (
         <div class={css.wrapper}>
-            <h3 class={css.heading}>{item.heading}</h3>
-
             {item.image && (
                 <LazyImage
                     prtClass={css.foregroundWrapper}
@@ -26,10 +25,13 @@ const CardContent = () => {
                 />
             )}
 
-            <div
-                class={css.content}
-                dangerouslySetInnerHTML={{ __html: item.html }}
-            />
+            <div class={css.contentWrapper}>
+                <h3 class={css.heading}>{item.heading}</h3>
+
+                <p class={css.cardDescription}>{item.body}</p>
+
+                {item.faqs && <Accordion items={item.faqs} />}
+            </div>
         </div>
     );
 };

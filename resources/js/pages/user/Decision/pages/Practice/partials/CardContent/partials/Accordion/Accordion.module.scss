@@ -1,0 +1,90 @@
+@use 'core' as u;
+
+.faqWrapper {
+    text-align: left;
+}
+
+.heading {
+    text-transform: uppercase;
+    color: u.clr('foreground', 'strong');
+    font-weight: normal;
+    letter-spacing: 0.5ch;
+    @include u.px(pb, 18, 18, 18, 18);
+    @include u.rm(text, 16, 16, 16, 20);
+    border-bottom: 1.5px solid u.opacify(black, 60);
+}
+
+.details {
+    @include u.px(py, 16, 16, 16, 16);
+    border-block: 1px solid u.opacify(black, 30);
+}
+
+@supports selector(::details-content) {
+    .details {
+        overflow: hidden;
+        overflow: clip;
+    }
+
+    .details::details-content {
+        block-size: 0;
+        transition:
+            block-size 0.5s,
+            content-visibility 0.5s;
+        transition-behavior: allow-discrete;
+    }
+
+    .details:open::details-content {
+        block-size: auto;
+    }
+}
+
+.summary {
+    font-weight: bold;
+    @include u.rm(text, 16, 16, 16, 20);
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1em;
+    list-style-position: outside;
+}
+
+.summary::marker {
+    display: none;
+}
+
+.answer {
+    @include u.rm(text, 14, 14, 14, 16);
+    @include u.px(pt, 20, 20, 20, 20);
+
+    @include u.mw(md) {
+        max-width: 80%;
+    }
+}
+
+.icon {
+    --size: 0;
+    flex-shrink: 0;
+    @include u.px(--size, 12, 12, 12, 12);
+
+    @include u.size(var(--size));
+}
+
+.path {
+    transform-origin: 16px 16px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .path {
+        transition: transform 0.3s ease-in-out;
+    }
+}
+
+.rotated {
+    transform: rotate(135deg);
+}
+
+.static {
+    transform: rotate(0deg);
+}

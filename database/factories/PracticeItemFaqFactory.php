@@ -17,8 +17,8 @@ class PracticeItemFaqFactory extends Factory
     public function definition(): array
     {
         return [
-            'question' => fake()->word(4),
-            'answer' => fake()->sentence(3),
+            'question' => implode('', fake()->sentences(1)),
+            'answer' => implode('', fake()->sentences(3)),
         ];
     }
 }
