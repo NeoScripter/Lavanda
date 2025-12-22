@@ -2,6 +2,7 @@ import { PaginationLink, PaginationMeta } from '@/types/pagination';
 import { Link } from '@inertiajs/react';
 import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-preact';
 import css from './Pagination.module.scss';
+import { isVisible } from './helpers';
 
 type PaginationProps = {
     meta: Omit<PaginationMeta<unknown>, 'data'>;
@@ -17,6 +18,7 @@ export default function Pagination({
     scrollElementId,
 }: PaginationProps) {
     const links = meta.links;
+    let hasElipsis = false;
 
     const isFirstLink = (index: number) => index === 0;
     const isLastLink = (index: number) => index === links.length - 1;
@@ -38,17 +40,39 @@ export default function Pagination({
         <div className={`${css.wrapper} ${className || ''}`}>
             <nav aria-label="Pagination">
                 <ol className={css.nav}>
-                    {links.map((link, index) => (
-                        <PaginationBtn
-                            key={index}
-                            link={link}
-                            isNavigationButton={isNavigationButton(index)}
-                            shouldScroll={shouldScroll}
-                            scrollElementId={scrollElementId}
-                        >
-                            {renderLinkContent(link, index)}
-                        </PaginationBtn>
-                    ))}
+                    {links.map((link, index) => {
+                        const shouldShow = isVisible(
+                            meta.current_page,
+                            link.page,
+                            meta.last_page,
+                            isFirstLink(index),
+                            isLastLink(index),
+                        );
+
+                        if (!shouldShow) {
+                            let placeholder = !hasElipsis ? (
+                                <li
+                                    key="ellipsis"
+                                >
+                                    ...
+                                </li>
+                            ) : null;
+                            hasElipsis = true;
+                            return placeholder;
+                        }
+
+                        return (
+                            <PaginationBtn
+                                key={index}
+                                link={link}
+                                isNavigationButton={isNavigationButton(index)}
+                                shouldScroll={shouldScroll}
+                                scrollElementId={scrollElementId}
+                            >
+                                {renderLinkContent(link, index)}
+                            </PaginationBtn>
+                        );
+                    })}
                 </ol>
             </nav>
         </div>
