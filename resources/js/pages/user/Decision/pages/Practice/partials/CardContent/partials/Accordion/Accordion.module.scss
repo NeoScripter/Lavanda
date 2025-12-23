@@ -66,6 +66,7 @@
 .icon {
     --size: 0;
     flex-shrink: 0;
+    margin-left: auto;
     @include u.px(--size, 12, 12, 12, 12);
 
     @include u.size(var(--size));

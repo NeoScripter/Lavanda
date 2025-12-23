@@ -1,0 +1,150 @@
+@use 'core' as u;
+
+.wrapper {
+    /* @include u.px(py, null, 58, 58, 58); */
+    padding-block: 58px;
+}
+
+.logo {
+    margin-inline: auto;
+    /* @include u.px(mb, 50, 30, 30, 30); */
+    /* @include u.px(w, 224, 276, 276, 276); */
+    /* @include u.px(h, 55, 67, 67, 67); */
+
+    margin-bottom: 50px;
+    width: 224px;
+    height: 55px;
+
+    @include u.mw(sm) {
+        margin-bottom: 30px;
+        width: 276px;
+        height: 67px;
+    }
+}
+.title {
+    margin-inline: auto;
+    width: fit-content;
+    /* @include u.px(mb, 40, 30, 30, 30); */
+    /* @include u.rm(text, 24, 40, 40, 40); */
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+    @include u.mw(sm) {
+        margin-bottom: 30px;
+        font-size: 2.5rem;
+    }
+}
+
+.notice {
+    max-width: 90%;
+    text-align: center;
+    margin-inline: auto;
+    /* @include u.px(mb, 38, 45, 45, 45); */
+    /* @include u.rm(text, 14, 16, 16, 16); */
+    font-size: 0.875rem;
+    margin-bottom: 38px;
+
+    @include u.mw(sm) {
+        max-width: 80%;
+        margin-bottom: 45px;
+        font-size: 1rem;
+    }
+}
+
+.form {
+    display: grid;
+    flex-direction: column;
+    /* @include u.px(gap, 18, 18, 18, 18); */
+    gap: 18px;
+}
+
+.fieldset {
+    display: grid;
+    margin-inline: auto;
+    width: 90%;
+
+    @include u.mw(sm) {
+        width: 80%;
+    }
+    @include u.mw(md) {
+        width: 70%;
+    }
+}
+
+.label {
+  font-size: 0.85em;
+    text-align: left;
+    margin-bottom: 0.65em;
+    margin-left: 0.5em;
+    font-weight: 500;
+    letter-spacing: 0.1ch;
+}
+
+.submitBtn {
+    margin-inline: auto;
+    font-weight: 500;
+    width: fit-content;
+    border: none !important;
+    /* @include u.px(mt, 45 - 18, 55 - 18, 55 - 18, 55 - 18); */
+    /* @include u.px(mb, 28 - 18, 40 - 18, 40 - 18, 40 - 18); */
+
+    font-size: 1rem;
+    margin-bottom: 10px;
+    margin-top: 27px;
+    padding: 0.75em 3em !important;
+    font-size: 1rem !important;
+
+    @include u.mw(sm) {
+        font-size: 1.25rem !important;
+        margin-bottom: 22px;
+        margin-top: 37px;
+    }
+}
+/* @include u.mw(sm) { */
+/* } */
+/* @include u.mw(md) { */
+/* } */
+/* @include u.mw(lg) { */
+/* } */
+
+.loader {
+    margin-right: 0.75rem;
+    width: 1rem;
+    height: 1rem;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.signupPrompt {
+    font-size: 0.875rem;
+
+    @extend .notice;
+
+    /* @include u.rm(text, 14, 20, 20, 20); */
+    font-size: 0.875rem;
+    color: u.clr('primary', 'strong');
+    font-weight: 600;
+    margin-bottom: 0 !important;
+
+    @include u.mw(sm) {
+        font-size: 1.25rem;
+    }
+}
+
+.signupLink {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-underline-offset: 0.4ch;
+
+    &:hover,
+    &:focus {
+        color: u.saturate(u.clr('primary', 'muted'), 30%);
+    }
+}

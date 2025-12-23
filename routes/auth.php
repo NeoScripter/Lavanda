@@ -1,18 +1,34 @@
 <?php
 
-use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\ProfileController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 use Illuminate\Support\Facades\Route;
 
 
 Route::middleware(['guest', 'admin.translations'])->group(function () {
-    Route::get('/login', [AuthController::class, 'index'])->name('login');
-    Route::post('/login', [AuthController::class, 'store'])->name('authenticate');
+    Route::get('/login', [AuthenticatedSessionController::class, 'index'])->name('login');
+    Route::post('/login', [AuthenticatedSessionController::class, 'store'])->name('authenticate');
+    Route::post('/signup', [RegisteredUserController::class, 'store'])->name('signup');
 });
 
+// Route::middleware(['auth'])->group(function () {
+//     Route::get('/email/verify', [EmailVerificationController::class, 'create'])
+//         ->name('verification.notice');
+
+//     Route::get('/email/verify/{id}/{hash}', [EmailVerificationController::class, 'show'])
+//         ->middleware(['signed'])
+//         ->name('verification.verify');
+
+//     Route::post('/email/verification-notification', [EmailVerificationController::class, 'update'])
+//         ->middleware(['throttle:6,1'])
+//         ->name('verification.send');
+// });
+
 Route::middleware(['auth', 'admin.translations'])->group(function () {
-    Route::post('/logout', [AuthController::class, 'destroy'])->name('logout');
+    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
     Route::patch('settings/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::put('settings/password', [PasswordController::class, 'update'])->name('password.update');

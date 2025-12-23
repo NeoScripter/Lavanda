@@ -11,31 +11,34 @@ import InputError from '../InputError/InputError';
 import Label from '../Label/Label';
 import PasswordInput from '../PasswordInput/PasswordInput';
 
-type LoginForm = {
+type SignupForm = {
+    name: string;
     email: string;
     password: string;
+    password_confirmation: string;
 };
 
-export default function Login() {
+export default function Signup() {
     const { showLoginModal } = useLoginModal();
     const { showSignupModal } = useSignupModal();
-
     const { data, setData, post, processing, errors, reset } = useForm<
-        Required<LoginForm>
+        Required<SignupForm>
     >({
+        name: '',
         email: '',
         password: '',
+        password_confirmation: '',
     });
 
     const handleClick = () => {
-        showSignupModal.value = true;
-        showLoginModal.value = false;
+        showSignupModal.value = false;
+        showLoginModal.value = true;
     };
 
     const submit = (e: TargetedEvent<HTMLFormElement, SubmitEvent>) => {
         e.preventDefault();
 
-        post(route('login'), {
+        post(route('signup'), {
             preserveScroll: true,
             onSuccess: () => {
                 router.flushAll();
@@ -47,10 +50,26 @@ export default function Login() {
 
     return (
         <FormLayout
-            heading="Добро пожаловать!"
-            intro="Для доступа ко всем разделам ресурса, пожалуйста, войдите в свой аккаунт."
+            heading="Регистрация"
+            intro="Пожалуйста, введите ваши данные для создания аккаунта"
         >
             <form onSubmit={submit}>
+                <div>
+                    <Label htmlFor="email">Имя</Label>
+                    <Input
+                        id="name"
+                        type="text"
+                        required
+                        autoFocus
+                        tabIndex={1}
+                        autoComplete="name"
+                        value={data.name}
+                        onChange={(e) => setData('name', e.currentTarget.value)}
+                        placeholder="Василий Быков"
+                    />
+                    <InputError message={errors.name} />
+                </div>
+
                 <div>
                     <Label htmlFor="email">Email</Label>
                     <Input
@@ -58,7 +77,7 @@ export default function Login() {
                         type="email"
                         required
                         autoFocus
-                        tabIndex={1}
+                        tabIndex={2}
                         autoComplete="email"
                         value={data.email}
                         onChange={(e) =>
@@ -74,7 +93,7 @@ export default function Login() {
                     <PasswordInput
                         id="password"
                         required
-                        tabIndex={2}
+                        tabIndex={3}
                         autoComplete="current-password"
                         value={data.password}
                         onChange={(e) =>
@@ -85,6 +104,26 @@ export default function Login() {
                     <InputError message={errors.password} />
                 </div>
 
+                <div>
+                    <Label htmlFor="password_confirmation">
+                        Подтвердите пароль
+                    </Label>
+                    <PasswordInput
+                        id="password_confirmation"
+                        required
+                        tabIndex={4}
+                        value={data.password_confirmation}
+                        onChange={(e) =>
+                            setData(
+                                'password_confirmation',
+                                e.currentTarget.value,
+                            )
+                        }
+                        placeholder="Подтверждение пароля"
+                    />
+                    <InputError message={errors.password_confirmation} />
+                </div>
+
                 <button
                     tabIndex={4}
                     disabled={processing}
@@ -92,17 +131,16 @@ export default function Login() {
                     className="primary-btn"
                 >
                     {processing && <LoaderCircle />}
-                    Войти
+                    Регистрация
                 </button>
                 <div>
                     <span>
-                        Если у вас еще нет личного кабинета, пожалуйста,
+                        Уже зарегистрированы?
                         <button
-                            type="button"
                             onClick={handleClick}
+                            type="button"
                         >
-                            {' '}
-                            зарегистрируйтесь.
+                            Войти
                         </button>
                     </span>
                 </div>
