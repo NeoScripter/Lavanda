@@ -34,14 +34,30 @@
 }
 
 .cardWrapper {
+    position: relative;
+    isolation: isolate;
     text-align: center;
     text-wrap: pretty;
     background-color: white;
+    cursor: pointer;
     @include u.shadow(3);
     @include u.px(rounded, 32, 32, 32, 32);
     @include u.px(pt, 44, 57, 59, 67);
     @include u.px(pb, 50, 46, 46, 56);
     @include u.px(px, 23, 43, 41, 40);
+
+    &:hover {
+        outline: 4px solid u.clr('primary', 'strong');
+    }
+}
+
+.cardLink {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    display: block;
+
+    @include u.size(100%);
 }
 
 .cardImgWrapper {

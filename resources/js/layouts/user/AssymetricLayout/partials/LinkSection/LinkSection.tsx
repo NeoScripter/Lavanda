@@ -1,4 +1,5 @@
 import LazyImage from '@/components/user/ui/LazyImage/LazyImage';
+import { Link } from '@inertiajs/react';
 import { FC } from 'react-dom/src';
 import css from './LinkSection.module.scss';
 
@@ -32,6 +33,11 @@ export default LinkSection;
 const LinkCard: FC<{ link: AssymetricSectionLink }> = ({ link }) => {
     return (
         <li class={css.cardWrapper}>
+            <Link
+                href={link.url}
+                prefetch
+                class={css.cardLink}
+            ></Link>
             <LazyImage
                 prtClass={css.cardImgWrapper}
                 imgClass={css.cardImg}

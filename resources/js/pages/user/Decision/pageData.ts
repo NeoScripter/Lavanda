@@ -50,7 +50,7 @@ export const assymetricSectionLinks: AssymetricSectionLink[] = [
         img: DecisionLink1,
         imgTiny: DecisionLink1Tiny,
         alt: 'Три фиолетовые свечи с кристаллами аметиста у основания',
-        url: '/decision',
+        url: route('decision.practice'),
     },
     {
         id: crypto.randomUUID(),
@@ -60,7 +60,7 @@ export const assymetricSectionLinks: AssymetricSectionLink[] = [
         img: DecisionLink2,
         imgTiny: DecisionLink2Tiny,
         alt: 'Рука держит фиолетовый кристалл аметиста, акварельная иллюстрация',
-        url: '/decision',
+        url: route('decision.experience'),
     },
     {
         id: crypto.randomUUID(),
