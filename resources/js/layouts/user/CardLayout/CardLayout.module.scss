@@ -4,6 +4,12 @@
     > section {
         isolation: isolate;
     }
+
+    :global(#navigation) {
+        @include u.mw(md) {
+            transform: translateX(-6%);
+        }
+    }
 }
 
 .noShadow {

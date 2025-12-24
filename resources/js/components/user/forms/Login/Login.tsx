@@ -10,6 +10,8 @@ import Input from '../Input/Input';
 import InputError from '../InputError/InputError';
 import Label from '../Label/Label';
 import PasswordInput from '../PasswordInput/PasswordInput';
+import css from './Login.module.scss';
+import OTPpassword from '../OPTInput';
 
 type LoginForm = {
     email: string;
