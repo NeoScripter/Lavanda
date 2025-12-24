@@ -31,8 +31,8 @@ const IntroSquareCard: FC<
                 <p>{content}</p>
 
                 <Link
-                    as="button"
                     href={url}
+                    prefetch
                     class={cn(css.link, "secondary-btn")}
                 >
                     Узнать больше

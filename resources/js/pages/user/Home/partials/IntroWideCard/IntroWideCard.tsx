@@ -52,8 +52,8 @@ const IntroWideCard: FC<
                 <p>{content}</p>
 
                 <Link
-                    as="button"
                     href={url}
+                    prefetch
                     class="secondary-btn"
                 >
                     Узнать больше
