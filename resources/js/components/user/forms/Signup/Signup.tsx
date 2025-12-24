@@ -11,6 +11,7 @@ import InputError from '../InputError/InputError';
 import Label from '../Label/Label';
 import PasswordInput from '../PasswordInput/PasswordInput';
 import RadioInput from '../RadioInput/RadioInput';
+import css from './Signup.module.scss';
 
 const genders = [
     { label: 'Не выбран', value: null },
@@ -21,6 +22,7 @@ const genders = [
 type SignupForm = {
     name: string;
     email: string;
+    birthday: string;
     gender: string | null;
     password: string;
     password_confirmation: string;
@@ -34,6 +36,7 @@ export default function Signup() {
     >({
         name: '',
         email: '',
+        birthday: '',
         gender: null,
         password: '',
         password_confirmation: '',
@@ -85,7 +88,6 @@ export default function Signup() {
                         id="email"
                         type="email"
                         required
-                        autoFocus
                         tabIndex={2}
                         autoComplete="email"
                         value={data.email}
@@ -95,6 +97,21 @@ export default function Signup() {
                         placeholder="email@example.com"
                     />
                     <InputError message={errors.email} />
+                </div>
+
+                <div>
+                    <Label htmlFor="birthday">День рождения</Label>
+                    <Input
+                        id="birthday"
+                        type="date"
+                        tabIndex={3}
+                        value={data.birthday}
+                        onChange={(e) =>
+                            setData('birthday', e.currentTarget.value)
+                        }
+                        className={css.birthdayInput}
+                    />
+                    <InputError message={errors.birthday} />
                 </div>
 
                 <RadioInput
@@ -109,7 +126,7 @@ export default function Signup() {
                     <PasswordInput
                         id="password"
                         required
-                        tabIndex={3}
+                        tabIndex={4}
                         autoComplete="current-password"
                         value={data.password}
                         onChange={(e) =>
@@ -127,7 +144,7 @@ export default function Signup() {
                     <PasswordInput
                         id="password_confirmation"
                         required
-                        tabIndex={4}
+                        tabIndex={5}
                         value={data.password_confirmation}
                         onChange={(e) =>
                             setData(
@@ -141,7 +158,7 @@ export default function Signup() {
                 </div>
 
                 <button
-                    tabIndex={4}
+                    tabIndex={6}
                     disabled={processing}
                     type="submit"
                     className="primary-btn"
