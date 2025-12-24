@@ -10,10 +10,18 @@ import Input from '../Input/Input';
 import InputError from '../InputError/InputError';
 import Label from '../Label/Label';
 import PasswordInput from '../PasswordInput/PasswordInput';
+import RadioInput from '../RadioInput/RadioInput';
+
+const genders = [
+    { label: 'Не выбран', value: null },
+    { label: 'Мужчина', value: 'male' },
+    { label: 'Женщина', value: 'female' },
+];
 
 type SignupForm = {
     name: string;
     email: string;
+    gender: string | null;
     password: string;
     password_confirmation: string;
 };
@@ -26,6 +34,7 @@ export default function Signup() {
     >({
         name: '',
         email: '',
+        gender: null,
         password: '',
         password_confirmation: '',
     });
@@ -87,6 +96,13 @@ export default function Signup() {
                     />
                     <InputError message={errors.email} />
                 </div>
+
+                <RadioInput
+                    selected={data.gender}
+                    setSelected={(value) => setData('gender', value)}
+                    options={genders}
+                    label="Выберите пол"
+                />
 
                 <div>
                     <Label htmlFor="password">Пароль</Label>

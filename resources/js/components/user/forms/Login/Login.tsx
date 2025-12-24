@@ -11,7 +11,6 @@ import InputError from '../InputError/InputError';
 import Label from '../Label/Label';
 import PasswordInput from '../PasswordInput/PasswordInput';
 import css from './Login.module.scss';
-import OTPpassword from '../OPTInput';
 
 type LoginForm = {
     email: string;
@@ -52,7 +51,10 @@ export default function Login() {
             heading="Добро пожаловать!"
             intro="Для доступа ко всем разделам ресурса, пожалуйста, войдите в свой аккаунт."
         >
-            <form onSubmit={submit}>
+            <form
+                className={css.wrapper}
+                onSubmit={submit}
+            >
                 <div>
                     <Label htmlFor="email">Email</Label>
                     <Input
