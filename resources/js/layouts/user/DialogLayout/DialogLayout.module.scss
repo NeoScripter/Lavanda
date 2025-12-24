@@ -38,15 +38,13 @@
 
     @include u.mw(sm) {
         height: max-content;
-        /* @include u.px(rounded, null, 32, 32, 32); */
         border-radius: 32px;
-        /* @include u.px(max-w, null, 603, 704, 704); */
         max-width: 603px;
         @include u.shadow(2);
         border: 1px solid u.clr('primary', 'muted');
 
         @include u.mw(sm) {
-            max-width: 704px;
+            max-width: 744px;
         }
     }
 

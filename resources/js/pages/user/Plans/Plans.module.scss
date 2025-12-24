@@ -1,0 +1,19 @@
+@use 'core' as u;
+
+.layout {
+    @include u.px(pt, 92, 204, 180, 189);
+
+    h2 {
+      color: u.clr('primary', 'strong');
+    }
+}
+
+.bgLoader {
+    position: absolute;
+    inset: 0;
+    @include u.size(100%);
+}
+
+.bgImage {
+    object-position: top left;
+}

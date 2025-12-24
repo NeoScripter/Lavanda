@@ -8,11 +8,12 @@ import BgTbTiny from '@/assets/images/assymetric-layout/hero-bg-tb-tiny.webp';
 import BgTb from '@/assets/images/assymetric-layout/hero-bg-tb.webp';
 import AnimatedOutline from '@/components/user/ui/AnimatedOutline/AnimatedOutline';
 import BgLoader from '@/components/user/ui/BgLoader/BgLoader';
+import { BgLoaderImg } from '@/lib/types/shared';
 import { cn } from '@/utils/cn';
+import { Link } from '@inertiajs/react';
+import { ComponentChildren } from 'preact';
 import { FC } from 'react-dom/src';
 import css from './HeroSection.module.scss';
-import { BgLoaderImg } from '@/lib/types/shared';
-import { ComponentChildren } from 'preact';
 
 type AssymetricHeroSectionProps = {
     heading: string;
@@ -64,7 +65,13 @@ const HeroSection: FC<AssymetricHeroSectionProps> = ({
                 <p class={css.intro}>{description}</p>
 
                 <div class={css.btnGroup}>
-                    <button class={'primary-btn'}>Купить подписку</button>
+                    <Link
+                        href={route('plans')}
+                        prefetch
+                        class={'primary-btn'}
+                    >
+                        Купить подписку
+                    </Link>
                 </div>
             </div>
         </section>

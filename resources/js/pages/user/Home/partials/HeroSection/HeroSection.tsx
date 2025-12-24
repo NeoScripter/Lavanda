@@ -14,6 +14,7 @@ import { heroCards } from '@/lib/data/heroCards';
 import { cn } from '@/utils/cn';
 import css from './HeroSection.module.scss';
 import Card from './partials/Card/Card';
+import { Link } from '@inertiajs/react';
 
 const HeroSection = () => {
     return (
@@ -65,7 +66,13 @@ const HeroSection = () => {
                 </p>
 
                 <div class={css.btnGroup}>
-                    <button class={'primary-btn'}>Купить подписку</button>
+                    <Link
+                        href={route('plans')}
+                        prefetch
+                        class={'primary-btn'}
+                    >
+                        Купить подписку
+                    </Link>
                     <button class={css.infoBtn}>
                         <PlayBtn />
                         <span class={css.underline}>Узнать больше</span>

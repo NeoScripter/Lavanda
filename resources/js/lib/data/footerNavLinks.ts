@@ -18,7 +18,7 @@ export const footerNavLinks: FooterNavLinkType[] = [
         title: 'Подписка',
         description:
             'Выберите тариф на месяц или год. Поддержка всегда под рукой.',
-        url: '/',
+        url: route('plans'),
     },
     {
         id: 'contacts',
@@ -32,6 +32,6 @@ export const footerNavLinks: FooterNavLinkType[] = [
         title: 'Полезное',
         description:
             'Подборка ссылок и материалов для тех, кто хочет больше ресурсов для спокойствия и вдохновения.',
-        url: '/',
+        url: route('toolkit'),
     },
 ];

@@ -1,45 +1,5 @@
 @use 'core' as u;
 
-.wrapper {
-    @include u.px(mb, 77, 153, 113, 100);
-    position: relative;
-    isolation: isolate;
-}
-
-.textWrapper {
-    margin-inline: auto;
-    text-align: center;
-    @include u.px(mb, 37, 64, 57, 58);
-    @include u.px(w, null, 567, 567, 606);
-}
-
-.heading {
-    text-transform: uppercase;
-    color: u.clr('foreground', 'strong');
-    @include u.px(mb, 28, 36, 36, 36);
-}
-
-.description {
-    margin-bottom: 1ch;
-}
-
-.activeUsersNote {
-    @include u.rm(text, 12, 15, 15, 15);
-}
-
-.plans {
-    --col: 0;
-    display: grid;
-    place-content: center;
-    @include u.px(gap, 50, 60, 27, 27);
-    @include u.px(--col, 326, 389, 389, 389);
-
-    grid-template-columns: var(--col);
-    @include u.mw(md) {
-        grid-template-columns: repeat(3, var(--col));
-    }
-}
-
 .decorPlans1 {
     display: none;
 
