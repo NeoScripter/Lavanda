@@ -1,12 +1,12 @@
 import Logo from '@/components/user/ui/Logo/Logo';
+import SocialLinks from '@/components/user/ui/SocialLinks/SocialLinks';
 import useMediaQuery from '@/hooks/useMediaQuery';
-import { contactLinks, socialLinks } from '@/lib/data/footerLinks';
+import { contactLinks } from '@/lib/data/footerLinks';
 import { cn } from '@/utils/cn';
 import { FC } from 'react-dom/src';
 import css from './AppFooter.module.scss';
 import ContactLink from './partials/ContactLink/ContactLink';
 import FooterMenu from './partials/FooterMenu/FooterMenu';
-import SocialLink from './partials/SocialLink/SocialLink';
 
 const AppFooter: FC<{ hasMenu?: boolean }> = ({ hasMenu = true }) => {
     const isDesktop = useMediaQuery('(min-width: 1110px)');
@@ -39,14 +39,7 @@ export default AppFooter;
 
 export const Links = () => (
     <nav class={css.linkWrapper}>
-        <ul class={css.socialLinks}>
-            {socialLinks.map((link) => (
-                <SocialLink
-                    key={link.id}
-                    item={link}
-                />
-            ))}
-        </ul>
+        <SocialLinks className={css.socialLinks} />
 
         <ul class={css.contacts}>
             {contactLinks.map((link) => (

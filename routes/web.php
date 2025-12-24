@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\User\AccountController;
+use App\Http\Controllers\User\ContactPageController;
 use App\Http\Controllers\User\Decision\DecisionController;
 use App\Http\Controllers\User\Decision\ExperienceController;
 use App\Http\Controllers\User\Decision\PracticeController;
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', HomeController::class)->name('home');
 Route::get('/account', AccountController::class)->middleware('auth')->name('account');
 Route::get('/plans', PlansController::class)->name('plans');
+Route::get('/contacts', ContactPageController::class)->name('contacts');
 
 Route::prefix('/decision')->name('decision.')->group(function () {
     Route::get('/', DecisionController::class)->name('index'); // решение

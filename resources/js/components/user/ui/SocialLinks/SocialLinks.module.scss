@@ -1,0 +1,11 @@
+@use 'core' as u;
+
+.socialLinks {
+    @include u.fxc();
+    @include u.px(mb, 33, 34, 0);
+    @include u.px(gap, 6, 8, 8, 8);
+
+    @include u.mw(sm) {
+        justify-content: start;
+    }
+}
