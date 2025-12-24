@@ -1,0 +1,56 @@
+@use 'core' as u;
+
+.wrapper {
+    --padding: 0;
+    position: relative;
+    overflow: hidden;
+    overflow: clip;
+    isolation: isolate;
+    background-color: u.opacify(white, 50);
+    backdrop-filter: blur(10px);
+    max-width: calc(100% - (var(--padding) * 2));
+    margin-inline: auto;
+    @include u.px(rounded, null, null, 36, 36);
+    @include u.px(mt, null, null, 37, 32);
+    @include u.px(--padding, null, null, 27, 45);
+    @include u.px(min-h, 608, 785, 742, 830);
+    @include u.px(pt, 103, 227, 180, 190);
+    @include u.px(px, 11, 64, 100, 180);
+    @include u.px(mb, 274, 316, 100, 100);
+    @include u.shadow(3);
+
+    @include u.mw(md) {
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+    }
+}
+
+.leftBlob {
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translate(-25%, -25%);
+    @include u.px(w, 557, 602, 602, 681);
+    @include u.px(h, 540, 584, 584, 661);
+
+    @include u.mw(sm) {
+        transform: translate(-15%, -15%);
+    }
+    @include u.mw(md) {
+        transform: translate(-5%, -5%);
+    }
+}
+
+.rightBlob {
+    position: absolute;
+    right: 0;
+    @include u.px(top, 257, 294, 168, 196);
+    transform: translateX(30%);
+    @include u.px(w, 409, 602, 602, 718);
+    @include u.px(h, 397, 584, 584, 697);
+
+    @include u.mw(md) {
+        transform: translateX(10%);
+    }
+}

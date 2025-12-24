@@ -15,6 +15,7 @@
     @include u.px(pb, 27, 30, 30, 30);
     @include u.px(pl, null, null, 73, 132);
     @include u.px(mb, 162, 249, 248, 266);
+    @include u.shadow(3);
 }
 
 .bgImage {

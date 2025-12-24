@@ -6,20 +6,36 @@
     position: relative;
 
     > * {
-      margin-inline: auto;
+        margin-inline: auto;
     }
 }
 
 .heading {
     @include u.px(mb, 60, 60, 44, 52);
-    @include u.px(max-w, null, 621, 1180, 1180);
+    /* @include u.px(max-w, null, null, 1180, 1244); */
+
+    @include u.mw(sm) {
+        max-width: 90%;
+    }
+    @include u.mw(md) {
+        max-width: 80%;
+    }
+    @include u.mw(lg) {
+        max-width: 70%;
+    }
 }
 
 .prgsParent {
-    @include u.px(max-w, null, 600, 700, 1230);
+    /* @include u.px(max-w, null, 600, 700, 1230); */
     text-wrap: pretty;
 
+    @include u.mw(sm) {
+        max-width: 90%;
+    }
+    @include u.mw(md) {
+        max-width: 70%;
+    }
     > * + * {
-      margin-top: 1.5em;
+        margin-top: 1.5em;
     }
 }

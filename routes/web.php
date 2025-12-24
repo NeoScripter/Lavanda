@@ -5,6 +5,7 @@ use App\Http\Controllers\User\ContactPageController;
 use App\Http\Controllers\User\Decision\DecisionController;
 use App\Http\Controllers\User\Decision\ExperienceController;
 use App\Http\Controllers\User\Decision\PracticeController;
+use App\Http\Controllers\User\Decision\RunesController;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\PlansController;
 use App\Http\Controllers\User\RelaxationController;
@@ -21,7 +22,7 @@ Route::prefix('/decision')->name('decision.')->group(function () {
     Route::get('/', DecisionController::class)->name('index'); // решение
     Route::get('/practice', PracticeController::class)->name('practice'); // практика
     Route::get('/experience', ExperienceController::class)->name('experience'); // опыт автора
-    // Route::get('/runes', ...)->name('runes');// руны
+    Route::get('/runes', RunesController::class)->name('runes'); // руны
     // Route::get('/readings', ...)->name('readings'); // расклад карт
     // Route::get('/iching', ...)->name('iching'); // книга перемен
     // Route::get('/games', ...)->name('games'); // игры разума

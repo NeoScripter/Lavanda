@@ -41,7 +41,7 @@ export const navLinks: NavLinkType[] = [
                 id: crypto.randomUUID(),
                 label: 'Руны ',
                 type: 'link',
-                href: '/',
+                href: route('decision.runes'),
             },
             {
                 id: crypto.randomUUID(),

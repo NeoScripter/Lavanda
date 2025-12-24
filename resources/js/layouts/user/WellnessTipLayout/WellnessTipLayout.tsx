@@ -5,6 +5,7 @@ import BgMb from '@/assets/images/assymetric-layout/mb-bg.webp';
 import BgTbTiny from '@/assets/images/assymetric-layout/tb-bg-tiny.webp';
 import BgTb from '@/assets/images/assymetric-layout/tb-bg.webp';
 import BgLoader from '@/components/user/ui/BgLoader/BgLoader';
+import Narrative from '@/components/user/ui/Narrative/Narrative';
 import AppLayout from '@/layouts/user/AppLayout/AppLayout';
 import { BgLoaderImg } from '@/lib/types/shared';
 import { WellnessTip } from '@/types/model';
@@ -14,7 +15,6 @@ import { ComponentChildren } from 'preact';
 import { FC } from 'react-dom/src';
 import css from './WellnessTipLayout.module.scss';
 import HeroSection from './partials/HeroSection/HeroSection';
-import IntroSection from './partials/IntroSection/IntroSection';
 import WellnessTipSection from './partials/LinkSection/LinkSection';
 
 export type WellnessTipLayout = {
@@ -25,7 +25,6 @@ export type WellnessTipLayout = {
     heroDecor: ComponentChildren;
     introHeading?: string;
     introIntros?: string[];
-    wellnessTips: WellnessTip[];
     children?: ComponentChildren;
 };
 
@@ -37,7 +36,6 @@ const WellnessTipLayout: FC<WellnessTipLayout> = ({
     heroDecor,
     introHeading,
     introIntros,
-    wellnessTips,
     children,
 }) => {
     return (
@@ -59,9 +57,9 @@ const WellnessTipLayout: FC<WellnessTipLayout> = ({
                 decorImg={heroDecor}
             />
             {introHeading && introIntros && (
-                <IntroSection
+                <Narrative
                     heading={introHeading}
-                    intros={introIntros}
+                    prgs={introIntros}
                 />
             )}
             <WellnessTipSection />
