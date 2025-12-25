@@ -1,0 +1,19 @@
+@use 'core' as u;
+
+.wrapper {
+    @include u.rm(text, 12, 15, 15, 15);
+}
+
+.menu {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.75em;
+
+    > * + * {
+      &::before {
+        content: '>';
+        margin-right: 0.75em;
+      }
+    }
+}

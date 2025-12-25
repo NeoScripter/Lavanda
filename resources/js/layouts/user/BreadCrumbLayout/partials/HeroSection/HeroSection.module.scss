@@ -11,10 +11,10 @@
     max-width: calc(100% - (var(--padding) * 2));
     margin-inline: auto;
     @include u.px(rounded, null, null, 36, 36);
-    @include u.px(mt, null, null, 37, 32);
+    @include u.px(mt, null, null, 47, 32);
     @include u.px(--padding, null, null, 27, 45);
     @include u.px(min-h, 608, 785, 742, 830);
-    @include u.px(pt, 97, 177, 96, 145);
+    @include u.px(pt, 97, 197, 116, 145);
     @include u.px(px, 11, 64, 100, 180);
     @include u.px(mb, 274, 316, 100, 100);
     @include u.shadow(3);
@@ -27,6 +27,7 @@
 }
 
 .leftBlob {
+    pointer-events: none;
     position: absolute;
     left: 0;
     top: 0;
@@ -43,6 +44,7 @@
 }
 
 .rightBlob {
+    pointer-events: none;
     position: absolute;
     right: 0;
     @include u.px(top, 257, 294, 168, 196);

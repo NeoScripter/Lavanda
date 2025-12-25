@@ -1,10 +1,15 @@
 import { cn } from '@/utils/cn';
 import css from './HeroSection.module.scss';
+import BreadCrumbs from '@/components/user/ui/BreadCrumbs/BreadCrumbs';
+// import ForegroundDkTiny from "@/assets/images/runes/foreground-dk-tiny.webp";
+// import ForegroundDk from "@/assets/images/runes/foreground-dk.webp";
+// import ForegroundMbTiny from "@/assets/images/runes/foreground-mb-tiny.webp";
+// import ForegroundMb from "@/assets/images/runes/foreground-mb.webp";
 
 const HeroSection = () => {
     return (
         <section class={cn(css.wrapper, 'full-bleed')}>
-            This is hero section
+            <BreadCrumbs linkLabels={['Решение', 'Спросить у рун']} />
 
             <LeftBlob />
             <RightBlob />
@@ -22,6 +27,7 @@ const LeftBlob = () => {
             viewBox="0 0 441 384"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
             class={css.leftBlob}
         >
             <path
@@ -43,6 +49,7 @@ const RightBlob = () => {
             viewBox="0 0 486 578"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
             class={css.rightBlob}
         >
             <path
