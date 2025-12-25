@@ -1,8 +1,10 @@
-import { ContactLinkType } from '@/lib/data/footerLinks';
 import { FC } from 'preact/compat';
+import { ContactLinkType } from '../../contactLinks';
 import css from './ContactLink.module.scss';
 
 const ContactLink: FC<{ item: ContactLinkType }> = ({ item }) => {
+    const Icon = item.icon;
+
     return (
         <li>
             <a
@@ -10,10 +12,7 @@ const ContactLink: FC<{ item: ContactLinkType }> = ({ item }) => {
                 class={css.contactLink}
                 target="_blank"
             >
-                <img
-                    src={item.icon}
-                    alt={item.label}
-                />
+                <Icon />
                 {item.text}
             </a>
         </li>

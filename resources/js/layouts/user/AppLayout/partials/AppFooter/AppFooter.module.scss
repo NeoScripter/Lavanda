@@ -44,8 +44,6 @@
 }
 
 .contacts {
-    display: grid;
-    @include u.px(gap, 8, 16, 16, 16);
     @include u.px(mb, 24, 42, 0, 0);
     @include u.rm(text, 12, 20, 20, 20);
 }

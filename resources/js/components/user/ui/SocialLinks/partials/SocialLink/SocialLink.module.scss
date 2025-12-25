@@ -2,7 +2,8 @@
 @use 'sass:color';
 
 .socialLink {
-    background-color: u.clr('primary', 'muted');
+    --bg-color: hsla(269, 18%, 55%, 1);
+    background-color: var(--bg-color);
     @include u.px(w, 29, 44, 44, 44);
     @include u.px(h, 29, 44, 44, 44);
     @include u.px(rounded, 8, 8, 8, 8);
@@ -11,7 +12,7 @@
 
     &:hover,
     &:focus-visible {
-        background-color: u.saturate(u.clr('primary', 'muted'), 30%);
+        background-color: hsl(from var(--bg-color) h calc(s + 30) l)
     }
 
     > img {

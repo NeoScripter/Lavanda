@@ -5,13 +5,14 @@ import css from './SocialLinks.module.scss';
 import SocialLink from './partials/SocialLink/SocialLink';
 import { socialLinks } from './socialLinks';
 
-const SocialLinks: FC<NodeProps> = ({ className }) => {
+const SocialLinks: FC<NodeProps<{bgColor?: string}>> = ({ className, bgColor }) => {
     return (
         <ul class={cn(css.socialLinks, className)}>
             {socialLinks.map((link) => (
                 <SocialLink
                     key={link.id}
                     item={link}
+                    bgColor={bgColor}
                 />
             ))}
         </ul>

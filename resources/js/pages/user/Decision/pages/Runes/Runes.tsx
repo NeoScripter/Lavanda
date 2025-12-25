@@ -1,4 +1,5 @@
 import BreadCrumbLayout from '@/layouts/user/BreadCrumbLayout/BreadCrumbLayout';
+ "@/assets/images/runes/foreground.png"
 
 const Runes = () => {
     return (

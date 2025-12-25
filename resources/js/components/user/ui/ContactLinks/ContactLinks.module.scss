@@ -1,0 +1,6 @@
+@use 'core' as u;
+
+.contacts {
+    display: grid;
+    @include u.px(gap, 8, 16, 16, 16);
+}

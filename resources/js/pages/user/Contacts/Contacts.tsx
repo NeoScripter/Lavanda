@@ -4,10 +4,11 @@ import BackgroundMb from '@/assets/images/contacts/background-mb.webp';
 import BackgroundTbTiny from '@/assets/images/contacts/background-tb-tiny.webp';
 import BackgroundTb from '@/assets/images/contacts/background-tb.webp';
 import BgLoader from '@/components/user/ui/BgLoader/BgLoader';
+import ContactLinks from '@/components/user/ui/ContactLinks/ContactLinks';
+import SocialLinks from '@/components/user/ui/SocialLinks';
 import AppLayout from '@/layouts/user/AppLayout/AppLayout';
 import { cn } from '@/utils/cn';
 import css from './Contacts.module.scss';
-
 
 const Contacts = () => {
     return (
@@ -16,7 +17,20 @@ const Contacts = () => {
             variation="dark"
             className={css.layout}
         >
-            <section>this is the contacts page</section>
+            <section class={css.wrapper}>
+                <h1 class={css.heading}>Контакты</h1>
+                <p class={css.intro}>
+                    Если у вас возникли вопросы, пожалуйста, свяжитесь с нами
+                    любым удобным для вас способом.
+                </p>
+
+                <ContactLinks className={css.contactLinks} />
+
+                <SocialLinks
+                    className={css.socialLinks}
+                    bgColor="hsl(264, 34%, 55%)"
+                />
+            </section>
 
             <BgLoader
                 prtClass={cn(css.bgLoader, 'full-bleed')}

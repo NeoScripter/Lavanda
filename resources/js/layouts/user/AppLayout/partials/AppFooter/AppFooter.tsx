@@ -1,11 +1,10 @@
+import ContactLinks from '@/components/user/ui/ContactLinks/ContactLinks';
 import Logo from '@/components/user/ui/Logo/Logo';
 import SocialLinks from '@/components/user/ui/SocialLinks/SocialLinks';
 import useMediaQuery from '@/hooks/useMediaQuery';
-import { contactLinks } from '@/lib/data/footerLinks';
 import { cn } from '@/utils/cn';
 import { FC } from 'react-dom/src';
 import css from './AppFooter.module.scss';
-import ContactLink from './partials/ContactLink/ContactLink';
 import FooterMenu from './partials/FooterMenu/FooterMenu';
 
 const AppFooter: FC<{ hasMenu?: boolean }> = ({ hasMenu = true }) => {
@@ -41,13 +40,6 @@ export const Links = () => (
     <nav class={css.linkWrapper}>
         <SocialLinks className={css.socialLinks} />
 
-        <ul class={css.contacts}>
-            {contactLinks.map((link) => (
-                <ContactLink
-                    key={link.id}
-                    item={link}
-                />
-            ))}
-        </ul>
+        <ContactLinks className={css.contacts} />
     </nav>
 );
