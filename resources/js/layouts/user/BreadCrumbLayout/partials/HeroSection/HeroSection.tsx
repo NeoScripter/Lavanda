@@ -4,7 +4,6 @@ import ForegroundMbTiny from '@/assets/images/runes/foreground-mb-tiny.webp';
 import ForegroundMb from '@/assets/images/runes/foreground-mb.webp';
 import BgLoader from '@/components/user/ui/BgLoader/BgLoader';
 import BreadCrumbs from '@/components/user/ui/BreadCrumbs/BreadCrumbs';
-import Narrative from '@/components/user/ui/Narrative/Narrative';
 import { NodeProps } from '@/types/nodeProps';
 import { cn } from '@/utils/cn';
 import { FC } from 'preact/compat';

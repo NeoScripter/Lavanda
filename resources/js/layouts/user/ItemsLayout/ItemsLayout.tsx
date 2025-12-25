@@ -6,13 +6,13 @@ import { cn } from '@/utils/cn';
 import { Transition } from '@headlessui/react';
 import { usePage } from '@inertiajs/react';
 import { FC, useMemo, useRef, useState } from 'preact/compat';
-import { useCurrentSlideId } from '../../CurrentSlideProvider';
-import css from './ItemSection.module.scss';
+import { useCurrentSlideId } from './CurrentSlideProvider';
+import css from './ItemsLayout.module.scss';
 import { getRandomImage, splitItemsBySlide } from './helpers';
 import { ImageObj, images } from './images';
 const SLIDE_DURATION = 400;
 
-const ItemSection: FC<NodeProps> = ({ className, children }) => {
+const ItemsLayout: FC<NodeProps> = ({ className, children }) => {
     const { items } = usePage<{ items: ExperienceItem[] }>().props;
     const prevIdx = useRef<number | null>(null);
     const { currentSlideId } = useCurrentSlideId();
@@ -65,6 +65,7 @@ const ItemSection: FC<NodeProps> = ({ className, children }) => {
                         key={item.id}
                         item={item}
                         onClick={() => handleClick(item.id)}
+                        selected={currentSlideId.value === item.id}
                     />
                 );
             })}
@@ -93,19 +94,20 @@ const ItemSection: FC<NodeProps> = ({ className, children }) => {
     );
 };
 
-export default ItemSection;
+export default ItemsLayout;
 
 const ItemCard: FC<{
     item: ExperienceItem;
     img: ImageObj;
     onClick: () => void;
-}> = ({ item, img, onClick }) => {
+    selected?: boolean
+}> = ({ item, img, onClick, selected = false }) => {
     const image = useMemo(() => img, []);
 
     return (
         <li
             onClick={onClick}
-            class={css.card}
+            class={cn(css.card, selected && css.selectedCard)}
         >
             <LazyImage
                 prtClass={css.cardOverlay}

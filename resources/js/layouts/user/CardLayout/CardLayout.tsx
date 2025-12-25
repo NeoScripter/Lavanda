@@ -1,13 +1,13 @@
 import AppLayout from '@/layouts/user/AppLayout/AppLayout';
 import { BgLoaderImg } from '@/lib/types/shared';
+import { cn } from '@/utils/cn';
 import { Head } from '@inertiajs/react';
 import { ComponentChildren } from 'preact';
 import { FC } from 'react-dom/src';
+import ItemsLayout from '../ItemsLayout';
 import css from './CardLayout.module.scss';
-import { CurrentSlideProvider } from './CurrentSlideProvider';
 import HeroSection from './partials/HeroSection';
-import ItemSection from './partials/ItemSection';
-import { cn } from '@/utils/cn';
+import { CurrentSlideProvider } from '../ItemsLayout/CurrentSlideProvider';
 
 export type CardLayoutProps = {
     headTitle: string;
@@ -26,7 +26,7 @@ const CardLayout: FC<CardLayoutProps> = ({
     heroFgImg,
     children,
     isHigh = false,
-    imgClass
+    imgClass,
 }) => {
     return (
         <AppLayout className={css.layout}>
@@ -38,7 +38,9 @@ const CardLayout: FC<CardLayoutProps> = ({
                 imgClass={cn(imgClass, isHigh ? css.noShadow : '')}
             />
             <CurrentSlideProvider>
-                <ItemSection className={cn(isHigh ? css.shifted : '')}>{children}</ItemSection>
+                <ItemsLayout className={cn(isHigh ? css.shifted : '')}>
+                    {children}
+                </ItemsLayout>
             </CurrentSlideProvider>
         </AppLayout>
     );

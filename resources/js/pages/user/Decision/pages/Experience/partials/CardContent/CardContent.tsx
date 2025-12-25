@@ -1,8 +1,8 @@
 import LazyImage from '@/components/user/ui/LazyImage/LazyImage';
-import { useCurrentSlideId } from '@/layouts/user/CardLayout/CurrentSlideProvider';
 import { ExperienceItem } from '@/types/model';
 import { usePage } from '@inertiajs/react';
 import css from './CardContent.module.scss';
+import { useCurrentSlideId } from '@/layouts/user/ItemsLayout/CurrentSlideProvider';
 
 const CardContent = () => {
     const { items } = usePage<{ items: ExperienceItem[] }>().props;

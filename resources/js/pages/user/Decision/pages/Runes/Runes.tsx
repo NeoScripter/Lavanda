@@ -9,6 +9,7 @@ const Runes = () => {
             intro={intro}
             imgClass={css.heroForeground}
         >
+
         </BreadCrumbLayout>
     );
 };

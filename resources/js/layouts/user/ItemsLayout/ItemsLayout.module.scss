@@ -84,6 +84,20 @@
     inset: 0;
     z-index: -2;
 }
+
+.selectedCard {
+    &::before {
+        opacity: 1;
+    }
+    &::after {
+        opacity: 0;
+    }
+    color: white;
+
+    > * {
+        color: white;
+    }
+}
 .cardHeading {
     text-transform: uppercase;
     @include u.rm(text, 24, 24, 24, 24);

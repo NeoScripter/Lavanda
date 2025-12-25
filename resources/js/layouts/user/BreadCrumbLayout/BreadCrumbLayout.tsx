@@ -10,16 +10,14 @@ import { cn } from '@/utils/cn';
 import { Head } from '@inertiajs/react';
 import { FC } from 'preact/compat';
 import AppLayout from '../AppLayout/AppLayout';
+import ItemsLayout from '../ItemsLayout';
+import { CurrentSlideProvider } from '../ItemsLayout/CurrentSlideProvider';
 import css from './BreadCrumbLayout.module.scss';
 import HeroSection from './partials/HeroSection';
 
-const BreadCrumbLayout: FC<NodeProps<{ heading: string; intro: string; imgClass?: string }>> = ({
-    className,
-    children,
-    heading,
-    intro,
-    imgClass
-}) => {
+const BreadCrumbLayout: FC<
+    NodeProps<{ heading: string; intro: string; imgClass?: string }>
+> = ({ className, children, heading, intro, imgClass }) => {
     return (
         <AppLayout
             variation="white"
@@ -42,6 +40,9 @@ const BreadCrumbLayout: FC<NodeProps<{ heading: string; intro: string; imgClass?
                 imgClass={imgClass}
             />
 
+            <CurrentSlideProvider>
+                <ItemsLayout>{children}</ItemsLayout>
+            </CurrentSlideProvider>
             {children}
         </AppLayout>
     );
