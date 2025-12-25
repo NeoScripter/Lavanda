@@ -1,6 +1,11 @@
 @use 'core' as u;
 
 .wrapper {
+    width: fit-content;
+    margin-inline: auto;
+    @include u.mw(md) {
+        margin-inline: 0;
+    }
     @include u.rm(text, 12, 15, 15, 15);
 }
 
@@ -11,9 +16,26 @@
     gap: 0.75em;
 
     > * + * {
-      &::before {
-        content: '>';
-        margin-right: 0.75em;
-      }
+        &::before {
+            content: '>';
+            margin-right: 0.75em;
+        }
+    }
+}
+
+.pageLink {
+    @include u.underline-slide();
+}
+.currentPageLink {
+    color: u.clr('primary', 'strong');
+    font-weight: 600;
+    cursor: default;
+    pointer-events: none;
+
+    &:hover,
+    &:focus-visible {
+        &::after {
+            content: none;
+        }
     }
 }

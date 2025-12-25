@@ -1,18 +1,43 @@
-import { cn } from '@/utils/cn';
-import css from './HeroSection.module.scss';
+import ForegroundDkTiny from '@/assets/images/runes/foreground-dk-tiny.webp';
+import ForegroundDk from '@/assets/images/runes/foreground-dk.webp';
+import ForegroundMbTiny from '@/assets/images/runes/foreground-mb-tiny.webp';
+import ForegroundMb from '@/assets/images/runes/foreground-mb.webp';
+import BgLoader from '@/components/user/ui/BgLoader/BgLoader';
 import BreadCrumbs from '@/components/user/ui/BreadCrumbs/BreadCrumbs';
-// import ForegroundDkTiny from "@/assets/images/runes/foreground-dk-tiny.webp";
-// import ForegroundDk from "@/assets/images/runes/foreground-dk.webp";
-// import ForegroundMbTiny from "@/assets/images/runes/foreground-mb-tiny.webp";
-// import ForegroundMb from "@/assets/images/runes/foreground-mb.webp";
+import Narrative from '@/components/user/ui/Narrative/Narrative';
+import { NodeProps } from '@/types/nodeProps';
+import { cn } from '@/utils/cn';
+import { FC } from 'preact/compat';
+import css from './HeroSection.module.scss';
 
-const HeroSection = () => {
+const HeroSection: FC<NodeProps<{ imgClass?: string, heading: string, intro: string }>> = ({
+    className,
+    imgClass,
+    heading,
+    intro
+}) => {
     return (
-        <section class={cn(css.wrapper, 'full-bleed')}>
-            <BreadCrumbs linkLabels={['Решение', 'Спросить у рун']} />
-
+        <section class={cn(css.wrapper, 'full-bleed', className)}>
             <LeftBlob />
             <RightBlob />
+
+            <BreadCrumbs className={css.breadcrumbs} />
+
+            <BgLoader
+                prtClass={cn(css.bgLoader, imgClass)}
+                imgClass={css.bgFgImage}
+                dk={ForegroundDk}
+                dkTiny={ForegroundDkTiny}
+                tb={ForegroundDk}
+                tbTiny={ForegroundDkTiny}
+                mb={ForegroundMb}
+                mbTiny={ForegroundMbTiny}
+            />
+
+            <div class={css.textContent}>
+                <h1>{heading}</h1>
+                <p>{intro}</p>
+            </div>
         </section>
     );
 };

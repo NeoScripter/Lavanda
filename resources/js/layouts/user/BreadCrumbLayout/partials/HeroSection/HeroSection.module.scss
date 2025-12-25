@@ -15,15 +15,10 @@
     @include u.px(--padding, null, null, 27, 45);
     @include u.px(min-h, 608, 785, 742, 830);
     @include u.px(pt, 97, 197, 116, 145);
+    @include u.px(pb, 132, 128, 235, 282);
     @include u.px(px, 11, 64, 100, 180);
     @include u.px(mb, 274, 316, 100, 100);
     @include u.shadow(3);
-
-    @include u.mw(md) {
-        display: flex;
-        align-items: start;
-        justify-content: space-between;
-    }
 }
 
 .leftBlob {
@@ -31,6 +26,7 @@
     position: absolute;
     left: 0;
     top: 0;
+    z-index: -1;
     transform: translate(-25%, -25%);
     @include u.px(w, 557, 602, 602, 681);
     @include u.px(h, 540, 584, 584, 661);
@@ -47,6 +43,7 @@
     pointer-events: none;
     position: absolute;
     right: 0;
+    z-index: -1;
     @include u.px(top, 257, 294, 168, 196);
     transform: translateX(30%);
     @include u.px(w, 409, 602, 602, 718);
@@ -55,4 +52,38 @@
     @include u.mw(md) {
         transform: translateX(10%);
     }
+}
+
+.breadcrumbs {
+    @include u.px(mb, 29, 36, 94, 75);
+}
+
+.bgLoader {
+    margin-inline: auto;
+    z-index: -1;
+    @include u.px(right, null, null, 88, 136);
+    @include u.px(top, null, null, 97, 107);
+
+    @include u.mw(sm) {
+        width: 80%;
+    }
+
+    @include u.mw(md) {
+        position: absolute;
+        margin-right: 0;
+    }
+}
+
+.textContent {
+    text-align: center;
+    @include u.px(mt, 28, 35, 0);
+
+    @include u.mw(md) {
+        text-align: left;
+        max-width: 50%;
+    }
+}
+
+.bgFgImage {
+    object-fit: contain;
 }

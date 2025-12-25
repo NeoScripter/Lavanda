@@ -13,7 +13,13 @@ import AppLayout from '../AppLayout/AppLayout';
 import css from './BreadCrumbLayout.module.scss';
 import HeroSection from './partials/HeroSection';
 
-const BreadCrumbLayout: FC<NodeProps> = ({ className, children }) => {
+const BreadCrumbLayout: FC<NodeProps<{ heading: string; intro: string; imgClass?: string }>> = ({
+    className,
+    children,
+    heading,
+    intro,
+    imgClass
+}) => {
     return (
         <AppLayout
             variation="white"
@@ -30,7 +36,11 @@ const BreadCrumbLayout: FC<NodeProps> = ({ className, children }) => {
                 mbTiny={BgMbTiny}
             />
 
-            <HeroSection />
+            <HeroSection
+                heading={heading}
+                intro={intro}
+                imgClass={imgClass}
+            />
 
             {children}
         </AppLayout>

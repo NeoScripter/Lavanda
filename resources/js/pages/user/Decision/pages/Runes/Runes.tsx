@@ -1,10 +1,14 @@
 import BreadCrumbLayout from '@/layouts/user/BreadCrumbLayout/BreadCrumbLayout';
- "@/assets/images/runes/foreground.png"
+import { heading, intro } from './pageData';
+import css from './Runes.module.scss';
 
 const Runes = () => {
     return (
-        <BreadCrumbLayout>
-            <div>this is runes page</div>
+        <BreadCrumbLayout
+            heading={heading}
+            intro={intro}
+            imgClass={css.heroForeground}
+        >
         </BreadCrumbLayout>
     );
 };
