@@ -1,25 +1,34 @@
-import { signal, effect } from "@preact/signals";
+import { effect, signal } from '@preact/signals';
+
+const isBrowser = typeof window !== 'undefined';
 
 export const appearance = signal(
-    localStorage.getItem("appearance") || "system",
+    isBrowser ? localStorage.getItem('appearance') || 'system' : 'system',
 );
 
-export const prefersDark = () =>
-    window.matchMedia("(prefers-color-scheme: dark)").matches;
+export const prefersDark = () => {
+    if (!isBrowser) return false;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+};
 
 const applyTheme = (mode: string) => {
-    const isDark = mode === "dark" || (mode === "system" && prefersDark());
-    document.documentElement.classList.toggle("dark", isDark);
+    if (!isBrowser) return;
+    const isDark = mode === 'dark' || (mode === 'system' && prefersDark());
+    document.documentElement.classList.toggle('dark', isDark);
 };
 
 effect(() => {
+    if (!isBrowser) return;
+
     const mode = appearance.value;
-    localStorage.setItem("appearance", mode);
+    localStorage.setItem('appearance', mode);
     applyTheme(mode);
 });
 
-window
-    .matchMedia("(prefers-color-scheme: dark)")
-    .addEventListener("change", () => {
-        if (appearance.value === "system") applyTheme("system");
-    });
+if (isBrowser) {
+    window
+        .matchMedia('(prefers-color-scheme: dark)')
+        .addEventListener('change', () => {
+            if (appearance.value === 'system') applyTheme('system');
+        });
+}

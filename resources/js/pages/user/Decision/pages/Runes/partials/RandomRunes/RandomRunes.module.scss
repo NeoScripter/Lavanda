@@ -1,0 +1,53 @@
+@use 'core' as u;
+
+.intro {
+    text-align: center;
+    font-weight: 500;
+    margin-inline: auto;
+    @include u.px(mb, 32, 48, 32, 66);
+
+    @include u.mw(md) {
+        max-width: 70%;
+    }
+    @include u.mw(lg) {
+        max-width: 85%;
+    }
+}
+
+.actionBtn {
+    margin-inline: auto;
+    @include u.px(mb, 60, 96, 100, 110);
+}
+
+.carouselContainer {
+    position: relative;
+    @include u.px(h, 222, 433, 394, 496);
+}
+
+.bgParent {
+    position: absolute;
+    margin-inline: auto;
+    height: 100%;
+    inset: 0;
+    isolation: isolate;
+    overflow: visible;
+
+    &::after {
+        z-index: -1;
+        content: '';
+        position: absolute;
+        height: 150%;
+        inset: 0;
+        margin: auto;
+        aspect-ratio: 1/1;
+        background: radial-gradient(
+            70.71% 70.71% at 50% 50%,
+            rgba(255, 94, 78, 0.61) 0%,
+            rgba(255, 94, 78, 0) 68%
+        );
+    }
+}
+
+.bgImage {
+    object-fit: contain;
+}

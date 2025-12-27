@@ -16,8 +16,13 @@ import css from './BreadCrumbLayout.module.scss';
 import HeroSection from './partials/HeroSection';
 
 const BreadCrumbLayout: FC<
-    NodeProps<{ heading: string; intro: string; imgClass?: string }>
-> = ({ className, children, heading, intro, imgClass }) => {
+    NodeProps<{
+        heading: string;
+        intro: string;
+        imgClass?: string;
+        withCards: boolean;
+    }>
+> = ({ className, children, heading, intro, imgClass, withCards }) => {
     return (
         <AppLayout
             variation="white"
@@ -38,11 +43,16 @@ const BreadCrumbLayout: FC<
                 heading={heading}
                 intro={intro}
                 imgClass={imgClass}
+                className={withCards ? css.noMargin : ""}
             />
 
-            <CurrentSlideProvider>
-                <ItemsLayout>{children}</ItemsLayout>
-            </CurrentSlideProvider>
+            {withCards ? (
+                <CurrentSlideProvider>
+                    <ItemsLayout className={css.topOffset}>{children}</ItemsLayout>
+                </CurrentSlideProvider>
+            ) : (
+                children
+            )}
             {children}
         </AppLayout>
     );

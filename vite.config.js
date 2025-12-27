@@ -12,6 +12,7 @@ export default defineConfig({
         preact(),
         laravel({
             input: ['resources/js/app.tsx'],
+            ssr: 'resources/js/ssr.tsx',
             refresh: true,
         }),
         tailwindcss(),
@@ -19,6 +20,7 @@ export default defineConfig({
     resolve: {
         alias: {
             '@': path.resolve(__dirname, 'resources/js'),
+            'ziggy-js': path.resolve(__dirname, 'vendor/tightenco/ziggy'),
         },
     },
     css: {
