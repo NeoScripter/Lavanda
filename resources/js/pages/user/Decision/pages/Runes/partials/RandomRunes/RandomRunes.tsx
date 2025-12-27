@@ -4,9 +4,30 @@ import LazyImage from '@/components/user/ui/LazyImage/LazyImage';
 import { NodeProps } from '@/types/nodeProps';
 import { cn } from '@/utils/cn';
 import { FC } from 'preact/compat';
+import Carousel from '../Carousel';
 import css from './RandomRunes.module.scss';
 
 const RandomRunes: FC<NodeProps> = ({ className }) => {
+    const items = [
+        <div>🌟</div>,
+        <div>🎨</div>,
+        <div>🎭</div>,
+        <div>🎪</div>,
+        <div>🎬</div>,
+        <div>🎮</div>,
+        <div>🎯</div>,
+        <div>🎲</div>,
+        <div>🎸</div>,
+        <div>🌟</div>,
+        <div>🎨</div>,
+        <div>🎭</div>,
+        <div>🎪</div>,
+        <div>🎬</div>,
+        <div>🎮</div>,
+        <div>🎯</div>,
+        <div>🎲</div>,
+        <div>🎸</div>,
+    ];
     return (
         <>
             <p class={css.intro}>
@@ -26,6 +47,10 @@ const RandomRunes: FC<NodeProps> = ({ className }) => {
                     img={BackgroundDk}
                     tinyImg={BackgroundDkTiny}
                 />
+
+                <div class={css.carousel}>
+                    <Carousel items={items} />;
+                </div>
             </div>
         </>
     );

@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\ExperienceItem;
 use App\Models\PracticeItem;
+use App\Models\Rune;
 use App\Models\WellnessTip;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
@@ -33,6 +34,7 @@ class AppServiceProvider extends ServiceProvider
             'wellnessTip' => WellnessTip::class,
             'experienceItem' => ExperienceItem::class,
             'practiceItem' => PracticeItem::class,
+            'rune' => Rune::class,
         ]);
     }
 }

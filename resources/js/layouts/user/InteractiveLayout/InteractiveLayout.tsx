@@ -5,7 +5,7 @@ import { FC, useState } from 'preact/compat';
 import css from './InteractiveLayout.module.scss';
 
 const InteractiveLayout: FC<
-    NodeProps<{ btnLabels: string[]; components: ComponentChild[] }>
+    NodeProps<{ btnLabels: string[]; components: (() => ComponentChild)[] }>
 > = ({ className, btnLabels, components }) => {
     const [activeIdx, setActiveIdx] = useState(0);
 
@@ -25,7 +25,7 @@ const InteractiveLayout: FC<
                     </button>
                 ))}
             </nav>
-            <article class={css.content}>{components[activeIdx]}</article>
+            <article class={css.content}>{components[activeIdx]?.()}</article>
         </div>
     );
 };

@@ -20,6 +20,9 @@
 }
 
 .carouselContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
     @include u.px(h, 222, 433, 394, 496);
 }
@@ -50,4 +53,22 @@
 
 .bgImage {
     object-fit: contain;
+}
+
+.carousel {
+    --size: 0;
+    border-radius: calc(var(--size) / 2);
+    height: var(--size);
+    margin-inline: auto;
+    margin-inline: auto;
+    background: linear-gradient(
+        180deg,
+        rgba(200, 181, 255, 0.46) 0%,
+        rgba(255, 255, 255, 0.34) 100%
+    );
+    box-shadow: 0 1.5px 1px 0 #e1d4ff inset;
+    backdrop-filter: blur(5px);
+    width: 100%;
+    @include u.px(w, null, null, 652, 825);
+    @include u.px(--size, 105, 226, 206, 261);
 }

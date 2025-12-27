@@ -14,7 +14,7 @@ const Runes = () => {
         >
             <InteractiveLayout
                 btnLabels={['Случайный выбор', 'Выбрать самой']}
-                components={[<RandomRunes />, null]}
+                components={[() => <RandomRunes />, () => null]}
             />
         </BreadCrumbLayout>
     );

@@ -53,7 +53,6 @@ const BreadCrumbLayout: FC<
             ) : (
                 children
             )}
-            {children}
         </AppLayout>
     );
 };
