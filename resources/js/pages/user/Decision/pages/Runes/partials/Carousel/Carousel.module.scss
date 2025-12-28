@@ -13,7 +13,7 @@
     inset: 0;
     position: absolute;
     transform-style: preserve-3d;
-    transition: transform 1s;
+    transition: transform 0.5s ease-out;
 }
 
 .cell {
@@ -21,11 +21,12 @@
     align-items: center;
     justify-content: center;
     position: absolute;
+    aspect-ratio: 1/1;
     inset: 0;
     margin: auto;
     transition:
-        transform 1s,
-        opacity 1s;
+        transform 0.5s ease-out,
+        opacity 0.5s ease-out;
 
     // Prevent text selection
     user-select: none;
@@ -56,3 +57,18 @@
     width: 100px;
     height: 100px;
 }
+
+.currentSlide {
+    isolation: isolate;
+    &::after {
+        content: url("data:image/svg+xml,%3Csvg%20width='100%'%20height='100%'%20viewBox='0%200%20150%20150'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3E%3Cpath%20d='M37.7075%200.489258H14.0229C6.54828%200.489258%200.488892%206.54865%200.488892%2014.0233V37.7078M112.145%200.489258H135.829C143.304%200.489258%20149.363%206.54865%20149.363%2014.0233V37.7078M149.363%20112.145V135.83C149.363%20143.304%20143.304%20149.364%20135.829%20149.364H112.145M37.7075%20149.364H14.0229C6.54828%20149.364%200.488892%20143.304%200.488892%20135.83V112.145'%20stroke='white'%20stroke-width='0.977778'/%3E%3C/svg%3E");
+        position: absolute;
+        inset: -30%;
+        width: 130%;
+        height: 130%;
+        z-index: 10;
+        margin: auto;
+        pointer-events: none;
+    }
+}
+

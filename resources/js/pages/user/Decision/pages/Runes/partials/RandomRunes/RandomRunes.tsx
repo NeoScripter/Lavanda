@@ -12,26 +12,6 @@ import css from './RandomRunes.module.scss';
 const RandomRunes: FC<NodeProps> = ({ className }) => {
     const { runes } = usePage<{ runes: Rune[] }>().props;
 
-    const items = [
-        <div>🌟</div>,
-        <div>🎨</div>,
-        <div>🎭</div>,
-        <div>🎪</div>,
-        <div>🎬</div>,
-        <div>🎮</div>,
-        <div>🎯</div>,
-        <div>🎲</div>,
-        <div>🎸</div>,
-        <div>🌟</div>,
-        <div>🎨</div>,
-        <div>🎭</div>,
-        <div>🎪</div>,
-        <div>🎬</div>,
-        <div>🎮</div>,
-        <div>🎯</div>,
-        <div>🎲</div>,
-        <div>🎸</div>,
-    ];
     return (
         <>
             <p class={css.intro}>
