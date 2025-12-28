@@ -11,10 +11,20 @@ class Rune extends Model
     /** @use HasFactory<\Database\Factories\RuneFactory> */
     use HasFactory;
 
-    protected $with = ['image'];
+    protected $with = ['frontImage', 'backImage'];
 
-    public function image(): MorphOne
+    public function images(): MorphOne
     {
         return $this->morphOne(Image::class, 'imageable');
+    }
+
+    public function frontImage(): MorphOne
+    {
+        return $this->images()->where('type', 'front');
+    }
+
+    public function backImage(): MorphOne
+    {
+        return $this->images()->where('type', 'back');
     }
 }

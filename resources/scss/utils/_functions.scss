@@ -37,7 +37,7 @@
 }
 
 @function calc-adaptive-rm($base-px, $ref-width, $max-width, $min-width) {
-    $vw: px-to-vw($ref-width, $base-px);
+    $vw: px-to-vw($ref-width, $base-px - 16);
 
     $max-rem: round_to_decimal(
             math.div(math.div($base-px, $ref-width) * $max-width, 16)
@@ -48,7 +48,7 @@
         ) *
         1rem;
 
-    @return clamp($min-rem, calc(#{$vw} * var(--root-base)), $max-rem);
+    @return clamp($min-rem, $vw + 1rem, $max-rem);
 }
 
 @function calc-adaptive-px($base-px, $ref-width, $max-width, $min-width) {

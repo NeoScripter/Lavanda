@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User\Decision;
 
 use App\Http\Controllers\Controller;
 use App\Models\ExperienceItem;
+use App\Models\Rune;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -15,9 +16,11 @@ class RunesController extends Controller
     public function __invoke(Request $request)
     {
         $items = ExperienceItem::limit(9)->get();
+        $runes = Rune::all();
 
         return Inertia::render('user/Decision/pages/Runes/Runes', [
-            'items' => $items
+            'items' => $items,
+            'runes' => $runes,
         ]);
     }
 }

@@ -1,13 +1,17 @@
 import BackgroundDkTiny from '@/assets/images/random-runes/background-dk-tiny.webp';
 import BackgroundDk from '@/assets/images/random-runes/background-dk.webp';
 import LazyImage from '@/components/user/ui/LazyImage/LazyImage';
+import { Rune } from '@/types/model';
 import { NodeProps } from '@/types/nodeProps';
 import { cn } from '@/utils/cn';
+import { usePage } from '@inertiajs/react';
 import { FC } from 'preact/compat';
 import Carousel from '../Carousel';
 import css from './RandomRunes.module.scss';
 
 const RandomRunes: FC<NodeProps> = ({ className }) => {
+    const { runes } = usePage<{ runes: Rune[] }>().props;
+
     const items = [
         <div>🌟</div>,
         <div>🎨</div>,
@@ -49,7 +53,7 @@ const RandomRunes: FC<NodeProps> = ({ className }) => {
                 />
 
                 <div class={css.carousel}>
-                    <Carousel items={items} />;
+                    <Carousel items={runes} />
                 </div>
             </div>
         </>

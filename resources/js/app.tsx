@@ -12,13 +12,13 @@ createInertiaApp({
     },
 });
 
-function setRootBase() {
-    const base = (
-        parseFloat(getComputedStyle(document.documentElement).fontSize) / 16
-    ).toString();
-    document.documentElement.style.setProperty("--root-base", base);
-}
+// function setRootBase() {
+//     const base = (
+//         parseFloat(getComputedStyle(document.documentElement).fontSize) / 16
+//     ).toString();
+//     document.documentElement.style.setProperty("--root-base", base);
+// }
 
-setRootBase();
+// setRootBase();
 
 // window.addEventListener("resize", setRootBase);

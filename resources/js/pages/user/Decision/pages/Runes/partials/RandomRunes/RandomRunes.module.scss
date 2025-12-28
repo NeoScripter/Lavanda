@@ -56,6 +56,10 @@
 }
 
 .carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: clip;
     --size: 0;
     border-radius: calc(var(--size) / 2);
     height: var(--size);

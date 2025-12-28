@@ -52,6 +52,18 @@ export type PracticeItemFaq = {
     updated_at?: string;
     practice_item?: PracticeItem;
 };
+export type Rune = {
+    id: number;
+    name: string;
+    description: string;
+    summary: string;
+    advice: string;
+    created_at?: string;
+    updated_at?: string;
+    images?: Image;
+    front_image?: Image;
+    back_image?: Image;
+};
 export type WellnessTip = {
     id: number;
     type: WellnessTipType;
