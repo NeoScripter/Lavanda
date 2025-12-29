@@ -1,5 +1,5 @@
 import { Image } from '@/types/model';
-import { Signal, signal } from '@preact/signals';
+import { Signal, signal, useSignalEffect } from '@preact/signals';
 import { createContext } from 'preact';
 import { useContext } from 'preact/hooks';
 
@@ -15,11 +15,11 @@ export type InteractiveItem = {
 
 interface InterativeItemsContextValue {
     interativeItems: Signal<InteractiveItem[]>;
+    prevInteractiveItems: Signal<InteractiveItem[]>;
 }
 
-const InterativeItemsContext = createContext<InterativeItemsContextValue | null>(
-    null,
-);
+const InterativeItemsContext =
+    createContext<InterativeItemsContextValue | null>(null);
 
 export function useInterativeItems() {
     const ctx = useContext(InterativeItemsContext);
@@ -37,8 +37,12 @@ export function InterativeItemsProvider({
     children: preact.ComponentChildren;
 }) {
     const interativeItems = signal([]);
+    const prevInteractiveItems = signal<InteractiveItem[]>([]);
+
     return (
-        <InterativeItemsContext.Provider value={{ interativeItems }}>
+        <InterativeItemsContext.Provider
+            value={{ interativeItems, prevInteractiveItems }}
+        >
             {children}
         </InterativeItemsContext.Provider>
     );

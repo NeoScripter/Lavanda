@@ -1,6 +1,7 @@
 import LazyImage from '@/components/user/ui/LazyImage/LazyImage';
 import { NodeProps } from '@/types/nodeProps';
 import { cn } from '@/utils/cn';
+import { Transition } from '@headlessui/react';
 import { FC } from 'preact/compat';
 import {
     InteractiveItem,
@@ -9,19 +10,23 @@ import {
 import css from './ItemsDisplay.module.scss';
 
 const ItemsDisplay: FC<NodeProps> = ({ className }) => {
-    const { interativeItems } = useInterativeItems();
+    const { interativeItems, prevInteractiveItems } = useInterativeItems();
 
-    if (interativeItems.value.length === 0) return null;
+    const items = interativeItems.value.length !== 0 ? interativeItems.value : prevInteractiveItems.value;
 
     return (
-        <ul className={cn(css.wrapper, className)}>
-            {interativeItems.value.map((item, idx) => (
-                <ItemSection
-                    key={item.id}
-                    item={item}
-                />
-            ))}
-        </ul>
+        <Transition show={interativeItems.value.length > 0}>
+            <div className={css.transitionWrapper}>
+                <ul className={cn(css.wrapper, className)}>
+                    {items.map((item, idx) => (
+                        <ItemSection
+                            key={item.id}
+                            item={item}
+                        />
+                    ))}
+                </ul>
+            </div>
+        </Transition>
     );
 };
 

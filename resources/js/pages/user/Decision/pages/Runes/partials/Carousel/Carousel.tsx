@@ -7,11 +7,11 @@ import css from './Carousel.module.scss';
 
 interface CarouselProps {
     items: Rune[];
+    selectedIndex: number;
 }
 
-const Carousel: React.FC<CarouselProps> = ({ items }) => {
+const Carousel: React.FC<CarouselProps> = ({ items, selectedIndex }) => {
     const cellCount = items.length;
-    const [selectedIndex, setSelectedIndex] = useState(0);
     const carouselRef = useRef<HTMLDivElement>(null);
     const [elementSize, setElementSize] = useState(107);
     const isTablet = useMediaQuery('(min-width: 550px)');
@@ -68,8 +68,6 @@ const Carousel: React.FC<CarouselProps> = ({ items }) => {
         };
     };
 
-    const handleNext = () => setSelectedIndex((prev) => prev + 1);
-
     return (
         <div className={css.scene}>
             <div
@@ -101,10 +99,6 @@ const Carousel: React.FC<CarouselProps> = ({ items }) => {
                         )}
                     </div>
                 ))}
-            </div>
-
-            <div className={css.btnWrapper}>
-                <button onClick={handleNext}>next</button>
             </div>
         </div>
     );

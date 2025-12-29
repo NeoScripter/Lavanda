@@ -1,12 +1,37 @@
 @use 'core' as u;
 
+.transitionWrapper {
+    display: grid;
+    grid-template-rows: 1fr;
+    position: relative;
+    transition: grid-template-rows 500ms ease-in-out;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: -2em;
+        inset-inline: 0;
+        height: 2em;
+        width: 100%;
+        z-index: -1;
+
+        background-color: white;
+    }
+}
+.transitionWrapper[data-closed] {
+    grid-template-rows: 0fr;
+}
+
 .wrapper {
+    overflow: hidden;
     background-color: white;
     display: grid;
+    position: relative;
     @include u.px(pb, 148, 130, 110, 135);
     @include u.px(pt, 81, 90, 94, 101);
     @include u.px(px, 31, 51, 84, 157);
     @include u.px(gap, 107, 90, 96, 141);
+
 }
 
 .sectionHeading {
