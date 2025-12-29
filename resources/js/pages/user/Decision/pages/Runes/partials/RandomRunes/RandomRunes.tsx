@@ -27,7 +27,7 @@ const RandomRunes = () => {
         '(prefers-reduced-motion: no-preference)',
     ).matches;
 
-    const adjustedAnimationDuration = isMotionEnabled ? ANIMATION_DURATION : 0;
+    const adjustedAnimationDuration = isMotionEnabled ? ANIMATION_DURATION + Math.floor(Math.random() * 300) : 0;
 
     const runeLimit = currentSlideId.value;
 
@@ -39,19 +39,31 @@ const RandomRunes = () => {
     const startSpinning = () => {
         if (isSpinning) return;
         setIsSpinning(true);
-        intervalRef.current = setInterval(() => {
-            handleNext();
-        }, adjustedAnimationDuration);
 
         if (isMotionEnabled) {
-            setTimeout(
-                () =>
+            let duration = 50;
+            const maxDuration = adjustedAnimationDuration; // Minimum interval to prevent going negative
+
+            const spin = () => {
+                if (duration >= maxDuration) {
+                    if (intervalRef.current) {
+                        clearTimeout(intervalRef.current);
+                    }
                     setTimeout(
                         () => document.dispatchEvent(new Event('spinningEnd')),
                         1000,
-                    ),
-                4000 + Math.random() * 3000,
-            );
+                    );
+                } else {
+                    handleNext();
+                    duration = Math.min(maxDuration, duration + 50); // Gradually decrease
+
+                    // Continue spinning or stop based on your end condition
+                    intervalRef.current = setTimeout(spin, duration);
+                }
+            };
+
+            // Start the spinning
+            spin();
         } else {
             setSelectedIndex(
                 (prev) =>
