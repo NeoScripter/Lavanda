@@ -2,7 +2,9 @@ import { NodeProps } from '@/types/nodeProps';
 import { cn } from '@/utils/cn';
 import { ComponentChild } from 'preact';
 import { FC, useState } from 'preact/compat';
+import { InterativeItemsProvider } from './InteractiveItemsContext';
 import css from './InteractiveLayout.module.scss';
+import ItemsDisplay from './partials/ItemsDisplay';
 
 const InteractiveLayout: FC<
     NodeProps<{ btnLabels: string[]; components: (() => ComponentChild)[] }>
@@ -25,7 +27,13 @@ const InteractiveLayout: FC<
                     </button>
                 ))}
             </nav>
-            <article class={css.content}>{components[activeIdx]?.()}</article>
+            <InterativeItemsProvider>
+                <article class={cn(css.content, 'full-bleed-parent')}>
+                    {components[activeIdx]?.()}
+                </article>
+
+                <ItemsDisplay />
+            </InterativeItemsProvider>
         </div>
     );
 };

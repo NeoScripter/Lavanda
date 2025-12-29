@@ -15,7 +15,23 @@ class RunesController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $items = ExperienceItem::limit(9)->get();
+        $items = [
+            [
+                'id' => 1,
+                'title' => '1 Руна',
+                'description' => 'Один символ — как ключевая подсказка или настроение момента. Простое и точное направление для размышлений.',
+            ],
+            [
+                'id' => 3,
+                'title' => '3 Руны',
+                'description' => 'Три символа, которые раскрывают ситуацию шире: что было, что важно сейчас и куда движется энергия дальше.',
+            ],
+            [
+                'id' => 5,
+                'title' => '5 Рун',
+                'description' => 'Более развернутый расклад, где каждая руна показывает разные стороны вашего выбора: суть ситуации, внутренние и внешние влияния, возможный результат.',
+            ],
+        ];
         $runes = Rune::all();
 
         return Inertia::render('user/Decision/pages/Runes/Runes', [

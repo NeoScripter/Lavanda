@@ -100,23 +100,28 @@ const ItemCard: FC<{
     item: ExperienceItem;
     img: ImageObj;
     onClick: () => void;
-    selected?: boolean
+    selected?: boolean;
 }> = ({ item, img, onClick, selected = false }) => {
     const image = useMemo(() => img, []);
 
     return (
-        <li
-            onClick={onClick}
-            class={cn(css.card, selected && css.selectedCard)}
-        >
+        <li class={cn(css.card, selected && css.selectedCard)}>
+            <button
+                onClick={onClick}
+                type="button"
+                className={css.cardBtn}
+            ></button>
+
             <LazyImage
                 prtClass={css.cardOverlay}
                 img={image.img}
                 tinyImg={image.tinyImg}
                 alt={image.alt}
             />
-            <h2 class={css.cardHeading}>{item.title}</h2>
-            <p class={css.cardDescription}>{item.description}</p>
+            <div className={css.cardTextWrapper}>
+                <h2 class={css.cardHeading}>{item.title}</h2>
+                <p class={css.cardDescription}>{item.description}</p>
+            </div>
         </li>
     );
 };

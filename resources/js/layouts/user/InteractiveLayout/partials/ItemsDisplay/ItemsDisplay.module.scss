@@ -1,0 +1,60 @@
+@use 'core' as u;
+
+.wrapper {
+    background-color: white;
+    display: grid;
+    @include u.px(pb, 148, 130, 110, 135);
+    @include u.px(pt, 81, 90, 94, 101);
+    @include u.px(px, 31, 51, 84, 157);
+    @include u.px(gap, 107, 90, 96, 141);
+}
+
+.sectionHeading {
+    font-weight: 700;
+    text-align: center;
+    @include u.px(mb, 51, 61, 52, 63);
+}
+
+.sectionImageWrapper {
+    display: flex;
+    align-items: center;
+    --size: 0;
+    flex: 0 0 var(--size);
+
+    @include u.px(--size, null, 171, 260, 335);
+    @include u.px(gap, 21, 0);
+    @include u.px(mb, 35, 0);
+
+    @include u.mw(sm) {
+        flex-direction: column;
+    }
+}
+
+.sectionImageParent {
+    aspect-ratio: 5/7;
+    @include u.px(w, 100, 147, 182, 206);
+}
+
+.sectionItemName {
+    color: u.clr('primary', 'strong');
+    text-transform: uppercase;
+    text-align: center;
+
+    @include u.px(mb, null, 36, 36, 36);
+    @include u.px(text, 24, 24, 24, 32);
+    @include u.mw(sm) {
+        order: -1;
+    }
+}
+
+.sectionContentWrapper {
+    @include u.mw(sm) {
+        display: flex;
+    }
+
+    @include u.px(gap, null, 28, 43, 45);
+}
+
+.sectionImage {
+    object-fit: contain;
+}

@@ -39,7 +39,8 @@
     &:hover {
         color: white;
 
-        > * {
+        h2,
+        p {
             color: white;
         }
     }
@@ -94,7 +95,8 @@
     }
     color: white;
 
-    > * {
+    h2,
+    p {
         color: white;
     }
 }
@@ -123,4 +125,14 @@
 .article {
     overflow: hidden;
     @include u.px(mb, 56, 60, 40, 70);
+}
+
+.cardTextWrapper {
+    min-height: 50%;
+}
+
+.cardBtn {
+    position: absolute;
+    inset: 0;
+    @include u.size(100%);
 }
