@@ -13,14 +13,21 @@ import { useEffect, useRef, useState } from 'preact/hooks';
 import Carousel from '../Carousel';
 import css from './RandomRunes.module.scss';
 
+const ANIMATION_DURATION = 750;
+
 const RandomRunes = () => {
     const { runes } = usePage<{ runes: Rune[] }>().props;
     const { currentSlideId } = useCurrentSlideId();
-    const { interativeItems, prevInteractiveItems  } = useInterativeItems();
+    const { interativeItems, prevInteractiveItems } = useInterativeItems();
     const [selectedRunes, setSelectedRunes] = useState<Rune[]>([]);
     const [isSpinning, setIsSpinning] = useState(false);
     const [selectedIndex, setSelectedIndex] = useState(0);
     const intervalRef = useRef<number | undefined>(undefined);
+    const isMotionEnabled = window.matchMedia(
+        '(prefers-reduced-motion: no-preference)',
+    ).matches;
+
+    const adjustedAnimationDuration = isMotionEnabled ? ANIMATION_DURATION : 0;
 
     const runeLimit = currentSlideId.value;
 
@@ -34,14 +41,27 @@ const RandomRunes = () => {
         setIsSpinning(true);
         intervalRef.current = setInterval(() => {
             handleNext();
-        }, 500);
+        }, adjustedAnimationDuration);
 
-        setTimeout(
-            () => {
-                document.dispatchEvent(new Event('spinningEnd'));
-            },
-            2000 + Math.random() * 3000,
-        );
+        if (isMotionEnabled) {
+            setTimeout(
+                () =>
+                    setTimeout(
+                        () => document.dispatchEvent(new Event('spinningEnd')),
+                        1000,
+                    ),
+                2000 + Math.random() * 3000,
+            );
+        } else {
+            setSelectedIndex(
+                (prev) =>
+                    Math.floor(prev + 4 + Math.random() * 6) % runes.length,
+            );
+            setTimeout(
+                () => document.dispatchEvent(new Event('spinningEnd')),
+                1000,
+            );
+        }
     };
 
     useEffect(() => {
@@ -64,7 +84,7 @@ const RandomRunes = () => {
     };
 
     const reset = () => {
-        prevInteractiveItems.value = [...interativeItems.value]
+        prevInteractiveItems.value = [...interativeItems.value];
         interativeItems.value = [];
         setIsSpinning(false);
         setSelectedRunes([]);
@@ -108,7 +128,13 @@ const RandomRunes = () => {
                         tinyImg={BackgroundDkTiny}
                     />
 
-                    <div class={css.carousel}>
+                    <div
+                        style={{
+                            '--animation-duration':
+                                adjustedAnimationDuration + 'ms',
+                        }}
+                        class={css.carousel}
+                    >
                         <Carousel
                             items={runes}
                             selectedIndex={selectedIndex}
