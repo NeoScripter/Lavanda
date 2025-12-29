@@ -1,6 +1,7 @@
 import BreadCrumbLayout from '@/layouts/user/BreadCrumbLayout/BreadCrumbLayout';
 import InteractiveLayout from '@/layouts/user/InteractiveLayout/InteractiveLayout';
 import { heading, intro } from './pageData';
+import ChosenRunes from './partials/ChosenRunes';
 import RandomRunes from './partials/RandomRunes';
 import css from './Runes.module.scss';
 
@@ -14,7 +15,7 @@ const Runes = () => {
         >
             <InteractiveLayout
                 btnLabels={['Случайный выбор', 'Выбрать самой']}
-                components={[() => <RandomRunes />, () => null]}
+                components={[() => <RandomRunes />, () => <ChosenRunes />]}
             />
         </BreadCrumbLayout>
     );

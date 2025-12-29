@@ -50,12 +50,12 @@ const RandomRunes = () => {
                         () => document.dispatchEvent(new Event('spinningEnd')),
                         1000,
                     ),
-                2000 + Math.random() * 3000,
+                4000 + Math.random() * 3000,
             );
         } else {
             setSelectedIndex(
                 (prev) =>
-                    Math.floor(prev + 4 + Math.random() * 6) % runes.length,
+                    Math.floor(prev + 6 + Math.random() * 8) % runes.length,
             );
             setTimeout(
                 () => document.dispatchEvent(new Event('spinningEnd')),

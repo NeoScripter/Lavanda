@@ -75,6 +75,7 @@
 .sectionContentWrapper {
     @include u.mw(sm) {
         display: flex;
+        align-items: start;
     }
 
     @include u.px(gap, null, 28, 43, 45);

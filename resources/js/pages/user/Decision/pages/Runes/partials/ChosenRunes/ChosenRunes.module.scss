@@ -1,0 +1,63 @@
+@use 'core' as u;
+
+.transitionWrapper {
+    display: grid;
+    grid-template-rows: 1fr;
+    transition: grid-template-rows 500ms ease-in-out;
+    @include u.px(mb, 38, 47, 30, 55);
+
+    > div {
+        overflow: hidden;
+    }
+}
+.transitionWrapper[data-closed] {
+    grid-template-rows: 0fr;
+}
+
+.intro {
+    text-align: center;
+    font-weight: 500;
+    margin-inline: auto;
+    @include u.px(mb, 32, 48, 32, 66);
+
+    @include u.mw(md) {
+        max-width: 70%;
+    }
+    @include u.mw(lg) {
+        max-width: 85%;
+    }
+}
+
+.runeGrid {
+    width: 80%;
+    margin-inline: auto;
+    place-content: center;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(7, 1fr);
+
+    @include u.mw(md) {
+        width: 50%;
+    }
+}
+
+.runeItem {
+    aspect-ratio: 1/1;
+    /* border: 1px solid red; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.runeWrapper {
+    @include u.size(100%);
+    overflow: visible;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.runeImg {
+    object-fit: contain;
+    @include u.size(240%);
+}
