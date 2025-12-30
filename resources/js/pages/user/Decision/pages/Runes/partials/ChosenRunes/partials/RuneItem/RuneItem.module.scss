@@ -29,7 +29,8 @@
     align-items: center;
     justify-content: center;
     font-size: 100%;
-    background-color: u.clr('primary', 'muted');
+    opacity: 0.75;
+    background-color: u.clr('primary', 'strong');
 }
 
 .hidden {
