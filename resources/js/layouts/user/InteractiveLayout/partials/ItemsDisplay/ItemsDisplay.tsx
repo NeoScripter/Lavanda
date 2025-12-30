@@ -12,7 +12,10 @@ import css from './ItemsDisplay.module.scss';
 const ItemsDisplay: FC<NodeProps> = ({ className }) => {
     const { interativeItems, prevInteractiveItems } = useInterativeItems();
 
-    const items = interativeItems.value.length !== 0 ? interativeItems.value : prevInteractiveItems.value;
+    const items =
+        interativeItems.value.length !== 0
+            ? interativeItems.value
+            : prevInteractiveItems.value;
 
     return (
         <Transition show={interativeItems.value.length > 0}>
@@ -37,7 +40,10 @@ const ItemSection: FC<{ item: InteractiveItem }> = ({ item }) => {
 
     return (
         <li className={css.sectionWrapper}>
-            <h3 className={css.sectionHeading}>{item.summary}</h3>
+            <div className={css.sectionHeading}>
+                <h3>{item.summary}</h3>
+                <p>{item.advice}</p>
+            </div>
             <div className={css.sectionContentWrapper}>
                 <div className={css.sectionImageWrapper}>
                     {image && (

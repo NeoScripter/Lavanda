@@ -107,8 +107,15 @@
 }
 
 .runeWrapper {
+    animation: fade-in 0.5s ease-in forwards;
     @include u.px(w, 68, 114, 114, 163);
     @include u.px(h, 81, 136, 136, 195);
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
 }
 
 .runeImg {

@@ -10,9 +10,12 @@ interface CarouselProps {
     selectedIndex: number;
 }
 
+const THROTTLE_DELAY = 75;
+
 const Carousel: React.FC<CarouselProps> = ({ items, selectedIndex }) => {
     const cellCount = items.length;
     const carouselRef = useRef<HTMLDivElement>(null);
+    const throttleRef = useRef<number>(0);
     const [elementSize, setElementSize] = useState(107);
     const isTablet = useMediaQuery('(min-width: 550px)');
     const isLaptop = useMediaQuery('(min-width: 1110px)');
@@ -27,8 +30,10 @@ const Carousel: React.FC<CarouselProps> = ({ items, selectedIndex }) => {
 
     useEffect(() => {
         const calculateSize = () => {
-            if (!carouselRef.current) return;
+            const now = Date.now();
+            if (!carouselRef.current || now - throttleRef.current <= THROTTLE_DELAY) return;
 
+            throttleRef.current = now;
             const actualWidth = carouselRef.current.offsetWidth;
             const scaledSize =
                 (actualWidth / config.refWidth) * config.baseSize;

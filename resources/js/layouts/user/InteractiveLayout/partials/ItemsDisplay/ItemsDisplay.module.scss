@@ -31,13 +31,16 @@
     @include u.px(pt, 81, 90, 94, 101);
     @include u.px(px, 31, 51, 84, 157);
     @include u.px(gap, 107, 90, 96, 141);
-
 }
 
 .sectionHeading {
     font-weight: 700;
     text-align: center;
     @include u.px(mb, 51, 61, 52, 63);
+
+    h3 {
+        margin-bottom: 1em;
+    }
 }
 
 .sectionImageWrapper {

@@ -9,9 +9,10 @@ import { Transition } from '@headlessui/react';
 import { usePage } from '@inertiajs/react';
 import { MoveDown } from 'lucide-preact';
 import { FC } from 'preact/compat';
-import { useEffect, useRef, useState } from 'preact/hooks';
 import Carousel from '../Carousel';
 import css from './RandomRunes.module.scss';
+import { useCarouselLogic } from './useCarouselLogic';
+import checkMotionPreferences from '@/utils/checkMotionPreferences';
 
 const ANIMATION_DURATION = 750;
 
@@ -19,93 +20,27 @@ const RandomRunes = () => {
     const { runes } = usePage<{ runes: Rune[] }>().props;
     const { currentSlideId } = useCurrentSlideId();
     const { interativeItems, prevInteractiveItems } = useInterativeItems();
-    const [selectedRunes, setSelectedRunes] = useState<Rune[]>([]);
-    const [isSpinning, setIsSpinning] = useState(false);
-    const [selectedIndex, setSelectedIndex] = useState(0);
-    const intervalRef = useRef<number | undefined>(undefined);
-    const isMotionEnabled = window.matchMedia(
-        '(prefers-reduced-motion: no-preference)',
-    ).matches;
+
+    const isMotionEnabled = checkMotionPreferences();
 
     const adjustedAnimationDuration = isMotionEnabled ? ANIMATION_DURATION : 0;
+    const runeLimit = currentSlideId.value ?? 1;
 
-    const runeLimit = currentSlideId.value;
-
-    const hasStarted = selectedRunes.length > 0 || isSpinning;
-    const hasEnded = runeLimit === selectedRunes.length;
-
-    const handleNext = () => setSelectedIndex((prev) => prev + 1);
-
-    const startSpinning = () => {
-        if (isSpinning) return;
-        setIsSpinning(true);
-
-        if (isMotionEnabled) {
-            let duration = 50;
-            let extraDuration = Math.floor(Math.random() * 20);
-            const maxDuration = adjustedAnimationDuration; // Minimum interval to prevent going negative
-
-            const spin = () => {
-                if (duration >= maxDuration) {
-                    if (intervalRef.current) {
-                        clearTimeout(intervalRef.current);
-                    }
-                    setTimeout(
-                        () => document.dispatchEvent(new Event('spinningEnd')),
-                        1000,
-                    );
-                } else {
-                    handleNext();
-                    duration = Math.min(
-                        maxDuration,
-                        duration + 30 + extraDuration,
-                    ); // Gradually decrease
-
-                    // Continue spinning or stop based on your end condition
-                    intervalRef.current = setTimeout(spin, duration);
-                }
-            };
-
-            // Start the spinning
-            spin();
-        } else {
-            setSelectedIndex(
-                (prev) =>
-                    Math.floor(prev + 6 + Math.random() * 8) % runes.length,
-            );
-            setTimeout(
-                () => document.dispatchEvent(new Event('spinningEnd')),
-                1000,
-            );
-        }
-    };
-
-    useEffect(() => {
-        document.addEventListener('spinningEnd', handleSpinEnd);
-
-        return () => document.removeEventListener('spinningEnd', handleSpinEnd);
-    }, [selectedIndex]);
-
-    const handleSpinEnd = () => {
-        clearInterval(intervalRef.current);
-        setIsSpinning(false);
-        setSelectedRunes((prev) => {
-            const newRunes = [...prev, runes[selectedIndex % runes.length]];
-
-            if (newRunes.length === runeLimit) {
-                interativeItems.value = newRunes;
-            }
-            return newRunes;
-        });
-    };
-
-    const reset = () => {
-        prevInteractiveItems.value = [...interativeItems.value];
-        interativeItems.value = [];
-        setIsSpinning(false);
-        setSelectedRunes([]);
-        setSelectedIndex(0);
-    };
+    const {
+        selectedRunes,
+        selectedIndex,
+        startSpinning,
+        reset,
+        hasStarted,
+        hasEnded,
+    } = useCarouselLogic(
+        runes,
+        runeLimit,
+        adjustedAnimationDuration,
+        isMotionEnabled,
+        interativeItems,
+        prevInteractiveItems,
+    );
 
     const handleNextRuneClick = () => {
         if (hasEnded) {
@@ -114,7 +49,6 @@ const RandomRunes = () => {
             startSpinning();
         }
     };
-
     return (
         <>
             <Transition show={!hasStarted}>
