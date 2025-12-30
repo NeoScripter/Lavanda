@@ -49,7 +49,7 @@ const IntroWideCard: FC<
 
             <div class={css.content}>
                 <h3>{heading}</h3>
-                <p>{content}</p>
+                <p dangerouslySetInnerHTML={{__html: content}}/>
 
                 <Link
                     href={url}

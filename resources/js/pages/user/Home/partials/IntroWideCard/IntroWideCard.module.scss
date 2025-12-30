@@ -26,7 +26,8 @@
             z-index: -1;
         }
     }
-    button {
+    button,
+    a {
         --color: #{u.clr('primary', 'strong')};
         --bg-color: white;
         background-color: transparent;

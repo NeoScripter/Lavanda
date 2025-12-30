@@ -2,6 +2,7 @@ import LazyImage from '@/components/user/ui/LazyImage/LazyImage';
 import { Rune } from '@/types/model';
 import { FC } from 'preact/compat';
 import css from './RuneItem.module.scss';
+import { cn } from '@/utils/cn';
 
 const RuneItem: FC<{
     rune: Rune;
@@ -19,9 +20,9 @@ const RuneItem: FC<{
                     {idx + 1}
                 </button>
             )}
-            {!isSelected && rune.back_image && (
+            {rune.back_image && (
                 <LazyImage
-                    prtClass={css.runeWrapper}
+                    prtClass={cn(css.runeWrapper, isSelected && css.hidden)}
                     imgClass={css.runeImg}
                     img={rune.back_image.path}
                     tinyImg={rune.back_image.tiny_path}
@@ -29,9 +30,9 @@ const RuneItem: FC<{
                     isLazy={false}
                 />
             )}
-            {isSelected && rune.front_image && (
+            {rune.front_image && (
                 <LazyImage
-                    prtClass={css.runeWrapper}
+                    prtClass={cn(css.runeWrapper, !isSelected && css.hidden)}
                     imgClass={css.runeImg}
                     img={rune.front_image.path}
                     tinyImg={rune.front_image.tiny_path}

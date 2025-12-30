@@ -19,6 +19,7 @@ const PickedRunes: FC<{ runes: Rune[] }> = ({ runes }) => {
                             img={rune.front_image.path}
                             tinyImg={rune.front_image.tiny_path}
                             alt={rune.front_image.alt}
+                            isLazy={false}
                         />
                     )}
                 </div>

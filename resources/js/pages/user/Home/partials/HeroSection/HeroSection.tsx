@@ -12,9 +12,9 @@ import BgLoader from '@/components/user/ui/BgLoader/BgLoader';
 import LazyImage from '@/components/user/ui/LazyImage/LazyImage';
 import { heroCards } from '@/lib/data/heroCards';
 import { cn } from '@/utils/cn';
+import { Link } from '@inertiajs/react';
 import css from './HeroSection.module.scss';
 import Card from './partials/Card/Card';
-import { Link } from '@inertiajs/react';
 
 const HeroSection = () => {
     return (
@@ -60,9 +60,9 @@ const HeroSection = () => {
                 <h1>Пространство для поддержки и вдохновения</h1>
 
                 <p class={css.intro}>
-                    Когда трудно выбрать путь или не хватает уверенности, здесь
-                    вы найдете слова, которые помогут услышать себя и сделать
-                    шаг вперед.
+                    Уникальный веб-ресурс на стыке науки и волшебства Лаванды.
+                    Здесь инструменты, помогающие преодолеть трудности, укрепить
+                    внутреннюю силу и услышать себя.
                 </p>
 
                 <div class={css.btnGroup}>

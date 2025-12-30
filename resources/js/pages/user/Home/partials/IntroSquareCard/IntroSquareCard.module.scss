@@ -36,7 +36,7 @@
     }
     &:nth-child(2) div:has(p) {
         @include u.mw(sm) {
-            button {
+            button, a {
                 --color: #{u.clr('primary', 'strong')};
                 --bg-color: white;
                 background-color: transparent;
@@ -52,7 +52,7 @@
         @include u.mw(md) {
             color: white;
 
-            button {
+            button, a {
                 --color: white;
                 --bg-color: #{u.clr('primary', 'strong')};
                 background-color: transparent;

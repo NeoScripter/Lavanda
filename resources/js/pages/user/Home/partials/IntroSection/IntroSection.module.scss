@@ -22,7 +22,7 @@
         color: white;
         background-color: u.clr('primary', 'muted');
 
-        button {
+        button, a {
             --color: white;
             --bg-color: #{u.clr('primary', 'muted')};
         }
@@ -31,7 +31,7 @@
             color: u.clr('primary', 'strong');
             background-color: transparent;
 
-            button {
+            button, a {
                 --color: #{u.clr('primary', 'strong')};
                 --bg-color: white;
             }
@@ -44,7 +44,7 @@
     background-color: white;
     background-color: u.opacify(white, 75);
 
-    button {
+    button, a {
         --color: #{u.clr('primary', 'strong')};
         --bg-color: white;
         background-color: transparent;
