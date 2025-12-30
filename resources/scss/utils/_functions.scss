@@ -38,12 +38,12 @@
 
 @function calc-adaptive-rm($base-px, $ref-width, $max-width, $min-width) {
     // If base size is small, just return the rem value
-    @if ($base-px <= 16) {
+    @if ($base-px <= 12) {
         @return math.div($base-px, 16) * 1rem;
     }
 
     // Otherwise, calculate and return clamp
-    $vw: px-to-vw($ref-width, $base-px - 16);
+    $vw: px-to-vw($ref-width, $base-px - 12);
     $max-rem: round_to_decimal(
             math.div(math.div($base-px, $ref-width) * $max-width, 16)
         ) *
@@ -53,7 +53,7 @@
         ) *
         1rem;
 
-    @return clamp($min-rem, $vw + 1rem, $max-rem);
+    @return clamp($min-rem, $vw + 0.75rem, $max-rem);
 }
 
 @function calc-adaptive-px($base-px, $ref-width, $max-width, $min-width) {
