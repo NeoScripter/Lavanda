@@ -5,6 +5,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-inline: 10px;
     background: linear-gradient(
         180deg,
         rgba(200, 181, 255, 0.46) 0%,
@@ -22,10 +23,13 @@
     }
 }
 
-.runeWrapper {
-    animation: fade-in 0.5s ease-in forwards;
+.runeImageWrapper {
     @include u.px(w, 68, 114, 114, 163);
     @include u.px(h, 81, 136, 136, 195);
+}
+.runeWrapper {
+    animation: fade-in 0.5s ease-in forwards;
+    @include u.size(100%);
 }
 
 @keyframes fade-in {
