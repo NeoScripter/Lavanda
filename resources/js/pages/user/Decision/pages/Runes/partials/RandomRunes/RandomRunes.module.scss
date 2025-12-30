@@ -82,8 +82,15 @@
     margin-inline: auto;
     @include u.px(mt, 22, 48, 43, 50);
     @include u.px(mb, 42, 48, 52, 60);
-}
 
+    &[disabled] {
+        opacity: 0.5;
+        cursor: default;
+        &:hover {
+            pointer-events: none;
+        }
+    }
+}
 
 .transitionWrapper {
     display: grid;

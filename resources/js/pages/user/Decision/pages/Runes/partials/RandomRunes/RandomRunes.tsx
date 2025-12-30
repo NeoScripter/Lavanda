@@ -33,6 +33,7 @@ const RandomRunes = () => {
         reset,
         hasStarted,
         hasEnded,
+        isSpinning,
     } = useCarouselLogic(
         runes,
         runeLimit,
@@ -96,6 +97,7 @@ const RandomRunes = () => {
             {hasStarted && (
                 <button
                     onClick={handleNextRuneClick}
+                    disabled={isSpinning}
                     class={cn('primary-btn', css.nextRuneBtn)}
                 >
                     {hasEnded ? 'Попробовать снова' : 'Следующая руна'}
