@@ -71,7 +71,7 @@
     color: u.clr('primary', 'strong');
     text-transform: uppercase;
     @include u.px(mb, 15, 15, 15, 18);
-    @include u.rm(text, 32, 32, 32, 36);
+    @include u.rm(text, 24, 32, 32, 36);
 }
 
 .cardImg {
