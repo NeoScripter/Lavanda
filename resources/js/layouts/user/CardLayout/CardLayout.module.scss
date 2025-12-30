@@ -5,11 +5,11 @@
         isolation: isolate;
     }
 
-    :global(#navigation) {
-        @include u.mw(md) {
-            transform: translateX(-6%);
-        }
-    }
+    /* :global(#navigation) { */
+    /*     @include u.mw(md) { */
+    /*         transform: translateX(-6%); */
+    /*     } */
+    /* } */
 }
 
 .noShadow {
@@ -18,7 +18,7 @@
 
 .shifted {
     --offsetY: 0;
-    @include u.px(--offsetY, 404, 394, 427, 417);
+    @include u.px(--offsetY, 198, 230, 250, 250);
 
     margin-top: calc(var(--offsetY) * -1);
 }

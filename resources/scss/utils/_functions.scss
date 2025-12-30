@@ -84,7 +84,7 @@
 }
 
 @function saturate($color, $amount) {
-    $new-sat: color.channel($color, "saturation", $space: hsl) + $amount;
+    $new-sat: color.channel($color, 'saturation', $space: hsl) + $amount;
 
     @if $new-sat < 0 {
         $new-sat: 0;

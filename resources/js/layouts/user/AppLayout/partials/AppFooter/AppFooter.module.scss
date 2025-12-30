@@ -19,7 +19,14 @@
 }
 
 .footerWithMenu {
+    --offsetY: 0;
+    margin-top: calc(var(--offsetY));
+    @include u.rm(--offsetY, 358, 465, 263, 283);
     @include u.px(pt, 258, 232, 180, 195);
+
+    @include u.mw(sm) {
+        margin-top: calc(var(--offsetY) / 2);
+    }
 }
 .logoWrapper {
     > * {

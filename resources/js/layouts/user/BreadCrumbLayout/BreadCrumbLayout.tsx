@@ -43,12 +43,14 @@ const BreadCrumbLayout: FC<
                 heading={heading}
                 intro={intro}
                 imgClass={imgClass}
-                className={withCards ? css.noMargin : ""}
+                className={withCards ? css.noMargin : ''}
             />
 
             {withCards ? (
                 <CurrentSlideProvider>
-                    <ItemsLayout className={css.topOffset}>{children}</ItemsLayout>
+                    <ItemsLayout className={css.topOffset}>
+                        {children}
+                    </ItemsLayout>
                 </CurrentSlideProvider>
             ) : (
                 children

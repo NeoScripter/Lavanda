@@ -1,7 +1,6 @@
 @use 'core' as u;
 
 .wrapper {
-    --offsetY: 0;
     position: absolute;
     inset-inline: 0;
     margin-inline: auto;
@@ -9,7 +8,6 @@
     color: u.clr('foreground', 'muted');
     bottom: var(--offsetY);
 
-    @include u.rm(--offsetY, 358, 465, 263, 283);
     @include u.px(rounded, 32, 32, 24, 24);
     @include u.px(pt, 58, 49, 40, 40);
     @include u.px(pb, 53, 38, 44, 37);

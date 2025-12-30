@@ -132,7 +132,7 @@ export const navLinks: NavLinkType[] = [
     },
     {
         id: crypto.randomUUID(),
-        label: 'Экспресс-карта',
+        label: 'Акция',
         type: 'link',
         href: '/',
     },
