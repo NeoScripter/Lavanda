@@ -95,6 +95,7 @@ const Carousel: React.FC<CarouselProps> = ({ items, selectedIndex }) => {
                                 img={item.front_image.path}
                                 tinyImg={item.front_image.tiny_path}
                                 alt={item.front_image.alt}
+                                isLazy={false}
                             />
                         )}
                     </div>

@@ -8,6 +8,7 @@ type LazyImageProps = {
     img: string;
     alt?: string;
     tinyImg: string;
+    isLazy?: boolean;
 };
 
 export default function LazyImage({
@@ -16,6 +17,7 @@ export default function LazyImage({
     img,
     alt = '',
     tinyImg,
+    isLazy = true,
 }: LazyImageProps) {
     const [isLoading, setIsLoading] = useState(true);
 
@@ -33,7 +35,7 @@ export default function LazyImage({
                 }}
                 src={img}
                 alt={alt}
-                loading="lazy"
+                loading={isLazy ? 'lazy' : undefined}
                 class={cn(css.image, isLoading && css.loading, imgClass)}
                 aria-hidden={isLoading}
             />

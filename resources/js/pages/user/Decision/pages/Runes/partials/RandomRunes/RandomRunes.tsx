@@ -27,7 +27,7 @@ const RandomRunes = () => {
         '(prefers-reduced-motion: no-preference)',
     ).matches;
 
-    const adjustedAnimationDuration = isMotionEnabled ? ANIMATION_DURATION + Math.floor(Math.random() * 300) : 0;
+    const adjustedAnimationDuration = isMotionEnabled ? ANIMATION_DURATION : 0;
 
     const runeLimit = currentSlideId.value;
 
@@ -42,6 +42,7 @@ const RandomRunes = () => {
 
         if (isMotionEnabled) {
             let duration = 50;
+            let extraDuration = Math.floor(Math.random() * 20);
             const maxDuration = adjustedAnimationDuration; // Minimum interval to prevent going negative
 
             const spin = () => {
@@ -55,7 +56,10 @@ const RandomRunes = () => {
                     );
                 } else {
                     handleNext();
-                    duration = Math.min(maxDuration, duration + 50); // Gradually decrease
+                    duration = Math.min(
+                        maxDuration,
+                        duration + 30 + extraDuration,
+                    ); // Gradually decrease
 
                     // Continue spinning or stop based on your end condition
                     intervalRef.current = setTimeout(spin, duration);
@@ -86,7 +90,7 @@ const RandomRunes = () => {
         clearInterval(intervalRef.current);
         setIsSpinning(false);
         setSelectedRunes((prev) => {
-            const newRunes = [...prev, runes[selectedIndex]];
+            const newRunes = [...prev, runes[selectedIndex % runes.length]];
 
             if (newRunes.length === runeLimit) {
                 interativeItems.value = newRunes;
