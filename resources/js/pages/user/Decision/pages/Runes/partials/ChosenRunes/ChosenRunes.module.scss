@@ -4,7 +4,6 @@
     display: grid;
     grid-template-rows: 1fr;
     transition: grid-template-rows 500ms ease-in-out;
-    @include u.px(mb, 38, 47, 30, 55);
 
     > div {
         overflow: hidden;
@@ -33,31 +32,27 @@
     margin-inline: auto;
     place-content: center;
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: repeat(7, 1fr);
+    /* grid-template-columns: repeat(8, 1fr); */
+    /* grid-template-rows: repeat(7, 1fr); */
 
+    @include u.px(mt, 58, 67, 60, 75);
+    @include u.px(mb, 52, 98, 93, 100);
     @include u.mw(md) {
         width: 50%;
     }
 }
 
-.runeItem {
-    aspect-ratio: 1/1;
-    /* border: 1px solid red; */
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.nextRuneBtn {
+    margin-inline: auto;
+    @include u.px(mb, 42, 48, 52, 60);
 }
 
-.runeWrapper {
-    @include u.size(100%);
-    overflow: visible;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.runeImg {
-    object-fit: contain;
-    @include u.size(240%);
+.runeItemInactive {
+    &:has(button:hover) {
+        z-index: 0 !important;
+        scale: 100% !important;
+    }
+    button {
+      cursor: default;
+    }
 }

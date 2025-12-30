@@ -1,0 +1,39 @@
+@use 'core' as u;
+
+.pickedRunes {
+    --offsetX: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(
+        180deg,
+        rgba(200, 181, 255, 0.46) 0%,
+        rgba(255, 255, 255, 0.34) 100%
+    );
+    box-shadow: 0 1.5px 1px 0 #e1d4ff inset;
+    backdrop-filter: blur(5px);
+    width: 100%;
+
+    @include u.px(gap, 15, 25, 50, 49);
+    @include u.px(min-h, 162, 270, 281, 281);
+    @include u.px(rounded, null, null, 60, 60);
+    @include u.mw(md) {
+        grid-column: 2 !important;
+    }
+}
+
+.runeWrapper {
+    animation: fade-in 0.5s ease-in forwards;
+    @include u.px(w, 68, 114, 114, 163);
+    @include u.px(h, 81, 136, 136, 195);
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+}
+
+.runeImg {
+    object-fit: contain;
+}

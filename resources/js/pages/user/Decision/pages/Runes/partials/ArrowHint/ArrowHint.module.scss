@@ -1,0 +1,15 @@
+@use 'core' as u;
+
+.arrowHint {
+    margin-inline: auto;
+    transform: translateY(50%);
+    width: min-content;
+    @include u.rm(text, 14, 16, 16, 16);
+    @include u.px(mt, 19, 24, 36, 52);
+}
+
+.arrowHintIcon {
+    margin-inline: auto;
+    margin-top: 0.5em;
+    @include u.size(1.5em);
+}

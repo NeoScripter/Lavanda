@@ -1,0 +1,32 @@
+@use 'core' as u;
+
+.runeWrapper {
+    @include u.size(100%);
+    overflow: visible;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.runeImg {
+    object-fit: contain;
+    @include u.size(240%);
+}
+
+.selectRuneBtn {
+    pointer-events: auto;
+    position: absolute;
+    inset: 0;
+    rotate: calc(var(--rotateDeg) * -1);
+    @include u.size(50%);
+    border-radius: 50%;
+    margin: auto;
+    z-index: 2;
+    border: 1px solid white;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 100%;
+    background-color: u.clr('primary', 'muted');
+}

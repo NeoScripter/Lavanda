@@ -1,0 +1,19 @@
+@use 'core' as u;
+
+.runeItem {
+    aspect-ratio: 1/1;
+    display: flex;
+    align-items: center;
+    position: relative;
+    isolation: isolate;
+    justify-content: center;
+    rotate: var(--rotateDeg);
+    translate: var(--translateOffset) var(--translateOffset);
+    transition: scale 0.3s ease;
+    pointer-events: none;
+
+    &:has(button:hover) {
+        z-index: 2;
+        scale: 110%;
+    }
+}

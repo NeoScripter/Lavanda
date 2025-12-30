@@ -4,15 +4,15 @@ import LazyImage from '@/components/user/ui/LazyImage/LazyImage';
 import { useInterativeItems } from '@/layouts/user/InteractiveLayout/InteractiveItemsContext';
 import { useCurrentSlideId } from '@/layouts/user/ItemsLayout/CurrentSlideProvider';
 import { Rune } from '@/types/model';
+import checkMotionPreferences from '@/utils/checkMotionPreferences';
 import { cn } from '@/utils/cn';
 import { Transition } from '@headlessui/react';
 import { usePage } from '@inertiajs/react';
-import { MoveDown } from 'lucide-preact';
-import { FC } from 'preact/compat';
+import ArrowHint from '../ArrowHint/ArrowHint';
 import Carousel from '../Carousel';
+import PickedRunes from '../PickedRunes/PickedRunes';
 import css from './RandomRunes.module.scss';
 import { useCarouselLogic } from './useCarouselLogic';
-import checkMotionPreferences from '@/utils/checkMotionPreferences';
 
 const ANIMATION_DURATION = 750;
 
@@ -104,37 +104,9 @@ const RandomRunes = () => {
 
             <PickedRunes runes={selectedRunes} />
 
-            {hasEnded && (
-                <div className={css.arrowHint}>
-                    Расшифровка
-                    <MoveDown className={css.arrowHintIcon} />
-                </div>
-            )}
+            <ArrowHint show={hasEnded} />
         </>
     );
 };
 
 export default RandomRunes;
-
-const PickedRunes: FC<{ runes: Rune[] }> = ({ runes }) => {
-    if (runes.length === 0) return null;
-
-    return (
-        <div className={cn(css.pickedRunes, 'full-bleed')}>
-            {runes.map((rune) => (
-                <div key={rune.id}>
-                    {' '}
-                    {rune.front_image && (
-                        <LazyImage
-                            prtClass={css.runeWrapper}
-                            imgClass={css.runeImg}
-                            img={rune.front_image.path}
-                            tinyImg={rune.front_image.tiny_path}
-                            alt={rune.front_image.alt}
-                        />
-                    )}
-                </div>
-            ))}
-        </div>
-    );
-};
