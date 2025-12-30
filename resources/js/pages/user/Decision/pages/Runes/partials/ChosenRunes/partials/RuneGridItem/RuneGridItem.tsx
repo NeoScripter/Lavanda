@@ -1,8 +1,8 @@
 import { Rune } from '@/types/model';
+import { cn } from '@/utils/cn';
 import { useRuneTransform } from '../../hooks/useRuneTransform';
 import RuneItem from '../RuneItem/RuneItem';
 import css from './RuneGridItem.module.scss';
-import { cn } from '@/utils/cn';
 
 interface RuneGridItemProps {
     rune: Rune | null;
@@ -10,6 +10,7 @@ interface RuneGridItemProps {
     isSelected: boolean;
     onSelect: (rune: Rune) => void;
     className?: string;
+    runeLength: number;
 }
 
 const RuneGridItem: React.FC<RuneGridItemProps> = ({
@@ -17,13 +18,18 @@ const RuneGridItem: React.FC<RuneGridItemProps> = ({
     idx,
     isSelected,
     onSelect,
-    className
+    className,
+    runeLength,
 }) => {
-    const { rotation, translation } = useRuneTransform(idx);
+    const { rotation, translation } = useRuneTransform(idx, runeLength);
 
     return (
         <li
-            className={cn(css.runeItem, className)}
+            className={cn(
+                css.runeItem,
+                isSelected && css.selectedItem,
+                className,
+            )}
             style={{
                 '--rotateDeg': rotation,
                 '--translateOffset': translation,
@@ -32,7 +38,6 @@ const RuneGridItem: React.FC<RuneGridItemProps> = ({
             {rune && (
                 <RuneItem
                     handleClick={() => onSelect(rune)}
-                    idx={idx}
                     isSelected={isSelected}
                     rune={rune}
                 />

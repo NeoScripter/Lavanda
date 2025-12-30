@@ -26,7 +26,7 @@ const AppFooter: FC<{ hasMenu?: boolean }> = ({ hasMenu = true }) => {
                 {!isDesktop && <Links />}
 
                 <p class={css.copyright}>
-                    Lavanda.Space 2025 © Все права защищены
+                    Lavanda.Kim 2025 © Все права защищены
                 </p>
             </div>
             {isDesktop && <Links />}

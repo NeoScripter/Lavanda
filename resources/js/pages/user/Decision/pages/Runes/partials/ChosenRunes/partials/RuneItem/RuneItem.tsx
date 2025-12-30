@@ -6,10 +6,9 @@ import { cn } from '@/utils/cn';
 
 const RuneItem: FC<{
     rune: Rune;
-    idx: number;
     handleClick: () => void;
     isSelected?: boolean;
-}> = ({ rune, idx, handleClick, isSelected = false }) => {
+}> = ({ rune, handleClick, isSelected = false }) => {
     return (
         <>
             {!isSelected && (
@@ -17,7 +16,6 @@ const RuneItem: FC<{
                     onClick={handleClick}
                     className={css.selectRuneBtn}
                 >
-                    {idx + 1}
                 </button>
             )}
             {rune.back_image && (
