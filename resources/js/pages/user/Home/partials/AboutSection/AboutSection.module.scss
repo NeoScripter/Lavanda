@@ -29,13 +29,17 @@
 }
 
 .imgWrapper {
-    align-self: end;
+    align-self: center;
     flex-shrink: 0;
     position: relative;
     margin-left: auto;
     @include u.px(rounded, 28, 28, 28, 28);
     @include u.px(w, 171, 334, 334, 334);
     @include u.px(h, 232, 380, 380, 380);
+
+    @include u.mw(md) {
+        transform: translateY(-20%);
+    }
 }
 
 .fgParent {
