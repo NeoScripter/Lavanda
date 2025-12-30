@@ -62,7 +62,10 @@ const HeroSection: FC<AssymetricHeroSectionProps> = ({
                     <AnimatedOutline>{parts.at(-1)}</AnimatedOutline>
                 </h1>
 
-                <p class={css.intro}>{description}</p>
+                <p
+                    class={css.intro}
+                    dangerouslySetInnerHTML={{ __html: description }}
+                />
 
                 <div class={css.btnGroup}>
                     <Link

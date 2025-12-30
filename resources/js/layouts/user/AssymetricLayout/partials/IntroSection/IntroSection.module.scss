@@ -26,3 +26,9 @@
     flex-shrink: 0;
     @include u.px(w, null, null, 554, 759);
 }
+
+.heading {
+    small {
+        font-size: 0.5em;
+    }
+}

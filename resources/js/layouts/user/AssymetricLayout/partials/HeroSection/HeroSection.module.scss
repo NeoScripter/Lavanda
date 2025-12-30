@@ -10,9 +10,9 @@
     @include u.px(rounded, null, null, 36, 36);
     @include u.px(mt, null, null, 37, 32);
     @include u.px(--padding, null, null, 27, 45);
-    @include u.px(min-h, 745, 745, 722, 797);
+    @include u.px(min-h, 690, 745, 722, 797);
     @include u.px(pt, 113, 212, 212, 233);
-    @include u.px(pb, 27, 30, 30, 30);
+    @include u.px(pb, 306, 243, 170, 170);
     @include u.px(pl, null, null, 73, 132);
     @include u.px(mb, 162, 249, 248, 266);
     @include u.shadow(3);
@@ -44,13 +44,17 @@
     transform: translateY(var(--offsetY));
     @include u.px(w, 249, 328, 502, 579);
     @include u.px(rounded, 20, 20, 20, 20);
-    @include u.px(--offsetY, 91, 155, 148, 182);
+    @include u.px(--offsetY, 91, 155, 198, 182);
     overflow: hidden;
     overflow: clip;
     @include u.shadow(3);
 
     @include u.mw(sm) {
         @include u.px(mr, null, 35, 100, 248);
+    }
+    @include u.mw(md) {
+        align-self: start;
+        top: 0;
     }
 }
 .fgImage {
