@@ -32,7 +32,7 @@ class RunesController extends Controller
                 'description' => 'Более развернутый расклад, где каждая руна показывает разные стороны вашего выбора: суть ситуации, внутренние и внешние влияния, возможный результат.',
             ],
         ];
-        $runes = Rune::all();
+        $runes = Rune::all()->shuffle();
 
         return Inertia::render('user/Decision/pages/Runes/Runes', [
             'items' => $items,

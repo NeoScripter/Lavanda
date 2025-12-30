@@ -48,7 +48,7 @@ const ChosenRunes = () => {
             >
                 {paddedRunes.map((rune, idx) => (
                     <RuneGridItem
-                        key={rune?.id ?? idx}
+                        key={rune?.id ?? idx + runes.length + 1}
                         rune={rune}
                         idx={idx}
                         isSelected={rune ? selectedRunes.includes(rune) : false}
