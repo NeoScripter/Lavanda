@@ -26,6 +26,7 @@ body {
 body {
     min-height: 100vh;
     line-height: 1.6;
+    background-color: u.clr('background', 'muted');
     font-family:
         'Montserrat', 'Verdana', 'Tahoma', ui-sans-serif, system-ui, sans-serif,
         'Apple Color Emoji';
