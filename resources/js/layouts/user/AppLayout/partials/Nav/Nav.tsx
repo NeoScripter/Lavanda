@@ -44,7 +44,7 @@ const NavLink: FC<{ navLink: NavLinkType }> = ({ navLink }) => {
     const isCurrent = isCurrentPage(currentPageUrl, navLink);
 
     return (
-        <li>
+        <li className={css.navLinkWrapper}>
             {navLink.type === 'link' ? (
                 <Link
                     prefetch

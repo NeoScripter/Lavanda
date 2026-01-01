@@ -16,6 +16,12 @@ export type NavLinkType = PopoverNavLink | PlainNavLink;
 export const navLinks: NavLinkType[] = [
     {
         id: crypto.randomUUID(),
+        label: 'Главная',
+        type: 'link',
+        href: '/',
+    },
+    {
+        id: crypto.randomUUID(),
         label: 'Решение',
         type: 'popover',
         links: [

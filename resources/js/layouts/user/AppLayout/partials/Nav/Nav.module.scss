@@ -156,3 +156,11 @@
         width: 100%;
     }
 }
+
+.navLinkWrapper {
+    &:first-child {
+        @include u.mw(sm) {
+            display: none;
+        }
+    }
+}
