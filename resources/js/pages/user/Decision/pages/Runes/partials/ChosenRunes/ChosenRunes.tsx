@@ -38,25 +38,29 @@ const ChosenRunes = () => {
                 </div>
             </Transition>
 
-            <ul
-                className={css.runeGrid}
-                style={{
-                    gridTemplateRows: `repeat(${TOTAL_ROWS}, 1fr)`,
-                    gridTemplateColumns: `repeat(${TOTAL_COLUMNS}, 1fr)`,
-                }}
-            >
-                {paddedRunes.map((rune, idx) => (
-                    <RuneGridItem
-                        key={rune?.id ?? idx + runes.length + 1}
-                        rune={rune}
-                        idx={idx}
-                        runeLength={selectedRunes.length}
-                        isSelected={rune ? selectedRunes.includes(rune) : false}
-                        onSelect={handleSelectRune}
-                        className={cn(hasEnded && css.runeItemInactive)}
-                    />
-                ))}
-            </ul>
+            {!hasEnded && (
+                <ul
+                    className={css.runeGrid}
+                    style={{
+                        gridTemplateRows: `repeat(${TOTAL_ROWS}, 1fr)`,
+                        gridTemplateColumns: `repeat(${TOTAL_COLUMNS}, 1fr)`,
+                    }}
+                >
+                    {paddedRunes.map((rune, idx) => (
+                        <RuneGridItem
+                            key={rune?.id ?? idx + runes.length + 1}
+                            rune={rune}
+                            idx={idx}
+                            runeLength={selectedRunes.length}
+                            isSelected={
+                                rune ? selectedRunes.includes(rune) : false
+                            }
+                            onSelect={handleSelectRune}
+                            className={cn(hasEnded && css.runeItemInactive)}
+                        />
+                    ))}
+                </ul>
+            )}
 
             {hasEnded && (
                 <button

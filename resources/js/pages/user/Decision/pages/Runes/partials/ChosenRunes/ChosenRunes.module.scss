@@ -5,7 +5,7 @@
     grid-template-rows: 1fr;
     transition: grid-template-rows 500ms ease-in-out;
 
-    > div {
+    > * {
         overflow: hidden;
     }
 }
