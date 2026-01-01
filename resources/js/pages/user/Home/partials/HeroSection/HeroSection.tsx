@@ -73,10 +73,14 @@ const HeroSection = () => {
                     >
                         Купить подписку
                     </Link>
-                    <button class={css.infoBtn}>
+                    <Link
+                        href={route('about')}
+                        prefetch
+                        class={css.infoBtn}
+                    >
                         <PlayBtn />
                         <span class={css.underline}>Узнать больше</span>
-                    </button>
+                    </Link>
                 </div>
             </div>
         </section>

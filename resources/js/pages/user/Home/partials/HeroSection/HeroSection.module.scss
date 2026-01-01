@@ -79,6 +79,7 @@
 .infoBtn {
     color: u.clr('primary', 'strong');
     position: relative;
+    display: block;
     font-weight: 500;
     transition: transform 0.3s ease-in-out;
     backdrop-filter: blur(5px);

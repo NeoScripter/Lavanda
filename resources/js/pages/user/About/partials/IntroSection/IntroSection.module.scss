@@ -1,0 +1,14 @@
+@use 'core' as u;
+
+.wrapper {
+    @include u.px(mb, 37, 74, 67, 68);
+
+    p {
+        margin-bottom: 1.5em;
+    }
+
+    @include u.mw(sm) {
+        max-width: 90%;
+        margin-inline: auto;
+    }
+}

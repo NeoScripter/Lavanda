@@ -11,7 +11,7 @@ export const footerNavLinks: FooterNavLinkType[] = [
         title: 'О ресурсе',
         description:
             'Lavanda.Kim — пространство поддержки и вдохновения. Здесь вы найдёте простые инструменты и которые помогают услышать себя.',
-        url: '/',
+        url: '/about',
     },
     {
         id: 'subscription',
@@ -25,7 +25,7 @@ export const footerNavLinks: FooterNavLinkType[] = [
         title: 'Контакты',
         description:
             'Остались вопросы? Напишите авторам - будем рады обратной связи.',
-        url: '/',
+        url: '/contacts',
     },
     {
         id: 'useful',

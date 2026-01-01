@@ -1,0 +1,14 @@
+@use 'core' as u;
+
+.heading {
+    text-align: center;
+}
+
+.fgParent {
+    @include u.px(mb, 37, 74, 67, 68);
+
+    @include u.mw(md) {
+        max-width: 80%;
+        margin-inline: auto;
+    }
+}
