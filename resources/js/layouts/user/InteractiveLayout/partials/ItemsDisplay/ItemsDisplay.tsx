@@ -9,7 +9,7 @@ import {
 } from '../../InteractiveItemsContext';
 import css from './ItemsDisplay.module.scss';
 
-const ItemsDisplay: FC<NodeProps> = ({ className }) => {
+const ItemsDisplay: FC<NodeProps> = ({ className, children }) => {
     const { interativeItems, prevInteractiveItems } = useInterativeItems();
 
     const items =
@@ -20,14 +20,17 @@ const ItemsDisplay: FC<NodeProps> = ({ className }) => {
     return (
         <Transition show={interativeItems.value.length > 0}>
             <div className={css.transitionWrapper}>
-                <ul className={cn(css.wrapper, className)}>
-                    {items.map((item, idx) => (
-                        <ItemSection
-                            key={item.id}
-                            item={item}
-                        />
-                    ))}
-                </ul>
+                <div className={css.mainContentWrapper}>
+                    {children && <div> {children}</div>}
+                    <ul className={cn(css.wrapper, className)}>
+                        {items.map((item) => (
+                            <ItemSection
+                                key={item.id}
+                                item={item}
+                            />
+                        ))}
+                    </ul>
+                </div>
             </div>
         </Transition>
     );
@@ -40,10 +43,6 @@ const ItemSection: FC<{ item: InteractiveItem }> = ({ item }) => {
 
     return (
         <li className={css.sectionWrapper}>
-            <div className={css.sectionHeading}>
-                <h3>{item.summary}</h3>
-                <p>{item.advice}</p>
-            </div>
             <div className={css.sectionContentWrapper}>
                 <div className={css.sectionImageWrapper}>
                     {image && (
@@ -60,6 +59,9 @@ const ItemSection: FC<{ item: InteractiveItem }> = ({ item }) => {
                 </div>
 
                 <div>{item.description}</div>
+            </div>
+            <div className={css.sectionHeading}>
+                <h3>{item.advice}</h3>
             </div>
         </li>
     );

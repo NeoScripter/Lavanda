@@ -22,9 +22,11 @@
     grid-template-rows: 0fr;
 }
 
-.wrapper {
+.mainContentWrapper {
     overflow: hidden;
     background-color: white;
+}
+.wrapper {
     display: grid;
     position: relative;
     @include u.px(pb, 148, 130, 110, 135);
@@ -36,11 +38,7 @@
 .sectionHeading {
     font-weight: 700;
     text-align: center;
-    @include u.px(mb, 51, 61, 52, 63);
-
-    h3 {
-        margin-bottom: 1em;
-    }
+    @include u.px(mt, 51, 61, 52, 63);
 }
 
 .sectionImageWrapper {

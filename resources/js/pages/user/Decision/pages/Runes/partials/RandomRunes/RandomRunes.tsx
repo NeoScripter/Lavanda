@@ -7,7 +7,7 @@ import { Rune } from '@/types/model';
 import checkMotionPreferences from '@/utils/checkMotionPreferences';
 import { cn } from '@/utils/cn';
 import { Transition } from '@headlessui/react';
-import { usePage } from '@inertiajs/react';
+import { FC } from 'preact/compat';
 import ArrowHint from '../ArrowHint/ArrowHint';
 import Carousel from '../Carousel';
 import PickedRunes from '../PickedRunes/PickedRunes';
@@ -16,8 +16,7 @@ import { useCarouselLogic } from './useCarouselLogic';
 
 const ANIMATION_DURATION = 750;
 
-const RandomRunes = () => {
-    const { runes } = usePage<{ runes: Rune[] }>().props;
+const RandomRunes: FC<{ runes: Rune[] }> = ({ runes }) => {
     const { currentSlideId } = useCurrentSlideId();
     const { interativeItems, prevInteractiveItems } = useInterativeItems();
 

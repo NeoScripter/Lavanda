@@ -11,9 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('runes', function (Blueprint $table) {
+        Schema::create('rune_categories', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('rune_id')->constrained()->onDelete('cascade');
             $table->string("name");
+            $table->text("description");
+            $table->text("advice");
             $table->timestamps();
         });
     }
@@ -23,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('runes');
+        Schema::dropIfExists('rune_categories');
     }
 };

@@ -8,7 +8,7 @@ import ItemsDisplay from './partials/ItemsDisplay';
 
 const InteractiveLayout: FC<
     NodeProps<{ btnLabels: string[]; components: (() => ComponentChild)[] }>
-> = ({ className, btnLabels, components }) => {
+> = ({ className, btnLabels, components, children }) => {
     const [activeIdx, setActiveIdx] = useState(0);
 
     return (
@@ -32,7 +32,7 @@ const InteractiveLayout: FC<
                     {components[activeIdx]?.()}
                 </article>
 
-                <ItemsDisplay />
+                <ItemsDisplay>{children}</ItemsDisplay>
             </InterativeItemsProvider>
         </div>
     );

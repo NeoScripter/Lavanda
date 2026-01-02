@@ -10,12 +10,12 @@ import css from './ChosenRunes.module.scss';
 import padGridCorners from './helpers/padGridCorners';
 import { useRuneSelection } from './hooks/useRuneSelection';
 import RuneGridItem from './partials/RuneGridItem/RuneGridItem';
+import { FC } from 'preact/compat';
 
 const TOTAL_COLUMNS = 7;
 const TOTAL_ROWS = 8;
 
-const ChosenRunes = () => {
-    const { runes } = usePage<{ runes: Rune[] }>().props;
+const ChosenRunes: FC<{runes: Rune[]}> = ({runes}) => {
     const { currentSlideId } = useCurrentSlideId();
     const { interativeItems, prevInteractiveItems } = useInterativeItems();
 
