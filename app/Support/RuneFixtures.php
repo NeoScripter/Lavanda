@@ -12,13 +12,17 @@ class RuneFixtures
     {
         return once(fn () => collect(File::files(database_path('factories/fixtures/runes')))
             ->map(fn (SplFileInfo $fileInfo) => $fileInfo->getContents())
-            ->map(fn (string $contents) => str($contents)->explode("\n\n", 4))
+            ->map(fn (string $contents) => str($contents)->explode("\n\n\n"))
             ->map(fn (Collection $parts) => [
-                'image' => str($parts[0])->trim(),
-                'tiny_image' => str($parts[1])->trim(),
-                'url' => str($parts[2])->trim(),
-                'description' => str($parts[3])->trim(),
-                'alt' => str($parts[3])->trim(),
+                'front_image' => str($parts[0])->trim(),
+                'tiny_front_image' => str($parts[1])->trim(),
+                'back_image' => str($parts[2])->trim(),
+                'tiny_back_image' => str($parts[3])->trim(),
+                'name' => str($parts[4])->trim(),
+                'advice' => str($parts[5])->trim(),
+                'cat1' => str($parts[6])->trim(),
+                'cat2' => str($parts[7])->trim(),
+                'cat3' => str($parts[8])->trim(),
             ]));
     }
 }

@@ -18,6 +18,7 @@ class RuneFactory extends Factory
     {
         return [
             'name' => 'Руна Лагус (Laguz)',
+            'advice' => 'Совет: не пейте сырую воду, по утрам умывайтесь холодной водой, а также пейте молоко',
         ];
     }
 }

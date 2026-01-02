@@ -17,8 +17,7 @@ class RuneCategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'description' => fake()->sentences(8, true),
-            'advice' => 'Совет: не пейте сырую воду, по утрам умывайтесь холодной водой, а также пейте молоко',
+            'body' => fake()->sentences(8, true),
         ];
     }
 }

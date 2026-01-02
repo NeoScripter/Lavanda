@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('runes', function (Blueprint $table) {
             $table->id();
             $table->string("name");
+            $table->text("advice");
             $table->timestamps();
         });
     }
