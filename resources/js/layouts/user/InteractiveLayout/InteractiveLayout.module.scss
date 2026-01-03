@@ -4,7 +4,7 @@
     margin-inline: auto;
     width: 100%;
     @include u.px(max-w, null, null, 1211, 1553);
-    @include u.px(my, 56, 85, 111, 122);
+    @include u.px(mt, 56, 85, 111, 122);
 }
 
 .nav {

@@ -9,6 +9,9 @@ export const routeLabels: Record<string, string> = {
     runes: 'Спросить у рун',
     cards: 'Спросить у карт',
     sadness: 'Мне грустно',
+    tarot: 'Таро',
+    metaphoric: 'Метафорические карты',
+    lenormand: 'Гадание Госпожи Ленорман',
     relaxation: 'Хочу расслабиться',
     toolkit: 'Полезные ресурсы',
 };
