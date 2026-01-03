@@ -5,6 +5,7 @@ import css from './LazyImage.module.scss';
 type LazyImageProps = {
     prtClass?: string;
     imgClass?: string;
+    placeholderClass?: string;
     img: string;
     alt?: string;
     tinyImg: string;
@@ -18,6 +19,7 @@ export default function LazyImage({
     alt = '',
     tinyImg,
     isLazy = true,
+    placeholderClass,
 }: LazyImageProps) {
     const [isLoading, setIsLoading] = useState(true);
 
@@ -43,7 +45,7 @@ export default function LazyImage({
                 <div
                     role="status"
                     aria-label="Фото загружается"
-                    class={css.loader}
+                    class={cn(css.loader, placeholderClass)}
                 >
                     <div
                         aria-hidden="true"

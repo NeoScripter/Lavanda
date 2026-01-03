@@ -22,6 +22,7 @@ const RuneItem: FC<{
                 <LazyImage
                     prtClass={cn(css.runeWrapper, isSelected && css.hidden)}
                     imgClass={css.runeImg}
+                    placeholderClass={css.runeImgPlaceholder}
                     img={rune.back_image.path}
                     tinyImg={rune.back_image.tiny_path}
                     alt={rune.back_image.alt}

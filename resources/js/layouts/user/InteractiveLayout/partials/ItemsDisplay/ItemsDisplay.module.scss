@@ -23,8 +23,12 @@
 }
 
 .mainContentWrapper {
+    --border-radius: 0;
     overflow: hidden;
     background-color: white;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+
+    @include u.px(--border-radius, 30, 30, 30, 30);
 }
 .wrapper {
     display: grid;
