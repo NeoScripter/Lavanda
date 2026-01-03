@@ -1,0 +1,26 @@
+@use 'core' as u;
+
+.heroForeground {
+    @include u.px(w, null, null, 461, 509);
+    @include u.px(top, null, null, 187, 200);
+}
+
+.cardItems {
+    --offsetY: 0;
+    --size: 0;
+
+    @include u.px(--offsetY, 63, 97, 141, 94);
+    margin-top: calc(var(--offsetY) * -1);
+
+    display: grid;
+    place-content: center;
+    @include u.px(--size, 317, 429, 377, 429);
+    @include u.px(gap, 39, 63, 33, 40);
+    @include u.px(mb, 167, 203, 106, 88);
+
+    grid-template-columns: repeat(1, var(--size));
+
+    @include u.mw(md) {
+        grid-template-columns: repeat(3, var(--size));
+    }
+}

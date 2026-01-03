@@ -45,15 +45,15 @@ export const navLinks: NavLinkType[] = [
             },
             {
                 id: crypto.randomUUID(),
-                label: 'Руны ',
+                label: 'Спросить у рун',
                 type: 'link',
                 href: '/decision/runes',
             },
             {
                 id: crypto.randomUUID(),
-                label: 'Расклад карт',
+                label: 'Спросить у карт',
                 type: 'link',
-                href: '/',
+                href: '/decision/cards',
             },
             {
                 id: crypto.randomUUID(),

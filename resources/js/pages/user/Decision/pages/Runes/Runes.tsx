@@ -1,3 +1,7 @@
+import ForegroundDkTiny from '@/assets/images/runes/foreground-dk-tiny.webp';
+import ForegroundDk from '@/assets/images/runes/foreground-dk.webp';
+import ForegroundMbTiny from '@/assets/images/runes/foreground-mb-tiny.webp';
+import ForegroundMb from '@/assets/images/runes/foreground-mb.webp';
 import BreadCrumbLayout from '@/layouts/user/BreadCrumbLayout/BreadCrumbLayout';
 import InteractiveLayout from '@/layouts/user/InteractiveLayout/InteractiveLayout';
 import { Rune } from '@/types/model';
@@ -27,6 +31,14 @@ const Runes = () => {
             intro={intro}
             imgClass={css.heroForeground}
             withCards={true}
+            fgImg={{
+                dk: ForegroundDk,
+                dkTiny: ForegroundDkTiny,
+                tb: ForegroundDk,
+                tbTiny: ForegroundDkTiny,
+                mb: ForegroundMb,
+                mbTiny: ForegroundMbTiny,
+            }}
         >
             <InteractiveLayout
                 btnLabels={['Случайный выбор', 'Выбрать самой']}

@@ -7,6 +7,7 @@ export const routeLabels: Record<string, string> = {
     practice: 'Практика',
     experience: 'Опыт автора',
     runes: 'Спросить у рун',
+    cards: 'Спросить у карт',
     sadness: 'Мне грустно',
     relaxation: 'Хочу расслабиться',
     toolkit: 'Полезные ресурсы',

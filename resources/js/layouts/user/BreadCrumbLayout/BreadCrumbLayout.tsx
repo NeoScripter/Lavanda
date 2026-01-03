@@ -5,15 +5,17 @@ import BgMb from '@/assets/images/assymetric-layout/mb-bg.webp';
 import BgTbTiny from '@/assets/images/assymetric-layout/tb-bg-tiny.webp';
 import BgTb from '@/assets/images/assymetric-layout/tb-bg.webp';
 import BgLoader from '@/components/user/ui/BgLoader/BgLoader';
+import { BgLoaderImg } from '@/lib/types/shared';
 import { NodeProps } from '@/types/nodeProps';
 import { cn } from '@/utils/cn';
-import { Head } from '@inertiajs/react';
+import { Head, usePage } from '@inertiajs/react';
 import { FC } from 'preact/compat';
 import AppLayout from '../AppLayout/AppLayout';
 import ItemsLayout from '../ItemsLayout';
 import { CurrentSlideProvider } from '../ItemsLayout/CurrentSlideProvider';
 import css from './BreadCrumbLayout.module.scss';
 import HeroSection from './partials/HeroSection';
+import { ExperienceItem } from '@/types/model';
 
 const BreadCrumbLayout: FC<
     NodeProps<{
@@ -21,8 +23,10 @@ const BreadCrumbLayout: FC<
         intro: string;
         imgClass?: string;
         withCards: boolean;
+        fgImg?: BgLoaderImg;
     }>
-> = ({ className, children, heading, intro, imgClass, withCards }) => {
+> = ({ className, children, fgImg, heading, intro, imgClass, withCards }) => {
+    const { items } = usePage<{ items: ExperienceItem[] | undefined }>().props;
     return (
         <AppLayout
             variation="white"
@@ -44,9 +48,10 @@ const BreadCrumbLayout: FC<
                 intro={intro}
                 imgClass={imgClass}
                 className={withCards ? css.noMargin : ''}
+                fgImg={fgImg}
             />
 
-            {withCards ? (
+            {withCards && items ? (
                 <CurrentSlideProvider>
                     <ItemsLayout className={css.topOffset}>
                         {children}

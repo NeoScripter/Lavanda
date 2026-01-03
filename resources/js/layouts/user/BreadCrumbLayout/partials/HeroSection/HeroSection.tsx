@@ -1,20 +1,19 @@
-import ForegroundDkTiny from '@/assets/images/runes/foreground-dk-tiny.webp';
-import ForegroundDk from '@/assets/images/runes/foreground-dk.webp';
-import ForegroundMbTiny from '@/assets/images/runes/foreground-mb-tiny.webp';
-import ForegroundMb from '@/assets/images/runes/foreground-mb.webp';
 import BgLoader from '@/components/user/ui/BgLoader/BgLoader';
 import BreadCrumbs from '@/components/user/ui/BreadCrumbs/BreadCrumbs';
+import { BgLoaderImg } from '@/lib/types/shared';
 import { NodeProps } from '@/types/nodeProps';
 import { cn } from '@/utils/cn';
 import { FC } from 'preact/compat';
 import css from './HeroSection.module.scss';
 
-const HeroSection: FC<NodeProps<{ imgClass?: string, heading: string, intro: string }>> = ({
-    className,
-    imgClass,
-    heading,
-    intro
-}) => {
+const HeroSection: FC<
+    NodeProps<{
+        fgImg?: BgLoaderImg;
+        imgClass?: string;
+        heading: string;
+        intro: string;
+    }>
+> = ({ className, imgClass, heading, intro, fgImg }) => {
     return (
         <section class={cn(css.wrapper, 'full-bleed', className)}>
             <LeftBlob />
@@ -22,16 +21,18 @@ const HeroSection: FC<NodeProps<{ imgClass?: string, heading: string, intro: str
 
             <BreadCrumbs className={css.breadcrumbs} />
 
-            <BgLoader
-                prtClass={cn(css.bgLoader, imgClass)}
-                imgClass={css.bgFgImage}
-                dk={ForegroundDk}
-                dkTiny={ForegroundDkTiny}
-                tb={ForegroundDk}
-                tbTiny={ForegroundDkTiny}
-                mb={ForegroundMb}
-                mbTiny={ForegroundMbTiny}
-            />
+            {fgImg && (
+                <BgLoader
+                    prtClass={cn(css.bgLoader, imgClass)}
+                    imgClass={css.bgFgImage}
+                    dk={fgImg.dk}
+                    dkTiny={fgImg.dkTiny}
+                    tb={fgImg.tb}
+                    tbTiny={fgImg.tbTiny}
+                    mb={fgImg.mb}
+                    mbTiny={fgImg.mbTiny}
+                />
+            )}
 
             <div class={css.textContent}>
                 <h1>{heading}</h1>

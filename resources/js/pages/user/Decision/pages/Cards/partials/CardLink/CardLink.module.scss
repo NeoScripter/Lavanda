@@ -1,0 +1,54 @@
+@use 'core' as u;
+
+.wrapper {
+    position: relative;
+    isolation: isolate;
+    border-radius: 24px;
+    background: #d4caef;
+    overflow: hidden;
+    overflow: clip;
+    @include u.px(rounded, 24, 24, 24, 24);
+    @include u.shadow(3);
+    @include u.px(px, 25, 25, 25, 25);
+    @include u.px(pt, 17, 17, 17, 17);
+    @include u.px(pb, 50, 50, 35, 35);
+
+    &::after {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        inset: 0;
+        background: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.91) 100%
+        );
+    }
+    &:hover {
+        outline: 4px solid u.clr('primary', 'strong');
+    }
+}
+.imgWrapper {
+    margin-inline: auto;
+    width: 40%;
+    @include u.px(mb, 17, 17, 17, 17);
+}
+
+.heading {
+    text-align: center;
+    text-transform: uppercase;
+    color: u.clr('primary', 'strong');
+    font-weight: 700;
+    @include u.px(mb, 24, 24, 24, 24);
+}
+
+.content {
+    text-align: center;
+    @include u.rm(text, 14, 16, 14, 16);
+}
+
+.link {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+}
