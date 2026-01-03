@@ -2,7 +2,7 @@ import { NodeProps } from '@/types/nodeProps';
 import { cn } from '@/utils/cn';
 import { ComponentChild } from 'preact';
 import { FC, useState } from 'preact/compat';
-import { InterativeItemsProvider } from './InteractiveItemsContext';
+import { InteractiveItemsProvider } from './InteractiveItemsContext';
 import css from './InteractiveLayout.module.scss';
 import ItemsDisplay from './partials/ItemsDisplay';
 
@@ -27,13 +27,13 @@ const InteractiveLayout: FC<
                     </button>
                 ))}
             </nav>
-            <InterativeItemsProvider>
+            <InteractiveItemsProvider>
                 <article class={cn(css.content, 'full-bleed-parent')}>
                     {components[activeIdx]?.()}
                 </article>
 
                 <ItemsDisplay>{children}</ItemsDisplay>
-            </InterativeItemsProvider>
+            </InteractiveItemsProvider>
         </div>
     );
 };

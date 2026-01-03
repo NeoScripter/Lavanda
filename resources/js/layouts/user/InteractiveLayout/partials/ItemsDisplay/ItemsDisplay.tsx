@@ -5,20 +5,20 @@ import { Transition } from '@headlessui/react';
 import { FC } from 'preact/compat';
 import {
     InteractiveItem,
-    useInterativeItems,
+    useInteractiveItems,
 } from '../../InteractiveItemsContext';
 import css from './ItemsDisplay.module.scss';
 
 const ItemsDisplay: FC<NodeProps> = ({ className, children }) => {
-    const { interativeItems, prevInteractiveItems } = useInterativeItems();
+    const { interactiveItems, prevInteractiveItems } = useInteractiveItems();
 
     const items =
-        interativeItems.value.length !== 0
-            ? interativeItems.value
+        interactiveItems.value.length !== 0
+            ? interactiveItems.value
             : prevInteractiveItems.value;
 
     return (
-        <Transition show={interativeItems.value.length > 0}>
+        <Transition show={interactiveItems.value.length > 0}>
             <div className={css.transitionWrapper}>
                 <div className={css.mainContentWrapper}>
                     {children && <div> {children}</div>}
@@ -39,6 +39,8 @@ const ItemsDisplay: FC<NodeProps> = ({ className, children }) => {
 export default ItemsDisplay;
 
 const ItemSection: FC<{ item: InteractiveItem }> = ({ item }) => {
+    const { isLoading } = useInteractiveItems();
+
     const image = item.front_image;
 
     return (
@@ -58,11 +60,43 @@ const ItemSection: FC<{ item: InteractiveItem }> = ({ item }) => {
                     <h4 className={css.sectionItemName}>{item.name}</h4>
                 </div>
 
-                <div>{item.description}</div>
+                {isLoading.value ? (
+                    <Preloader />
+                ) : (
+                    <div
+                        className={css.sectionHtmlContent}
+                        dangerouslySetInnerHTML={{ __html: item.description }}
+                    />
+                )}
             </div>
             <div className={css.sectionHeading}>
                 <h3>{item.advice}</h3>
             </div>
         </li>
+    );
+};
+
+const Preloader = () => {
+    return (
+        <div className={css.sectionPreloader}>
+            <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                Molestiae at voluptatem nam vero obcaecati est atque repudiandae
+                tempora sint dolore ab nobis rerum ipsa, quae blanditiis! Ullam
+                veritatis esse veniam!
+            </p>
+            <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                Molestiae at voluptatem nam vero obcaecati est atque repudiandae
+                tempora sint dolore ab nobis rerum ipsa, quae blanditiis! Ullam
+                veritatis esse veniam!
+            </p>
+            <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                Molestiae at voluptatem nam vero obcaecati est atque repudiandae
+                tempora sint dolore ab nobis rerum ipsa, quae blanditiis! Ullam
+                veritatis esse veniam!
+            </p>
+        </div>
     );
 };

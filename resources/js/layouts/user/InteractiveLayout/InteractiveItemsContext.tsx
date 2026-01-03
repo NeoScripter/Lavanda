@@ -1,5 +1,5 @@
 import { Image } from '@/types/model';
-import { Signal, signal, useSignalEffect } from '@preact/signals';
+import { Signal, signal } from '@preact/signals';
 import { createContext } from 'preact';
 import { useContext } from 'preact/hooks';
 
@@ -13,37 +13,39 @@ export type InteractiveItem = {
     back_image?: Image;
 };
 
-interface InterativeItemsContextValue {
-    interativeItems: Signal<InteractiveItem[]>;
+interface InteractiveItemsContextValue {
+    interactiveItems: Signal<InteractiveItem[]>;
     prevInteractiveItems: Signal<InteractiveItem[]>;
+    isLoading: Signal<boolean>;
 }
 
-const InterativeItemsContext =
-    createContext<InterativeItemsContextValue | null>(null);
+const InteractiveItemsContext =
+    createContext<InteractiveItemsContextValue | null>(null);
 
-export function useInterativeItems() {
-    const ctx = useContext(InterativeItemsContext);
+export function useInteractiveItems() {
+    const ctx = useContext(InteractiveItemsContext);
     if (!ctx) {
         throw new Error(
-            'useInterativeItems must be used within InterativeItemsProvider',
+            'useInteractiveItems must be used within InteractiveItemsProvider',
         );
     }
     return ctx;
 }
 
-export function InterativeItemsProvider({
+export function InteractiveItemsProvider({
     children,
 }: {
     children: preact.ComponentChildren;
 }) {
-    const interativeItems = signal([]);
+    const interactiveItems = signal([]);
     const prevInteractiveItems = signal<InteractiveItem[]>([]);
+    const isLoading = signal(false);
 
     return (
-        <InterativeItemsContext.Provider
-            value={{ interativeItems, prevInteractiveItems }}
+        <InteractiveItemsContext.Provider
+            value={{ interactiveItems, prevInteractiveItems, isLoading }}
         >
             {children}
-        </InterativeItemsContext.Provider>
+        </InteractiveItemsContext.Provider>
     );
 }

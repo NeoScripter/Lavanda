@@ -55,14 +55,24 @@ export type PracticeItemFaq = {
 export type Rune = {
     id: number;
     name: string;
-    description: string;
-    summary: string;
     advice: string;
     created_at?: string;
     updated_at?: string;
+    categories?: RuneCategory[];
     images?: Image;
     front_image?: Image;
     back_image?: Image;
+};
+export type RuneCategory = {
+    id: number;
+    rune_id: number;
+    order: number;
+    name: string;
+    body: string;
+    html: string;
+    created_at?: string;
+    updated_at?: string;
+    rune?: Rune;
 };
 export type WellnessTip = {
     id: number;

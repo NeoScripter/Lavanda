@@ -1,0 +1,40 @@
+@use 'core' as u;
+
+.title {
+    font-weight: 700;
+    text-align: center;
+    margin-block: 2em;
+    @include u.rm(text, 14, 20, 24, 24);
+}
+
+.btnWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+}
+
+.categoryBtn {
+    display: inline-flex;
+    padding: 1em 2em;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2em;
+    border: 1px solid #fff;
+    background: rgba(166, 166, 166, 0.76);
+    box-shadow:
+        10px 10px 20px 0 rgba(0, 0, 0, 0.25),
+        0 1.5px 1px 0 #e1d4ff inset;
+    backdrop-filter: blur(5px);
+    font-weight: 600;
+    color: white;
+    text-transform: uppercase;
+
+    @include u.shine();
+    @include u.rm(text, 14, 20, 24, 24);
+}
+
+.categoryBtnSelected {
+    background-color: u.clr('primary', 'strong');
+}

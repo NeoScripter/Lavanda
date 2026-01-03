@@ -85,3 +85,25 @@
 .sectionImage {
     object-fit: contain;
 }
+
+.sectionHtmlContent {
+    p {
+        margin-bottom: 1.2em;
+    }
+}
+
+.sectionPreloader {
+    p {
+        background-color: hsla(0, 0%, 65%, 0.76);
+        color: transparent;
+        animation: flicker 1s ease-in-out alternate infinite;
+        margin-bottom: 1.2em;
+        border-radius: 5px;
+    }
+}
+
+@keyframes flicker {
+    to {
+        opacity: 0.2;
+    }
+}

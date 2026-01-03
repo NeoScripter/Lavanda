@@ -1,13 +1,15 @@
 import BackgroundDkTiny from '@/assets/images/random-runes/background-dk-tiny.webp';
 import BackgroundDk from '@/assets/images/random-runes/background-dk.webp';
 import LazyImage from '@/components/user/ui/LazyImage/LazyImage';
-import { useInterativeItems } from '@/layouts/user/InteractiveLayout/InteractiveItemsContext';
+import { useInteractiveItems } from '@/layouts/user/InteractiveLayout/InteractiveItemsContext';
 import { useCurrentSlideId } from '@/layouts/user/ItemsLayout/CurrentSlideProvider';
 import { Rune } from '@/types/model';
 import checkMotionPreferences from '@/utils/checkMotionPreferences';
 import { cn } from '@/utils/cn';
 import { Transition } from '@headlessui/react';
+import { Signal } from '@preact/signals';
 import { FC } from 'preact/compat';
+import useFetchRuneCategories from '../../useFetchRuneCategories';
 import ArrowHint from '../ArrowHint/ArrowHint';
 import Carousel from '../Carousel';
 import PickedRunes from '../PickedRunes/PickedRunes';
@@ -16,14 +18,22 @@ import { useCarouselLogic } from './useCarouselLogic';
 
 const ANIMATION_DURATION = 750;
 
-const RandomRunes: FC<{ runes: Rune[] }> = ({ runes }) => {
+const RandomRunes: FC<{ runes: Rune[]; selectedCategory: Signal<string> }> = ({
+    runes,
+    selectedCategory,
+}) => {
     const { currentSlideId } = useCurrentSlideId();
-    const { interativeItems, prevInteractiveItems } = useInterativeItems();
+    const { interactiveItems, prevInteractiveItems } = useInteractiveItems();
 
     const isMotionEnabled = checkMotionPreferences();
 
     const adjustedAnimationDuration = isMotionEnabled ? ANIMATION_DURATION : 0;
     const runeLimit = currentSlideId.value ?? 1;
+
+    useFetchRuneCategories({
+        selectedCategory: selectedCategory.value,
+        runeLimit,
+    });
 
     const {
         selectedRunes,
@@ -38,7 +48,7 @@ const RandomRunes: FC<{ runes: Rune[] }> = ({ runes }) => {
         runeLimit,
         adjustedAnimationDuration,
         isMotionEnabled,
-        interativeItems,
+        interactiveItems,
         prevInteractiveItems,
     );
 

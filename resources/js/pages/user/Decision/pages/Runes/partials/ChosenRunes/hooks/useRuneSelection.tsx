@@ -1,5 +1,6 @@
 import { Rune } from '@/types/model';
 import { useReducer } from 'preact/hooks';
+import useFetchRuneCategories from '../../../useFetchRuneCategories';
 
 // Types
 type RuneSelectionState = {
@@ -34,14 +35,17 @@ function runeSelectionReducer(
 // Custom hook
 export function useRuneSelection(
     runeLimit: number,
-    interativeItems: any,
+    interactiveItems: any,
     prevInteractiveItems: any,
+    selectedCategory: string,
 ) {
     const [state, dispatch] = useReducer(runeSelectionReducer, {
         selectedRunes: [],
     });
 
     const hasEnded = state.selectedRunes.length === runeLimit;
+
+    useFetchRuneCategories({ selectedCategory, runeLimit });
 
     const handleSelectRune = (rune: Rune) => {
         if (hasEnded) return;
@@ -51,13 +55,13 @@ export function useRuneSelection(
         // Check if we've reached the limit after this selection
         const updatedRunes = [...state.selectedRunes, rune];
         if (updatedRunes.length === runeLimit) {
-            interativeItems.value = [...updatedRunes];
+            interactiveItems.value = [...updatedRunes];
         }
     };
 
     const handleRestart = () => {
-        prevInteractiveItems.value = [...interativeItems.value];
-        interativeItems.value = [];
+        prevInteractiveItems.value = [...interactiveItems.value];
+        interactiveItems.value = [];
         dispatch({ type: 'RESET' });
     };
 

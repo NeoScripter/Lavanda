@@ -50,7 +50,7 @@ export function useCarouselLogic(
     runeLimit: number,
     adjustedAnimationDuration: number,
     isMotionEnabled: boolean,
-    interativeItems: any,
+    interactiveItems: any,
     prevInteractiveItems: any,
 ) {
     const [state, dispatch] = useReducer(carouselReducer, {
@@ -113,13 +113,13 @@ export function useCarouselLogic(
 
         const newRunes = [...state.selectedRunes, selectedRune];
         if (newRunes.length === runeLimit) {
-            interativeItems.value = newRunes;
+            interactiveItems.value = newRunes;
         }
     };
 
     const reset = () => {
-        prevInteractiveItems.value = [...interativeItems.value];
-        interativeItems.value = [];
+        prevInteractiveItems.value = [...interactiveItems.value];
+        interactiveItems.value = [];
         dispatch({ type: 'RESET' });
     };
 
