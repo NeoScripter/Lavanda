@@ -1,5 +1,3 @@
-import BackDkTiny from '@/assets/images/cards/tarot/back-dk-tiny.webp';
-import BackDk from '@/assets/images/cards/tarot/back-dk.webp';
 import LazyImage from '@/components/user/ui/LazyImage/LazyImage';
 import { Tarot } from '@/types/model';
 import { NodeProps } from '@/types/nodeProps';
@@ -10,11 +8,35 @@ import css from './Card.module.scss';
 type CardType = Tarot;
 
 const Card: FC<
-    NodeProps<{ card: CardType; isFlipped?: boolean; onClick: () => void }>
-> = ({ className, card, isFlipped, onClick }) => {
+    NodeProps<{
+        card: CardType;
+        isFlipped?: boolean;
+        onClick?: () => void;
+        shouldHover?: boolean;
+        isHighlighted?: boolean;
+        backImgPath: string;
+        backImgTinyPath: string;
+    }>
+> = ({
+    className,
+    card,
+    isFlipped = false,
+    onClick,
+    shouldHover,
+    isHighlighted,
+    backImgPath,
+    backImgTinyPath,
+}) => {
     return (
-        <li className={cn(css.wrapper, className)}>
-            {!isFlipped && (
+        <li
+            className={cn(
+                css.wrapper,
+                shouldHover && css.wrapperHover,
+                isHighlighted && css.wrapperHighlighted,
+                className,
+            )}
+        >
+            {!isFlipped && onClick != null && (
                 <button
                     onClick={onClick}
                     type="button"
@@ -25,8 +47,8 @@ const Card: FC<
                 <LazyImage
                     prtClass={cn(css.sharedImgWrapper, css.backImgWrapper)}
                     imgClass={cn(css.sharedImg, css.backImg)}
-                    img={BackDk}
-                    tinyImg={BackDkTiny}
+                    img={backImgPath}
+                    tinyImg={backImgTinyPath}
                 />
                 {card.front_image && (
                     <LazyImage

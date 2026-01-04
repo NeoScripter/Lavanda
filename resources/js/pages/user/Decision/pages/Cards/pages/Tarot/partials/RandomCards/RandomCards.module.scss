@@ -32,6 +32,9 @@
 }
 
 .rowWrapper {
+    /* display: flex; */
+    /* align-items: start; */
+    /* justify-content: space-between; */
 }
 
 .cardWrapper {
@@ -42,4 +45,29 @@
     padding-left: var(--size);
     @include u.px(h, 175, 360, 368, 423);
     @include u.px(--size, 122, 252, 257, 295);
+}
+
+.initialCards {
+    /* flex: 1 0 70%; */
+}
+
+.selectedCards {
+    /* flex: 1 0 30%; */
+    margin-inline: auto;
+    width: 50%;
+    margin-bottom: 2em;
+}
+
+.nextRuneBtn {
+    margin-inline: auto;
+    @include u.px(mt, 42, 68, 63, 70);
+    /* @include u.px(mb, 42, 48, 52, 60); */
+
+    &[disabled] {
+        opacity: 0.5;
+        cursor: default;
+        &:hover {
+            pointer-events: none;
+        }
+    }
 }

@@ -3,7 +3,6 @@
 .wrapper {
     --size: 0;
     display: grid;
-    grid-template-columns: repeat(30, 1fr);
     padding-left: var(--size);
     @include u.px(h, 175, 360, 368, 423);
     @include u.px(--size, 122, 252, 257, 295);
