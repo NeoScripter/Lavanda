@@ -21,17 +21,17 @@ const updateRunes = (
     }
 
     return [...runes].map((rune) => {
-        const description =
+        const html =
             categoryData?.[Number(rune?.id)]?.[selectedCategory];
 
-        if (!description) {
+        if (!html) {
             console.warn(
-                `Missing description for rune ${rune?.id}, category: ${selectedCategory}`,
+                `Missing html for rune ${rune?.id}, category: ${selectedCategory}`,
             );
             return rune;
         }
 
-        return { ...rune, description };
+        return { ...rune, html };
     });
 };
 

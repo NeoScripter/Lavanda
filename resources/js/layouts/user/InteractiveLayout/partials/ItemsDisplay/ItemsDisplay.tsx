@@ -65,12 +65,12 @@ const ItemSection: FC<{ item: InteractiveItem }> = ({ item }) => {
                 ) : (
                     <div
                         className={css.sectionHtmlContent}
-                        dangerouslySetInnerHTML={{ __html: item.description }}
+                        dangerouslySetInnerHTML={{ __html: item.html }}
                     />
                 )}
             </div>
             <div className={css.sectionHeading}>
-                <h3>{item.advice}</h3>
+                <h3>{`Совет: ${item.advice}`}</h3>
             </div>
         </li>
     );

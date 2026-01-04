@@ -6,8 +6,7 @@ import { useContext } from 'preact/hooks';
 export type InteractiveItem = {
     id: string | number;
     name: string;
-    description: string;
-    summary: string;
+    html: string;
     advice: string;
     front_image?: Image;
     back_image?: Image;

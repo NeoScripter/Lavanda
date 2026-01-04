@@ -24,5 +24,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ExperienceItemSeeder::class);
         $this->call(PracticeItemSeeder::class);
         $this->call(RuneSeeder::class);
+        $this->call(TarotSeeder::class);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User\Decision\Cards;
 
 use App\Http\Controllers\Controller;
+use App\Models\Tarot;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -31,10 +32,11 @@ class TarotController extends Controller
             ],
         ];
 
+        $cards = Tarot::all()->shuffle();
 
         return Inertia::render('user/Decision/pages/Cards/pages/Tarot/Tarot', [
             'items' => $items,
-
+            'cards' => $cards,
         ]);
     }
 }

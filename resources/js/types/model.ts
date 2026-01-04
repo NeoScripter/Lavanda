@@ -74,6 +74,17 @@ export type RuneCategory = {
     updated_at?: string;
     rune?: Rune;
 };
+export type Tarot = {
+    id: number;
+    name: string;
+    body: string;
+    html?: string;
+    advice: string;
+    created_at?: string;
+    updated_at?: string;
+    images?: Image;
+    front_image?: Image;
+};
 export type WellnessTip = {
     id: number;
     type: WellnessTipType;
