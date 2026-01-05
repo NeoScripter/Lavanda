@@ -9,8 +9,8 @@ import { BgLoaderImg } from '@/lib/types/shared';
 import { ExperienceItem } from '@/types/model';
 import { NodeProps } from '@/types/nodeProps';
 import { cn } from '@/utils/cn';
-import { Head, usePage } from '@inertiajs/react';
-import { FC } from 'preact/compat';
+import { usePage } from '@inertiajs/react';
+import { FC, useState } from 'preact/compat';
 import AppLayout from '../AppLayout/AppLayout';
 import ItemsLayout from '../ItemsLayout';
 import { CurrentSlideProvider } from '../ItemsLayout/CurrentSlideProvider';
@@ -24,9 +24,20 @@ const BreadCrumbLayout: FC<
         imgClass?: string;
         withCards: boolean;
         fgImg?: BgLoaderImg;
+        hasHeroRevealer?: boolean;
     }>
-> = ({ className, children, fgImg, heading, intro, imgClass, withCards }) => {
+> = ({
+    className,
+    children,
+    fgImg,
+    heading,
+    intro,
+    imgClass,
+    withCards,
+    hasHeroRevealer,
+}) => {
     const { items } = usePage<{ items: ExperienceItem[] | undefined }>().props;
+    const [showContent, setShowContent] = useState(!hasHeroRevealer);
     return (
         <AppLayout
             variation="white"
@@ -56,7 +67,7 @@ const BreadCrumbLayout: FC<
                         {children}
                     </ItemsLayout>
                 ) : (
-                    children
+                    showContent && children
                 )}
             </CurrentSlideProvider>
         </AppLayout>

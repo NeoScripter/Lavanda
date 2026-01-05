@@ -12,8 +12,9 @@ const HeroSection: FC<
         imgClass?: string;
         heading: string;
         intro: string;
+        handleClick?: () => void;
     }>
-> = ({ className, imgClass, heading, intro, fgImg }) => {
+> = ({ className, imgClass, heading, intro, fgImg, handleClick }) => {
     return (
         <section class={cn(css.wrapper, 'full-bleed', className)}>
             <LeftBlob />
@@ -38,6 +39,8 @@ const HeroSection: FC<
                 <h1>{heading}</h1>
                 <p>{intro}</p>
             </div>
+
+            {handleClick != null && <button></button>}
         </section>
     );
 };

@@ -96,13 +96,13 @@ const RandomCards = () => {
                 </CardDeck>
             )}
 
-            {hasStarted && (
+            {hasEnded && (
                 <button
                     onClick={handleNextSpinClick}
                     disabled={isSpinning}
                     class={cn('primary-btn', css.nextRuneBtn)}
                 >
-                    {hasEnded ? 'Попробовать снова' : 'Еще карта'}
+                    Попробовать снова
                 </button>
             )}
 
