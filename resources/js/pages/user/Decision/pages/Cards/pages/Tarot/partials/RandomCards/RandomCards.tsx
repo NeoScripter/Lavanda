@@ -36,7 +36,7 @@ const RandomCards = () => {
     };
 
     const {
-        unselectedCards,
+        faceDownCards,
         selectedCards,
         highlightedIdx,
         startSpinning,
@@ -44,7 +44,7 @@ const RandomCards = () => {
         hasStarted,
         isSpinning,
         hasEnded,
-        unselectedCardLength,
+        faceDownCardLength,
     } = useRandomCardsLogic(
         cards,
         runeLimit,
@@ -80,11 +80,11 @@ const RandomCards = () => {
             />
             {!hasEnded && (
                 <CardDeck
-                    key="unselectedCards"
+                    key="faceDownCards"
                     className={css.initialCards}
-                    size={unselectedCardLength}
+                    size={faceDownCardLength}
                 >
-                    {unselectedCards.map((card, idx) => (
+                    {faceDownCards.map((card, idx) => (
                         <Card
                             key={card.id}
                             card={card}

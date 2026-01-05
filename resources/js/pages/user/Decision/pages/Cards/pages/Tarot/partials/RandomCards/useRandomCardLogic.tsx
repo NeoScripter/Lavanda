@@ -3,7 +3,7 @@ import { useEffect, useReducer, useRef } from 'preact/hooks';
 
 type RandomCardsState = {
     selectedCards: Tarot[];
-    unselectedCards: Tarot[];
+    faceDownCards: Tarot[];
     highlightedIdx: number;
     hasStarted: boolean;
     isSpinning: boolean;
@@ -36,16 +36,16 @@ function carouselReducer(
             return {
                 ...state,
                 highlightedIdx:
-                    state.unselectedCards.length > 0
+                    state.faceDownCards.length > 0
                         ? (state.highlightedIdx + 1) %
-                          state.unselectedCards.length
+                          state.faceDownCards.length
                         : -1,
             };
         case 'ADD_SELECTED_CARD':
             return {
                 ...state,
                 selectedCards: [...state.selectedCards, action.payload],
-                unselectedCards: state.unselectedCards.filter(
+                faceDownCards: state.faceDownCards.filter(
                     (card) => card.id !== action.payload.id,
                 ),
                 highlightedIdx: -1,
@@ -54,7 +54,7 @@ function carouselReducer(
             return { ...state, highlightedIdx: action.payload };
         case 'RESET':
             return {
-                unselectedCards: action.payload,
+                faceDownCards: action.payload,
                 selectedCards: [],
                 hasStarted: false,
                 highlightedIdx: -1,
@@ -74,7 +74,7 @@ export function useRandomCardsLogic(
     prevInteractiveItems: any,
 ) {
     const [state, dispatch] = useReducer(carouselReducer, {
-        unselectedCards: cards,
+        faceDownCards: cards,
         selectedCards: [],
         hasStarted: false,
         highlightedIdx: -1,
@@ -117,7 +117,7 @@ export function useRandomCardsLogic(
         } else {
             const newIndex =
                 Math.floor(state.highlightedIdx + 15 + Math.random() * 8) %
-                state.unselectedCards.length;
+                state.faceDownCards.length;
             dispatch({ type: 'SET_SELECTED_INDEX', payload: newIndex });
             setTimeout(
                 () => document.dispatchEvent(new Event('spinningEnd')),
@@ -160,6 +160,6 @@ export function useRandomCardsLogic(
         reset,
         hasStarted: state.selectedCards.length > 0 || state.hasStarted,
         hasEnded: cardLimit === state.selectedCards.length,
-        unselectedCardLength: cards.length - state.selectedCards.length,
+        faceDownCardLength: cards.length - state.selectedCards.length,
     };
 }

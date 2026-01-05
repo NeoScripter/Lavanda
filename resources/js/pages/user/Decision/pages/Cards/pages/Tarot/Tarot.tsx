@@ -5,6 +5,7 @@ import ForegroundMb from '@/assets/images/cards/tarot/foreground-mb.webp';
 import BreadCrumbLayout from '@/layouts/user/BreadCrumbLayout/BreadCrumbLayout';
 import InteractiveLayout from '@/layouts/user/InteractiveLayout';
 import { heading, intro } from './pageData';
+import ChosenCards from './partials/ChosenCards';
 import RandomCards from './partials/RandomCards';
 import css from './Tarot.module.scss';
 
@@ -26,7 +27,7 @@ const Tarot = () => {
         >
             <InteractiveLayout
                 btnLabels={['Случайный выбор', 'Выбрать самой']}
-                components={[() => <RandomCards />]}
+                components={[() => <RandomCards />, () => <ChosenCards />]}
             />
         </BreadCrumbLayout>
     );

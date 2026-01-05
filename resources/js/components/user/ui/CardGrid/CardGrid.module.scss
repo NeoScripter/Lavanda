@@ -1,0 +1,71 @@
+@use 'core' as u;
+@use 'variables/breakpoints' as b;
+@use 'sass:map';
+
+.wrapper {
+    --size: 0;
+    --offsetY: 0;
+    @include u.px(--offsetY, 47, 64, 91, 110);
+    margin-inline: auto;
+    place-content: center;
+    padding-bottom: var(--offsetY);
+    display: grid;
+    grid-template-columns: repeat(3, var(--size));
+    grid-column: 2 !important;
+    translate: calc(var(--size) * -0.25);
+
+    @include u.px(gap-x, 15, 19, 27, 33);
+    @include u.px(mb, 52, 98, 93, 100);
+    @include u.px(--size, 81, 112, 159, 192);
+    @include u.mw(sm) {
+        grid-template-columns: repeat(5, var(--size));
+    }
+
+    > * {
+        height: 0;
+        @include u.px(--height, 117, 160, 227, 274);
+        height: var(--offsetY);
+
+        & figure {
+            @include u.px(rounded, 10, 10, 10, 10);
+        }
+
+        @media screen and (max-width: #{map.get(b.$breakpoints, sm)}px) {
+            &:nth-child(-n + 3),
+            &:nth-child(n + 10):nth-child(-n + 12),
+            &:nth-child(n + 19):nth-child(-n + 21) {
+                translate: 35%;
+            }
+            &:nth-child(n + 4):nth-child(-n + 6),
+            &:nth-child(n + 13):nth-child(-n + 15),
+            &:nth-child(n + 22):nth-child(-n + 24) {
+                translate: 0%;
+            }
+
+            &:nth-child(n + 7):nth-child(-n + 9),
+            &:nth-child(n + 16):nth-child(-n + 18),
+            &:nth-child(n + 25):nth-child(-n + 27) {
+                translate: 70%;
+            }
+        }
+
+        @include u.mw(sm) {
+            &:nth-child(-n + 5),
+            &:nth-child(n + 16):nth-child(-n + 20),
+            &:nth-child(n + 31):nth-child(-n + 35) {
+                translate: 35%;
+            }
+
+            &:nth-child(n + 6):nth-child(-n + 10),
+            &:nth-child(n + 21):nth-child(-n + 25),
+            &:nth-child(n + 36):nth-child(-n + 40) {
+                translate: 0%;
+            }
+            &:nth-child(n + 11):nth-child(-n + 15),
+            &:nth-child(n + 26):nth-child(-n + 30),
+            &:nth-child(n + 41):nth-child(-n + 45) {
+                translate: 70%;
+            }
+        }
+    }
+}
