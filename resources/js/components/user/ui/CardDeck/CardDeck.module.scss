@@ -3,7 +3,9 @@
 .wrapper {
     --size: 0;
     display: grid;
-    padding-left: var(--size);
+    margin-left: var(--size);
+    grid-template-rows: 1fr;
+    max-width: calc(100% - var(--size));
     @include u.px(h, 175, 360, 368, 423);
     @include u.px(--size, 122, 252, 257, 295);
 }

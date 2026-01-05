@@ -28,13 +28,6 @@
 
 .actionBtn {
     margin-inline: auto;
-    @include u.px(mb, 60, 96, 100, 110);
-}
-
-.rowWrapper {
-    /* display: flex; */
-    /* align-items: start; */
-    /* justify-content: space-between; */
 }
 
 .cardWrapper {
@@ -48,11 +41,10 @@
 }
 
 .initialCards {
-    /* flex: 1 0 70%; */
+    @include u.px(mt, 60, 60, 80, 80);
 }
 
 .selectedCards {
-    /* flex: 1 0 30%; */
     margin-inline: auto;
     width: 50%;
     margin-bottom: 2em;
@@ -61,7 +53,6 @@
 .nextRuneBtn {
     margin-inline: auto;
     @include u.px(mt, 42, 68, 63, 70);
-    /* @include u.px(mb, 42, 48, 52, 60); */
 
     &[disabled] {
         opacity: 0.5;

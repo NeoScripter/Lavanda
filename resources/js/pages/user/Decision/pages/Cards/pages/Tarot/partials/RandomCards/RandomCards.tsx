@@ -1,5 +1,6 @@
 import BackDkTiny from '@/assets/images/cards/tarot/back-dk-tiny.webp';
 import BackDk from '@/assets/images/cards/tarot/back-dk.webp';
+import ArrowHint from '@/components/user/ui/ArrowHint';
 import Card from '@/components/user/ui/Card';
 import CardDeck from '@/components/user/ui/CardDeck/CardDeck';
 import { useInteractiveItems } from '@/layouts/user/InteractiveLayout/InteractiveItemsContext';
@@ -9,6 +10,7 @@ import checkMotionPreferences from '@/utils/checkMotionPreferences';
 import { cn } from '@/utils/cn';
 import { Transition } from '@headlessui/react';
 import { usePage } from '@inertiajs/react';
+import PickedCards from '../PickedCards/PickedCards';
 import css from './RandomCards.module.scss';
 import { useRandomCardsLogic } from './useRandomCardLogic';
 
@@ -72,24 +74,11 @@ const RandomCards = () => {
                 </div>
             </Transition>
 
-            <div className={css.rowWrapper}>
-                {selectedCards.length > 0 && (
-                    <CardDeck
-                        key="selectedCards"
-                        className={css.selectedCards}
-                        size={selectedCards.length}
-                    >
-                        {selectedCards.map((card, idx) => (
-                            <Card
-                                key={card.id}
-                                card={card}
-                                isFlipped={true}
-                                backImgPath={BackDk}
-                                backImgTinyPath={BackDkTiny}
-                            />
-                        ))}
-                    </CardDeck>
-                )}
+            <PickedCards
+                cards={selectedCards}
+                className={css.pickedCards}
+            />
+            {!hasEnded && (
                 <CardDeck
                     key="unselectedCards"
                     className={css.initialCards}
@@ -105,7 +94,7 @@ const RandomCards = () => {
                         />
                     ))}
                 </CardDeck>
-            </div>
+            )}
 
             {hasStarted && (
                 <button
@@ -116,6 +105,8 @@ const RandomCards = () => {
                     {hasEnded ? 'Попробовать снова' : 'Еще карта'}
                 </button>
             )}
+
+            <ArrowHint show={hasEnded} />
         </>
     );
 };

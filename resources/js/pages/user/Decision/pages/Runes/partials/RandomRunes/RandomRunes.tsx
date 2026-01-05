@@ -10,11 +10,11 @@ import { Transition } from '@headlessui/react';
 import { Signal } from '@preact/signals';
 import { FC } from 'preact/compat';
 import useFetchRuneCategories from '../../useFetchRuneCategories';
-import ArrowHint from '../ArrowHint/ArrowHint';
 import Carousel from '../Carousel';
 import PickedRunes from '../PickedRunes/PickedRunes';
 import css from './RandomRunes.module.scss';
 import { useCarouselLogic } from './useCarouselLogic';
+import ArrowHint from '@/components/user/ui/ArrowHint';
 
 const ANIMATION_DURATION = 750;
 

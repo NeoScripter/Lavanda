@@ -4,7 +4,6 @@ import { Rune } from '@/types/model';
 import { cn } from '@/utils/cn';
 import { Transition } from '@headlessui/react';
 import { usePage } from '@inertiajs/react';
-import ArrowHint from '../ArrowHint/ArrowHint';
 import PickedRunes from '../PickedRunes/PickedRunes';
 import css from './ChosenRunes.module.scss';
 import padGridCorners from './helpers/padGridCorners';
@@ -12,6 +11,7 @@ import { useRuneSelection } from './hooks/useRuneSelection';
 import RuneGridItem from './partials/RuneGridItem/RuneGridItem';
 import { FC } from 'preact/compat';
 import { Signal } from '@preact/signals';
+import ArrowHint from '@/components/user/ui/ArrowHint';
 
 const TOTAL_COLUMNS = 7;
 const TOTAL_ROWS = 8;
