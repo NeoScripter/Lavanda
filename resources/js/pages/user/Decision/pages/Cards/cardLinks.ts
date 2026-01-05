@@ -45,6 +45,6 @@ export const cardLinks: CardLink[] = [
         alt: 'Стопка светло-золотых магических карт с сияющим символом в центре',
         description:
             'Каждая карта — как спонтанная ассоциация, образ или эмоция. Авторское трактование - поддержка для подписчиков.',
-        href: '/decision/cards',
+        href: '/decision/cards/metaphoric',
     },
 ];

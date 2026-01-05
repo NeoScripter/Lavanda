@@ -5,7 +5,7 @@ import Card from '@/components/user/ui/Card';
 import CardGrid from '@/components/user/ui/CardGrid/CardGrid';
 import { useInteractiveItems } from '@/layouts/user/InteractiveLayout/InteractiveItemsContext';
 import { useCurrentSlideId } from '@/layouts/user/ItemsLayout/CurrentSlideProvider';
-import { Tarot } from '@/types/model';
+import { Promo } from '@/types/model';
 import { cn } from '@/utils/cn';
 import { Transition } from '@headlessui/react';
 import { usePage } from '@inertiajs/react';
@@ -14,7 +14,7 @@ import css from './ChosenCards.module.scss';
 import { useChosenCardLogic } from './useChosenCardLogic';
 
 const ChosenCards = () => {
-    const { cards } = usePage<{ cards: Tarot[] }>().props;
+    const { cards } = usePage<{ cards: Promo[] }>().props;
     const { currentSlideId } = useCurrentSlideId();
     const { interactiveItems, prevInteractiveItems } = useInteractiveItems();
 

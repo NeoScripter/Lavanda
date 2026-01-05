@@ -1,0 +1,33 @@
+@use 'core' as u;
+
+.pickedCards {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding-inline: 10px;
+    width: 100%;
+
+    @include u.px(gap, 10, 12, 16, 22);
+}
+
+.cardImageWrapper {
+    /* @include u.px(w, 112, 142, 207, 261); */
+    /* @include u.px(h, 159, 203, 295, 373); */
+    width: 50%;
+}
+.cardWrapper {
+    animation: fade-in 0.5s ease-in forwards;
+    @include u.size(100%);
+    @include u.px(rounded, 10, 10, 15, 15);
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+}
+
+.cardImg {
+    object-fit: contain;
+}

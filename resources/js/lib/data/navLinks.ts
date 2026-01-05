@@ -140,6 +140,6 @@ export const navLinks: NavLinkType[] = [
         id: crypto.randomUUID(),
         label: 'Акция',
         type: 'link',
-        href: '/',
+        href: '/promo',
     },
 ];

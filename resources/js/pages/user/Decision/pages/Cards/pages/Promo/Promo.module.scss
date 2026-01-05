@@ -1,0 +1,6 @@
+@use 'core' as u;
+
+.heroForeground {
+    @include u.px(w, null, null, 461, 509);
+    @include u.px(top, null, null, 127, 140);
+}

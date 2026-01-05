@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\Models\ExperienceItem;
+use App\Models\Metaphoric;
 use App\Models\PracticeItem;
+use App\Models\Promo;
 use App\Models\Rune;
 use App\Models\Tarot;
 use App\Models\WellnessTip;
@@ -37,6 +39,8 @@ class AppServiceProvider extends ServiceProvider
             'practiceItem' => PracticeItem::class,
             'rune' => Rune::class,
             'tarot' => Tarot::class,
+            'metaphoric' => Metaphoric::class,
+            'promo' => Promo::class,
         ]);
     }
 }

@@ -25,5 +25,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PracticeItemSeeder::class);
         $this->call(RuneSeeder::class);
         $this->call(TarotSeeder::class);
+        $this->call(PromoSeeder::class);
+        $this->call(MetaphoricSeeder::class);
     }
 }

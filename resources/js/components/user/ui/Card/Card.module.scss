@@ -16,6 +16,9 @@
     .backImgWrapper {
         transform: translateY(-10%);
     }
+    .frontImgWrapper {
+        translate: 0% -15% !important;
+    }
     .backImgWrapper::after {
         opacity: 1;
     }

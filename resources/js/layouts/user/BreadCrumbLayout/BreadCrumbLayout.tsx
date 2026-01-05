@@ -6,6 +6,7 @@ import BgTbTiny from '@/assets/images/assymetric-layout/tb-bg-tiny.webp';
 import BgTb from '@/assets/images/assymetric-layout/tb-bg.webp';
 import BgLoader from '@/components/user/ui/BgLoader/BgLoader';
 import { BgLoaderImg } from '@/lib/types/shared';
+import { ExperienceItem } from '@/types/model';
 import { NodeProps } from '@/types/nodeProps';
 import { cn } from '@/utils/cn';
 import { Head, usePage } from '@inertiajs/react';
@@ -15,7 +16,6 @@ import ItemsLayout from '../ItemsLayout';
 import { CurrentSlideProvider } from '../ItemsLayout/CurrentSlideProvider';
 import css from './BreadCrumbLayout.module.scss';
 import HeroSection from './partials/HeroSection';
-import { ExperienceItem } from '@/types/model';
 
 const BreadCrumbLayout: FC<
     NodeProps<{
@@ -32,7 +32,6 @@ const BreadCrumbLayout: FC<
             variation="white"
             className={cn(css.layout, className)}
         >
-            <Head title="Руны" />
             <BgLoader
                 prtClass={cn(css.bgLoader, 'full-bleed')}
                 dk={BgDk}
@@ -51,15 +50,15 @@ const BreadCrumbLayout: FC<
                 fgImg={fgImg}
             />
 
-            {withCards && items ? (
-                <CurrentSlideProvider>
+            <CurrentSlideProvider>
+                {withCards && items ? (
                     <ItemsLayout className={css.topOffset}>
                         {children}
                     </ItemsLayout>
-                </CurrentSlideProvider>
-            ) : (
-                children
-            )}
+                ) : (
+                    children
+                )}
+            </CurrentSlideProvider>
         </AppLayout>
     );
 };

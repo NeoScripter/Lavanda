@@ -13,20 +13,22 @@ const InteractiveLayout: FC<
 
     return (
         <div className={cn(css.wrapper, className)}>
-            <nav class={css.nav}>
-                {btnLabels.map((label, idx) => (
-                    <button
-                        onClick={() => setActiveIdx(idx)}
-                        key={idx}
-                        class={cn(
-                            css.sectionBtn,
-                            activeIdx === idx && css.sectionBtnActive,
-                        )}
-                    >
-                        {label}
-                    </button>
-                ))}
-            </nav>
+            {components.length > 1 && (
+                <nav class={css.nav}>
+                    {btnLabels.map((label, idx) => (
+                        <button
+                            onClick={() => setActiveIdx(idx)}
+                            key={idx}
+                            class={cn(
+                                css.sectionBtn,
+                                activeIdx === idx && css.sectionBtnActive,
+                            )}
+                        >
+                            {label}
+                        </button>
+                    ))}
+                </nav>
+            )}
             <InteractiveItemsProvider>
                 <article class={cn(css.content, 'full-bleed-parent')}>
                     {components[activeIdx]?.()}

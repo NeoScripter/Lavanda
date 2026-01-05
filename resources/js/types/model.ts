@@ -21,6 +21,17 @@ export type Image = {
     updated_at?: string;
     imageable?: any;
 };
+export type Metaphoric = {
+    id: number;
+    name: string;
+    body: string;
+    html?: string;
+    advice: string;
+    created_at?: string;
+    updated_at?: string;
+    images?: Image;
+    front_image?: Image;
+};
 export type Plan = {
     id: number;
     title: string;
@@ -51,6 +62,17 @@ export type PracticeItemFaq = {
     created_at?: string;
     updated_at?: string;
     practice_item?: PracticeItem;
+};
+export type Promo = {
+    id: number;
+    name: string;
+    body: string;
+    html?: string;
+    advice: string;
+    created_at?: string;
+    updated_at?: string;
+    images?: Image;
+    front_image?: Image;
 };
 export type Rune = {
     id: number;

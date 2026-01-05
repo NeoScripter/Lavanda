@@ -16,6 +16,7 @@
 
 .actionBtn {
     margin-inline: auto;
+    margin-bottom: 5px;
     @include u.px(mb, 60, 96, 100, 110);
 }
 

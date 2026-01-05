@@ -4,6 +4,8 @@ use App\Http\Controllers\User\AboutController;
 use App\Http\Controllers\User\AccountController;
 use App\Http\Controllers\User\ContactPageController;
 use App\Http\Controllers\User\Decision\Cards\CardController;
+use App\Http\Controllers\User\Decision\Cards\MetaphoricController;
+use App\Http\Controllers\User\Decision\Cards\PromoController;
 use App\Http\Controllers\User\Decision\Cards\TarotController;
 use App\Http\Controllers\User\Decision\DecisionController;
 use App\Http\Controllers\User\Decision\ExperienceController;
@@ -21,6 +23,7 @@ Route::get('/account', AccountController::class)->middleware('auth')->name('acco
 Route::get('/plans', PlansController::class)->name('plans');
 Route::get('/about', AboutController::class)->name('about');
 Route::get('/contacts', ContactPageController::class)->name('contacts');
+Route::get('/promo', PromoController::class)->name('promo'); // экспресс карта
 
 Route::prefix('/decision')->name('decision.')->group(function () {
     Route::get('/', DecisionController::class)->name('index'); // решение
@@ -32,7 +35,7 @@ Route::prefix('/decision')->name('decision.')->group(function () {
         Route::get('/', CardController::class)->name('index'); // руны
         Route::get('/tarot', TarotController::class)->name('tarot'); // таро
         Route::get('/lenormand', TarotController::class)->name('lenormand'); // Ленорман
-        Route::get('/metaphoric', TarotController::class)->name('metaphoric'); // метафорические карты
+        Route::get('/metaphoric', MetaphoricController::class)->name('metaphoric'); // метафорические карты
     }); // карты
 
     // Route::get('/iching', ...)->name('iching'); // книга перемен
