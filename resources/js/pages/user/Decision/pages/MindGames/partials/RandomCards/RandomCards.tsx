@@ -1,5 +1,5 @@
-import BackDkTiny from "@/assets/images/cards/mind-games/back-dk-tiny.webp";
-import BackDk from "@/assets/images/cards/mind-games/back-dk.webp";
+import BackDkTiny from '@/assets/images/cards/mind-games/back-dk-tiny.webp';
+import BackDk from '@/assets/images/cards/mind-games/back-dk.webp';
 import Card from '@/components/user/ui/Card';
 import CardDeck from '@/components/user/ui/CardDeck/CardDeck';
 import { useInteractiveItems } from '@/layouts/user/InteractiveLayout/InteractiveItemsContext';
@@ -9,9 +9,9 @@ import checkMotionPreferences from '@/utils/checkMotionPreferences';
 import { cn } from '@/utils/cn';
 import { Transition } from '@headlessui/react';
 import { usePage } from '@inertiajs/react';
+import { useRandomCardsLogic } from '../../../Cards/hooks/useRandomCardLogic';
 import PickedCards from '../PickedCards/PickedCards';
 import css from './RandomCards.module.scss';
-import { useRandomCardsLogic } from "../../../Cards/hooks/useRandomCardLogic";
 
 const ANIMATION_DURATION = 400;
 
@@ -51,7 +51,7 @@ const RandomCards = () => {
         isMotionEnabled,
         interactiveItems,
         prevInteractiveItems,
-        60
+        60,
     );
 
     return (

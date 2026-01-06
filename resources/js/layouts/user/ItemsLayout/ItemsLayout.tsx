@@ -1,3 +1,4 @@
+import ErrorBoundary from '@/components/shared/layout/ErrorBoundary';
 import LazyImage from '@/components/user/ui/LazyImage/LazyImage';
 import useMediaQuery from '@/hooks/useMediaQuery';
 import { ExperienceItem } from '@/types/model';
@@ -10,6 +11,7 @@ import { useCurrentSlideId } from './CurrentSlideProvider';
 import css from './ItemsLayout.module.scss';
 import { getRandomImage, splitItemsBySlide } from './helpers';
 import { ImageObj, images } from './images';
+import Error from '@/components/shared/layout/Error/Error';
 const SLIDE_DURATION = 400;
 
 const ItemsLayout: FC<NodeProps> = ({ className, children }) => {
@@ -73,24 +75,30 @@ const ItemsLayout: FC<NodeProps> = ({ className, children }) => {
     );
 
     return (
-        <section
-            class={cn(css.wrapper, 'full-bleed-parent full-bleed', className)}
-        >
-            {renderItemList(startingItems)}
+        <ErrorBoundary fallback={Error}>
+            <section
+                class={cn(
+                    css.wrapper,
+                    'full-bleed-parent full-bleed',
+                    className,
+                )}
+            >
+                {renderItemList(startingItems)}
 
-            <Transition show={showContent}>
-                <div
-                    class={cn(css.articleWrapper, 'full-bleed')}
-                    style={{ '--slide-duration': SLIDE_DURATION + 'ms' }}
-                >
-                    <article class={cn(css.article, 'full-bleed')}>
-                        {children}
-                    </article>
-                </div>
-            </Transition>
+                <Transition show={showContent}>
+                    <div
+                        class={cn(css.articleWrapper, 'full-bleed')}
+                        style={{ '--slide-duration': SLIDE_DURATION + 'ms' }}
+                    >
+                        <article class={cn(css.article, 'full-bleed')}>
+                            {children}
+                        </article>
+                    </div>
+                </Transition>
 
-            {lastItems.length > 0 && renderItemList(lastItems)}
-        </section>
+                {lastItems.length > 0 && renderItemList(lastItems)}
+            </section>
+        </ErrorBoundary>
     );
 };
 

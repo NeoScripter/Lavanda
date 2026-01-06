@@ -1,0 +1,29 @@
+@use 'core' as u;
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 1em;
+    column-gap: 2em;
+    background: linear-gradient(
+        180deg,
+        rgba(200, 181, 255, 0.46) 0%,
+        rgba(255, 255, 255, 0.34) 100%
+    );
+    text-align: center;
+    box-shadow: 0 1.5px 1px 0 #e1d4ff inset;
+    backdrop-filter: blur(5px);
+    padding: 2em;
+    margin-bottom: 4em;
+    @include u.px(rounded, 20, 20, 20, 20);
+    @include u.mw(sm) {
+        flex-direction: row;
+        text-align: left;
+    }
+}
+
+.heading {
+    font-weight: 500;
+}

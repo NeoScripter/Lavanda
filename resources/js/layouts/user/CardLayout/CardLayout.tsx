@@ -1,3 +1,5 @@
+import Error from '@/components/shared/layout/Error/Error';
+import ErrorBoundary from '@/components/shared/layout/ErrorBoundary';
 import AppLayout from '@/layouts/user/AppLayout/AppLayout';
 import { BgLoaderImg } from '@/lib/types/shared';
 import { cn } from '@/utils/cn';
@@ -5,9 +7,9 @@ import { Head } from '@inertiajs/react';
 import { ComponentChildren } from 'preact';
 import { FC } from 'react-dom/src';
 import ItemsLayout from '../ItemsLayout';
+import { CurrentSlideProvider } from '../ItemsLayout/CurrentSlideProvider';
 import css from './CardLayout.module.scss';
 import HeroSection from './partials/HeroSection';
-import { CurrentSlideProvider } from '../ItemsLayout/CurrentSlideProvider';
 
 export type CardLayoutProps = {
     headTitle: string;
@@ -37,11 +39,13 @@ const CardLayout: FC<CardLayoutProps> = ({
                 fgImg={heroFgImg}
                 imgClass={cn(imgClass, isHigh ? css.noShadow : '')}
             />
-            <CurrentSlideProvider>
-                <ItemsLayout className={cn(isHigh ? css.shifted : '')}>
-                    {children}
-                </ItemsLayout>
-            </CurrentSlideProvider>
+            <ErrorBoundary fallback={Error}>
+                <CurrentSlideProvider>
+                    <ItemsLayout className={cn(isHigh ? css.shifted : '')}>
+                        {children}
+                    </ItemsLayout>
+                </CurrentSlideProvider>
+            </ErrorBoundary>
         </AppLayout>
     );
 };

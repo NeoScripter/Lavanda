@@ -4,6 +4,8 @@ import BgMbTiny from '@/assets/images/assymetric-layout/mb-bg-tiny.webp';
 import BgMb from '@/assets/images/assymetric-layout/mb-bg.webp';
 import BgTbTiny from '@/assets/images/assymetric-layout/tb-bg-tiny.webp';
 import BgTb from '@/assets/images/assymetric-layout/tb-bg.webp';
+import Error from '@/components/shared/layout/Error/Error';
+import ErrorBoundary from '@/components/shared/layout/ErrorBoundary';
 import BgLoader from '@/components/user/ui/BgLoader/BgLoader';
 import { BgLoaderImg } from '@/lib/types/shared';
 import { ExperienceItem } from '@/types/model';
@@ -69,16 +71,18 @@ const BreadCrumbLayout: FC<
                 }
             />
 
-            <CurrentSlideProvider>
-                {showContent &&
-                    (withCards && items ? (
-                        <ItemsLayout className={css.topOffset}>
-                            {children}
-                        </ItemsLayout>
-                    ) : (
-                        showContent && children
-                    ))}
-            </CurrentSlideProvider>
+            <ErrorBoundary fallback={Error}>
+                <CurrentSlideProvider>
+                    {showContent &&
+                        (withCards && items ? (
+                            <ItemsLayout className={css.topOffset}>
+                                {children}
+                            </ItemsLayout>
+                        ) : (
+                            showContent && children
+                        ))}
+                </CurrentSlideProvider>
+            </ErrorBoundary>
         </AppLayout>
     );
 };

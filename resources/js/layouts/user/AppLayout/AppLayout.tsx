@@ -1,3 +1,5 @@
+import Error from '@/components/shared/layout/Error/Error';
+import ErrorBoundary from '@/components/shared/layout/ErrorBoundary';
 import Login from '@/components/user/forms/Login/Login';
 import Signup from '@/components/user/forms/Signup/Signup';
 import { LoginProvider, useLoginModal } from '@/providers/LoginContext';
@@ -18,24 +20,26 @@ const AppLayout: FC<
     NodeProps<{ extendedFooter?: boolean; variation?: string }>
 > = ({ className, children, extendedFooter, variation = 'dark' }) => {
     return (
-        <SignupProvider>
-            <LoginProvider>
-                <div
-                    class={cn(
-                        'full-bleed-parent',
-                        css.wrapper,
-                        variation === 'dark' && css.darkHeader,
-                        className,
-                    )}
-                >
-                    {children}
-                    <AppHeader />
+        <ErrorBoundary fallback={Error}>
+            <SignupProvider>
+                <LoginProvider>
+                    <div
+                        class={cn(
+                            'full-bleed-parent',
+                            css.wrapper,
+                            variation === 'dark' && css.darkHeader,
+                            className,
+                        )}
+                    >
+                        {children}
+                        <AppHeader />
 
-                    <AppFooter hasMenu={extendedFooter} />
-                    <AppModals />
-                </div>
-            </LoginProvider>
-        </SignupProvider>
+                        <AppFooter hasMenu={extendedFooter} />
+                        <AppModals />
+                    </div>
+                </LoginProvider>
+            </SignupProvider>
+        </ErrorBoundary>
     );
 };
 
