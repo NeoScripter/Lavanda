@@ -1,0 +1,18 @@
+@use 'core' as u;
+
+.heroForeground {
+    @include u.px(w, null, null, 526, 557);
+    @include u.px(top, null, null, 257, 260);
+}
+
+.wrapper {
+    div:has(h1) {
+        @include u.mw(md) {
+            max-width: 55%;
+        }
+    }
+}
+
+.intro {
+    margin-bottom: 0 !important;
+}

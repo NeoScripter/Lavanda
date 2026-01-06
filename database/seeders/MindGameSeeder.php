@@ -3,23 +3,23 @@
 namespace Database\Seeders;
 
 use App\Models\Image;
-use App\Models\Promo;
+use App\Models\MindGame;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class PromoSeeder extends Seeder
+class MindGameSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        for ($i = 1; $i < 30; $i++) {
-                Promo::factory()->afterCreating(function ($promo) use ($i) {
+        for ($i = 1; $i < 80; $i++) {
+                MindGame::factory()->afterCreating(function ($game) use ($i) {
                     Image::factory()->create([
-                        'imageable_id' => $promo,
-                        'path' => 'models/promo/promo-' . max($i % 4, 1) . '.webp',
-                        'tiny_path' => 'models/promo/promo-' . max($i % 4, 1) . '-tiny.webp',
+                        'imageable_id' => $game,
+                        'path' => 'models/mind-games/mind-game-' . $i . '.webp',
+                        'tiny_path' => 'models/mind-games/mind-game-' . $i . '-tiny.webp',
                         'type' => 'front'
                     ]);
                 })

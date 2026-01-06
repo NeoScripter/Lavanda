@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\User\Decision\Cards;
+namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Promo;

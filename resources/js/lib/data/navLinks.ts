@@ -65,7 +65,7 @@ export const navLinks: NavLinkType[] = [
                 id: crypto.randomUUID(),
                 label: 'Игры разума',
                 type: 'link',
-                href: '/',
+                href: '/decision/mind-games',
             },
         ],
     },

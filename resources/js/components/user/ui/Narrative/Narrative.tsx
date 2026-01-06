@@ -18,9 +18,8 @@ const Narrative: FC<NodeProps<{ heading: string; prgs: string[] }>> = ({
                     <p
                         class={css.paragraph}
                         key={idx}
-                    >
-                        {prg}
-                    </p>
+                        dangerouslySetInnerHTML={{ __html: prg }}
+                    />
                 ))}
             </div>
 

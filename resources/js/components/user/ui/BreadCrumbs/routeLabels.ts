@@ -11,6 +11,7 @@ export const routeLabels: Record<string, string> = {
     sadness: 'Мне грустно',
     tarot: 'Таро',
     metaphoric: 'Метафорические карты',
+    ['mind-games']: 'Игры разума',
     promo: 'Экспресс-карта',
     lenormand: 'Гадание Госпожи Ленорман',
     relaxation: 'Хочу расслабиться',

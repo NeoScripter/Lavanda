@@ -27,5 +27,6 @@ class DatabaseSeeder extends Seeder
         $this->call(TarotSeeder::class);
         $this->call(PromoSeeder::class);
         $this->call(MetaphoricSeeder::class);
+        $this->call(MindGameSeeder::class);
     }
 }

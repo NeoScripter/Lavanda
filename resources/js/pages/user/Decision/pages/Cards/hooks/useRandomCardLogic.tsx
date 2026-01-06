@@ -72,6 +72,7 @@ export function useRandomCardsLogic(
     isMotionEnabled: boolean,
     interactiveItems: any,
     prevInteractiveItems: any,
+    randomFactor?: number
 ) {
     const [state, dispatch] = useReducer(carouselReducer, {
         faceDownCards: cards,
@@ -115,8 +116,9 @@ export function useRandomCardsLogic(
 
             spin();
         } else {
+            const factor = randomFactor != null ? randomFactor : 8;
             const newIndex =
-                Math.floor(state.highlightedIdx + 15 + Math.random() * 8) %
+                Math.floor(state.highlightedIdx + 15 + Math.random() * factor) %
                 state.faceDownCards.length;
             dispatch({ type: 'SET_SELECTED_INDEX', payload: newIndex });
             setTimeout(

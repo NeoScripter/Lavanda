@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\ExperienceItem;
 use App\Models\Metaphoric;
+use App\Models\MindGame;
 use App\Models\PracticeItem;
 use App\Models\Promo;
 use App\Models\Rune;
@@ -41,6 +42,7 @@ class AppServiceProvider extends ServiceProvider
             'tarot' => Tarot::class,
             'metaphoric' => Metaphoric::class,
             'promo' => Promo::class,
+            'mindGame' => MindGame::class,
         ]);
     }
 }

@@ -37,7 +37,7 @@ const HeroSection: FC<
 
             <div class={css.textContent}>
                 <h1>{heading}</h1>
-                <p>{intro}</p>
+                <p className={css.heroIntro} dangerouslySetInnerHTML={{__html: intro}}/>
             </div>
 
             {handleClick != null && (

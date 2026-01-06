@@ -1,24 +1,25 @@
-import ForegroundDkTiny from '@/assets/images/cards/metaphoric/foreground-dk-tiny.webp';
-import ForegroundDk from '@/assets/images/cards/metaphoric/foreground-dk.webp';
-import ForegroundMbTiny from '@/assets/images/cards/metaphoric/foreground-mb-tiny.webp';
-import ForegroundMb from '@/assets/images/cards/metaphoric/foreground-mb.webp';
+import ForegroundDkTiny from '@/assets/images/cards/mind-games/foreground-dk-tiny.webp';
+import ForegroundDk from '@/assets/images/cards/mind-games/foreground-dk.webp';
+import ForegroundMbTiny from '@/assets/images/cards/mind-games/foreground-mb-tiny.webp';
+import ForegroundMb from '@/assets/images/cards/mind-games/foreground-mb.webp';
+import Narrative from '@/components/user/ui/Narrative/Narrative';
 import BreadCrumbLayout from '@/layouts/user/BreadCrumbLayout/BreadCrumbLayout';
 import InteractiveLayout from '@/layouts/user/InteractiveLayout';
 import { Head } from '@inertiajs/react';
-import css from './Metaphoric.module.scss';
-import { heading, intro } from './pageData';
+import css from './MindGames.module.scss';
+import { heading, intro, narrativeHeading, narrativeIntro } from './pageData';
 import RandomCards from './partials/RandomCards';
 
-const Metaphoric = () => {
+const MindGames = () => {
     return (
         <>
-            <Head title="Метафорические карты" />
+            <Head title="Игры разума" />
             <BreadCrumbLayout
                 heading={heading}
                 intro={intro}
                 className={css.wrapper}
                 imgClass={css.heroForeground}
-                withCards={true}
+                withCards={false}
                 fgImg={{
                     dk: ForegroundDk,
                     dkTiny: ForegroundDkTiny,
@@ -29,6 +30,11 @@ const Metaphoric = () => {
                 }}
                 hasHeroRevealer={true}
             >
+                <Narrative
+                    className={css.intro}
+                    heading={narrativeHeading}
+                    prgs={[narrativeIntro]}
+                />
                 <InteractiveLayout
                     btnLabels={['Случайный выбор']}
                     components={[() => <RandomCards />]}
@@ -38,4 +44,4 @@ const Metaphoric = () => {
     );
 };
 
-export default Metaphoric;
+export default MindGames;

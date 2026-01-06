@@ -5,7 +5,8 @@ use App\Http\Controllers\User\AccountController;
 use App\Http\Controllers\User\ContactPageController;
 use App\Http\Controllers\User\Decision\Cards\CardController;
 use App\Http\Controllers\User\Decision\Cards\MetaphoricController;
-use App\Http\Controllers\User\Decision\Cards\PromoController;
+use App\Http\Controllers\User\Decision\MindGameController;
+use App\Http\Controllers\User\PromoController;
 use App\Http\Controllers\User\Decision\Cards\TarotController;
 use App\Http\Controllers\User\Decision\DecisionController;
 use App\Http\Controllers\User\Decision\ExperienceController;
@@ -30,6 +31,7 @@ Route::prefix('/decision')->name('decision.')->group(function () {
     Route::get('/practice', PracticeController::class)->name('practice'); // практика
     Route::get('/experience', ExperienceController::class)->name('experience'); // опыт автора
     Route::get('/runes', RunesController::class)->name('runes'); // руны
+    Route::get('/mind-games', MindGameController::class)->name('mind-games'); // игры разума
 
     Route::prefix('/cards')->name('cards.')->group(function () {
         Route::get('/', CardController::class)->name('index'); // руны

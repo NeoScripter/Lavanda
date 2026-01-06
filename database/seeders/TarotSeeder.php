@@ -18,7 +18,7 @@ class TarotSeeder extends Seeder
                     Image::factory()->create([
                         'imageable_id' => $tarot,
                         'path' => 'models/tarot/tarot-' . max($i % 4, 1) . '.webp',
-                        'tiny_path' => 'models/tarot/tarot-' . $i . '-tiny.webp',
+                        'tiny_path' => 'models/tarot/tarot-' . max($i % 4, 1) . '-tiny.webp',
                         'type' => 'front'
                     ]);
                 })
