@@ -1,9 +1,9 @@
+import LazyImage from '@/components/user/ui/LazyImage/LazyImage';
 import { Metaphoric } from '@/types/model';
 import { NodeProps } from '@/types/nodeProps';
 import { cn } from '@/utils/cn';
 import { FC } from 'preact/compat';
 import css from './PickedCards.module.scss';
-import LazyImage from '@/components/user/ui/LazyImage/LazyImage';
 
 const PickedCards: FC<NodeProps<{ cards: Metaphoric[] }>> = ({
     className,

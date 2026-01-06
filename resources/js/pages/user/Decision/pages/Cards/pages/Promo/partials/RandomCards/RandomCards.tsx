@@ -1,5 +1,5 @@
-import BackDkTiny from '@/assets/images/cards/tarot/back-dk-tiny.webp';
-import BackDk from '@/assets/images/cards/tarot/back-dk.webp';
+import BackDkTiny from "@/assets/images/cards/promo/back-dk-tiny.webp";
+import BackDk from "@/assets/images/cards/promo/back-dk.webp";
 import ArrowHint from '@/components/user/ui/ArrowHint';
 import Card from '@/components/user/ui/Card';
 import CardDeck from '@/components/user/ui/CardDeck/CardDeck';
@@ -12,7 +12,7 @@ import { Transition } from '@headlessui/react';
 import { usePage } from '@inertiajs/react';
 import PickedCards from '../PickedCards/PickedCards';
 import css from './RandomCards.module.scss';
-import { useRandomCardsLogic } from './useRandomCardLogic';
+import { useRandomCardsLogic } from '../../../../hooks/useRandomCardLogic';
 
 const ANIMATION_DURATION = 200;
 

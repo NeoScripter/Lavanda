@@ -12,12 +12,16 @@
 }
 
 .cardImageWrapper {
-    @include u.px(w, 112, 142, 207, 261);
-    @include u.px(h, 159, 203, 295, 373);
+    /* @include u.px(w, 112, 142, 207, 261); */
+    /* @include u.px(h, 159, 203, 295, 373); */
+    @include u.mw(md) {
+        width: 35%;
+    }
 }
 .cardWrapper {
     animation: fade-in 0.5s ease-in forwards;
     @include u.size(100%);
+    @include u.px(rounded, 10, 10, 15, 15);
 }
 
 @keyframes fade-in {
@@ -29,4 +33,3 @@
 .cardImg {
     object-fit: contain;
 }
-

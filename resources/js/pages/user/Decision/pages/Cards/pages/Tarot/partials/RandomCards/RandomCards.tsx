@@ -12,7 +12,7 @@ import { Transition } from '@headlessui/react';
 import { usePage } from '@inertiajs/react';
 import PickedCards from '../PickedCards/PickedCards';
 import css from './RandomCards.module.scss';
-import { useRandomCardsLogic } from './useRandomCardLogic';
+import { useRandomCardsLogic } from '../../../../hooks/useRandomCardLogic';
 
 const ANIMATION_DURATION = 200;
 

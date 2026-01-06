@@ -40,7 +40,11 @@ const HeroSection: FC<
                 <p>{intro}</p>
             </div>
 
-            {handleClick != null && <button></button>}
+            {handleClick != null && (
+                <button onClick={handleClick} className={cn('primary-btn', css.revealBtn)}>
+                    Получить ответ
+                </button>
+            )}
         </section>
     );
 };

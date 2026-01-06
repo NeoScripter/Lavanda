@@ -10,6 +10,7 @@ import css from './Metaphoric.module.scss';
 import { Head } from "@inertiajs/react";
 
 const Metaphoric = () => {
+
     return (
         <BreadCrumbLayout
             heading={heading}
@@ -25,6 +26,7 @@ const Metaphoric = () => {
                 mb: ForegroundMb,
                 mbTiny: ForegroundMbTiny,
             }}
+            hasHeroRevealer={true}
         >
             <Head title="Карты" />
             <InteractiveLayout

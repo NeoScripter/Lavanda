@@ -11,7 +11,7 @@ import { Transition } from '@headlessui/react';
 import { usePage } from '@inertiajs/react';
 import PickedCards from '../PickedCards/PickedCards';
 import css from './ChosenCards.module.scss';
-import { useChosenCardLogic } from './useChosenCardLogic';
+import { useChosenCardLogic } from '../../../../hooks/useChosenCardLogic';
 
 const ChosenCards = () => {
     const { cards } = usePage<{ cards: Tarot[] }>().props;

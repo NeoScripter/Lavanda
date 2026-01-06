@@ -1,15 +1,15 @@
-import { Tarot } from '@/types/model';
+import { Metaphoric, Promo, Tarot } from '@/types/model';
 import { useReducer } from 'preact/hooks';
 
 // Types
 type CardSelectionState = {
-    selectedCards: Tarot[];
-    faceDownCards: Tarot[];
+    selectedCards: Tarot[] | Metaphoric[] | Promo[];
+    faceDownCards: Tarot[] | Metaphoric[] | Promo[];
 };
 
 type CardSelectionAction =
-    | { type: 'SELECT_CARD'; payload: Tarot }
-    | { type: 'RESET'; payload: Tarot[] };
+    | { type: 'SELECT_CARD'; payload: Tarot | Metaphoric | Promo }
+    | { type: 'RESET'; payload: Tarot[] | Metaphoric[] | Promo[] };
 
 // Reducer
 function cardSelectionReducer(
@@ -36,7 +36,7 @@ function cardSelectionReducer(
 
 export function useChosenCardLogic(
     cardLimit: number,
-    initialCards: Tarot[],
+    initialCards: Tarot[] | Metaphoric[] | Promo[],
     interactiveItems: any,
     prevInteractiveItems: any,
 ) {
@@ -47,7 +47,7 @@ export function useChosenCardLogic(
 
     const hasEnded = state.selectedCards.length === cardLimit;
 
-    const handleSelectCard = (card: Tarot) => {
+    const handleSelectCard = (card: Tarot | Metaphoric | Promo) => {
         if (hasEnded) return;
 
         dispatch({ type: 'SELECT_CARD', payload: card });

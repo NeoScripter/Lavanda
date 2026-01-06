@@ -14,7 +14,9 @@
 .cardImageWrapper {
     /* @include u.px(w, 112, 142, 207, 261); */
     /* @include u.px(h, 159, 203, 295, 373); */
-    width: 50%;
+    @include u.mw(md) {
+        width: 35%;
+    }
 }
 .cardWrapper {
     animation: fade-in 0.5s ease-in forwards;

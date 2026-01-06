@@ -87,3 +87,14 @@
 .bgFgImage {
     object-fit: contain;
 }
+
+.revealBtn {
+    margin-inline: auto;
+    margin-top: 2rem;
+    padding-inline: 1.5em;
+
+    @include u.mw(md) {
+        margin-left: 0;
+        margin-top: 2.5rem;
+    }
+}

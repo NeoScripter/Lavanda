@@ -1,7 +1,7 @@
-import ForegroundDkTiny from '@/assets/images/cards/tarot/foreground-dk-tiny.webp';
-import ForegroundDk from '@/assets/images/cards/tarot/foreground-dk.webp';
-import ForegroundMbTiny from '@/assets/images/cards/tarot/foreground-mb-tiny.webp';
-import ForegroundMb from '@/assets/images/cards/tarot/foreground-mb.webp';
+import ForegroundDkTiny from '@/assets/images/cards/promo/foreground-dk-tiny.webp';
+import ForegroundDk from '@/assets/images/cards/promo/foreground-dk.webp';
+import ForegroundMbTiny from '@/assets/images/cards/promo/foreground-mb-tiny.webp';
+import ForegroundMb from '@/assets/images/cards/promo/foreground-mb.webp';
 import BreadCrumbLayout from '@/layouts/user/BreadCrumbLayout/BreadCrumbLayout';
 import InteractiveLayout from '@/layouts/user/InteractiveLayout';
 import { heading, intro } from './pageData';
@@ -15,7 +15,8 @@ const Promo = () => {
             heading={heading}
             intro={intro}
             imgClass={css.heroForeground}
-            withCards={true}
+            withCards={false}
+            hasHeroRevealer={true}
             fgImg={{
                 dk: ForegroundDk,
                 dkTiny: ForegroundDkTiny,

@@ -1,9 +1,9 @@
-import { Tarot } from '@/types/model';
+import { Metaphoric, Promo, Tarot } from '@/types/model';
 import { useEffect, useReducer, useRef } from 'preact/hooks';
 
 type RandomCardsState = {
-    selectedCards: Tarot[];
-    faceDownCards: Tarot[];
+    selectedCards: Tarot[] | Metaphoric[] | Promo[];
+    faceDownCards: Tarot[] | Metaphoric[] | Promo[];
     highlightedIdx: number;
     hasStarted: boolean;
     isSpinning: boolean;
@@ -13,8 +13,8 @@ type RandomCardsAction =
     | { type: 'START_SPINNING' }
     | { type: 'STOP_SPINNING' }
     | { type: 'INCREMENT_INDEX' }
-    | { type: 'ADD_SELECTED_CARD'; payload: Tarot }
-    | { type: 'RESET'; payload: Tarot[] }
+    | { type: 'ADD_SELECTED_CARD'; payload: Tarot | Metaphoric | Promo }
+    | { type: 'RESET'; payload: Tarot[] | Metaphoric[] | Promo[] }
     | { type: 'SET_SELECTED_INDEX'; payload: number };
 
 // Reducer
@@ -66,7 +66,7 @@ function carouselReducer(
 }
 
 export function useRandomCardsLogic(
-    cards: Tarot[],
+    cards: Tarot[]| Metaphoric[] | Promo[],
     cardLimit: number,
     adjustedAnimationDuration: number,
     isMotionEnabled: boolean,

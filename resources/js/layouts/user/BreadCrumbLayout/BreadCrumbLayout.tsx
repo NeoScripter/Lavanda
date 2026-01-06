@@ -38,6 +38,11 @@ const BreadCrumbLayout: FC<
 }) => {
     const { items } = usePage<{ items: ExperienceItem[] | undefined }>().props;
     const [showContent, setShowContent] = useState(!hasHeroRevealer);
+
+    const handleShowContentClick = () => {
+        setShowContent(true);
+    };
+
     return (
         <AppLayout
             variation="white"
@@ -59,16 +64,20 @@ const BreadCrumbLayout: FC<
                 imgClass={imgClass}
                 className={withCards ? css.noMargin : ''}
                 fgImg={fgImg}
+                handleClick={
+                    hasHeroRevealer ? handleShowContentClick : undefined
+                }
             />
 
             <CurrentSlideProvider>
-                {withCards && items ? (
-                    <ItemsLayout className={css.topOffset}>
-                        {children}
-                    </ItemsLayout>
-                ) : (
-                    showContent && children
-                )}
+                {showContent &&
+                    (withCards && items ? (
+                        <ItemsLayout className={css.topOffset}>
+                            {children}
+                        </ItemsLayout>
+                    ) : (
+                        showContent && children
+                    ))}
             </CurrentSlideProvider>
         </AppLayout>
     );

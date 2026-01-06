@@ -1,5 +1,5 @@
-import BackDkTiny from '@/assets/images/cards/tarot/back-dk-tiny.webp';
-import BackDk from '@/assets/images/cards/tarot/back-dk.webp';
+import BackDkTiny from "@/assets/images/cards/promo/back-dk-tiny.webp";
+import BackDk from "@/assets/images/cards/promo/back-dk.webp";
 import ArrowHint from '@/components/user/ui/ArrowHint';
 import Card from '@/components/user/ui/Card';
 import CardGrid from '@/components/user/ui/CardGrid/CardGrid';
@@ -11,7 +11,7 @@ import { Transition } from '@headlessui/react';
 import { usePage } from '@inertiajs/react';
 import PickedCards from '../PickedCards/PickedCards';
 import css from './ChosenCards.module.scss';
-import { useChosenCardLogic } from './useChosenCardLogic';
+import { useChosenCardLogic } from '../../../../hooks/useChosenCardLogic';
 
 const ChosenCards = () => {
     const { cards } = usePage<{ cards: Promo[] }>().props;
