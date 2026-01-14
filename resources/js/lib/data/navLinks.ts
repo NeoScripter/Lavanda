@@ -82,7 +82,7 @@ export const navLinks: NavLinkType[] = [
         links: [
             {
                 id: crypto.randomUUID(),
-                label: 'Мне грустно',
+                label: 'Общая информация',
                 type: 'link',
                 href: '/sadness',
             },
@@ -90,7 +90,7 @@ export const navLinks: NavLinkType[] = [
                 id: crypto.randomUUID(),
                 label: 'Руны',
                 type: 'link',
-                href: '/',
+                href: '/decision/runes',
             },
             {
                 id: crypto.randomUUID(),
@@ -100,15 +100,15 @@ export const navLinks: NavLinkType[] = [
             },
             {
                 id: crypto.randomUUID(),
-                label: 'Карты Ошо',
+                label: 'Метафорические карты',
                 type: 'link',
-                href: '/',
+                href: '/decision/cards/metaphoric',
             },
             {
                 id: crypto.randomUUID(),
                 label: 'Карты Таро',
                 type: 'link',
-                href: '/',
+                href: '/decision/cards/tarot',
             },
             {
                 id: crypto.randomUUID(),
@@ -138,8 +138,14 @@ export const navLinks: NavLinkType[] = [
     },
     {
         id: crypto.randomUUID(),
-        label: 'Акция',
+        label: 'Бонус игра',
         type: 'link',
         href: '/promo',
+    },
+    {
+        id: crypto.randomUUID(),
+        label: 'О ресурсе',
+        type: 'link',
+        href: '/about',
     },
 ];

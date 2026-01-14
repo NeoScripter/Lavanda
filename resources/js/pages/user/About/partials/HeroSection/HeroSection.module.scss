@@ -5,6 +5,7 @@
 }
 
 .fgParent {
+    aspect-ratio: 2/1.1;
     @include u.px(mb, 37, 74, 67, 68);
 
     @include u.mw(md) {

@@ -55,12 +55,14 @@
     @include u.fxc();
     flex-direction: column;
     @include u.px(gap, 31, 26, 25, 39);
+    @include u.px(px, 31, 26, 25, 39);
     @include u.px(pt, 27, 0, 13, 13);
     @include u.px(pb, 60, 0, 13, 13);
 
     @include u.mw(sm) {
         flex-direction: row;
         flex-wrap: wrap;
+        justify-content: space-evenly;
     }
     @include u.px(px, null, null, 40, 40);
 }
