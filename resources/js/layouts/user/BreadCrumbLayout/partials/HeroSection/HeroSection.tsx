@@ -42,7 +42,7 @@ const HeroSection: FC<
 
             {handleClick != null && (
                 <button onClick={handleClick} className={cn('primary-btn', css.revealBtn)}>
-                    Получить ответ
+                    Перейти к игре
                 </button>
             )}
         </section>

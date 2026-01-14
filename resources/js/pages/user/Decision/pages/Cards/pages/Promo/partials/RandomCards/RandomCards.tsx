@@ -13,6 +13,8 @@ import { usePage } from '@inertiajs/react';
 import PickedCards from '../PickedCards/PickedCards';
 import css from './RandomCards.module.scss';
 import { useRandomCardsLogic } from '../../../../hooks/useRandomCardLogic';
+import { useMemo } from "preact/hooks";
+import { getNumberedLabel } from "@/utils/getNumberedLabel";
 
 const ANIMATION_DURATION = 200;
 
@@ -35,6 +37,7 @@ const RandomCards = () => {
         }
     };
 
+
     const {
         faceDownCards,
         selectedCards,
@@ -53,6 +56,10 @@ const RandomCards = () => {
         interactiveItems,
         prevInteractiveItems,
     );
+
+    const nextCard = useMemo(() => {
+        return getNumberedLabel(selectedCards.length + 1);
+    }, [selectedCards.length]);
 
     return (
         <>
@@ -102,7 +109,7 @@ const RandomCards = () => {
                     disabled={isSpinning}
                     class={cn('primary-btn', css.nextRuneBtn)}
                 >
-                    {hasEnded ? 'Попробовать снова' : 'Еще карта'}
+                    {hasEnded ? 'Попробовать снова' : `${nextCard} карта`}
                 </button>
             )}
 

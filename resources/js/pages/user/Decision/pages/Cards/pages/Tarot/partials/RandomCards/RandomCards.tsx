@@ -8,11 +8,13 @@ import { useCurrentSlideId } from '@/layouts/user/ItemsLayout/CurrentSlideProvid
 import { Tarot } from '@/types/model';
 import checkMotionPreferences from '@/utils/checkMotionPreferences';
 import { cn } from '@/utils/cn';
+import { getNumberedLabel } from '@/utils/getNumberedLabel';
 import { Transition } from '@headlessui/react';
 import { usePage } from '@inertiajs/react';
+import { useMemo } from 'preact/hooks';
+import { useRandomCardsLogic } from '../../../../hooks/useRandomCardLogic';
 import PickedCards from '../PickedCards/PickedCards';
 import css from './RandomCards.module.scss';
-import { useRandomCardsLogic } from '../../../../hooks/useRandomCardLogic';
 
 const ANIMATION_DURATION = 200;
 
@@ -53,6 +55,10 @@ const RandomCards = () => {
         interactiveItems,
         prevInteractiveItems,
     );
+
+    const nextCard = useMemo(() => {
+        return getNumberedLabel(selectedCards.length + 1);
+    }, [selectedCards.length]);
 
     return (
         <>
@@ -102,7 +108,7 @@ const RandomCards = () => {
                     disabled={isSpinning}
                     class={cn('primary-btn', css.nextRuneBtn)}
                 >
-                    {hasEnded ? 'Попробовать снова' : 'Еще карта'}
+                    {hasEnded ? 'Попробовать снова' : `${nextCard} карта`}
                 </button>
             )}
 

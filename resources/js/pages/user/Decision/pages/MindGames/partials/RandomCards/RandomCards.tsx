@@ -44,6 +44,7 @@ const RandomCards = () => {
         isSpinning,
         hasEnded,
         faceDownCardLength,
+        scrollRef,
     } = useRandomCardsLogic(
         cards,
         runeLimit,
@@ -55,7 +56,7 @@ const RandomCards = () => {
     );
 
     return (
-        <>
+        <div ref={scrollRef}>
             <Transition show={!hasStarted}>
                 <div className={css.transitionWrapper}>
                     <div>
@@ -105,7 +106,7 @@ const RandomCards = () => {
                     Попробовать снова
                 </button>
             )}
-        </>
+        </div>
     );
 };
 

@@ -66,13 +66,13 @@ function carouselReducer(
 }
 
 export function useRandomCardsLogic(
-    cards: Tarot[]| Metaphoric[] | Promo[],
+    cards: Tarot[] | Metaphoric[] | Promo[],
     cardLimit: number,
     adjustedAnimationDuration: number,
     isMotionEnabled: boolean,
     interactiveItems: any,
     prevInteractiveItems: any,
-    randomFactor?: number
+    randomFactor?: number,
 ) {
     const [state, dispatch] = useReducer(carouselReducer, {
         faceDownCards: cards,
@@ -83,6 +83,7 @@ export function useRandomCardsLogic(
     });
 
     const intervalRef = useRef<number | undefined>(undefined);
+    const scrollConainerRef = useRef<HTMLDivElement>(null);
 
     const handleNext = () => dispatch({ type: 'INCREMENT_INDEX' });
 
@@ -140,6 +141,13 @@ export function useRandomCardsLogic(
         dispatch({ type: 'ADD_SELECTED_CARD', payload: selectedTarot });
 
         const newTarots = [...state.selectedCards, selectedTarot];
+
+        if (scrollConainerRef.current != null) {
+            scrollConainerRef.current.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center',
+            });
+        }
         if (newTarots.length === cardLimit) {
             interactiveItems.value = newTarots;
         }
@@ -163,5 +171,6 @@ export function useRandomCardsLogic(
         hasStarted: state.selectedCards.length > 0 || state.hasStarted,
         hasEnded: cardLimit === state.selectedCards.length,
         faceDownCardLength: cards.length - state.selectedCards.length,
+        scrollRef: scrollConainerRef,
     };
 }
