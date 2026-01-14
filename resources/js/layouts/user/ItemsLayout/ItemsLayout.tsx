@@ -1,3 +1,4 @@
+import Error from '@/components/shared/layout/Error/Error';
 import ErrorBoundary from '@/components/shared/layout/ErrorBoundary';
 import LazyImage from '@/components/user/ui/LazyImage/LazyImage';
 import useMediaQuery from '@/hooks/useMediaQuery';
@@ -10,16 +11,19 @@ import { FC, useMemo, useRef, useState } from 'preact/compat';
 import { useCurrentSlideId } from './CurrentSlideProvider';
 import css from './ItemsLayout.module.scss';
 import { getRandomImage, splitItemsBySlide } from './helpers';
-import { ImageObj, images } from './images';
-import Error from '@/components/shared/layout/Error/Error';
+import { ImageObj, images, itemPreviewMap } from './images';
 const SLIDE_DURATION = 400;
 
+type PreviewItem = ExperienceItem & { preview?: string };
+
 const ItemsLayout: FC<NodeProps> = ({ className, children }) => {
-    const { items } = usePage<{ items: ExperienceItem[] }>().props;
+    const { items } = usePage<{ items: PreviewItem[] }>().props;
     const prevIdx = useRef<number | null>(null);
     const { currentSlideId } = useCurrentSlideId();
     const [showContent, setShowContent] = useState(false);
     const isDesktop = useMediaQuery('(min-width: 1110px)');
+
+    const isLenormand = items.length > 0 && items[0]['preview'] != null;
 
     const { startingItems, lastItems } = splitItemsBySlide(
         items,
@@ -53,8 +57,8 @@ const ItemsLayout: FC<NodeProps> = ({ className, children }) => {
         }
     };
 
-    const renderItemList = (items: ExperienceItem[]) => (
-        <ul class={css.items}>
+    const renderItemList = (items: PreviewItem[]) => (
+        <ul class={cn(css.items, isLenormand && css.lenormandItems)}>
             {items.map((item) => {
                 prevIdx.current = getRandomImage(
                     prevIdx.current,
@@ -63,7 +67,11 @@ const ItemsLayout: FC<NodeProps> = ({ className, children }) => {
 
                 return (
                     <ItemCard
-                        img={images[prevIdx.current]}
+                        img={
+                            item.preview
+                                ? itemPreviewMap[item.preview]
+                                : images[prevIdx.current]
+                        }
                         key={item.id}
                         item={item}
                         onClick={() => handleClick(item.id)}
@@ -126,10 +134,14 @@ const ItemCard: FC<{
                 tinyImg={image.tinyImg}
                 alt={image.alt}
             />
-            <div className={css.cardTextWrapper}>
-                <h2 class={css.cardHeading}>{item.title}</h2>
-                <p class={css.cardDescription}>{item.description}</p>
-            </div>
+            {item.title ? (
+                <div className={css.cardTextWrapper}>
+                    <h2 class={css.cardHeading}>{item.title}</h2>
+                    <p class={css.cardDescription}>{item.description}</p>
+                </div>
+            ) : (
+                <p className={css.cardLabel}>{item.description}</p>
+            )}
         </li>
     );
 };

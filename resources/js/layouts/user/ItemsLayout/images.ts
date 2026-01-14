@@ -11,11 +11,31 @@ import Item5 from '@/assets/images/experience/experience-item-5.webp';
 import Item6Tiny from '@/assets/images/experience/experience-item-6-tiny.webp';
 import Item6 from '@/assets/images/experience/experience-item-6.webp';
 
+import ManDkTinyWebp from '@/assets/images/cards/lenormand/man-dk-tiny.webp';
+import ManDkWebp from '@/assets/images/cards/lenormand/man-dk.webp';
+import WomanDkTinyWebp from '@/assets/images/cards/lenormand/woman-dk-tiny.webp';
+import WomanDkWebp from '@/assets/images/cards/lenormand/woman-dk.webp';
+
 export type ImageObj = {
     id: string;
     img: string;
     tinyImg: string;
     alt: string;
+};
+
+export const itemPreviewMap: Record<string, ImageObj> = {
+    man: {
+        id: crypto.randomUUID(),
+        img: ManDkWebp,
+        tinyImg: ManDkTinyWebp,
+        alt: 'Мужской портрет в викторианском стиле: профиль молодого мужчины в классическом костюме с жилетом и галстуком, окружённого ветвями сирени.',
+    },
+    woman: {
+        id: crypto.randomUUID(),
+        img: WomanDkWebp,
+        tinyImg: WomanDkTinyWebp,
+        alt: 'Женский портрет в викторианском стиле: профиль молодой женщины с собранными волосами, украшенными сиренью, в светлом платье с кружевным воротником и букетом сирени.',
+    },
 };
 
 export const images: ImageObj[] = [

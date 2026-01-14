@@ -1,0 +1,60 @@
+@use 'core' as u;
+
+.transitionWrapper {
+    display: grid;
+    grid-template-rows: 1fr;
+    transition: grid-template-rows 500ms ease-in-out;
+
+    > div {
+        overflow: hidden;
+    }
+}
+.transitionWrapper[data-closed] {
+    grid-template-rows: 0fr;
+}
+.intro {
+    text-align: center;
+    font-weight: 500;
+    margin-inline: auto;
+    @include u.px(mb, 32, 48, 32, 66);
+
+    @include u.mw(md) {
+        max-width: 70%;
+    }
+    @include u.mw(lg) {
+        max-width: 85%;
+    }
+}
+
+.actionBtn {
+    margin-inline: auto;
+    margin-bottom: 5px;
+}
+
+.gridCard {
+
+}
+
+.initialCards {
+    @include u.px(mt, 60, 60, 80, 80);
+}
+
+.selectedCards {
+    margin-inline: auto;
+    width: 50%;
+    margin-bottom: 2em;
+}
+
+.nextRuneBtn {
+    margin-inline: auto;
+    @include u.px(mt, 42, 68, 63, 70);
+
+    &[disabled] {
+        opacity: 0.5;
+        cursor: default;
+        &:hover {
+            pointer-events: none;
+        }
+    }
+}
+

@@ -3,7 +3,7 @@ import BreadCrumbs from '@/components/user/ui/BreadCrumbs/BreadCrumbs';
 import { BgLoaderImg } from '@/lib/types/shared';
 import { NodeProps } from '@/types/nodeProps';
 import { cn } from '@/utils/cn';
-import { FC } from 'preact/compat';
+import { FC, useState } from 'preact/compat';
 import css from './HeroSection.module.scss';
 
 const HeroSection: FC<
@@ -15,6 +15,14 @@ const HeroSection: FC<
         handleClick?: () => void;
     }>
 > = ({ className, imgClass, heading, intro, fgImg, handleClick }) => {
+    const [clicked, setClicked] = useState(false);
+
+    const handleRevealClick = () => {
+        if (!handleClick) return;
+        handleClick();
+        setClicked(true);
+    };
+
     return (
         <section class={cn(css.wrapper, 'full-bleed', className)}>
             <LeftBlob />
@@ -37,11 +45,17 @@ const HeroSection: FC<
 
             <div class={css.textContent}>
                 <h1>{heading}</h1>
-                <p className={css.heroIntro} dangerouslySetInnerHTML={{__html: intro}}/>
+                <p
+                    className={css.heroIntro}
+                    dangerouslySetInnerHTML={{ __html: intro }}
+                />
             </div>
 
-            {handleClick != null && (
-                <button onClick={handleClick} className={cn('primary-btn', css.revealBtn)}>
+            {handleClick != null && !clicked && (
+                <button
+                    onClick={handleRevealClick}
+                    className={cn('primary-btn', css.revealBtn)}
+                >
                     Перейти к игре
                 </button>
             )}

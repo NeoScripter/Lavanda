@@ -96,7 +96,7 @@ export const navLinks: NavLinkType[] = [
                 id: crypto.randomUUID(),
                 label: 'Старинное гадание госпожи Ленорман',
                 type: 'link',
-                href: '/',
+                href: '/decision/cards/lenormand',
             },
             {
                 id: crypto.randomUUID(),

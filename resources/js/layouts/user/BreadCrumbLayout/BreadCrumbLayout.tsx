@@ -64,7 +64,7 @@ const BreadCrumbLayout: FC<
                 heading={heading}
                 intro={intro}
                 imgClass={imgClass}
-                className={withCards ? css.noMargin : ''}
+                className={(withCards || hasHeroRevealer) ? css.noMargin : ''}
                 fgImg={fgImg}
                 handleClick={
                     hasHeroRevealer ? handleShowContentClick : undefined

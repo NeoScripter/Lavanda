@@ -1,0 +1,72 @@
+@use 'core' as u;
+
+.transitionWrapper {
+    display: grid;
+    grid-template-rows: 1fr;
+    transition: grid-template-rows 500ms ease-in-out;
+
+    > * {
+        overflow: hidden;
+    }
+}
+.transitionWrapper[data-closed] {
+    grid-template-rows: 0fr;
+}
+
+.intro {
+    text-align: center;
+    font-weight: 500;
+    margin-inline: auto;
+    @include u.px(mb, 32, 48, 32, 66);
+
+    @include u.mw(md) {
+        max-width: 70%;
+    }
+    @include u.mw(lg) {
+        max-width: 85%;
+    }
+}
+
+.cardGrid {
+    --size: 0;
+    --offsetY: 0;
+    @include u.px(--offsetY, 47, 64, 91, 110);
+    margin-inline: auto;
+    place-content: center;
+    padding-bottom: var(--offsetY);
+    display: grid;
+    grid-template-columns: repeat(3, var(--size));
+    grid-column: 2 !important;
+    translate: calc(var(--size) * -0.25);
+
+    @include u.px(gap-x, 15, 19, 27, 33);
+    @include u.px(mt, 58, 67, 60, 75);
+    @include u.px(mb, 52, 98, 93, 100);
+    @include u.px(--size, 81, 112, 159, 192);
+    @include u.mw(sm) {
+        grid-template-columns: repeat(5, var(--size));
+    }
+}
+
+.nextcardBtn {
+    margin-inline: auto;
+    @include u.px(mb, 42, 48, 52, 60);
+}
+
+.cardItemInactive {
+    &:has(button:hover) {
+        z-index: 0 !important;
+        scale: 100% !important;
+    }
+    button {
+        cursor: default;
+    }
+}
+
+.pickedCards {
+    @include u.px(mb, 42, 68, 63, 70);
+}
+
+.nextCardBtn {
+    margin-inline: auto;
+}

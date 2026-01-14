@@ -10,10 +10,11 @@ const InteractiveLayout: FC<
     NodeProps<{ btnLabels: string[]; components: (() => ComponentChild)[] }>
 > = ({ className, btnLabels, components, children }) => {
     const [activeIdx, setActiveIdx] = useState(0);
+    const hasNav = components.length > 1;
 
     return (
-        <div className={cn(css.wrapper, className)}>
-            {components.length > 1 && (
+        <div className={cn(css.wrapper, className, !hasNav && css.rounded)}>
+            {hasNav && (
                 <nav class={css.nav}>
                     {btnLabels.map((label, idx) => (
                         <button

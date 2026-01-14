@@ -4,6 +4,7 @@ use App\Http\Controllers\User\AboutController;
 use App\Http\Controllers\User\AccountController;
 use App\Http\Controllers\User\ContactPageController;
 use App\Http\Controllers\User\Decision\Cards\CardController;
+use App\Http\Controllers\User\Decision\Cards\LenormandController;
 use App\Http\Controllers\User\Decision\Cards\MetaphoricController;
 use App\Http\Controllers\User\Decision\MindGameController;
 use App\Http\Controllers\User\PromoController;
@@ -36,7 +37,7 @@ Route::prefix('/decision')->name('decision.')->group(function () {
     Route::prefix('/cards')->name('cards.')->group(function () {
         Route::get('/', CardController::class)->name('index'); // руны
         Route::get('/tarot', TarotController::class)->name('tarot'); // таро
-        Route::get('/lenormand', TarotController::class)->name('lenormand'); // Ленорман
+        Route::get('/lenormand', LenormandController::class)->name('lenormand'); // Ленорман
         Route::get('/metaphoric', MetaphoricController::class)->name('metaphoric'); // метафорические карты
     }); // карты
 

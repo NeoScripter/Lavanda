@@ -9,10 +9,25 @@
     @include u.px(gap, 56, 60, 40, 70);
     @include u.px(mb, 56, 60, 40, 70);
 
-    grid-template-columns: repeat(1, var(--size));
+    grid-template-columns: repeat(1, min(100%, var(--size)));
 
     @include u.mw(md) {
         grid-template-columns: repeat(3, var(--size));
+    }
+}
+.lenormandItems {
+    > li {
+        height: auto;
+        aspect-ratio: 1/1;
+        color: white;
+        text-wrap: balance;
+
+        &::after {
+            content: none;
+        }
+    }
+    @include u.mw(md) {
+        grid-template-columns: repeat(2, var(--size));
     }
 }
 
@@ -42,6 +57,9 @@
         h2,
         p {
             color: white;
+        }
+        .cardLabel {
+            opacity: 1;
         }
     }
 
@@ -99,6 +117,9 @@
     p {
         color: white;
     }
+    .cardLabel {
+        opacity: 1;
+    }
 }
 .cardHeading {
     text-transform: uppercase;
@@ -108,6 +129,14 @@
 
 .cardDescription {
     @include u.rm(text, 14, 14, 14, 14);
+}
+
+.cardLabel {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    text-align: center;
+    font-weight: 700;
+    @include u.rm(text, 24, 24, 24, 24);
 }
 
 .wrapper {

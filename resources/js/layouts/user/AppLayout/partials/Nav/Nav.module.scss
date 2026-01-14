@@ -160,6 +160,7 @@
 }
 
 .navLinkWrapper {
+    user-select: none;
     &:first-child {
         @include u.mw(sm) {
             display: none;
