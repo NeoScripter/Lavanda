@@ -27,7 +27,7 @@ export const navLinks: NavLinkType[] = [
         links: [
             {
                 id: crypto.randomUUID(),
-                label: 'Решение',
+                label: 'Общая информация',
                 type: 'link',
                 href: '/decision',
             },

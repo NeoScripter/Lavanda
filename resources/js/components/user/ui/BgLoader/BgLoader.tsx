@@ -4,10 +4,13 @@ import css from './BgLoader.module.scss';
 
 type BgLoaderProps = {
     dk: string;
+    dkAvif?: string;
     tb: string;
-    mb: string;
     dkTiny?: string;
+    mb: string;
+    mbAvif?: string;
     tbTiny?: string;
+    tbAvif?: string;
     mbTiny?: string;
     prtClass?: string;
     imgClass?: string;
@@ -18,8 +21,11 @@ type BgLoaderProps = {
 
 export default function BgLoader({
     dk,
+    dkAvif,
     tb,
+    tbAvif,
     mb,
+    mbAvif,
     dkTiny,
     tbTiny,
     mbTiny,
@@ -44,14 +50,29 @@ export default function BgLoader({
             <picture
                 class={cn(css.picture, isLoading && css.pictureLoading)}
             >
+                {dkAvif && (
+                    <source
+                        type="image/avif"
+                        srcSet={dkAvif}
+                        media={`(min-width: ${tabletMinWidth}px)`}
+                    />
+                )}
                 <source
                     srcSet={dk}
                     media={`(min-width: ${tabletMinWidth}px)`}
                 />
+                {tbAvif && (
+                    <source
+                        type="image/avif"
+                        srcSet={tbAvif}
+                        media={`(min-width: ${mbMinWidth}px)`}
+                    />
+                )}
                 <source
                     srcSet={tb}
                     media={`(min-width: ${mbMinWidth}px)`}
                 />
+                {mbAvif && <source type="image/avif" srcSet={mbAvif} />}
                 <img
                     onLoad={() => setIsLoading(false)}
                     src={mb}

@@ -12,13 +12,14 @@
     display: grid;
     grid-template-columns: repeat(3, var(--size));
     grid-column: 2 !important;
-    translate: calc(var(--size) * -0.25);
+    translate: calc(var(--size) * -0.45);
 
     @include u.px(gap-x, 15, 19, 27, 33);
     @include u.px(mb, 52, 98, 93, 100);
     @include u.px(--size, 81, 112, 159, 192);
     @include u.mw(sm) {
         grid-template-columns: repeat(5, var(--size));
+        translate: calc(var(--size) * -0.25);
     }
 
     > * {
@@ -53,7 +54,7 @@
             &:nth-child(-n + 5),
             &:nth-child(n + 16):nth-child(-n + 20),
             &:nth-child(n + 31):nth-child(-n + 35) {
-                translate: 35%;
+                translate: 25%;
             }
 
             &:nth-child(n + 6):nth-child(-n + 10),
@@ -64,7 +65,7 @@
             &:nth-child(n + 11):nth-child(-n + 15),
             &:nth-child(n + 26):nth-child(-n + 30),
             &:nth-child(n + 41):nth-child(-n + 45) {
-                translate: 70%;
+                translate: 50%;
             }
         }
     }
