@@ -35,10 +35,13 @@ const HeroSection: FC<
                     prtClass={cn(css.bgLoader, imgClass)}
                     imgClass={css.bgFgImage}
                     dk={fgImg.dk}
+                    dkAvif={fgImg.dkAvif}
                     dkTiny={fgImg.dkTiny}
                     tb={fgImg.tb}
+                    tbAvif={fgImg.tbAvif}
                     tbTiny={fgImg.tbTiny}
                     mb={fgImg.mb}
+                    mbAvif={fgImg.mbAvif}
                     mbTiny={fgImg.mbTiny}
                 />
             )}

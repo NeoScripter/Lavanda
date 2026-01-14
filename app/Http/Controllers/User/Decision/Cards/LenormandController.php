@@ -29,7 +29,7 @@ class LenormandController extends Controller
 
         $cards = Tarot::all()->shuffle();
 
-        return Inertia::render('user/Decision/pages/Cards/pages/Tarot/Tarot', [
+        return Inertia::render('user/Decision/pages/Cards/pages/Lenormand/Lenormand', [
             'items' => $items,
             'cards' => $cards,
         ]);
