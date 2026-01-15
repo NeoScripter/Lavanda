@@ -54,13 +54,18 @@ const HeroSection: FC<
                 />
             </div>
 
-            {handleClick != null && !clicked && (
+            {handleClick != null && !clicked ? (
                 <button
                     onClick={handleRevealClick}
                     className={cn('primary-btn', css.revealBtn)}
                 >
                     Перейти к игре
                 </button>
+            ) : (
+                <div
+                    aria-hidden="true"
+                    className={css.filler}
+                />
             )}
         </section>
     );
