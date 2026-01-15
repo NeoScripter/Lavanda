@@ -2,7 +2,10 @@ import { NodeProps } from '@/types/nodeProps';
 import { cn } from '@/utils/cn';
 import { ComponentChild } from 'preact';
 import { FC, useState } from 'preact/compat';
-import { InteractiveItemsProvider } from './InteractiveItemsContext';
+import {
+    InteractiveItemsProvider,
+    useInteractiveItems,
+} from './InteractiveItemsContext';
 import css from './InteractiveLayout.module.scss';
 import ItemsDisplay from './partials/ItemsDisplay';
 
@@ -13,7 +16,7 @@ const InteractiveLayout: FC<
     const hasNav = components.length > 1;
 
     return (
-        <div className={cn(css.wrapper, className, !hasNav && css.rounded)}>
+        <div className={cn(css.wrapper, className)}>
             {hasNav && (
                 <nav class={css.nav}>
                     {btnLabels.map((label, idx) => (
@@ -31,9 +34,11 @@ const InteractiveLayout: FC<
                 </nav>
             )}
             <InteractiveItemsProvider>
-                <article class={cn(css.content, 'full-bleed-parent')}>
-                    {components[activeIdx]?.()}
-                </article>
+                <InteractiveLayoutContent
+                    hasNav={hasNav}
+                    components={components}
+                    activeIdx={activeIdx}
+                />
 
                 <ItemsDisplay>{children}</ItemsDisplay>
             </InteractiveItemsProvider>
@@ -42,3 +47,24 @@ const InteractiveLayout: FC<
 };
 
 export default InteractiveLayout;
+
+const InteractiveLayoutContent: FC<{
+    hasNav: boolean;
+    components: (() => ComponentChild)[];
+    activeIdx: number;
+}> = ({ hasNav, components, activeIdx }) => {
+    const { interactiveItems } = useInteractiveItems();
+
+    const isReadingOpen = interactiveItems.value.length > 0;
+
+    return (
+        <article
+            class={cn(css.content, 'full-bleed-parent', {
+                [css.roundedTop]: !hasNav,
+                [css.roundedBottom]: !isReadingOpen,
+            })}
+        >
+            {components[activeIdx]?.()}
+        </article>
+    );
+};
