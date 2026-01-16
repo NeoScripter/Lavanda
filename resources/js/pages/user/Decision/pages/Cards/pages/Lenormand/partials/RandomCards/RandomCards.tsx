@@ -1,25 +1,27 @@
-import BackDkTiny from '@/assets/images/cards/tarot/back-dk-tiny.webp';
-import BackDk from '@/assets/images/cards/tarot/back-dk.webp';
+import BackDkTiny from '@/assets/images/cards/lenormand/lenormand-back-dk-tiny.webp';
+import BackDk from '@/assets/images/cards/lenormand/lenormand-back-dk.webp';
 import ArrowHint from '@/components/user/ui/ArrowHint';
 import Card from '@/components/user/ui/Card';
-import CardDeck from '@/components/user/ui/CardDeck/CardDeck';
 import { useInteractiveItems } from '@/layouts/user/InteractiveLayout/InteractiveItemsContext';
 import { useCurrentSlideId } from '@/layouts/user/ItemsLayout/CurrentSlideProvider';
-import { Tarot } from '@/types/model';
+import { Lenormand } from '@/types/model';
 import checkMotionPreferences from '@/utils/checkMotionPreferences';
 import { cn } from '@/utils/cn';
-import { getNumberedLabel } from '@/utils/getNumberedLabel';
 import { Transition } from '@headlessui/react';
 import { usePage } from '@inertiajs/react';
-import { useMemo } from 'preact/hooks';
-import { useRandomCardsLogic } from '../../../../hooks/useRandomCardLogic';
-import PickedCards from '../PickedCards/PickedCards';
+import { useLenormandLogic } from '../../hooks/useLenormandLogic';
 import css from './RandomCards.module.scss';
+// import LenormandKeyManDkTinyWebp from "@/assets/images/cards/lenormand/lenormand-key-man-dk-tiny.webp";
+// import LenormandKeyManDkAvif from "@/assets/images/cards/lenormand/lenormand-key-man-dk.avif";
+// import LenormandKeyManDkWebp from "@/assets/images/cards/lenormand/lenormand-key-man-dk.webp";
+// import LenormandKeyWomanDkTinyWebp from "@/assets/images/cards/lenormand/lenormand-key-woman-dk-tiny.webp";
+// import LenormandKeyWomanDkAvif from "@/assets/images/cards/lenormand/lenormand-key-woman-dk.avif";
+// import LenormandKeyWomanDkWebp from "@/assets/images/cards/lenormand/lenormand-key-woman-dk.webp";
 
 const ANIMATION_DURATION = 200;
 
 const RandomCards = () => {
-    const { cards } = usePage<{ cards: Tarot[] }>().props;
+    const { cards: initialCards } = usePage<{ cards: Lenormand[] }>().props;
 
     const isMotionEnabled = checkMotionPreferences();
 
@@ -27,7 +29,15 @@ const RandomCards = () => {
     const { interactiveItems, prevInteractiveItems } = useInteractiveItems();
 
     const adjustedAnimationDuration = isMotionEnabled ? ANIMATION_DURATION : 0;
-    const runeLimit = currentSlideId.value ?? 1;
+
+    const { hasEnded, hasStarted, isSpinning, reset, startSpinning, cards } =
+        useLenormandLogic(
+            initialCards,
+            adjustedAnimationDuration,
+            isMotionEnabled,
+            interactiveItems,
+            prevInteractiveItems,
+        );
 
     const handleNextSpinClick = () => {
         if (hasEnded) {
@@ -36,29 +46,6 @@ const RandomCards = () => {
             startSpinning();
         }
     };
-
-    const {
-        faceDownCards,
-        selectedCards,
-        highlightedIdx,
-        startSpinning,
-        reset,
-        hasStarted,
-        isSpinning,
-        hasEnded,
-        faceDownCardLength,
-    } = useRandomCardsLogic(
-        cards,
-        runeLimit,
-        adjustedAnimationDuration,
-        isMotionEnabled,
-        interactiveItems,
-        prevInteractiveItems,
-    );
-
-    const nextCard = useMemo(() => {
-        return getNumberedLabel(selectedCards.length + 1);
-    }, [selectedCards.length]);
 
     return (
         <>
@@ -80,27 +67,18 @@ const RandomCards = () => {
                 </div>
             </Transition>
 
-            <PickedCards
-                cards={selectedCards}
-                className={css.pickedCards}
-            />
-            {!hasEnded && (
-                <CardDeck
-                    key="faceDownCards"
-                    className={css.initialCards}
-                    size={faceDownCardLength}
-                >
-                    {faceDownCards.map((card, idx) => (
-                        <Card
-                            key={card.id}
-                            card={card}
-                            backImgPath={BackDk}
-                            backImgTinyPath={BackDkTiny}
-                            isHighlighted={highlightedIdx === idx}
-                        />
-                    ))}
-                </CardDeck>
-            )}
+            <ul className={cn(css.cardGrid)}>
+                {cards.map((card, idx) => (
+                    <Card
+                        key={card.id}
+                        card={card}
+                        backImgPath={BackDk}
+                        backImgTinyPath={BackDkTiny}
+                        className={css.lenormandCard}
+                        // isHighlighted={highlightedIdx === idx}
+                    />
+                ))}
+            </ul>
 
             {hasStarted && (
                 <button
@@ -108,7 +86,7 @@ const RandomCards = () => {
                     disabled={isSpinning}
                     class={cn('primary-btn', css.nextRuneBtn)}
                 >
-                    {hasEnded ? 'Попробовать снова' : `${nextCard} карта`}
+                    {hasEnded ? 'Попробовать снова' : `Начать`}
                 </button>
             )}
 

@@ -62,6 +62,7 @@ const InteractiveLayoutContent: FC<{
             class={cn(css.content, 'full-bleed-parent', {
                 [css.roundedTop]: !hasNav,
                 [css.roundedBottom]: !isReadingOpen,
+                [css.flatBottomCorners]: isReadingOpen,
             })}
         >
             {components[activeIdx]?.()}

@@ -26,13 +26,31 @@
     }
 }
 
+.cardGrid {
+    display: grid;
+    width: 100%;
+
+    margin-inline: auto;
+    grid-template-columns: repeat(5, 1fr);
+    @include u.px(gap, 10, 10, 10, 10);
+
+    @include u.mw(md) {
+        grid-template-columns: repeat(8, 1fr);
+    }
+}
+
+.lenormandCard {
+    @include u.px(h, 93, 195, 195, 218);
+    /* --size: 0; */
+    /* @include u.px(--size, 62, 130, 130, 145); */
+
+    figure {
+        @include u.px(rounded, 10, 10, 10, 10);
+    }
+}
 .actionBtn {
     margin-inline: auto;
     margin-bottom: 5px;
-}
-
-.gridCard {
-
 }
 
 .initialCards {
@@ -57,4 +75,3 @@
         }
     }
 }
-

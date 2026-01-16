@@ -19,14 +19,17 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@gmail.com',
         ]);
 
-        $this->call(PlanSeeder::class);
-        $this->call(WellnessTipSeeder::class);
-        $this->call(ExperienceItemSeeder::class);
-        $this->call(PracticeItemSeeder::class);
-        $this->call(RuneSeeder::class);
-        $this->call(TarotSeeder::class);
-        $this->call(PromoSeeder::class);
-        $this->call(MetaphoricSeeder::class);
-        $this->call(MindGameSeeder::class);
+        $this->call([
+            PlanSeeder::class,
+            WellnessTipSeeder::class,
+            ExperienceItemSeeder::class,
+            PracticeItemSeeder::class,
+            RuneSeeder::class,
+            TarotSeeder::class,
+            PromoSeeder::class,
+            MetaphoricSeeder::class,
+            MindGameSeeder::class,
+            LenormandSeeder::class,
+        ]);
     }
 }

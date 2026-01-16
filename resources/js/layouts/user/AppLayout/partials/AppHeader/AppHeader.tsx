@@ -1,6 +1,7 @@
 import BurgerMenu from '@/components/user/nav/BurgerMenu/BurgerMenu';
 import Logo from '@/components/user/ui/Logo/Logo';
 import { useClickOutside } from '@/hooks/useClickOutside';
+import useElementHeight from '@/hooks/useElementHeight';
 import { useEscapeKey } from '@/hooks/useEscapeKey';
 import useMediaQuery from '@/hooks/useMediaQuery';
 import { useLoginModal } from '@/providers/LoginContext';
@@ -14,18 +15,19 @@ import Nav from '../Nav/Nav';
 import css from './AppHeader.module.scss';
 
 const AppHeader: FC<NodeProps> = ({ className }) => {
-    const { show: showMenu, setShow: setShowMenu } = useClickOutside([
-        '#header',
-    ]);
-
     const {
         auth: { user },
     } = usePage<{ auth: Auth }>().props;
     const { showLoginModal } = useLoginModal();
+    const { show: showMenu, setShow: setShowMenu } = useClickOutside([
+        '#header',
+    ]);
 
     const isDesktop = useMediaQuery('(min-width: 1110px)');
 
     useEscapeKey(() => setShowMenu(false));
+
+    const { actualHeight, ref } = useElementHeight();
 
     const toggleMenu = () => setShowMenu((p) => !p);
 
@@ -41,6 +43,8 @@ const AppHeader: FC<NodeProps> = ({ className }) => {
         <header
             id="header"
             class={cn(css.wrapper, showMenu && css.shadow, className)}
+            style={{ '--height': `${actualHeight.value}px` }}
+            ref={ref}
         >
             <div class={css.topBar}>
                 <Logo />
@@ -53,7 +57,11 @@ const AppHeader: FC<NodeProps> = ({ className }) => {
                     className={css.burger}
                 />
 
-                {isDesktop && <Nav className={cn(css.dkNav)} />}
+                {isDesktop && (
+                    <Nav
+                        className={cn(css.dkNav)}
+                    />
+                )}
 
                 <div class={css.loginBtnWrapper}>
                     <button

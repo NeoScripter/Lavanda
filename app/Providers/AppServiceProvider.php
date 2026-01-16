@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\ExperienceItem;
+use App\Models\Lenormand;
 use App\Models\Metaphoric;
 use App\Models\MindGame;
 use App\Models\PracticeItem;
@@ -43,6 +44,7 @@ class AppServiceProvider extends ServiceProvider
             'metaphoric' => Metaphoric::class,
             'promo' => Promo::class,
             'mindGame' => MindGame::class,
+            'lenormand' => Lenormand::class,
         ]);
     }
 }

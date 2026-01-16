@@ -1,20 +1,26 @@
 @use 'core' as u;
 
 .wrapper {
+    --requiredHeight: 0px;
+    --height: 0px;
+    --offsetY: 0px;
     position: fixed;
     z-index: 21;
     left: 50%;
     background-color: white;
     background-color: u.opacify(white, 82);
     transform: translateX(-50%);
+    top: var(--offsetY);
     backdrop-filter: blur(5px);
     transition: box-shadow 0.2s ease-in-out;
-    @include u.px(top, 22, 22, 57, 53);
+    @include u.px(--offsetY, 22, 22, 57, 53);
+    @include u.px(--requiredHeight, 47, 165, 83, 97);
     @include u.px(w, 328, 657, 1360, 1585);
     @include u.px(rounded, 20, 35, 40, 45);
 
     @include u.mw(sm) {
         background-color: transparent;
+        top: calc(var(--offsetY) - var(--height) + var(--requiredHeight));
     }
 }
 

@@ -21,12 +21,30 @@ export type Image = {
     updated_at?: string;
     imageable?: any;
 };
+export type Lenormand = {
+    id: number;
+    name: string;
+    body: string;
+    html?: string;
+    advice: string;
+    created_at?: string;
+    updated_at?: string;
+    images?: Image;
+    front_image?: Image;
+};
 export type Metaphoric = {
     id: number;
     name: string;
     body: string;
     html?: string;
     advice: string;
+    created_at?: string;
+    updated_at?: string;
+    images?: Image;
+    front_image?: Image;
+};
+export type MindGame = {
+    id: number;
     created_at?: string;
     updated_at?: string;
     images?: Image;
