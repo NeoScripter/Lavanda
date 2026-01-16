@@ -38,7 +38,7 @@ class RunesController extends Controller
 
         return Inertia::render('user/Decision/pages/Runes/Runes', [
             'items' => $items,
-            'runes' => Inertia::defer(Rune::all()->load('categories')->shuffle()),
+            'runes' => Inertia::defer(fn() => Rune::all()->load('categories')->shuffle()),
             'categories' => $categories,
         ]);
     }

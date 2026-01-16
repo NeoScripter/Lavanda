@@ -1,5 +1,6 @@
 import { NodeProps } from '@/types/nodeProps';
 import { cn } from '@/utils/cn';
+import { Deferred } from '@inertiajs/react';
 import { ComponentChild } from 'preact';
 import { FC, useState } from 'preact/compat';
 import {
@@ -10,8 +11,12 @@ import css from './InteractiveLayout.module.scss';
 import ItemsDisplay from './partials/ItemsDisplay';
 
 const InteractiveLayout: FC<
-    NodeProps<{ btnLabels: string[]; components: (() => ComponentChild)[] }>
-> = ({ className, btnLabels, components, children }) => {
+    NodeProps<{
+        deferedKey?: string;
+        btnLabels: string[];
+        components: (() => ComponentChild)[];
+    }>
+> = ({ deferedKey, className, btnLabels, components, children }) => {
     const [activeIdx, setActiveIdx] = useState(0);
     const hasNav = components.length > 1;
 
@@ -34,11 +39,24 @@ const InteractiveLayout: FC<
                 </nav>
             )}
             <InteractiveItemsProvider>
-                <InteractiveLayoutContent
-                    hasNav={hasNav}
-                    components={components}
-                    activeIdx={activeIdx}
-                />
+                {deferedKey ? (
+                    <Deferred
+                        data={deferedKey}
+                        fallback={<div>Загрузка...</div>}
+                    >
+                        <InteractiveLayoutContent
+                            hasNav={hasNav}
+                            components={components}
+                            activeIdx={activeIdx}
+                        />
+                    </Deferred>
+                ) : (
+                    <InteractiveLayoutContent
+                        hasNav={hasNav}
+                        components={components}
+                        activeIdx={activeIdx}
+                    />
+                )}
 
                 <ItemsDisplay>{children}</ItemsDisplay>
             </InteractiveItemsProvider>

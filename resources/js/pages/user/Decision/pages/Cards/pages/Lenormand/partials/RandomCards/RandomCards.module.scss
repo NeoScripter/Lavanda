@@ -40,7 +40,10 @@
 }
 
 .lenormandCard {
-    @include u.px(h, 93, 195, 195, 218);
+    aspect-ratio: 62/93;
+    /* --height: 0; */
+    /* @include u.px(--height, 93, 195, 195, 218); */
+    /* height: var(--height); */
     /* --size: 0; */
     /* @include u.px(--size, 62, 130, 130, 145); */
 

@@ -66,7 +66,7 @@ function carouselReducer(
 }
 
 export function useLenormandLogic(
-    initialCards: Lenormand[],
+    initialCards: Lenormand[] = [],
     adjustedAnimationDuration: number,
     isMotionEnabled: boolean,
     interactiveItems: any,

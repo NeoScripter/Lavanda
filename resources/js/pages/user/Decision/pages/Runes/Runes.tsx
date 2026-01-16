@@ -56,6 +56,7 @@ const Runes = () => {
                         />
                     ),
                 ]}
+                deferedKey="runes"
             >
                 <CategorySelector
                     selectedCategory={selectedCategory}
