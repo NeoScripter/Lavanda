@@ -11,12 +11,6 @@ import { Transition } from '@headlessui/react';
 import { usePage } from '@inertiajs/react';
 import { useLenormandLogic } from '../../hooks/useLenormandLogic';
 import css from './RandomCards.module.scss';
-// import LenormandKeyManDkTinyWebp from "@/assets/images/cards/lenormand/lenormand-key-man-dk-tiny.webp";
-// import LenormandKeyManDkAvif from "@/assets/images/cards/lenormand/lenormand-key-man-dk.avif";
-// import LenormandKeyManDkWebp from "@/assets/images/cards/lenormand/lenormand-key-man-dk.webp";
-// import LenormandKeyWomanDkTinyWebp from "@/assets/images/cards/lenormand/lenormand-key-woman-dk-tiny.webp";
-// import LenormandKeyWomanDkAvif from "@/assets/images/cards/lenormand/lenormand-key-woman-dk.avif";
-// import LenormandKeyWomanDkWebp from "@/assets/images/cards/lenormand/lenormand-key-woman-dk.webp";
 
 const ANIMATION_DURATION = 200;
 
@@ -30,14 +24,23 @@ const RandomCards = () => {
 
     const adjustedAnimationDuration = isMotionEnabled ? ANIMATION_DURATION : 0;
 
-    const { hasEnded, hasStarted, isSpinning, reset, startSpinning, cards } =
-        useLenormandLogic(
-            initialCards,
-            adjustedAnimationDuration,
-            isMotionEnabled,
-            interactiveItems,
-            prevInteractiveItems,
-        );
+    const {
+        hasEnded,
+        hasStarted,
+        highlightedIdx,
+        isSpinning,
+        reset,
+        startSpinning,
+        cards,
+    } = useLenormandLogic(
+        currentSlideId.value || 1,
+        initialCards,
+        8,
+        adjustedAnimationDuration,
+        isMotionEnabled,
+        interactiveItems,
+        prevInteractiveItems,
+    );
 
     const handleNextSpinClick = () => {
         if (hasEnded) {
@@ -47,15 +50,32 @@ const RandomCards = () => {
         }
     };
 
+    console.log(highlightedIdx)
+
     return (
         <>
             <Transition show={!hasStarted}>
                 <div className={css.transitionWrapper}>
                     <div>
                         <p class={css.intro}>
-                            Карта открывается сама — как знак, который приходит
-                            вовремя. Иногда именно случай отражает то, что мы
-                            уже чувствуем, но не осознаём.
+                            Sed ut perspiciatis unde omnis iste natus error sit
+                            voluptatem accusantium doloremque laudantium, totam
+                            rem aperiam, eaque ipsa quae ab illo inventore
+                            veritatis et quasi architecto beatae vitae dicta
+                            sunt explicabo. Nemo enim ipsam voluptatem quia
+                            voluptas sit aspernatur aut odit aut fugit, sed quia
+                            consequuntur magni dolores eos qui ratione
+                            voluptatem sequi nesciunt. Neque porro quisquam est,
+                            qui dolorem ipsum quia dolor sit amet, consectetur,
+                            adipisci velit, sed quia non numquam eius modi
+                            tempora incidunt ut labore et dolore magnam aliquam
+                            quaerat voluptatem. Ut enim ad minima veniam, quis
+                            nostrum exercitationem ullam corporis suscipit
+                            laboriosam, nisi ut aliquid ex ea commodi
+                            consequatur? Quis autem vel eum iure reprehenderit
+                            qui in ea voluptate velit esse quam nihil molestiae
+                            consequatur, vel illum qui dolorem eum fugiat quo
+                            voluptas nulla pariatur?
                         </p>
                         <button
                             onClick={startSpinning}
@@ -74,8 +94,11 @@ const RandomCards = () => {
                         card={card}
                         backImgPath={BackDk}
                         backImgTinyPath={BackDkTiny}
-                        className={css.lenormandCard}
-                        // isHighlighted={highlightedIdx === idx}
+                        className={cn(
+                            css.lenormandCard,
+                            idx === highlightedIdx && css.highlightedCard,
+                        )}
+                        isFlipped={card.isFlipped}
                     />
                 ))}
             </ul>

@@ -17,13 +17,6 @@
     font-weight: 500;
     margin-inline: auto;
     @include u.px(mb, 32, 48, 32, 66);
-
-    @include u.mw(md) {
-        max-width: 70%;
-    }
-    @include u.mw(lg) {
-        max-width: 85%;
-    }
 }
 
 .cardGrid {
@@ -32,7 +25,8 @@
 
     margin-inline: auto;
     grid-template-columns: repeat(5, 1fr);
-    @include u.px(gap, 10, 10, 10, 10);
+    @include u.px(gap, 4, 10, 10, 10);
+    justify-content: center;
 
     @include u.mw(md) {
         grid-template-columns: repeat(8, 1fr);
@@ -41,19 +35,32 @@
 
 .lenormandCard {
     aspect-ratio: 62/93;
-    /* --height: 0; */
-    /* @include u.px(--height, 93, 195, 195, 218); */
-    /* height: var(--height); */
-    /* --size: 0; */
-    /* @include u.px(--size, 62, 130, 130, 145); */
 
     figure {
-        @include u.px(rounded, 10, 10, 10, 10);
+        @include u.px(rounded, 4, 10, 10, 10);
+    }
+    &:nth-last-child(1) {
+        grid-column: 3;
+    }
+
+    @include u.mw(md) {
+        &:nth-last-child(1) {
+            grid-column: 6;
+        }
+        &:nth-last-child(2) {
+            grid-column: 5;
+        }
+        &:nth-last-child(3) {
+            grid-column: 4;
+        }
+        &:nth-last-child(4) {
+            grid-column: 3;
+        }
     }
 }
 .actionBtn {
     margin-inline: auto;
-    margin-bottom: 5px;
+    @include u.px(mb, 42, 68, 58, 76);
 }
 
 .initialCards {
@@ -78,3 +85,16 @@
         }
     }
 }
+
+.highlightedCard {
+    figure {
+        border: 3px solid white;
+
+        &::after {
+            content: '';
+            position: absolute;
+            background-color: hsl(100 0 100 / 50%);
+        }
+    }
+}
+
