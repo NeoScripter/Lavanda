@@ -15,10 +15,8 @@ class MetaphoricController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $cards = Metaphoric::all()->shuffle();
-
         return Inertia::render('user/Decision/pages/Cards/pages/Metaphoric/Metaphoric', [
-            'cards' => $cards,
+            'cards' => Inertia::defer(fn() => Metaphoric::all()->shuffle()),
         ]);
     }
 }

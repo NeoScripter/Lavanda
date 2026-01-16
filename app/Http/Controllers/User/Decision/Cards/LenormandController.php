@@ -4,8 +4,6 @@ namespace App\Http\Controllers\User\Decision\Cards;
 
 use App\Http\Controllers\Controller;
 use App\Models\Lenormand;
-use App\Models\Tarot;
-use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class LenormandController extends Controller
@@ -28,11 +26,9 @@ class LenormandController extends Controller
             ],
         ];
 
-        $cards = Lenormand::all()->shuffle();
-
         return Inertia::render('user/Decision/pages/Cards/pages/Lenormand/Lenormand', [
             'items' => $items,
-            'cards' => $cards,
+            'cards' => Inertia::defer(fn() => Lenormand::all()->shuffle()),
         ]);
     }
 }

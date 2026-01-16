@@ -3,10 +3,7 @@
 namespace App\Http\Controllers\User\Decision;
 
 use App\Http\Controllers\Controller;
-use App\Models\ExperienceItem;
 use App\Models\Rune;
-use App\Models\RuneCategory;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 
@@ -15,7 +12,7 @@ class RunesController extends Controller
     /**
      * Handle the incoming request.
      */
-    public function __invoke(Request $request)
+    public function __invoke()
     {
         $categories = DB::table('rune_categories')
             ->distinct()
@@ -38,11 +35,10 @@ class RunesController extends Controller
                 'description' => 'Более развернутый расклад, где каждая руна показывает разные стороны вашего выбора: суть ситуации, внутренние и внешние влияния, возможный результат.',
             ],
         ];
-        $runes = Rune::all()->load('categories')->shuffle();
 
         return Inertia::render('user/Decision/pages/Runes/Runes', [
             'items' => $items,
-            'runes' => $runes,
+            'runes' => Inertia::defer(Rune::all()->load('categories')->shuffle()),
             'categories' => $categories,
         ]);
     }

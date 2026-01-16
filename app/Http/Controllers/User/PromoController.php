@@ -4,7 +4,6 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Promo;
-use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class PromoController extends Controller
@@ -12,12 +11,11 @@ class PromoController extends Controller
     /**
      * Handle the incoming request.
      */
-    public function __invoke(Request $request)
+    public function __invoke()
     {
-        $cards = Promo::all()->shuffle();
 
         return Inertia::render('user/Decision/pages/Cards/pages/Promo/Promo', [
-            'cards' => $cards,
+            'cards' => Inertia::defer(fn() => Promo::all()->shuffle()),
         ]);
     }
 }

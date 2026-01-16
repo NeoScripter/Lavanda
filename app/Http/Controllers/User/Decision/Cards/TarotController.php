@@ -32,11 +32,9 @@ class TarotController extends Controller
             ],
         ];
 
-        $cards = Tarot::all()->shuffle();
-
         return Inertia::render('user/Decision/pages/Cards/pages/Tarot/Tarot', [
             'items' => $items,
-            'cards' => $cards,
+            'cards' => Inertia::defer(fn() => Tarot::all()->shuffle()),
         ]);
     }
 }
