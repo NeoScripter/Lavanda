@@ -1,0 +1,28 @@
+@use 'core' as u;
+
+.transitionWrapper {
+    display: grid;
+    grid-template-rows: 1fr;
+    @media (prefers-reduced-motion: no-preference) {
+        transition: grid-template-rows 500ms ease-in-out;
+    }
+
+    > div {
+        overflow: hidden;
+    }
+}
+.transitionWrapper[data-closed] {
+    grid-template-rows: 0fr;
+}
+
+.intro {
+    text-align: center;
+    font-weight: 500;
+    margin-inline: auto;
+    @include u.px(mb, 32, 48, 32, 66);
+}
+
+.actionBtn {
+    margin-inline: auto;
+    @include u.px(mb, 42, 68, 58, 76);
+}

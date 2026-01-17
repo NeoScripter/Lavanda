@@ -138,10 +138,10 @@ export function useLenormandLogic(
 
             flipNext();
         } else {
-            dispatch({ type: 'FLIP_ALL_CARDS' });
             setTimeout(() => {
+                dispatch({ type: 'FLIP_ALL_CARDS' });
                 document.dispatchEvent(new Event('spinningEnd'));
-            }, 1500);
+            }, 500);
         }
     };
 

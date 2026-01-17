@@ -129,40 +129,46 @@ export function useRandomCardsLogic(
         }
     };
 
-    const handleSpinEnd = () => {
-        clearInterval(intervalRef.current);
-        dispatch({ type: 'STOP_SPINNING' });
-
-        const selectedTarot =
-            cards[
-                state.highlightedIdx %
-                    (cards.length - state.selectedCards.length)
-            ];
-        dispatch({ type: 'ADD_SELECTED_CARD', payload: selectedTarot });
-
-        const newTarots = [...state.selectedCards, selectedTarot];
-
-        if (scrollConainerRef.current != null) {
-            scrollConainerRef.current.scrollIntoView({
-                behavior: 'smooth',
-                block: 'center',
-            });
-        }
-        if (newTarots.length === cardLimit) {
-            interactiveItems.value = newTarots;
-        }
-    };
-
     const reset = () => {
         prevInteractiveItems.value = [...interactiveItems.value];
         interactiveItems.value = [];
         dispatch({ type: 'RESET', payload: cards });
     };
 
+
     useEffect(() => {
+        const handleSpinEnd = () => {
+            clearInterval(intervalRef.current);
+            dispatch({ type: 'STOP_SPINNING' });
+
+            const selectedTarot =
+                cards[
+                    state.highlightedIdx %
+                        (cards.length - state.selectedCards.length)
+                ];
+            dispatch({ type: 'ADD_SELECTED_CARD', payload: selectedTarot });
+
+            const newTarots = [...state.selectedCards, selectedTarot];
+
+            if (scrollConainerRef.current != null) {
+                scrollConainerRef.current.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center',
+                });
+            }
+            if (newTarots.length === cardLimit) {
+                interactiveItems.value = newTarots;
+            }
+        };
         document.addEventListener('spinningEnd', handleSpinEnd);
         return () => document.removeEventListener('spinningEnd', handleSpinEnd);
-    }, [state.highlightedIdx, state.selectedCards.length]);
+    }, [
+        state.highlightedIdx,
+        state.selectedCards.length,
+        cards.length,
+        cardLimit,
+        interactiveItems,
+    ]);
 
     return {
         ...state,

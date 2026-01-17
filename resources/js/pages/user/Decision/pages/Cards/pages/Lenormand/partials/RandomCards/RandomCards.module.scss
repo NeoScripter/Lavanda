@@ -1,28 +1,9 @@
 @use 'core' as u;
 
-.transitionWrapper {
-    display: grid;
-    grid-template-rows: 1fr;
-    transition: grid-template-rows 500ms ease-in-out;
-
-    > div {
-        overflow: hidden;
-    }
-}
-.transitionWrapper[data-closed] {
-    grid-template-rows: 0fr;
-}
-.intro {
-    text-align: center;
-    font-weight: 500;
-    margin-inline: auto;
-    @include u.px(mb, 32, 48, 32, 66);
-}
 
 .cardGrid {
     display: grid;
     width: 100%;
-    transition: all 0.6s ease;
     scroll-margin-top: 15rem;
 
     margin-inline: auto;
@@ -31,6 +12,10 @@
 
     figure {
         @include u.px(rounded, 4, 10, 10, 10);
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+        transition: all 0.6s ease;
     }
 }
 
@@ -71,10 +56,6 @@
     @include u.mw(md) {
         width: 33%;
     }
-}
-.actionBtn {
-    margin-inline: auto;
-    @include u.px(mb, 42, 68, 58, 76);
 }
 
 .initialCards {

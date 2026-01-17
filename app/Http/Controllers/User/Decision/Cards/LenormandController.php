@@ -29,8 +29,8 @@ class LenormandController extends Controller
 
         return Inertia::render('user/Decision/pages/Cards/pages/Lenormand/Lenormand', [
             'items' => $items,
-            // 'cards' => Inertia::defer(fn() => CardResource::collection(Lenormand::all()->shuffle())),
-            'cards' =>  CardResource::collection(Lenormand::all()->shuffle()),
+            'cards' => Inertia::defer(fn() => CardResource::collection(Lenormand::all()->shuffle())),
+            // 'cards' =>  CardResource::collection(Lenormand::all()->shuffle()),
         ]);
     }
 }

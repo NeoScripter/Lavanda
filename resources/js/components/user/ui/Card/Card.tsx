@@ -1,10 +1,10 @@
 import LazyImage from '@/components/user/ui/LazyImage/LazyImage';
+import { LenormandCard } from '@/pages/user/Decision/pages/Cards/pages/Lenormand/constants/lenormandCardData';
 import { Tarot } from '@/types/model';
 import { NodeProps } from '@/types/nodeProps';
 import { cn } from '@/utils/cn';
 import { FC } from 'preact/compat';
 import css from './Card.module.scss';
-import { LenormandCard } from '@/pages/user/Decision/pages/Cards/pages/Lenormand/constants/lenormandCardData';
 
 type CardType = Tarot | LenormandCard;
 type VariantType = 'floating' | 'static';
@@ -32,6 +32,10 @@ const Card: FC<
     backImgPath,
     backImgTinyPath,
 }) => {
+    if (!card) {
+        return null;
+    }
+
     return (
         <li
             className={cn(

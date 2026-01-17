@@ -1,20 +1,20 @@
-import BackDkTiny from "@/assets/images/cards/promo/back-dk-tiny.webp";
-import BackDk from "@/assets/images/cards/promo/back-dk.webp";
+import BackDkTiny from '@/assets/images/cards/promo/back-dk-tiny.webp';
+import BackDk from '@/assets/images/cards/promo/back-dk.webp';
 import ArrowHint from '@/components/user/ui/ArrowHint';
 import Card from '@/components/user/ui/Card';
 import CardDeck from '@/components/user/ui/CardDeck/CardDeck';
+import InteractiveSlidingIntro from '@/components/user/ui/InteractiveSlidingIntro/InteractiveSlidingIntro';
 import { useInteractiveItems } from '@/layouts/user/InteractiveLayout/InteractiveItemsContext';
 import { useCurrentSlideId } from '@/layouts/user/ItemsLayout/CurrentSlideProvider';
 import { Tarot } from '@/types/model';
 import checkMotionPreferences from '@/utils/checkMotionPreferences';
 import { cn } from '@/utils/cn';
-import { Transition } from '@headlessui/react';
+import { getNumberedLabel } from '@/utils/getNumberedLabel';
 import { usePage } from '@inertiajs/react';
+import { useMemo } from 'preact/hooks';
+import { useRandomCardsLogic } from '../../../../hooks/useRandomCardLogic';
 import PickedCards from '../PickedCards/PickedCards';
 import css from './RandomCards.module.scss';
-import { useRandomCardsLogic } from '../../../../hooks/useRandomCardLogic';
-import { useMemo } from "preact/hooks";
-import { getNumberedLabel } from "@/utils/getNumberedLabel";
 
 const ANIMATION_DURATION = 200;
 
@@ -36,7 +36,6 @@ const RandomCards = () => {
             startSpinning();
         }
     };
-
 
     const {
         faceDownCards,
@@ -63,23 +62,13 @@ const RandomCards = () => {
 
     return (
         <>
-            <Transition show={!hasStarted}>
-                <div className={css.transitionWrapper}>
-                    <div>
-                        <p class={css.intro}>
-                            Карта открывается сама — как знак, который приходит
-                            вовремя. Иногда именно случай отражает то, что мы
-                            уже чувствуем, но не осознаём.
-                        </p>
-                        <button
-                            onClick={startSpinning}
-                            class={cn('primary-btn', css.actionBtn)}
-                        >
-                            Получить ответ
-                        </button>
-                    </div>
-                </div>
-            </Transition>
+            <InteractiveSlidingIntro
+                hasStarted={!hasStarted}
+                text={
+                    'Карта открывается сама — как знак, который приходит вовремя. Иногда именно случай отражает то, что мы уже чувствуем, но не осознаём.'
+                }
+                handleClick={startSpinning}
+            />
 
             <PickedCards
                 cards={selectedCards}
