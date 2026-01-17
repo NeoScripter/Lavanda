@@ -35,7 +35,7 @@
     right: 0;
     display: block;
     z-index: 1;
-    height: 100%;
+    height: var(--height, 100%);
     cursor: pointer;
     width: var(--size, 100%);
 }

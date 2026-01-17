@@ -4,8 +4,9 @@ import { NodeProps } from '@/types/nodeProps';
 import { cn } from '@/utils/cn';
 import { FC } from 'preact/compat';
 import css from './Card.module.scss';
+import { LenormandCard } from '@/pages/user/Decision/pages/Cards/pages/Lenormand/constants/lenormandCardData';
 
-type CardType = Tarot;
+type CardType = Tarot | LenormandCard;
 type VariantType = 'floating' | 'static';
 type ImageType = 'front' | 'back';
 
@@ -45,7 +46,7 @@ const Card: FC<
                     type="back"
                     path={backImgPath}
                     tinyPath={backImgTinyPath}
-                    alt=""
+                    alt="Рубашка карты"
                     isFlipped={isFlipped}
                     className={
                         variant === 'floating'
@@ -60,6 +61,7 @@ const Card: FC<
                         path={card.front_image.path}
                         tinyPath={card.front_image.tiny_path}
                         alt={card.front_image.alt}
+                        className={css.imageFrameFloating}
                     />
                 )}
             </article>

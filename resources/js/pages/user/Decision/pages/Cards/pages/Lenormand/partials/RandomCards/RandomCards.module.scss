@@ -22,40 +22,54 @@
 .cardGrid {
     display: grid;
     width: 100%;
+    transition: all 0.6s ease;
+    scroll-margin-top: 15rem;
 
     margin-inline: auto;
-    grid-template-columns: repeat(5, 1fr);
     @include u.px(gap, 4, 10, 10, 10);
     justify-content: center;
-
-    @include u.mw(md) {
-        grid-template-columns: repeat(8, 1fr);
-    }
-}
-
-.lenormandCard {
-    aspect-ratio: 62/93;
 
     figure {
         @include u.px(rounded, 4, 10, 10, 10);
     }
-    &:nth-last-child(1) {
-        grid-column: 3;
+}
+
+.expandedGrid {
+    grid-template-columns: repeat(5, 1fr);
+    @include u.mw(md) {
+        grid-template-columns: repeat(8, 1fr);
     }
 
-    @include u.mw(md) {
+    > li {
         &:nth-last-child(1) {
-            grid-column: 6;
-        }
-        &:nth-last-child(2) {
-            grid-column: 5;
-        }
-        &:nth-last-child(3) {
-            grid-column: 4;
-        }
-        &:nth-last-child(4) {
             grid-column: 3;
         }
+
+        @include u.mw(md) {
+            &:nth-last-child(1) {
+                grid-column: 6;
+            }
+            &:nth-last-child(2) {
+                grid-column: 5;
+            }
+            &:nth-last-child(3) {
+                grid-column: 4;
+            }
+            &:nth-last-child(4) {
+                grid-column: 3;
+            }
+        }
+    }
+}
+
+.finalGrid {
+    grid-template-columns: repeat(3, 1fr);
+
+    @include u.mw(sm) {
+        width: 62%;
+    }
+    @include u.mw(md) {
+        width: 33%;
     }
 }
 .actionBtn {
@@ -90,11 +104,12 @@
     figure {
         border: 3px solid white;
 
-        &::after {
+        &::before {
             content: '';
             position: absolute;
-            background-color: hsl(100 0 100 / 50%);
+            inset: 0;
+            z-index: 2;
+            background-color: hsla(0, 0%, 100%, 0.5);
         }
     }
 }
-
