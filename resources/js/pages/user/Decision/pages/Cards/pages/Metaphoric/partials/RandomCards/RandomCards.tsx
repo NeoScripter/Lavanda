@@ -90,7 +90,7 @@ const RandomCards = () => {
                             card={card}
                             backImgPath={BackDk}
                             backImgTinyPath={BackDkTiny}
-                            isHighlighted={highlightedIdx === idx}
+                            hasHighlightedState={highlightedIdx === idx}
                         />
                     ))}
                 </CardDeck>

@@ -6,24 +6,28 @@ import { FC } from 'preact/compat';
 import css from './Card.module.scss';
 
 type CardType = Tarot;
+type VariantType = 'floating' | 'static';
+type ImageType = 'front' | 'back';
 
 const Card: FC<
     NodeProps<{
         card: CardType;
+        variant?: VariantType;
         isFlipped?: boolean;
         onClick?: () => void;
-        shouldHover?: boolean;
-        isHighlighted?: boolean;
+        hasHoverState?: boolean;
+        hasHighlightedState?: boolean;
         backImgPath: string;
         backImgTinyPath: string;
     }>
 > = ({
     className,
+    variant = 'floating',
     card,
     isFlipped = false,
     onClick,
-    shouldHover,
-    isHighlighted,
+    hasHoverState,
+    hasHighlightedState,
     backImgPath,
     backImgTinyPath,
 }) => {
@@ -31,37 +35,82 @@ const Card: FC<
         <li
             className={cn(
                 css.wrapper,
-                shouldHover && css.wrapperHover,
-                isHighlighted && css.wrapperHighlighted,
+                hasHoverState && css.hoveredCard,
+                hasHighlightedState && css.highlightedCard,
                 className,
             )}
         >
-            {!isFlipped && onClick != null && (
-                <button
-                    onClick={onClick}
-                    type="button"
-                    className={css.cardBtn}
-                ></button>
-            )}
-            <article className={cn(css.cardWrapper, isFlipped && css.flipped)}>
-                <LazyImage
-                    prtClass={cn(css.sharedImgWrapper, css.backImgWrapper)}
-                    imgClass={cn(css.sharedImg, css.backImg)}
-                    img={backImgPath}
-                    tinyImg={backImgTinyPath}
+            <article className={cn(css.cardFrame)}>
+                <CardImage
+                    type="back"
+                    path={backImgPath}
+                    tinyPath={backImgTinyPath}
+                    alt=""
+                    isFlipped={isFlipped}
+                    className={
+                        variant === 'floating'
+                            ? css.imageFrameFloating
+                            : css.imageFrameStatic
+                    }
                 />
                 {card.front_image && (
-                    <LazyImage
-                        prtClass={cn(css.sharedImgWrapper, css.frontImgWrapper)}
-                        imgClass={cn(css.sharedImg, css.frontImg)}
-                        img={card.front_image.path}
-                        tinyImg={card.front_image.tiny_path}
+                    <CardImage
+                        isFlipped={isFlipped}
+                        type="front"
+                        path={card.front_image.path}
+                        tinyPath={card.front_image.tiny_path}
                         alt={card.front_image.alt}
                     />
                 )}
             </article>
+            <CardBtn
+                isFlipped={isFlipped}
+                onClick={onClick}
+            />
         </li>
     );
 };
 
 export default Card;
+
+const CardImage: FC<{
+    type: ImageType;
+    path: string;
+    tinyPath: string;
+    alt: string;
+    className?: string;
+    isFlipped: boolean;
+}> = ({ type, path, tinyPath, alt, isFlipped, className }) => {
+    return (
+        <LazyImage
+            prtClass={cn(
+                css.imageFrame,
+                {
+                    [css.frontImageFrame]: type === 'front',
+                    [css.backImageFrame]: type === 'back',
+                    [css.frontImageFrameFlipped]: type === 'front' && isFlipped,
+                    [css.backImageFrameFlipped]: type === 'back' && isFlipped,
+                },
+                className,
+            )}
+            img={path}
+            tinyImg={tinyPath}
+            alt={alt}
+        />
+    );
+};
+
+const CardBtn: FC<{ isFlipped?: boolean; onClick?: () => void }> = ({
+    isFlipped,
+    onClick,
+}) => {
+    if (isFlipped || onClick == null) return null;
+
+    return (
+        <button
+            onClick={onClick}
+            type="button"
+            className={css.cardBtn}
+        ></button>
+    );
+};

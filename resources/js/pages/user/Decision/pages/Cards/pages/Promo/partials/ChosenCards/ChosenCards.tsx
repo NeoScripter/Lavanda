@@ -57,9 +57,9 @@ const ChosenCards = () => {
                         <Card
                             key={card.id}
                             card={card}
-                            shouldHover={true}
+                            hasHoverState={true}
                             isFlipped={selectedCards.includes(card)}
-                            isHighlighted={selectedCards.includes(card)}
+                            hasHighlightedState={selectedCards.includes(card)}
                             backImgPath={BackDk}
                             backImgTinyPath={BackDkTiny}
                             onClick={() => handleSelectCard(card)}
