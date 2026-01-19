@@ -49,14 +49,17 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
 
         if (hasError) {
             return (
-                <Fallback
-                    error={error}
-                    onRetry={this.handleRetry}
-                />
+                <div key={retryKey}>
+                    {children}
+                    <Fallback
+                        error={error}
+                        onRetry={this.handleRetry}
+                    />
+                </div>
             );
         }
 
-        return <div key={retryKey}>{children}</div>;
+        return children;
     }
 }
 

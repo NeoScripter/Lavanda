@@ -1,0 +1,71 @@
+@use 'core' as u;
+
+.drawer {
+    display: grid;
+    grid-template-rows: 1fr;
+    transition: grid-template-rows 500ms ease-in-out;
+
+    > div {
+        overflow: hidden;
+    }
+    @include u.px(mb, 32, 42, 60, 60);
+}
+.transitionWrapper[data-closed] {
+    grid-template-rows: 0fr;
+}
+.introTitle {
+    text-transform: uppercase;
+    margin-bottom: 1em;
+    text-align: center;
+    @include u.rm(text, 24, 32, 32, 32);
+}
+.intro {
+    text-align: center;
+    font-weight: 500;
+    margin-inline: auto;
+
+    p:not(:last-child) {
+        margin-bottom: 1em;
+    }
+}
+
+.nextMoveBtn {
+    margin-inline: auto;
+    @include u.px(mb, 52, 68, 62, 63);
+
+    &[disabled] {
+        opacity: 0.5;
+        cursor: default;
+        &:hover {
+            pointer-events: none;
+        }
+    }
+}
+
+.gameField {
+    background: linear-gradient(
+        180deg,
+        rgba(200, 181, 255, 0.35) 0%,
+        rgba(95, 78, 140, 0.45) 100%
+    );
+    box-shadow: 0 1.5px 1px 0 #e1d4ff inset;
+    backdrop-filter: blur(5px);
+    @include u.px(pt, 63, 83, 48, 48);
+    @include u.px(pb, 69, 104, 65, 91);
+    @include u.px(px, 15, 48, 94, 94);
+    @include u.px(rounded, null, null, 60, 60);
+
+    @include u.mw(md) {
+        grid-column: 2 !important;
+    }
+}
+
+.gameBlocks {
+    display: grid;
+    margin-inline: auto;
+    @include u.px(gap, 20, 27, 27, 29);
+
+    @include u.mw(lg) {
+        max-width: 85%;
+    }
+}

@@ -27,6 +27,9 @@
     @include u.mw(sm) {
         margin-top: calc(var(--offsetY) / 2);
     }
+    @include u.mw(md) {
+        margin-top: calc(var(--offsetY));
+    }
 }
 .logoWrapper {
     > * {

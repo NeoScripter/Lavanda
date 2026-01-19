@@ -10,7 +10,7 @@ const InteractiveSlidingIntro: FC<{
 }> = ({ hasStarted, handleClick, text }) => {
     return (
         <Transition show={!hasStarted}>
-            <div className={css.transitionWrapper}>
+            <div className={css.drawer}>
                 <div>
                     <p class={css.intro}>{text}</p>
                     <button

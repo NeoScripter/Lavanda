@@ -2,12 +2,12 @@ import BackDkTiny from '@/assets/images/cards/mind-games/back-dk-tiny.webp';
 import BackDk from '@/assets/images/cards/mind-games/back-dk.webp';
 import Card from '@/components/user/ui/Card';
 import CardDeck from '@/components/user/ui/CardDeck/CardDeck';
+import InteractiveSlidingIntro from '@/components/user/ui/InteractiveSlidingIntro';
 import { useInteractiveItems } from '@/layouts/user/InteractiveLayout/InteractiveItemsContext';
 import { useCurrentSlideId } from '@/layouts/user/ItemsLayout/CurrentSlideProvider';
 import { Metaphoric } from '@/types/model';
 import checkMotionPreferences from '@/utils/checkMotionPreferences';
 import { cn } from '@/utils/cn';
-import { Transition } from '@headlessui/react';
 import { usePage } from '@inertiajs/react';
 import { useRandomCardsLogic } from '../../../Cards/hooks/useRandomCardLogic';
 import PickedCards from '../PickedCards/PickedCards';
@@ -57,24 +57,11 @@ const RandomCards = () => {
 
     return (
         <div ref={scrollRef}>
-            <Transition show={!hasStarted}>
-                <div className={css.transitionWrapper}>
-                    <div>
-                        <p class={css.intro}>
-                            Карта открывается сама — как знак, который приходит
-                            вовремя. Иногда именно случай отражает то, что мы
-                            уже чувствуем, но не осознаём.
-                        </p>
-                        <button
-                            onClick={startSpinning}
-                            class={cn('primary-btn', css.actionBtn)}
-                        >
-                            Получить ответ
-                        </button>
-                    </div>
-                </div>
-            </Transition>
-
+            <InteractiveSlidingIntro
+                handleClick={startSpinning}
+                hasStarted={!hasStarted}
+                text="Карта открывается сама — как знак, который приходит вовремя. Иногда именно случай отражает то, что мы уже чувствуем, но не осознаём."
+            />
             <PickedCards
                 cards={selectedCards}
                 className={css.pickedCards}

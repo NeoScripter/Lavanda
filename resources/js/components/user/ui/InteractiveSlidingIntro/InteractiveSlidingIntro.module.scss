@@ -1,6 +1,6 @@
 @use 'core' as u;
 
-.transitionWrapper {
+.drawer {
     display: grid;
     grid-template-rows: 1fr;
     @media (prefers-reduced-motion: no-preference) {

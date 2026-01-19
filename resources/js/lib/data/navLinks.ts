@@ -59,7 +59,7 @@ export const navLinks: NavLinkType[] = [
                 id: crypto.randomUUID(),
                 label: 'Книга перемен',
                 type: 'link',
-                href: '/',
+                href: '/decision/iching',
             },
             {
                 id: crypto.randomUUID(),
@@ -114,7 +114,7 @@ export const navLinks: NavLinkType[] = [
                 id: crypto.randomUUID(),
                 label: 'Гадание по книге перемен (и-цзин)',
                 type: 'link',
-                href: '/',
+                href: '/decision/iching',
             },
             {
                 id: crypto.randomUUID(),

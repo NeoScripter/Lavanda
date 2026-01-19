@@ -15,6 +15,15 @@
     }
 }
 /* @media (min-width: f.rem(map.get(b.$breakpoints, $breakpoint))) { */
+@mixin maxw($breakpoint: sm) {
+    @if map.has-key(b.$breakpoints, $breakpoint) {
+        @media (max-width: #{map.get(b.$breakpoints, $breakpoint)}px) {
+            @content;
+        }
+    } @else {
+        @warn "Breakpoint '#{$breakpoint}' not found in $breakpoints map.";
+    }
+}
 
 @mixin rm($property, $sizes...) {
     @if not map.has-key(p.$css-properties, $property) {

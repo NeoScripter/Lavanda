@@ -1,0 +1,29 @@
+@use 'core' as u;
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include u.px(gap, 26, 55, 81, 95);
+}
+
+.patternFrame {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+
+    svg {
+        flex: 1;
+    }
+
+    /* @include u.px(w, 102, 222, 230, 269); */
+    @include u.px(h, 53, 92, 78, 92);
+    @include u.px(rounded, 10, 21, 21, 21);
+    @include u.px(px, 14, 30, 32, 50);
+
+    @include u.mw(md) {
+        gap: 20px;
+    }
+}

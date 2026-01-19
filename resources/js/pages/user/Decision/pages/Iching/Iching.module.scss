@@ -1,8 +1,12 @@
 @use 'core' as u;
 
 .heroForeground {
-    @include u.px(w, null, null, 526, 557);
-    @include u.px(top, null, null, 257, 260);
+    @include u.px(w, null, null, 651, 721);
+    @include u.px(top, null, null, 237, 190);
+
+    @include u.mw(md) {
+        transform: translateX(10%);
+    }
 }
 
 .wrapper {
@@ -15,4 +19,12 @@
 
 .intro {
     margin-bottom: 0 !important;
+}
+
+.interactiveLayout {
+    > article {
+        @include u.maxw(md) {
+            padding-bottom: 0;
+        }
+    }
 }

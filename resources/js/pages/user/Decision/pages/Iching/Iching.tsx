@@ -1,16 +1,15 @@
-import ForegroundDkTinyWebp from "@/assets/images/iching/foreground-dk-tiny.webp";
-import ForegroundDkAvif from "@/assets/images/iching/foreground-dk.avif";
-import ForegroundDkWebp from "@/assets/images/iching/foreground-dk.webp";
-import ForegroundMbTinyWebp from "@/assets/images/iching/foreground-mb-tiny.webp";
-import ForegroundMbAvif from "@/assets/images/iching/foreground-mb.avif";
-import ForegroundMbWebp from "@/assets/images/iching/foreground-mb.webp";
-import Narrative from '@/components/user/ui/Narrative/Narrative';
+import ForegroundDkTinyWebp from '@/assets/images/iching/foreground-dk-tiny.webp';
+import ForegroundDkAvif from '@/assets/images/iching/foreground-dk.avif';
+import ForegroundDkWebp from '@/assets/images/iching/foreground-dk.webp';
+import ForegroundMbTinyWebp from '@/assets/images/iching/foreground-mb-tiny.webp';
+import ForegroundMbAvif from '@/assets/images/iching/foreground-mb.avif';
+import ForegroundMbWebp from '@/assets/images/iching/foreground-mb.webp';
 import BreadCrumbLayout from '@/layouts/user/BreadCrumbLayout/BreadCrumbLayout';
 import InteractiveLayout from '@/layouts/user/InteractiveLayout';
 import { Head } from '@inertiajs/react';
-import css from './MindGames.module.scss';
-import { heading, intro, narrativeHeading, narrativeIntro } from './pageData';
-import RandomCards from './partials/RandomCards';
+import css from './Iching.module.scss';
+import { heading, intro } from './pageData';
+import CoinGame from './partials/CoinGame';
 
 const Iching = () => {
     return (
@@ -37,7 +36,8 @@ const Iching = () => {
             >
                 <InteractiveLayout
                     btnLabels={['Случайный выбор']}
-                    components={[() => <RandomCards />]}
+                    components={[() => <CoinGame />]}
+                    className={css.interactiveLayout}
                 />
             </BreadCrumbLayout>
         </>

@@ -18,23 +18,24 @@ const ItemsDisplay: FC<NodeProps> = ({ className, children }) => {
             : prevInteractiveItems.value;
 
     // Don't show the component if the item doesn't have a description
-    if (items.length > 0 && items[0].id != null && items[0].advice == null) {
-        return null
-    }
+    const noItems =
+        items.length > 0 && items[0].id != null && items[0].advice == null;
 
     return (
         <Transition show={interactiveItems.value.length > 0}>
             <div className={css.transitionWrapper}>
                 <div className={css.mainContentWrapper}>
                     {children && <div> {children}</div>}
-                    <ul className={cn(css.wrapper, className)}>
-                        {items.map((item) => (
-                            <ItemSection
-                                key={item.id}
-                                item={item}
-                            />
-                        ))}
-                    </ul>
+                    {!noItems && (
+                        <ul className={cn(css.wrapper, className)}>
+                            {items.map((item) => (
+                                <ItemSection
+                                    key={item.id}
+                                    item={item}
+                                />
+                            ))}
+                        </ul>
+                    )}
                 </div>
             </div>
         </Transition>
