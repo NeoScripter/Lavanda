@@ -15,5 +15,6 @@ export const routeLabels: Record<string, string> = {
     promo: 'Экспресс-карта',
     lenormand: 'Гадание Госпожи Ленорман',
     relaxation: 'Хочу расслабиться',
+    iching: 'Таблица Гексаграмм',
     toolkit: 'Полезные ресурсы',
 };

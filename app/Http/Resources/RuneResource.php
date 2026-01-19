@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class RuneCategoryResource extends JsonResource
+class RuneResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,9 +16,11 @@ class RuneCategoryResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'order' => $this->order,
             'name' => $this->name,
-            'html' => $this->html,
+            'advice' => $this->advice,
+            'front_image' => new ImageResource($this->whenLoaded('frontImage')),
+            'back_image' => new ImageResource($this->whenLoaded('backImage')),
+            'categories' => RuneCategoryResource::collection($this->whenLoaded('categories')),
         ];
     }
 }

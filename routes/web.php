@@ -11,6 +11,7 @@ use App\Http\Controllers\User\PromoController;
 use App\Http\Controllers\User\Decision\Cards\TarotController;
 use App\Http\Controllers\User\Decision\DecisionController;
 use App\Http\Controllers\User\Decision\ExperienceController;
+use App\Http\Controllers\User\Decision\IchingController;
 use App\Http\Controllers\User\Decision\PracticeController;
 use App\Http\Controllers\User\Decision\RunesController;
 use App\Http\Controllers\User\HomeController;
@@ -41,8 +42,7 @@ Route::prefix('/decision')->name('decision.')->group(function () {
         Route::get('/metaphoric', MetaphoricController::class)->name('metaphoric'); // метафорические карты
     }); // карты
 
-    // Route::get('/iching', ...)->name('iching'); // книга перемен
-    // Route::get('/games', ...)->name('games'); // игры разума
+    Route::get('/iching', IchingController::class)->name('iching'); // книга перемен
 });
 Route::prefix('/sadness')->name('sadness.')->group(function () {
     Route::get('/', SadnessController::class)->name('index'); // мне грустно

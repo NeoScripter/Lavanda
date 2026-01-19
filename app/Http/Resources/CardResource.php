@@ -16,7 +16,7 @@ class CardResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'front_image' => $this->frontImage,
+            'front_image' => new ImageResource($this->whenLoaded('frontImage')),
             'name' => $this->name,
             'html' => $this->html,
             'advice' => $this->advice,
