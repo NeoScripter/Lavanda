@@ -18,6 +18,7 @@ const Coin: FC<
     return (
         <li className={cn(css.wrapper, className)}>
             <CoinImage
+                key={'back-coin'}
                 type="back"
                 path={CoinBack}
                 tinyPath={CoinBackTiny}
@@ -25,6 +26,7 @@ const Coin: FC<
                 isFlipped={isFlipped}
             />
             <CoinImage
+                key={'front-coin'}
                 isFlipped={isFlipped}
                 type="front"
                 path={CoinFront}

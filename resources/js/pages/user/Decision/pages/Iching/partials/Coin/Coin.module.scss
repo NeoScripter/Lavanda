@@ -7,6 +7,17 @@
     aspect-ratio: 1/1;
     flex-shrink: 0;
     @include u.px(w, 72, 117, 106, 124);
+
+    /* animation: spin 1.4s linear infinite forwards; */
+}
+
+@keyframes spin {
+    0% {
+        transform: rotateY(0deg);
+    }
+    100% {
+        transform: rotateY(360deg);
+    }
 }
 .imageFrame {
     backface-visibility: hidden;
