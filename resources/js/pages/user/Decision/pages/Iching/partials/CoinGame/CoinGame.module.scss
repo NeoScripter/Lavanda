@@ -74,10 +74,10 @@
 .gameBlocks {
     display: grid;
     margin-inline: auto;
-    /* scroll-margin-top: 30rem; */
     @include u.px(gap, 20, 27, 27, 29);
 
     @include u.mw(lg) {
         max-width: 85%;
+        scroll-margin-top: 10rem;
     }
 }
