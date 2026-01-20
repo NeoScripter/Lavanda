@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('ichings', function (Blueprint $table) {
             $table->id();
+            $table->text('description');
+            $table->unsignedInteger('bitmask')->index();
+            $table->unsignedInteger('number');
             $table->timestamps();
         });
     }

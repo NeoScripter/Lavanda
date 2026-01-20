@@ -6,10 +6,14 @@ import css from './BreadCrumbs.module.scss';
 import { routeLabels } from './routeLabels';
 
 const BreadCrumbs: FC<NodeProps> = ({ className }) => {
-    const { url } = usePage();
+    let { url } = usePage();
 
     const labels: string[] = ['Главная'];
     const urls: string[] = ['/'];
+
+    if (url.includes('?')) {
+        url = url.split('?')[0];
+    }
 
     const parts = url.split('/').filter(Boolean);
 
@@ -39,7 +43,10 @@ const BreadCrumbs: FC<NodeProps> = ({ className }) => {
                             key={idx}
                         >
                             <Link
-                                className={cn(css.pageLink, isCurrent ? css.currentPageLink : '')}
+                                className={cn(
+                                    css.pageLink,
+                                    isCurrent ? css.currentPageLink : '',
+                                )}
                                 href={url}
                             >
                                 {labels[idx]}

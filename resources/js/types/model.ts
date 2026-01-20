@@ -9,6 +9,14 @@ export type ExperienceItem = {
     updated_at?: string;
     image?: Image;
 };
+export type Iching = {
+    id: number;
+    description: string;
+    bitmask: number;
+    number: number;
+    created_at?: string;
+    updated_at?: string;
+};
 export type Image = {
     id: number;
     path: string;

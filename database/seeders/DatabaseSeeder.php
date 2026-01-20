@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
             MetaphoricSeeder::class,
             MindGameSeeder::class,
             LenormandSeeder::class,
+            IchingSeeder::class,
         ]);
     }
 }

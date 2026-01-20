@@ -1,19 +1,19 @@
 import { useInteractiveItems } from '@/layouts/user/InteractiveLayout/InteractiveItemsContext';
+import { Iching } from '@/types/model';
 import checkMotionPreferences from '@/utils/checkMotionPreferences';
 import { cn } from '@/utils/cn';
 import { range } from '@/utils/range';
 import { Transition } from '@headlessui/react';
+import { usePage } from '@inertiajs/react';
 import { FC } from 'preact/compat';
 import useCoinGameLogic from '../../hooks/useCoinGameLogic';
 import { gameIntro } from '../../pageData';
 import GameBlock from '../GameBlock/GameBlock';
-import Interpretation from '../Interpretation';
+import Interpretation from '../Interpretation/Interpretation';
 import css from './CoinGame.module.scss';
 
-const ANIMATION_DURATION = 400;
-
 const CoinGame = () => {
-    // const { cards } = usePage<{ cards: Metaphoric[] }>().props;
+    const { iching } = usePage<{ iching: Iching | null }>().props;
 
     const isMotionEnabled = checkMotionPreferences();
 
@@ -34,7 +34,7 @@ const CoinGame = () => {
         isMotionEnabled,
     );
 
-    const hasEnded = result.every((res) => res !== -1);
+    const hasEnded = iching != null;
 
     const handleNextMoveClick = () => {
         if (hasEnded) {
@@ -46,7 +46,7 @@ const CoinGame = () => {
 
     return (
         <>
-            <Transition show={hasStarted}>
+            <Transition show={!hasStarted && iching == null}>
                 <div className={css.drawer}>
                     <div>
                         <h3 className={css.introTitle}>Правила</h3>
@@ -58,7 +58,7 @@ const CoinGame = () => {
                 </div>
             </Transition>
 
-            <Transition show={true}>
+            <Transition show={hasEnded}>
                 <div className={css.drawer}>
                     <Interpretation />
                 </div>
@@ -71,7 +71,7 @@ const CoinGame = () => {
                     isSpinning={isSpinning}
                 />
             )}
-            {!hasEnded && (
+            {iching == null && (
                 <div
                     className={cn(
                         css.gameField,

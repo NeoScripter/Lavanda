@@ -1,4 +1,6 @@
+import { router } from '@inertiajs/react';
 import { useEffect, useReducer, useRef } from 'preact/hooks';
+import convertArrayToBinary from '../utils/convertArrayToBinary';
 
 const INITIAL_DELAY = 40;
 
@@ -93,10 +95,12 @@ export function useCoinGameLogic(
         if (state.isSpinning) return;
         dispatch({ type: 'START_SPINNING' });
 
-        // scrollContainerRef.current?.scrollIntoView({
-        //     behavior: 'smooth',
-        //     block: 'start',
-        // });
+        setTimeout(() => {
+            scrollContainerRef.current?.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center',
+            });
+        }, 500);
 
         if (isMotionEnabled) {
             let stoppedCount = 0;
@@ -173,6 +177,13 @@ export function useCoinGameLogic(
         prevInteractiveItems.value = [...interactiveItems.value];
         interactiveItems.value = [];
 
+        router.visit(route('decision.iching'), {
+            only: ['iching'],
+            data: {},
+            preserveScroll: true,
+            preserveState: true,
+        });
+
         dispatch({
             type: 'RESET',
         });
@@ -200,18 +211,27 @@ export function useCoinGameLogic(
                     block: 'start',
                 });
 
+                const result = [...state.result];
+                result[5] = res;
+                const bitmask = convertArrayToBinary(result);
+
                 interactiveItems.value = [true, true];
                 prevInteractiveItems.value = [true, true];
+
+                router.visit(route('decision.iching'), {
+                    only: ['iching'],
+                    data: {
+                        bitmask: bitmask,
+                    },
+                    preserveScroll: true,
+                    preserveState: true,
+                });
             }
         };
 
         document.addEventListener('spinningEnd', handleSpinEnd);
         return () => document.removeEventListener('spinningEnd', handleSpinEnd);
-    }, [
-        state.result.reduce((acc, coin) => acc + coin, 0),
-        state.coins.reduce((acc, coin) => Number(coin) + acc, 0),
-        scrollContainerRef.current,
-    ]);
+    }, [state.coins.join(','), state.result.join(',')]);
 
     useEffect(() => {
         return () => {
