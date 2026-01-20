@@ -10,7 +10,7 @@
     }
     @include u.px(mb, 32, 42, 60, 60);
 }
-.transitionWrapper[data-closed] {
+.drawer[data-closed] {
     grid-template-rows: 0fr;
 }
 .introTitle {
@@ -58,11 +58,19 @@
     @include u.mw(md) {
         grid-column: 2 !important;
     }
+    @include u.maxw(md) {
+        border-bottom-left-radius: inherit;
+        border-bottom-right-radius: inherit;
+    }
+}
+.gameFieldInProgress {
+    border-radius: inherit;
 }
 
 .gameBlocks {
     display: grid;
     margin-inline: auto;
+    scroll-margin-top: 20rem;
     @include u.px(gap, 20, 27, 27, 29);
 
     @include u.mw(lg) {

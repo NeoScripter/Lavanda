@@ -1,24 +1,39 @@
 import { NodeProps } from '@/types/nodeProps';
 import { cn } from '@/utils/cn';
 import { FC } from 'preact/compat';
-import css from './GameBlock.module.scss';
 import Coin from '../Coin';
+import css from './GameBlock.module.scss';
 
-const GameBlock: FC<NodeProps> = ({ className }) => {
+const GameBlock: FC<
+    NodeProps<{
+        leftPattern: number;
+        rightPattern: number;
+        isFlipped: boolean;
+        coinDelay: number;
+    }>
+> = ({ className, leftPattern, rightPattern, isFlipped, coinDelay }) => {
     return (
         <li className={cn(css.wrapper, className)}>
-            <PatternCell digit={1} />
-            <Coin />
-            <PatternCell digit={1} />
+            <PatternCell pattern={leftPattern} />
+            <Coin
+                isFlipped={isFlipped}
+                delay={coinDelay}
+            />
+            <PatternCell pattern={rightPattern} />
         </li>
     );
 };
 
 export default GameBlock;
 
-const PatternCell: FC<{ digit: number }> = ({ digit }) => {
+const PatternCell: FC<{ pattern: number }> = ({ pattern }) => {
     return (
-        <div className={css.patternFrame}>
+        <div
+            className={cn(css.patternFrame, {
+                [css.patternFrameSplit]: pattern === 0,
+                [css.patternFrameHidden]: pattern === -1,
+            })}
+        >
             <svg
                 width="300"
                 height="5"

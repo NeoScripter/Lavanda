@@ -12,11 +12,15 @@ type ImageType = 'front' | 'back';
 
 const Coin: FC<
     NodeProps<{
-        isFlipped?: boolean;
+        isFlipped: boolean;
+        delay: number;
     }>
-> = ({ className, isFlipped = false }) => {
+> = ({ className, isFlipped = false, delay }) => {
     return (
-        <li className={cn(css.wrapper, className)}>
+        <li
+            className={cn(css.wrapper, className)}
+            style={{ '--delay': `${delay}ms` }}
+        >
             <CoinImage
                 key={'back-coin'}
                 type="back"

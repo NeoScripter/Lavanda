@@ -24,7 +24,22 @@
 .interactiveLayout {
     > article {
         @include u.maxw(md) {
+            padding-top: 0;
             padding-bottom: 0;
         }
+    }
+}
+
+.schema {
+    margin-inline: auto;
+    @include u.px(my, 46, 120, 106, 130);
+
+    width: 95%;
+
+    @include u.mw(sm) {
+        width: 80%;
+    }
+    @include u.mw(md) {
+        width: 60%;
     }
 }

@@ -2,6 +2,7 @@
 
 .wrapper {
     position: relative;
+    user-select: none;
     perspective: 1000px;
     transform-style: preserve-3d;
     aspect-ratio: 1/1;
@@ -24,8 +25,8 @@
 
     @media (prefers-reduced-motion: no-preference) {
         transition:
-            transform 0.6s,
-            translate 0.6s;
+            transform var(--delay) linear,
+            translate var(--delay) linear;
     }
 
     @include u.px(rounded, 10, 24, 24, 24);
@@ -43,17 +44,17 @@
 }
 
 .frontImageFrame {
-    transform: rotateY(180deg);
+    transform: rotateY(180deg) rotateZ(180deg);
 }
 
 .backImageFrame {
-    transform: rotateY(0deg);
+    transform: rotateY(0deg) rotateZ(0deg);
 }
 
 .frontImageFrameFlipped {
-    transform: rotateY(0deg);
+    transform: rotateY(0deg) rotateZ(0deg);
 }
 
 .backImageFrameFlipped {
-    transform: rotateY(180deg);
+    transform: rotateY(180deg) rotateZ(180deg);
 }

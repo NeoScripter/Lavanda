@@ -19,7 +19,7 @@ const ItemsDisplay: FC<NodeProps> = ({ className, children }) => {
 
     // Don't show the component if the item doesn't have a description
     const noItems =
-        items.length > 0 && items[0].id != null && items[0].advice == null;
+        items.length === 0 || items[0].id == null || items[0].advice == null;
 
     return (
         <Transition show={interactiveItems.value.length > 0}>
