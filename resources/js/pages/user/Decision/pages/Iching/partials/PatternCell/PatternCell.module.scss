@@ -1,0 +1,25 @@
+@use 'core' as u;
+
+.patternFrame {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+        stroke-width: 5;
+    }
+}
+
+.patternFrameSplit {
+    gap: 10px;
+
+    @include u.mw(md) {
+        gap: 20px;
+    }
+}
+
+.patternFrameHidden {
+    svg {
+        opacity: 0;
+    }
+}

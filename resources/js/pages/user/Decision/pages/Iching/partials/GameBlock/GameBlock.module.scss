@@ -8,29 +8,9 @@
 }
 
 .patternFrame {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    flex: 1;
-
-
-    /* @include u.px(w, 102, 222, 230, 269); */
     @include u.px(h, 53, 92, 78, 92);
     @include u.px(rounded, 10, 21, 21, 21);
     @include u.px(px, 14, 30, 32, 50);
-}
-
-.patternFrameSplit {
-    gap: 10px;
-
-    @include u.mw(md) {
-        gap: 20px;
-    }
-}
-
-.patternFrameHidden {
-    svg {
-        opacity: 0;
-    }
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    flex: 1;
 }

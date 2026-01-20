@@ -1,0 +1,41 @@
+@use 'core' as u;
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    @include u.px(gap, 24, 33, 84, 84);
+
+    @include u.mw(md) {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+}
+
+.patternNum {
+    font-weight: 900;
+    @include u.rm(text, 36, 48, 48, 48);
+    @include u.px(mt, 10, 20, 30, 30);
+}
+
+.patternLine {
+    > svg {
+        stroke-width: 3;
+    }
+    @include u.mw(sm) {
+        > svg {
+            stroke-width: 5;
+        }
+    }
+}
+
+.pattern {
+    aspect-ratio: 1/1;
+    display: grid;
+    border: 2px solid rgb(255, 255, 255, 50%);
+    @include u.px(w, 98, 195, 217, 217);
+    @include u.px(p, 16, 32, 36, 36);
+    @include u.px(gap, 10, 16, 20, 20);
+    @include u.px(rounded, 10, 10, 10, 20);
+}

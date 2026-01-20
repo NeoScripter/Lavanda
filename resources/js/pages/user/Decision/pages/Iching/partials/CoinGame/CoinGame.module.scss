@@ -3,15 +3,19 @@
 .drawer {
     display: grid;
     grid-template-rows: 1fr;
-    transition: grid-template-rows 500ms ease-in-out;
+    transition:
+        grid-template-rows 500ms ease-in-out,
+        margin-top 500ms ease-in-out;
 
     > div {
         overflow: hidden;
     }
     @include u.px(mb, 32, 42, 60, 60);
+    @include u.px(mt, 45, 68, 0, null);
 }
 .drawer[data-closed] {
     grid-template-rows: 0fr;
+    margin-top: 0;
 }
 .introTitle {
     text-transform: uppercase;
