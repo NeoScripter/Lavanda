@@ -215,9 +215,6 @@ export function useCoinGameLogic(
                 result[5] = res;
                 const bitmask = convertArrayToBinary(result);
 
-                interactiveItems.value = [true, true];
-                prevInteractiveItems.value = [true, true];
-
                 router.visit(route('decision.iching'), {
                     only: ['iching'],
                     data: {

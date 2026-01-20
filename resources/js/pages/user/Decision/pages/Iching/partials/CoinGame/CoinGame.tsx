@@ -36,6 +36,13 @@ const CoinGame = () => {
 
     const hasEnded = iching != null;
 
+    if (hasEnded) {
+        // @ts-ignore
+        interactiveItems.value = [true, true];
+        // @ts-ignore
+        prevInteractiveItems.value = [true, true];
+    }
+
     const handleNextMoveClick = () => {
         if (hasEnded) {
             reset();
