@@ -1,0 +1,26 @@
+@use 'core' as u;
+
+.wrapper {
+    --padding: 0;
+    position: relative;
+    overflow: hidden;
+    overflow: clip;
+    isolation: isolate;
+    max-width: calc(100% - (var(--padding) * 2));
+    margin-inline: auto;
+    @include u.px(rounded, null, null, 36, 36);
+    @include u.px(mt, null, null, 47, 32);
+    @include u.px(--padding, null, null, 27, 45);
+    @include u.px(min-h, 608, 785, 742, 830);
+    @include u.shadow(3);
+
+    > * {
+        @include u.px(pt, 97, 228, 116, 145);
+        @include u.px(pb, 132, 128, 135, 182);
+        @include u.px(px, 11, 64, 100, 180);
+    }
+}
+
+.breadcrumbs {
+    @include u.px(mb, 29, 36, 94, 75);
+}

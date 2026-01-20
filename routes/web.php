@@ -18,6 +18,7 @@ use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\PlansController;
 use App\Http\Controllers\User\RelaxationController;
 use App\Http\Controllers\User\Sadness\SadnessController;
+use App\Http\Controllers\User\SupportController;
 use App\Http\Controllers\User\ToolkitController;
 use Illuminate\Support\Facades\Route;
 
@@ -48,6 +49,7 @@ Route::prefix('/sadness')->name('sadness.')->group(function () {
     Route::get('/', SadnessController::class)->name('index'); // мне грустно
 });
 
+Route::get('/support', SupportController::class)->name('support');
 Route::get('/relaxation', RelaxationController::class)->name('relaxation');
 Route::get('/toolkit', ToolkitController::class)->name('toolkit');
 

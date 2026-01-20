@@ -16,5 +16,6 @@ export const routeLabels: Record<string, string> = {
     lenormand: 'Гадание Госпожи Ленорман',
     relaxation: 'Хочу расслабиться',
     iching: 'Таблица Гексаграмм',
+    support: 'Послание поддержки',
     toolkit: 'Полезные ресурсы',
 };
