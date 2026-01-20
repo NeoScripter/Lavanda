@@ -76,8 +76,8 @@
     margin-inline: auto;
     @include u.px(gap, 20, 27, 27, 29);
 
-    @include u.mw(lg) {
+    @include u.mw(md) {
         max-width: 85%;
-        scroll-margin-top: 10rem;
+        scroll-margin-top: 15rem;
     }
 }

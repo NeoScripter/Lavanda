@@ -208,7 +208,7 @@ export function useCoinGameLogic(
             if (reachedEnd) {
                 scrollContainerRef.current?.scrollIntoView({
                     behavior: 'smooth',
-                    block: 'start',
+                    block: 'center',
                 });
 
                 const result = [...state.result];
