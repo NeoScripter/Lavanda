@@ -63,7 +63,7 @@ const Audios = () => {
                     <h2
                         className={cn(
                             css.songQuote,
-                            isSpinning && css.skeleton,
+                            isSpinning && css.songQuoteClosed,
                         )}
                     >
                         {currentAudio?.intro}
@@ -76,7 +76,7 @@ const Audios = () => {
                         animationDuration={adjustedAnimationDuration}
                     />
 
-                    {currentAudio?.path && (
+                    {currentAudio?.path && !isSpinning && (
                         <AudioPlayer
                             className={css.player}
                             audio={currentAudio}

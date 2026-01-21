@@ -50,12 +50,18 @@
     text-align: center;
     text-transform: uppercase;
     color: white;
+    transition: max-height 0.3s ease-in-out;
+    overflow: hidden;
+    max-height: 30rem;
     @include u.rm(text, 16, 20, 20, 24);
 
     @include u.mw(md) {
         max-width: 80%;
         margin-inline: auto;
     }
+}
+.songQuoteClosed {
+    max-height: 0rem;
 }
 
 .rightLayout {

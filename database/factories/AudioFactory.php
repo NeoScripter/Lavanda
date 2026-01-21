@@ -18,7 +18,7 @@ class AudioFactory extends Factory
     {
         return [
             'intro' => fake()->sentences(3, true),
-            'path' => 'public/models/audios/example.mp3'
+            'path' => 'models/audios/example.mp3'
         ];
     }
 }
