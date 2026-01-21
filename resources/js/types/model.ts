@@ -1,3 +1,10 @@
+export type Audio = {
+    id: number;
+    intro: string;
+    path: string;
+    created_at?: string;
+    updated_at?: string;
+};
 export type ExperienceItem = {
     id: number;
     title: string;

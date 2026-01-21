@@ -1,0 +1,133 @@
+@use 'core' as u;
+
+.controlsContainer {
+    margin-inline: auto;
+    max-width: 18.75rem;
+    z-index: 10;
+    position: relative;
+
+    @include u.mw(sm) {
+        max-width: 70%;
+    }
+}
+
+// Progress bar wrapper
+.progressBarWrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-top: 1rem;
+}
+
+.timeDisplayEnd {
+    text-align: right;
+}
+
+.timeDisplayEnd,
+.timeDisplayStart {
+    width: 3rem;
+    font-size: 0.75rem;
+    line-height: 1rem;
+
+    @include u.mw(sm) {
+        width: 4rem;
+        font-size: 1.25rem;
+        line-height: 1.5rem;
+    }
+    @include u.mw(md) {
+        width: 3rem;
+        font-size: 0.75rem;
+        line-height: 1rem;
+    }
+    @include u.mw(lg) {
+        width: 4rem;
+        font-size: 1.25rem;
+        line-height: 1.5rem;
+    }
+}
+// Progress slider
+.progressSlider {
+    flex: 1;
+    height: 4px;
+    appearance: none;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+
+    &::-webkit-slider-thumb {
+        appearance: none;
+        width: 16px;
+        height: 16px;
+        background: white;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: transform 0.15s ease;
+
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+
+    &::-moz-range-thumb {
+        width: 16px;
+        height: 16px;
+        background: white;
+        border-radius: 50%;
+        cursor: pointer;
+        border: none;
+        transition: transform 0.15s ease;
+
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+}
+
+// Hidden audio element
+.audioElement {
+    display: none;
+}
+
+// Control buttons wrapper
+.controlButtonsWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1.25rem;
+}
+
+// Player button
+.playerButton {
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+
+    @include u.size(3.5rem);
+    @include u.mw(sm) {
+        @include u.size(4.5rem);
+    }
+    @include u.mw(md) {
+        @include u.size(3.5rem);
+    }
+    @include u.mw(lg) {
+        @include u.size(4.5rem);
+    }
+}
+
+// Player button image
+.playerButtonImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    transition: transform 0.15s ease-in;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+}

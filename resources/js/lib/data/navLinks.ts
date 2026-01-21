@@ -120,7 +120,7 @@ export const navLinks: NavLinkType[] = [
                 id: crypto.randomUUID(),
                 label: 'Послание поддержки от автора',
                 type: 'link',
-                href: '/support',
+                href: '/audios',
             },
         ],
     },

@@ -7,6 +7,7 @@
     overflow: clip;
     isolation: isolate;
     max-width: calc(100% - (var(--padding) * 2));
+    margin-bottom: 5rem;
     margin-inline: auto;
     @include u.px(rounded, null, null, 36, 36);
     @include u.px(mt, null, null, 47, 32);
@@ -19,6 +20,9 @@
         @include u.px(px, 5, 65, 35, 30);
     }
 
+    @include u.mw(md) {
+        margin-bottom: 0;
+    }
     @include u.mw(md) {
         display: flex;
         > * {

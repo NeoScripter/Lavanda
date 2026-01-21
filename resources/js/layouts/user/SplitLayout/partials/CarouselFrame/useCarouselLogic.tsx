@@ -50,11 +50,6 @@ export function useCarouselLogic(
 
     const handleNext = () => dispatch({ type: 'INCREMENT_INDEX' });
 
-    const handleSpinEnd = () => {
-        clearInterval(intervalRef.current);
-        dispatch({ type: 'STOP_SPINNING' });
-    };
-
     const startSpinning = () => {
         if (state.isSpinning) return;
         dispatch({ type: 'START_SPINNING' });
@@ -69,7 +64,7 @@ export function useCarouselLogic(
                     if (intervalRef.current) {
                         clearTimeout(intervalRef.current);
                     }
-                    setTimeout(handleSpinEnd, 1000);
+                    dispatch({ type: 'STOP_SPINNING' });
                 } else {
                     handleNext();
                     duration = Math.min(
@@ -86,7 +81,7 @@ export function useCarouselLogic(
                 Math.floor(state.selectedIndex + 6 + Math.random() * 8) %
                 length;
             dispatch({ type: 'SET_SELECTED_INDEX', payload: newIndex });
-            setTimeout(handleSpinEnd, 1000);
+            dispatch({ type: 'STOP_SPINNING' });
         }
     };
 

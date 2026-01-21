@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
             MindGameSeeder::class,
             LenormandSeeder::class,
             IchingSeeder::class,
+            AudioSeeder::class,
         ]);
     }
 }
