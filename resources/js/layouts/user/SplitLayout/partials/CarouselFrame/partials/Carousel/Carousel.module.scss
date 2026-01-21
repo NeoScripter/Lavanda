@@ -1,0 +1,92 @@
+@use 'core' as u;
+
+.scene {
+    position: relative;
+    perspective: 1000px;
+
+    @include u.size(100%);
+}
+
+.carousel {
+    width: 100%;
+    height: 100%;
+    inset: 0;
+    position: absolute;
+    transform-style: preserve-3d;
+    transition: transform var(--animation-duration)
+        linear(
+            0,
+            0.012 0.9%,
+            0.05 2%,
+            0.411 9.2%,
+            0.517 11.8%,
+            0.611 14.6%,
+            0.694 17.7%,
+            0.765 21.1%,
+            0.824 24.8%,
+            0.872 28.9%,
+            0.91 33.4%,
+            0.939 38.4%,
+            0.977 50.9%,
+            0.994 68.4%,
+            1
+        );
+}
+
+.cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    aspect-ratio: 1/1;
+    background-color: white;
+    border-radius: 1rem;
+    inset: 0;
+    margin: auto;
+    transition:
+        transform 0.5s ease-out,
+        opacity 0.5s ease-out;
+
+    // Prevent text selection
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+
+    // Smooth rendering
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.runeWrapper {
+    @include u.size(65%);
+}
+
+.runeImg {
+    object-fit: contain;
+}
+
+.btnWrapper {
+    position: absolute;
+    top: 0;
+    left: 50%;
+}
+
+.handleNext {
+    font-size: 2rem;
+    width: 100px;
+    height: 100px;
+}
+
+.currentSlide {
+    isolation: isolate;
+    &::after {
+        content: url("data:image/svg+xml,%3Csvg%20width='100%'%20height='100%'%20viewBox='0%200%20150%20150'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3E%3Cpath%20d='M37.7075%200.489258H14.0229C6.54828%200.489258%200.488892%206.54865%200.488892%2014.0233V37.7078M112.145%200.489258H135.829C143.304%200.489258%20149.363%206.54865%20149.363%2014.0233V37.7078M149.363%20112.145V135.83C149.363%20143.304%20143.304%20149.364%20135.829%20149.364H112.145M37.7075%20149.364H14.0229C6.54828%20149.364%200.488892%20143.304%200.488892%20135.83V112.145'%20stroke='white'%20stroke-width='0.977778'/%3E%3C/svg%3E");
+        position: absolute;
+        inset: -30%;
+        width: 130%;
+        height: 130%;
+        z-index: 10;
+        margin: auto;
+        pointer-events: none;
+    }
+}

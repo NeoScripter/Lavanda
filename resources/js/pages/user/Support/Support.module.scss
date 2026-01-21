@@ -34,7 +34,7 @@
 }
 
 .intro {
-    @include u.px(mb, 39, 59, 48, 118);
+    @include u.px(mb, 39, 59, 48, 88);
     p {
         margin-bottom: 1em;
     }
@@ -43,6 +43,7 @@
 .repeatBtn {
     margin-inline: auto;
     @include u.px(mb, null, null, 40, 40);
+    @include u.rm(text, null, null, null, 26);
 }
 
 .songQuote {

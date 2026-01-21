@@ -29,6 +29,9 @@
 
 .breadcrumbs {
     @include u.px(mb, 40, 62, 114, 100);
+    @include u.mw(md) {
+        margin-inline: auto;
+    }
 }
 
 .leftColumn {
