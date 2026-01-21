@@ -11,10 +11,11 @@ import Item5 from '@/assets/images/experience/experience-item-5.webp';
 import Item6Tiny from '@/assets/images/experience/experience-item-6-tiny.webp';
 import Item6 from '@/assets/images/experience/experience-item-6.webp';
 
-import ManDkTinyWebp from '@/assets/images/cards/lenormand/man-dk-tiny.webp';
-import ManDkWebp from '@/assets/images/cards/lenormand/man-dk.webp';
-import WomanDkTinyWebp from '@/assets/images/cards/lenormand/woman-dk-tiny.webp';
-import WomanDkWebp from '@/assets/images/cards/lenormand/woman-dk.webp';
+import ManDkTinyWebp from "@/assets/images/cards/lenormand/man-dk-tiny.webp";
+import ManDkWebp from "@/assets/images/cards/lenormand/man-dk.webp";
+import WomanDkTinyWebp from "@/assets/images/cards/lenormand/woman-dk-tiny.webp";
+import WomanDkWebp from "@/assets/images/cards/lenormand/woman-dk.webp";
+
 
 export type ImageObj = {
     id: string;

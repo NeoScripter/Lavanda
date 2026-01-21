@@ -24,3 +24,35 @@
 .breadcrumbs {
     @include u.px(mb, 29, 36, 94, 75);
 }
+
+.mainHeading {
+}
+
+.leftLayout {
+    text-align: center;
+    text-wrap: balance;
+}
+
+.intro {
+    @include u.px(mb, 39, 59, 48, 118);
+    p {
+        margin-bottom: 1em;
+    }
+}
+
+.repeatBtn {
+    margin-inline: auto;
+    @include u.px(mb, null, null, 40, 40);
+}
+
+.songQuote {
+    text-align: center;
+    text-transform: uppercase;
+    color: white;
+    @include u.rm(text, 16, 20, 20, 24);
+
+    @include u.mw(md) {
+        max-width: 80%;
+        margin-inline: auto;
+    }
+}

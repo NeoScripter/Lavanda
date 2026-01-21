@@ -16,7 +16,7 @@
 
     > * {
         @include u.px(pb, 60, 86, 71, 88);
-        @include u.px(px, 11, 64, 100, 180);
+        @include u.px(px, 5, 65, 35, 30);
     }
 
     @include u.mw(md) {
@@ -32,6 +32,7 @@
 }
 
 .leftColumn {
+    position: relative;
     @include u.px(pt, 97, 228, 116, 145);
 }
 
@@ -39,4 +40,13 @@
     background: linear-gradient(173deg, #5f4e8c 3.75%, #b9b2cb 94.67%);
     color: white;
     @include u.px(pt, 65, 110, 116, 145);
+}
+
+.background {
+    position: absolute;
+    inset: 0;
+
+    img {
+        object-position: top;
+    }
 }
