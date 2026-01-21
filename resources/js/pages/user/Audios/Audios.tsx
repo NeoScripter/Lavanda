@@ -10,7 +10,7 @@ import checkMotionPreferences from '@/utils/checkMotionPreferences';
 import { cn } from '@/utils/cn';
 import { usePage } from '@inertiajs/react';
 import css from './Audios.module.scss';
-import { intro } from './pageData';
+import { audioBg, intro } from './pageData';
 import AudioPlayer from './partials/AudioPlayer/AudioPlayer';
 
 const itemImage: CarouselImage = {
@@ -38,16 +38,12 @@ const Audios = () => {
 
     return (
         <SplitLayout
+            bgImage={audioBg}
             leftClassName={css.leftLayout}
-            left={
-                <>
-                    <h1 className={css.mainHeading}>
-                        Послание поддержки от автора
-                    </h1>
-                    <div
-                        className={css.intro}
-                        dangerouslySetInnerHTML={{ __html: intro }}
-                    />
+            left={{
+                heading: 'Послание поддержки от автора',
+                intro: intro,
+                btns: (
                     <button
                         onClick={startSpinning}
                         disabled={isSpinning}
@@ -55,8 +51,8 @@ const Audios = () => {
                     >
                         Другая запись
                     </button>
-                </>
-            }
+                ),
+            }}
             rightClassName={css.rightLayout}
             right={
                 <div>

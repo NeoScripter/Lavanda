@@ -73,7 +73,7 @@ export const navLinks: NavLinkType[] = [
         id: crypto.randomUUID(),
         label: 'Настрой',
         type: 'link',
-        href: '/',
+        href: '/affirmations',
     },
     {
         id: crypto.randomUUID(),

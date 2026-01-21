@@ -1,0 +1,21 @@
+@use 'core' as u;
+
+.leftLayout {
+    h1 {
+        text-wrap: wrap;
+    }
+}
+
+.rightLayout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.categoryBtns {
+    display: grid;
+    margin-inline: auto;
+    @include u.px(gap, 24, 29, 29, 35);
+    @include u.px(w, 275, 380, 380, 467);
+}

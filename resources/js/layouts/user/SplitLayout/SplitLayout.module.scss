@@ -31,6 +31,7 @@
     }
 }
 
+
 .breadcrumbs {
     @include u.px(mb, 40, 62, 114, 100);
     @include u.mw(md) {
@@ -40,6 +41,8 @@
 
 .leftColumn {
     position: relative;
+    text-align: center;
+    text-wrap: balance;
     @include u.px(pt, 97, 228, 116, 145);
 }
 
@@ -55,5 +58,25 @@
 
     img {
         object-position: top;
+    }
+}
+
+.intro {
+    @include u.px(mb, 39, 59, 48, 88);
+    p {
+        margin-bottom: 1em;
+    }
+}
+
+.actionBtns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+    margin-inline: auto;
+    @include u.px(mb, null, null, 40, 40);
+
+    button {
+        @include u.rm(text, null, null, null, 26);
     }
 }

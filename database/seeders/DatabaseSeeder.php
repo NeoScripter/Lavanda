@@ -32,6 +32,7 @@ class DatabaseSeeder extends Seeder
             LenormandSeeder::class,
             IchingSeeder::class,
             AudioSeeder::class,
+            AffirmationSeeder::class,
         ]);
     }
 }

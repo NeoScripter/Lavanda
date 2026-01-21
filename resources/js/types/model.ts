@@ -1,9 +1,17 @@
+export type Affirmation = {
+    id: number;
+    type: string;
+    quote: string;
+    created_at?: string;
+    updated_at?: string;
+};
 export type Audio = {
     id: number;
     intro: string;
     path: string;
     created_at?: string;
     updated_at?: string;
+    url: any;
 };
 export type ExperienceItem = {
     id: number;

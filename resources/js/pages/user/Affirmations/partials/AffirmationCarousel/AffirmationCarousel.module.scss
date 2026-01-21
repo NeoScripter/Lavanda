@@ -1,0 +1,28 @@
+@use 'core' as u;
+
+.rightLayout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.repeatBtn {
+    padding-inline: 2em;
+}
+
+.changeCategoryBtn {
+    color: u.clr('primary', 'strong');
+    font-weight: 500;
+}
+
+.quote {
+    text-align: center;
+    text-shadow: 10px 10px 20px rgba(0, 0, 0, 0.25);
+    font-weight: 600;
+    text-wrap: balance;
+    max-width: 80%;
+    margin-inline: auto;
+    @include u.px(mt, 40, 60, 60, 60);
+    @include u.rm(text, 24, 32, 24, 36);
+}

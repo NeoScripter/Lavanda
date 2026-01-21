@@ -21,6 +21,31 @@
     }
 }
 
+.breadcrumbs {
+    @include u.px(mb, 29, 36, 94, 75);
+}
+
+.mainHeading {
+}
+
+.leftLayout {
+    text-align: center;
+    text-wrap: balance;
+}
+
+.intro {
+    @include u.px(mb, 39, 59, 48, 88);
+    p {
+        margin-bottom: 1em;
+    }
+}
+
+.repeatBtn {
+    margin-inline: auto;
+    @include u.px(mb, null, null, 40, 40);
+    @include u.rm(text, null, null, null, 26);
+}
+
 .songQuote {
     text-align: center;
     text-transform: uppercase;

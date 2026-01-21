@@ -1,9 +1,3 @@
-import BackgroundDkTinyWebp from '@/assets/images/splitlayout/background-dk-tiny.webp';
-import BackgroundDkAvif from '@/assets/images/splitlayout/background-dk.avif';
-import BackgroundDkWebp from '@/assets/images/splitlayout/background-dk.webp';
-import BackgroundMbTinyWebp from '@/assets/images/splitlayout/background-mb-tiny.webp';
-import BackgroundMbAvif from '@/assets/images/splitlayout/background-mb.avif';
-import BackgroundMbWebp from '@/assets/images/splitlayout/background-mb.webp';
 import BgLoader from '@/components/user/ui/BgLoader/BgLoader';
 import BreadCrumbs from '@/components/user/ui/BreadCrumbs';
 import AppLayout from '@/layouts/user/AppLayout/AppLayout';
@@ -13,14 +7,33 @@ import { ComponentChild } from 'preact';
 import { FC } from 'preact/compat';
 import css from './SplitLayout.module.scss';
 
+export type BgLoaderImage = {
+    dk: string;
+    dkAvif: string;
+    tb: string;
+    tbAvif: string;
+    mb: string;
+    mbAvif: string;
+    dkTiny: string;
+    tbTiny: string;
+    mbTiny: string;
+};
+
+export type LeftContent = {
+    heading: ComponentChild;
+    intro: string;
+    btns?: ComponentChild;
+};
+
 const SplitLayout: FC<
     NodeProps<{
-        left: ComponentChild;
+        left: LeftContent;
         right: ComponentChild;
         leftClassName?: string;
         rightClassName?: string;
+        bgImage: BgLoaderImage;
     }>
-> = ({ left, right, leftClassName, rightClassName, className }) => {
+> = ({ bgImage, left, right, leftClassName, rightClassName, className }) => {
     return (
         <AppLayout
             variation="white"
@@ -30,18 +43,27 @@ const SplitLayout: FC<
                 <article className={cn(css.leftColumn, leftClassName)}>
                     <BgLoader
                         prtClass={css.background}
-                        dk={BackgroundDkWebp}
-                        dkAvif={BackgroundDkAvif}
-                        tb={BackgroundDkWebp}
-                        tbAvif={BackgroundDkAvif}
-                        mb={BackgroundMbWebp}
-                        mbAvif={BackgroundMbAvif}
-                        dkTiny={BackgroundDkTinyWebp}
-                        tbTiny={BackgroundDkTinyWebp}
-                        mbTiny={BackgroundMbTinyWebp}
+                        dk={bgImage.dk}
+                        dkAvif={bgImage.dkAvif}
+                        tb={bgImage.tb}
+                        tbAvif={bgImage.tbAvif}
+                        mb={bgImage.mb}
+                        mbAvif={bgImage.mbAvif}
+                        dkTiny={bgImage.dkTiny}
+                        tbTiny={bgImage.tbTiny}
+                        mbTiny={bgImage.mbTiny}
                     />
                     <BreadCrumbs className={css.breadcrumbs} />
-                    <div>{left}</div>
+                    <div>
+                        <h1>{left.heading}</h1>
+                        <div
+                            className={css.intro}
+                            dangerouslySetInnerHTML={{ __html: left.intro }}
+                        />
+                        {left.btns && (
+                            <div className={css.actionBtns}>{left.btns}</div>
+                        )}
+                    </div>
                 </article>
                 <article className={cn(css.rightColumn, rightClassName)}>
                     {right}
