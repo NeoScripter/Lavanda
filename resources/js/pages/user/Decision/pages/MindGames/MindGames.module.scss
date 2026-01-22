@@ -14,5 +14,10 @@
 }
 
 .intro {
+    margin-top: 5rem;
     margin-bottom: 0 !important;
+
+    @include u.mw(md) {
+        margin-top: 4rem;
+    }
 }

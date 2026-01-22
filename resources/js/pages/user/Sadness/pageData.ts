@@ -51,7 +51,7 @@ export const assymetricSectionLinks: AssymetricSectionLink[] = [
         img: SadnessLink1,
         imgTiny: SadnessLink1Tiny,
         alt: 'Три фиолетовые свечи с кристаллами аметиста у основания',
-        url: '/sadness',
+        url: '/decision/runes',
     },
     {
         id: crypto.randomUUID(),
@@ -61,7 +61,7 @@ export const assymetricSectionLinks: AssymetricSectionLink[] = [
         img: SadnessLink2,
         imgTiny: SadnessLink2Tiny,
         alt: 'Рука держит фиолетовый кристалл аметиста, акварельная иллюстрация',
-        url: '/sadness',
+        url: '/decision/cards/lenormand',
     },
     {
         id: crypto.randomUUID(),
@@ -71,7 +71,7 @@ export const assymetricSectionLinks: AssymetricSectionLink[] = [
         img: SadnessLink3,
         imgTiny: SadnessLink3Tiny,
         alt: 'Руна Манназ в центре фиолетовых рунических камней',
-        url: '/sadness',
+        url: '/decision/cards/metaphoric',
     },
     {
         id: crypto.randomUUID(),
@@ -81,7 +81,7 @@ export const assymetricSectionLinks: AssymetricSectionLink[] = [
         img: SadnessLink4,
         imgTiny: SadnessLink4Tiny,
         alt: 'Колода карт Таро с мистическим дизайном в фиолетово-голубых тонах',
-        url: '/sadness',
+        url: '/decision/cards/tarot',
     },
     {
         id: crypto.randomUUID(),
@@ -91,7 +91,7 @@ export const assymetricSectionLinks: AssymetricSectionLink[] = [
         img: SadnessLink5,
         imgTiny: SadnessLink5Tiny,
         alt: 'Багуа с символом Инь-Ян в центре и триграммами на фиолетовом фоне',
-        url: '/sadness',
+        url: '/decision/iching',
     },
     {
         id: crypto.randomUUID(),
@@ -101,6 +101,6 @@ export const assymetricSectionLinks: AssymetricSectionLink[] = [
         img: SadnessLink6,
         imgTiny: SadnessLink6Tiny,
         alt: 'Акварельная спиральная галактика в фиолетово-розовых тонах со звёздами',
-        url: '/sadness',
+        url: '/audios',
     },
 ];

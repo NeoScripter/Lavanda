@@ -90,6 +90,7 @@
 
 .decorIntro3 {
     display: none;
+    pointer-events: none;
 
     @include u.mw(sm) {
         display: block;
@@ -114,6 +115,7 @@
 
 .decorIntro5 {
     display: none;
+    pointer-events: none;
 
     @include u.mw(md) {
         display: block;

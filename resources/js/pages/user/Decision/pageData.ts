@@ -70,7 +70,7 @@ export const assymetricSectionLinks: AssymetricSectionLink[] = [
         img: DecisionLink3,
         imgTiny: DecisionLink3Tiny,
         alt: 'Руна Манназ в центре фиолетовых рунических камней',
-        url: '/decision',
+        url: '/decision/runes',
     },
     {
         id: crypto.randomUUID(),
@@ -80,7 +80,7 @@ export const assymetricSectionLinks: AssymetricSectionLink[] = [
         img: DecisionLink4,
         imgTiny: DecisionLink4Tiny,
         alt: 'Колода карт Таро с мистическим дизайном в фиолетово-голубых тонах',
-        url: '/decision',
+        url: '/decision/cards',
     },
     {
         id: crypto.randomUUID(),
@@ -90,7 +90,7 @@ export const assymetricSectionLinks: AssymetricSectionLink[] = [
         img: DecisionLink5,
         imgTiny: DecisionLink5Tiny,
         alt: 'Багуа с символом Инь-Ян в центре и триграммами на фиолетовом фоне',
-        url: '/decision',
+        url: '/decision/iching',
     },
     {
         id: crypto.randomUUID(),
@@ -100,6 +100,6 @@ export const assymetricSectionLinks: AssymetricSectionLink[] = [
         img: DecisionLink6,
         imgTiny: DecisionLink6Tiny,
         alt: 'Акварельная спиральная галактика в фиолетово-розовых тонах со звёздами',
-        url: '/decision',
+        url: '/decision/mind-games',
     },
 ];

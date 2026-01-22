@@ -59,8 +59,8 @@ const RandomCards = () => {
         <div ref={scrollRef}>
             <InteractiveSlidingIntro
                 handleClick={startSpinning}
-                hasStarted={!hasStarted}
-                text="Карта открывается сама — как знак, который приходит вовремя. Иногда именно случай отражает то, что мы уже чувствуем, но не осознаём."
+                hasStarted={hasStarted}
+                text="Самая первая фраза, которая буквально «бросится вам в глаза» – это и будет совет. Опишите (желательно проговорить вслух или записать), что вы увидели и почувствовали о своем запросе. Сделайте выводы."
             />
             <PickedCards
                 cards={selectedCards}
