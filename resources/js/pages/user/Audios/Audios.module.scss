@@ -67,3 +67,14 @@
 .player {
     @include u.px(mt, 40, 80, 80, 80);
 }
+
+.repeatBtn {
+    padding-inline: 2em;
+    &[disabled] {
+        opacity: 0.5;
+        cursor: default;
+        &:hover {
+            pointer-events: none;
+        }
+    }
+}

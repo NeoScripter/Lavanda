@@ -41,7 +41,9 @@ const AffirmationCarousel = () => {
     );
 
     const currentAffirmation =
-        affirmations[selectedIndex % affirmations.length];
+        selectedIndex !== -1
+            ? affirmations[selectedIndex % affirmations.length]
+            : null;
 
     return (
         <SplitLayout
@@ -57,7 +59,7 @@ const AffirmationCarousel = () => {
                             disabled={isSpinning}
                             class={cn('primary-btn', css.repeatBtn)}
                         >
-                            Повторить
+                            {selectedIndex === -1 ? 'Начать' : 'Повторить'}
                         </button>
                         <Link
                             className={css.changeCategoryBtn}

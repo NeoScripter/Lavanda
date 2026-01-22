@@ -29,7 +29,7 @@ function carouselReducer(
         case 'RESET':
             return {
                 isSpinning: false,
-                selectedIndex: 0,
+                selectedIndex: -1,
             };
         default:
             return state;
@@ -43,7 +43,7 @@ export function useCarouselLogic(
 ) {
     const [state, dispatch] = useReducer(carouselReducer, {
         isSpinning: false,
-        selectedIndex: 0,
+        selectedIndex: -1,
     });
 
     const intervalRef = useRef<number | undefined>(undefined);

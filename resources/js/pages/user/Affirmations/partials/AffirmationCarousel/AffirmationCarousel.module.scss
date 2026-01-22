@@ -11,6 +11,13 @@
 
 .repeatBtn {
     padding-inline: 2em;
+    &[disabled] {
+        opacity: 0.5;
+        cursor: default;
+        &:hover {
+            pointer-events: none;
+        }
+    }
 }
 
 .changeCategoryBtn {

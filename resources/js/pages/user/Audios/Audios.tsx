@@ -34,7 +34,8 @@ const Audios = () => {
         isMotionEnabled,
     );
 
-    const currentAudio = audios[selectedIndex % audios.length];
+    const currentAudio =
+        selectedIndex !== -1 ? audios[selectedIndex % audios.length] : null;
 
     return (
         <SplitLayout
@@ -49,7 +50,7 @@ const Audios = () => {
                         disabled={isSpinning}
                         class={cn('primary-btn', css.repeatBtn)}
                     >
-                        Другая запись
+                        {selectedIndex === -1 ? 'Начать' : 'Повторить'}
                     </button>
                 ),
             }}
