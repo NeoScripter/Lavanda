@@ -10,7 +10,7 @@ import { NodeProps } from '@/types/nodeProps';
 import { cn } from '@/utils/cn';
 import { router, usePage } from '@inertiajs/react';
 import { CircleUser } from 'lucide-preact';
-import { FC } from 'preact/compat';
+import { FC, useEffect } from 'preact/compat';
 import Nav from '../Nav/Nav';
 import css from './AppHeader.module.scss';
 
@@ -24,12 +24,29 @@ const AppHeader: FC<NodeProps> = ({ className }) => {
     ]);
 
     const isDesktop = useMediaQuery('(min-width: 1110px)');
+    const isMobile = useMediaQuery('(max-width: 569px)');
 
     useEscapeKey(() => setShowMenu(false));
 
     const { actualHeight, ref } = useElementHeight();
 
     const toggleMenu = () => setShowMenu((p) => !p);
+
+    useEffect(() => {
+        if (!isMobile) {
+            document.documentElement.style.overflowY = 'auto';
+            return;
+        }
+
+        if (showMenu) {
+            document.documentElement.style.overflowY = 'hidden';
+        } else {
+            document.documentElement.style.overflowY = 'auto';
+        }
+        return () => {
+            document.documentElement.style.overflowY = 'auto';
+        };
+    }, [isMobile, showMenu]);
 
     const handleLoginClick = () => {
         if (user != null) {
@@ -57,11 +74,7 @@ const AppHeader: FC<NodeProps> = ({ className }) => {
                     className={css.burger}
                 />
 
-                {isDesktop && (
-                    <Nav
-                        className={cn(css.dkNav)}
-                    />
-                )}
+                {isDesktop && <Nav className={cn(css.dkNav)} />}
 
                 <div class={css.loginBtnWrapper}>
                     <button
