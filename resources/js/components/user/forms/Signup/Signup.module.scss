@@ -4,3 +4,13 @@
     max-width: 16rem;
     padding: 0.5em 0.75em 0.5em 1.25em;
 }
+
+.legalLink {
+    text-decoration: underline;
+    text-underline-offset: 0.3em;
+    transition: color 0.3s;
+
+    &:hover {
+        color: u.clr('primary', 'strong');
+    }
+}

@@ -18,8 +18,8 @@ type LoginForm = {
 };
 
 export default function Login() {
-    const { showLoginModal } = useLoginModal();
-    const { showSignupModal } = useSignupModal();
+    const { setShowLoginModal } = useLoginModal();
+    const { setShowSignupModal } = useSignupModal();
 
     const { data, setData, post, processing, errors, reset } = useForm<
         Required<LoginForm>
@@ -29,8 +29,8 @@ export default function Login() {
     });
 
     const handleClick = () => {
-        showSignupModal.value = true;
-        showLoginModal.value = false;
+        setShowSignupModal(true);
+        setShowLoginModal(false);
     };
 
     const submit = (e: TargetedEvent<HTMLFormElement, SubmitEvent>) => {
@@ -38,8 +38,10 @@ export default function Login() {
 
         post(route('login'), {
             preserveScroll: true,
+            preserveState: true,
             onSuccess: () => {
                 router.flushAll();
+                setShowLoginModal(false);
                 toast('Добро пожаловать!');
             },
             onFinish: () => reset('password'),

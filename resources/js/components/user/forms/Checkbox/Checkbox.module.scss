@@ -1,0 +1,111 @@
+@use 'core' as u;
+
+.checkboxWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-inline: auto;
+    max-width: 80%;
+}
+
+// Container for input, custom checkbox, and label
+.checkboxContainer {
+    display: flex;
+    align-items: start;
+    gap: 0.75rem;
+    position: relative;
+
+    @include u.mw(sm) {
+        align-items: center;
+    }
+}
+
+// Native checkbox input (hidden but accessible)
+.checkboxInput {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+
+    // Focus styles for accessibility
+    &:focus-visible + .checkboxCustom {
+        outline: 2px solid u.clr('primary', 'strong');
+        outline-offset: 2px;
+    }
+
+    // Checked state
+    &:checked + .checkboxCustom {
+        background-color: u.clr('primary', 'strong');
+        border-color: u.clr('primary', 'strong');
+
+        .checkmark {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    // Disabled state
+    &:disabled + .checkboxCustom {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    &:disabled ~ .checkboxLabel {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+}
+
+// Custom checkbox visual
+.checkboxCustom {
+    position: relative;
+    flex-shrink: 0;
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-top: 0.125rem;
+    background-color: white;
+    border: 2px solid #d1d5db;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: all 0.15s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+        border-color: #9ca3af;
+    }
+}
+
+// Checkmark SVG
+.checkmark {
+    width: 1rem;
+    height: 1rem;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.15s ease-in-out;
+}
+
+// Label text
+.checkboxLabel {
+    cursor: pointer;
+    user-select: none;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: inherit;
+    @include u.mw(sm) {
+        translate: 0px 2px;
+    }
+}
+
+// Error message
+.checkboxError {
+    font-size: 0.875rem;
+    color: #ef4444;
+    margin-left: 2rem;
+}

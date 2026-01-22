@@ -46,8 +46,8 @@ const AppLayout: FC<
 export default AppLayout;
 
 const AppModals = () => {
-    const { showLoginModal } = useLoginModal();
-    const { showSignupModal } = useSignupModal();
+    const { showLoginModal, setShowLoginModal } = useLoginModal();
+    const { showSignupModal, setShowSignupModal } = useSignupModal();
     const { flash } = usePage<{ flash: Flash }>().props;
 
     useEffect(() => {
@@ -59,14 +59,16 @@ const AppModals = () => {
     return (
         <>
             <DialogLayout
-                show={showLoginModal.value}
-                onClose={() => (showLoginModal.value = false)}
+                show={showLoginModal}
+                onClose={() => setShowLoginModal(false)}
+                key="login-dialog"
             >
                 <Login />
             </DialogLayout>
             <DialogLayout
-                show={showSignupModal.value}
-                onClose={() => (showSignupModal.value = false)}
+                show={showSignupModal}
+                onClose={() => setShowSignupModal(false)}
+                key="signup-dialog"
             >
                 <Signup />
             </DialogLayout>

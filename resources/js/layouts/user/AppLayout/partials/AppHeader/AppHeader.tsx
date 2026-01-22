@@ -18,7 +18,7 @@ const AppHeader: FC<NodeProps> = ({ className }) => {
     const {
         auth: { user },
     } = usePage<{ auth: Auth }>().props;
-    const { showLoginModal } = useLoginModal();
+    const { setShowLoginModal } = useLoginModal();
     const { show: showMenu, setShow: setShowMenu } = useClickOutside([
         '#header',
     ]);
@@ -52,7 +52,7 @@ const AppHeader: FC<NodeProps> = ({ className }) => {
         if (user != null) {
             router.visit(route('account'));
         } else {
-            showLoginModal.value = true;
+            setShowLoginModal(true);
         }
     };
 

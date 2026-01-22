@@ -10,7 +10,7 @@ import { FC } from 'preact/compat';
 import css from './Nav.module.scss';
 
 const Nav: FC<NodeProps> = ({ className }) => {
-    const { showLoginModal } = useLoginModal();
+    const { setShowLoginModal } = useLoginModal();
 
     return (
         <nav
@@ -18,7 +18,7 @@ const Nav: FC<NodeProps> = ({ className }) => {
             class={cn(css.nav, className)}
         >
             <button
-                onClick={() => (showLoginModal.value = true)}
+                onClick={() => setShowLoginModal(true)}
                 class={css.loginBtn}
             >
                 <UserCircle stroke-width={2} />

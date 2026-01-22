@@ -1,9 +1,9 @@
-import { Signal, signal } from '@preact/signals';
 import { createContext } from 'preact';
-import { useContext } from 'preact/hooks';
+import { useContext, useState } from 'preact/hooks';
 
 interface LoginContextValue {
-    showLoginModal: Signal<boolean>;
+    showLoginModal: boolean;
+    setShowLoginModal: (value: boolean) => void;
 }
 
 const LoginContext = createContext<LoginContextValue | null>(null);
@@ -21,10 +21,14 @@ export function LoginProvider({
 }: {
     children: preact.ComponentChildren;
 }) {
-    const showLoginModal = signal(false);
+    const [showLoginModal, setShowLoginModal] = useState(false);
+
     return (
-        <LoginContext.Provider value={{ showLoginModal }}>
+        <LoginContext.Provider
+            value={{ showLoginModal, setShowLoginModal }}
+        >
             {children}
         </LoginContext.Provider>
     );
 }
+

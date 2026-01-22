@@ -1,4 +1,4 @@
-import { router, useForm } from '@inertiajs/react';
+import { Link, router, useForm } from '@inertiajs/react';
 import { LoaderCircle } from 'lucide-preact';
 
 import FormLayout from '@/layouts/user/FormLayout/FormLayout';
@@ -6,6 +6,7 @@ import { useLoginModal } from '@/providers/LoginContext';
 import { useSignupModal } from '@/providers/SignupContext';
 import { TargetedEvent } from 'preact';
 import { toast } from 'sonner';
+import Checkbox from '../Checkbox/Checkbox';
 import Input from '../Input/Input';
 import InputError from '../InputError/InputError';
 import Label from '../Label/Label';
@@ -24,27 +25,31 @@ type SignupForm = {
     email: string;
     birthday: string;
     gender: string | null;
+    policy: boolean;
+    consent: boolean;
     password: string;
     password_confirmation: string;
 };
 
 export default function Signup() {
-    const { showLoginModal } = useLoginModal();
-    const { showSignupModal } = useSignupModal();
+    const { setShowLoginModal } = useLoginModal();
+    const { setShowSignupModal } = useSignupModal();
     const { data, setData, post, processing, errors, reset } = useForm<
         Required<SignupForm>
     >({
         name: '',
         email: '',
         birthday: '',
+        policy: false,
+        consent: false,
         gender: null,
         password: '',
         password_confirmation: '',
     });
 
     const handleClick = () => {
-        showSignupModal.value = false;
-        showLoginModal.value = true;
+        setShowSignupModal(false);
+        setShowLoginModal(true);
     };
 
     const submit = (e: TargetedEvent<HTMLFormElement, SubmitEvent>) => {
@@ -52,9 +57,11 @@ export default function Signup() {
 
         post(route('signup'), {
             preserveScroll: true,
+            preserveState: true,
+
             onSuccess: () => {
                 router.flushAll();
-                toast('Добро пожаловать!');
+                setShowSignupModal(false);
             },
             onFinish: () => reset('password'),
         });
@@ -166,6 +173,39 @@ export default function Signup() {
                     {processing && <LoaderCircle />}
                     Регистрация
                 </button>
+
+                <Checkbox
+                    checked={data.policy}
+                    onChange={(checked) => setData('policy', checked)}
+                    name="policy"
+                    error={errors.policy}
+                >
+                    Даю согласие на{' '}
+                    <Link
+                        className={css.legalLink}
+                        href={route('legal', 'policy')}
+                    >
+                        {' '}
+                        обработку персональных данных
+                    </Link>
+                </Checkbox>
+
+                <Checkbox
+                    checked={data.consent}
+                    onChange={(checked) => setData('consent', checked)}
+                    name="consent"
+                    error={errors.consent}
+                >
+                    Принимаю{' '}
+                    <Link
+                        className={css.legalLink}
+                        href={route('legal', 'consent')}
+                    >
+                        {' '}
+                        политику конфиденциальности
+                    </Link>
+                </Checkbox>
+
                 <div>
                     <span>
                         Уже зарегистрированы?

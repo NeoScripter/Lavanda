@@ -29,6 +29,8 @@ class RegisteredUserController extends Controller
             'birthday' => 'nullable|date|before:today',
             'email' => 'required|string|lowercase|email|max:255|unique:' . User::class,
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'policy' => 'required|accepted',
+            'consent' => 'required|accepted',
         ]);
 
         $user = User::create([
@@ -43,7 +45,7 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return to_route('home')->with(
+        return back()->with(
             'message',
             'Добро пожаловать!'
         );
