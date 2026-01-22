@@ -12,8 +12,8 @@ import css from './Legal.module.scss';
 const Legal = () => {
     return (
         <AppLayout
-            extendedFooter={false}
-            variation="dark"
+            extendedFooter={true}
+            variation="white"
             className={css.layout}
         >
             <BgLoader
