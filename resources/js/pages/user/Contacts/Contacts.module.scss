@@ -12,12 +12,18 @@
     background-color: white;
     text-align: center;
     margin-inline: auto;
-    @include u.px(rounded, 32, 32, 32, 32);
-    @include u.px(px, 18, 44, 44, 44);
-    @include u.px(pt, 40, 56, 56, 56);
-    @include u.px(pb, 51, 74, 74, 74);
+
+    border-radius: 32px;
+    padding-bottom: 51px;
+    padding-top: 40px;
+    padding-inline: 18px;
     @include u.px(mb, 84, 110, 80, 81);
-    @include u.px(max-w, null, 653, 653, 653);
+
+    @include u.mw(sm) {
+        max-width: 653px;
+        padding-bottom: 74px;
+        padding-inline: 40px;
+    }
 }
 
 .bgLoader {
@@ -35,10 +41,16 @@
     font-weight: 700;
     place-content: center;
     place-items: center;
-    @include u.rm(text, 16, 32, 32, 32);
-    @include u.px(mt, 40, 56, 56, 56);
-    @include u.px(mb, 43, 62, 62, 62);
-    @include u.px(gap, 15, 25, 25, 25);
+    margin-bottom: 43px;
+    margin-top: 40px;
+    font-size: 1rem;
+    gap: 15px;
+
+    @include u.mw(sm) {
+        font-size: 2rem;
+        margin-bottom: 62px;
+        margin-top: 56px;
+    }
 
     svg {
         stroke-width: 2.5;
@@ -53,16 +65,24 @@
     }
 
     a {
-        --size: 0;
-        @include u.px(--size, 30, 50, 50, 50);
+        --size: 30px;
         @include u.size(var(--size));
+        @include u.mw(sm) {
+            --size: 50px;
+        }
     }
 }
 
 .heading {
     margin-bottom: 0.5em;
+    @include u.mw(sm) {
+        font-size: 2.5rem;
+    }
 }
 
 .intro {
-    @include u.rm(text, 12, 19, 19, 19);
+    @include u.rm(text, 12, 0, null, null);
+    @include u.mw(sm) {
+        font-size: 1rem;
+    }
 }

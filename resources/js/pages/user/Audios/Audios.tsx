@@ -1,5 +1,5 @@
-import HeartDkTinyWebp from '@/assets/images/support/heart-dk-tiny.webp';
-import HeartDkWebp from '@/assets/images/support/heart-dk.webp';
+import HeartDkTinyWebp from '@/assets/images/audios/heart-dk-tiny.webp';
+import HeartDkWebp from '@/assets/images/audios/heart-dk.webp';
 import SplitLayout from '@/layouts/user/SplitLayout';
 import CarouselFrame, {
     CarouselImage,

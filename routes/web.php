@@ -17,6 +17,7 @@ use App\Http\Controllers\User\Decision\IchingController;
 use App\Http\Controllers\User\Decision\PracticeController;
 use App\Http\Controllers\User\Decision\RunesController;
 use App\Http\Controllers\User\HomeController;
+use App\Http\Controllers\User\LegalController;
 use App\Http\Controllers\User\PlansController;
 use App\Http\Controllers\User\RelaxationController;
 use App\Http\Controllers\User\Sadness\SadnessController;
@@ -54,6 +55,7 @@ Route::prefix('/sadness')->name('sadness.')->group(function () {
 Route::get('/affirmations', AffirmationController::class)->name('affirmations');
 Route::get('/relaxation', RelaxationController::class)->name('relaxation');
 Route::get('/toolkit', ToolkitController::class)->name('toolkit');
+Route::get('/legal/{type}', LegalController::class)->name('legal');
 
 
 require __DIR__ . '/auth.php';

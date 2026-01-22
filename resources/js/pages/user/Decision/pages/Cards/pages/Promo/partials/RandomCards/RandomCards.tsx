@@ -63,7 +63,7 @@ const RandomCards = () => {
     return (
         <>
             <InteractiveSlidingIntro
-                hasStarted={!hasStarted}
+                hasStarted={hasStarted}
                 text={
                     'Карта открывается сама — как знак, который приходит вовремя. Иногда именно случай отражает то, что мы уже чувствуем, но не осознаём.'
                 }
