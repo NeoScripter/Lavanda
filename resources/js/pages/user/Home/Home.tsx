@@ -6,6 +6,7 @@ import BgTbTiny from '@/assets/images/home/bg-tb-tiny.webp';
 import BgTb from '@/assets/images/home/bg-tb.webp';
 import NarrativeDecorTiny from '@/assets/images/home/narrative-tiny.webp';
 import NarrativeDecor from '@/assets/images/home/narrative.webp';
+import AboutSection from '@/components/user/sections/AboutSection/AboutSection';
 import BgLoader from '@/components/user/ui/BgLoader/BgLoader';
 import LazyImage from '@/components/user/ui/LazyImage/LazyImage';
 import Narrative from '@/components/user/ui/Narrative/Narrative';
@@ -17,7 +18,6 @@ import FAQSection from './partials/FAQSection/FAQSection';
 import HeroSection from './partials/HeroSection/HeroSection';
 import IntroSection from './partials/IntroSection/IntroSection';
 import PlanSection from './partials/PlanSection/PlanSection';
-import AboutSection from '@/components/user/sections/AboutSection/AboutSection';
 
 const Home = () => {
     return (
@@ -55,7 +55,7 @@ const Home = () => {
 
             <IntroSection />
 
-            <AboutSection />
+            <AboutSection className={css.aboutSection} />
 
             <PlanSection />
 

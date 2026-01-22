@@ -1,11 +1,31 @@
 import Star from '@/assets/svgs/star.svg';
+import { useLoginModal } from '@/providers/LoginContext';
+import { Auth } from '@/types/auth';
 import { Plan } from '@/types/model';
 import { NodeProps } from '@/types/nodeProps';
 import { cn } from '@/utils/cn';
+import { router, usePage } from '@inertiajs/react';
+import { ComponentChildren } from 'preact';
 import { FC } from 'preact/compat';
 import css from './PlanCard.module.scss';
 
-const PlanCard: FC<NodeProps<{ plan: Plan }>> = ({ plan, className }) => {
+const PlanCard: FC<NodeProps<{ plan: Plan; children?: ComponentChildren }>> = ({
+    plan,
+    className,
+    children,
+}) => {
+    const { auth } = usePage<{ auth: Auth }>().props;
+
+    const { setShowLoginModal } = useLoginModal();
+
+    const handleClick = () => {
+        if (!auth?.user) {
+            setShowLoginModal(true);
+        } else {
+            router.visit(route('plan', plan.id));
+        }
+    };
+
     return (
         <article class={cn(css.wrapper, className)}>
             <header>
@@ -23,7 +43,10 @@ const PlanCard: FC<NodeProps<{ plan: Plan }>> = ({ plan, className }) => {
                 </p>
             </header>
 
-            <button class={cn('primary-btn', css.button)}>
+            <button
+                onClick={handleClick}
+                class={cn('primary-btn', css.button)}
+            >
                 Оформить подписку
             </button>
 
@@ -55,6 +78,7 @@ const PlanCard: FC<NodeProps<{ plan: Plan }>> = ({ plan, className }) => {
                     ))}
                 </ul>
             </section>
+            {children}
         </article>
     );
 };

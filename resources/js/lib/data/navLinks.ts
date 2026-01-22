@@ -126,26 +126,33 @@ export const navLinks: NavLinkType[] = [
     },
     {
         id: crypto.randomUUID(),
-        label: 'Расслабиться',
-        type: 'link',
-        href: '/relaxation',
-    },
-    {
-        id: crypto.randomUUID(),
         label: 'Ресурсы',
         type: 'link',
         href: '/toolkit',
     },
     {
         id: crypto.randomUUID(),
-        label: 'Бонус игра',
+        label: 'Расслабиться',
         type: 'link',
-        href: '/promo',
+        href: '/relaxation',
     },
     {
         id: crypto.randomUUID(),
-        label: 'О ресурсе',
-        type: 'link',
-        href: '/about',
+        label: 'Прочее',
+        type: 'popover',
+        links: [
+            {
+                id: crypto.randomUUID(),
+                label: 'Бонус игра',
+                type: 'link',
+                href: '/promo',
+            },
+            {
+                id: crypto.randomUUID(),
+                label: 'О ресурсе',
+                type: 'link',
+                href: '/about',
+            },
+        ],
     },
 ];

@@ -26,7 +26,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name('home');
 Route::get('/account', AccountController::class)->middleware('auth')->name('account');
-Route::get('/plans', PlansController::class)->name('plans');
+Route::get('/plans', [PlansController::class, 'index'])->name('plans');
 Route::get('/about', AboutController::class)->name('about');
 Route::get('/contacts', ContactPageController::class)->name('contacts');
 Route::get('/promo', PromoController::class)->name('promo'); // экспресс карта
@@ -56,6 +56,7 @@ Route::get('/affirmations', AffirmationController::class)->name('affirmations');
 Route::get('/relaxation', RelaxationController::class)->name('relaxation');
 Route::get('/toolkit', ToolkitController::class)->name('toolkit');
 Route::get('/legal/{legal:type}', LegalController::class)->name('legal');
+Route::middleware('auth')->get('/plan/{plan}', [PlansController::class, 'show'])->name('plan');
 
 
 require __DIR__ . '/auth.php';

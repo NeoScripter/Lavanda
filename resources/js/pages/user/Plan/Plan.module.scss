@@ -1,0 +1,88 @@
+@use 'core' as u;
+
+.layout {
+    @include u.px(pt, 92, 204, 180, 189);
+
+    h2 {
+        color: u.clr('primary', 'strong');
+    }
+}
+
+.bgLoader {
+    position: absolute;
+    inset: 0;
+    @include u.size(100%);
+}
+
+.bgImage {
+    object-position: top left;
+}
+
+.heading {
+    text-align: center;
+    text-transform: unset;
+}
+
+.card {
+    margin-inline: auto;
+    @include u.px(w, 326, 389, 389, 389);
+    @include u.px(mt, 51, 75, 69, 92);
+    @include u.px(mb, 51, 74, 48, 56);
+
+    > button:first-of-type {
+        display: none;
+    }
+}
+
+.payBtn {
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-inline: auto;
+    padding-inline: 2em;
+    margin-top: 2.5em;
+    margin-bottom: 2em;
+    font-size: 1.25rem;
+}
+
+.backLink {
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    width: max-content;
+    margin-inline: auto;
+    color: u.clr('foreground', 'muted');
+    @include u.mw(sm) {
+        font-size: 0.75em;
+    }
+
+    svg {
+        @include u.size(1.25em);
+    }
+
+    @include u.underline-slide();
+}
+
+.notice {
+    background-color: white;
+    margin-inline: auto;
+    font-size: 1rem;
+    @include u.px(rounded, 32, 32, 32, 32);
+    @include u.px(py, 50, 75, 60, 60);
+    @include u.px(px, 27, 51, 65, 80);
+    @include u.px(max-w, 326, 610, 1045, 1247);
+    @include u.px(mb, 183, 110, 119, 129);
+    @include u.mw(lg) {
+        font-size: 1.25rem;
+    }
+
+    li {
+        list-style: disc inside;
+        padding-left: 0.5em;
+        margin-bottom: 0.25em;
+    }
+    p {
+        margin-bottom: 0.25em;
+    }
+}

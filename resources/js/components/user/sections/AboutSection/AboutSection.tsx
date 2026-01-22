@@ -3,11 +3,13 @@ import Background from '@/assets/images/home/about-bg.webp';
 import ForegroundTiny from '@/assets/images/home/about-fg-tiny.webp';
 import Foreground from '@/assets/images/home/about-fg.webp';
 import LazyImage from '@/components/user/ui/LazyImage/LazyImage';
+import { FC } from 'preact/compat';
 import css from './AboutSection.module.scss';
+import { cn } from '@/utils/cn';
 
-const AboutSection = () => {
+const AboutSection: FC<{ className?: string }> = ({ className }) => {
     return (
-        <section class={css.wrapper}>
+        <section class={cn(css.wrapper, className)}>
             <div>
                 <h2 class={css.heading}>Об авторе</h2>
 
@@ -16,7 +18,8 @@ const AboutSection = () => {
                     такое сомнения, новые начала и возвращение к себе. Опыт в
                     консалтинге, IT и личные поворотные этапы жизни стали
                     основой пространства поддержки — здесь бережно собраны
-                    любимые инструменты, а их логика, алгоритмы и визуализации продуманы до деталей.
+                    любимые инструменты, а их логика, алгоритмы и визуализации
+                    продуманы до деталей.
                     <br />
                     <br />
                     Здесь нет универсальных рецептов. Но есть слова, образы и

@@ -4,6 +4,7 @@ import Login from '@/components/user/forms/Login/Login';
 import Signup from '@/components/user/forms/Signup/Signup';
 import { LoginProvider, useLoginModal } from '@/providers/LoginContext';
 import { SignupProvider, useSignupModal } from '@/providers/SignupContext';
+import { Auth } from '@/types/auth';
 import { Flash } from '@/types/flash';
 import { NodeProps } from '@/types/nodeProps';
 import { cn } from '@/utils/cn';
@@ -19,6 +20,8 @@ import AppHeader from './partials/AppHeader/AppHeader';
 const AppLayout: FC<
     NodeProps<{ extendedFooter?: boolean; variation?: string }>
 > = ({ className, children, extendedFooter, variation = 'dark' }) => {
+    const { auth } = usePage<{ auth: Auth }>().props;
+
     return (
         <ErrorBoundary fallback={Error}>
             <SignupProvider>
@@ -35,7 +38,7 @@ const AppLayout: FC<
                         <AppHeader />
 
                         <AppFooter hasMenu={extendedFooter} />
-                        <AppModals />
+                        {!auth?.user && <AppModals />}
                     </div>
                 </LoginProvider>
             </SignupProvider>

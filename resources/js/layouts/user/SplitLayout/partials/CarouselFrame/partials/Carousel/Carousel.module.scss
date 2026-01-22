@@ -40,7 +40,7 @@
     position: absolute;
     aspect-ratio: 1/1;
     background-color: white;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     inset: 0;
     margin: auto;
     transition:
@@ -55,6 +55,10 @@
     // Smooth rendering
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
+
+    @include u.mw(md) {
+        border-radius: 1rem;
+    }
 }
 
 .runeWrapper {
