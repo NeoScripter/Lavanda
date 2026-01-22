@@ -101,6 +101,6 @@ export const assymetricSectionLinks: AssymetricSectionLink[] = [
         img: SadnessLink6,
         imgTiny: SadnessLink6Tiny,
         alt: 'Акварельная спиральная галактика в фиолетово-розовых тонах со звёздами',
-        url: '/audios',
+        url: '/sadness/audios',
     },
 ];

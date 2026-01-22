@@ -48,9 +48,9 @@ Route::prefix('/decision')->name('decision.')->group(function () {
 });
 Route::prefix('/sadness')->name('sadness.')->group(function () {
     Route::get('/', SadnessController::class)->name('index'); // мне грустно
+    Route::get('/audios', AudioController::class)->name('audios');
 });
 
-Route::get('/audios', AudioController::class)->name('audios');
 Route::get('/affirmations', AffirmationController::class)->name('affirmations');
 Route::get('/relaxation', RelaxationController::class)->name('relaxation');
 Route::get('/toolkit', ToolkitController::class)->name('toolkit');
