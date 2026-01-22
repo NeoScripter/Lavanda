@@ -21,14 +21,10 @@ const itemImage: CarouselImage = {
 const ANIMATION_DURATION = 750;
 
 const AffirmationCarousel = () => {
-    const { affirmations } = usePage<{
+    const { affirmations, category } = usePage<{
         affirmations: Affirmation[];
+        category: string;
     }>().props;
-
-    const category =
-        typeof window !== 'undefined'
-            ? new URLSearchParams(window.location.search).get('category')
-            : null;
 
     const isMotionEnabled = checkMotionPreferences();
 

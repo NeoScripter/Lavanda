@@ -10,7 +10,7 @@ const CategoryBtn: FC<NodeProps<{ category: string }>> = ({
 }) => {
     const handleClick = () => {
         router.visit(route('affirmations'), {
-            only: ['affirmations'],
+            only: ['category', 'affirmations'],
             data: {
                 category: category,
             },
@@ -21,7 +21,7 @@ const CategoryBtn: FC<NodeProps<{ category: string }>> = ({
 
     return (
         <button
-            type='button'
+            type="button"
             onClick={handleClick}
             className={cn(css.wrapper, className)}
         >

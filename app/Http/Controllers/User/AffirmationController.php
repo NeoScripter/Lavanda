@@ -20,6 +20,7 @@ class AffirmationController extends Controller
                 ? Affirmation::where('type', $validated['category'])->get()
                 : null,
             'categories' => Affirmation::distinct()->pluck('type'),
+            'category' => $validated['category'] ?? null,
         ]);
     }
 }
