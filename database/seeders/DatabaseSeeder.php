@@ -33,6 +33,7 @@ class DatabaseSeeder extends Seeder
             IchingSeeder::class,
             AudioSeeder::class,
             AffirmationSeeder::class,
+            LegalSeeder::class,
         ]);
     }
 }

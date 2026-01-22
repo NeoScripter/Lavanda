@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('legals', function (Blueprint $table) {
             $table->id();
+            $table->string('type')->index();
+            $table->text('body');
+            $table->text('html')->nullable();
             $table->timestamps();
         });
     }

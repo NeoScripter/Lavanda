@@ -16,8 +16,12 @@ class LegalFactory extends Factory
      */
     public function definition(): array
     {
+
+        $faker = \Faker\Factory::create();
+        $faker->addProvider(new \DavidBadura\FakerMarkdownGenerator\FakerProvider($faker));
+
         return [
-            //
+            'body' => $faker->markdown()
         ];
     }
 }

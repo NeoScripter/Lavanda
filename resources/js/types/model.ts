@@ -44,6 +44,14 @@ export type Image = {
     updated_at?: string;
     imageable?: any;
 };
+export type Legal = {
+    id: number;
+    type: string;
+    body: string;
+    html?: string;
+    created_at?: string;
+    updated_at?: string;
+};
 export type Lenormand = {
     id: number;
     name: string;

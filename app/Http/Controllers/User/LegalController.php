@@ -3,15 +3,18 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\Legal;
+use Inertia\Inertia;
 
 class LegalController extends Controller
 {
     /**
      * Handle the incoming request.
      */
-    public function __invoke(Request $request)
+    public function __invoke(Legal $legal)
     {
-        //
+        return Inertia::render('user/Legal/Legal', [
+            'legal' => $legal->toResource()
+        ]);
     }
 }

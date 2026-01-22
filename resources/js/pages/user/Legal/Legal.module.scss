@@ -17,3 +17,31 @@
 .bgImage {
     object-position: top left;
 }
+
+.content {
+    background: rgba(255, 255, 255, 0.7);
+    margin-bottom: 4rem;
+    @include u.px(rounded, 0, 32, 32, 32);
+    @include u.px(pb, 54, 66, 84, 84);
+    @include u.px(pt, 35, 39, 64, 88);
+    @include u.px(px, 17, 43, 80, 98);
+
+    @include u.mw(sm) {
+        grid-column: 2 !important;
+    }
+    @include u.mw(md) {
+        margin-bottom: 0;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+        margin-bottom: 1.2em;
+    }
+    p,
+    ul,
+    ol {
+        margin-bottom: 1em;
+    }
+}

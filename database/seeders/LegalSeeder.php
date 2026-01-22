@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Legal;
 use Illuminate\Database\Seeder;
 
 class LegalSeeder extends Seeder
@@ -12,6 +12,9 @@ class LegalSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        Legal::factory()->count(2)->sequence(
+            ['type' => 'consent'],
+            ['type' => 'policy'],
+        )->create();
     }
 }
