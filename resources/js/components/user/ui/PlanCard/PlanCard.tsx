@@ -1,5 +1,5 @@
 import Star from '@/assets/svgs/star.svg';
-import { useLoginModal } from '@/providers/LoginContext';
+import { useAuthModal } from '@/providers/AuthModalContext';
 import { Auth } from '@/types/auth';
 import { Plan } from '@/types/model';
 import { NodeProps } from '@/types/nodeProps';
@@ -16,11 +16,11 @@ const PlanCard: FC<NodeProps<{ plan: Plan; children?: ComponentChildren }>> = ({
 }) => {
     const { auth } = usePage<{ auth: Auth }>().props;
 
-    const { setShowLoginModal } = useLoginModal();
+    const { showLogin } = useAuthModal();
 
     const handleClick = () => {
         if (!auth?.user) {
-            setShowLoginModal(true);
+            showLogin();
         } else {
             router.visit(route('plan', plan.id));
         }

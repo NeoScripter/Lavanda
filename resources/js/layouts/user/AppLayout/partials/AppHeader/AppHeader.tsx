@@ -13,12 +13,14 @@ import { CircleUser } from 'lucide-preact';
 import { FC, useEffect } from 'preact/compat';
 import Nav from '../Nav/Nav';
 import css from './AppHeader.module.scss';
+import { useAuthModal } from '@/providers/AuthModalContext';
 
 const AppHeader: FC<NodeProps> = ({ className }) => {
     const {
         auth: { user },
     } = usePage<{ auth: Auth }>().props;
-    const { setShowLoginModal } = useLoginModal();
+        const { showLogin } = useAuthModal();
+
     const { show: showMenu, setShow: setShowMenu } = useClickOutside([
         '#header',
     ]);
@@ -52,7 +54,7 @@ const AppHeader: FC<NodeProps> = ({ className }) => {
         if (user != null) {
             router.visit(route('account'));
         } else {
-            setShowLoginModal(true);
+            showLogin();
         }
     };
 

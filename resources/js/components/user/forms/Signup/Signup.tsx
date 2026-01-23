@@ -2,10 +2,8 @@ import { Link, router, useForm } from '@inertiajs/react';
 import { LoaderCircle } from 'lucide-preact';
 
 import FormLayout from '@/layouts/user/FormLayout/FormLayout';
-import { useLoginModal } from '@/providers/LoginContext';
-import { useSignupModal } from '@/providers/SignupContext';
+import { useAuthModal } from '@/providers/AuthModalContext';
 import { TargetedEvent } from 'preact';
-import { toast } from 'sonner';
 import Checkbox from '../Checkbox/Checkbox';
 import Input from '../Input/Input';
 import InputError from '../InputError/InputError';
@@ -32,8 +30,8 @@ type SignupForm = {
 };
 
 export default function Signup() {
-    const { setShowLoginModal } = useLoginModal();
-    const { setShowSignupModal } = useSignupModal();
+    const { showLogin, closeModal } = useAuthModal();
+
     const { data, setData, post, processing, errors, reset } = useForm<
         Required<SignupForm>
     >({
@@ -48,8 +46,7 @@ export default function Signup() {
     });
 
     const handleClick = () => {
-        setShowSignupModal(false);
-        setShowLoginModal(true);
+        showLogin();
     };
 
     const submit = (e: TargetedEvent<HTMLFormElement, SubmitEvent>) => {
@@ -61,7 +58,7 @@ export default function Signup() {
 
             onSuccess: () => {
                 router.flushAll();
-                setShowSignupModal(false);
+                closeModal();
             },
             onFinish: () => reset('password'),
         });

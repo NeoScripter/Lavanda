@@ -2,8 +2,7 @@ import { router, useForm } from '@inertiajs/react';
 import { LoaderCircle } from 'lucide-preact';
 
 import FormLayout from '@/layouts/user/FormLayout/FormLayout';
-import { useLoginModal } from '@/providers/LoginContext';
-import { useSignupModal } from '@/providers/SignupContext';
+import { useAuthModal } from '@/providers/AuthModalContext';
 import { TargetedEvent } from 'preact';
 import { toast } from 'sonner';
 import Input from '../Input/Input';
@@ -18,8 +17,7 @@ type LoginForm = {
 };
 
 export default function Login() {
-    const { setShowLoginModal } = useLoginModal();
-    const { setShowSignupModal } = useSignupModal();
+    const { showSignup, closeModal } = useAuthModal();
 
     const { data, setData, post, processing, errors, reset } = useForm<
         Required<LoginForm>
@@ -29,8 +27,7 @@ export default function Login() {
     });
 
     const handleClick = () => {
-        setShowSignupModal(true);
-        setShowLoginModal(false);
+        showSignup();
     };
 
     const submit = (e: TargetedEvent<HTMLFormElement, SubmitEvent>) => {
@@ -41,7 +38,7 @@ export default function Login() {
             preserveState: true,
             onSuccess: () => {
                 router.flushAll();
-                setShowLoginModal(false);
+                closeModal();
                 toast('Добро пожаловать!');
             },
             onFinish: () => reset('password'),

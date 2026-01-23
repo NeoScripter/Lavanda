@@ -27,8 +27,8 @@
     position: relative;
     margin-inline: auto;
     margin: auto;
-    min-height: 100vh;
     min-height: 100svh;
+    height: max-content;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -38,13 +38,14 @@
 
     @include u.mw(sm) {
         height: max-content;
-        border-radius: 32px;
-        max-width: 603px;
+        border-radius: 16px;
+        max-width: 503px;
+        min-height: 0;
         @include u.shadow(2);
         border: 1px solid u.clr('primary', 'muted');
 
         @include u.mw(sm) {
-            max-width: 744px;
+            max-width: 544px;
         }
     }
 
@@ -77,12 +78,12 @@
     /* @include u.px(right, 25, 22, 22, 22); */
     /* @include u.px(--size, 32, 42, 42, 42); */
 
-    @include u.size(32px);
+    @include u.size(1.5rem);
 
     @include u.mw(sm) {
         right: 24px;
         top: 24px;
-        @include u.size(42px);
+        @include u.size(2rem);
     }
 }
 

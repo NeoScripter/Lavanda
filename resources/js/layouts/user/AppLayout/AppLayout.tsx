@@ -2,8 +2,7 @@ import Error from '@/components/shared/layout/Error/Error';
 import ErrorBoundary from '@/components/shared/layout/ErrorBoundary';
 import Login from '@/components/user/forms/Login/Login';
 import Signup from '@/components/user/forms/Signup/Signup';
-import { LoginProvider, useLoginModal } from '@/providers/LoginContext';
-import { SignupProvider, useSignupModal } from '@/providers/SignupContext';
+import { AuthModalProvider, useAuthModal } from '@/providers/AuthModalContext';
 import { Auth } from '@/types/auth';
 import { Flash } from '@/types/flash';
 import { NodeProps } from '@/types/nodeProps';
@@ -24,24 +23,22 @@ const AppLayout: FC<
 
     return (
         <ErrorBoundary fallback={Error}>
-            <SignupProvider>
-                <LoginProvider>
-                    <div
-                        class={cn(
-                            'full-bleed-parent',
-                            css.wrapper,
-                            variation === 'dark' && css.darkHeader,
-                            className,
-                        )}
-                    >
-                        {children}
-                        <AppHeader />
+            <AuthModalProvider>
+                <div
+                    class={cn(
+                        'full-bleed-parent',
+                        css.wrapper,
+                        variation === 'dark' && css.darkHeader,
+                        className,
+                    )}
+                >
+                    {children}
+                    <AppHeader />
 
-                        <AppFooter hasMenu={extendedFooter} />
-                        {!auth?.user && <AppModals />}
-                    </div>
-                </LoginProvider>
-            </SignupProvider>
+                    <AppFooter hasMenu={extendedFooter} />
+                    {!auth?.user && <AppModals />}
+                </div>
+            </AuthModalProvider>
         </ErrorBoundary>
     );
 };
@@ -49,8 +46,7 @@ const AppLayout: FC<
 export default AppLayout;
 
 const AppModals = () => {
-    const { showLoginModal, setShowLoginModal } = useLoginModal();
-    const { showSignupModal, setShowSignupModal } = useSignupModal();
+    const { activeModal, closeModal } = useAuthModal();
     const { flash } = usePage<{ flash: Flash }>().props;
 
     useEffect(() => {
@@ -62,15 +58,15 @@ const AppModals = () => {
     return (
         <>
             <DialogLayout
-                show={showLoginModal}
-                onClose={() => setShowLoginModal(false)}
+                show={activeModal === 'login'}
+                onClose={closeModal}
                 key="login-dialog"
             >
                 <Login />
             </DialogLayout>
             <DialogLayout
-                show={showSignupModal}
-                onClose={() => setShowSignupModal(false)}
+                show={activeModal === 'signup'}
+                onClose={closeModal}
                 key="signup-dialog"
             >
                 <Signup />

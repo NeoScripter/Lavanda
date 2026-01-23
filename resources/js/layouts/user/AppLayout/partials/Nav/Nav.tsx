@@ -1,5 +1,5 @@
 import { navLinks, NavLinkType } from '@/lib/data/navLinks';
-import { useLoginModal } from '@/providers/LoginContext';
+import { useAuthModal } from '@/providers/AuthModalContext';
 import { NodeProps } from '@/types/nodeProps';
 import { cn } from '@/utils/cn';
 import isCurrentPage from '@/utils/isCurrentPage';
@@ -10,7 +10,7 @@ import { FC } from 'preact/compat';
 import css from './Nav.module.scss';
 
 const Nav: FC<NodeProps> = ({ className }) => {
-    const { setShowLoginModal } = useLoginModal();
+    const { showLogin } = useAuthModal();
 
     return (
         <nav
@@ -18,7 +18,7 @@ const Nav: FC<NodeProps> = ({ className }) => {
             class={cn(css.nav, className)}
         >
             <button
-                onClick={() => setShowLoginModal(true)}
+                onClick={showLogin}
                 class={css.loginBtn}
             >
                 <UserCircle stroke-width={2} />
