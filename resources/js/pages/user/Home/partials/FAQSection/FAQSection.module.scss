@@ -60,6 +60,10 @@
     @include u.mw(md) {
         max-width: 80%;
     }
+
+    p {
+        margin-bottom: .25em;
+    }
 }
 
 .faqs {

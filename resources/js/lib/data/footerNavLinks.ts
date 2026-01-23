@@ -29,7 +29,7 @@ export const footerNavLinks: FooterNavLinkType[] = [
     },
     {
         id: 'useful',
-        title: 'Полезное',
+        title: 'Оферта',
         description:
             'Здесь можно ознакомиться с условиями использования и политиками ресурса.',
         url: '/legal/policy',

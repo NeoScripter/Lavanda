@@ -51,7 +51,10 @@ const FAQSection = () => {
                             </span>
                         </summary>
 
-                        <div className={css.answer}>{faq.answer}</div>
+                        <div
+                            dangerouslySetInnerHTML={{ __html: faq.answer }}
+                            className={css.answer}
+                        />
                     </details>
                 ))}
             </div>
