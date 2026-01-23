@@ -23,11 +23,8 @@ export const affirmationBg: BgLoaderImage = {
     mbTiny: BackgroundMbTinyWebp,
 };
 
-export const affirmationCarouselIntro = `
-    Короткое напутствие на день, чтобы напомнить себе о важном.
-    Одно предложение — но иногда именно оно задаёт настроение всему дню.
-    Выбери свою фразу на сегодня — словно сообщение от подруги, которое помогает выдохнуть и улыбнуться.
-`;
+export const affirmationCarouselIntro =
+    'Карточки на каждый день, чтобы вернуть опору, спокойствие и веру в себя. Подходят, когда нужно настроиться на лучшее и укрепить внутренний ресурс.';
 
 export const affirmationCategoryIntro = `
     <p>

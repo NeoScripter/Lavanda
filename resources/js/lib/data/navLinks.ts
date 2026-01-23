@@ -149,7 +149,7 @@ export const navLinks: NavLinkType[] = [
             },
             {
                 id: crypto.randomUUID(),
-                label: 'Ресурсы',
+                label: 'Полезные ресурсы',
                 type: 'link',
                 href: '/toolkit',
             },
