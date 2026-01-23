@@ -32,6 +32,6 @@ export const footerNavLinks: FooterNavLinkType[] = [
         title: 'Полезное',
         description:
             'Здесь можно ознакомиться с условиями использования и политиками ресурса.',
-        url: '/toolkit',
+        url: '/legal/policy',
     },
 ];

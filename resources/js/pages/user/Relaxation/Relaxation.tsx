@@ -4,6 +4,7 @@ import HeroDecorTiny from '@/assets/images/relaxation/hero-decor-tiny.webp';
 import HeroDecor from '@/assets/images/relaxation/hero-decor.webp';
 import LazyImage from '@/components/user/ui/LazyImage/LazyImage';
 
+import WellnessTipLayout from '@/layouts/user/WellnessTipLayout';
 import {
     foregroundImage,
     heroDescription,
@@ -11,14 +12,9 @@ import {
     introHeading,
     introParts,
 } from './pageData';
-import { WellnessTip } from '@/types/model';
-import { usePage } from '@inertiajs/react';
 import css from './Relaxation.module.scss';
-import WellnessTipLayout from '@/layouts/user/WellnessTipLayout';
 
 const Relaxation = () => {
-    const { tips } = usePage<{ tips: WellnessTip[] }>().props;
-
     return (
         <WellnessTipLayout
             headTitle="Хочу расслабиться"
@@ -34,7 +30,6 @@ const Relaxation = () => {
             }
             introHeading={introHeading}
             introIntros={introParts}
-            wellnessTips={tips}
         >
             <LazyImage
                 img={FooterDecor}

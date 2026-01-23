@@ -8,7 +8,6 @@ import BgLoader from '@/components/user/ui/BgLoader/BgLoader';
 import Narrative from '@/components/user/ui/Narrative/Narrative';
 import AppLayout from '@/layouts/user/AppLayout/AppLayout';
 import { BgLoaderImg } from '@/lib/types/shared';
-import { WellnessTip } from '@/types/model';
 import { cn } from '@/utils/cn';
 import { Head } from '@inertiajs/react';
 import { ComponentChildren } from 'preact';
