@@ -4,17 +4,22 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Plan;
-use Carbon\Carbon;
+use Illuminate\Support\Facades\Cache;
 use Inertia\Inertia;
 
 class HomeController extends Controller
 {
     public function __invoke()
     {
-        $plans = Plan::public()->orderBy('price')->get();
-
         return Inertia::render('user/Home/Home', [
-            'plans' => $plans
+            'plans' => Cache::flexible(
+                'plans',
+                [60, 600],
+                fn() =>
+                Plan::orderBy('price')
+                    ->get()
+                    ->toResourceCollection()
+            )
         ]);
     }
 }

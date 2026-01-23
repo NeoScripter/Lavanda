@@ -15,8 +15,8 @@ class PlanSeeder extends Seeder
     {
         Plan::create([
             'title' => 'Базовый',
-            'tier' => PlanTier::BASE,
-            'durationInDays' => 7,
+            'tier' => PlanTier::BASE->value,
+            'duration_in_days' => 7,
             'price' => 590,
             'perks' => [
                 'Доступ ко всем разделам без ограничений в течение 7 дней',
@@ -26,8 +26,8 @@ class PlanSeeder extends Seeder
 
         Plan::create([
             'title' => 'Стандарт',
-            'tier' => PlanTier::STANDARD,
-            'durationInDays' => 30,
+            'tier' => PlanTier::STANDARD->value,
+            'duration_in_days' => 30,
             'price' => 1590,
             'perks' => [
                 'Доступ ко всем разделам без ограничений в течние 30 дней',
@@ -38,8 +38,8 @@ class PlanSeeder extends Seeder
 
         Plan::create([
             'title' => 'Профи',
-            'tier' => PlanTier::PROFI,
-            'durationInDays' => 365,
+            'tier' => PlanTier::PROFI->value,
+            'duration_in_days' => 365,
             'price' => 5990,
             'perks' => [
                 'Доступ ко всем разделам без ограничений в течние 1 года',

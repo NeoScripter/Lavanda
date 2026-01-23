@@ -14,6 +14,7 @@ use App\Models\WellnessTip;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -46,5 +47,9 @@ class AppServiceProvider extends ServiceProvider
             'mindGame' => MindGame::class,
             'lenormand' => Lenormand::class,
         ]);
+
+        Gate::define('access-premium-features', function ($user) {
+            return $user->hasActiveSubscription();
+        });
     }
 }

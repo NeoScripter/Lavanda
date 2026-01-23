@@ -35,7 +35,7 @@ class Plan extends Model
             get: function () {
                 $duration = Carbon::now()
                     ->locale('ru')
-                    ->addDays($this->durationInDays + 2)
+                    ->addDays($this->duration_in_days + 2)
                     ->diffForHumans([
                         'syntax' => Carbon::DIFF_RELATIVE_AUTO,
                         'parts' => 1,
@@ -44,10 +44,5 @@ class Plan extends Model
                 return implode(" ", array_slice(explode(' ', $duration), 1));
             }
         )->shouldCache();
-    }
-
-    public function scopePublic(Builder $query): Builder
-    {
-        return $query->select(['id', 'title', 'durationInDays', 'price', 'perks']);
     }
 }

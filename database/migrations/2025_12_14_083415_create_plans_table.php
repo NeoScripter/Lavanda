@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('tier');
-            $table->unsignedInteger('durationInDays');
+            $table->unsignedInteger('duration_in_days');
             $table->unsignedInteger('price');
             $table->json('perks');
             $table->timestamps();

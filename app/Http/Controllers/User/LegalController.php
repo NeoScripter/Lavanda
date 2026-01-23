@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Legal;
+use Illuminate\Support\Facades\Cache;
 use Inertia\Inertia;
 
 class LegalController extends Controller
@@ -14,7 +15,12 @@ class LegalController extends Controller
     public function __invoke(Legal $legal)
     {
         return Inertia::render('user/Legal/Legal', [
-            'legal' => $legal->toResource()
+            'legal' => Cache::flexible(
+                $legal->type,
+                [5, 10],
+                fn() =>
+                $legal->toResource()
+            )
         ]);
     }
 }
