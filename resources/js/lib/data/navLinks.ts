@@ -126,9 +126,9 @@ export const navLinks: NavLinkType[] = [
     },
     {
         id: crypto.randomUUID(),
-        label: 'Ресурсы',
+        label: 'Бонус игра',
         type: 'link',
-        href: '/toolkit',
+        href: '/promo',
     },
     {
         id: crypto.randomUUID(),
@@ -143,15 +143,15 @@ export const navLinks: NavLinkType[] = [
         links: [
             {
                 id: crypto.randomUUID(),
-                label: 'Бонус игра',
-                type: 'link',
-                href: '/promo',
-            },
-            {
-                id: crypto.randomUUID(),
                 label: 'О ресурсе',
                 type: 'link',
                 href: '/about',
+            },
+            {
+                id: crypto.randomUUID(),
+                label: 'Ресурсы',
+                type: 'link',
+                href: '/toolkit',
             },
         ],
     },
