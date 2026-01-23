@@ -11,11 +11,17 @@
     @include u.px(mt, null, null, 37, 32);
     @include u.px(--padding, null, null, 27, 45);
     @include u.px(min-h, 690, 745, 722, 797);
-    @include u.px(pt, 113, 212, 212, 233);
+    @include u.px(pt, 93, 242, 193, 193);
     @include u.px(pb, 306, 243, 170, 170);
     @include u.px(pl, null, null, 73, 132);
     @include u.px(mb, 162, 249, 248, 266);
     @include u.shadow(3);
+}
+.breadcrumbs {
+    @include u.px(mb, 29, 36, 94, 75);
+    @include u.mw(sm) {
+        margin-left: 0;
+    }
 }
 
 .bgImage {

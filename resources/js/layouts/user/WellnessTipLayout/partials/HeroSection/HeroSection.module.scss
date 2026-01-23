@@ -10,8 +10,9 @@
     @include u.px(rounded, null, null, 36, 36);
     @include u.px(mt, null, null, 37, 32);
     @include u.px(--padding, null, null, 27, 45);
-    @include u.px(min-h, 608, 785, 742, 830);
+    @include u.px(min-h, 608, 895, 742, 830);
     @include u.px(pt, 103, 227, 180, 190);
+    @include u.px(pb, 20, 120, 90, 120);
     @include u.px(px, 11, 64, 100, 180);
     @include u.px(mb, 274, 316, 100, 100);
     @include u.shadow(3);
@@ -94,4 +95,11 @@
 
 .heading {
     @include u.rm(text, 32, 48, 48, 48);
+}
+
+.breadcrumbs {
+    @include u.px(mb, 29, 60, 94, 75);
+    @include u.mw(sm) {
+        margin-left: 0;
+    }
 }

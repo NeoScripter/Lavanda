@@ -13,3 +13,10 @@
         margin-inline: auto;
     }
 }
+
+.breadcrumbs {
+    @include u.px(mb, 29, 36, 64, 65);
+    @include u.mw(md) {
+        margin-inline: auto;
+    }
+}

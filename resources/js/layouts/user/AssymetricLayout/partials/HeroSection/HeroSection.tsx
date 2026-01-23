@@ -14,6 +14,7 @@ import { Link } from '@inertiajs/react';
 import { ComponentChildren } from 'preact';
 import { FC } from 'react-dom/src';
 import css from './HeroSection.module.scss';
+import BreadCrumbs from '@/components/user/ui/BreadCrumbs';
 
 type AssymetricHeroSectionProps = {
     heading: string;
@@ -57,6 +58,8 @@ const HeroSection: FC<AssymetricHeroSectionProps> = ({
             {decorImg}
 
             <div class={css.content}>
+                <BreadCrumbs className={css.breadcrumbs}/>
+
                 <h1 class={css.heading}>
                     {parts.slice(0, -1)}{' '}
                     <AnimatedOutline>{parts.at(-1)}</AnimatedOutline>

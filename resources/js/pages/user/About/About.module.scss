@@ -1,5 +1,5 @@
 @use 'core' as u;
 
 .layout {
-    @include u.px(pt, 92, 204, 180, 189);
+    @include u.px(pt, 92, 224, 180, 189);
 }

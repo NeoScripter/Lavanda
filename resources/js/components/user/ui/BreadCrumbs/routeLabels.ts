@@ -17,6 +17,7 @@ export const routeLabels: Record<string, string> = {
     relaxation: 'Хочу расслабиться',
     iching: 'Таблица Гексаграмм',
     audios: 'Послание поддержки',
-    affirmations: 'Аффирмация на день',
+    affirmations: 'Настрой',
+    about: 'О ресурсе',
     toolkit: 'Полезные ресурсы',
 };
