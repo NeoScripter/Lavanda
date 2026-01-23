@@ -11,8 +11,9 @@ import BgLoader from '@/components/user/ui/BgLoader/BgLoader';
 import LazyImage from '@/components/user/ui/LazyImage/LazyImage';
 import Narrative from '@/components/user/ui/Narrative/Narrative';
 import AppLayout from '@/layouts/user/AppLayout/AppLayout';
+import { Auth } from '@/types/auth';
 import { cn } from '@/utils/cn';
-import { Head } from '@inertiajs/react';
+import { Head, usePage } from '@inertiajs/react';
 import css from './Home.module.scss';
 import FAQSection from './partials/FAQSection/FAQSection';
 import HeroSection from './partials/HeroSection/HeroSection';
@@ -20,6 +21,10 @@ import IntroSection from './partials/IntroSection/IntroSection';
 import PlanSection from './partials/PlanSection/PlanSection';
 
 const Home = () => {
+    const { auth } = usePage<{ auth: Auth }>().props;
+
+    console.log(auth.hasPremiumAccess)
+
     return (
         <AppLayout
             extendedFooter={false}

@@ -4,6 +4,8 @@ namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Gate;
 use Inertia\Middleware;
 use Tighten\Ziggy\Ziggy;
 
@@ -44,6 +46,7 @@ class HandleInertiaRequests extends Middleware
             ],
             'auth' => [
                 'user' => $request->user(),
+                'hasPremiumAccess' => Cache::flexible('premium-access', [5, 10], fn() => Gate::check('premium-access')),
             ],
             'locale' => fn() => App::getLocale(),
             'ziggy' => fn(): array => [

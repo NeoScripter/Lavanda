@@ -8,13 +8,14 @@ import BgTbTiny from '@/assets/images/assymetric-layout/hero-bg-tb-tiny.webp';
 import BgTb from '@/assets/images/assymetric-layout/hero-bg-tb.webp';
 import AnimatedOutline from '@/components/user/ui/AnimatedOutline/AnimatedOutline';
 import BgLoader from '@/components/user/ui/BgLoader/BgLoader';
+import BreadCrumbs from '@/components/user/ui/BreadCrumbs';
 import { BgLoaderImg } from '@/lib/types/shared';
+import { Auth } from '@/types/auth';
 import { cn } from '@/utils/cn';
-import { Link } from '@inertiajs/react';
+import { Link, usePage } from '@inertiajs/react';
 import { ComponentChildren } from 'preact';
 import { FC } from 'react-dom/src';
 import css from './HeroSection.module.scss';
-import BreadCrumbs from '@/components/user/ui/BreadCrumbs';
 
 type AssymetricHeroSectionProps = {
     heading: string;
@@ -30,6 +31,11 @@ const HeroSection: FC<AssymetricHeroSectionProps> = ({
     decorImg,
 }) => {
     const parts = heading.split(' ');
+    const { auth } = usePage<{
+        auth: Auth;
+    }>().props;
+
+    const isMember = auth.hasPremiumAccess;
 
     return (
         <section class={cn(css.wrapper, 'full-bleed')}>
@@ -45,7 +51,7 @@ const HeroSection: FC<AssymetricHeroSectionProps> = ({
             />
 
             <div class={css.content}>
-                <BreadCrumbs className={css.breadcrumbs}/>
+                <BreadCrumbs className={css.breadcrumbs} />
                 <h1 class={css.heading}>
                     {parts.slice(0, -1)}{' '}
                     <AnimatedOutline>{parts.at(-1)}</AnimatedOutline>
@@ -53,15 +59,17 @@ const HeroSection: FC<AssymetricHeroSectionProps> = ({
 
                 <p class={css.intro}>{description}</p>
 
-                <div class={css.btnGroup}>
-                    <Link
-                        prefetch
-                        href={route('plans')}
-                        class={'primary-btn'}
-                    >
-                        Купить подписку
-                    </Link>
-                </div>
+                {!isMember && (
+                    <div class={css.btnGroup}>
+                        <Link
+                            prefetch
+                            href={route('plans')}
+                            class={'primary-btn'}
+                        >
+                            Купить подписку
+                        </Link>
+                    </div>
+                )}
             </div>
 
             <BgLoader

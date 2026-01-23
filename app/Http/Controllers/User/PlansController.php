@@ -13,7 +13,9 @@ class PlansController extends Controller
      */
     public function index()
     {
-        $plans = Plan::public()->orderBy('price')->get();
+        $plans = Plan::orderBy('price')
+            ->get()
+            ->toResourceCollection();
 
         return Inertia::render('user/Plans/Plans', [
             'plans' => $plans

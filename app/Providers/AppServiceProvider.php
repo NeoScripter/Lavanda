@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Enums\UserRole;
 use App\Models\ExperienceItem;
 use App\Models\Lenormand;
 use App\Models\Metaphoric;
@@ -48,8 +49,8 @@ class AppServiceProvider extends ServiceProvider
             'lenormand' => Lenormand::class,
         ]);
 
-        Gate::define('access-premium-features', function ($user) {
-            return $user->hasActiveSubscription();
+        Gate::define('premium-access', function ($user) {
+            return $user->hasActiveSubscription() || $user->role === UserRole::ADMIN;
         });
     }
 }

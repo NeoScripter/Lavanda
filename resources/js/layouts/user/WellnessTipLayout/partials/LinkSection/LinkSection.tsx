@@ -1,5 +1,7 @@
 import LazyImage from '@/components/user/ui/LazyImage/LazyImage';
 import Pagination from '@/components/user/ui/Pagination/Pagination';
+import Paywall from '@/components/user/ui/Paywall/Paywall';
+import { Auth } from '@/types/auth';
 import { WellnessTip } from '@/types/model';
 import { PaginationMeta } from '@/types/pagination';
 import { usePage } from '@inertiajs/react';
@@ -8,31 +10,40 @@ import { FC, useId } from 'preact/compat';
 import css from './LinkSection.module.scss';
 
 const WellnessTipSection = () => {
-    const { tips } = usePage<{
-        tips: PaginationMeta<WellnessTip>;
+    const { tips, auth } = usePage<{
+        tips: PaginationMeta<WellnessTip> | null;
+        auth: Auth;
     }>().props;
 
     const id = useId();
+    const isMember = auth.hasPremiumAccess;
 
     return (
         <section class={css.wrapper}>
-            <ul
-                id={id}
-                class={css.grid}
-            >
-                {tips.data.map((tip) => (
-                    <WellnessTipCard
-                        key={tip.id}
-                        tip={tip}
-                    />
-                ))}
-            </ul>
+            {isMember ? (
+                <ul
+                    id={id}
+                    class={css.grid}
+                >
+                    {tips &&
+                        tips.data.map((tip) => (
+                            <WellnessTipCard
+                                key={tip.id}
+                                tip={tip}
+                            />
+                        ))}
+                </ul>
+            ) : (
+                <Paywall />
+            )}
 
-            <Pagination
-                shouldScroll={false}
-                scrollElementId={id}
-                meta={tips}
-            />
+            {tips && (
+                <Pagination
+                    shouldScroll={false}
+                    scrollElementId={id}
+                    meta={tips}
+                />
+            )}
         </section>
     );
 };
