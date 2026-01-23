@@ -1,22 +1,24 @@
+import ArrowHint from '@/components/user/ui/ArrowHint';
 import { useInteractiveItems } from '@/layouts/user/InteractiveLayout/InteractiveItemsContext';
 import { useCurrentSlideId } from '@/layouts/user/ItemsLayout/CurrentSlideProvider';
 import { Rune } from '@/types/model';
 import { cn } from '@/utils/cn';
 import { Transition } from '@headlessui/react';
-import { usePage } from '@inertiajs/react';
+import { Signal } from '@preact/signals';
+import { FC } from 'preact/compat';
 import PickedRunes from '../PickedRunes/PickedRunes';
 import css from './ChosenRunes.module.scss';
 import padGridCorners from './helpers/padGridCorners';
 import { useRuneSelection } from './hooks/useRuneSelection';
 import RuneGridItem from './partials/RuneGridItem/RuneGridItem';
-import { FC } from 'preact/compat';
-import { Signal } from '@preact/signals';
-import ArrowHint from '@/components/user/ui/ArrowHint';
 
 const TOTAL_COLUMNS = 7;
 const TOTAL_ROWS = 8;
 
-const ChosenRunes: FC<{runes: Rune[], selectedCategory: Signal<string>}> = ({runes, selectedCategory}) => {
+const ChosenRunes: FC<{ runes: Rune[]; selectedCategory: Signal<string> }> = ({
+    runes,
+    selectedCategory,
+}) => {
     const { currentSlideId } = useCurrentSlideId();
     const { interactiveItems, prevInteractiveItems } = useInteractiveItems();
 
@@ -24,7 +26,12 @@ const ChosenRunes: FC<{runes: Rune[], selectedCategory: Signal<string>}> = ({run
     const paddedRunes = padGridCorners(runes, TOTAL_ROWS, TOTAL_COLUMNS);
 
     const { selectedRunes, hasEnded, handleSelectRune, handleRestart } =
-        useRuneSelection(runeLimit, interactiveItems, prevInteractiveItems, selectedCategory.value);
+        useRuneSelection(
+            runeLimit,
+            interactiveItems,
+            prevInteractiveItems,
+            selectedCategory.value,
+        );
 
     return (
         <>

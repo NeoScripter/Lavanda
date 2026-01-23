@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User\Decision\Cards;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CardResource;
 use App\Models\Lenormand;
+use Illuminate\Support\Facades\Gate;
 use Inertia\Inertia;
 
 class LenormandController extends Controller
@@ -29,8 +30,7 @@ class LenormandController extends Controller
 
         return Inertia::render('user/Decision/pages/Cards/pages/Lenormand/Lenormand', [
             'items' => $items,
-            'cards' => Inertia::defer(fn() => CardResource::collection(Lenormand::all()->shuffle())),
-            // 'cards' =>  CardResource::collection(Lenormand::all()->shuffle()),
+            'cards' => Inertia::defer(fn() => Gate::check('premium-access') ? fn() => CardResource::collection(Lenormand::all()->shuffle()) : null),
         ]);
     }
 }

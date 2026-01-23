@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User\Decision;
 use App\Http\Controllers\Controller;
 use App\Models\Rune;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 use Inertia\Inertia;
 
 class RunesController extends Controller
@@ -38,7 +39,9 @@ class RunesController extends Controller
 
         return Inertia::render('user/Decision/pages/Runes/Runes', [
             'items' => $items,
-            'runes' => Inertia::defer(fn() => Rune::all()->load('categories')->shuffle()),
+            'runes' => Inertia::defer(fn() => Gate::check('premium-access') ? Rune::all()
+                ->load('categories')
+                ->shuffle() : null),
             'categories' => $categories,
         ]);
     }

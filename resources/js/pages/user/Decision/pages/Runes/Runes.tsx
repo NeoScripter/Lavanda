@@ -15,7 +15,7 @@ import css from './Runes.module.scss';
 
 const Runes = () => {
     const { runes, categories } = usePage<{
-        runes: Rune[];
+        runes: Rune[] | null;
         categories: string[];
     }>().props;
 
@@ -46,13 +46,13 @@ const Runes = () => {
                     () => (
                         <RandomRunes
                             selectedCategory={selectedCategory}
-                            runes={runes}
+                            runes={runes ?? []}
                         />
                     ),
                     () => (
                         <ChosenRunes
                             selectedCategory={selectedCategory}
-                            runes={runes}
+                            runes={runes ?? []}
                         />
                     ),
                 ]}

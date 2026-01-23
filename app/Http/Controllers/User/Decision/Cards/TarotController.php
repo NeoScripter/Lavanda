@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\CardResource;
 use App\Models\Tarot;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Inertia\Inertia;
 
 class TarotController extends Controller
@@ -35,7 +36,7 @@ class TarotController extends Controller
 
         return Inertia::render('user/Decision/pages/Cards/pages/Tarot/Tarot', [
             'items' => $items,
-            'cards' => Inertia::defer(fn() => CardResource::collection(Tarot::all()->shuffle())),
+            'cards' => Inertia::defer(fn() => Gate::check('premium-access') ? fn() => CardResource::collection(Tarot::all()->shuffle()) : null),
         ]);
     }
 }

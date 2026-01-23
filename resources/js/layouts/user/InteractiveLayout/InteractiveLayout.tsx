@@ -1,6 +1,7 @@
+import { Auth } from '@/types/auth';
 import { NodeProps } from '@/types/nodeProps';
 import { cn } from '@/utils/cn';
-import { Deferred } from '@inertiajs/react';
+import { Deferred, usePage } from '@inertiajs/react';
 import { ComponentChild } from 'preact';
 import { FC, useState } from 'preact/compat';
 import {
@@ -9,6 +10,7 @@ import {
 } from './InteractiveItemsContext';
 import css from './InteractiveLayout.module.scss';
 import ItemsDisplay from './partials/ItemsDisplay';
+import Paywall from '@/components/user/ui/Paywall/Paywall';
 
 const InteractiveLayout: FC<
     NodeProps<{
@@ -17,8 +19,16 @@ const InteractiveLayout: FC<
         components: (() => ComponentChild)[];
     }>
 > = ({ deferedKey, className, btnLabels, components, children }) => {
+    const { auth } = usePage<{ auth: Auth }>().props;
+
+    const isMember = auth.hasPremiumAccess;
+
     const [activeIdx, setActiveIdx] = useState(0);
     const hasNav = components.length > 1;
+
+    if (!isMember) {
+        return <Paywall />
+    }
 
     return (
         <div className={cn(css.wrapper, className)}>
