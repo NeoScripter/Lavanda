@@ -1,0 +1,24 @@
+@use 'core' as u;
+
+.wrapper {
+    background-color: white;
+    margin-inline: auto;
+    font-size: 1rem;
+    @include u.px(rounded, 32, 32, 32, 32);
+    @include u.px(py, 50, 75, 60, 60);
+    @include u.px(px, 27, 51, 65, 80);
+    @include u.px(max-w, 326, 610, 1045, 1247);
+    @include u.px(mb, 183, 110, 119, 129);
+    @include u.mw(lg) {
+        font-size: 1.25rem;
+    }
+
+    li {
+        list-style: disc inside;
+        padding-left: 0.5em;
+        margin-bottom: 0.25em;
+    }
+    p {
+        margin-bottom: 0.25em;
+    }
+}
