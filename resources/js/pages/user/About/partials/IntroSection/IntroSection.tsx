@@ -1,33 +1,191 @@
+import Logo from '@/components/user/ui/Logo/Logo';
 import css from './IntroSection.module.scss';
+import { cn } from '@/utils/cn';
 
 const IntroSection = () => {
     return (
-        <section className={css.wrapper}>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum
-                dolorem, minima eveniet, maxime numquam laudantium, provident et
-                quaerat ullam ipsa quibusdam dicta. Ratione incidunt odio alias
-                quisquam aperiam nisi provident sequi velit nam esse distinctio
-                aliquid nobis veniam, iste illum commodi et quas adipisci autem
-                in unde amet at dicta.
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum
-                dolorem, minima eveniet, maxime numquam laudantium, provident et
-                quaerat ullam ipsa quibusdam dicta. Ratione incidunt odio alias
-                quisquam aperiam nisi provident sequi velit nam esse distinctio
-                aliquid nobis veniam, iste illum commodi et quas adipisci autem
-                in unde amet at dicta.
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum
-                dolorem, minima eveniet, maxime numquam laudantium, provident et
-                quaerat ullam ipsa quibusdam dicta. Ratione incidunt odio alias
-                quisquam aperiam nisi provident sequi velit nam esse distinctio
-                aliquid nobis veniam, iste illum commodi et quas adipisci autem
-                in unde amet at dicta.
-            </p>
-        </section>
+        <div className={css.wrapper}>
+            <section>
+                <h2>О ресурсе</h2>
+                <p>
+                    <Logo
+                        isLink={false}
+                        className={css.logo}
+                    />{' '}
+                    — это онлайн-пространство для тихого времени с собой. Место,
+                    куда можно прийти, когда хочется остановиться, выдохнуть,
+                    навести внутренний порядок и взглянуть на ситуацию под новым
+                    углом — без шума лент, чужих мнений и давления «правильных
+                    решений».
+                </p>
+                <p>
+                    Лаванда создана как альтернатива бесконечному скроллу ленты
+                    и случайным советам. Здесь нет спешки и оценок — только
+                    инструменты для личной рефлексии, внимания к себе и
+                    заботливого самоисследования.
+                </p>
+            </section>
+
+            <section>
+                <h2>Для чего этот ресурс</h2>
+                <p>
+                    <Logo
+                        isLink={false}
+                        className={css.logo}
+                    />{' '}
+                    появилась из простого и очень человеческого запроса — иметь
+                    место, куда можно прийти в любой момент жизни. Без
+                    необходимости что-то объяснять. Без ожиданий. Без роли
+                    «собранной», «сильной» или «знающей».
+                </p>
+                <p>
+                    Иногда хочется поговорить с близкими — и это ценно. Однако
+                    иногда важнее сначала услышать себя. В тишине. В собственном
+                    темпе. Без чужих интерпретаций и советов, даже самых
+                    заботливых.
+                </p>
+            </section>
+
+            <section>
+                <h2>
+                    Что есть в{' '}
+                    <Logo
+                        isLink={false}
+                        className={cn(css.logo, css.logoLarge)}
+                    />{' '}
+                </h2>
+                <p>
+                    Я создала{' '}
+                    <Logo
+                        isLink={false}
+                        className={css.logo}
+                    />{' '}
+                    как пространство, которого мне самой когда-то не хватало.
+                    Место между рациональным анализом и интуитивным
+                    чувствованием. Между логикой и образами. Между вопросом и
+                    тем тихим ответом, который обычно звучит внутри, если дать
+                    ему время.
+                </p>
+                <p>
+                    Это онлайн-пространство, куда возможно прийти, когда вокруг
+                    слишком шумно или, наоборот, слишком пусто. Когда хочется
+                    уюта, ясности и ощущения, что с тобой всё в порядке.
+                </p>
+
+                <p>На портале собраны разные форматы:</p>
+                <ul>
+                    <li>
+                        <strong>Работа с образами и метафорами</strong> — способ обойти привычное
+                        мышление и услышать то, что обычно остается «между
+                        строк».
+                    </li>
+                    <li>
+                        <strong>Карточные и символьные форматы</strong> — используются как
+                        инструмент случайного выбора и фокуса внимания, чтобы
+                        запустить размышления и посмотреть на вопрос под новым
+                        углом.
+                    </li>
+                    <li>
+                        <strong>Практики самонаблюдения</strong> — короткие упражнения, которые
+                        возвращают контакт с собой и своим состоянием.
+                    </li>
+                    <li>
+                        <strong>Личный опыт автора и команды</strong> — полезные инструменты,
+                        которые помогли нам или вам.
+                    </li>
+                    <li>
+                        <strong>Аффирмации и тексты для настроя</strong> — чтобы поддержать себя
+                        и задать вектор.
+                    </li>
+                    <li>
+                        <strong>Структурные шаблоны</strong> — помогают спокойно разложить
+                        ситуацию по полочкам, увидеть варианты и опоры, когда в
+                        голове хаос.
+                    </li>
+                    <li>
+                        <strong>Подборки полезных ресурсов</strong> — идеи и ссылки для решения
+                        различных внутренних задач.
+                    </li>
+                    <li><strong>Аудио-послания</strong> и многое другое.</li>
+                </ul>
+
+                <p>Ресурс постоянно пополняется и расширяется.</p>
+                <p>
+                    <Logo
+                        isLink={false}
+                        className={css.logo}
+                    />{' '}
+                    верит, что здесь вы сможете нащупать внутренний свет —
+                    маленький, но настоящий. Тот самый, который появляется,
+                    когда становится чуть яснее, чуть спокойнее и чуть ближе к
+                    себе.
+                </p>
+            </section>
+
+            <section>
+                <h2>Важные принципы</h2>
+                <ul>
+                    <li>
+                        Лаванда — это <strong>развлекательный и рефлексивный контент</strong>.
+                    </li>
+                    <li>
+                        Ресурс не является медицинской, психологической или иной
+                        профессиональной помощью.
+                    </li>
+                    <li>
+                        Материалы не содержат рекомендаций, обязательных к
+                        исполнению.
+                    </li>
+                    <li>Пользователь сам делает выводы и принимает решения.</li>
+                </ul>
+                <p>
+                    При создании материалов использовались современные подходы к
+                    работе с мышлением, вниманием и интерпретацией опыта. Часть
+                    формулировок и трактовок разрабатывалась при участии
+                    специалистов в области психотерапии, однако платформа <strong>не
+                    заменяет работу со специалистом</strong>.
+                </p>
+            </section>
+
+            <section>
+                <h2>Для кого Лаванда</h2>
+                <p>Для тех, кто:</p>
+                <ul>
+                    <li>устал от давления извне;</li>
+                    <li>нуждается в дополнительной опоре;</li>
+                    <li>хочет лучше понимать себя;</li>
+                    <li>ищет безопасное пространство для размышлений;</li>
+                    <li>любит мягкие, эстетичные форматы;</li>
+                    <li>
+                        воспринимает инструменты как повод подумать, а не как
+                        готовый ответ.
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Небольшое напоминание</h2>
+                <p>
+                    Всё, что вы находите в{' '}
+                    <Logo
+                        isLink={false}
+                        className={css.logo}
+                    />{' '}
+                    — это приглашение к размышлению, игре с образами и
+                    внимательному диалогу с собой. Используйте материалы так,
+                    как подходит именно вам, и берите из них только то, что
+                    откликается.
+                </p>
+                <p>
+                    Добро пожаловать в{' '}
+                    <Logo
+                        isLink={false}
+                        className={css.logo}
+                    />{' '}
+                    !
+                </p>
+            </section>
+        </div>
     );
 };
 

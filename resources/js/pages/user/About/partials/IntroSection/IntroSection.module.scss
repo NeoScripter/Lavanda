@@ -3,12 +3,44 @@
 .wrapper {
     @include u.px(mb, 37, 74, 67, 68);
 
-    p {
+    p,
+    ul {
         margin-bottom: 1.5em;
+    }
+    p + ul {
+        margin-top: -1.5em;
+    }
+
+    li {
+        list-style: disc inside;
+    }
+
+    h2 {
+        margin-bottom: 1.2em;
+        font-size: 1.5rem;
+        @include u.mw(sm) {
+            font-size: 2rem;
+            margin-bottom: 1em;
+        }
     }
 
     @include u.mw(sm) {
         max-width: 90%;
         margin-inline: auto;
     }
+    @include u.mw(md) {
+        max-width: 80%;
+    }
+}
+
+.logo {
+    display: inline-block;
+    height: 1.75rem;
+    transform: translateY(25%);
+    width: auto;
+}
+
+.logoLarge {
+    height: 2.75rem;
+    margin-left: 0.15em;
 }
