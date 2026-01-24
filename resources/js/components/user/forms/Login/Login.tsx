@@ -1,29 +1,25 @@
-import { router, useForm } from '@inertiajs/react';
+import { useForm } from '@inertiajs/react';
 import { LoaderCircle } from 'lucide-preact';
 
 import FormLayout from '@/layouts/user/FormLayout/FormLayout';
 import { useAuthModal } from '@/providers/AuthModalContext';
 import { TargetedEvent } from 'preact';
-import { toast } from 'sonner';
 import Input from '../Input/Input';
 import InputError from '../InputError/InputError';
 import Label from '../Label/Label';
-import PasswordInput from '../PasswordInput/PasswordInput';
 import css from './Login.module.scss';
 
 type LoginForm = {
     email: string;
-    password: string;
 };
 
 export default function Login() {
-    const { showSignup, closeModal } = useAuthModal();
+    const { showOtp, showSignup } = useAuthModal();
 
-    const { data, setData, post, processing, errors, reset } = useForm<
+    const { data, setData, post, processing, errors } = useForm<
         Required<LoginForm>
     >({
         email: '',
-        password: '',
     });
 
     const handleClick = () => {
@@ -33,15 +29,12 @@ export default function Login() {
     const submit = (e: TargetedEvent<HTMLFormElement, SubmitEvent>) => {
         e.preventDefault();
 
-        post(route('login'), {
+        post(route('otp.send'), {
             preserveScroll: true,
             preserveState: true,
             onSuccess: () => {
-                router.flushAll();
-                closeModal();
-                toast('Добро пожаловать!');
+                showOtp();
             },
-            onFinish: () => reset('password'),
         });
     };
 
@@ -70,22 +63,6 @@ export default function Login() {
                         placeholder="email@example.com"
                     />
                     <InputError message={errors.email} />
-                </div>
-
-                <div>
-                    <Label htmlFor="password">Пароль</Label>
-                    <PasswordInput
-                        id="password"
-                        required
-                        tabIndex={2}
-                        autoComplete="current-password"
-                        value={data.password}
-                        onChange={(e) =>
-                            setData('password', e.currentTarget.value)
-                        }
-                        placeholder="Password"
-                    />
-                    <InputError message={errors.password} />
                 </div>
 
                 <button

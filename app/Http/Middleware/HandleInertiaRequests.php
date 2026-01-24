@@ -45,8 +45,10 @@ class HandleInertiaRequests extends Middleware
             ...parent::share($request),
             'flash' => [
                 'message' => fn() => $request->session()->pull('message'),
+                'code' => fn() => $request->session()->pull('code'),
             ],
             'auth' => [
+                'user' => fn() => $request->user(),
                 'hasPremiumAccess' =>
                 in_array($request->route()?->getName(), $exemptRoutes, true)
                     || Cache::flexible(

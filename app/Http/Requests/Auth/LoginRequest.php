@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Auth;
 
+use App\Enums\UserRole;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
@@ -49,6 +50,8 @@ class LoginRequest extends FormRequest
             ]);
         }
 
+        $this->ensureIsAdmin();
+
         RateLimiter::clear($this->throttleKey());
     }
 
@@ -81,5 +84,23 @@ class LoginRequest extends FormRequest
     public function throttleKey(): string
     {
         return Str::transliterate(Str::lower($this->string('email')) . '|' . $this->ip());
+    }
+
+    /**
+     * Ensure the login request is sent by an admin
+     *
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function ensureIsAdmin(): void
+    {
+        $user = Auth::user();
+
+        if (!$user || !$user->role !== UserRole::ADMIN) {
+            Auth::logout();
+
+            throw ValidationException::withMessages([
+                'email' => 'Access denied. Admin privileges required.',
+            ]);
+        }
     }
 }

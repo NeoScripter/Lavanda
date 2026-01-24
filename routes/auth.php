@@ -1,10 +1,12 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\ProfileController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\Auth\ResendOtpController;
+use App\Http\Controllers\Auth\SendOtpController;
+use App\Http\Controllers\Auth\VerifyOtpController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -32,4 +34,12 @@ Route::middleware(['auth', 'admin.translations'])->group(function () {
 
     Route::patch('settings/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::put('settings/password', [PasswordController::class, 'update'])->name('password.update');
+});
+
+
+// Route::middleware(['throttle:5,1'])->prefix('/otp')->group(function () {
+Route::prefix('/otp')->group(function () {
+    Route::post('/send', SendOtpController::class)->name('otp.send');
+    Route::post('/verify', VerifyOtpController::class)->name('otp.verify');
+    Route::post('/resend', ResendOtpController::class)->name('otp.resend');
 });

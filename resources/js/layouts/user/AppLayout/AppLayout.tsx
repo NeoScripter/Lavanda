@@ -15,6 +15,7 @@ import DialogLayout from '../DialogLayout/DialogLayout';
 import css from './AppLayout.module.scss';
 import AppFooter from './partials/AppFooter/AppFooter';
 import AppHeader from './partials/AppHeader/AppHeader';
+import VerifyOtp from '@/components/user/forms/VerifyOtp/VerifyOtp';
 
 const AppLayout: FC<
     NodeProps<{ extendedFooter?: boolean; variation?: string }>
@@ -63,6 +64,13 @@ const AppModals = () => {
                 key="login-dialog"
             >
                 <Login />
+            </DialogLayout>
+            <DialogLayout
+                show={activeModal === 'otp'}
+                onClose={closeModal}
+                key="otp-dialog"
+            >
+                <VerifyOtp />
             </DialogLayout>
             <DialogLayout
                 show={activeModal === 'signup'}

@@ -1,12 +1,13 @@
 import { createContext } from 'preact';
 import { useContext, useState } from 'preact/hooks';
 
-type ModalType = 'login' | 'signup' | null;
+type ModalType = 'login' | 'signup' | 'otp' | null;
 
 interface AuthModalContextValue {
     activeModal: ModalType;
     setActiveModal: (value: ModalType) => void;
     showLogin: () => void;
+    showOtp: () => void;
     showSignup: () => void;
     closeModal: () => void;
 }
@@ -30,6 +31,7 @@ export function AuthModalProvider({
 
     const showLogin = () => setActiveModal('login');
     const showSignup = () => setActiveModal('signup');
+    const showOtp = () => setActiveModal('otp');
     const closeModal = () => setActiveModal(null);
 
     return (
@@ -39,6 +41,7 @@ export function AuthModalProvider({
                 setActiveModal,
                 showLogin,
                 showSignup,
+                showOtp,
                 closeModal,
             }}
         >

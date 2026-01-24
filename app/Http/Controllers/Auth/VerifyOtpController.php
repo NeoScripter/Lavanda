@@ -1,0 +1,33 @@
+<?php
+
+namespace App\Http\Controllers\Auth;
+
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Auth\VerifyOtpRequest;
+use App\Models\User;
+use App\Services\OtpService;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
+
+class VerifyOtpController extends Controller
+{
+    public function __construct(
+        protected OtpService $otpService
+    ) {}
+
+    public function __invoke(VerifyOtpRequest $request)
+    {
+        $user = User::firstWhere('email', $request->email);
+
+        if (!$this->otpService->verify($user, $request->code)) {
+            throw ValidationException::withMessages([
+                'code' => 'Invalid or expired verification code.',
+            ]);
+        }
+
+        Auth::login($user);
+        $request->session()->regenerate();
+
+        return redirect()->route('home');
+    }
+}

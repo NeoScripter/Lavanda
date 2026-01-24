@@ -25,8 +25,6 @@ type SignupForm = {
     gender: string | null;
     policy: boolean;
     consent: boolean;
-    password: string;
-    password_confirmation: string;
 };
 
 export default function Signup() {
@@ -41,8 +39,6 @@ export default function Signup() {
         policy: false,
         consent: false,
         gender: null,
-        password: '',
-        password_confirmation: '',
     });
 
     const handleClick = () => {
@@ -60,7 +56,6 @@ export default function Signup() {
                 router.flushAll();
                 closeModal();
             },
-            onFinish: () => reset('password'),
         });
     };
 
@@ -124,42 +119,6 @@ export default function Signup() {
                     options={genders}
                     label="Выберите пол"
                 />
-
-                <div>
-                    <Label htmlFor="password">Пароль</Label>
-                    <PasswordInput
-                        id="password"
-                        required
-                        tabIndex={4}
-                        autoComplete="current-password"
-                        value={data.password}
-                        onChange={(e) =>
-                            setData('password', e.currentTarget.value)
-                        }
-                        placeholder="Password"
-                    />
-                    <InputError message={errors.password} />
-                </div>
-
-                <div>
-                    <Label htmlFor="password_confirmation">
-                        Подтвердите пароль
-                    </Label>
-                    <PasswordInput
-                        id="password_confirmation"
-                        required
-                        tabIndex={5}
-                        value={data.password_confirmation}
-                        onChange={(e) =>
-                            setData(
-                                'password_confirmation',
-                                e.currentTarget.value,
-                            )
-                        }
-                        placeholder="Подтверждение пароля"
-                    />
-                    <InputError message={errors.password_confirmation} />
-                </div>
 
                 <button
                     tabIndex={6}

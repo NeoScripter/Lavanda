@@ -7,9 +7,6 @@ use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
 
 class RegisteredUserController extends Controller
 {
@@ -28,7 +25,6 @@ class RegisteredUserController extends Controller
             'gender' => 'nullable|in:male,female',
             'birthday' => 'nullable|date|before:today',
             'email' => 'required|string|lowercase|email|max:255|unique:' . User::class,
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'policy' => 'required|accepted',
             'consent' => 'required|accepted',
         ]);
@@ -38,12 +34,9 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'gender' => $request->gender,
             'birthday' => $request->birthday,
-            'password' => Hash::make($request->password),
         ]);
 
         event(new Registered($user));
-
-        Auth::login($user);
 
         return back()->with(
             'message',
