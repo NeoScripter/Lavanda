@@ -58,6 +58,17 @@ Route::get('/toolkit', ToolkitController::class)->name('toolkit');
 Route::get('/legal/{legal:type}', LegalController::class)->name('legal');
 Route::middleware('auth')->get('/plan/{plan}', [PlansController::class, 'show'])->name('plan');
 
+Route::get('/test-mail', function() {
+    try {
+        \Illuminate\Support\Facades\Mail::raw('Test email body', function ($message) {
+            $message->to('sange0337@gmail.com')
+                    ->subject('Test Email');
+        });
+        return 'Email sent successfully!';
+    } catch (\Exception $e) {
+        return 'Error: ' . $e->getMessage() . '<br><br>Trace: ' . $e->getTraceAsString();
+    }
+});
 
 require __DIR__ . '/auth.php';
 require __DIR__ . '/admin.php';
