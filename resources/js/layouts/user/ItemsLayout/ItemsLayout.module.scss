@@ -155,6 +155,12 @@
     overflow: hidden;
     @include u.px(mb, 56, 60, 40, 70);
 }
+.paywallFrame {
+    overflow: visible !important;
+    padding-inline: 10px;
+    @include u.px(mb, 56, 60, 0, 0);
+    @include u.px(mt, 0, 0, 80, 60);
+}
 
 .cardTextWrapper {
     min-height: 50%;
@@ -165,3 +171,4 @@
     inset: 0;
     @include u.size(100%);
 }
+

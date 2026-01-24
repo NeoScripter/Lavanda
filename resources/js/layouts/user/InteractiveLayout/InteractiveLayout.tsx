@@ -1,3 +1,4 @@
+import Paywall from '@/components/user/ui/Paywall/Paywall';
 import { Auth } from '@/types/auth';
 import { NodeProps } from '@/types/nodeProps';
 import { cn } from '@/utils/cn';
@@ -10,7 +11,6 @@ import {
 } from './InteractiveItemsContext';
 import css from './InteractiveLayout.module.scss';
 import ItemsDisplay from './partials/ItemsDisplay';
-import Paywall from '@/components/user/ui/Paywall/Paywall';
 
 const InteractiveLayout: FC<
     NodeProps<{
@@ -27,7 +27,7 @@ const InteractiveLayout: FC<
     const hasNav = components.length > 1;
 
     if (!isMember) {
-        return <Paywall />
+        return <Paywall />;
     }
 
     return (
@@ -55,6 +55,7 @@ const InteractiveLayout: FC<
                         fallback={<div>Загрузка...</div>}
                     >
                         <InteractiveLayoutContent
+                            isMember={isMember}
                             hasNav={hasNav}
                             components={components}
                             activeIdx={activeIdx}
@@ -62,6 +63,7 @@ const InteractiveLayout: FC<
                     </Deferred>
                 ) : (
                     <InteractiveLayoutContent
+                        isMember={isMember}
                         hasNav={hasNav}
                         components={components}
                         activeIdx={activeIdx}
@@ -80,7 +82,8 @@ const InteractiveLayoutContent: FC<{
     hasNav: boolean;
     components: (() => ComponentChild)[];
     activeIdx: number;
-}> = ({ hasNav, components, activeIdx }) => {
+    isMember: boolean;
+}> = ({ hasNav, components, activeIdx, isMember }) => {
     const { interactiveItems } = useInteractiveItems();
 
     const isReadingOpen = interactiveItems.value.length > 0;
@@ -91,6 +94,7 @@ const InteractiveLayoutContent: FC<{
                 [css.roundedTop]: !hasNav,
                 [css.roundedBottom]: !isReadingOpen,
                 [css.flatBottomCorners]: isReadingOpen,
+                [css.noPaddingBottom]: !isMember,
             })}
         >
             {components[activeIdx]?.()}

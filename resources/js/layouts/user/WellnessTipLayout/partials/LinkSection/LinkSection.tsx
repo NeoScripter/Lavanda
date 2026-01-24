@@ -4,6 +4,7 @@ import Paywall from '@/components/user/ui/Paywall/Paywall';
 import { Auth } from '@/types/auth';
 import { WellnessTip } from '@/types/model';
 import { PaginationMeta } from '@/types/pagination';
+import { cn } from '@/utils/cn';
 import { usePage } from '@inertiajs/react';
 import { ArrowUpRight } from 'lucide-preact';
 import { FC, useId } from 'preact/compat';
@@ -19,7 +20,7 @@ const WellnessTipSection = () => {
     const isMember = auth.hasPremiumAccess;
 
     return (
-        <section class={css.wrapper}>
+        <section class={cn(css.wrapper, !isMember && css.noMargin)}>
             {isMember ? (
                 <ul
                     id={id}

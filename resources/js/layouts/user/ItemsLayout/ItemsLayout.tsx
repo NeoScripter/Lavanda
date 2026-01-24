@@ -2,6 +2,7 @@ import Error from '@/components/shared/layout/Error/Error';
 import ErrorBoundary from '@/components/shared/layout/ErrorBoundary';
 import LazyImage from '@/components/user/ui/LazyImage/LazyImage';
 import useMediaQuery from '@/hooks/useMediaQuery';
+import { Auth } from '@/types/auth';
 import { ExperienceItem } from '@/types/model';
 import { NodeProps } from '@/types/nodeProps';
 import { cn } from '@/utils/cn';
@@ -17,11 +18,14 @@ const SLIDE_DURATION = 400;
 type PreviewItem = ExperienceItem & { preview?: string };
 
 const ItemsLayout: FC<NodeProps> = ({ className, children }) => {
-    const { items } = usePage<{ items: PreviewItem[] }>().props;
+    const { items, auth } = usePage<{ items: PreviewItem[]; auth: Auth }>()
+        .props;
     const prevIdx = useRef<number | null>(null);
     const { currentSlideId } = useCurrentSlideId();
     const [showContent, setShowContent] = useState(false);
     const isDesktop = useMediaQuery('(min-width: 1110px)');
+
+    const isMember = auth.hasPremiumAccess;
 
     const isLenormand = items.length > 0 && items[0]['preview'] != null;
 
@@ -98,7 +102,13 @@ const ItemsLayout: FC<NodeProps> = ({ className, children }) => {
                         class={cn(css.articleWrapper, 'full-bleed')}
                         style={{ '--slide-duration': SLIDE_DURATION + 'ms' }}
                     >
-                        <article class={cn(css.article, 'full-bleed')}>
+                        <article
+                            class={cn(
+                                css.article,
+                                'full-bleed',
+                                !isMember && css.paywallFrame,
+                            )}
+                        >
                             {children}
                         </article>
                     </div>

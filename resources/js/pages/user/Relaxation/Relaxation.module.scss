@@ -27,18 +27,15 @@
 .footerDecor {
     display: none;
 
-    @include u.mw(sm) {
+    @include u.mw(md) {
+        rotate: 9deg;
         display: block;
         position: absolute;
         bottom: 30%;
         left: 0%;
-        z-index: 20;
         transform-origin: center;
-        transform: translate(-50%, 10%);
-        rotate: 23deg;
-    }
-    @include u.mw(md) {
-        rotate: 9deg;
+        z-index: 20;
+        display: block;
         bottom: 15%;
         transform: translate(-50%, 50%);
     }

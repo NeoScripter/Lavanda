@@ -5,6 +5,9 @@
     @include u.px(mb, 567, 287, 180, 172);
 }
 
+.noMargin {
+    @include u.px(mb, 130, 150, 0, 0);
+}
 .grid {
     display: grid;
     --size: 0;
