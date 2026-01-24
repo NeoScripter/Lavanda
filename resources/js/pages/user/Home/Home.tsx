@@ -21,10 +21,6 @@ import IntroSection from './partials/IntroSection/IntroSection';
 import PlanSection from './partials/PlanSection/PlanSection';
 
 const Home = () => {
-    const { auth } = usePage<{ auth: Auth }>().props;
-
-    console.log(auth.hasPremiumAccess)
-
     return (
         <AppLayout
             extendedFooter={false}

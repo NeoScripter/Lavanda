@@ -2,6 +2,7 @@ import Error from '@/components/shared/layout/Error/Error';
 import ErrorBoundary from '@/components/shared/layout/ErrorBoundary';
 import Login from '@/components/user/forms/Login/Login';
 import Signup from '@/components/user/forms/Signup/Signup';
+import VerifyOtp from '@/components/user/forms/VerifyOtp/VerifyOtp';
 import { AuthModalProvider, useAuthModal } from '@/providers/AuthModalContext';
 import { Auth } from '@/types/auth';
 import { Flash } from '@/types/flash';
@@ -9,13 +10,12 @@ import { NodeProps } from '@/types/nodeProps';
 import { cn } from '@/utils/cn';
 import { usePage } from '@inertiajs/react';
 import { FC, useEffect } from 'preact/compat';
-import { toast } from 'sonner';
+import { toast, Toaster } from 'sonner';
 import '../../../../scss/app.scss';
 import DialogLayout from '../DialogLayout/DialogLayout';
 import css from './AppLayout.module.scss';
 import AppFooter from './partials/AppFooter/AppFooter';
 import AppHeader from './partials/AppHeader/AppHeader';
-import VerifyOtp from '@/components/user/forms/VerifyOtp/VerifyOtp';
 
 const AppLayout: FC<
     NodeProps<{ extendedFooter?: boolean; variation?: string }>
@@ -39,6 +39,14 @@ const AppLayout: FC<
                     <AppFooter hasMenu={extendedFooter} />
                     {!auth?.user && <AppModals />}
                 </div>
+                <Toaster
+                    toastOptions={{
+                        style: {
+                            color: '#5f4e8b'
+                        },
+                    }}
+                    position="top-center"
+                />
             </AuthModalProvider>
         </ErrorBoundary>
     );
