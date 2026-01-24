@@ -44,3 +44,14 @@
     height: 2.75rem;
     margin-left: 0.15em;
 }
+
+.decorativeName {
+    font-weight: 600;
+    margin-right: 0.5ch;
+    color: u.clr('primary', 'strong');
+
+    sup {
+        font-size: 0.6em;
+        margin-left: 0.1em;
+    }
+}
