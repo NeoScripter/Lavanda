@@ -22,3 +22,16 @@
 
     margin-top: calc(var(--offsetY) * -1);
 }
+
+.paywall {
+    margin-bottom: 4rem;
+    @include u.mw(md) {
+        margin-bottom: 6rem;
+    }
+}
+
+.paywallFrame {
+    article {
+        @include u.px(mt, 0, 0, 0, 0);
+    }
+}

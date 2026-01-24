@@ -27,7 +27,10 @@ const Paywall: FC<NodeProps> = ({ className }) => {
     };
 
     return (
-        <div className={cn(css.wrapper, className)}>
+        <div
+            id="paywall"
+            className={cn(css.wrapper, className)}
+        >
             <LazyImage
                 prtClass={css.imageFrame}
                 img={ForegroundDkWebp}

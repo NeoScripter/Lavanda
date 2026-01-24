@@ -92,6 +92,7 @@ const ItemsLayout: FC<NodeProps> = ({ className, children }) => {
                 class={cn(
                     css.wrapper,
                     'full-bleed-parent full-bleed',
+                    !isMember && css.noMargin,
                     className,
                 )}
             >

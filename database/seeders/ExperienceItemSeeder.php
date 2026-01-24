@@ -17,8 +17,7 @@ class ExperienceItemSeeder extends Seeder
     {
         $experienceItemData = ExperienceItemFixtures::getFixtures();
 
-
-        for ($i = 0; $i < 6; $i++) {
+        for ($i = 0; $i < 2; $i++) {
             $experienceItemData->each(function (array $raw) {
                 ExperienceItem::factory([
                     'title' => $raw['title'],

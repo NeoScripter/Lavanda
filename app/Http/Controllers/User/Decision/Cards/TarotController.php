@@ -36,7 +36,11 @@ class TarotController extends Controller
 
         return Inertia::render('user/Decision/pages/Cards/pages/Tarot/Tarot', [
             'items' => $items,
-            'cards' => Inertia::defer(fn() => Gate::check('premium-access') ? fn() => CardResource::collection(Tarot::all()->shuffle()) : null),
+            'cards' => Inertia::defer(
+                fn() => Gate::check('premium-access')
+                    ? fn() => CardResource::collection(Tarot::all()->shuffle())
+                    : null
+            ),
         ]);
     }
 }

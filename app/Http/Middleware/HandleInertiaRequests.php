@@ -39,14 +39,21 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
+        $exemptRoutes = ['promo'];
+
         return [
             ...parent::share($request),
             'flash' => [
                 'message' => fn() => $request->session()->pull('message'),
             ],
             'auth' => [
-                'user' => $request->user(),
-                'hasPremiumAccess' => Cache::flexible('premium-access', [5, 10], fn() => Gate::check('premium-access')),
+                'hasPremiumAccess' =>
+                in_array($request->route()?->getName(), $exemptRoutes, true)
+                    || Cache::flexible(
+                        'premium-access',
+                        [5, 10],
+                        fn() => Gate::check('premium-access')
+                    ),
             ],
             'locale' => fn() => App::getLocale(),
             'ziggy' => fn(): array => [

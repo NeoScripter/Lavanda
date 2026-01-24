@@ -8,6 +8,7 @@ import Error from '@/components/shared/layout/Error/Error';
 import ErrorBoundary from '@/components/shared/layout/ErrorBoundary';
 import BgLoader from '@/components/user/ui/BgLoader/BgLoader';
 import { BgLoaderImg } from '@/lib/types/shared';
+import { Auth } from '@/types/auth';
 import { ExperienceItem } from '@/types/model';
 import { NodeProps } from '@/types/nodeProps';
 import { cn } from '@/utils/cn';
@@ -38,8 +39,12 @@ const BreadCrumbLayout: FC<
     withCards,
     hasHeroRevealer,
 }) => {
-    const { items } = usePage<{ items: ExperienceItem[] | undefined }>().props;
+    const { items, auth } = usePage<{
+        items: ExperienceItem[] | undefined;
+        auth: Auth;
+    }>().props;
     const [showContent, setShowContent] = useState(!hasHeroRevealer);
+    const isMember = auth.hasPremiumAccess;
 
     const handleShowContentClick = () => {
         setShowContent(true);
@@ -64,7 +69,7 @@ const BreadCrumbLayout: FC<
                 heading={heading}
                 intro={intro}
                 imgClass={imgClass}
-                className={(withCards || hasHeroRevealer) ? css.noMargin : ''}
+                className={withCards || hasHeroRevealer ? css.noMargin : ''}
                 fgImg={fgImg}
                 handleClick={
                     hasHeroRevealer ? handleShowContentClick : undefined
@@ -73,14 +78,14 @@ const BreadCrumbLayout: FC<
 
             <ErrorBoundary fallback={Error}>
                 <CurrentSlideProvider>
-                    {showContent &&
-                        (withCards && items ? (
-                            <ItemsLayout className={css.topOffset}>
-                                {children}
-                            </ItemsLayout>
-                        ) : (
-                            showContent && children
-                        ))}
+                    {showContent && (
+                        <ContentWrapper
+                            withCards={withCards && !!items}
+                            isMember={isMember}
+                        >
+                            {children}
+                        </ContentWrapper>
+                    )}
                 </CurrentSlideProvider>
             </ErrorBoundary>
         </AppLayout>
@@ -88,3 +93,21 @@ const BreadCrumbLayout: FC<
 };
 
 export default BreadCrumbLayout;
+
+type ContentWrapperProps = {
+    withCards: boolean;
+    isMember: boolean;
+    children: preact.ComponentChildren;
+};
+
+const ContentWrapper: FC<ContentWrapperProps> = ({
+    withCards,
+    isMember,
+    children,
+}) => {
+    if (withCards) {
+        return <ItemsLayout className={css.topOffset}>{children}</ItemsLayout>;
+    }
+
+    return <div className={cn(!isMember && css.paywallFrame)}>{children}</div>;
+};

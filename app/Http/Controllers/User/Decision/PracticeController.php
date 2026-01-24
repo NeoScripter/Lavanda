@@ -13,10 +13,8 @@ class PracticeController extends Controller
      */
     public function __invoke()
     {
-        $items = PracticeItem::limit(9)->get();
-
         return Inertia::render('user/Decision/pages/Practice/Practice', [
-            'items' => $items
+            'items' => PracticeItem::all()->toResourceCollection()
         ]);
     }
 }

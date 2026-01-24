@@ -15,3 +15,17 @@
     @include u.px(--offsetY, 73, 56, 141, 170);
     margin-top: calc(var(--offsetY) * -1);
 }
+
+.paywallFrame {
+    margin-bottom: 4rem;
+    @include u.mw(sm) {
+        margin-bottom: calc(8rem - 10vw);
+    }
+
+    :global(#paywall) {
+        margin-top: 6rem;
+        @include u.mw(sm) {
+            margin-top: 8rem;
+        }
+    }
+}

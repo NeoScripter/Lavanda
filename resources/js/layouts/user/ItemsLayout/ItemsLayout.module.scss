@@ -142,6 +142,9 @@
 .wrapper {
     @include u.px(mb, 67, 243, 161, 62);
 }
+.noMargin {
+    @include u.px(mb, 67, 243, 21, 62);
+}
 
 .articleWrapper {
     display: grid;
@@ -150,16 +153,28 @@
 }
 .articleWrapper[data-closed] {
     grid-template-rows: 0fr;
+
+    .paywallFrame {
+        padding-top: 0rem;
+    }
 }
 .article {
     overflow: hidden;
     @include u.px(mb, 56, 60, 40, 70);
 }
 .paywallFrame {
-    overflow: visible !important;
     padding-inline: 10px;
+    padding-top: 0.5rem;
+    transition: padding-top var(--slide-duration) ease-in-out;
     @include u.px(mb, 56, 60, 0, 0);
     @include u.px(mt, 0, 0, 80, 60);
+    @include u.mw(sm) {
+        padding-top: 2rem;
+    }
+
+    div {
+        box-shadow: none;
+    }
 }
 
 .cardTextWrapper {
@@ -171,4 +186,3 @@
     inset: 0;
     @include u.size(100%);
 }
-

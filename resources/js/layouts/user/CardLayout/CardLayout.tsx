@@ -1,9 +1,11 @@
 import Error from '@/components/shared/layout/Error/Error';
 import ErrorBoundary from '@/components/shared/layout/ErrorBoundary';
+import Paywall from '@/components/user/ui/Paywall';
 import AppLayout from '@/layouts/user/AppLayout/AppLayout';
 import { BgLoaderImg } from '@/lib/types/shared';
+import { Auth } from '@/types/auth';
 import { cn } from '@/utils/cn';
-import { Head } from '@inertiajs/react';
+import { Head, usePage } from '@inertiajs/react';
 import { ComponentChildren } from 'preact';
 import { FC } from 'react-dom/src';
 import ItemsLayout from '../ItemsLayout';
@@ -30,6 +32,10 @@ const CardLayout: FC<CardLayoutProps> = ({
     isHigh = false,
     imgClass,
 }) => {
+    const { auth } = usePage<{ auth: Auth }>().props;
+
+    const isMember = auth.hasPremiumAccess;
+
     return (
         <AppLayout className={css.layout}>
             <Head title={headTitle} />
@@ -41,8 +47,17 @@ const CardLayout: FC<CardLayoutProps> = ({
             />
             <ErrorBoundary fallback={Error}>
                 <CurrentSlideProvider>
-                    <ItemsLayout className={cn(isHigh ? css.shifted : '')}>
-                        {children}
+                    <ItemsLayout
+                        className={cn({
+                            [css.shifted]: isHigh,
+                            [css.paywallFrame]: !isMember,
+                        })}
+                    >
+                        {isMember ? (
+                            children
+                        ) : (
+                            <Paywall className={css.paywall} />
+                        )}
                     </ItemsLayout>
                 </CurrentSlideProvider>
             </ErrorBoundary>

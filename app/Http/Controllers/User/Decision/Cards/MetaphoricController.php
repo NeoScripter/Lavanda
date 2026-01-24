@@ -16,7 +16,11 @@ class MetaphoricController extends Controller
     public function __invoke()
     {
         return Inertia::render('user/Decision/pages/Cards/pages/Metaphoric/Metaphoric', [
-            'cards' => Inertia::defer(fn() => Gate::check('premium-access') ? fn() => CardResource::collection(Metaphoric::all()->shuffle()) : null),
+            'cards' => Inertia::defer(
+                fn() => Gate::check('premium-access')
+                    ? fn() => CardResource::collection(Metaphoric::all()->shuffle())
+                    : null
+            ),
         ]);
     }
 }
