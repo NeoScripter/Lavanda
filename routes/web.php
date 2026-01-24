@@ -58,16 +58,29 @@ Route::get('/toolkit', ToolkitController::class)->name('toolkit');
 Route::get('/legal/{legal:type}', LegalController::class)->name('legal');
 Route::middleware('auth')->get('/plan/{plan}', [PlansController::class, 'show'])->name('plan');
 
-Route::get('/test-mail', function() {
+Route::get('/test-mail', function () {
     try {
         \Illuminate\Support\Facades\Mail::raw('Test email body', function ($message) {
             $message->to('sange0337@gmail.com')
-                    ->subject('Test Email');
+                ->subject('Test Email');
         });
         return 'Email sent successfully!';
     } catch (\Exception $e) {
         return 'Error: ' . $e->getMessage() . '<br><br>Trace: ' . $e->getTraceAsString();
     }
+});
+
+Route::get('/preview-email', function () {
+    $user = new \App\Models\User([
+        'name' => 'Test User',
+        'email' => 'test@example.com',
+    ]);
+
+    $notification = new \App\Notifications\OtpNotification('123456');
+
+    $mailMessage = $notification->toMail($user);
+
+    return $mailMessage->render();
 });
 
 require __DIR__ . '/auth.php';
