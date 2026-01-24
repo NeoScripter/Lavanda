@@ -35,10 +35,15 @@ class OtpNotification extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-            ->subject('Пароль от вашего аккаунта')
+            ->subject('Код для входа в аккаунт')
             ->greeting('Здравствуйте, ' . $notifiable->name)
-            ->line('Спасибо за регистрацию! Ваш аккаунт успешно создан, и ваш платеж был обработан. Вот ваши учетные данные для входа:')
-            ->line('Ваш новый пароль: ' . $this->password)
+            ->line('Рады видеть вас на нашем сайте! Вот ваш одноразовый пароль для входа:')
+            ->line(new \Illuminate\Support\HtmlString(
+                '<div style="text-align: center; margin: 30px 0; font-size: 42px; font-weight: bold; letter-spacing: 10px; color: #000; font-family: monospace;">'
+                    . $this->password .
+                    '</div>'
+            ))
+            ->line('Этот код действителен в течение 3 минут.')
             ->action('В личный кабинет', url('/'));
     }
 
