@@ -15,15 +15,17 @@ import DeleteUser from '@/components/user/forms/DeleteUser/DeleteUser';
 import UpdateUser from '@/components/user/forms/UpdateUser/UpdateUser';
 import BgLoader from '@/components/user/ui/BgLoader/BgLoader';
 import LazyImage from '@/components/user/ui/LazyImage/LazyImage';
+import Toggle from '@/components/user/ui/Toggle/Toggle';
 import AppLayout from '@/layouts/user/AppLayout/AppLayout';
 import DialogLayout from '@/layouts/user/DialogLayout/DialogLayout';
 import { User } from '@/lib/types';
 import { Subscription } from '@/types/model';
 import { cn } from '@/utils/cn';
 import { formatDate } from '@/utils/formatData';
-import { usePage } from '@inertiajs/react';
+import { useForm, usePage } from '@inertiajs/react';
 import { X } from 'lucide-preact';
 import { useState } from 'preact/hooks';
+import { toast } from 'sonner';
 import css from './Account.module.scss';
 
 const Account = () => {
@@ -31,6 +33,20 @@ const Account = () => {
         user: User;
     }>().props;
     const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+    const { patch } = useForm();
+
+    const handleToggle = (sub: Subscription) => {
+        patch(route('subscriptions.update', sub), {
+            preserveScroll: true,
+            onSuccess: () => {
+                if (sub.status === 1) {
+                    toast.success('Автопродление успешно отменено!');
+                } else {
+                    toast.success('Автопродление успешно возобновлено!');
+                }
+            },
+        });
+    };
 
     const sub = user.subscription as Subscription;
 
@@ -57,6 +73,16 @@ const Account = () => {
                 <UpdateUser />
 
                 <div className={css.actions}>
+                    {sub && (
+                        <div className={css.subToggle}>
+                            <Toggle
+                                checked={sub.status === 1}
+                                onChange={() => handleToggle(sub)}
+                                ariaLabel="Переключить подписку"
+                            />
+                            <p>Автопродление подписки</p>
+                        </div>
+                    )}
                     <button
                         onClick={() => setShowDeleteDialog(true)}
                         type="button"

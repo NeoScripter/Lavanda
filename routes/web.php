@@ -22,6 +22,7 @@ use App\Http\Controllers\User\PlansController;
 use App\Http\Controllers\User\RelaxationController;
 use App\Http\Controllers\User\Sadness\SadnessController;
 use App\Http\Controllers\User\ToolkitController;
+use App\Http\Controllers\User\UpdateSubscriptionStatusController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -35,6 +36,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/account', AccountController::class)->name('account');
     Route::post('/user/update', [UserController::class, 'update'])->name('user.update');
     Route::delete('/user', [UserController::class, 'destroy'])->name('user.destroy');
+    Route::patch(
+        '/subscriptions/{subscription}/status',
+        UpdateSubscriptionStatusController::class
+    )->name('subscriptions.update');
 });
 
 Route::prefix('/decision')->name('decision.')->group(function () {

@@ -11,6 +11,11 @@
             margin-left: 0;
         }
 
+        label,
+        fieldset > div:first-child {
+            font-size: 0.95rem !important;
+        }
+
         @include u.mw(sm) {
             fieldset {
                 grid-column-end: span 2;
