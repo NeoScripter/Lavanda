@@ -1,11 +1,102 @@
 @use 'core' as u;
 
 .layout {
-    padding-top: 20rem;
+    @include u.px(pt, 92, 204, 180, 189);
+
+    h2 {
+        color: u.clr('primary', 'strong');
+    }
 }
 
-.logoutBtn {
-    width: max-content;
+.bgLoader {
+    position: absolute;
+    inset: 0;
+    @include u.size(100%);
+}
+
+.bgImage {
+    object-position: top left;
+}
+
+.content {
+    background: white;
+    margin-bottom: 4rem;
     margin-inline: auto;
-    margin-bottom: 20rem;
+    padding-inline: u.rem(25);
+    padding-top: u.rem(36);
+    padding-bottom: u.rem(47);
+
+    @include u.shadow(3);
+
+    @include u.mw(sm) {
+        border-radius: 2rem;
+        grid-column: 2 !important;
+        max-width: 921px;
+        padding-inline: u.rem(39);
+        padding-top: u.rem(45);
+        padding-bottom: u.rem(45);
+    }
+    @include u.mw(md) {
+        margin-bottom: 0;
+        padding-inline: u.rem(106);
+        padding-top: u.rem(60);
+        padding-bottom: u.rem(51);
+    }
+    @include u.mw(lg) {
+        max-width: 1077px;
+        padding-inline: u.rem(185);
+        padding-bottom: u.rem(63);
+    }
+}
+
+.decorPlans1 {
+    display: none;
+
+    @include u.mw(sm) {
+        display: block;
+        position: absolute;
+        right: 0;
+        @include u.px(w, null, 396, 396, 396);
+        aspect-ratio: 1/1;
+        top: 8%;
+        transform: translateX(20%);
+        z-index: -1;
+    }
+    @include u.mw(md) {
+        top: 38%;
+        right: 5%;
+    }
+}
+
+.decorPlans2 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 30%;
+    z-index: -1;
+    @include u.px(w, 365, 365, 365, 365);
+    aspect-ratio: 1/1;
+
+    @include u.mw(sm) {
+        transform: translateX(-20%);
+        left: 0;
+        bottom: 60%;
+    }
+    @include u.mw(md) {
+        bottom: 22%;
+    }
+    @include u.mw(lg) {
+        transform: translateX(-40%);
+        bottom: 20%;
+    }
+}
+
+.heading {
+    text-align: center;
+    text-transform: unset;
+    font-size: 2rem;
+
+    @include u.mw(sm) {
+        font-size: 2.25rem;
+    }
 }

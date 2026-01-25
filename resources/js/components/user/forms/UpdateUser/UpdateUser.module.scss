@@ -1,0 +1,54 @@
+@use 'core' as u;
+
+.formLayout {
+    > div:first-child {
+        display: none;
+    }
+    form {
+        > div,
+        fieldset {
+            width: 100%;
+            margin-left: 0;
+        }
+
+        @include u.mw(sm) {
+            fieldset {
+                grid-column-end: span 2;
+
+                & + div {
+                    grid-column-end: span 2;
+                }
+            }
+        }
+        @include u.mw(sm) {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            place-items: start;
+            gap: 1.5rem;
+        }
+    }
+    @include u.px(pt, 0, 0, 0, 0);
+}
+.birthdayInput {
+    max-width: 16rem;
+    padding: 0.5em 0.75em 0.5em 1.25em;
+}
+
+.legalLink {
+    text-decoration: underline;
+    text-underline-offset: 0.3em;
+    transition: color 0.3s;
+
+    &:hover {
+        color: u.clr('primary', 'strong');
+    }
+}
+
+.submitBtn {
+    margin-right: 0 !important;
+    margin-bottom: 0 !important;
+
+    @include u.mw(sm) {
+        grid-column: 2;
+    }
+}

@@ -1,0 +1,11 @@
+@use 'core' as u;
+
+.layout {
+    padding-top: 20rem;
+}
+
+.logoutBtn {
+    width: max-content;
+    margin-inline: auto;
+    margin-bottom: 20rem;
+}
