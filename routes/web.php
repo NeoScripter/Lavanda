@@ -22,14 +22,20 @@ use App\Http\Controllers\User\PlansController;
 use App\Http\Controllers\User\RelaxationController;
 use App\Http\Controllers\User\Sadness\SadnessController;
 use App\Http\Controllers\User\ToolkitController;
+use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name('home');
-Route::get('/account', AccountController::class)->middleware('auth')->name('account');
 Route::get('/plans', [PlansController::class, 'index'])->name('plans');
 Route::get('/about', AboutController::class)->name('about');
 Route::get('/contacts', ContactPageController::class)->name('contacts');
 Route::get('/promo', PromoController::class)->name('promo'); // экспресс карта
+
+Route::middleware('auth')->group(function () {
+    Route::get('/account', AccountController::class)->name('account');
+    Route::post('/user/update', [UserController::class, 'update'])->name('user.update');
+    Route::delete('/user', [UserController::class, 'destroy'])->name('user.destroy');
+});
 
 Route::prefix('/decision')->name('decision.')->group(function () {
     Route::get('/', DecisionController::class)->name('index'); // решение

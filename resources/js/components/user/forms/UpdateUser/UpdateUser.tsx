@@ -1,9 +1,9 @@
-import { router, useForm } from '@inertiajs/react';
-import { LoaderCircle } from 'lucide-preact';
-
 import FormLayout from '@/layouts/user/FormLayout/FormLayout';
 import { cn } from '@/utils/cn';
+import { router, useForm, usePage } from '@inertiajs/react';
+import { LoaderCircle } from 'lucide-preact';
 import { TargetedEvent } from 'preact';
+import { toast } from 'sonner';
 import Input from '../Input/Input';
 import InputError from '../InputError/InputError';
 import Label from '../Label/Label';
@@ -23,25 +23,44 @@ type UpdateUserForm = {
     gender: string | null;
 };
 
+type User = {
+    id: number;
+    name: string;
+    email: string;
+    birthday: string | null;
+    gender: 'male' | 'female' | null;
+};
+
+type PageProps = {
+    auth: {
+        user: User;
+    };
+};
+
 export default function UpdateUser() {
-    const { data, setData, post, processing, errors, reset } = useForm<
+    const { auth } = usePage<PageProps>().props;
+    const user = auth.user;
+
+    const { data, setData, post, isDirty, processing, errors } = useForm<
         Required<UpdateUserForm>
     >({
-        name: '',
-        email: '',
-        birthday: '',
-        gender: null,
+        name: user.name || '',
+        email: user.email || '',
+        birthday: user.birthday || '',
+        gender: user.gender || null,
     });
 
     const submit = (e: TargetedEvent<HTMLFormElement, SubmitEvent>) => {
         e.preventDefault();
 
-        post(route('signup'), {
+        if (!isDirty) return;
+
+        post(route('user.update'), {
             preserveScroll: true,
             preserveState: true,
-
             onSuccess: () => {
                 router.flushAll();
+                toast.success('Профайл успешно обновлен!');
             },
         });
     };
@@ -50,7 +69,7 @@ export default function UpdateUser() {
         <FormLayout className={css.formLayout}>
             <form onSubmit={submit}>
                 <div>
-                    <Label htmlFor="email">Имя</Label>
+                    <Label htmlFor="name">Имя</Label>
                     <Input
                         id="name"
                         type="text"
@@ -64,7 +83,6 @@ export default function UpdateUser() {
                     />
                     <InputError message={errors.name} />
                 </div>
-
                 <div>
                     <Label htmlFor="email">Email</Label>
                     <Input
@@ -81,7 +99,6 @@ export default function UpdateUser() {
                     />
                     <InputError message={errors.email} />
                 </div>
-
                 <RadioInput
                     selected={data.gender}
                     setSelected={(value) => setData('gender', value)}
@@ -102,10 +119,9 @@ export default function UpdateUser() {
                     />
                     <InputError message={errors.birthday} />
                 </div>
-
                 <button
                     tabIndex={6}
-                    disabled={processing}
+                    disabled={processing || !isDirty}
                     type="submit"
                     className={cn('primary-btn', css.submitBtn)}
                 >
