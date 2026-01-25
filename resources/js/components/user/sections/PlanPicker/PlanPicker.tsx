@@ -7,7 +7,10 @@ import { FC } from 'preact/compat';
 import css from './PlanPicker.module.scss';
 
 const PlanPicker: FC<NodeProps> = ({ children, className }) => {
-    const { plans } = usePage<{ plans: Plan[] }>().props;
+    const { plans, activeUsers } = usePage<{
+        plans: Plan[];
+        activeUsers: number;
+    }>().props;
 
     return (
         <section class={cn(css.wrapper, className)}>
@@ -17,9 +20,11 @@ const PlanPicker: FC<NodeProps> = ({ children, className }) => {
                     Сделайте шаг к себе — выберите подписку и получайте
                     поддержку тогда, когда она особенно нужна.
                 </p>
-                <p class={css.activeUsersNote}>
-                    Уже более 1000 пользователей оформили подписку
-                </p>
+                {activeUsers > 10 && (
+                    <p class={css.activeUsersNote}>
+                        Уже более {activeUsers} пользователей оформили подписку
+                    </p>
+                )}
             </div>
 
             <ul class={css.plans}>

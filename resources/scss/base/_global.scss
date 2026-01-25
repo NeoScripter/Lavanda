@@ -7,7 +7,7 @@
 #app {
     height: 100%;
 }
-#app > * {
+#app > *:first-child {
     min-height: 100%;
 }
 
@@ -34,7 +34,8 @@ body {
     @include u.rm(text, 14, 16, 20, 24);
 }
 
-button, a {
+button,
+a {
     --transition-duration: 0.25s;
     color: inherit;
     cursor: pointer;

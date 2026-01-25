@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Plan;
+use App\Models\User;
 use Inertia\Inertia;
 
 class PlansController extends Controller
@@ -17,8 +18,13 @@ class PlansController extends Controller
             ->get()
             ->toResourceCollection();
 
+        $activeUsers = User::whereHas('subscription', fn($q) =>$q
+            ->where('ends_at', '>', now()))
+            ->count();
+
         return Inertia::render('user/Plans/Plans', [
-            'plans' => $plans
+            'plans' => $plans,
+            'activeUsers' => $activeUsers,
         ]);
     }
 
