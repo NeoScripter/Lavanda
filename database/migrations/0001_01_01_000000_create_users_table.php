@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('gender')->nullable();
             $table->date('birthday')->nullable();
             $table->unsignedInteger('role')->default(UserRole::USER->value);
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
