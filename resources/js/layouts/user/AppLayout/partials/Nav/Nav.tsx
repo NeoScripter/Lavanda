@@ -1,21 +1,22 @@
 import { navLinks, NavLinkType } from '@/lib/data/navLinks';
-import { useAuthModal } from '@/providers/AuthModalContext';
 import { Auth } from '@/types/auth';
 import { NodeProps } from '@/types/nodeProps';
 import { cn } from '@/utils/cn';
 import isCurrentPage from '@/utils/isCurrentPage';
+import shortenUserName from '@/utils/shortenUserName';
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/react';
 import { Link, usePage } from '@inertiajs/react';
 import { ChevronDown, UserCircle } from 'lucide-preact';
 import { FC } from 'preact/compat';
 import css from './Nav.module.scss';
-import shortenUserName from '@/utils/shortenUserName';
 
-const Nav: FC<NodeProps> = ({ className }) => {
+const Nav: FC<NodeProps<{ handleRouterClick: () => void }>> = ({
+    className,
+    handleRouterClick,
+}) => {
     const {
         auth: { user },
     } = usePage<{ auth: Auth }>().props;
-    const { showLogin } = useAuthModal();
 
     return (
         <nav
@@ -23,7 +24,7 @@ const Nav: FC<NodeProps> = ({ className }) => {
             class={cn(css.nav, className)}
         >
             <button
-                onClick={showLogin}
+                onClick={handleRouterClick}
                 class={css.loginBtn}
             >
                 <UserCircle stroke-width={2} />

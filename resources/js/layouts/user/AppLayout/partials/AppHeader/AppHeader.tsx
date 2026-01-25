@@ -4,22 +4,22 @@ import { useClickOutside } from '@/hooks/useClickOutside';
 import useElementHeight from '@/hooks/useElementHeight';
 import { useEscapeKey } from '@/hooks/useEscapeKey';
 import useMediaQuery from '@/hooks/useMediaQuery';
+import { useAuthModal } from '@/providers/AuthModalContext';
 import { Auth } from '@/types/auth';
 import { NodeProps } from '@/types/nodeProps';
 import { cn } from '@/utils/cn';
+import shortenUserName from '@/utils/shortenUserName';
 import { router, usePage } from '@inertiajs/react';
 import { CircleUser } from 'lucide-preact';
 import { FC, useEffect } from 'preact/compat';
 import Nav from '../Nav/Nav';
 import css from './AppHeader.module.scss';
-import { useAuthModal } from '@/providers/AuthModalContext';
-import shortenUserName from '@/utils/shortenUserName';
 
 const AppHeader: FC<NodeProps> = ({ className }) => {
     const {
         auth: { user },
     } = usePage<{ auth: Auth }>().props;
-        const { showLogin } = useAuthModal();
+    const { showLogin } = useAuthModal();
 
     const { show: showMenu, setShow: setShowMenu } = useClickOutside([
         '#header',
@@ -76,7 +76,12 @@ const AppHeader: FC<NodeProps> = ({ className }) => {
                     className={css.burger}
                 />
 
-                {isDesktop && <Nav className={cn(css.dkNav)} />}
+                {isDesktop && (
+                    <Nav
+                        handleRouterClick={handleLoginClick}
+                        className={cn(css.dkNav)}
+                    />
+                )}
 
                 <div class={css.loginBtnWrapper}>
                     <button
@@ -91,6 +96,7 @@ const AppHeader: FC<NodeProps> = ({ className }) => {
 
             {!isDesktop && (
                 <Nav
+                    handleRouterClick={handleLoginClick}
                     className={cn(css.mbNav, {
                         [css.navOpen]: showMenu,
                         [css.navClosed]: !showMenu,
