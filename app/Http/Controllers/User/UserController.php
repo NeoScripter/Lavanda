@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Enums\UserRole;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -47,6 +48,10 @@ class UserController extends Controller
     public function destroy(Request $request): RedirectResponse
     {
         $user = Auth::user();
+
+        if ($user->role === UserRole::ADMIN) {
+            abort('Аккаунт админа нельзя удалить');
+        }
 
         // Log the user out
         Auth::logout();
