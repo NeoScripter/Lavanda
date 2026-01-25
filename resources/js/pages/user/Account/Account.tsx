@@ -22,7 +22,7 @@ import { User } from '@/lib/types';
 import { Subscription } from '@/types/model';
 import { cn } from '@/utils/cn';
 import { formatDate } from '@/utils/formatData';
-import { useForm, usePage } from '@inertiajs/react';
+import { router, useForm, usePage } from '@inertiajs/react';
 import { X } from 'lucide-preact';
 import { useState } from 'preact/hooks';
 import { toast } from 'sonner';
@@ -44,6 +44,18 @@ const Account = () => {
                 } else {
                     toast.success('Автопродление успешно возобновлено!');
                 }
+            },
+        });
+    };
+
+    const handleLogoutClick = () => {
+        router.visit(route('logout'), {
+            preserveScroll: true,
+            preserveState: true,
+            method: 'post',
+            onSuccess: () => {
+                toast.info('До новых встреч!');
+                router.flushAll();
             },
         });
     };
@@ -92,6 +104,13 @@ const Account = () => {
                         Удалить аккаунт
                     </button>
                 </div>
+
+                <button
+                    onClick={handleLogoutClick}
+                    className={cn('primary-btn', css.logoutBtn)}
+                >
+                    Выйти
+                </button>
 
                 {sub?.ends_at && (
                     <h3 className={css.planDetails}>

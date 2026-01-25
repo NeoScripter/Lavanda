@@ -115,6 +115,9 @@
     transition: color 0.3s;
     gap: 0.5em;
 
+    @include u.mw(sm) {
+        margin-left: auto;
+    }
     &:hover {
         color: u.opacify(u.clr('foreground', 'muted'), 70);
     }
@@ -142,4 +145,10 @@
     align-items: center;
     justify-content: center;
     gap: 1rem;
+}
+
+.logoutBtn {
+    padding-inline: 2em;
+    padding-block: 0.75em;
+    margin-left: auto;
 }
