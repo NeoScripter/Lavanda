@@ -34,7 +34,7 @@ const PlanCard: FC<NodeProps<{ plan: Plan; children?: ComponentChildren }>> = ({
                 <p class={css.duration}>
                     <span>Доступ на </span>
                     <time dateTime={`P${plan.durationInDays}D`}>
-                        {plan.human_duration}
+                        {plan.humanDuration}
                     </time>
                 </p>
 

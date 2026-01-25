@@ -10,9 +10,9 @@ use App\Http\Controllers\Auth\VerifyOtpController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::middleware(['guest', 'admin.translations'])->group(function () {
-    Route::get('/login', [AuthenticatedSessionController::class, 'index'])->name('login');
-    Route::post('/login', [AuthenticatedSessionController::class, 'store'])->name('authenticate');
+Route::middleware(['guest'])->group(function () {
+    // Route::get('/login', [AuthenticatedSessionController::class, 'index'])->name('login');
+    // Route::post('/login', [AuthenticatedSessionController::class, 'store'])->name('authenticate');
     Route::post('/signup', [RegisteredUserController::class, 'store'])->name('signup');
 });
 
@@ -29,7 +29,7 @@ Route::middleware(['guest', 'admin.translations'])->group(function () {
 //         ->name('verification.send');
 // });
 
-Route::middleware(['auth', 'admin.translations'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
     Route::patch('settings/profile', [ProfileController::class, 'update'])->name('profile.update');

@@ -4,10 +4,8 @@ namespace App\Models;
 
 use App\Enums\PlanTier;
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class Plan extends Model
@@ -19,8 +17,6 @@ class Plan extends Model
         'tier' => PlanTier::class,
         'perks' => 'array',
     ];
-
-    protected $appends = ['human_duration'];
 
     public function humanDuration(): Attribute
     {
