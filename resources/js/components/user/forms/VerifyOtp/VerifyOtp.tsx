@@ -24,7 +24,7 @@ export default function VerifyOtp() {
     const { data, setData, post, processing, errors } = useForm<
         Required<LoginForm>
     >({
-        email: flash.code ?? '',
+        email: flash?.code?.email ?? '',
         code: '',
     });
 

@@ -17,8 +17,11 @@ class SendOtpController extends Controller
     {
         $user = User::firstWhere('email', $request->email);
 
-        $this->otpService->generate($user);
+        $otp = $this->otpService->generate($user);
 
-        return back()->with('code', $request->email);
+        return back()->with('code', [
+            'email' => $request->email,
+            'code' => app()->isLocal() ? $otp->code : null,
+        ]);
     }
 }

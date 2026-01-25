@@ -17,8 +17,11 @@ class ResendOtpController extends Controller
     {
         $user = User::firstWhere('email', $request->email);
 
-        $this->otpService->generate($user);
+        $otp = $this->otpService->generate($user);
 
-        return back()->with('message', 'New verification code sent.');
+        return back()->with('code', [
+            'email' => $request->email,
+            'code' => app()->isLocal() ? $otp->code : null,
+        ]);
     }
 }

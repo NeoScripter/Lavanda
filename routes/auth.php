@@ -37,8 +37,8 @@ Route::middleware(['auth', 'admin.translations'])->group(function () {
 });
 
 
-// Route::middleware(['throttle:5,1'])->prefix('/otp')->group(function () {
-Route::prefix('/otp')->group(function () {
+// Route::prefix('/otp')->group(function () {
+Route::middleware(['throttle:1,0.33'])->prefix('/otp')->group(function () {
     Route::post('/send', SendOtpController::class)->name('otp.send');
     Route::post('/verify', VerifyOtpController::class)->name('otp.verify');
     Route::post('/resend', ResendOtpController::class)->name('otp.resend');

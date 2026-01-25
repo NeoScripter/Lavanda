@@ -1,5 +1,6 @@
 import { navLinks, NavLinkType } from '@/lib/data/navLinks';
 import { useAuthModal } from '@/providers/AuthModalContext';
+import { Auth } from '@/types/auth';
 import { NodeProps } from '@/types/nodeProps';
 import { cn } from '@/utils/cn';
 import isCurrentPage from '@/utils/isCurrentPage';
@@ -8,8 +9,12 @@ import { Link, usePage } from '@inertiajs/react';
 import { ChevronDown, UserCircle } from 'lucide-preact';
 import { FC } from 'preact/compat';
 import css from './Nav.module.scss';
+import shortenUserName from '@/utils/shortenUserName';
 
 const Nav: FC<NodeProps> = ({ className }) => {
+    const {
+        auth: { user },
+    } = usePage<{ auth: Auth }>().props;
     const { showLogin } = useAuthModal();
 
     return (
@@ -22,7 +27,7 @@ const Nav: FC<NodeProps> = ({ className }) => {
                 class={css.loginBtn}
             >
                 <UserCircle stroke-width={2} />
-                Войти
+                {!user ? 'Войти' : shortenUserName(user.name)}
             </button>
 
             <ul class={css.navLinks}>

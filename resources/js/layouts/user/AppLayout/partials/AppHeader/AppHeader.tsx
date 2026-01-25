@@ -4,7 +4,6 @@ import { useClickOutside } from '@/hooks/useClickOutside';
 import useElementHeight from '@/hooks/useElementHeight';
 import { useEscapeKey } from '@/hooks/useEscapeKey';
 import useMediaQuery from '@/hooks/useMediaQuery';
-import { useLoginModal } from '@/providers/LoginContext';
 import { Auth } from '@/types/auth';
 import { NodeProps } from '@/types/nodeProps';
 import { cn } from '@/utils/cn';
@@ -14,6 +13,7 @@ import { FC, useEffect } from 'preact/compat';
 import Nav from '../Nav/Nav';
 import css from './AppHeader.module.scss';
 import { useAuthModal } from '@/providers/AuthModalContext';
+import shortenUserName from '@/utils/shortenUserName';
 
 const AppHeader: FC<NodeProps> = ({ className }) => {
     const {
@@ -84,7 +84,7 @@ const AppHeader: FC<NodeProps> = ({ className }) => {
                         class={cn(css.loginBtn, 'primary-btn')}
                     >
                         <CircleUser />
-                        {!user ? 'Войти' : user.name}
+                        {!user ? 'Войти' : shortenUserName(user.name)}
                     </button>
                 </div>
             </div>
