@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Auth\RegisteredUserRequest;
 use App\Models\User;
 use App\Services\OtpService;
 use Illuminate\Auth\Events\Registered;
@@ -20,25 +21,15 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request): RedirectResponse
+    public function store(RegisteredUserRequest $request): RedirectResponse
     {
-        $request->merge([
-            'birthday' => $request->birthday ?: null,
-        ]);
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'gender' => 'nullable|in:male,female',
-            'birthday' => 'nullable|date|before:today',
-            'email' => 'required|string|lowercase|email|max:255|unique:' . User::class,
-            'policy' => 'required|accepted',
-            'consent' => 'required|accepted',
-        ]);
+        $validated = $request->validated();
 
         $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'gender' => $request->gender,
-            'birthday' => $request->birthday,
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'gender' => $validated['gender'],
+            'birthday' => $validated['birthday'],
         ]);
 
         event(new Registered($user));
