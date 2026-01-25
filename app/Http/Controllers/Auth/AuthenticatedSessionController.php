@@ -37,8 +37,6 @@ class AuthenticatedSessionController extends Controller
         Cache::delete('premium-access');
 
         return redirect()->back();
-        // return redirect()->intended(route('dashboard'))
-        //     ->with('message', 'Logged in successfully');
     }
 
     /**
@@ -48,15 +46,10 @@ class AuthenticatedSessionController extends Controller
     {
         Auth::guard('web')->logout();
 
-        $lang = Session::get('locale');
-
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
 
-        if ($lang) {
-            Session::put('locale', $lang);
-        }
         Cache::delete('premium-access');
 
         return redirect()->route('home')
