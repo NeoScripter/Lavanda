@@ -12,7 +12,10 @@ const InteractiveSlidingIntro: FC<{
         <Transition show={!hasStarted}>
             <div className={css.drawer}>
                 <div>
-                    <p class={css.intro}>{text}</p>
+                    <div
+                        dangerouslySetInnerHTML={{ __html: text }}
+                        class={css.intro}
+                    />
                     <button
                         onClick={handleClick}
                         class={cn('primary-btn', css.actionBtn)}

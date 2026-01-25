@@ -21,13 +21,13 @@ class VerifyOtpController extends Controller
 
         if (!$this->otpService->verify($user, $request->code)) {
             throw ValidationException::withMessages([
-                'code' => 'Invalid or expired verification code.',
+                'code' => 'Данный код недействителен.',
             ]);
         }
 
         Auth::login($user);
         $request->session()->regenerate();
 
-        return redirect()->route('home');
+        return redirect()->back();
     }
 }

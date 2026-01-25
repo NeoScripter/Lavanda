@@ -20,6 +20,10 @@
     font-weight: 500;
     margin-inline: auto;
     @include u.px(mb, 32, 48, 32, 66);
+
+    p {
+        margin-bottom: 1em;
+    }
 }
 
 .actionBtn {
