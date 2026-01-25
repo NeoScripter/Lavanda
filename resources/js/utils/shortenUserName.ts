@@ -5,5 +5,5 @@ export default function shortenUserName(name: string) {
         return name;
     }
 
-    return parts[0] + parts[1].split('')[0].toUpperCase() + '.';
+    return parts[0] + ' ' + parts[1].split('')[0].toUpperCase() + '.';
 }
