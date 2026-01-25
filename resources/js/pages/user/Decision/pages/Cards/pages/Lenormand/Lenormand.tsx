@@ -35,7 +35,6 @@ const Lenormand = () => {
                 <InteractiveLayout
                     btnLabels={['Случайный выбор']}
                     components={[() => <RandomCards />]}
-                    deferedKey='cards'
                 />
             </BreadCrumbLayout>
         </>

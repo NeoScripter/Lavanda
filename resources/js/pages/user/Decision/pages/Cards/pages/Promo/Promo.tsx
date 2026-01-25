@@ -32,7 +32,6 @@ const Promo = () => {
                 <InteractiveLayout
                     btnLabels={['Случайный выбор', 'Выбрать самой']}
                     components={[() => <RandomCards />, () => <ChosenCards />]}
-                    deferedKey='cards'
                 />
             </BreadCrumbLayout>
         </>

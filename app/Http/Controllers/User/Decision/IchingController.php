@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User\Decision;
 use App\Http\Controllers\Controller;
 use App\Models\Iching;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Inertia\Inertia;
 
 class IchingController extends Controller
@@ -23,7 +24,9 @@ class IchingController extends Controller
         $bitmask = $bitmask > 64 ? null : $bitmask;
 
         return Inertia::render('user/Decision/pages/Iching/Iching', [
-            'iching' => Inertia::defer(
+            'runes' => Cache::flexible(
+                'iching',
+                [5, 10],
                 fn() =>
                 $bitmask === null
                     ? null
