@@ -8,7 +8,6 @@ import Checkbox from '../Checkbox/Checkbox';
 import Input from '../Input/Input';
 import InputError from '../InputError/InputError';
 import Label from '../Label/Label';
-import PasswordInput from '../PasswordInput/PasswordInput';
 import RadioInput from '../RadioInput/RadioInput';
 import css from './Signup.module.scss';
 
@@ -28,9 +27,9 @@ type SignupForm = {
 };
 
 export default function Signup() {
-    const { showLogin, closeModal } = useAuthModal();
+    const { showLogin, showOtp } = useAuthModal();
 
-    const { data, setData, post, processing, errors, reset } = useForm<
+    const { data, setData, post, processing, errors } = useForm<
         Required<SignupForm>
     >({
         name: '',
@@ -53,8 +52,7 @@ export default function Signup() {
             preserveState: true,
 
             onSuccess: () => {
-                router.flushAll();
-                closeModal();
+                showOtp();
             },
         });
     };

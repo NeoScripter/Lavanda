@@ -4,12 +4,17 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Services\OtpService;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class RegisteredUserController extends Controller
 {
+    public function __construct(
+        protected OtpService $otpService
+    ) {}
+
     /**
      * Handle an incoming registration request.
      *
@@ -38,9 +43,11 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        return back()->with(
-            'message',
-            'Добро пожаловать!'
-        );
+        $otp = $this->otpService->generate($user);
+
+        return back()->with('code', [
+            'email' => $request->email,
+            'code' => app()->isLocal() ? $otp->code : null,
+        ]);
     }
 }
