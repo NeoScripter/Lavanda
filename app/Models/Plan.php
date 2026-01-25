@@ -22,13 +22,6 @@ class Plan extends Model
 
     protected $appends = ['human_duration'];
 
-    public function users(): BelongsToMany
-    {
-        return $this->belongsToMany(User::class)
-            ->withTimestamps()
-            ->withPivot(['expires_at']);
-    }
-
     public function humanDuration(): Attribute
     {
         return Attribute::make(

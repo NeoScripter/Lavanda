@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Enums\UserRole;
+use App\Models\Subscription;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -13,7 +14,7 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory()->create([
+        User::factory()->has(Subscription::factory())->create([
             'name' => 'Ilya Andreev',
             'email' => 'sange0337@gmail.com',
         ]);

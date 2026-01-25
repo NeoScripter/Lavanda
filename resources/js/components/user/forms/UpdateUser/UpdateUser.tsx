@@ -32,14 +32,11 @@ type User = {
 };
 
 type PageProps = {
-    auth: {
-        user: User;
-    };
+    user: User;
 };
 
 export default function UpdateUser() {
-    const { auth } = usePage<PageProps>().props;
-    const user = auth.user;
+    const { user } = usePage<PageProps>().props;
 
     const { data, setData, post, isDirty, processing, errors } = useForm<
         Required<UpdateUserForm>
@@ -119,6 +116,7 @@ export default function UpdateUser() {
                     />
                     <InputError message={errors.birthday} />
                 </div>
+
                 <button
                     tabIndex={6}
                     disabled={processing || !isDirty}

@@ -14,6 +14,7 @@ return new class extends Migration
     {
         Schema::create('subscriptions', function (Blueprint $table) {
             $table->id();
+            $table->string('tier');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamp('starts_at')->nullable();
             $table->timestamp('ends_at')->nullable();

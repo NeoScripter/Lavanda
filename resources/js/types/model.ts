@@ -81,11 +81,19 @@ export type MindGame = {
     images?: Image;
     front_image?: Image;
 };
+export type Otp = {
+    id: number;
+    user_id: number;
+    code: string;
+    expires_at: string;
+    created_at?: string;
+    updated_at?: string;
+};
 export type Plan = {
     id: number;
     title: string;
     tier: PlanTier;
-    durationInDays: number;
+    duration_in_days: number;
     price: number;
     perks: string;
     created_at?: string;
@@ -145,6 +153,16 @@ export type RuneCategory = {
     updated_at?: string;
     rune?: Rune;
 };
+export type Subscription = {
+    id: number;
+    tier: string;
+    user_id: number;
+    starts_at?: string;
+    ends_at?: string;
+    status: SubscriptionStatus;
+    created_at?: string;
+    updated_at?: string;
+};
 export type Tarot = {
     id: number;
     name: string;
@@ -169,6 +187,14 @@ export enum PlanTier {
     BASE = "base",
     STANDARD = "standard",
     PROFI = "profi"
+}
+export enum SubscriptionStatus {
+    ACTIVE = 1,
+    CANCELLED = 2
+}
+export enum UserRole {
+    USER = 1,
+    ADMIN = 2
 }
 export enum WellnessTipType {
     TOOLKIT = "toolkit",

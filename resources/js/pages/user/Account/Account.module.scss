@@ -100,3 +100,37 @@
         font-size: 2.25rem;
     }
 }
+
+.planDetails {
+    text-align: center;
+    color: u.clr('primary', 'strong');
+}
+
+.deleteBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    transition: color 0.3s;
+    gap: 0.5em;
+
+    &:hover {
+        color: u.opacify(u.clr('foreground', 'muted'), 70);
+    }
+    svg {
+        width: 1em;
+    }
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+    gap: 1rem;
+
+    @include u.mw(sm) {
+        flex-direction: row;
+    }
+}

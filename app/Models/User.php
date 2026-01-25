@@ -63,13 +63,6 @@ class User extends Authenticatable
         return $this->hasMany(Otp::class);
     }
 
-    public function tiers(): BelongsToMany
-    {
-        return $this->belongsToMany(Plan::class)
-            ->withTimestamps()
-            ->withPivot(['expires_at']);
-    }
-
     public function hasActiveSubscription(): bool
     {
         return $this->subscription()

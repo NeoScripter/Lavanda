@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class AccountController extends Controller
@@ -12,6 +13,11 @@ class AccountController extends Controller
      */
     public function __invoke()
     {
-        return Inertia::render('user/Account/Account');
+        $user = Auth::user();
+        $user->load(['subscription']);
+
+        return Inertia::render('user/Account/Account', [
+            'user' => $user,
+        ]);
     }
 }
