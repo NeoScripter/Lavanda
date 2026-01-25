@@ -45,7 +45,8 @@ class OtpNotification extends Notification //implements ShouldQueue
                     '</div>'
             ))
             ->line('Этот код действителен в течение 3 минут.')
-            ->action('В личный кабинет', url('/'));
+            ->action('В личный кабинет', url('/account'))
+            ->salutation(new \Illuminate\Support\HtmlString('<p>С уважением, <br>Лаванда</p>'));
     }
 
     /**
