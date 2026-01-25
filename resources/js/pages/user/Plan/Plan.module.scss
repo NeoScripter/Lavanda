@@ -63,3 +63,45 @@
 
     @include u.underline-slide();
 }
+
+.decorPlans1 {
+    display: none;
+
+    @include u.mw(sm) {
+        display: block;
+        position: absolute;
+        right: 0;
+        @include u.px(w, null, 302, 302, 302);
+        aspect-ratio: 1/1;
+        top: 8%;
+        transform: translateX(20%);
+        z-index: -1;
+    }
+    @include u.mw(md) {
+        top: 38%;
+        right: 5%;
+    }
+}
+
+.decorPlans2 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 30%;
+    z-index: -1;
+    @include u.px(w, 292, 365, 365, 418);
+    aspect-ratio: 1/1;
+
+    @include u.mw(sm) {
+        transform: translateX(-20%);
+        left: 0;
+        bottom: 60%;
+    }
+    @include u.mw(md) {
+        bottom: 22%;
+    }
+    @include u.mw(lg) {
+        transform: translateX(-40%);
+        bottom: 20%;
+    }
+}

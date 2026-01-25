@@ -11,15 +11,31 @@ import { Link, usePage } from '@inertiajs/react';
 import { MoveLeft } from 'lucide-preact';
 import css from './Plan.module.scss';
 import LegalNotice from './partials/LegalNotice';
+import LazyImage from '@/components/user/ui/LazyImage/LazyImage';
+import ButterflyDkTinyWebp from "@/assets/images/plan/butterfly-dk-tiny.webp";
+import ButterflyDkWebp from "@/assets/images/plan/butterfly-dk.webp";
+import FlowerDkTinyWebp from "@/assets/images/plan/flower-dk-tiny.webp";
+import FlowerDkWebp from "@/assets/images/plan/flower-dk.webp";
 
 const Plans = () => {
     const { plan } = usePage<{ plan: Plan }>().props;
     return (
         <AppLayout
-            extendedFooter={false}
+            extendedFooter={true}
             variation="dark"
             className={css.layout}
         >
+            <LazyImage
+                img={ButterflyDkWebp}
+                tinyImg={ButterflyDkTinyWebp}
+                prtClass={css.decorPlans1}
+            />
+            <LazyImage
+                img={FlowerDkWebp}
+                tinyImg={FlowerDkTinyWebp}
+                prtClass={css.decorPlans2}
+            />
+
             <section>
                 <h1 className={css.heading}>Оформление подписки</h1>
 
