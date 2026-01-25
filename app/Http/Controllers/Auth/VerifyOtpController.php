@@ -7,6 +7,7 @@ use App\Http\Requests\Auth\VerifyOtpRequest;
 use App\Models\User;
 use App\Services\OtpService;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Validation\ValidationException;
 
 class VerifyOtpController extends Controller
@@ -27,6 +28,7 @@ class VerifyOtpController extends Controller
 
         Auth::login($user);
         $request->session()->regenerate();
+        Cache::delete('premium-access');
 
         return redirect()->back();
     }

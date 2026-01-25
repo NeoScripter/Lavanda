@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\Affirmation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Inertia\Inertia;
 
 class AffirmationController extends Controller
@@ -15,12 +16,14 @@ class AffirmationController extends Controller
             'category' => 'nullable|string|exists:affirmations,type'
         ]);
 
+        $isMember = Gate::check('premium-access');
+
         return Inertia::render('user/Affirmations/Affirmations', [
-            'affirmations' => isset($validated['category'])
+            'affirmations' => $isMember && isset($validated['category'])
                 ? Affirmation::where('type', $validated['category'])->get()
                 : null,
             'categories' => Affirmation::distinct()->pluck('type'),
-            'category' => $validated['category'] ?? null,
+            'category' => $isMember && $validated['category'] ?? null,
         ]);
     }
 }

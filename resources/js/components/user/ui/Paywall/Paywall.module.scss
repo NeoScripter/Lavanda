@@ -1,6 +1,7 @@
 @use 'core' as u;
 
 .wrapper {
+  color: u.clr('foreground', 'strong');
     position: relative;
     margin-inline: auto;
     margin-top: 3.5rem;

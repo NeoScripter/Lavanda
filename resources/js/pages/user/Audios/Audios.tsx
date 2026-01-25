@@ -1,10 +1,12 @@
 import HeartDkTinyWebp from '@/assets/images/audios/heart-dk-tiny.webp';
 import HeartDkWebp from '@/assets/images/audios/heart-dk.webp';
+import Paywall from '@/components/user/ui/Paywall';
 import SplitLayout from '@/layouts/user/SplitLayout';
 import CarouselFrame, {
     CarouselImage,
 } from '@/layouts/user/SplitLayout/partials/CarouselFrame';
 import { useCarouselLogic } from '@/layouts/user/SplitLayout/partials/CarouselFrame/useCarouselLogic';
+import { Auth } from '@/types/auth';
 import { Audio } from '@/types/model';
 import checkMotionPreferences from '@/utils/checkMotionPreferences';
 import { cn } from '@/utils/cn';
@@ -22,14 +24,18 @@ const itemImage: CarouselImage = {
 const ANIMATION_DURATION = 750;
 
 const Audios = () => {
-    const { audios } = usePage<{ audios: Audio[] }>().props;
+    let { audios, auth } = usePage<{ audios: Audio[] | null; auth: Auth }>()
+        .props;
+
+    audios = audios ?? [];
+    const isMember = auth.hasPremiumAccess;
 
     const isMotionEnabled = checkMotionPreferences();
 
     const adjustedAnimationDuration = isMotionEnabled ? ANIMATION_DURATION : 0;
 
     const { selectedIndex, startSpinning, isSpinning } = useCarouselLogic(
-        audios.length,
+        audios.length ?? 0,
         adjustedAnimationDuration,
         isMotionEnabled,
     );
@@ -44,7 +50,7 @@ const Audios = () => {
             left={{
                 heading: 'Послание поддержки от автора',
                 intro: intro,
-                btns: (
+                btns: isMember ? (
                     <button
                         onClick={startSpinning}
                         disabled={isSpinning}
@@ -52,34 +58,38 @@ const Audios = () => {
                     >
                         {selectedIndex === -1 ? 'Начать' : 'Повторить'}
                     </button>
-                ),
+                ) : null,
             }}
             rightClassName={css.rightLayout}
             right={
-                <div>
-                    <h2
-                        className={cn(
-                            css.songQuote,
-                            isSpinning && css.songQuoteClosed,
-                        )}
-                    >
-                        {currentAudio?.intro}
-                    </h2>
+                isMember ? (
+                    <div>
+                        <h2
+                            className={cn(
+                                css.songQuote,
+                                isSpinning && css.songQuoteClosed,
+                            )}
+                        >
+                            {currentAudio?.intro}
+                        </h2>
 
-                    <CarouselFrame
-                        img={itemImage}
-                        numItems={audios.length}
-                        selectedIndex={selectedIndex}
-                        animationDuration={adjustedAnimationDuration}
-                    />
-
-                    {currentAudio?.path && !isSpinning && (
-                        <AudioPlayer
-                            className={css.player}
-                            audio={currentAudio}
+                        <CarouselFrame
+                            img={itemImage}
+                            numItems={audios.length}
+                            selectedIndex={selectedIndex}
+                            animationDuration={adjustedAnimationDuration}
                         />
-                    )}
-                </div>
+
+                        {currentAudio?.path && !isSpinning && (
+                            <AudioPlayer
+                                className={css.player}
+                                audio={currentAudio}
+                            />
+                        )}
+                    </div>
+                ) : (
+                    <Paywall />
+                )
             }
         />
     );
