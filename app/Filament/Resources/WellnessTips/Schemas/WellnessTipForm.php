@@ -19,8 +19,11 @@ class WellnessTipForm
             ->components([
                 Section::make()->schema([
                     Select::make('type')
-                        ->options(WellnessTipType::class)
-                        ->formatStateUsing(fn(WellnessTipType $state): string => $state->getLabel())
+                        ->options(
+                            fn() => collect(WellnessTipType::cases())
+                                ->mapWithKeys(fn($type) => [$type->value => $type->getLabel()])
+                                ->toArray()
+                        )
                         ->label('Раздел')
                         ->required(),
                     Textarea::make('description')
@@ -35,17 +38,20 @@ class WellnessTipForm
                 Section::make()
                     ->relationship('image')
                     ->schema([
-                    FileUpload::make('path')
-                        ->image()
-                        ->disk('public')
-                        ->label('Изображение')
-                        ->maxSize(1024)
-                        ->saveUploadedFileUsing(
-                            fn($file) =>
-                            app(ImageResizer::class)
-                                ->handleImage($file, 300, 'wellness')
-                        ),
-                ]),
+                        FileUpload::make('path')
+                            ->image()
+                            ->disk('public')
+                            ->label('Изображение')
+                            ->maxSize(1024)
+                            ->saveUploadedFileUsing(
+                                fn($file) =>
+                                app(ImageResizer::class)
+                                    ->handleImage($file, 300, 'wellness')
+                            ),
+                        Textarea::make('alt')
+                            ->requiredWith('path')
+                            ->label('Альтернативный текст к фото')
+                    ]),
             ]);
     }
 }
