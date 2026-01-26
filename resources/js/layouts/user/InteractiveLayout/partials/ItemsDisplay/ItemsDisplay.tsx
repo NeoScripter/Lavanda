@@ -76,7 +76,7 @@ const ItemSection: FC<{ item: InteractiveItem }> = ({ item }) => {
                 )}
             </div>
             <div className={css.sectionHeading}>
-                <h3>{`Совет: ${item.advice}`}</h3>
+                <h3>${item.advice}</h3>
             </div>
         </li>
     );

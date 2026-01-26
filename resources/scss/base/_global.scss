@@ -75,6 +75,25 @@ h3 {
     line-height: normal;
 }
 
+.decorative-title {
+    font-weight: 700;
+    margin-right: 0.5ch;
+    color: u.clr('primary', 'strong');
+
+    sup {
+        font-size: 0.6em;
+        margin-left: 0.1em;
+    }
+}
+.default-url {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    transition: color 0.3s;
+    &:hover {
+        color: u.clr('primary', 'strong');
+    }
+}
+
 .primary-btn {
     color: white;
     display: flex;

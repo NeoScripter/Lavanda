@@ -12,7 +12,7 @@
     @include u.px(--padding, null, null, 27, 45);
     @include u.px(min-h, 608, 895, 742, 830);
     @include u.px(pt, 103, 227, 180, 190);
-    @include u.px(pb, 20, 120, 90, 120);
+    @include u.px(pb, 150, 270, 90, 120);
     @include u.px(px, 11, 64, 100, 180);
     @include u.px(mb, 274, 316, 100, 100);
     @include u.shadow(3);
@@ -91,6 +91,10 @@
     font-weight: 500;
     text-wrap: balance;
     @include u.px(mb, 30, 30, 50, 50);
+
+    > p {
+        margin-bottom: 1em;
+    }
 }
 
 .heading {

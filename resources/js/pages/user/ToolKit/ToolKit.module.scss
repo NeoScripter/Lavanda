@@ -15,12 +15,12 @@
         transform: translate(15%, 40%);
     }
     @include u.mw(md) {
-        transform: translate(65%, 50%);
+        transform: translate(65%, 30%);
         bottom: 50%;
         right: 40%;
     }
     @include u.mw(lg) {
-        transform: translate(65%, 40%);
+        transform: translate(65%, 20%);
     }
 
     @include u.px(w, 284, 461, 461, 461);
