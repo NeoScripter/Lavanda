@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\Affirmations\Tables;
+namespace App\Filament\Resources\Audio\Tables;
 
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
@@ -8,17 +8,14 @@ use Filament\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
-class AffirmationsTable
+class AudioTable
 {
     public static function configure(Table $table): Table
     {
         return $table
             ->columns([
-                TextColumn::make('type')
-                    ->label('Категория')
-                    ->searchable(),
-                TextColumn::make('quote')
-                    ->label('Аффирмация')
+                TextColumn::make('intro')
+                    ->label('Описание')
                     ->limit(55)
                     ->searchable(),
                 TextColumn::make('updated_at')
@@ -36,7 +33,7 @@ class AffirmationsTable
             ->toolbarActions([
                 BulkActionGroup::make([
                     DeleteBulkAction::make()
-                        ->modalHeading('Удалить выбранные аффирмации'),
+                        ->modalHeading('Удалить выбранные послания'),
                 ]),
             ]);
     }

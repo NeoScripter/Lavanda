@@ -41,7 +41,7 @@ class ExperienceItemForm
                             ->image()
                             ->disk('public')
                             ->label('Изображение')
-                            ->maxSize(1024)
+                            ->maxSize(4128)
                             ->saveUploadedFileUsing(
                                 fn($file) =>
                                 app(ImageResizer::class)
