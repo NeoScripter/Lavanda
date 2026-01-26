@@ -55,7 +55,8 @@ class WellnessTipsTable
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
-                    DeleteBulkAction::make(),
+                    DeleteBulkAction::make()
+                        ->modalHeading('Удалить выбранные полезные ресурсы'),
                 ]),
             ]);
     }

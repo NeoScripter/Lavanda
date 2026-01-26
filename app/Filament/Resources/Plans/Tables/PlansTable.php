@@ -42,7 +42,8 @@ class PlansTable
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
-                    DeleteBulkAction::make(),
+                    DeleteBulkAction::make()
+                        ->modalHeading('Удалить выбранные тарифы'),
                 ]),
             ]);
     }

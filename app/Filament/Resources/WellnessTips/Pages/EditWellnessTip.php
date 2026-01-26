@@ -17,7 +17,8 @@ class EditWellnessTip extends EditRecord
     {
         return [
             ViewAction::make(),
-            DeleteAction::make(),
+            DeleteAction::make()
+                ->modalHeading('Удалить полезный ресурс'),
         ];
     }
 
