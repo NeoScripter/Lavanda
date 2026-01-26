@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('images', function (Blueprint $table) {
             $table->id();
             $table->string('path');
-            $table->string('tiny_path');
+            $table->string('tiny_path')->nullable();
             $table->text('alt');
             $table->morphs('imageable');
             $table->string('type')->default('image');

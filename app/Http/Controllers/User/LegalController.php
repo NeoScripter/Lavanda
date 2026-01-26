@@ -14,16 +14,13 @@ class LegalController extends Controller
      */
     public function __invoke(Legal $legal)
     {
-        // dd($legal);
         return Inertia::render('user/Legal/Legal', [
-            // 'legal' => Cache::flexible(
-            //     $legal->type->value,
-            //     [5, 10],
-            //     fn() =>
-            //     $legal->toResource()
-            // )
-            'legal' =>
+            'legal' => Cache::flexible(
+                $legal->type->value,
+                [5, 10],
+                fn() =>
                 $legal->toResource()
+            )
         ]);
     }
 }
