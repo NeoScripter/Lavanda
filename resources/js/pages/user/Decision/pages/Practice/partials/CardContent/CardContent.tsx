@@ -1,9 +1,9 @@
 import LazyImage from '@/components/user/ui/LazyImage/LazyImage';
+import { useCurrentSlideId } from '@/layouts/user/ItemsLayout/CurrentSlideProvider';
 import { PracticeItem } from '@/types/model';
 import { usePage } from '@inertiajs/react';
 import css from './CardContent.module.scss';
 import Accordion from './partials/Accordion';
-import { useCurrentSlideId } from '@/layouts/user/ItemsLayout/CurrentSlideProvider';
 
 const CardContent = () => {
     const { items } = usePage<{ items: PracticeItem[] }>().props;

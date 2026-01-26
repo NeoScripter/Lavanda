@@ -20,6 +20,7 @@ class PracticeItemResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
+            'body' => $this->body,
             'description' => $this->description,
             'heading' => $this->heading,
             'html' => $this->when($isMember, $this->html),
