@@ -16,22 +16,20 @@ class PlansTable
         return $table
             ->columns([
                 TextColumn::make('title')
-                    ->searchable(),
-                TextColumn::make('tier')
-                    ->badge()
+                    ->label('Название')
                     ->searchable(),
                 TextColumn::make('duration_in_days')
                     ->numeric()
+                    ->label('Длительность')
+                    ->suffix(' дней')
                     ->sortable(),
                 TextColumn::make('price')
-                    ->money()
+                    ->money(currency: 'rubles')
+                    ->label('Цена')
                     ->sortable(),
-                TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('updated_at')
-                    ->dateTime()
+                    ->date()
+                    ->label('Дата изменения')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])

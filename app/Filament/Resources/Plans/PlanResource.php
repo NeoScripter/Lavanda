@@ -20,9 +20,11 @@ class PlanResource extends Resource
 {
     protected static ?string $model = Plan::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedCreditCard;
 
     protected static ?string $recordTitleAttribute = 'Тариф';
+    protected static ?string $modelLabel = 'Тариф';
+    protected static ?string $pluralModelLabel = 'Тарифы';
 
     public static function form(Schema $schema): Schema
     {

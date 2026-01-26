@@ -92,7 +92,6 @@ export type Otp = {
 export type Plan = {
     id: number;
     title: string;
-    tier: PlanTier;
     duration_in_days: number;
     price: number;
     perks: string;
@@ -183,11 +182,6 @@ export type WellnessTip = {
     updated_at?: string;
     image?: Image;
 };
-export enum PlanTier {
-    BASE = "base",
-    STANDARD = "standard",
-    PROFI = "profi"
-}
 export enum SubscriptionStatus {
     ACTIVE = 1,
     CANCELLED = 2

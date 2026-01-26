@@ -2,10 +2,8 @@
 
 namespace App\Filament\Resources\Plans\Schemas;
 
-use App\Enums\PlanTier;
-use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Textarea;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 
 class PlanForm
@@ -14,18 +12,22 @@ class PlanForm
     {
         return $schema
             ->components([
-                TextInput::make('title')
-                    ->required(),
-                Select::make('tier')
-                    ->options(PlanTier::class)
-                    ->required(),
-                TextInput::make('duration_in_days')
-                    ->required()
-                    ->numeric(),
-                TextInput::make('price')
-                    ->required()
-                    ->numeric()
-                    ->prefix('Руб.'),
+                Section::make()->schema([
+                    TextInput::make('title')
+                        ->required()
+                        ->label('Название')
+                        ->columnSpanFull(),
+                    TextInput::make('duration_in_days')
+                        ->required()
+                        ->numeric()
+                        ->label('Длительность')
+                        ->suffix(' дней'),
+                    TextInput::make('price')
+                        ->required()
+                        ->numeric()
+                        ->prefix('₽')
+                        ->label('Цена'),
+                ])->columns(2),
             ]);
     }
 }

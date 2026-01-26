@@ -114,7 +114,7 @@ const Account = () => {
 
                 {sub?.ends_at && (
                     <h3 className={css.planDetails}>
-                        {`Тариф “${sub.tier}”, оплачен до ${formatDate(sub.ends_at)}`}
+                        {`Тариф “${sub.title}”, оплачен до ${formatDate(sub.ends_at)}`}
                     </h3>
                 )}
             </section>

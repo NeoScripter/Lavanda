@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('plans', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('tier');
             $table->unsignedInteger('duration_in_days');
             $table->unsignedInteger('price');
             $table->json('perks');
