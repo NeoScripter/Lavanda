@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Enums\LegalType;
 use App\Models\Legal;
 use Illuminate\Database\Seeder;
 
@@ -13,8 +14,8 @@ class LegalSeeder extends Seeder
     public function run(): void
     {
         Legal::factory()->count(2)->sequence(
-            ['type' => 'consent'],
-            ['type' => 'policy'],
+            ['type' => LegalType::CONSENT->value],
+            ['type' => LegalType::POLICY->value],
         )->create();
     }
 }

@@ -17,7 +17,7 @@ class SubscriptionFactory extends Factory
     public function definition(): array
     {
         return [
-            'tier' => 'Стандарт',
+            'title' => 'Стандарт',
             'starts_at' => now(),
             'ends_at' => now()->addYear(),
         ];

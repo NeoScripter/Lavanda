@@ -10,6 +10,7 @@ use Filament\Resources\Pages\EditRecord;
 class EditPlan extends EditRecord
 {
     protected static string $resource = PlanResource::class;
+    protected static ?string $title = 'Редактирование тарифа';
 
     protected function getHeaderActions(): array
     {

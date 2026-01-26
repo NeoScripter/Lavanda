@@ -2,12 +2,16 @@
 
 namespace App\Models;
 
-use App\Models\Concerns\ConvertsMarkdownToHtml;
+use App\Enums\LegalType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Legal extends Model
 {
     /** @use HasFactory<\Database\Factories\LegalFactory> */
-    use HasFactory, ConvertsMarkdownToHtml;
+    use HasFactory;
+
+    protected $casts = [
+        'type' => LegalType::class,
+    ];
 }

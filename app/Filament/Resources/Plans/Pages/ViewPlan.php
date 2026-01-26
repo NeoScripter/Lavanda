@@ -9,6 +9,7 @@ use Filament\Resources\Pages\ViewRecord;
 class ViewPlan extends ViewRecord
 {
     protected static string $resource = PlanResource::class;
+    protected static ?string $title = 'Просмотр тарифа';
 
     protected function getHeaderActions(): array
     {

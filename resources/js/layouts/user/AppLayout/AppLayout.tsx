@@ -22,6 +22,7 @@ const AppLayout: FC<
 > = ({ className, children, extendedFooter, variation = 'dark' }) => {
     const { auth } = usePage<{ auth: Auth }>().props;
 
+
     return (
         <ErrorBoundary fallback={Error}>
             <AuthModalProvider>

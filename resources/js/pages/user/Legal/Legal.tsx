@@ -17,10 +17,6 @@ import css from './Legal.module.scss';
 const Legal = () => {
     const { legal } = usePage<{ legal: LegalType }>().props;
 
-    if (!legal?.html) {
-        return null;
-    }
-
     return (
         <AppLayout
             extendedFooter={true}
@@ -29,9 +25,8 @@ const Legal = () => {
         >
             <section
                 className={cn(css.content, 'full-bleed')}
-                dangerouslySetInnerHTML={{ __html: legal.html }}
+                dangerouslySetInnerHTML={{ __html: legal?.html ?? '' }}
             />
-
             <BgLoader
                 prtClass={cn(css.bgLoader, 'full-bleed')}
                 imgClass={css.bgImage}
