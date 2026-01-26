@@ -33,7 +33,6 @@ class LegalInfolist
                             ->markdown()
                             ->columnSpanFull(),
                     ]),
-
             ]);
     }
 }

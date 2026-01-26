@@ -20,7 +20,7 @@ class LegalResource extends Resource
 {
     protected static ?string $model = Legal::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedClipboardDocument;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedScale;
     protected static ?string $modelLabel = 'Документ';
     protected static ?string $pluralModelLabel = 'Документы';
 

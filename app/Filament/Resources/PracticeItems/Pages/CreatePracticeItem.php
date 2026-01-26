@@ -8,4 +8,7 @@ use Filament\Resources\Pages\CreateRecord;
 class CreatePracticeItem extends CreateRecord
 {
     protected static string $resource = PracticeItemResource::class;
+    protected static ?string $title = 'Создание элемента';
+
+    protected static bool $canCreateAnother = false;
 }

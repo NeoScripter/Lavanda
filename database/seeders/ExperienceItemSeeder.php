@@ -23,7 +23,6 @@ class ExperienceItemSeeder extends Seeder
                     'title' => $raw['title'],
                     'heading' => $raw['heading'],
                     'description' => $raw['description'],
-                    'body' => $raw['body'],
                 ])
                     ->afterCreating(function ($tip) use ($raw) {
                         Image::factory()->create([

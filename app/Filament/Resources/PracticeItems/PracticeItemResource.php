@@ -20,11 +20,11 @@ class PracticeItemResource extends Resource
 {
     protected static ?string $model = PracticeItem::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedAcademicCap;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedQrCode;
 
     protected static ?string $recordTitleAttribute = 'PracticeItem';
-    protected static ?string $modelLabel = 'Опыт автора';
-    protected static ?string $pluralModelLabel = 'Опыт автора';
+    protected static ?string $modelLabel = 'Практика';
+    protected static ?string $pluralModelLabel = 'Практики';
     protected static bool $hasTitleCaseModelLabel = false;
 
     public static function form(Schema $schema): Schema

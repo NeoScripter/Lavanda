@@ -20,7 +20,7 @@ class ExperienceItemFactory extends Factory
             'title' => fake()->word(3),
             'heading' => fake()->word(5),
             'description' => fake()->sentence(4),
-            'body' => fake()->sentence(7),
+            'html' => fake()->sentence(7),
         ];
     }
 }
