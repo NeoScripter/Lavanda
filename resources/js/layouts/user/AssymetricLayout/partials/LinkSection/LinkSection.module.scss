@@ -2,7 +2,7 @@
 
 .wrapper {
     --offsetY: 0;
-    @include u.px(mb, 503, 416, 242, 263);
+    @include u.px(mb, 203, 283, 242, 263);
     @include u.px(--offsetY, null, null, 180, 201);
 
     @include u.mw(md) {

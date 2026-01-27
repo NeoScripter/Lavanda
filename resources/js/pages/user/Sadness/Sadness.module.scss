@@ -30,8 +30,8 @@
     z-index: 20;
     transform: translate(-10%, -55%);
     @include u.mw(sm) {
-        left: 10%;
-        bottom: 9%;
+        left: 8%;
+        bottom: 8%;
         transform: translate(15%, -55%);
     }
     @include u.mw(md) {
@@ -42,5 +42,5 @@
         bottom: 5%;
     }
 
-    @include u.px(w, 175, 262, 335, 374);
+    @include u.px(w, 175, 312, 335, 374);
 }

@@ -110,3 +110,9 @@
     @include u.px(h, null, null, 32, 32);
     @include u.px(mt, null, null, 120, 120);
 }
+
+.heroHeading {
+    sup {
+        font-size: 0.5em;
+    }
+}

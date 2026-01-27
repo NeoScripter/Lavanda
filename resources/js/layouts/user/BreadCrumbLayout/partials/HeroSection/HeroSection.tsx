@@ -47,7 +47,10 @@ const HeroSection: FC<
             )}
 
             <div class={css.textContent}>
-                <h1>{heading}</h1>
+                <h1
+                    className={css.heroHeading}
+                    dangerouslySetInnerHTML={{ __html: heading }}
+                />
                 <p
                     className={css.heroIntro}
                     dangerouslySetInnerHTML={{ __html: intro }}
