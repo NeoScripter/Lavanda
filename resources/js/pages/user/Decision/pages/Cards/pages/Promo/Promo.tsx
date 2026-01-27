@@ -1,7 +1,6 @@
-import ForegroundDkTiny from '@/assets/images/cards/promo/foreground-dk-tiny.webp';
-import ForegroundDk from '@/assets/images/cards/promo/foreground-dk.webp';
-import ForegroundMbTiny from '@/assets/images/cards/promo/foreground-mb-tiny.webp';
-import ForegroundMb from '@/assets/images/cards/promo/foreground-mb.webp';
+import ForegroundDkTinyWebp from '@/assets/images/cards/promo/foreground-dk-tiny.webp';
+import ForegroundDkAvif from '@/assets/images/cards/promo/foreground-dk.avif';
+import ForegroundDkWebp from '@/assets/images/cards/promo/foreground-dk.webp';
 import BreadCrumbLayout from '@/layouts/user/BreadCrumbLayout/BreadCrumbLayout';
 import InteractiveLayout from '@/layouts/user/InteractiveLayout';
 import { Head } from '@inertiajs/react';
@@ -21,12 +20,15 @@ const Promo = () => {
                 withCards={false}
                 hasHeroRevealer={true}
                 fgImg={{
-                    dk: ForegroundDk,
-                    dkTiny: ForegroundDkTiny,
-                    tb: ForegroundDk,
-                    tbTiny: ForegroundDkTiny,
-                    mb: ForegroundMb,
-                    mbTiny: ForegroundMbTiny,
+                    dk: ForegroundDkWebp,
+                    dkTiny: ForegroundDkTinyWebp,
+                    dkAvif: ForegroundDkAvif,
+                    tb: ForegroundDkWebp,
+                    tbTiny: ForegroundDkTinyWebp,
+                    tbAvif: ForegroundDkAvif,
+                    mb: ForegroundDkWebp,
+                    mbAvif: ForegroundDkAvif,
+                    mbTiny: ForegroundDkTinyWebp,
                 }}
             >
                 <InteractiveLayout

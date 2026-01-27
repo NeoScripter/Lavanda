@@ -2,5 +2,7 @@
 
 .heroForeground {
     @include u.px(w, null, null, 606, 702);
+    @include u.mw(md) {
+        transform: translateY(10%);
+    }
 }
-

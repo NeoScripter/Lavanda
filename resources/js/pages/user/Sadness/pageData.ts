@@ -4,8 +4,8 @@ import FgMbTiny from '@/assets/images/sadness/hero-fg-mb-tiny.webp';
 import FgMb from '@/assets/images/sadness/hero-fg-mb.webp';
 import FgTbTiny from '@/assets/images/sadness/hero-fg-tb-tiny.webp';
 import FgTb from '@/assets/images/sadness/hero-fg-tb.webp';
-import SadnessLink1Tiny from '@/assets/images/sadness/sadness-link-1-tiny.webp';
-import SadnessLink1 from '@/assets/images/sadness/sadness-link-1.webp';
+import SadnessLink1Tiny from '@/assets/images/sadness/sadness-link-1-dk-tiny.webp';
+import SadnessLink1 from '@/assets/images/sadness/sadness-link-1-dk.webp';
 import SadnessLink2Tiny from '@/assets/images/sadness/sadness-link-2-tiny.webp';
 import SadnessLink2 from '@/assets/images/sadness/sadness-link-2.webp';
 import SadnessLink3Tiny from '@/assets/images/sadness/sadness-link-3-tiny.webp';
@@ -50,7 +50,7 @@ export const assymetricSectionLinks: AssymetricSectionLink[] = [
             'Каждая руна — древний символ с глубоким смыслом. Случайно выпавшие руны складываются в своеобразное «послание» — при расшифровке этого символического «текста» могут открыться новые грани ситуации. ',
         img: SadnessLink1,
         imgTiny: SadnessLink1Tiny,
-        alt: 'Три фиолетовые свечи с кристаллами аметиста у основания',
+        alt: 'Полотно бледно-фиолетового цвета с несколькими рунами на нем',
         url: '/decision/runes',
     },
     {

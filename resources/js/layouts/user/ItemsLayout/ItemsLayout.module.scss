@@ -123,6 +123,7 @@
 }
 .cardHeading {
     text-transform: uppercase;
+    font-weight: 650;
     @include u.rm(text, 24, 24, 24, 24);
     @include u.px(mb, 11, 11, 11, 11);
 }
