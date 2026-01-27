@@ -183,7 +183,6 @@ export function useCoinGameLogic(
             preserveScroll: true,
             preserveState: true,
         });
-
         dispatch({
             type: 'RESET',
         });

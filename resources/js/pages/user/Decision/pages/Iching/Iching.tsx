@@ -9,13 +9,16 @@ import Schema from '@/assets/images/iching/schema-dk.webp';
 import LazyImage from '@/components/user/ui/LazyImage/LazyImage';
 import BreadCrumbLayout from '@/layouts/user/BreadCrumbLayout/BreadCrumbLayout';
 import InteractiveLayout from '@/layouts/user/InteractiveLayout';
-import { Head } from '@inertiajs/react';
+import { Iching as IchingType } from '@/types/model';
+import { Head, usePage } from '@inertiajs/react';
 import css from './Iching.module.scss';
 import { heading, intro } from './pageData';
 import CoinGame from './partials/CoinGame';
 ('@/assets/images/iching/schema.png');
 
 const Iching = () => {
+    const { iching } = usePage<{ iching: IchingType | null }>().props;
+
     return (
         <>
             <Head title="Таблица гексаграмм" />
@@ -36,7 +39,7 @@ const Iching = () => {
                     mbAvif: ForegroundMbAvif,
                     mbTiny: ForegroundMbTinyWebp,
                 }}
-                hasHeroRevealer={true}
+                hasHeroRevealer={iching == null}
             >
                 <InteractiveLayout
                     btnLabels={['Случайный выбор']}

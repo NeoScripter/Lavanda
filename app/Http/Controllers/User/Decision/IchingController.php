@@ -24,14 +24,9 @@ class IchingController extends Controller
         $bitmask = $bitmask > 64 ? null : $bitmask;
 
         return Inertia::render('user/Decision/pages/Iching/Iching', [
-            'runes' => Cache::flexible(
-                'iching',
-                [5, 10],
-                fn() =>
-                $bitmask === null
-                    ? null
-                    : Iching::where('bitmask', $bitmask)->first()
-            ),
+            'iching' => $bitmask === null
+                ? null
+                : Iching::where('bitmask', $bitmask)->first()
         ]);
     }
 }
