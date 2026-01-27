@@ -41,14 +41,14 @@
     font-weight: 700;
     place-content: center;
     place-items: center;
-    margin-bottom: 43px;
+    /* margin-bottom: 43px; */
     margin-top: 40px;
     font-size: 1rem;
     gap: 15px;
 
     @include u.mw(sm) {
         font-size: 2rem;
-        margin-bottom: 62px;
+        /* margin-bottom: 62px; */
         margin-top: 56px;
     }
 

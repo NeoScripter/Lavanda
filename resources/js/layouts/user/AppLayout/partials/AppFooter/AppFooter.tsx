@@ -1,6 +1,5 @@
 import ContactLinks from '@/components/user/ui/ContactLinks/ContactLinks';
 import Logo from '@/components/user/ui/Logo/Logo';
-import SocialLinks from '@/components/user/ui/SocialLinks/SocialLinks';
 import useMediaQuery from '@/hooks/useMediaQuery';
 import { cn } from '@/utils/cn';
 import { FC } from 'react-dom/src';
@@ -38,7 +37,7 @@ export default AppFooter;
 
 export const Links = () => (
     <nav class={css.linkWrapper}>
-        <SocialLinks className={css.socialLinks} />
+        {/* <SocialLinks className={css.socialLinks} /> */}
 
         <ContactLinks className={css.contacts} />
     </nav>

@@ -26,10 +26,10 @@ const Contacts = () => {
 
                 <ContactLinks className={css.contactLinks} />
 
-                <SocialLinks
-                    className={css.socialLinks}
-                    bgColor="hsl(264, 34%, 55%)"
-                />
+                {/* <SocialLinks */}
+                {/*     className={css.socialLinks} */}
+                {/*     bgColor="hsl(264, 34%, 55%)" */}
+                {/* /> */}
             </section>
 
             <BgLoader
