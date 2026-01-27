@@ -29,7 +29,7 @@ class EditExperienceItem extends EditRecord
         if ($image?->path) {
             $resizer = app(ImageResizer::class);
 
-            $path = $resizer->handleExistingPath($image->path, 30, 'wellness');
+            $path = $resizer->handleExistingPath($image->path, 30, 'experience');
 
             $image->tiny_path = $path;
             $image->saveQuietly();

@@ -1,41 +1,33 @@
 <?php
 
-namespace App\Filament\Resources\ExperienceItems\Schemas;
+namespace App\Filament\Resources\Promos\Schemas;
 
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use App\Services\ImageResizer;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
-use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Text;
 use Filament\Support\Enums\FontWeight;
 
-
-class ExperienceItemForm
+class PromoForm
 {
     public static function configure(Schema $schema): Schema
     {
         return $schema
             ->components([
                 Section::make()->schema([
-                    TextInput::make('title')
-                        ->label('Заголовок')
+                    TextInput::make('name')
+                        ->label('Название')
                         ->required(),
-                    Textarea::make('description')
-                        ->label('Описание')
-                        ->required(),
-                    Textarea::make('heading')
-                        ->label('Заголовок списка')
-                        ->required(),
-                    Textarea::make('body')
-                        ->label('Подзаголовок списка')
+                    Textarea::make('advice')
+                        ->label('Совет')
                         ->required(),
                 ]),
-
                 Section::make()
-                    ->relationship('image')
+                    ->relationship('frontImage')
                     ->schema([
                         FileUpload::make('path')
                             ->image()
@@ -45,7 +37,7 @@ class ExperienceItemForm
                             ->saveUploadedFileUsing(
                                 fn($file) =>
                                 app(ImageResizer::class)
-                                    ->handleImage($file, 700, 'experience')
+                                    ->handleImage($file, 700, 'promo')
                             ),
                         Textarea::make('alt')
                             ->requiredWith('path')
@@ -56,12 +48,13 @@ class ExperienceItemForm
                     RichEditor::make('html')
                         ->fileAttachments(false)
                         ->hiddenLabel()
-                        ->aboveContent(Text::make('Содержание')
+                        ->aboveContent(Text::make('Трактование')
                             ->size('lg')
                             ->weight(FontWeight::Bold))
                         ->required()
 
                 ])->columnSpanFull(),
+
             ]);
     }
 }

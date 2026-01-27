@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b0a0be8fa7aaeb02d70306cded594fbd",
+    "content-hash": "bcce17a195f8f9f4ca092e5595a6ae41",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -509,6 +509,75 @@
                 }
             ],
             "time": "2024-07-16T11:13:48+00:00"
+        },
+        {
+            "name": "codewithdennis/filament-lucide-icons",
+            "version": "v4.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/CodeWithDennis/filament-lucide-icons.git",
+                "reference": "0fc90b148321cdea638e1c0dc867304bb5e2c539"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/CodeWithDennis/filament-lucide-icons/zipball/0fc90b148321cdea638e1c0dc867304bb5e2c539",
+                "reference": "0fc90b148321cdea638e1c0dc867304bb5e2c539",
+                "shasum": ""
+            },
+            "require": {
+                "filament/filament": "^4.0|^5.0",
+                "php": "^8.2",
+                "spatie/laravel-package-tools": "^1.15.0",
+                "technikermathe/blade-lucide-icons": "3.136.0"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.22"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "FilamentLucideIcons": "CodeWithDennis\\FilamentLucideIcons\\Facades\\FilamentLucideIcons"
+                    },
+                    "providers": [
+                        "CodeWithDennis\\FilamentLucideIcons\\FilamentLucideIconsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "CodeWithDennis\\FilamentLucideIcons\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "CodeWithDennis",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A Filament plugin that integrates Lucide icons, allowing you to use them seamlessly across Filament forms, tables, actions, and more.",
+            "homepage": "https://github.com/codewithdennis/filament-lucide-icons",
+            "keywords": [
+                "filamentphp",
+                "icons",
+                "laravel",
+                "lucide"
+            ],
+            "support": {
+                "issues": "https://github.com/codewithdennis/filament-lucide-icons/issues",
+                "source": "https://github.com/codewithdennis/filament-lucide-icons"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/CodeWithDennis",
+                    "type": "github"
+                }
+            ],
+            "time": "2026-01-20T14:44:21+00:00"
         },
         {
             "name": "danharrin/date-format-converter",
@@ -8158,6 +8227,71 @@
                 }
             ],
             "time": "2025-09-27T09:00:46+00:00"
+        },
+        {
+            "name": "technikermathe/blade-lucide-icons",
+            "version": "v3.136.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PascaleBeier/blade-lucide-icons.git",
+                "reference": "0287a317b5d978383ed3fd31d39f1cddd87efc44"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PascaleBeier/blade-lucide-icons/zipball/0287a317b5d978383ed3fd31d39f1cddd87efc44",
+                "reference": "0287a317b5d978383ed3fd31d39f1cddd87efc44",
+                "shasum": ""
+            },
+            "require": {
+                "blade-ui-kit/blade-icons": "^1.6",
+                "illuminate/support": "^9.0|^10.0|^11.0|^12.0",
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^7.0|^8.0|^9.0|^10.0",
+                "phpunit/phpunit": "^9.0|^10.0|^11.0",
+                "spatie/phpunit-snapshot-assertions": "^4.2.14|^5.0|^6.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Technikermathe\\LucideIcons\\BladeLucideIconsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Technikermathe\\LucideIcons\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dan Pock",
+                    "role": "Original Developer"
+                },
+                {
+                    "name": "Pascale Beier",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A package to easily make use of Lucide icons in your Laravel Blade views.",
+            "homepage": "https://github.com/technikermathe/blade-lucide-icons",
+            "keywords": [
+                "Heroicons",
+                "LucideIcons",
+                "blade",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/PascaleBeier/blade-lucide-icons/issues",
+                "source": "https://github.com/PascaleBeier/blade-lucide-icons/tree/v3.136.0"
+            },
+            "time": "2025-12-19T00:08:24+00:00"
         },
         {
             "name": "tightenco/ziggy",

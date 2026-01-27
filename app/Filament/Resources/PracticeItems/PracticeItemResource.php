@@ -13,14 +13,14 @@ use App\Models\PracticeItem;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
-use Filament\Support\Icons\Heroicon;
+use CodeWithDennis\FilamentLucideIcons\Enums\LucideIcon;
 use Filament\Tables\Table;
 
 class PracticeItemResource extends Resource
 {
     protected static ?string $model = PracticeItem::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedQrCode;
+    protected static string|BackedEnum|null $navigationIcon = LucideIcon::ListTodo;
 
     protected static ?string $recordTitleAttribute = 'PracticeItem';
     protected static ?string $modelLabel = 'Практика';
