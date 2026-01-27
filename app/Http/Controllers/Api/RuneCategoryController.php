@@ -17,7 +17,6 @@ class RuneCategoryController extends Controller
             ->all();
 
         $categories = RuneCategory::select(['html', 'name', 'rune_id'])->whereIn('rune_id', $ids)
-            ->orderBy('order')
             ->get()
             ->groupBy('rune_id')
             ->map(function ($items) {

@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('rune_categories', function (Blueprint $table) {
             $table->id();
             $table->foreignId('rune_id')->constrained()->onDelete('cascade');
-            $table->unsignedInteger("order")->default(1);
             $table->string("name");
             $table->text("html");
             $table->timestamps();
