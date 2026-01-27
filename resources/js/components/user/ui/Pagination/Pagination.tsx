@@ -51,11 +51,7 @@ export default function Pagination({
 
                         if (!shouldShow) {
                             let placeholder = !hasElipsis ? (
-                                <li
-                                    key="ellipsis"
-                                >
-                                    ...
-                                </li>
+                                <li key="ellipsis">...</li>
                             ) : null;
                             hasElipsis = true;
                             return placeholder;

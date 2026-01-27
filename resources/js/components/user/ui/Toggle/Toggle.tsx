@@ -33,7 +33,11 @@ export default function Toggle({
                 role="switch"
                 className={css.input}
             />
-            <label htmlFor={id} className={css.label} aria-hidden="true" />
+            <label
+                htmlFor={id}
+                className={css.label}
+                aria-hidden="true"
+            />
         </div>
     );
 }

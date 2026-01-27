@@ -1,4 +1,4 @@
-import { Link, router, useForm } from '@inertiajs/react';
+import { Link, useForm } from '@inertiajs/react';
 import { LoaderCircle } from 'lucide-preact';
 
 import FormLayout from '@/layouts/user/FormLayout/FormLayout';

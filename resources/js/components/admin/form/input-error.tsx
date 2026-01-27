@@ -15,7 +15,10 @@ const InputError = ({
     return (
         <p
             {...props}
-            class={cn('text-xs xl:text-sm font-medium text-red-600 dark:text-red-400', className)}
+            class={cn(
+                'text-xs font-medium text-red-600 xl:text-sm dark:text-red-400',
+                className,
+            )}
         >
             {message}
         </p>

@@ -135,7 +135,6 @@ export function useRandomCardsLogic(
         dispatch({ type: 'RESET', payload: cards });
     };
 
-
     useEffect(() => {
         const handleSpinEnd = () => {
             clearInterval(intervalRef.current);

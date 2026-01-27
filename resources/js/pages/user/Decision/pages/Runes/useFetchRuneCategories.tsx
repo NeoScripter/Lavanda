@@ -21,8 +21,7 @@ const updateRunes = (
     }
 
     return [...runes].map((rune) => {
-        const html =
-            categoryData?.[Number(rune?.id)]?.[selectedCategory];
+        const html = categoryData?.[Number(rune?.id)]?.[selectedCategory];
 
         if (!html) {
             console.warn(

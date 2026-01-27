@@ -24,11 +24,8 @@ export function LoginProvider({
     const [showLoginModal, setShowLoginModal] = useState(false);
 
     return (
-        <LoginContext.Provider
-            value={{ showLoginModal, setShowLoginModal }}
-        >
+        <LoginContext.Provider value={{ showLoginModal, setShowLoginModal }}>
             {children}
         </LoginContext.Provider>
     );
 }
-

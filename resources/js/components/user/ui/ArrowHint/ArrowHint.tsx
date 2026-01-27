@@ -4,10 +4,7 @@ import { MoveDown } from 'lucide-preact';
 import { FC } from 'preact/compat';
 import css from './ArrowHint.module.scss';
 
-const ArrowHint: FC<NodeProps<{ show: boolean }>> = ({
-    className,
-    show,
-}) => {
+const ArrowHint: FC<NodeProps<{ show: boolean }>> = ({ className, show }) => {
     if (!show) return null;
 
     return (

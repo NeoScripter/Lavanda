@@ -3,7 +3,14 @@ import { FC } from 'preact/compat';
 
 const AppLogo: FC<{ className?: string }> = ({ className }) => {
     return (
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 42" class={cn('size-5 fill-current text-white dark:text-black', className)}>
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 40 42"
+            class={cn(
+                'size-5 fill-current text-white dark:text-black',
+                className,
+            )}
+        >
             <path
                 fill="currentColor"
                 fill-rule="evenodd"

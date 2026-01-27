@@ -1,9 +1,8 @@
-import { FC } from "preact/compat";
-import { Toaster } from "sonner";
-import styles from "../../../css/admin-layout.module.css";
-import "../../../css/app.css";
-import { cn } from "@/utils/cn";
-import { usePage } from "@inertiajs/react";
+import { cn } from '@/utils/cn';
+import { FC } from 'preact/compat';
+import { Toaster } from 'sonner';
+import styles from '../../../css/admin-layout.module.css';
+import '../../../css/app.css';
 
 interface AuthLayoutProps {
     title: string;
@@ -22,7 +21,7 @@ export default function AuthLayout({
     return (
         <div
             className={cn(
-                "bg-background flex min-h-svh flex-col items-center justify-center gap-6 p-6 md:p-10",
+                'flex min-h-svh flex-col items-center justify-center gap-6 bg-background p-6 md:p-10',
                 styles.layout,
                 className,
             )}
@@ -43,7 +42,7 @@ export default function AuthLayout({
 
                         <div className="space-y-2 text-center">
                             <h1 className="text-xl font-medium">{title}</h1>
-                            <p className="text-muted-foreground text-center text-sm">
+                            <p className="text-center text-sm text-muted-foreground">
                                 {description}
                             </p>
                         </div>

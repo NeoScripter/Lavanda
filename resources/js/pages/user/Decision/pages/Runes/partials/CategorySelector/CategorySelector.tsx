@@ -1,8 +1,8 @@
 import { NodeProps } from '@/types/nodeProps';
 import { cn } from '@/utils/cn';
+import { Signal } from '@preact/signals';
 import { FC } from 'preact/compat';
 import css from './CategorySelector.module.scss';
-import { Signal } from '@preact/signals';
 
 const CategorySelector: FC<
     NodeProps<{

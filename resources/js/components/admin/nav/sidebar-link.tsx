@@ -4,14 +4,14 @@ import { Link } from '@inertiajs/react';
 import { LucideIcon } from 'lucide-preact';
 import { FC } from 'preact/compat';
 
-const SidebarLink: FC<{ icon: LucideIcon; label: string; url: string; className?: string; collapses?: boolean; onClick?: (e: Event) => void }> = ({
-    icon: Icon,
-    label,
-    url,
-    className,
-    collapses = true,
-    onClick,
-}) => {
+const SidebarLink: FC<{
+    icon: LucideIcon;
+    label: string;
+    url: string;
+    className?: string;
+    collapses?: boolean;
+    onClick?: (e: Event) => void;
+}> = ({ icon: Icon, label, url, className, collapses = true, onClick }) => {
     // const { path } = useLocation();
     // const active = path.startsWith(url);
     const active = false;
@@ -22,10 +22,11 @@ const SidebarLink: FC<{ icon: LucideIcon; label: string; url: string; className?
                 onClick={onClick}
                 href={url}
                 class={cn(
-                    'active:bg-sidebar-accent hover:bg-sidebar-accent ease my-0.5 flex items-center rounded-sm transition-colors duration-200',
+                    'ease my-0.5 flex items-center rounded-sm transition-colors duration-200 hover:bg-sidebar-accent active:bg-sidebar-accent',
                     active && 'bg-sidebar-accent',
                     {
-                        'mx-auto w-fit items-center justify-center p-2': isMini.value && collapses,
+                        'mx-auto w-fit items-center justify-center p-2':
+                            isMini.value && collapses,
                         'mx-1 gap-2 px-3 py-2': !isMini.value || !collapses,
                     },
                     className,

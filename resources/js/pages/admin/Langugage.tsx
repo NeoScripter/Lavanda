@@ -9,13 +9,13 @@ export default function Langugage() {
     const t = useTrans();
 
     return (
-        <AdminLayout title={t("Language")}>
-            <Head title={t("Language")} />
+        <AdminLayout title={t('Language')}>
+            <Head title={t('Language')} />
             <SettingsLayout>
                 <div className="space-y-6">
                     <HeadingSmall
-                        title={t("Language")}
-                        description={t("Change language")}
+                        title={t('Language')}
+                        description={t('Change language')}
                     />
                     <LangugageTabs />
                 </div>

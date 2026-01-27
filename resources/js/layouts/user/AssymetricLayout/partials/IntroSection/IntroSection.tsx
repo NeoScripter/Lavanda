@@ -8,7 +8,10 @@ const IntroSection: FC<{ heading: string; intros: string[] }> = ({
     return (
         <section class={css.wrapper}>
             <div class={css.headingWrapper}>
-                <h2 className={css.heading} dangerouslySetInnerHTML={{ __html: heading }} />
+                <h2
+                    className={css.heading}
+                    dangerouslySetInnerHTML={{ __html: heading }}
+                />
             </div>
             <div class={css.intro}>
                 {intros.map((intro) => (

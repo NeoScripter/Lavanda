@@ -1,10 +1,10 @@
 import LazyImage from '@/components/user/ui/LazyImage/LazyImage';
 import { cn } from '@/utils/cn';
-import css from './Carousel.module.scss';
-import { useRef } from 'preact/hooks';
-import { useCarouselGeometry } from './useCarouselGeometry';
-import { CarouselImage } from '../../CarouselFrame';
 import { range } from '@/utils/range';
+import { useRef } from 'preact/hooks';
+import { CarouselImage } from '../../CarouselFrame';
+import css from './Carousel.module.scss';
+import { useCarouselGeometry } from './useCarouselGeometry';
 
 interface CarouselProps {
     img: CarouselImage;
@@ -12,7 +12,11 @@ interface CarouselProps {
     selectedIndex: number;
 }
 
-const Carousel: React.FC<CarouselProps> = ({ numItems, img, selectedIndex }) => {
+const Carousel: React.FC<CarouselProps> = ({
+    numItems,
+    img,
+    selectedIndex,
+}) => {
     const cellCount = numItems;
     const carouselRef = useRef<HTMLDivElement>(null);
 
@@ -39,14 +43,14 @@ const Carousel: React.FC<CarouselProps> = ({ numItems, img, selectedIndex }) => 
                             })}
                             style={getCellStyle(index)}
                         >
-                                <LazyImage
-                                    prtClass={css.runeWrapper}
-                                    imgClass={css.runeImg}
-                                    img={img.path}
-                                    tinyImg={img.tiny_path}
-                                    alt={img.alt}
-                                    isLazy={false}
-                                />
+                            <LazyImage
+                                prtClass={css.runeWrapper}
+                                imgClass={css.runeImg}
+                                img={img.path}
+                                tinyImg={img.tiny_path}
+                                alt={img.alt}
+                                isLazy={false}
+                            />
                         </div>
                     );
                 })}

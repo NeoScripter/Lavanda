@@ -1,5 +1,5 @@
-import { cn } from "@/utils/cn";
-import { JSX } from "preact/jsx-runtime";
+import { cn } from '@/utils/cn';
+import { JSX } from 'preact/jsx-runtime';
 
 interface InputErrorProps extends JSX.HTMLAttributes<HTMLParagraphElement> {
     message?: string;
@@ -7,7 +7,7 @@ interface InputErrorProps extends JSX.HTMLAttributes<HTMLParagraphElement> {
 
 const InputError = ({
     message,
-    class: className = "",
+    class: className = '',
     ...props
 }: InputErrorProps) => {
     if (!message) return null;
@@ -15,7 +15,7 @@ const InputError = ({
     return (
         <p
             {...props}
-            class={cn("text-sm text-red-600 dark:text-red-400", className)}
+            class={cn('text-sm text-red-600 dark:text-red-400', className)}
         >
             {message}
         </p>

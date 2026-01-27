@@ -9,7 +9,6 @@ import css from './Logo.module.scss';
 const Logo: FC<
     NodeProps<{ variation?: 'dark' | 'white'; isLink?: boolean }>
 > = ({ className, variation = 'dark', isLink = true }) => {
-
     const LogoIcon = () => (
         <img
             src={variation === 'dark' ? DarkLogo : WhiteLogo}

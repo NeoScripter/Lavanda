@@ -10,7 +10,9 @@ const Error: FC<{ onRetry: () => void; error: Error | null }> = ({
 
     return (
         <div className={css.wrapper}>
-            <h3 className={css.heading}>К сожалению, произошла непредвиденная ошибка</h3>
+            <h3 className={css.heading}>
+                К сожалению, произошла непредвиденная ошибка
+            </h3>
             <button
                 className={cn('primary-btn', css.retryBtn)}
                 onClick={onRetry}

@@ -1,7 +1,7 @@
 import CardLayout from '@/layouts/user/CardLayout/CardLayout';
+import css from './Experience.module.scss';
 import { foregroundImage, heroDescription, heroHeading } from './pageData';
 import CardContent from './partials/CardContent';
-import css from './Experience.module.scss';
 
 const Experience = () => {
     return (

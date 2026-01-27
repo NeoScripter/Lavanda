@@ -18,7 +18,7 @@ const HeroSection: FC<NodeProps<CardHeroSectionProps>> = ({
     heading,
     description,
     fgImg,
-    imgClass
+    imgClass,
 }) => {
     const isDesktop = useMediaQuery('(min-width: 1110px)');
 

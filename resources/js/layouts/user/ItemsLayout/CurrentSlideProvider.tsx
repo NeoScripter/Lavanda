@@ -6,12 +6,16 @@ interface CurrentSlideContextValue {
     currentSlideId: Signal<number | null>;
 }
 
-const CurrentSlideContext = createContext<CurrentSlideContextValue | null>(null);
+const CurrentSlideContext = createContext<CurrentSlideContextValue | null>(
+    null,
+);
 
 export function useCurrentSlideId() {
     const ctx = useContext(CurrentSlideContext);
     if (!ctx) {
-        throw new Error('useCurrentSlideId must be used within CurrentSlideProvider');
+        throw new Error(
+            'useCurrentSlideId must be used within CurrentSlideProvider',
+        );
     }
     return ctx;
 }

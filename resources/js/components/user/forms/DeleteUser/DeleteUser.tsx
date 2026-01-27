@@ -2,8 +2,8 @@ import { cn } from '@/utils/cn';
 import { router, useForm } from '@inertiajs/react';
 import { LoaderCircle } from 'lucide-preact';
 import { TargetedEvent } from 'preact';
-import css from './DeleteUser.module.scss';
 import { toast } from 'sonner';
+import css from './DeleteUser.module.scss';
 
 type DeleteUserProps = {
     onCancel: () => void;

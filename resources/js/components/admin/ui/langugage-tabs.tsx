@@ -1,9 +1,8 @@
-import { cn } from '@/utils/cn';
-import { Link, usePage } from '@inertiajs/react';
-import { Moon, Sun } from 'lucide-preact';
-import { HTMLAttributes } from 'preact';
 import En from '@/assets/svgs/en-language.svg';
 import Ru from '@/assets/svgs/ru-language.svg';
+import { cn } from '@/utils/cn';
+import { Link, usePage } from '@inertiajs/react';
+import { HTMLAttributes } from 'preact';
 
 export default function LangugageTabs({
     className = '',
@@ -53,7 +52,7 @@ export default function LangugageTabs({
                         <img
                             src={icon}
                             alt=""
-                            class="object-contain size-full"
+                            class="size-full object-contain"
                         />
                     </span>
                     <span className="ml-1.5 text-sm">{label}</span>

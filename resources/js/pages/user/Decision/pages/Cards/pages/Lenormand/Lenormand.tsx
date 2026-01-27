@@ -1,15 +1,15 @@
+import ForegroundDkTinyWebp from '@/assets/images/cards/Lenormand/foreground-dk-tiny.webp';
+import ForegroundDkAvif from '@/assets/images/cards/Lenormand/foreground-dk.avif';
+import ForegroundDkWebp from '@/assets/images/cards/Lenormand/foreground-dk.webp';
+import ForegroundMbTinyWebp from '@/assets/images/cards/Lenormand/foreground-mb-tiny.webp';
+import ForegroundMbAvif from '@/assets/images/cards/Lenormand/foreground-mb.avif';
+import ForegroundMbWebp from '@/assets/images/cards/Lenormand/foreground-mb.webp';
 import BreadCrumbLayout from '@/layouts/user/BreadCrumbLayout/BreadCrumbLayout';
 import InteractiveLayout from '@/layouts/user/InteractiveLayout';
 import { Head } from '@inertiajs/react';
+import css from './Lenormand.module.scss';
 import { heading, intro } from './pageData';
 import RandomCards from './partials/RandomCards';
-import css from './Lenormand.module.scss';
-import ForegroundDkTinyWebp from "@/assets/images/cards/Lenormand/foreground-dk-tiny.webp";
-import ForegroundDkAvif from "@/assets/images/cards/Lenormand/foreground-dk.avif";
-import ForegroundDkWebp from "@/assets/images/cards/Lenormand/foreground-dk.webp";
-import ForegroundMbTinyWebp from "@/assets/images/cards/Lenormand/foreground-mb-tiny.webp";
-import ForegroundMbAvif from "@/assets/images/cards/Lenormand/foreground-mb.avif";
-import ForegroundMbWebp from "@/assets/images/cards/Lenormand/foreground-mb.webp";
 
 const Lenormand = () => {
     return (

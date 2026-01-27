@@ -46,7 +46,7 @@ const LinkCard: FC<{ link: AssymetricSectionLink }> = ({ link }) => {
                 alt={link.alt}
             />
             <h4 class={css.cardTitle}>{link.title}</h4>
-            <p>{link.description}</p>
+            <p dangerouslySetInnerHTML={{ __html: link.description }} />
         </li>
     );
 };

@@ -33,7 +33,7 @@ const RuneGridItem: React.FC<RuneGridItemProps> = ({
             style={{
                 '--rotateDeg': rotation,
                 '--translateOffset': translation,
-                order: Math.floor((Math.random() * 2 - 1)),
+                order: Math.floor(Math.random() * 2 - 1),
             }}
         >
             {rune && (

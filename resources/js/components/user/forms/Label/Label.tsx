@@ -1,6 +1,6 @@
+import { cn } from '@/utils/cn';
 import { ComponentProps } from 'preact';
 import css from './Label.module.scss';
-import { cn } from '@/utils/cn';
 
 function Label({ className, ...props }: ComponentProps<'label'>) {
     return (

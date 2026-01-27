@@ -4,7 +4,11 @@ const LegalNotice = () => {
     return (
         <section className={css.wrapper}>
             <p>
-                Оформляя подписку на сайте lavanda.kim, вы подтверждаете, что:
+                Оформляя подписку на сайте{' '}
+                <span class="decorative-title">
+                    Lavanda<sup>Kim</sup>
+                </span>
+                , вы подтверждаете, что:
             </p>
 
             <ul>

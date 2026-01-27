@@ -1,8 +1,8 @@
 import AppLayout from '@/layouts/user/AppLayout/AppLayout';
 import { cn } from '@/utils/cn';
 import { Head, Link } from '@inertiajs/react';
-import css from './Account.module.scss';
 import { toast } from 'sonner';
+import css from './Account.module.scss';
 
 const Account = () => {
     return (

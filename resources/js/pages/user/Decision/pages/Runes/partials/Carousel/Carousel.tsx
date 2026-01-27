@@ -1,8 +1,8 @@
 import LazyImage from '@/components/user/ui/LazyImage/LazyImage';
 import { Rune } from '@/types/model';
 import { cn } from '@/utils/cn';
-import css from './Carousel.module.scss';
 import { useRef } from 'preact/hooks';
+import css from './Carousel.module.scss';
 import { useCarouselGeometry } from './useCarouselGeometry';
 
 interface CarouselProps {

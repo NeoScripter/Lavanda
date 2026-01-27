@@ -47,9 +47,7 @@ export default function BgLoader({
             class={cn(css.wrapper, prtClass)}
         >
             {/* Main high-quality images */}
-            <picture
-                class={cn(css.picture, isLoading && css.pictureLoading)}
-            >
+            <picture class={cn(css.picture, isLoading && css.pictureLoading)}>
                 {dkAvif && (
                     <source
                         type="image/avif"
@@ -72,7 +70,12 @@ export default function BgLoader({
                     srcSet={tb}
                     media={`(min-width: ${mbMinWidth}px)`}
                 />
-                {mbAvif && <source type="image/avif" srcSet={mbAvif} />}
+                {mbAvif && (
+                    <source
+                        type="image/avif"
+                        srcSet={mbAvif}
+                    />
+                )}
                 <img
                     onLoad={() => setIsLoading(false)}
                     src={mb}

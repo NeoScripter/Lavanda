@@ -11,7 +11,9 @@ const VerifyEmail: FC<NodeProps> = ({ className }) => {
 
     return (
         <FormLayout heading="Верификация">
-            <div className={cn(css.wrapper, className)}>{flash?.verifyEmail}</div>
+            <div className={cn(css.wrapper, className)}>
+                {flash?.verifyEmail}
+            </div>
         </FormLayout>
     );
 };

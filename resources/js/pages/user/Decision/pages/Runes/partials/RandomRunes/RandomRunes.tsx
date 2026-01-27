@@ -1,5 +1,6 @@
 import BackgroundDkTiny from '@/assets/images/random-runes/background-dk-tiny.webp';
 import BackgroundDk from '@/assets/images/random-runes/background-dk.webp';
+import ArrowHint from '@/components/user/ui/ArrowHint';
 import LazyImage from '@/components/user/ui/LazyImage/LazyImage';
 import { useInteractiveItems } from '@/layouts/user/InteractiveLayout/InteractiveItemsContext';
 import { useCurrentSlideId } from '@/layouts/user/ItemsLayout/CurrentSlideProvider';
@@ -14,7 +15,6 @@ import Carousel from '../Carousel';
 import PickedRunes from '../PickedRunes/PickedRunes';
 import css from './RandomRunes.module.scss';
 import { useCarouselLogic } from './useCarouselLogic';
-import ArrowHint from '@/components/user/ui/ArrowHint';
 
 const ANIMATION_DURATION = 750;
 

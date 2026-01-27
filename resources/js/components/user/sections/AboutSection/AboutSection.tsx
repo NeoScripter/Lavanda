@@ -3,9 +3,9 @@ import Background from '@/assets/images/home/about-bg.webp';
 import ForegroundTiny from '@/assets/images/home/about-fg-tiny.webp';
 import Foreground from '@/assets/images/home/about-fg.webp';
 import LazyImage from '@/components/user/ui/LazyImage/LazyImage';
+import { cn } from '@/utils/cn';
 import { FC } from 'preact/compat';
 import css from './AboutSection.module.scss';
-import { cn } from '@/utils/cn';
 
 const AboutSection: FC<{ className?: string }> = ({ className }) => {
     return (
@@ -25,7 +25,11 @@ const AboutSection: FC<{ className?: string }> = ({ className }) => {
                     Здесь нет универсальных рецептов. Но есть слова, образы и
                     практики, которые помогают услышать свой голос, снизить
                     тревогу и сделать следующий шаг чуть увереннее — наедине с
-                    собой и Lavanda.
+                    собой и{' '}
+                    <span class="decorative-title">
+                        Lavanda<sup>Kim</sup>
+                    </span>
+                    .
                     <br />
                     <br />
                     Тепло. Конфиденциально. И Вам здесь рады.
@@ -33,7 +37,9 @@ const AboutSection: FC<{ className?: string }> = ({ className }) => {
                     <br />
                     С уважением к вам и вашему выбору,
                     <br />
-                    Lavanda.Kim
+                    <span class="decorative-title">
+                        Lavanda<sup>Kim</sup>
+                    </span>
                 </p>
             </div>
 

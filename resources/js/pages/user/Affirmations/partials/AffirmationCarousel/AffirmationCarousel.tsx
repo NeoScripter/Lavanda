@@ -46,7 +46,7 @@ const AffirmationCarousel = () => {
             bgImage={affirmationBg}
             leftClassName={css.leftLayout}
             left={{
-                heading: `Аффирмация на день: ${category?.toUpperCase()}`,
+                heading: `Настрой на день: ${category?.toUpperCase()}`,
                 intro: affirmationCarouselIntro,
                 btns: (
                     <>

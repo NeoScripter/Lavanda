@@ -28,12 +28,12 @@ const IntroSquareCard: FC<
 
             <div class={css.content}>
                 <h3>{heading}</h3>
-                <p dangerouslySetInnerHTML={{__html: content}}/>
+                <p dangerouslySetInnerHTML={{ __html: content }} />
 
                 <Link
                     href={url}
                     prefetch
-                    class={cn(css.link, "secondary-btn")}
+                    class={cn(css.link, 'secondary-btn')}
                 >
                     Узнать больше
                     <ArrowRight />

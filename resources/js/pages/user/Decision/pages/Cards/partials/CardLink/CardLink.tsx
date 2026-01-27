@@ -1,15 +1,18 @@
 import LazyImage from '@/components/user/ui/LazyImage/LazyImage';
 import { NodeProps } from '@/types/nodeProps';
+import { Link } from '@inertiajs/react';
 import { FC } from 'preact/compat';
 import { CardLink as CardLinkType } from '../../cardLinks';
 import css from './CardLink.module.scss';
-import { Link } from '@inertiajs/react';
 
 const CardLink: FC<NodeProps<{ cardLink: CardLinkType }>> = ({ cardLink }) => {
     return (
         <li className={css.wrapper}>
-            <Link href={cardLink.href} prefetch className={css.link}>
-            </Link>
+            <Link
+                href={cardLink.href}
+                prefetch
+                className={css.link}
+            ></Link>
             <LazyImage
                 prtClass={css.imgWrapper}
                 img={cardLink.img}

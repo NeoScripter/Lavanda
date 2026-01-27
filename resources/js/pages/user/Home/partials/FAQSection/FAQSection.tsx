@@ -4,7 +4,10 @@ import css from './FAQSection.module.scss';
 
 const FAQSection = () => {
     return (
-        <section id="faqs" class={css.faqWrapper}>
+        <section
+            id="faqs"
+            class={css.faqWrapper}
+        >
             <h2 className={css.heading}>Вопросы и ответы</h2>
 
             <div className={css.faqs}>

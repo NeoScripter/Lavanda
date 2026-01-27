@@ -1,8 +1,8 @@
-import { useState } from 'preact/hooks';
-import { ComponentProps } from 'preact';
-import css from './PasswordInput.module.scss';
 import { cn } from '@/utils/cn';
+import { ComponentProps } from 'preact';
+import { useState } from 'preact/hooks';
 import ShowInputBtn from './partials/ShowInputBtn/ShowInputBtn';
+import css from './PasswordInput.module.scss';
 
 export default function PasswordInput({
     className,

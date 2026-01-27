@@ -11,8 +11,16 @@ export default function AppearanceTabs({
     const { locale } = usePage<{ locale: 'en' | 'ru' }>().props;
 
     const tabs: { value: string; icon: LucideIcon; label: string }[] = [
-        { value: 'light', icon: Sun, label: locale === 'en' ? 'Light' : 'Светлая' },
-        { value: 'dark', icon: Moon, label: locale === 'en' ? 'Dark' : 'Темная' },
+        {
+            value: 'light',
+            icon: Sun,
+            label: locale === 'en' ? 'Light' : 'Светлая',
+        },
+        {
+            value: 'dark',
+            icon: Moon,
+            label: locale === 'en' ? 'Dark' : 'Темная',
+        },
         {
             value: 'system',
             icon: Monitor,

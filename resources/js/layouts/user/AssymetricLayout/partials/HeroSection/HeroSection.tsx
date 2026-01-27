@@ -8,13 +8,13 @@ import BgTbTiny from '@/assets/images/assymetric-layout/hero-bg-tb-tiny.webp';
 import BgTb from '@/assets/images/assymetric-layout/hero-bg-tb.webp';
 import AnimatedOutline from '@/components/user/ui/AnimatedOutline/AnimatedOutline';
 import BgLoader from '@/components/user/ui/BgLoader/BgLoader';
+import BreadCrumbs from '@/components/user/ui/BreadCrumbs';
 import { BgLoaderImg } from '@/lib/types/shared';
 import { cn } from '@/utils/cn';
 import { Link } from '@inertiajs/react';
 import { ComponentChildren } from 'preact';
 import { FC } from 'react-dom/src';
 import css from './HeroSection.module.scss';
-import BreadCrumbs from '@/components/user/ui/BreadCrumbs';
 
 type AssymetricHeroSectionProps = {
     heading: string;
@@ -58,7 +58,7 @@ const HeroSection: FC<AssymetricHeroSectionProps> = ({
             {decorImg}
 
             <div class={css.content}>
-                <BreadCrumbs className={css.breadcrumbs}/>
+                <BreadCrumbs className={css.breadcrumbs} />
 
                 <h1 class={css.heading}>
                     {parts.slice(0, -1)}{' '}

@@ -22,7 +22,6 @@ const AppLayout: FC<
 > = ({ className, children, extendedFooter, variation = 'dark' }) => {
     const { auth } = usePage<{ auth: Auth }>().props;
 
-
     return (
         <ErrorBoundary fallback={Error}>
             <AuthModalProvider>
@@ -43,7 +42,7 @@ const AppLayout: FC<
                 <Toaster
                     toastOptions={{
                         style: {
-                            color: '#5f4e8b'
+                            color: '#5f4e8b',
                         },
                     }}
                     position="top-center"

@@ -2,9 +2,9 @@ import BgLoader from '@/components/user/ui/BgLoader/BgLoader';
 import { NodeProps } from '@/types/nodeProps';
 import { cn } from '@/utils/cn';
 import { Link } from '@inertiajs/react';
+import { ArrowRight } from 'lucide-preact';
 import { FC } from 'preact/compat';
 import css from './IntroWideCard.module.scss';
-import { ArrowRight } from 'lucide-preact';
 
 const IntroWideCard: FC<
     NodeProps<{
@@ -49,7 +49,7 @@ const IntroWideCard: FC<
 
             <div class={css.content}>
                 <h3>{heading}</h3>
-                <p dangerouslySetInnerHTML={{__html: content}}/>
+                <p dangerouslySetInnerHTML={{ __html: content }} />
 
                 <Link
                     href={url}
@@ -57,7 +57,6 @@ const IntroWideCard: FC<
                     class="secondary-btn"
                 >
                     Узнать больше
-
                     <ArrowRight />
                 </Link>
             </div>

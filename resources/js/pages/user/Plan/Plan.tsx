@@ -1,8 +1,13 @@
+import ButterflyDkTinyWebp from '@/assets/images/plan/butterfly-dk-tiny.webp';
+import ButterflyDkWebp from '@/assets/images/plan/butterfly-dk.webp';
+import FlowerDkTinyWebp from '@/assets/images/plan/flower-dk-tiny.webp';
+import FlowerDkWebp from '@/assets/images/plan/flower-dk.webp';
 import BackgroundDk from '@/assets/images/plans/background-dk.webp';
 import BackgroundMb from '@/assets/images/plans/background-mb.webp';
 import BackgroundTb from '@/assets/images/plans/background-tb.webp';
 import BackgroundTiny from '@/assets/images/plans/background-tiny.webp';
 import BgLoader from '@/components/user/ui/BgLoader/BgLoader';
+import LazyImage from '@/components/user/ui/LazyImage/LazyImage';
 import PlanCard from '@/components/user/ui/PlanCard/PlanCard';
 import AppLayout from '@/layouts/user/AppLayout/AppLayout';
 import { Plan } from '@/types/model';
@@ -11,11 +16,6 @@ import { Link, usePage } from '@inertiajs/react';
 import { MoveLeft } from 'lucide-preact';
 import css from './Plan.module.scss';
 import LegalNotice from './partials/LegalNotice';
-import LazyImage from '@/components/user/ui/LazyImage/LazyImage';
-import ButterflyDkTinyWebp from "@/assets/images/plan/butterfly-dk-tiny.webp";
-import ButterflyDkWebp from "@/assets/images/plan/butterfly-dk.webp";
-import FlowerDkTinyWebp from "@/assets/images/plan/flower-dk-tiny.webp";
-import FlowerDkWebp from "@/assets/images/plan/flower-dk.webp";
 
 const Plans = () => {
     const { plan } = usePage<{ plan: Plan }>().props;

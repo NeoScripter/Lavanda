@@ -10,7 +10,10 @@ const PickedRunes: FC<{ runes: Rune[] }> = ({ runes }) => {
     return (
         <div className={cn(css.pickedRunes, 'full-bleed')}>
             {runes.map((rune) => (
-                <div key={rune.id} className={css.runeImageWrapper}>
+                <div
+                    key={rune.id}
+                    className={css.runeImageWrapper}
+                >
                     {' '}
                     {rune.front_image && (
                         <LazyImage

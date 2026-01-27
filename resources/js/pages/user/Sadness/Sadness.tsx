@@ -1,7 +1,7 @@
-import HeroDecorTiny from '@/assets/images/sadness/hero-decor-tiny.webp';
-import HeroDecor from '@/assets/images/sadness/hero-decor.webp';
 import FooterDecorTiny from '@/assets/images/sadness/footer-decor-tiny.webp';
 import FooterDecor from '@/assets/images/sadness/footer-decor.webp';
+import HeroDecorTiny from '@/assets/images/sadness/hero-decor-tiny.webp';
+import HeroDecor from '@/assets/images/sadness/hero-decor.webp';
 import LazyImage from '@/components/user/ui/LazyImage/LazyImage';
 import AssymetricLayout from '@/layouts/user/AssymetricLayout/AssymetricLayout';
 import {
@@ -41,4 +41,3 @@ const Sadness = () => {
     );
 };
 export default Sadness;
-

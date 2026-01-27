@@ -200,10 +200,10 @@ export function useCarousel<T>({
     );
 
     useEffect(() => {
-        const handleResize = () => requestAnimationFrame(() => applyTransform(0, false));
+        const handleResize = () =>
+            requestAnimationFrame(() => applyTransform(0, false));
         window.addEventListener('resize', handleResize);
-        return () =>
-            window.removeEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
     }, [applyTransform]);
 
     return {

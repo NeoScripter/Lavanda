@@ -1,37 +1,40 @@
-import { Button } from "@/components/auth/form/button";
-import Checkbox from "@/components/auth/form/checkbox";
-import Input from "@/components/auth/form/input";
-import InputError from "@/components/auth/form/input-error";
-import Label from "@/components/auth/form/label";
-import PasswordInput from "@/components/auth/form/password-input";
-import useTrans from "@/hooks/useTrans";
-import AuthLayout from "@/layouts/auth/AuthLayout";
-import { Head, useForm } from "@inertiajs/react";
-import { LoaderCircle } from "lucide-preact";
-import { JSX } from "preact/jsx-runtime";
+import { Button } from '@/components/auth/form/button';
+import Checkbox from '@/components/auth/form/checkbox';
+import Input from '@/components/auth/form/input';
+import InputError from '@/components/auth/form/input-error';
+import Label from '@/components/auth/form/label';
+import PasswordInput from '@/components/auth/form/password-input';
+import useTrans from '@/hooks/useTrans';
+import AuthLayout from '@/layouts/auth/AuthLayout';
+import { Head, useForm } from '@inertiajs/react';
+import { LoaderCircle } from 'lucide-preact';
+import { JSX } from 'preact/jsx-runtime';
 
 const Login = () => {
     const t = useTrans();
 
     const form = useForm({
-        email: "test@example.com",
-        password: "password",
+        email: 'test@example.com',
+        password: 'password',
         remember: false,
     });
 
     function submit(e: JSX.TargetedEvent<HTMLFormElement, Event>) {
         e.preventDefault();
 
-        form.post("/login");
+        form.post('/login');
     }
 
     return (
         <AuthLayout
-            title={t("Log in to your account")}
-            description={t("Enter your email and password below to log in")}
+            title={t('Log in to your account')}
+            description={t('Enter your email and password below to log in')}
         >
             <Head title="Вход" />
-            <form class="flex flex-col gap-6" onSubmit={submit}>
+            <form
+                class="flex flex-col gap-6"
+                onSubmit={submit}
+            >
                 <div class="grid gap-6">
                     {/* Email */}
                     <div class="grid gap-2">
@@ -46,13 +49,13 @@ const Login = () => {
                             value={form.data.email}
                             onInput={(e) =>
                                 form.setData(
-                                    "email",
+                                    'email',
                                     (e.target as HTMLInputElement).value,
                                 )
                             }
                             placeholder="email@example.com"
                         />
-                        <InputError message={form.errors.email || ""} />
+                        <InputError message={form.errors.email || ''} />
                     </div>
 
                     {/* Password */}
@@ -68,13 +71,13 @@ const Login = () => {
                             value={form.data.password}
                             onInput={(e) =>
                                 form.setData(
-                                    "password",
+                                    'password',
                                     (e.target as HTMLInputElement).value,
                                 )
                             }
-                            placeholder={t("Password")}
+                            placeholder={t('Password')}
                         />
-                        <InputError message={form.errors.password || ""} />
+                        <InputError message={form.errors.password || ''} />
                     </div>
 
                     {/* Remember me */}
@@ -84,7 +87,7 @@ const Login = () => {
                             name="remember"
                             checked={form.data.remember}
                             onClick={() =>
-                                form.setData("remember", !form.data.remember)
+                                form.setData('remember', !form.data.remember)
                             }
                             tabIndex={3}
                         />
