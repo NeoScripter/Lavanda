@@ -2,8 +2,8 @@ import DecisionLink1Tiny from '@/assets/images/decision/decision-link-1-tiny.web
 import DecisionLink1 from '@/assets/images/decision/decision-link-1.webp';
 import DecisionLink2Tiny from '@/assets/images/decision/decision-link-2-tiny.webp';
 import DecisionLink2 from '@/assets/images/decision/decision-link-2.webp';
-import DecisionLink3Tiny from '@/assets/images/decision/decision-link-3-tiny.webp';
-import DecisionLink3 from '@/assets/images/decision/decision-link-3.webp';
+import DecisionLink3Tiny from '@/assets/images/sadness/sadness-link-1-dk-tiny.webp';
+import DecisionLink3  from '@/assets/images/sadness/sadness-link-1-dk.webp';
 import DecisionLink4Tiny from '@/assets/images/decision/decision-link-4-tiny.webp';
 import DecisionLink4 from '@/assets/images/decision/decision-link-4.webp';
 import DecisionLink5Tiny from '@/assets/images/decision/decision-link-5-tiny.webp';

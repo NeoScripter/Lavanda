@@ -153,6 +153,12 @@ export const navLinks: NavLinkType[] = [
                 type: 'link',
                 href: '/toolkit',
             },
+            {
+                id: crypto.randomUUID(),
+                label: 'Часто задаваемые вопросы',
+                type: 'link',
+                href: '/#faqs',
+            },
         ],
     },
 ];

@@ -30,6 +30,8 @@ class RegisteredUserRequest extends FormRequest
      */
     public function rules(): array
     {
+        // При валидации алгоритм отклоняет запрос, если пользователь
+        // не дал согласия на обработку персиольных данных и политики конфинденциальности
         return [
             'name' => 'required|string|max:255',
             'gender' => 'nullable|in:male,female',
