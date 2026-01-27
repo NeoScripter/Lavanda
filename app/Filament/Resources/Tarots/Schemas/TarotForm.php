@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\Promos\Schemas;
+namespace App\Filament\Resources\Tarots\Schemas;
 
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
@@ -12,7 +12,7 @@ use Filament\Forms\Components\RichEditor;
 use Filament\Schemas\Components\Text;
 use Filament\Support\Enums\FontWeight;
 
-class PromoForm
+class TarotForm
 {
     public static function configure(Schema $schema): Schema
     {
@@ -37,7 +37,7 @@ class PromoForm
                             ->saveUploadedFileUsing(
                                 fn($file) =>
                                 app(ImageResizer::class)
-                                    ->handleImage($file, 550, 'promo')
+                                    ->handleImage($file, 300, 'tarot')
                             ),
                         Textarea::make('alt')
                             ->requiredWith('path')
