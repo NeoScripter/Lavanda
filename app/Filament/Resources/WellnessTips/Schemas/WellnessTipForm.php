@@ -47,10 +47,11 @@ class WellnessTipForm
                                 fn($file) =>
                                 app(ImageResizer::class)
                                     ->handleImage($file, 300, 'wellness')
-                            ),
+                            )->dehydrated(fn($state) => filled($state)),
                         Textarea::make('alt')
                             ->requiredWith('path')
                             ->label('Альтернативный текст к фото')
+                            ->dehydrated(fn($state) => filled($state)),
                     ]),
             ]);
     }

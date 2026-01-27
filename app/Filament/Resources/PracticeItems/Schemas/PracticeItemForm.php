@@ -45,10 +45,11 @@ class PracticeItemForm
                                 fn($file) =>
                                 app(ImageResizer::class)
                                     ->handleImage($file, 700, 'practice')
-                            ),
+                            )->dehydrated(fn($state) => filled($state)),
                         Textarea::make('alt')
                             ->requiredWith('path')
                             ->label('Альтернативный текст к фото')
+                            ->dehydrated(fn($state) => filled($state)),
                     ]),
 
                 Repeater::make('faqs')

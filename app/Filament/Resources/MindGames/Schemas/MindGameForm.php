@@ -26,10 +26,11 @@ class MindGameForm
                                 fn($file) =>
                                 app(ImageResizer::class)
                                     ->handleImage($file, 600, 'mindgames')
-                            ),
+                            )->dehydrated(fn($state) => filled($state)),
                         Textarea::make('alt')
                             ->requiredWith('path')
                             ->label('Альтернативный текст к фото')
+                            ->dehydrated(fn($state) => filled($state)),
                     ]),
             ]);
     }

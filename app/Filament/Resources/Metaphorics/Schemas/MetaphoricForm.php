@@ -38,10 +38,12 @@ class MetaphoricForm
                                 fn($file) =>
                                 app(ImageResizer::class)
                                     ->handleImage($file, 600, 'metaphoric')
-                            ),
+                            )
+                            ->dehydrated(fn($state) => filled($state)),
                         Textarea::make('alt')
                             ->requiredWith('path')
                             ->label('Альтернативный текст к фото')
+                            ->dehydrated(fn($state) => filled($state))
                     ]),
 
                 Section::make()->schema([

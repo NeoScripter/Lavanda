@@ -34,7 +34,8 @@ class AudioForm
                         ->disk('public')
                         ->maxSize(4128)
                         ->label('Аудио')
-                        ->required(),
+                        ->required()
+                        ->dehydrated(fn($state) => filled($state))
                 ]),
             ]);
     }
