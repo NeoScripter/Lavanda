@@ -18,24 +18,24 @@
     @include u.px(rounded, 24, 24, 24, 24);
 }
 
-@supports selector(::details-content) {
-    .details {
-        overflow: hidden;
-        overflow: clip;
-    }
-
-    .details::details-content {
-        block-size: 0;
-        transition:
-            block-size 0.5s,
-            content-visibility 0.5s;
-        transition-behavior: allow-discrete;
-    }
-
-    .details:open::details-content {
-        block-size: auto;
-    }
-}
+/* @supports selector(::details-content) { */
+/*     .details { */
+/*         overflow: hidden; */
+/*         overflow: clip; */
+/*     } */
+/**/
+/*     .details::details-content { */
+/*         block-size: 0; */
+/*         transition: */
+/*             block-size 0.5s, */
+/*             content-visibility 0.5s; */
+/*         transition-behavior: allow-discrete; */
+/*     } */
+/**/
+/*     .details:open::details-content { */
+/*         block-size: auto; */
+/*     } */
+/* } */
 
 .summary {
     font-weight: bold;
@@ -82,6 +82,11 @@
 .path {
     transform-origin: 16px 16px;
 }
+
+details[open] .path {
+    transform: rotate(135deg);
+}
+
 
 @media (prefers-reduced-motion: no-preference) {
     .path {
