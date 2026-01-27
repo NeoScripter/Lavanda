@@ -18,7 +18,6 @@ export type ExperienceItem = {
     title: string;
     description: string;
     heading: string;
-    body: string;
     html: string;
     created_at?: string;
     updated_at?: string;
@@ -35,7 +34,7 @@ export type Iching = {
 export type Image = {
     id: number;
     path: string;
-    tiny_path: string;
+    tiny_path?: string;
     alt: string;
     imageable_type: string;
     imageable_id: number;
@@ -46,28 +45,34 @@ export type Image = {
 };
 export type Legal = {
     id: number;
-    type: string;
-    body: string;
-    html?: string;
+    type: LegalType;
+    html: string;
     created_at?: string;
     updated_at?: string;
 };
 export type Lenormand = {
     id: number;
     name: string;
-    body: string;
-    html?: string;
+    html: string;
     advice: string;
     created_at?: string;
     updated_at?: string;
     images?: Image;
     front_image?: Image;
 };
+export type MatchSet = {
+    id: number;
+    html: string;
+    type: MatchSetType;
+    ids: number[];
+    advice: string;
+    created_at?: string;
+    updated_at?: string;
+};
 export type Metaphoric = {
     id: number;
     name: string;
-    body: string;
-    html?: string;
+    html: string;
     advice: string;
     created_at?: string;
     updated_at?: string;
@@ -122,8 +127,7 @@ export type PracticeItemFaq = {
 export type Promo = {
     id: number;
     name: string;
-    body: string;
-    html?: string;
+    html: string;
     advice: string;
     created_at?: string;
     updated_at?: string;
@@ -146,7 +150,6 @@ export type RuneCategory = {
     rune_id: number;
     order: number;
     name: string;
-    body: string;
     html: string;
     created_at?: string;
     updated_at?: string;
@@ -154,7 +157,7 @@ export type RuneCategory = {
 };
 export type Subscription = {
     id: number;
-    tier: string;
+    title: string;
     user_id: number;
     starts_at?: string;
     ends_at?: string;
@@ -165,8 +168,7 @@ export type Subscription = {
 export type Tarot = {
     id: number;
     name: string;
-    body: string;
-    html?: string;
+    html: string;
     advice: string;
     created_at?: string;
     updated_at?: string;
@@ -182,6 +184,13 @@ export type WellnessTip = {
     updated_at?: string;
     image?: Image;
 };
+export enum LegalType {
+    CONSENT = "consent",
+    POLICY = "policy"
+}
+export enum MatchSetType {
+    LENORMAND = "lenormand"
+}
 export enum SubscriptionStatus {
     ACTIVE = 1,
     CANCELLED = 2

@@ -13,10 +13,12 @@ import { introText, LenormandCard } from '../../constants/lenormandCardData';
 import { useLenormandLogic } from '../../hooks/useLenormandLogic';
 import isKeyCard from '../../utils/isKeyCard';
 import css from './RandomCards.module.scss';
+import { MatchSet } from '@/types/model';
 
 const RandomCards = () => {
-    const { cards: initialCards } = usePage<{
+    const { cards: initialCards, combos } = usePage<{
         cards: Omit<LenormandCard, 'isFlipped'>[];
+        combos: MatchSet[]
     }>().props;
 
     const isDesktop = useMediaQuery('(min-width: 1110px)');
@@ -37,6 +39,7 @@ const RandomCards = () => {
     } = useLenormandLogic(
         currentSlideId.value || 1,
         initialCards,
+        combos,
         isDesktop ? 8 : 5,
         isMotionEnabled,
         interactiveItems,

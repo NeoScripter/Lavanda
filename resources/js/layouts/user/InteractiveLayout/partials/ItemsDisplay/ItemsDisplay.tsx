@@ -52,21 +52,21 @@ const ItemSection: FC<{ item: InteractiveItem }> = ({ item }) => {
     return (
         <li className={css.sectionWrapper}>
             <div className={css.sectionContentWrapper}>
-                <div className={css.sectionImageWrapper}>
-                    {image && (
+                {image && (
+                    <div className={css.sectionImageWrapper}>
                         <LazyImage
                             prtClass={css.sectionImageParent}
                             imgClass={css.sectionImage}
                             img={image.path}
-                            tinyImg={image.tiny_path}
+                            tinyImg={image.tiny_path ?? ''}
                             alt={image.alt}
                         />
-                    )}
 
-                    {item.name && (
-                        <h4 className={css.sectionItemName}>{item.name}</h4>
-                    )}
-                </div>
+                        {item.name && (
+                            <h4 className={css.sectionItemName}>{item.name}</h4>
+                        )}
+                    </div>
+                )}
 
                 {isLoading.value ? (
                     <Preloader />

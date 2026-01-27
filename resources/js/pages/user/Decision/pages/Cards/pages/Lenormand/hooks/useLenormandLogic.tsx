@@ -1,8 +1,10 @@
+import { MatchSet } from '@/types/model';
 import { useEffect, useReducer, useRef } from 'preact/hooks';
 import { LenormandCard } from '../constants/lenormandCardData';
 import getFinalCards from '../utils/getFinalCards';
 import insertKeyCardAndMark from '../utils/insertKeyCardAndMark';
 import isKeyCard from '../utils/isKeyCard';
+import matchCombos from '../utils/matchCombos';
 
 const ANIMATION_DURATION = 200;
 
@@ -90,6 +92,7 @@ function carouselReducer(
 export function useLenormandLogic(
     currentSlideId: number,
     initialCards: Omit<LenormandCard, 'isFlipped'>[],
+    combos: MatchSet[],
     cardsPerRow: number,
     isMotionEnabled: boolean,
     interactiveItems: any,
@@ -171,8 +174,11 @@ export function useLenormandLogic(
                 (card) => card != null && !isKeyCard(card.id),
             );
 
-            interactiveItems.value = surroundingCards;
-            prevInteractiveItems.value = surroundingCards;
+            const matchedSets = matchCombos(surroundingCards, combos);
+            const combinedCards = [...surroundingCards, ...matchedSets];
+
+            interactiveItems.value = combinedCards;
+            prevInteractiveItems.value = combinedCards;
         };
 
         document.addEventListener('spinningEnd', handleSpinEnd);
