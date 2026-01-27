@@ -1,13 +1,19 @@
 import { faqItems } from '@/lib/data/faqItems';
 import { cn } from '@/utils/cn';
-import { useState } from 'preact/hooks';
+import { useRef, useState } from 'preact/hooks';
 import css from './FAQSection.module.scss';
 
 const FAQSection = () => {
     const [openId, setOpenId] = useState<number | null>(null);
+    const detailsRefs = useRef<{ [key: number]: HTMLDetailsElement }>({});
 
     const toggle = (id: number) => {
-        setOpenId((prev) => (prev === id ? null : id));
+        const isOpening = openId !== id;
+        setOpenId(isOpening ? id : null);
+
+        if (detailsRefs.current[id]) {
+            detailsRefs.current[id].open = isOpening;
+        }
     };
 
     return (
@@ -19,6 +25,9 @@ const FAQSection = () => {
                     <details
                         key={faq.id}
                         open={openId === faq.id}
+                        ref={(el) => {
+                            if (el) detailsRefs.current[faq.id] = el;
+                        }}
                         className={css.details}
                     >
                         <summary
