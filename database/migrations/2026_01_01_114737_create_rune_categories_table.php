@@ -16,7 +16,6 @@ return new class extends Migration
             $table->foreignId('rune_id')->constrained()->onDelete('cascade');
             $table->unsignedInteger("order")->default(1);
             $table->string("name");
-            $table->text("body");
             $table->text("html");
             $table->timestamps();
         });

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\User\Decision\Cards;
 
+use App\Enums\MatchSetType;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CardResource;
 use App\Models\Lenormand;
+use App\Models\MatchSet;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Gate;
 use Inertia\Inertia;
@@ -38,6 +40,7 @@ class LenormandController extends Controller
                     ? CardResource::collection(Lenormand::all()->shuffle())
                     : null
             ),
+            'combos' => MatchSet::where('type', MatchSetType::LENORMAND)->get(),
         ]);
     }
 }

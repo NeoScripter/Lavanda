@@ -19,7 +19,7 @@ class TarotFactory extends Factory
         return [
             'name' => fake()->word(),
             'advice' => fake()->sentence(),
-            'body' => fake()->sentences(10, true),
+            'html' => fake()->sentences(10, true),
         ];
     }
 }

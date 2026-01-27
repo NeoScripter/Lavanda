@@ -17,7 +17,7 @@ class RuneCategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'body' => fake()->sentences(8, true),
+            'html' => fake()->sentences(8, true),
         ];
     }
 }

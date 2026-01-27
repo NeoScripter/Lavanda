@@ -14,8 +14,7 @@ return new class extends Migration
         Schema::create('metaphorics', function (Blueprint $table) {
             $table->id();
             $table->string("name");
-            $table->text("body");
-            $table->text("html")->nullable();
+            $table->text("html");
             $table->text("advice");
             $table->timestamps();
         });

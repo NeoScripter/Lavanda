@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Image;
 use App\Models\Metaphoric;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class MetaphoricSeeder extends Seeder

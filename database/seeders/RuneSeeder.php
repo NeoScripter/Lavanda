@@ -28,17 +28,17 @@ class RuneSeeder extends Seeder
                     ->sequence(
                         [
                             'name' => 'Общая',
-                            'body' => $raw['cat1'],
+                            'html' => $raw['cat1'],
                             'order' => 1,
                         ],
                         [
                             'name' => 'Любовь и отношения',
-                            'body' => $raw['cat2'],
+                            'html' => $raw['cat2'],
                             'order' => 2,
                         ],
                         [
                             'name' => 'Карьера',
-                            'body' => $raw['cat3'],
+                            'html' => $raw['cat3'],
                             'order' => 3,
                         ],
                     ),

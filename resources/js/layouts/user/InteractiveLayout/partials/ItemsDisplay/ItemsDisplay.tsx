@@ -63,7 +63,9 @@ const ItemSection: FC<{ item: InteractiveItem }> = ({ item }) => {
                         />
                     )}
 
-                    <h4 className={css.sectionItemName}>{item.name}</h4>
+                    {item.name && (
+                        <h4 className={css.sectionItemName}>{item.name}</h4>
+                    )}
                 </div>
 
                 {isLoading.value ? (
@@ -75,9 +77,11 @@ const ItemSection: FC<{ item: InteractiveItem }> = ({ item }) => {
                     />
                 )}
             </div>
-            <div className={css.sectionHeading}>
-                <h3>${item.advice}</h3>
-            </div>
+            {item.advice && (
+                <div className={css.sectionHeading}>
+                    <h3>${item.advice}</h3>
+                </div>
+            )}
         </li>
     );
 };

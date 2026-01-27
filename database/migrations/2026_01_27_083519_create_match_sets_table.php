@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\MatchSetType;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,10 +12,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('lenormands', function (Blueprint $table) {
+        Schema::create('match_sets', function (Blueprint $table) {
             $table->id();
-            $table->string("name");
             $table->text("html");
+            $table->string("type")->default(MatchSetType::LENORMAND->value);
+            $table->json("ids");
             $table->text("advice");
             $table->timestamps();
         });
@@ -25,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('lenormands');
+        Schema::dropIfExists('match_sets');
     }
 };

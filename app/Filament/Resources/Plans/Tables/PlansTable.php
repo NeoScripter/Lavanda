@@ -24,7 +24,7 @@ class PlansTable
                     ->suffix(' дней')
                     ->sortable(),
                 TextColumn::make('price')
-                    ->money(currency: 'rubles')
+                    ->money(currency: 'rubles', decimalPlaces: 0)
                     ->label('Цена')
                     ->sortable(),
                 TextColumn::make('updated_at')
