@@ -17,4 +17,12 @@ enum MatchSetType: string
             self::RUNE => 'Руны',
         };
     }
+
+    public function getModelClass(): string
+    {
+        return match ($this) {
+            self::LENORMAND => \App\Models\Lenormand::class,
+            self::RUNE => \App\Models\Rune::class,
+        };
+    }
 }

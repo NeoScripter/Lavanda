@@ -12,6 +12,7 @@ use Filament\Forms\Components\RichEditor;
 use Filament\Schemas\Components\Text;
 use Filament\Support\Enums\FontWeight;
 use Filament\Schemas\Components\Utilities\Get;
+use Filament\Schemas\Components\Utilities\Set;
 
 class MatchSetForm
 {
@@ -26,26 +27,26 @@ class MatchSetForm
                                 ->mapWithKeys(fn($type) => [$type->value => $type->getLabel()])
                                 ->toArray()
                         )
-                        ->reactive()
+                        ->live()
                         ->required()
-                        ->maxWidth('xs'),
+                        ->maxWidth('xs')->afterStateUpdated(fn(Set $set) => $set('ids', null)),
                     Select::make('ids')
                         ->label('Элементы в комбинации')
                         ->multiple()
                         ->searchable()
                         ->required()
-                        ->options(fn(Get $get) => match ($get('type')) {
-                            MatchSetType::LENORMAND->value =>
-                            \App\Models\Lenormand::query()
-                                ->orderBy('id')
-                                ->pluck('name', 'id'),
+                        ->options(function (Get $get) {
+                            $type = $get('type');
+                            if (!$type) {
+                                return [];
+                            }
 
-                            MatchSetType::RUNE->value =>
-                            \App\Models\Lenormand::query()
-                                ->orderBy('id')
-                                ->pluck('name', 'id'),
+                            $matchSetType = MatchSetType::from($type);
+                            $modelClass = $matchSetType->getModelClass();
 
-                            default => [],
+                            return $modelClass::query()
+                                ->orderBy('id')
+                                ->pluck('name', 'id');
                         }),
                     Textarea::make('advice')
                         ->label('Совет')
