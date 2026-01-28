@@ -27,7 +27,7 @@ class PromosTable
                     TextColumn::make('name')
                         ->label('Название')
                         ->searchable(),
-                ]),
+                ])->space(1),
                 TextColumn::make('updated_at')
                     ->date()
                     ->label('Дата изменения')

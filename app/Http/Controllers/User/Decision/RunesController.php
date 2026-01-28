@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User\Decision;
 
+use App\Enums\RuneCategoryName;
 use App\Http\Controllers\Controller;
 use App\Models\Rune;
 use Illuminate\Support\Facades\Cache;
@@ -16,9 +17,9 @@ class RunesController extends Controller
      */
     public function __invoke()
     {
-        $categories = DB::table('rune_categories')
-            ->distinct()
-            ->pluck('name');
+        $categories = collect(RuneCategoryName::cases())
+            ->map(fn($case) => $case->value)
+            ->toArray();
 
         $items = [
             [

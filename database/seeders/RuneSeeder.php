@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Enums\RuneCategoryName;
 use App\Models\Image;
 use App\Models\Rune;
 use App\Models\RuneCategory;
@@ -27,17 +28,17 @@ class RuneSeeder extends Seeder
                     ->count(3)
                     ->sequence(
                         [
-                            'name' => 'Общая',
+                            'name' => RuneCategoryName::GENERAL->value,
                             'html' => $raw['cat1'],
                             'order' => 1,
                         ],
                         [
-                            'name' => 'Любовь и отношения',
+                            'name' => RuneCategoryName::RELATIONSHIP->value,
                             'html' => $raw['cat2'],
                             'order' => 2,
                         ],
                         [
-                            'name' => 'Карьера',
+                            'name' => RuneCategoryName::CAREER->value,
                             'html' => $raw['cat3'],
                             'order' => 3,
                         ],

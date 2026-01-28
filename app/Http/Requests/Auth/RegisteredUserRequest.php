@@ -2,8 +2,10 @@
 
 namespace App\Http\Requests\Auth;
 
+use App\Enums\UserGender;
 use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\Enum;
 
 class RegisteredUserRequest extends FormRequest
 {
@@ -34,7 +36,7 @@ class RegisteredUserRequest extends FormRequest
         // не дал согласия на обработку персиольных данных и политики конфинденциальности
         return [
             'name' => 'required|string|max:255',
-            'gender' => 'nullable|in:male,female',
+            'gender' => ['nullable', new Enum(UserGender::class)],
             'birthday' => 'nullable|date|before:today',
             'email' => 'required|string|lowercase|email|max:255|unique:' . User::class,
             'policy' => 'required|accepted',

@@ -79,7 +79,7 @@ const ItemSection: FC<{ item: InteractiveItem }> = ({ item }) => {
             </div>
             {item.advice && (
                 <div className={css.sectionHeading}>
-                    <h3>${item.advice}</h3>
+                    <h3>{item.advice}</h3>
                 </div>
             )}
         </li>
