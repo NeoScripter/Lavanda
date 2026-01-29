@@ -5,7 +5,6 @@ import BackgroundTbTiny from '@/assets/images/contacts/background-tb-tiny.webp';
 import BackgroundTb from '@/assets/images/contacts/background-tb.webp';
 import BgLoader from '@/components/user/ui/BgLoader/BgLoader';
 import ContactLinks from '@/components/user/ui/ContactLinks/ContactLinks';
-import SocialLinks from '@/components/user/ui/SocialLinks';
 import AppLayout from '@/layouts/user/AppLayout/AppLayout';
 import { cn } from '@/utils/cn';
 import css from './Contacts.module.scss';
