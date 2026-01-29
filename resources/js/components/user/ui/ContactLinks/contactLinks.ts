@@ -1,11 +1,9 @@
-import { ComponentType } from 'preact';
-import Whatsapp from '../../svgs/Whatsapp';
-import Email from '../../svgs/Email';
+import { LucideIcon, Mail, Newspaper, ScrollText } from 'lucide-preact';
 
 export type ContactLinkType = {
     id: string;
     href: string;
-    icon: ComponentType<{ class?: string }>;
+    icon: LucideIcon;
     label: string;
     text: string;
 };
@@ -13,16 +11,23 @@ export type ContactLinkType = {
 export const contactLinks: ContactLinkType[] = [
     {
         id: crypto.randomUUID(),
-        href: '/',
-        icon: Whatsapp,
-        label: 'WhatsApp',
-        text: '+7 9876543210',
+        href: 'mailto:info@lavanda.kim',
+        icon: Mail,
+        label: 'Email',
+        text: 'info@lavanda.kim',
     },
     {
         id: crypto.randomUUID(),
-        href: '/',
-        icon: Email,
-        label: 'Email',
-        text: 'example@email.com',
+        href: '/legal/consent',
+        icon: Newspaper,
+        label: 'WhatsApp',
+        text: 'Пользовательское соглашение',
+    },
+    {
+        id: crypto.randomUUID(),
+        href: '/legal/policy',
+        icon: ScrollText,
+        label: 'WhatsApp',
+        text: 'Политика конфинденциальности',
     },
 ];
