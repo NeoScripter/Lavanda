@@ -1,5 +1,6 @@
 import BurgerMenu from '@/components/user/nav/BurgerMenu/BurgerMenu';
 import Logo from '@/components/user/ui/Logo/Logo';
+import useAutoHideOnScroll from '@/hooks/useAutoHideOnScroll';
 import { useClickOutside } from '@/hooks/useClickOutside';
 import useElementHeight from '@/hooks/useElementHeight';
 import { useEscapeKey } from '@/hooks/useEscapeKey';
@@ -33,6 +34,7 @@ const AppHeader: FC<NodeProps> = ({ className }) => {
     const { actualHeight, ref } = useElementHeight();
 
     const toggleMenu = () => setShowMenu((p) => !p);
+    const hide = useAutoHideOnScroll();
 
     useEffect(() => {
         if (!isMobile) {
@@ -61,7 +63,11 @@ const AppHeader: FC<NodeProps> = ({ className }) => {
     return (
         <header
             id="header"
-            class={cn(css.wrapper, showMenu && css.shadow, className)}
+            class={cn(
+                css.wrapper,
+                { [css.wrapperHidden]: hide, [css.shadow]: showMenu },
+                className,
+            )}
             style={{ '--height': `${actualHeight.value}px` }}
             ref={ref}
         >

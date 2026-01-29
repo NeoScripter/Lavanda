@@ -12,7 +12,9 @@
     transform: translateX(-50%);
     top: var(--offsetY);
     backdrop-filter: blur(5px);
-    transition: box-shadow 0.2s ease-in-out;
+    transition:
+        box-shadow 0.2s ease-in-out,
+        translate 0.3s ease-in-out;
     @include u.px(--offsetY, 22, 22, 57, 53);
     @include u.px(--requiredHeight, 47, 165, 83, 97);
     @include u.px(w, 328, 657, 1360, 1585);
@@ -24,6 +26,9 @@
     }
 }
 
+.wrapperHidden {
+    translate: 0% -200%;
+}
 .shadow {
     @include u.shadow(2);
 
@@ -109,3 +114,4 @@
         @include u.px(py, null, 12);
     }
 }
+
