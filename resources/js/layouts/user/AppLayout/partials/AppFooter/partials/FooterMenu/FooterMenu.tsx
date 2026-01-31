@@ -32,7 +32,7 @@ const FooterNavLink: FC<{ link: FooterNavLinkType }> = ({ link }) => {
             >
                 {link.title}
             </Link>
-            <p class={css.linkDescription}>{link.description}</p>
+            <p dangerouslySetInnerHTML={{__html: link.description}} class={css.linkDescription}/>
         </li>
     );
 };
