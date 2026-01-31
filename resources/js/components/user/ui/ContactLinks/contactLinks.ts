@@ -16,18 +16,18 @@ export const contactLinks: ContactLinkType[] = [
         label: 'Email',
         text: 'info@lavanda.kim',
     },
-    {
-        id: crypto.randomUUID(),
-        href: '/legal/consent',
-        icon: Newspaper,
-        label: 'WhatsApp',
-        text: 'Пользовательское соглашение',
-    },
-    {
-        id: crypto.randomUUID(),
-        href: '/legal/policy',
-        icon: ScrollText,
-        label: 'WhatsApp',
-        text: 'Политика конфинденциальности',
-    },
+    // {
+    //     id: crypto.randomUUID(),
+    //     href: '/legal/consent',
+    //     icon: Newspaper,
+    //     label: 'WhatsApp',
+    //     text: 'Пользовательское соглашение',
+    // },
+    // {
+    //     id: crypto.randomUUID(),
+    //     href: '/legal/policy',
+    //     icon: ScrollText,
+    //     label: 'WhatsApp',
+    //     text: 'Политика конфинденциальности',
+    // },
 ];
