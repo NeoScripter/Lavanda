@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class OtpNotification extends Notification //implements ShouldQueue
+class OtpNotification extends Notification implements ShouldQueue
 {
     use Queueable;
     protected string $password;
