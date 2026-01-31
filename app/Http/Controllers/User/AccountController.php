@@ -16,9 +16,9 @@ class AccountController extends Controller
     {
         $user = Auth::user();
 
-        // if ($user->role === UserRole::ADMIN) {
-        //     return redirect()->route('home');
-        // }
+        if ($user->role === UserRole::ADMIN) {
+            return redirect()->route('home');
+        }
 
         $user = Auth::user();
         $user->load(['subscription']);
