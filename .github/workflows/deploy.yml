@@ -21,7 +21,7 @@ jobs:
           key: ${{ secrets.PRIVATE_KEY }}
           script_stop: true
           script: |
-            cd www/Lavanda && \
+            bash -c "cd www/Lavanda && \
             git pull origin main && \
             npm install && \
             npm run build && \
@@ -31,5 +31,5 @@ jobs:
             php artisan config:cache && \
             php artisan route:cache && \
             php artisan view:cache && \
-            sudo service php8.3-fpm reload
+            sudo service php8.3-fpm reload"
 
