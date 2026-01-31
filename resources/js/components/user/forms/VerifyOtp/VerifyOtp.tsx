@@ -79,9 +79,6 @@ export default function VerifyOtp() {
                 className={css.wrapper}
                 onSubmit={submit}
             >
-                {flash?.code?.code && (
-                    <div className={css.codeHint}>{flash.code.code}</div>
-                )}
                 <div className={css.otpField}>
                     <Label
                         className={css.otpLabel}
