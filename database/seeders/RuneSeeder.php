@@ -30,17 +30,14 @@ class RuneSeeder extends Seeder
                         [
                             'name' => RuneCategoryName::GENERAL->value,
                             'html' => $raw['cat1'],
-                            'order' => 1,
                         ],
                         [
                             'name' => RuneCategoryName::RELATIONSHIP->value,
                             'html' => $raw['cat2'],
-                            'order' => 2,
                         ],
                         [
                             'name' => RuneCategoryName::CAREER->value,
                             'html' => $raw['cat3'],
-                            'order' => 3,
                         ],
                     ),
                 'categories'
