@@ -1,0 +1,53 @@
+@use 'core' as u;
+
+// BackToTopBtn.module.scss
+
+.backToTopBtn {
+    position: fixed;
+    right: 2.5rem; // 10 * 0.25rem = 2.5rem (40px)
+    bottom: 2.5rem;
+    z-index: 50;
+    width: 4.5rem; // 30 * 0.25rem = 7.5rem (120px) - assuming size-30
+    height: 4.5rem;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px; // rounded-full
+    border: 2px solid u.clr('primary', 'strong');
+    background-color: rgba(255 255 255 / 0.5);
+    backdrop-filter: blur(10px);
+    transition-property: transform;
+    transition-duration: 200ms;
+    transition-timing-function: ease-in;
+
+    // Apply glow-shadow class styles here
+    // You'll need to add the actual styles for glow-shadow based on your design system
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3); // example glow effect
+
+    @media (min-width: 768px) {
+        width: 7.5rem; // 30 * 0.25rem = 7.5rem (120px) - assuming size-30
+        height: 7.5rem;
+    }
+
+    @media (min-width: 1536px) {
+        // 2xl breakpoint
+        right: 4.25rem; // 25 * 0.25rem = 6.25rem (100px)
+        bottom: 4.25rem;
+    }
+
+    &:hover {
+        transform: scale(1.1);
+    }
+
+    &:focus {
+        outline: 2px solid transparent;
+        outline-offset: 2px;
+    }
+}
+
+.icon {
+    width: 65%; // 20 * 0.25rem = 5rem (80px) - assuming size-20
+    height: 65%;
+    color: u.clr('primary', 'strong');
+}

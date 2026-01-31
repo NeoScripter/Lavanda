@@ -16,6 +16,7 @@ import DialogLayout from '../DialogLayout/DialogLayout';
 import css from './AppLayout.module.scss';
 import AppFooter from './partials/AppFooter/AppFooter';
 import AppHeader from './partials/AppHeader/AppHeader';
+import BackToTopBtn from './partials/BackToTopBtn/BackToTopBtn';
 
 const AppLayout: FC<
     NodeProps<{ extendedFooter?: boolean; variation?: string }>
@@ -39,6 +40,8 @@ const AppLayout: FC<
                     <AppFooter hasMenu={extendedFooter} />
                     {!auth?.user && <AppModals />}
                 </div>
+
+                <BackToTopBtn />
                 <Toaster
                     toastOptions={{
                         style: {
