@@ -72,7 +72,7 @@ export default function VerifyOtp() {
 
     return (
         <FormLayout
-            heading="Подтвеждение емаила"
+            heading="Подтвердите email"
             intro="Введите 6-значный код, отправленный вам на указанную электронную почту"
         >
             <form
