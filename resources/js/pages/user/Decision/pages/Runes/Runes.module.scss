@@ -2,7 +2,11 @@
 
 .heroForeground {
     @include u.px(w, null, null, 606, 702);
+    /* @include u.px(h, null, null, 484, 561); */
     @include u.mw(md) {
         transform: translateY(10%);
+    }
+    img {
+        object-fit: contain;
     }
 }

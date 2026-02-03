@@ -2,5 +2,10 @@
 
 .heroForeground {
     @include u.px(w, null, null, 495, 625);
+    /* @include u.px(h, null, null, 495, 625); */
     @include u.px(top, null, null, 200, 180);
+
+    img {
+        object-fit: contain;
+    }
 }
