@@ -45,7 +45,7 @@ Route::middleware('auth')->group(function () {
 Route::prefix('/decision')->name('decision.')->group(function () {
     Route::get('/', DecisionController::class)->name('index'); // решение
     Route::get('/practice', PracticeController::class)->name('practice'); // практика
-    Route::get('/experience', ExperienceController::class)->name('experience'); // опыт автора
+    // Route::get('/experience', ExperienceController::class)->name('experience'); // опыт автора
     Route::get('/runes', RunesController::class)->name('runes'); // руны
     Route::get('/mind-games', MindGameController::class)->name('mind-games'); // игры разума
 

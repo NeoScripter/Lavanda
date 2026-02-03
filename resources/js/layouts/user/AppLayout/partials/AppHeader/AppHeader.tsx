@@ -15,6 +15,7 @@ import { CircleUser } from 'lucide-preact';
 import { FC, useEffect } from 'preact/compat';
 import Nav from '../Nav/Nav';
 import css from './AppHeader.module.scss';
+import { useLockScroll } from '@/hooks/useLockedScroll';
 
 const AppHeader: FC<NodeProps> = ({ className }) => {
     const {
@@ -36,21 +37,7 @@ const AppHeader: FC<NodeProps> = ({ className }) => {
     const toggleMenu = () => setShowMenu((p) => !p);
     const hide = useAutoHideOnScroll();
 
-    useEffect(() => {
-        if (!isMobile) {
-            document.documentElement.style.overflowY = 'auto';
-            return;
-        }
-
-        if (showMenu) {
-            document.documentElement.style.overflowY = 'hidden';
-        } else {
-            document.documentElement.style.overflowY = 'auto';
-        }
-        return () => {
-            document.documentElement.style.overflowY = 'auto';
-        };
-    }, [isMobile, showMenu]);
+    useLockScroll(isMobile && showMenu);
 
     const handleLoginClick = () => {
         if (user != null) {
