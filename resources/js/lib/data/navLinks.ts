@@ -37,12 +37,12 @@ export const navLinks: NavLinkType[] = [
                 type: 'link',
                 href: '/decision/practice',
             },
-            {
-                id: crypto.randomUUID(),
-                label: 'Опыт автора',
-                type: 'link',
-                href: '/decision/experience',
-            },
+            // {
+            //     id: crypto.randomUUID(),
+            //     label: 'Опыт автора',
+            //     type: 'link',
+            //     href: '/decision/experience',
+            // },
             {
                 id: crypto.randomUUID(),
                 label: 'Спросить у рун',

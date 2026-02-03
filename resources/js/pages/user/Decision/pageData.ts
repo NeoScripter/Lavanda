@@ -52,16 +52,16 @@ export const assymetricSectionLinks: AssymetricSectionLink[] = [
         alt: 'Три фиолетовые свечи с кристаллами аметиста у основания',
         url: '/decision/practice',
     },
-    {
-        id: crypto.randomUUID(),
-        title: 'опыт автора',
-        description:
-            'Автор делится личными историями и находками, которые помогали справляться с выбором. Иногда чужой опыт становится подсказкой и поддержкой.',
-        img: DecisionLink2,
-        imgTiny: DecisionLink2Tiny,
-        alt: 'Рука держит фиолетовый кристалл аметиста, акварельная иллюстрация',
-        url: '/decision/experience',
-    },
+    // {
+    //     id: crypto.randomUUID(),
+    //     title: 'опыт автора',
+    //     description:
+    //         'Автор делится личными историями и находками, которые помогали справляться с выбором. Иногда чужой опыт становится подсказкой и поддержкой.',
+    //     img: DecisionLink2,
+    //     imgTiny: DecisionLink2Tiny,
+    //     alt: 'Рука держит фиолетовый кристалл аметиста, акварельная иллюстрация',
+    //     url: '/decision/experience',
+    // },
     {
         id: crypto.randomUUID(),
         title: 'РУНЫ',
