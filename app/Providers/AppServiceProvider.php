@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
@@ -36,10 +37,35 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        $this->configureCommands();
+        $this->configureModels();
+        $this->configureResponses();
+        $this->configureMorphMap();
+        $this->configureGates();
+        $this->configureRateLimiting();
+    }
+
+    private function configureCommands(): void
+    {
+        DB::prohibitDestructiveCommands(
+
+            $this->app->isProduction()
+        );
+    }
+
+    private function configureModels(): void
+    {
+        Model::shouldBeScrict();
         Model::unguard();
+    }
 
+    private function configureResponses(): void
+    {
         JsonResource::withoutWrapping();
+    }
 
+    private function configureMorphMap(): void
+    {
         Relation::enforceMorphMap([
             'wellnessTip' => WellnessTip::class,
             'experienceItem' => ExperienceItem::class,
@@ -51,11 +77,17 @@ class AppServiceProvider extends ServiceProvider
             'mindGame' => MindGame::class,
             'lenormand' => Lenormand::class,
         ]);
+    }
 
+    private function configureGates(): void
+    {
         Gate::define('premium-access', function ($user) {
             return $user->hasActiveSubscription() || $user->role === UserRole::ADMIN;
         });
+    }
 
+    private function configureRateLimiting(): void
+    {
         RateLimiter::for('otp-send', function (Request $request) {
             return Limit::perMinute(3)
                 ->by(strtolower($request->input('email') ?? 'guest') . '|send');
