@@ -22,7 +22,7 @@ class EditTarot extends EditRecord
 
     protected function afterSave(): void
     {
-        $image = $this->record->image;
+        $image = $this->record->frontImage;
 
         if ($image?->path) {
             $resizer = app(ImageResizer::class);
