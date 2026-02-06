@@ -13,8 +13,6 @@ const Accordion: FC<{ items: PracticeItemFaq[] }> = ({ items }) => {
 
     return (
         <section class={css.faqWrapper}>
-            <h5 className={css.heading}>Пошаговая инструкция</h5>
-
             <div className={css.faqs}>
                 {items.map((faq, idx) => (
                     <details
