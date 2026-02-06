@@ -55,7 +55,7 @@ class AppServiceProvider extends ServiceProvider
 
     private function configureModels(): void
     {
-        Model::shouldBeScrict();
+        Model::shouldBeStrict();
         Model::unguard();
     }
 
