@@ -2,6 +2,7 @@ import LazyImage from '@/components/user/ui/LazyImage/LazyImage';
 import { useCurrentSlideId } from '@/layouts/user/ItemsLayout/CurrentSlideProvider';
 import { PracticeItem } from '@/types/model';
 import { usePage } from '@inertiajs/react';
+import { Download } from 'lucide-preact';
 import css from './CardContent.module.scss';
 import Accordion from './partials/Accordion';
 
@@ -20,7 +21,7 @@ const CardContent = () => {
                     prtClass={css.foregroundWrapper}
                     imgClass={css.foreground}
                     img={item.image.path}
-                    tinyImg={item.image.tiny_path}
+                    tinyImg={item.image.tiny_path ?? ''}
                     alt={item.image.alt}
                 />
             )}
@@ -29,6 +30,13 @@ const CardContent = () => {
                 <h3 class={css.heading}>{item.heading}</h3>
 
                 <p class={css.cardDescription}>{item.body}</p>
+
+                <div className={css.cardDownloadWrapper}>
+                    <a>
+                        <Download />
+                        Скачать файл
+                    </a>
+                </div>
 
                 {item.faqs && <Accordion items={item.faqs} />}
             </div>

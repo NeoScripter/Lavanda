@@ -32,6 +32,35 @@
 .cardDescription {
     @include u.px(mb, 46, 31, 32, 31);
 }
+.cardDownloadWrapper {
+    @include u.px(my, 46, 31, 32, 31);
+
+    a {
+        font-size: 0.75em;
+        display: flex;
+        gap: 0.5em;
+        border: 1px solid;
+        padding: 0.3em 0.75em;
+        border-radius: 0.25em;
+        align-items: center;
+        justify-content: center;
+        width: fit-content;
+        transition:
+            color 0.25s,
+            border-color 0.25s,
+            background-color 0.25s;
+
+        &:hover {
+            background-color: u.clr('primary', 'muted');
+            color: white;
+            border-color: u.clr('primary', 'muted');
+        }
+
+        svg {
+            @include u.size(1.25em);
+        }
+    }
+}
 
 .foregroundWrapper {
     background-color: u.clr('background', 'muted');
