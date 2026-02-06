@@ -20,7 +20,6 @@ class AudioResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedMusicalNote;
 
-    protected static ?string $recordTitleAttribute = 'Audio';
     protected static ?string $modelLabel = 'Послание поддержки';
     protected static ?string $pluralModelLabel = 'Послания поддержки';
     protected static bool $hasTitleCaseModelLabel = false;

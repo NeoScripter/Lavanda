@@ -20,7 +20,6 @@ class MetaphoricResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = LucideIcon::Sparkles;
 
-    protected static ?string $recordTitleAttribute = 'Metaphoric';
     protected static ?string $modelLabel = 'Метафорическая карта';
     protected static ?string $pluralModelLabel = 'Метафорические карты';
     protected static bool $hasTitleCaseModelLabel = false;

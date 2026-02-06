@@ -22,7 +22,6 @@ class PracticeItemResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = LucideIcon::ListTodo;
 
-    protected static ?string $recordTitleAttribute = 'PracticeItem';
     protected static ?string $modelLabel = 'Практика';
     protected static ?string $pluralModelLabel = 'Практики';
     protected static bool $hasTitleCaseModelLabel = false;

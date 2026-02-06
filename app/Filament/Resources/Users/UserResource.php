@@ -22,7 +22,6 @@ class UserResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = LucideIcon::UsersRound;
 
-    protected static ?string $recordTitleAttribute = 'User';
     protected static ?string $modelLabel = 'Пользователь';
     protected static ?string $pluralModelLabel = 'Пользователи';
     protected static bool $hasTitleCaseModelLabel = false;

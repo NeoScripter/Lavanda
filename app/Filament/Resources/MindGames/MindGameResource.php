@@ -20,7 +20,6 @@ class MindGameResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = LucideIcon::Brain;
 
-    protected static ?string $recordTitleAttribute = 'MindGame';
     protected static ?string $modelLabel = 'Карта игр разума';
     protected static ?string $pluralModelLabel = 'Карты игр разума';
     protected static bool $hasTitleCaseModelLabel = false;

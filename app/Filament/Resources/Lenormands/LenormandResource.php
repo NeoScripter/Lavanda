@@ -20,7 +20,6 @@ class LenormandResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = LucideIcon::Rose;
 
-    protected static ?string $recordTitleAttribute = 'Lenormand';
     protected static ?string $modelLabel = 'Карта Ленорман';
     protected static ?string $pluralModelLabel = 'Карты Ленорман';
     protected static bool $hasTitleCaseModelLabel = false;

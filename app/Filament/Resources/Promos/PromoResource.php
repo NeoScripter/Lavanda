@@ -20,7 +20,6 @@ class PromoResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = LucideIcon::Cat;
 
-    protected static ?string $recordTitleAttribute = 'Promo';
     protected static ?string $modelLabel = 'Бонус карта';
     protected static ?string $pluralModelLabel = 'Бонус карты';
     protected static bool $hasTitleCaseModelLabel = false;

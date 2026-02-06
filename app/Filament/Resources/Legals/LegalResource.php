@@ -24,8 +24,6 @@ class LegalResource extends Resource
     protected static ?string $modelLabel = 'Документ';
     protected static ?string $pluralModelLabel = 'Документы';
 
-    protected static ?string $recordTitleAttribute = 'Документы';
-
     public static function form(Schema $schema): Schema
     {
         return LegalForm::configure($schema);

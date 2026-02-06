@@ -22,7 +22,6 @@ class PlanResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = LucideIcon::CircleDollarSign;
 
-    protected static ?string $recordTitleAttribute = 'Тариф';
     protected static ?string $modelLabel = 'Тариф';
     protected static ?string $pluralModelLabel = 'Тарифы';
 
