@@ -24,14 +24,10 @@ class EditExperienceItem extends EditRecord
 
     protected function afterSave(): void
     {
-        $image = $this->record->frontImage;
+        $image = $this->record->image;
 
         if (! $image?->path) {
             return;
-        }
-
-        if ($image->type !== 'front') {
-            $image->type = 'front';
         }
 
         $resizer = app(ImageResizer::class);

@@ -24,7 +24,7 @@ class EditPracticeItem extends EditRecord
 
     protected function afterSave(): void
     {
-        $image = $this->record->frontImage;
+        $image = $this->record->image;
 
         if (! $image?->path) {
             return;
