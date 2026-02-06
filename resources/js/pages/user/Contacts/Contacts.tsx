@@ -19,8 +19,7 @@ const Contacts = () => {
             <section class={css.wrapper}>
                 <h1 class={css.heading}>Контакты</h1>
                 <p class={css.intro}>
-                    Если у вас возникли вопросы, пожалуйста, свяжитесь с нами
-                    любым удобным для вас способом.
+                    Если у вас возникли вопросы, пожалуйста, свяжитесь с нами.
                 </p>
 
                 <ContactLinks className={css.contactLinks} />

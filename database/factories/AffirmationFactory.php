@@ -18,7 +18,7 @@ class AffirmationFactory extends Factory
     {
         return [
             'quote' => fake()->sentence(),
-            'type' => fake()->randomElement(['карьера, бизнес', 'отношения', 'общая', 'мама и малыш']),
+            'type' => fake()->randomElement(['карьера, бизнес', 'отношения', 'гармония', 'мама и малыш']),
         ];
     }
 }
