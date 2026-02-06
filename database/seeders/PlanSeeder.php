@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Enums\PlanTitle;
 use App\Models\Plan;
 use Illuminate\Database\Seeder;
 
@@ -13,7 +14,7 @@ class PlanSeeder extends Seeder
     public function run(): void
     {
         Plan::create([
-            'title' => 'Базовый',
+            'title' => PlanTitle::BASE->value,
             'duration_in_days' => 7,
             'price' => 590,
             'perks' => [
@@ -23,7 +24,7 @@ class PlanSeeder extends Seeder
         ]);
 
         Plan::create([
-            'title' => 'Стандарт',
+            'title' => PlanTitle::STANDARD->value,
             'duration_in_days' => 30,
             'price' => 1590,
             'perks' => [
@@ -34,7 +35,7 @@ class PlanSeeder extends Seeder
         ]);
 
         Plan::create([
-            'title' => 'Профи',
+            'title' => PlanTitle::PROFI->value,
             'duration_in_days' => 365,
             'price' => 5990,
             'perks' => [
