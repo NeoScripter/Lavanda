@@ -25,6 +25,7 @@ class PracticeItemResource extends JsonResource
             'heading' => $this->heading,
             'faqs' => $this->when($isMember, $this->faqs),
             'image' => $this->when($isMember, $this->image),
+            'file' => $this->file,
         ];
     }
 }

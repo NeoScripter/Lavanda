@@ -31,6 +31,12 @@ class PracticeItemForm
                     Textarea::make('body')
                         ->label('Подзаголовок списка')
                         ->required(),
+                    FileUpload::make('file')
+                        ->disk('public')
+                        ->directory('wellness')
+                        ->label('Файл')
+                        ->maxSize(8128)
+                        ->dehydrated(fn($state) => filled($state)),
                 ]),
 
                 Section::make()

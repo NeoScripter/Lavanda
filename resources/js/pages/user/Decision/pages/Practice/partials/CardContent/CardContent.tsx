@@ -31,12 +31,14 @@ const CardContent = () => {
 
                 <p class={css.cardDescription}>{item.body}</p>
 
-                <div className={css.cardDownloadWrapper}>
-                    <a>
-                        <Download />
-                        Скачать файл
-                    </a>
-                </div>
+                {item.file && (
+                    <div className={css.cardDownloadWrapper}>
+                        <a href={`/${item.file}`} download>
+                            <Download />
+                            Скачать файл
+                        </a>
+                    </div>
+                )}
 
                 {item.faqs && <Accordion items={item.faqs} />}
             </div>

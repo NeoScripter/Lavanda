@@ -64,7 +64,7 @@ export type MatchSet = {
     id: number;
     html: string;
     type: MatchSetType;
-    ids: number[];
+    ids: string;
     advice: string;
     created_at?: string;
     updated_at?: string;
@@ -112,6 +112,7 @@ export type PracticeItem = {
     body: string;
     created_at?: string;
     updated_at?: string;
+    file?: string;
     image?: Image;
     faqs?: PracticeItemFaq[];
 };
@@ -189,11 +190,26 @@ export enum LegalType {
     POLICY = "policy"
 }
 export enum MatchSetType {
+    RUNE = "rune",
     LENORMAND = "lenormand"
+}
+export enum PlanTitle {
+    BASE = "\u0431\u0430\u0437\u043E\u0432\u044B\u0439",
+    STANDARD = "\u0441\u0442\u0430\u043D\u0434\u0430\u0440\u0442",
+    PROFI = "\u043F\u0440\u043E\u0444\u0438"
+}
+export enum RuneCategoryName {
+    GENERAL = "\u041E\u0431\u0449\u0430\u044F",
+    RELATIONSHIP = "\u041B\u044E\u0431\u043E\u0432\u044C \u0438 \u043E\u0442\u043D\u043E\u0448\u0435\u043D\u0438\u044F",
+    CAREER = "\u041A\u0430\u0440\u044C\u0435\u0440\u0430"
 }
 export enum SubscriptionStatus {
     ACTIVE = 1,
     CANCELLED = 2
+}
+export enum UserGender {
+    MALE = "male",
+    FEMALE = "female"
 }
 export enum UserRole {
     USER = 1,
