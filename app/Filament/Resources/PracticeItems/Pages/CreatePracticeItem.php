@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\PracticeItems\Pages;
 
 use App\Filament\Resources\PracticeItems\PracticeItemResource;
+use App\Services\ImageResizer;
 use Filament\Resources\Pages\CreateRecord;
 
 class CreatePracticeItem extends CreateRecord
@@ -11,4 +12,28 @@ class CreatePracticeItem extends CreateRecord
     protected static ?string $title = 'Создание элемента';
 
     protected static bool $canCreateAnother = false;
+
+    protected function afterSave(): void
+    {
+        $image = $this->record->frontImage;
+
+        if (! $image?->path) {
+            return;
+        }
+
+        if ($image->type !== 'front') {
+            $image->type = 'front';
+        }
+
+        $resizer = app(ImageResizer::class);
+
+        $tinyPath = $resizer->handleExistingPath(
+            $image->path,
+            30,
+            'wellness'
+        );
+
+        $image->tiny_path = $tinyPath;
+        $image->saveQuietly();
+    }
 }

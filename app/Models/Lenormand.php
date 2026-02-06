@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class Lenormand extends Model
@@ -14,13 +13,14 @@ class Lenormand extends Model
 
     protected $with = ['frontImage'];
 
-    public function images(): MorphMany
+    public function images(): MorphOne
     {
-        return $this->morphMany(Image::class, 'imageable');
+        return $this->morphOne(Image::class, 'imageable');
     }
 
     public function frontImage(): MorphOne
     {
-        return $this->images()->where('type', 'front');
+        return $this->morphOne(Image::class, 'imageable');
+        // return $this->images()->where('type', 'front');
     }
 }

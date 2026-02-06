@@ -24,13 +24,23 @@ class EditPromo extends EditRecord
     {
         $image = $this->record->frontImage;
 
-        if ($image?->path) {
-            $resizer = app(ImageResizer::class);
-
-            $path = $resizer->handleExistingPath($image->path, 30, 'promo');
-
-            $image->tiny_path = $path;
-            $image->saveQuietly();
+        if (! $image?->path) {
+            return;
         }
+
+        if ($image->type !== 'front') {
+            $image->type = 'front';
+        }
+
+        $resizer = app(ImageResizer::class);
+
+        $tinyPath = $resizer->handleExistingPath(
+            $image->path,
+            30,
+            'promo'
+        );
+
+        $image->tiny_path = $tinyPath;
+        $image->saveQuietly();
     }
 }

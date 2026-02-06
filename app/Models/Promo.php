@@ -21,6 +21,6 @@ class Promo extends Model
 
     public function frontImage(): MorphOne
     {
-        return $this->images()->where('type', 'front');
+        return $this->morphOne(Image::class, 'imageable');
     }
 }

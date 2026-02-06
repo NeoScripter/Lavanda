@@ -24,15 +24,25 @@ class EditExperienceItem extends EditRecord
 
     protected function afterSave(): void
     {
-        $image = $this->record->image;
+        $image = $this->record->frontImage;
 
-        if ($image?->path) {
-            $resizer = app(ImageResizer::class);
-
-            $path = $resizer->handleExistingPath($image->path, 30, 'experience');
-
-            $image->tiny_path = $path;
-            $image->saveQuietly();
+        if (! $image?->path) {
+            return;
         }
+
+        if ($image->type !== 'front') {
+            $image->type = 'front';
+        }
+
+        $resizer = app(ImageResizer::class);
+
+        $tinyPath = $resizer->handleExistingPath(
+            $image->path,
+            30,
+            'experience'
+        );
+
+        $image->tiny_path = $tinyPath;
+        $image->saveQuietly();
     }
 }
