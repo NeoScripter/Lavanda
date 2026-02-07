@@ -26,6 +26,8 @@ const PlanCard: FC<NodeProps<{ plan: Plan; children?: ComponentChildren }>> = ({
         }
     };
 
+    console.log(plan.perks);
+
     return (
         <article class={cn(css.wrapper, className)}>
             <header>
@@ -58,25 +60,27 @@ const PlanCard: FC<NodeProps<{ plan: Plan; children?: ComponentChildren }>> = ({
                     Преимущества тарифа
                 </h5>
 
-                <ul class={css.perks}>
-                    {plan.perks.map((perk) => (
-                        <li
-                            key={perk}
-                            class={css.perk}
-                        >
-                            <span
-                                class={css.icon}
-                                aria-hidden="true"
+                {Array.isArray(plan.perks) && (
+                    <ul class={css.perks}>
+                        {plan.perks.map((perk) => (
+                            <li
+                                key={perk}
+                                class={css.perk}
                             >
-                                <img
-                                    src={Star}
-                                    alt=""
-                                />
-                            </span>
-                            <span>{perk}</span>
-                        </li>
-                    ))}
-                </ul>
+                                <span
+                                    class={css.icon}
+                                    aria-hidden="true"
+                                >
+                                    <img
+                                        src={Star}
+                                        alt=""
+                                    />
+                                </span>
+                                <span>{perk}</span>
+                            </li>
+                        ))}
+                    </ul>
+                )}
             </section>
             {children}
         </article>
