@@ -12,7 +12,6 @@ use App\Http\Controllers\User\Decision\MindGameController;
 use App\Http\Controllers\User\PromoController;
 use App\Http\Controllers\User\Decision\Cards\TarotController;
 use App\Http\Controllers\User\Decision\DecisionController;
-use App\Http\Controllers\User\Decision\ExperienceController;
 use App\Http\Controllers\User\Decision\IchingController;
 use App\Http\Controllers\User\Decision\PracticeController;
 use App\Http\Controllers\User\Decision\RunesController;
@@ -32,7 +31,7 @@ Route::get('/about', AboutController::class)->name('about');
 Route::get('/contacts', ContactPageController::class)->name('contacts');
 Route::get('/promo', PromoController::class)->name('promo'); // экспресс карта
 
-Route::middleware('auth')->group(function () {
+Route::middleware('auth')->group(function (): void {
     Route::get('/account', AccountController::class)->name('account');
     Route::post('/user/update', [UserController::class, 'update'])->name('user.update');
     Route::delete('/user', [UserController::class, 'destroy'])->name('user.destroy');
@@ -42,14 +41,14 @@ Route::middleware('auth')->group(function () {
     )->name('subscriptions.update');
 });
 
-Route::prefix('/decision')->name('decision.')->group(function () {
+Route::prefix('/decision')->name('decision.')->group(function (): void {
     Route::get('/', DecisionController::class)->name('index'); // решение
     Route::get('/practice', PracticeController::class)->name('practice'); // практика
     // Route::get('/experience', ExperienceController::class)->name('experience'); // опыт автора
     Route::get('/runes', RunesController::class)->name('runes'); // руны
     Route::get('/mind-games', MindGameController::class)->name('mind-games'); // игры разума
 
-    Route::prefix('/cards')->name('cards.')->group(function () {
+    Route::prefix('/cards')->name('cards.')->group(function (): void {
         Route::get('/', CardController::class)->name('index'); // руны
         Route::get('/tarot', TarotController::class)->name('tarot'); // таро
         Route::get('/lenormand', LenormandController::class)->name('lenormand'); // Ленорман
@@ -58,7 +57,7 @@ Route::prefix('/decision')->name('decision.')->group(function () {
 
     Route::get('/iching', IchingController::class)->name('iching'); // книга перемен
 });
-Route::prefix('/sadness')->name('sadness.')->group(function () {
+Route::prefix('/sadness')->name('sadness.')->group(function (): void {
     Route::get('/', SadnessController::class)->name('index'); // мне грустно
     Route::get('/audios', AudioController::class)->name('audios');
 });

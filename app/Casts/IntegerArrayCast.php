@@ -15,9 +15,9 @@ class IntegerArrayCast implements CastsAttributes
      */
     public function get(Model $model, string $key, mixed $value, array $attributes): mixed
     {
-        $array = json_decode($value, true) ?? [];
+        $array = json_decode((string) $value, true) ?? [];
 
-        return array_map('intval', $array);
+        return array_map(intval(...), $array);
     }
 
     /**
@@ -27,9 +27,7 @@ class IntegerArrayCast implements CastsAttributes
      */
     public function set(Model $model, string $key, mixed $value, array $attributes): mixed
     {
-        if (!is_array($value)) {
-            throw new InvalidArgumentException("The {$key} must be an array.");
-        }
+        throw_unless(is_array($value), InvalidArgumentException::class, "The {$key} must be an array.");
 
         $integers = [];
         foreach ($value as $item) {

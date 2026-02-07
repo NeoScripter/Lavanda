@@ -2,10 +2,11 @@
 
 namespace Database\Factories;
 
+use App\Models\ExperienceItem;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\ExperienceItem>
+ * @extends Factory<ExperienceItem>
  */
 class ExperienceItemFactory extends Factory
 {
@@ -17,8 +18,8 @@ class ExperienceItemFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => fake()->word(3),
-            'heading' => fake()->word(5),
+            'title' => fake()->word(),
+            'heading' => fake()->word(),
             'description' => fake()->sentence(4),
             'html' => fake()->sentence(7),
         ];

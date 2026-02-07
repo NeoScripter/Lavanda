@@ -14,7 +14,7 @@ class MetaphoricSeeder extends Seeder
     public function run(): void
     {
         for ($i = 1; $i < 30; $i++) {
-            Metaphoric::factory()->afterCreating(function ($metaphoric) use ($i) {
+            Metaphoric::factory()->afterCreating(function ($metaphoric) use ($i): void {
                 Image::factory()->create([
                     'imageable_id' => $metaphoric,
                     'path' => 'models/metaphoric/metaphoric-' . max($i % 4, 1) . '.webp',

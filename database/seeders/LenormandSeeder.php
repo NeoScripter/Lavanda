@@ -14,7 +14,7 @@ class LenormandSeeder extends Seeder
     public function run(): void
     {
         for ($i = 1; $i <= 35; $i++) {
-            Lenormand::factory()->afterCreating(function ($lenormand) use ($i) {
+            Lenormand::factory()->afterCreating(function ($lenormand) use ($i): void {
                 Image::factory()->create([
                     'imageable_id' => $lenormand,
                     'path' => 'models/lenormand/lenormand-' . max($i % 4, 1) . '.webp',

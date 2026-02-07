@@ -15,7 +15,7 @@ class SendOtpController extends Controller
 
     public function __invoke(SendOtpRequest $request)
     {
-        $user = User::firstWhere('email', $request->email);
+        $user = User::query()->firstWhere('email', $request->email);
 
         $this->otpService->generate($user);
 

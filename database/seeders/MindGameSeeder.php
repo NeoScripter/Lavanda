@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Image;
 use App\Models\MindGame;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class MindGameSeeder extends Seeder
@@ -15,7 +14,7 @@ class MindGameSeeder extends Seeder
     public function run(): void
     {
         for ($i = 1; $i < 80; $i++) {
-                MindGame::factory()->afterCreating(function ($game) use ($i) {
+                MindGame::factory()->afterCreating(function ($game) use ($i): void {
                     Image::factory()->create([
                         'imageable_id' => $game,
                         'path' => 'models/mind-games/mind-game-' . $i . '.webp',

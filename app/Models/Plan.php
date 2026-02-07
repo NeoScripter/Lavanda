@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Facades\Date;
+use Database\Factories\PlanFactory;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -9,18 +11,18 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class Plan extends Model
 {
-    /** @use HasFactory<\Database\Factories\PlanFactory> */
+    /** @use HasFactory<PlanFactory> */
     use HasFactory;
 
     protected $casts = [
         'perks' => 'array',
     ];
 
-    public function humanDuration(): Attribute
+    protected function humanDuration(): Attribute
     {
         return Attribute::make(
-            get: function () {
-                $duration = Carbon::now()
+            get: function (): string {
+                $duration = Date::now()
                     ->locale('ru')
                     ->addDays($this->duration_in_days + 2)
                     ->diffForHumans([

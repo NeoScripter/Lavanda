@@ -19,7 +19,7 @@ class RuneSeeder extends Seeder
 
         $runeData = RuneFixtures::getFixtures();
 
-        $runeData->each(function (array $raw) {
+        $runeData->each(function (array $raw): void {
             Rune::factory([
                 'name' => $raw['name'],
                 'advice' => $raw['advice'],
@@ -42,7 +42,7 @@ class RuneSeeder extends Seeder
                     ),
                 'categories'
             )
-                ->afterCreating(function ($rune) use ($raw) {
+                ->afterCreating(function ($rune) use ($raw): void {
                     Image::factory()->create([
                         'imageable_id' => $rune,
                         'alt' => 'Иероглиф руны',

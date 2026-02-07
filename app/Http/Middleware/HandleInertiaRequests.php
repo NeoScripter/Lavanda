@@ -48,7 +48,7 @@ class HandleInertiaRequests extends Middleware
                 'code' => fn() => $request->session()->pull('code'),
             ],
             'auth' => [
-                'user' => fn() => $request->user(),
+                'user' => $request->user(...),
                 'hasPremiumAccess' =>
                 in_array($request->route()?->getName(), $exemptRoutes, true)
                     || Cache::flexible(

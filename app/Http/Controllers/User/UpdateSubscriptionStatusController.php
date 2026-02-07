@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use Illuminate\Http\RedirectResponse;
 use App\Enums\SubscriptionStatus;
 use App\Http\Controllers\Controller;
 use App\Models\Subscription;
@@ -12,7 +13,7 @@ class UpdateSubscriptionStatusController extends Controller
     /**
      * Handle the incoming request.
      */
-    public function __invoke(Subscription $subscription, Request $request)
+    public function __invoke(Subscription $subscription, Request $request): RedirectResponse
     {
         $this->authorize('update', $subscription);
 

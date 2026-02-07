@@ -11,9 +11,9 @@ class RuneFixtures
     public static function getFixtures(): Collection
     {
         return once(fn () => collect(File::files(database_path('factories/fixtures/runes')))
-            ->map(fn (SplFileInfo $fileInfo) => $fileInfo->getContents())
+            ->map(fn (SplFileInfo $fileInfo): string => $fileInfo->getContents())
             ->map(fn (string $contents) => str($contents)->explode("\n\n\n"))
-            ->map(fn (Collection $parts) => [
+            ->map(fn (Collection $parts): array => [
                 'front_image' => str($parts[0])->trim(),
                 'tiny_front_image' => str($parts[1])->trim(),
                 'back_image' => str($parts[2])->trim(),

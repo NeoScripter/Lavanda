@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ichings', function (Blueprint $table) {
+        Schema::create('ichings', function (Blueprint $table): void {
             $table->id();
             $table->text('description');
             $table->unsignedInteger('bitmask')->index();

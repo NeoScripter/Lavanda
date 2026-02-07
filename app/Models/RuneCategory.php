@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Enums\RuneCategoryName;
+use Database\Factories\RuneCategoryFactory;
 use App\Models\Concerns\ConvertsMarkdownToHtml;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class RuneCategory extends Model
 {
-    /** @use HasFactory<\Database\Factories\RuneCategoryFactory> */
+    /** @use HasFactory<RuneCategoryFactory> */
     use HasFactory, ConvertsMarkdownToHtml;
 
     public function rune(): BelongsTo

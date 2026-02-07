@@ -13,7 +13,7 @@ class PlanSeeder extends Seeder
      */
     public function run(): void
     {
-        Plan::create([
+        Plan::query()->create([
             'title' => PlanTitle::BASE->value,
             'duration_in_days' => 7,
             'price' => 590,
@@ -23,7 +23,7 @@ class PlanSeeder extends Seeder
             ],
         ]);
 
-        Plan::create([
+        Plan::query()->create([
             'title' => PlanTitle::STANDARD->value,
             'duration_in_days' => 30,
             'price' => 1590,
@@ -34,7 +34,7 @@ class PlanSeeder extends Seeder
             ],
         ]);
 
-        Plan::create([
+        Plan::query()->create([
             'title' => PlanTitle::PROFI->value,
             'duration_in_days' => 365,
             'price' => 5990,

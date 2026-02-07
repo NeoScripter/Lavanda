@@ -12,7 +12,7 @@ class HomeController extends Controller
 {
     public function __invoke()
     {
-        $activeUsers = User::whereHas('subscription', fn($q) => $q
+        $activeUsers = User::query()->whereHas('subscription', fn($q) => $q
             ->where('ends_at', '>', now()))
             ->count();
 
@@ -21,7 +21,7 @@ class HomeController extends Controller
                 'plans',
                 [60, 600],
                 fn() =>
-                Plan::orderBy('price')
+                Plan::query()->orderBy('price')
                     ->get()
                     ->toResourceCollection()
             ),

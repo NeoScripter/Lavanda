@@ -20,13 +20,13 @@ class WellnessTipSeeder extends Seeder
         foreach (WellnessTipType::cases() as $type) {
 
             for ($i = 0; $i < 8; $i++) {
-                $wellnessTipData->each(function (array $raw) use ($type) {
+                $wellnessTipData->each(function (array $raw) use ($type): void {
                     WellnessTip::factory([
                         'type' => $type,
                         'description' => $raw['description'],
                         'url' => $raw['url'],
                     ])
-                    ->afterCreating(function ($tip) use ($raw) {
+                    ->afterCreating(function ($tip) use ($raw): void {
                         Image::factory()->create([
                             'imageable_id' => $tip,
                             'alt' => $raw['alt'],

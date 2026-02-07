@@ -3,7 +3,6 @@
 namespace App\Filament\Resources\Audio\Schemas;
 
 use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
@@ -35,7 +34,7 @@ class AudioForm
                         ->maxSize(4128)
                         ->label('Аудио')
                         ->required()
-                        ->dehydrated(fn($state) => filled($state))
+                        ->dehydrated(fn($state): bool => filled($state))
                 ]),
             ]);
     }

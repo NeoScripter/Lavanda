@@ -21,12 +21,12 @@ class WellnessTipsTable
                     ->formatStateUsing(fn(WellnessTipType $state): string => $state->getLabel())
                     ->badge()
                     ->searchable(
-                        query: function ($query, string $search) {
+                        query: function ($query, string $search): void {
                             $matchingValues = collect(WellnessTipType::cases())
                                 ->filter(
-                                    fn($case) =>
+                                    fn($case): bool =>
                                     str_contains(
-                                        mb_strtolower($case->getLabel()),
+                                        mb_strtolower((string) $case->getLabel()),
                                         mb_strtolower($search)
                                     )
                                 )

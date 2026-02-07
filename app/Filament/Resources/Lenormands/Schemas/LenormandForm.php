@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Lenormands\Schemas;
 
+use Illuminate\Http\UploadedFile;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Components\Section;
@@ -35,14 +36,14 @@ class LenormandForm
                             ->label('Изображение')
                             ->maxSize(4128)
                             ->saveUploadedFileUsing(
-                                fn($file) =>
-                                app(ImageResizer::class)
+                                fn(UploadedFile $file) =>
+                                resolve(ImageResizer::class)
                                     ->handleImage($file, 300, 'lenormand')
-                            )->dehydrated(fn($state) => filled($state)),
+                            )->dehydrated(fn($state): bool => filled($state)),
                         Textarea::make('alt')
                             ->requiredWith('path')
                             ->label('Альтернативный текст к фото')
-                            ->dehydrated(fn($state) => filled($state))
+                            ->dehydrated(fn($state): bool => filled($state))
                     ]),
 
                 Section::make()->schema([

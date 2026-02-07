@@ -13,7 +13,7 @@ class SetLocale
     /**
      * Handle an incoming request.
      *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     * @param Closure(Request):Response $next
      */
     public function handle(Request $request, Closure $next): Response
     {
@@ -24,7 +24,7 @@ class SetLocale
         if ($locale && in_array($locale, $supportedLocales)) {
             App::setLocale($locale);
         } else {
-            $browserLocale = strtolower(substr($request->getPreferredLanguage($supportedLocales), 0, 2));
+            $browserLocale = strtolower(substr((string) $request->getPreferredLanguage($supportedLocales), 0, 2));
             $locale = in_array($browserLocale, $supportedLocales)
                 ? $browserLocale
                 : config('app.locale');

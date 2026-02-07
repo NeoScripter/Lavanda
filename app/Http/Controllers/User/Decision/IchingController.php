@@ -5,7 +5,6 @@ namespace App\Http\Controllers\User\Decision;
 use App\Http\Controllers\Controller;
 use App\Models\Iching;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cache;
 use Inertia\Inertia;
 
 class IchingController extends Controller
@@ -26,7 +25,7 @@ class IchingController extends Controller
         return Inertia::render('user/Decision/pages/Iching/Iching', [
             'iching' => $bitmask === null
                 ? null
-                : Iching::where('bitmask', $bitmask)->first()
+                : Iching::query()->where('bitmask', $bitmask)->first()
         ]);
     }
 }

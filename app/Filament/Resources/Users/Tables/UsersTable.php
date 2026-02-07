@@ -33,16 +33,16 @@ class UsersTable
                     ->label('Пол')
                     ->placeholder('не указан')
                     ->formatStateUsing(
-                        fn(?string $state) =>
+                        fn(?string $state): string =>
                         UserGender::label(UserGender::tryFrom($state))
                     )
                     ->searchable(
-                        query: function ($query, string $search) {
+                        query: function ($query, string $search): void {
                             $matchingValues = collect(UserGender::cases())
                                 ->filter(
-                                    fn($case) =>
+                                    fn($case): bool =>
                                     str_contains(
-                                        mb_strtolower($case->getLabel()),
+                                        mb_strtolower((string) $case->getLabel()),
                                         mb_strtolower($search)
                                     )
                                 )

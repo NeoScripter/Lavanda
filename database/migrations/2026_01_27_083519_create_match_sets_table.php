@@ -12,7 +12,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('match_sets', function (Blueprint $table) {
+        Schema::create('match_sets', function (Blueprint $table): void {
             $table->id();
             $table->text("html");
             $table->string("type")->default(MatchSetType::LENORMAND->value);

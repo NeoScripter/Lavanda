@@ -14,11 +14,11 @@ class PlansController extends Controller
      */
     public function index()
     {
-        $plans = Plan::orderBy('price')
+        $plans = Plan::query()->orderBy('price')
             ->get()
             ->toResourceCollection();
 
-        $activeUsers = User::whereHas('subscription', fn($q) =>$q
+        $activeUsers = User::query()->whereHas('subscription', fn($q) =>$q
             ->where('ends_at', '>', now()))
             ->count();
 

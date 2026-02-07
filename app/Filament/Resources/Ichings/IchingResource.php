@@ -2,7 +2,6 @@
 
 namespace App\Filament\Resources\Ichings;
 
-use App\Filament\Resources\Ichings\Pages\CreateIching;
 use App\Filament\Resources\Ichings\Pages\EditIching;
 use App\Filament\Resources\Ichings\Pages\ListIchings;
 use App\Filament\Resources\Ichings\Schemas\IchingForm;

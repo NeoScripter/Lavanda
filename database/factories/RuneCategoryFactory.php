@@ -2,10 +2,11 @@
 
 namespace Database\Factories;
 
+use App\Models\RuneCategory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\RuneCategory>
+ * @extends Factory<RuneCategory>
  */
 class RuneCategoryFactory extends Factory
 {

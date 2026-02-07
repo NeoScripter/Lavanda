@@ -3,7 +3,6 @@
 namespace App\Filament\Resources\MatchSets\Schemas;
 
 use App\Enums\MatchSetType;
-use App\Models\Lenormand;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Components\Section;
@@ -24,12 +23,12 @@ class MatchSetForm
                     Select::make('type')
                         ->options(
                             collect(MatchSetType::cases())
-                                ->mapWithKeys(fn($type) => [$type->value => $type->getLabel()])
-                                ->toArray()
+                                ->mapWithKeys(fn($type): array => [$type->value => $type->getLabel()])
+                                ->all()
                         )
                         ->live()
                         ->required()
-                        ->maxWidth('xs')->afterStateUpdated(fn(Set $set) => $set('ids', null)),
+                        ->maxWidth('xs')->afterStateUpdated(fn(Set $set): mixed => $set('ids', null)),
                     Select::make('ids')
                         ->label('Элементы в комбинации')
                         ->multiple()

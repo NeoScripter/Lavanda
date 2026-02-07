@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use App\Models\ExperienceItem;
 use App\Models\Image;
 use App\Support\ExperienceItemFixtures;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class ExperienceItemSeeder extends Seeder
@@ -18,13 +17,13 @@ class ExperienceItemSeeder extends Seeder
         $experienceItemData = ExperienceItemFixtures::getFixtures();
 
         for ($i = 0; $i < 2; $i++) {
-            $experienceItemData->each(function (array $raw) {
+            $experienceItemData->each(function (array $raw): void {
                 ExperienceItem::factory([
                     'title' => $raw['title'],
                     'heading' => $raw['heading'],
                     'description' => $raw['description'],
                 ])
-                    ->afterCreating(function ($tip) use ($raw) {
+                    ->afterCreating(function ($tip) use ($raw): void {
                         Image::factory()->create([
                             'imageable_id' => $tip,
                             'alt' => $raw['alt'],

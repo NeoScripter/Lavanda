@@ -12,7 +12,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('wellness_tips', function (Blueprint $table) {
+        Schema::create('wellness_tips', function (Blueprint $table): void {
             $table->id();
             $table->string("type")->index()->default(WellnessTipType::RELAXATION->value);
             $table->string("description");

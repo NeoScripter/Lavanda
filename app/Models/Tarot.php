@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use Database\Factories\TarotFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class Tarot extends Model
 {
-    /** @use HasFactory<\Database\Factories\TarotFactory> */
+    /** @use HasFactory<TarotFactory> */
     use HasFactory;
 
     protected $with = ['frontImage'];

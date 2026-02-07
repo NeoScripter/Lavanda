@@ -2,19 +2,20 @@
 
 namespace App\Models;
 
+use Database\Factories\AffirmationFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Affirmation extends Model
 {
-    /** @use HasFactory<\Database\Factories\AffirmationFactory> */
+    /** @use HasFactory<AffirmationFactory> */
     use HasFactory;
 
     protected static function booted()
     {
-        static::saving(function ($model) {
+        static::saving(function ($model): void {
             if (isset($model->type)) {
-                $model->type = strtolower($model->type);
+                $model->type = strtolower((string) $model->type);
             }
         });
     }

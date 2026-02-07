@@ -6,7 +6,6 @@ use App\Enums\RuneCategoryName;
 use App\Http\Controllers\Controller;
 use App\Models\Rune;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 use Inertia\Inertia;
 
@@ -19,7 +18,7 @@ class RunesController extends Controller
     {
         $categories = collect(RuneCategoryName::cases())
             ->map(fn($case) => $case->value)
-            ->toArray();
+            ->all();
 
         $items = [
             [

@@ -17,7 +17,7 @@ class AccountController extends Controller
         $user = Auth::user();
 
         if ($user->role === UserRole::ADMIN) {
-            return redirect()->route('home');
+            return to_route('home');
         }
 
         $user = Auth::user();

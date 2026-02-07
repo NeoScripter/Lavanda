@@ -2,10 +2,11 @@
 
 namespace Database\Factories;
 
+use App\Models\MindGame;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\MindGame>
+ * @extends Factory<MindGame>
  */
 class MindGameFactory extends Factory
 {

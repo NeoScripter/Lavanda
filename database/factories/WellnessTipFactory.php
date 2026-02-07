@@ -2,10 +2,11 @@
 
 namespace Database\Factories;
 
+use App\Models\WellnessTip;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\WellnessTip>
+ * @extends Factory<WellnessTip>
  */
 class WellnessTipFactory extends Factory
 {

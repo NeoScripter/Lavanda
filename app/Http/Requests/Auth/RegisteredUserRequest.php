@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Auth;
 
+use Illuminate\Contracts\Validation\ValidationRule;
 use App\Enums\UserGender;
 use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
@@ -28,19 +29,19 @@ class RegisteredUserRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     * @return array<string, ValidationRule|array<mixed>|string>
      */
     public function rules(): array
     {
         // При валидации алгоритм отклоняет запрос, если пользователь
         // не дал согласия на обработку персиольных данных и политики конфинденциальности
         return [
-            'name' => 'required|string|max:255',
+            'name' => ['required', 'string', 'max:255'],
             'gender' => ['nullable', new Enum(UserGender::class)],
-            'birthday' => 'nullable|date|before:today',
+            'birthday' => ['nullable', 'date', 'before:today'],
             'email' => 'required|string|lowercase|email|max:255|unique:' . User::class,
-            'policy' => 'required|accepted',
-            'consent' => 'required|accepted',
+            'policy' => ['required', 'accepted'],
+            'consent' => ['required', 'accepted'],
         ];
     }
 }

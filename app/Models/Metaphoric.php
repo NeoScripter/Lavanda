@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use Database\Factories\MetaphoricFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class Metaphoric extends Model
 {
-    /** @use HasFactory<\Database\Factories\MetaphoricFactory> */
+    /** @use HasFactory<MetaphoricFactory> */
     use HasFactory;
 
     protected $with = ['frontImage'];

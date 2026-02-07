@@ -3,7 +3,6 @@
 namespace App\Filament\Resources\Legals\Pages;
 
 use App\Filament\Resources\Legals\LegalResource;
-use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 
 class ListLegals extends ListRecords

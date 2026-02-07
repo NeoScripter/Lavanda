@@ -25,7 +25,7 @@ class UserInfolist
                         ->label('Пол')
                         ->inlineLabel()
                         ->formatStateUsing(
-                            fn(?string $state) =>
+                            fn(?string $state): string =>
                             UserGender::label(UserGender::tryFrom($state))
                         )
                         ->placeholder('не указан'),
@@ -53,7 +53,7 @@ class UserInfolist
                         TextEntry::make('status')
                             ->label('Автопродление')
                             ->formatStateUsing(
-                                fn(SubscriptionStatus $state) =>
+                                fn(SubscriptionStatus $state): string =>
                                 $state === SubscriptionStatus::CANCELLED ? 'Выключено' : 'Включено'
                             )
                             ->inlineLabel(),

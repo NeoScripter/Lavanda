@@ -17,7 +17,7 @@ class AffirmationForm
                 Section::make()->schema([
                     TextInput::make('type')
                         ->label('Категория')
-                        ->datalist(Affirmation::distinct()->pluck('type')->toArray())
+                        ->datalist(Affirmation::query()->distinct()->pluck('type')->toArray())
                         ->trim()
                         ->required(),
                     Textarea::make('quote')

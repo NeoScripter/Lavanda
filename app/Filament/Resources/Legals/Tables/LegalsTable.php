@@ -18,12 +18,12 @@ class LegalsTable
                     ->formatStateUsing(fn(LegalType $state): string => $state->getLabel())
                     ->label('Название')
                     ->searchable(
-                        query: function ($query, string $search) {
+                        query: function ($query, string $search): void {
                             $matchingValues = collect(LegalType::cases())
                                 ->filter(
-                                    fn($case) =>
+                                    fn($case): bool =>
                                     str_contains(
-                                        mb_strtolower($case->getLabel()),
+                                        mb_strtolower((string) $case->getLabel()),
                                         mb_strtolower($search)
                                     )
                                 )

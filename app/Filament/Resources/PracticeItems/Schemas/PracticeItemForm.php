@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\PracticeItems\Schemas;
 
+use Illuminate\Http\UploadedFile;
 use App\Services\ImageResizer;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Repeater;
@@ -36,7 +37,7 @@ class PracticeItemForm
                         ->directory('wellness')
                         ->label('Файл')
                         ->maxSize(8128)
-                        ->dehydrated(fn($state) => filled($state)),
+                        ->dehydrated(fn($state): bool => filled($state)),
                 ]),
 
                 Section::make()
@@ -49,14 +50,14 @@ class PracticeItemForm
                             ->required()
                             ->maxSize(4128)
                             ->saveUploadedFileUsing(
-                                fn($file) =>
-                                app(ImageResizer::class)
+                                fn(UploadedFile $file) =>
+                                resolve(ImageResizer::class)
                                     ->handleImage($file, 700, 'practice')
-                            )->dehydrated(fn($state) => filled($state)),
+                            )->dehydrated(fn($state): bool => filled($state)),
                         Textarea::make('alt')
                             ->requiredWith('path')
                             ->label('Альтернативный текст к фото')
-                            ->dehydrated(fn($state) => filled($state)),
+                            ->dehydrated(fn($state): bool => filled($state)),
                     ]),
 
                 Repeater::make('faqs')

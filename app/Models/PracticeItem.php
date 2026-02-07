@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Database\Factories\PracticeItemFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -9,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class PracticeItem extends Model
 {
-    /** @use HasFactory<\Database\Factories\PracticeItemFactory> */
+    /** @use HasFactory<PracticeItemFactory> */
     use HasFactory;
 
     protected $with = ['image', 'faqs'];

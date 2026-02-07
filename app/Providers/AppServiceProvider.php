@@ -81,26 +81,23 @@ class AppServiceProvider extends ServiceProvider
 
     private function configureGates(): void
     {
-        Gate::define('premium-access', function ($user) {
-            return $user->hasActiveSubscription() || $user->role === UserRole::ADMIN;
+        Gate::define('premium-access', function ($user): bool {
+            if ($user->hasActiveSubscription()) {
+                return true;
+            }
+            return $user->role === UserRole::ADMIN;
         });
     }
 
     private function configureRateLimiting(): void
     {
-        RateLimiter::for('otp-send', function (Request $request) {
-            return Limit::perMinute(3)
-                ->by(strtolower($request->input('email') ?? 'guest') . '|send');
-        });
+        RateLimiter::for('otp-send', fn(Request $request) => Limit::perMinute(3)
+            ->by(strtolower($request->input('email') ?? 'guest') . '|send'));
 
-        RateLimiter::for('otp-verify', function (Request $request) {
-            return Limit::perMinute(3)
-                ->by(strtolower($request->input('email') ?? 'guest') . '|verify');
-        });
+        RateLimiter::for('otp-verify', fn(Request $request) => Limit::perMinute(3)
+            ->by(strtolower($request->input('email') ?? 'guest') . '|verify'));
 
-        RateLimiter::for('otp-resend', function (Request $request) {
-            return Limit::perMinute(3)
-                ->by(strtolower($request->input('email') ?? 'guest') . '|resend');
-        });
+        RateLimiter::for('otp-resend', fn(Request $request) => Limit::perMinute(3)
+            ->by(strtolower($request->input('email') ?? 'guest') . '|resend'));
     }
 }

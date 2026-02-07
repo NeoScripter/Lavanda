@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
+use Database\Factories\IchingFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Iching extends Model
 {
-    /** @use HasFactory<\Database\Factories\IchingFactory> */
+    /** @use HasFactory<IchingFactory> */
     use HasFactory;
 }

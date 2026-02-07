@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Database\Factories\PromoFactory;
 use App\Models\Concerns\ConvertsMarkdownToHtml;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -9,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class Promo extends Model
 {
-    /** @use HasFactory<\Database\Factories\PromoFactory> */
+    /** @use HasFactory<PromoFactory> */
     use HasFactory, ConvertsMarkdownToHtml;
 
     protected $with = ['frontImage'];

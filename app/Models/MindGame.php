@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use Database\Factories\MindGameFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class MindGame extends Model
 {
-    /** @use HasFactory<\Database\Factories\MindGameFactory> */
+    /** @use HasFactory<MindGameFactory> */
     use HasFactory;
 
     protected $with = ['frontImage'];

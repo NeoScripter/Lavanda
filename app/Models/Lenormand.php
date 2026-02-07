@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use Database\Factories\LenormandFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class Lenormand extends Model
 {
-    /** @use HasFactory<\Database\Factories\LenormandFactory> */
+    /** @use HasFactory<LenormandFactory> */
     use HasFactory;
 
     protected $with = ['frontImage'];

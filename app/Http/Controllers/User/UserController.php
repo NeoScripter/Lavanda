@@ -24,7 +24,7 @@ class UserController extends Controller
         ]);
 
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => ['required', 'string', 'max:255'],
             'email' => [
                 'required',
                 'string',
@@ -33,8 +33,8 @@ class UserController extends Controller
                 'max:255',
                 Rule::unique('users')->ignore($user->id),
             ],
-            'gender' => 'nullable|in:male,female',
-            'birthday' => 'nullable|date|before:today',
+            'gender' => ['nullable', 'in:male,female'],
+            'birthday' => ['nullable', 'date', 'before:today'],
         ]);
 
         $user->update($validated);
@@ -49,9 +49,7 @@ class UserController extends Controller
     {
         $user = Auth::user();
 
-        if ($user->role === UserRole::ADMIN) {
-            abort('Аккаунт админа нельзя удалить');
-        }
+        abort_if($user->role === UserRole::ADMIN, 'Аккаунт админа нельзя удалить');
 
         // Log the user out
         Auth::logout();
@@ -63,6 +61,6 @@ class UserController extends Controller
         // Delete the user
         $user->delete();
 
-        return redirect()->route('home')->with('message', 'Ваш аккаунт был успешно удален.');
+        return to_route('home')->with('message', 'Ваш аккаунт был успешно удален.');
     }
 }

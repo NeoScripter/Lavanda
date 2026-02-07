@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('mind_games', function (Blueprint $table) {
+        Schema::create('mind_games', function (Blueprint $table): void {
             $table->id();
             $table->timestamps();
         });

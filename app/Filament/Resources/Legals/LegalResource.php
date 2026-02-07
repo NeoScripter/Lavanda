@@ -2,7 +2,6 @@
 
 namespace App\Filament\Resources\Legals;
 
-use App\Filament\Resources\Legals\Pages\CreateLegal;
 use App\Filament\Resources\Legals\Pages\EditLegal;
 use App\Filament\Resources\Legals\Pages\ListLegals;
 use App\Filament\Resources\Legals\Pages\ViewLegal;

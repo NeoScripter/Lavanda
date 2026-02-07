@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\VerifyOtpRequest;
 use App\Models\User;
@@ -16,9 +17,9 @@ class VerifyOtpController extends Controller
         protected OtpService $otpService
     ) {}
 
-    public function __invoke(VerifyOtpRequest $request)
+    public function __invoke(VerifyOtpRequest $request): RedirectResponse
     {
-        $user = User::firstWhere('email', $request->email);
+        $user = User::query()->firstWhere('email', $request->email);
 
         if (!$this->otpService->verify($user, $request->code)) {
             throw ValidationException::withMessages([
@@ -30,6 +31,6 @@ class VerifyOtpController extends Controller
         $request->session()->regenerate();
         Cache::delete('premium-access');
 
-        return redirect()->back();
+        return back();
     }
 }

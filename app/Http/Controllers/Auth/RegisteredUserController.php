@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Validation\ValidationException;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\RegisteredUserRequest;
 use App\Models\User;
 use App\Services\OtpService;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 
 class RegisteredUserController extends Controller
 {
@@ -19,13 +19,13 @@ class RegisteredUserController extends Controller
     /**
      * Handle an incoming registration request.
      *
-     * @throws \Illuminate\Validation\ValidationException
+     * @throws ValidationException
      */
     public function store(RegisteredUserRequest $request): RedirectResponse
     {
         $validated = $request->validated();
 
-        $user = User::create([
+        $user = User::query()->create([
             'name' => $validated['name'],
             'email' => $validated['email'],
             'gender' => $validated['gender'],

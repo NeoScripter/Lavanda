@@ -2,10 +2,11 @@
 
 namespace Database\Factories;
 
+use App\Models\PracticeItemFaq;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\PracticeItemFaq>
+ * @extends Factory<PracticeItemFaq>
  */
 class PracticeItemFaqFactory extends Factory
 {

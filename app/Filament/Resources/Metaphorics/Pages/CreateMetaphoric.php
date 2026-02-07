@@ -25,7 +25,7 @@ class CreateMetaphoric extends CreateRecord
             $image->type = 'front';
         }
 
-        $resizer = app(ImageResizer::class);
+        $resizer = resolve(ImageResizer::class);
 
         $tinyPath = $resizer->handleExistingPath(
             $image->path,

@@ -2,6 +2,9 @@
 
 namespace App\Enums;
 
+use App\Models\Lenormand;
+use App\Models\Rune;
+
 enum MatchSetType: string
 {
     // case TAROT = 'tarot';
@@ -21,8 +24,8 @@ enum MatchSetType: string
     public function getModelClass(): string
     {
         return match ($this) {
-            self::LENORMAND => \App\Models\Lenormand::class,
-            self::RUNE => \App\Models\Rune::class,
+            self::LENORMAND => Lenormand::class,
+            self::RUNE => Rune::class,
         };
     }
 }

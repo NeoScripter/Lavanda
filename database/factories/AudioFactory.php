@@ -2,10 +2,11 @@
 
 namespace Database\Factories;
 
+use App\Models\Audio;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Audio>
+ * @extends Factory<Audio>
  */
 class AudioFactory extends Factory
 {

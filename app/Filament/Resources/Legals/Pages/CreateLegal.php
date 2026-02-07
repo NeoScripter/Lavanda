@@ -3,7 +3,6 @@
 namespace App\Filament\Resources\Legals\Pages;
 
 use App\Filament\Resources\Legals\LegalResource;
-use Filament\Actions\ImportAction;
 use Filament\Resources\Pages\CreateRecord;
 
 class CreateLegal extends CreateRecord

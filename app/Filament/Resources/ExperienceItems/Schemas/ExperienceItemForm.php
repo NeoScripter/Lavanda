@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\ExperienceItems\Schemas;
 
+use Illuminate\Http\UploadedFile;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Schema;
@@ -43,8 +44,8 @@ class ExperienceItemForm
                             ->label('Изображение')
                             ->maxSize(4128)
                             ->saveUploadedFileUsing(
-                                fn($file) =>
-                                app(ImageResizer::class)
+                                fn(UploadedFile $file) =>
+                                resolve(ImageResizer::class)
                                     ->handleImage($file, 700, 'experience')
                             ),
                         Textarea::make('alt')

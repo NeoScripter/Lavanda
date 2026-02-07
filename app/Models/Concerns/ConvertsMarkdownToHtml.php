@@ -8,7 +8,7 @@ trait ConvertsMarkdownToHtml
     {
         static::saving(function (self $model) {
             $markdownData = collect(self::getMarkdownToHtmlMap())
-                ->mapWithKeys(function ($htmlColumn, $markdownColumn) use ($model) {
+                ->mapWithKeys(function ($htmlColumn, $markdownColumn) use ($model): array {
                     if (! isset($model->$markdownColumn) || is_null($model->$markdownColumn)) {
                         return [];
                     }

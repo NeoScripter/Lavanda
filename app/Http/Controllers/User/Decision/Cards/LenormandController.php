@@ -40,7 +40,7 @@ class LenormandController extends Controller
                     ? CardResource::collection(Lenormand::all()->shuffle())
                     : null
             ),
-            'combos' => MatchSet::where('type', MatchSetType::LENORMAND)->get(),
+            'combos' => MatchSet::query()->where('type', MatchSetType::LENORMAND)->get(),
         ]);
     }
 }

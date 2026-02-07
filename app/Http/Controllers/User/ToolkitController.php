@@ -18,7 +18,7 @@ class ToolkitController extends Controller
         $tips = null;
 
         if (Gate::check('premium-access')) {
-            $tips = WellnessTip::where('type', WellnessTipType::TOOLKIT)->paginate(6);
+            $tips = WellnessTip::query()->where('type', WellnessTipType::TOOLKIT)->paginate(6);
         }
 
         return Inertia::render('user/ToolKit/ToolKit', [

@@ -2,10 +2,11 @@
 
 namespace Database\Factories;
 
+use App\Models\PracticeItem;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\PracticeItem>
+ * @extends Factory<PracticeItem>
  */
 class PracticeItemFactory extends Factory
 {
@@ -17,8 +18,8 @@ class PracticeItemFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => fake()->word(3),
-            'heading' => fake()->word(3),
+            'title' => fake()->word(),
+            'heading' => fake()->word(),
             'description' => implode('', fake()->sentences(3)),
             'body' => implode('', fake()->sentences(3)),
         ];

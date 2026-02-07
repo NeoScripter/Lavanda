@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\WellnessTips\Schemas;
 
+use Illuminate\Http\UploadedFile;
 use App\Enums\WellnessTipType;
 use App\Services\ImageResizer;
 use Filament\Forms\Components\FileUpload;
@@ -21,8 +22,8 @@ class WellnessTipForm
                     Select::make('type')
                         ->options(
                             fn() => collect(WellnessTipType::cases())
-                                ->mapWithKeys(fn($type) => [$type->value => $type->getLabel()])
-                                ->toArray()
+                                ->mapWithKeys(fn($type): array => [$type->value => $type->getLabel()])
+                                ->all()
                         )
                         ->label('Раздел')
                         ->required(),
@@ -45,14 +46,14 @@ class WellnessTipForm
                             ->label('Изображение')
                             ->maxSize(4128)
                             ->saveUploadedFileUsing(
-                                fn($file) =>
-                                app(ImageResizer::class)
+                                fn(UploadedFile $file) =>
+                                resolve(ImageResizer::class)
                                     ->handleImage($file, 300, 'wellness')
-                            )->dehydrated(fn($state) => filled($state)),
+                            )->dehydrated(fn($state): bool => filled($state)),
                         Textarea::make('alt')
                             ->requiredWith('path')
                             ->label('Альтернативный текст к фото')
-                            ->dehydrated(fn($state) => filled($state)),
+                            ->dehydrated(fn($state): bool => filled($state)),
                     ]),
             ]);
     }

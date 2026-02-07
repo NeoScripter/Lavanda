@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\ProfileUpdateRequest;
 use Inertia\Inertia;
@@ -17,7 +18,7 @@ class ProfileController extends Controller
     /**
      * Update the user's profile settings.
      */
-    public function update(ProfileUpdateRequest $request)
+    public function update(ProfileUpdateRequest $request): RedirectResponse
     {
         $user = $request->user();
         $user->fill($request->validated());
@@ -28,6 +29,6 @@ class ProfileController extends Controller
 
         $user->save();
 
-        return redirect()->back();
+        return back();
     }
 }

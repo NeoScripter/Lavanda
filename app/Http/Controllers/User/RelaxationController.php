@@ -18,7 +18,7 @@ class RelaxationController extends Controller
         $tips = null;
 
         if (Gate::check('premium-access')) {
-            $tips = WellnessTip::where('type', WellnessTipType::RELAXATION)->paginate(6);
+            $tips = WellnessTip::query()->where('type', WellnessTipType::RELAXATION)->paginate(6);
         }
 
         return Inertia::render('user/Relaxation/Relaxation', [

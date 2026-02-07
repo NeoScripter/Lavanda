@@ -14,7 +14,7 @@ class TarotSeeder extends Seeder
     public function run(): void
     {
         for ($i = 1; $i < 30; $i++) {
-                Tarot::factory()->afterCreating(function ($tarot) use ($i) {
+                Tarot::factory()->afterCreating(function ($tarot) use ($i): void {
                     Image::factory()->create([
                         'imageable_id' => $tarot,
                         'path' => 'models/tarot/tarot-' . max($i % 4, 1) . '.webp',

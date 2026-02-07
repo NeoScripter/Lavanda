@@ -16,7 +16,7 @@ class PracticeItemSeeder extends Seeder
     {
         PracticeItem::factory()
             ->count(10)
-            ->afterCreating(function ($item) {
+            ->afterCreating(function ($item): void {
                 Image::factory()->create([
                     'imageable_id' => $item,
                     'path' => 'models/practice-items/item.webp',

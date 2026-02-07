@@ -2,10 +2,11 @@
 
 namespace Database\Factories;
 
+use App\Models\Lenormand;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Lenormand>
+ * @extends Factory<Lenormand>
  */
 class LenormandFactory extends Factory
 {

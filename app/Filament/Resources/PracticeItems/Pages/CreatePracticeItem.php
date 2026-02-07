@@ -21,7 +21,7 @@ class CreatePracticeItem extends CreateRecord
             return;
         }
 
-        $resizer = app(ImageResizer::class);
+        $resizer = resolve(ImageResizer::class);
 
         $tinyPath = $resizer->handleExistingPath(
             $image->path,
