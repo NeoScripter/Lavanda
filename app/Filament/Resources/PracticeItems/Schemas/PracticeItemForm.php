@@ -46,6 +46,7 @@ class PracticeItemForm
                             ->image()
                             ->disk('public')
                             ->label('Изображение')
+                            ->required()
                             ->maxSize(4128)
                             ->saveUploadedFileUsing(
                                 fn($file) =>

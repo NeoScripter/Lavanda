@@ -21,10 +21,6 @@ class CreatePracticeItem extends CreateRecord
             return;
         }
 
-        if ($image->type !== 'front') {
-            $image->type = 'front';
-        }
-
         $resizer = app(ImageResizer::class);
 
         $tinyPath = $resizer->handleExistingPath(

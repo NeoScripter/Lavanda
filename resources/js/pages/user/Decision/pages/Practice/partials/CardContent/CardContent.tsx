@@ -33,7 +33,7 @@ const CardContent = () => {
 
                 {item.file && (
                     <div className={css.cardDownloadWrapper}>
-                        <a href={`/${item.file}`} download>
+                        <a href={`/storage/${item.file}`} download>
                             <Download />
                             Скачать файл
                         </a>

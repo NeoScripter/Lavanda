@@ -30,10 +30,6 @@ class EditPracticeItem extends EditRecord
             return;
         }
 
-        if ($image->type !== 'front') {
-            $image->type = 'front';
-        }
-
         $resizer = app(ImageResizer::class);
 
         $tinyPath = $resizer->handleExistingPath(

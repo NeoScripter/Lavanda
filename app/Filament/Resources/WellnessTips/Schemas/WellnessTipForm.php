@@ -40,6 +40,7 @@ class WellnessTipForm
                     ->schema([
                         FileUpload::make('path')
                             ->image()
+                            ->required()
                             ->disk('public')
                             ->label('Изображение')
                             ->maxSize(4128)

@@ -23,7 +23,8 @@ class AffirmationController extends Controller
             'affirmations' => $isMember && isset($validated['category'])
                 ? Affirmation::where('type', $validated['category'])->get()
                 : null,
-            'categories' => Cache::flexible('affirmation-categories', [2, 4], fn() => Affirmation::distinct()->pluck('type')),
+            'categories' => Cache::flexible('affirmation-categories', [2, 4],
+                fn() => Affirmation::distinct()->pluck('type')),
             'category' => $isMember && isset($validated['category']) ? $validated['category'] : null,
         ]);
     }
