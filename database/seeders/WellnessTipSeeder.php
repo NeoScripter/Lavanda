@@ -26,15 +26,15 @@ class WellnessTipSeeder extends Seeder
                         'description' => $raw['description'],
                         'url' => $raw['url'],
                     ])
-                    ->afterCreating(function ($tip) use ($raw): void {
-                        Image::factory()->create([
-                            'imageable_id' => $tip,
-                            'alt' => $raw['alt'],
-                            'path' => 'models/' . $raw['image'],
-                            'tiny_path' => 'models/' . $raw['tiny_image'],
-                        ]);
-                    })
-                    ->create();
+                        ->afterCreating(function ($tip) use ($raw): void {
+                            Image::factory()->create([
+                                'imageable_id' => $tip,
+                                'alt' => $raw['alt'],
+                                'path' => 'models/'.$raw['image'],
+                                'tiny_path' => 'models/'.$raw['tiny_image'],
+                            ]);
+                        })
+                        ->create();
                 });
             }
         }

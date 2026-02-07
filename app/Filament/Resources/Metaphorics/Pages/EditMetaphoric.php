@@ -10,6 +10,7 @@ use Filament\Resources\Pages\EditRecord;
 class EditMetaphoric extends EditRecord
 {
     protected static string $resource = MetaphoricResource::class;
+
     protected static ?string $title = 'Редактирование метафорической карты';
 
     protected function getHeaderActions(): array

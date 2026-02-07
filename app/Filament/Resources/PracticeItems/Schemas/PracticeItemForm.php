@@ -2,16 +2,16 @@
 
 namespace App\Filament\Resources\PracticeItems\Schemas;
 
-use Illuminate\Http\UploadedFile;
 use App\Services\ImageResizer;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Repeater;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Section;
-use Filament\Schemas\Schema;
 use Filament\Schemas\Components\Text;
+use Filament\Schemas\Schema;
 use Filament\Support\Enums\FontWeight;
+use Illuminate\Http\UploadedFile;
 
 class PracticeItemForm
 {
@@ -37,7 +37,7 @@ class PracticeItemForm
                         ->directory('wellness')
                         ->label('Файл')
                         ->maxSize(8128)
-                        ->dehydrated(fn($state): bool => filled($state)),
+                        ->dehydrated(fn ($state): bool => filled($state)),
                 ]),
 
                 Section::make()
@@ -50,14 +50,13 @@ class PracticeItemForm
                             ->required()
                             ->maxSize(4128)
                             ->saveUploadedFileUsing(
-                                fn(UploadedFile $file) =>
-                                resolve(ImageResizer::class)
+                                fn (UploadedFile $file) => resolve(ImageResizer::class)
                                     ->handleImage($file, 700, 'practice')
-                            )->dehydrated(fn($state): bool => filled($state)),
+                            )->dehydrated(fn ($state): bool => filled($state)),
                         Textarea::make('alt')
                             ->requiredWith('path')
                             ->label('Альтернативный текст к фото')
-                            ->dehydrated(fn($state): bool => filled($state)),
+                            ->dehydrated(fn ($state): bool => filled($state)),
                     ]),
 
                 Repeater::make('faqs')
@@ -78,7 +77,7 @@ class PracticeItemForm
                     ->columnSpanFull()
                     ->itemLabel('Подпункт')
                     ->itemNumbers()
-                    ->addActionLabel('Добавить подпункт')
+                    ->addActionLabel('Добавить подпункт'),
             ]);
     }
 }

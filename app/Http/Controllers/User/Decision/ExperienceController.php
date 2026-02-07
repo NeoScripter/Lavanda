@@ -14,7 +14,7 @@ class ExperienceController extends Controller
     public function __invoke()
     {
         return Inertia::render('user/Decision/pages/Experience/Experience', [
-            'items' => ExperienceItem::all()->toResourceCollection()
+            'items' => ExperienceItem::all()->toResourceCollection(),
         ]);
     }
 }

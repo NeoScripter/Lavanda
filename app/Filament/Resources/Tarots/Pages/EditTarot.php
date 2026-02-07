@@ -10,6 +10,7 @@ use Filament\Resources\Pages\EditRecord;
 class EditTarot extends EditRecord
 {
     protected static string $resource = TarotResource::class;
+
     protected static ?string $title = 'Редактирование карты Таро';
 
     protected function getHeaderActions(): array

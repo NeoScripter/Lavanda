@@ -21,7 +21,9 @@ class MetaphoricResource extends Resource
     protected static string|BackedEnum|null $navigationIcon = LucideIcon::Sparkles;
 
     protected static ?string $modelLabel = 'Метафорическая карта';
+
     protected static ?string $pluralModelLabel = 'Метафорические карты';
+
     protected static bool $hasTitleCaseModelLabel = false;
 
     public static function form(Schema $schema): Schema

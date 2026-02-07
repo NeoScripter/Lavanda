@@ -24,19 +24,18 @@ class MatchSetsTable
                 Stack::make([
                     TextColumn::make('type')
                         ->label('Раздел')
-                        ->formatStateUsing(fn(MatchSetType $state): string => $state->getLabel())
+                        ->formatStateUsing(fn (MatchSetType $state): string => $state->getLabel())
                         ->badge()
                         ->searchable(
                             query: function ($query, string $search): void {
                                 $matchingValues = collect(MatchSetType::cases())
                                     ->filter(
-                                        fn($case): bool =>
-                                        str_contains(
-                                            mb_strtolower((string) $case->getLabel()),
+                                        fn ($case): bool => str_contains(
+                                            mb_strtolower($case->getLabel()),
                                             mb_strtolower($search)
                                         )
                                     )
-                                    ->map(fn($case) => $case->value)
+                                    ->map(fn ($case) => $case->value)
                                     ->all();
 
                                 $query->whereIn('type', $matchingValues);
@@ -45,7 +44,7 @@ class MatchSetsTable
                     ImageColumn::make('items')
                         ->label('Элементы')
                         ->getStateUsing(function ($record) {
-                            if (!$record->type || !$record->ids) {
+                            if (! $record->type || ! $record->ids) {
                                 return [];
                             }
 
@@ -54,7 +53,7 @@ class MatchSetsTable
                             return $modelClass::query()
                                 ->whereIn('id', $record->ids)
                                 ->get()
-                                ->map(fn($item) => $item->frontImage?->path)
+                                ->map(fn ($item) => $item->frontImage?->path)
                                 ->filter()
                                 ->all();
                         })

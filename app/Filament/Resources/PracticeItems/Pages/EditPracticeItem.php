@@ -11,6 +11,7 @@ use Filament\Resources\Pages\EditRecord;
 class EditPracticeItem extends EditRecord
 {
     protected static string $resource = PracticeItemResource::class;
+
     protected static ?string $title = 'Редактирование элемента';
 
     protected function getHeaderActions(): array

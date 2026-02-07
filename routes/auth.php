@@ -9,7 +9,6 @@ use App\Http\Controllers\Auth\SendOtpController;
 use App\Http\Controllers\Auth\VerifyOtpController;
 use Illuminate\Support\Facades\Route;
 
-
 Route::middleware(['guest'])->group(function (): void {
     // Route::get('/login', [AuthenticatedSessionController::class, 'index'])->name('login');
     // Route::post('/login', [AuthenticatedSessionController::class, 'store'])->name('authenticate');
@@ -35,7 +34,6 @@ Route::middleware(['auth'])->group(function (): void {
     Route::patch('settings/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::put('settings/password', [PasswordController::class, 'update'])->name('password.update');
 });
-
 
 Route::prefix('/otp')->group(function (): void {
     Route::post('/send', SendOtpController::class)

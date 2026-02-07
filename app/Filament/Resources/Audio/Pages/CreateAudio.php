@@ -8,6 +8,7 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateAudio extends CreateRecord
 {
     protected static string $resource = AudioResource::class;
+
     protected static ?string $title = 'Создание послания поддержки';
 
     protected static bool $canCreateAnother = false;

@@ -27,8 +27,8 @@ class ExperienceItemSeeder extends Seeder
                         Image::factory()->create([
                             'imageable_id' => $tip,
                             'alt' => $raw['alt'],
-                            'path' => 'models/' . $raw['image'],
-                            'tiny_path' => 'models/' . $raw['tiny_image'],
+                            'path' => 'models/'.$raw['image'],
+                            'tiny_path' => 'models/'.$raw['tiny_image'],
                         ]);
                     })
                     ->create();

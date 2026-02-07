@@ -85,19 +85,20 @@ class AppServiceProvider extends ServiceProvider
             if ($user->hasActiveSubscription()) {
                 return true;
             }
+
             return $user->role === UserRole::ADMIN;
         });
     }
 
     private function configureRateLimiting(): void
     {
-        RateLimiter::for('otp-send', fn(Request $request) => Limit::perMinute(3)
-            ->by(strtolower($request->input('email') ?? 'guest') . '|send'));
+        RateLimiter::for('otp-send', fn (Request $request) => Limit::perMinute(3)
+            ->by(strtolower($request->input('email') ?? 'guest').'|send'));
 
-        RateLimiter::for('otp-verify', fn(Request $request) => Limit::perMinute(3)
-            ->by(strtolower($request->input('email') ?? 'guest') . '|verify'));
+        RateLimiter::for('otp-verify', fn (Request $request) => Limit::perMinute(3)
+            ->by(strtolower($request->input('email') ?? 'guest').'|verify'));
 
-        RateLimiter::for('otp-resend', fn(Request $request) => Limit::perMinute(3)
-            ->by(strtolower($request->input('email') ?? 'guest') . '|resend'));
+        RateLimiter::for('otp-resend', fn (Request $request) => Limit::perMinute(3)
+            ->by(strtolower($request->input('email') ?? 'guest').'|resend'));
     }
 }

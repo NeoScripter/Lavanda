@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\User;
 
-use Illuminate\Http\RedirectResponse;
 use App\Enums\SubscriptionStatus;
 use App\Http\Controllers\Controller;
 use App\Models\Subscription;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class UpdateSubscriptionStatusController extends Controller
@@ -18,8 +18,7 @@ class UpdateSubscriptionStatusController extends Controller
         $this->authorize('update', $subscription);
 
         $subscription->update([
-            'status' =>
-            $subscription->status === SubscriptionStatus::ACTIVE
+            'status' => $subscription->status === SubscriptionStatus::ACTIVE
                 ? SubscriptionStatus::CANCELLED
                 : SubscriptionStatus::ACTIVE,
         ]);

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\User;
 
-use Illuminate\Http\Resources\Json\JsonResource;
 use App\Http\Controllers\Controller;
 use App\Models\Legal;
+use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\Cache;
 use Inertia\Inertia;
 
@@ -19,9 +19,8 @@ class LegalController extends Controller
             'legal' => Cache::flexible(
                 $legal->type->value,
                 [5, 10],
-                fn(): JsonResource =>
-                $legal->toResource()
-            )
+                fn (): JsonResource => $legal->toResource()
+            ),
         ]);
     }
 }

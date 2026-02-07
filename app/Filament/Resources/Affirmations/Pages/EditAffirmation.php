@@ -9,6 +9,7 @@ use Filament\Resources\Pages\EditRecord;
 class EditAffirmation extends EditRecord
 {
     protected static string $resource = AffirmationResource::class;
+
     protected static ?string $title = 'Редактирование аффирмации';
 
     protected function getHeaderActions(): array

@@ -9,10 +9,10 @@ use App\Filament\Resources\Promos\Schemas\PromoForm;
 use App\Filament\Resources\Promos\Tables\PromosTable;
 use App\Models\Promo;
 use BackedEnum;
+use CodeWithDennis\FilamentLucideIcons\Enums\LucideIcon;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;
-use CodeWithDennis\FilamentLucideIcons\Enums\LucideIcon;
 
 class PromoResource extends Resource
 {
@@ -21,7 +21,9 @@ class PromoResource extends Resource
     protected static string|BackedEnum|null $navigationIcon = LucideIcon::Cat;
 
     protected static ?string $modelLabel = 'Бонус карта';
+
     protected static ?string $pluralModelLabel = 'Бонус карты';
+
     protected static bool $hasTitleCaseModelLabel = false;
 
     public static function form(Schema $schema): Schema

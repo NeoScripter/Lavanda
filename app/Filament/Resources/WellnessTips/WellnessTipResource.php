@@ -23,7 +23,9 @@ class WellnessTipResource extends Resource
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedNewspaper;
 
     protected static ?string $modelLabel = 'Полезный ресурс';
+
     protected static ?string $pluralModelLabel = 'Полезные ресурсы';
+
     protected static bool $hasTitleCaseModelLabel = false;
 
     public static function form(Schema $schema): Schema

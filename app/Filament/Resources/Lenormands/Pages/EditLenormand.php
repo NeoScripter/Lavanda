@@ -10,6 +10,7 @@ use Filament\Resources\Pages\EditRecord;
 class EditLenormand extends EditRecord
 {
     protected static string $resource = LenormandResource::class;
+
     protected static ?string $title = 'Редактирование карты Ленорман';
 
     protected function getHeaderActions(): array

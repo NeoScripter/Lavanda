@@ -44,21 +44,20 @@ class HandleInertiaRequests extends Middleware
         return [
             ...parent::share($request),
             'flash' => [
-                'message' => fn() => $request->session()->pull('message'),
-                'code' => fn() => $request->session()->pull('code'),
+                'message' => fn () => $request->session()->pull('message'),
+                'code' => fn () => $request->session()->pull('code'),
             ],
             'auth' => [
                 'user' => $request->user(...),
-                'hasPremiumAccess' =>
-                in_array($request->route()?->getName(), $exemptRoutes, true)
+                'hasPremiumAccess' => in_array($request->route()?->getName(), $exemptRoutes, true)
                     || Cache::flexible(
                         'premium-access',
                         [5, 10],
-                        fn() => Gate::check('premium-access')
+                        fn () => Gate::check('premium-access')
                     ),
             ],
-            'locale' => fn() => App::getLocale(),
-            'ziggy' => fn(): array => [
+            'locale' => fn () => App::getLocale(),
+            'ziggy' => fn (): array => [
                 ...(new Ziggy)->toArray(),
                 'location' => $request->url(),
             ],

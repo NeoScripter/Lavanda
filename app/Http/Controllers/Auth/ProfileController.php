@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\ProfileUpdateRequest;
+use Illuminate\Http\RedirectResponse;
 use Inertia\Inertia;
 
 class ProfileController extends Controller
@@ -15,6 +15,7 @@ class ProfileController extends Controller
             'adminLayout' => true,
         ]);
     }
+
     /**
      * Update the user's profile settings.
      */

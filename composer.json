@@ -61,7 +61,13 @@
         ],
         "test": [
             "@php artisan config:clear --ansi",
-            "@php artisan test"
+            "@php artisan test --parallel",
+            "peck"
+        ],
+        "lint": [
+            "rector",
+            "pint --parallel",
+            "peck"
         ],
         "rector:check": "vendor/bin/rector process --dry-run --ansi",
         "rector:fix": "vendor/bin/rector process --ansi",

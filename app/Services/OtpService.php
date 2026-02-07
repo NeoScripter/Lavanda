@@ -34,12 +34,14 @@ class OtpService
             ->where('code', $code)
             ->first();
 
-        if (!$otp || $otp->isExpired()) {
+        if (! $otp || $otp->isExpired()) {
             $otp?->delete();
+
             return false;
         }
 
         $otp->delete();
+
         return true;
     }
 

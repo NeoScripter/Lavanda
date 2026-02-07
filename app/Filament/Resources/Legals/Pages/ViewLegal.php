@@ -9,6 +9,7 @@ use Filament\Resources\Pages\ViewRecord;
 class ViewLegal extends ViewRecord
 {
     protected static string $resource = LegalResource::class;
+
     protected static ?string $title = 'Просмотр документа';
 
     protected function getHeaderActions(): array

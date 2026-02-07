@@ -4,8 +4,8 @@ namespace App\Filament\Resources\Legals\Schemas;
 
 use App\Enums\LegalType;
 use Filament\Infolists\Components\TextEntry;
-use Filament\Schemas\Components\Text;
 use Filament\Schemas\Components\Section;
+use Filament\Schemas\Components\Text;
 use Filament\Schemas\Schema;
 use Filament\Support\Enums\FontWeight;
 
@@ -18,7 +18,7 @@ class LegalInfolist
                 Section::make()->maxWidth('xs')->schema([
                     TextEntry::make('type')
                         ->label('Название')
-                        ->formatStateUsing(fn(LegalType $state): string => $state
+                        ->formatStateUsing(fn (LegalType $state): string => $state
                             ->getLabel()),
                 ]),
                 Section::make()

@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests\Auth;
 
-use Illuminate\Contracts\Validation\ValidationRule;
 use App\Enums\UserGender;
 use App\Models\User;
+use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\Enum;
 
@@ -39,7 +39,7 @@ class RegisteredUserRequest extends FormRequest
             'name' => ['required', 'string', 'max:255'],
             'gender' => ['nullable', new Enum(UserGender::class)],
             'birthday' => ['nullable', 'date', 'before:today'],
-            'email' => 'required|string|lowercase|email|max:255|unique:' . User::class,
+            'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
             'policy' => ['required', 'accepted'],
             'consent' => ['required', 'accepted'],
         ];

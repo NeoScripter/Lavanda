@@ -2,7 +2,6 @@
 
 namespace App\Filament\Resources\WellnessTips\Schemas;
 
-use Illuminate\Http\UploadedFile;
 use App\Enums\WellnessTipType;
 use App\Services\ImageResizer;
 use Filament\Forms\Components\FileUpload;
@@ -11,6 +10,7 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
+use Illuminate\Http\UploadedFile;
 
 class WellnessTipForm
 {
@@ -21,8 +21,8 @@ class WellnessTipForm
                 Section::make()->schema([
                     Select::make('type')
                         ->options(
-                            fn() => collect(WellnessTipType::cases())
-                                ->mapWithKeys(fn($type): array => [$type->value => $type->getLabel()])
+                            fn () => collect(WellnessTipType::cases())
+                                ->mapWithKeys(fn ($type): array => [$type->value => $type->getLabel()])
                                 ->all()
                         )
                         ->label('Раздел')
@@ -46,14 +46,13 @@ class WellnessTipForm
                             ->label('Изображение')
                             ->maxSize(4128)
                             ->saveUploadedFileUsing(
-                                fn(UploadedFile $file) =>
-                                resolve(ImageResizer::class)
+                                fn (UploadedFile $file) => resolve(ImageResizer::class)
                                     ->handleImage($file, 300, 'wellness')
-                            )->dehydrated(fn($state): bool => filled($state)),
+                            )->dehydrated(fn ($state): bool => filled($state)),
                         Textarea::make('alt')
                             ->requiredWith('path')
                             ->label('Альтернативный текст к фото')
-                            ->dehydrated(fn($state): bool => filled($state)),
+                            ->dehydrated(fn ($state): bool => filled($state)),
                     ]),
             ]);
     }

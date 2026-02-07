@@ -3,15 +3,15 @@
 namespace App\Filament\Resources\MatchSets\Schemas;
 
 use App\Enums\MatchSetType;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Components\Section;
-use Filament\Schemas\Schema;
-use Filament\Forms\Components\RichEditor;
 use Filament\Schemas\Components\Text;
-use Filament\Support\Enums\FontWeight;
 use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Components\Utilities\Set;
+use Filament\Schemas\Schema;
+use Filament\Support\Enums\FontWeight;
 
 class MatchSetForm
 {
@@ -23,12 +23,12 @@ class MatchSetForm
                     Select::make('type')
                         ->options(
                             collect(MatchSetType::cases())
-                                ->mapWithKeys(fn($type): array => [$type->value => $type->getLabel()])
+                                ->mapWithKeys(fn ($type): array => [$type->value => $type->getLabel()])
                                 ->all()
                         )
                         ->live()
                         ->required()
-                        ->maxWidth('xs')->afterStateUpdated(fn(Set $set): mixed => $set('ids', null)),
+                        ->maxWidth('xs')->afterStateUpdated(fn (Set $set): mixed => $set('ids', null)),
                     Select::make('ids')
                         ->label('Элементы в комбинации')
                         ->multiple()
@@ -36,7 +36,7 @@ class MatchSetForm
                         ->required()
                         ->options(function (Get $get) {
                             $type = $get('type');
-                            if (!$type) {
+                            if (! $type) {
                                 return [];
                             }
 
@@ -59,10 +59,9 @@ class MatchSetForm
                         ->aboveContent(Text::make('Трактование')
                             ->size('lg')
                             ->weight(FontWeight::Bold))
-                        ->required()
+                        ->required(),
 
                 ])->columnSpanFull(),
-
 
             ]);
     }

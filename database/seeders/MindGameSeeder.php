@@ -14,14 +14,14 @@ class MindGameSeeder extends Seeder
     public function run(): void
     {
         for ($i = 1; $i < 80; $i++) {
-                MindGame::factory()->afterCreating(function ($game) use ($i): void {
-                    Image::factory()->create([
-                        'imageable_id' => $game,
-                        'path' => 'models/mind-games/mind-game-' . $i . '.webp',
-                        'tiny_path' => 'models/mind-games/mind-game-' . $i . '-tiny.webp',
-                        'type' => 'front'
-                    ]);
-                })
+            MindGame::factory()->afterCreating(function ($game) use ($i): void {
+                Image::factory()->create([
+                    'imageable_id' => $game,
+                    'path' => 'models/mind-games/mind-game-'.$i.'.webp',
+                    'tiny_path' => 'models/mind-games/mind-game-'.$i.'-tiny.webp',
+                    'type' => 'front',
+                ]);
+            })
                 ->create();
         }
     }

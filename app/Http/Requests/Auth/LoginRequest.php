@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests\Auth;
 
-use Illuminate\Contracts\Validation\ValidationRule;
 use App\Enums\UserRole;
 use Illuminate\Auth\Events\Lockout;
+use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
@@ -27,6 +27,7 @@ class LoginRequest extends FormRequest
             'email' => mb_strtolower(trim($this->email)),
         ]);
     }
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -90,7 +91,7 @@ class LoginRequest extends FormRequest
      */
     public function throttleKey(): string
     {
-        return Str::transliterate(Str::lower($this->string('email')) . '|' . $this->ip());
+        return Str::transliterate(Str::lower($this->string('email')).'|'.$this->ip());
     }
 
     /**
@@ -102,7 +103,7 @@ class LoginRequest extends FormRequest
     {
         $user = Auth::user();
 
-        if (!$user || !$user->role !== UserRole::ADMIN) {
+        if (! $user || ! $user->role !== UserRole::ADMIN) {
             Auth::logout();
 
             throw ValidationException::withMessages([

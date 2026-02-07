@@ -3,8 +3,8 @@
 namespace App\Filament\Resources\Affirmations\Schemas;
 
 use App\Models\Affirmation;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 

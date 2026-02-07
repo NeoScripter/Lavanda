@@ -14,7 +14,7 @@ class PracticeController extends Controller
     public function __invoke()
     {
         return Inertia::render('user/Decision/pages/Practice/Practice', [
-            'items' => PracticeItem::all()->toResourceCollection()
+            'items' => PracticeItem::all()->toResourceCollection(),
         ]);
     }
 }

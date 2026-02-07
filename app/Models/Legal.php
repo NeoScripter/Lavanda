@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Database\Factories\LegalFactory;
 use App\Enums\LegalType;
+use Database\Factories\LegalFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 

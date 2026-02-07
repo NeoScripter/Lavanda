@@ -2,12 +2,12 @@
 
 namespace App\Filament\Resources\MindGames\Schemas;
 
-use Illuminate\Http\UploadedFile;
+use App\Services\ImageResizer;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
-use App\Services\ImageResizer;
-use Filament\Forms\Components\FileUpload;
+use Illuminate\Http\UploadedFile;
 
 class MindGameForm
 {
@@ -24,14 +24,13 @@ class MindGameForm
                             ->label('Изображение')
                             ->maxSize(4128)
                             ->saveUploadedFileUsing(
-                                fn(UploadedFile $file) =>
-                                resolve(ImageResizer::class)
+                                fn (UploadedFile $file) => resolve(ImageResizer::class)
                                     ->handleImage($file, 600, 'mindgames')
-                            )->dehydrated(fn($state): bool => filled($state)),
+                            )->dehydrated(fn ($state): bool => filled($state)),
                         Textarea::make('alt')
                             ->requiredWith('path')
                             ->label('Альтернативный текст к фото')
-                            ->dehydrated(fn($state): bool => filled($state)),
+                            ->dehydrated(fn ($state): bool => filled($state)),
                     ]),
             ]);
     }

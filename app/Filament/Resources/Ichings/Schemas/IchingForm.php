@@ -2,10 +2,10 @@
 
 namespace App\Filament\Resources\Ichings\Schemas;
 
-use Filament\Schemas\Components\Section;
-use Filament\Schemas\Schema;
 use Filament\Forms\Components\RichEditor;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Text;
+use Filament\Schemas\Schema;
 use Filament\Support\Enums\FontWeight;
 
 class IchingForm
@@ -21,7 +21,7 @@ class IchingForm
                         ->aboveContent(Text::make('Толкование')
                             ->size('lg')
                             ->weight(FontWeight::Bold))
-                        ->required()
+                        ->required(),
                 ])->columnSpanFull(),
             ]);
     }

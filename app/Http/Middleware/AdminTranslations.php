@@ -12,13 +12,13 @@ class AdminTranslations
     /**
      * Handle an incoming request.
      *
-     * @param Closure(Request):Response $next
+     * @param  Closure(Request):Response  $next
      */
     public function handle(Request $request, Closure $next): Response
     {
 
-        Inertia::share('translations', fn(): mixed => json_decode(file_get_contents(base_path("resources/js/lang/" . app()
-            ->getLocale() . ".json")), true));
+        Inertia::share('translations', fn (): mixed => json_decode(file_get_contents(base_path('resources/js/lang/'.app()
+            ->getLocale().'.json')), true));
 
         return $next($request);
     }

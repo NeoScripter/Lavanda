@@ -12,10 +12,10 @@ class AudioController extends Controller
 {
     public function __invoke()
     {
-        $audios = Cache::flexible('audios', [5, 10], fn() => Gate::check('premium-access') ? Audio::all() : null);
+        $audios = Cache::flexible('audios', [5, 10], fn () => Gate::check('premium-access') ? Audio::all() : null);
 
         return Inertia::render('user/Audios/Audios', [
-            'audios' => $audios
+            'audios' => $audios,
         ]);
     }
 }

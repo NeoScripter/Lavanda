@@ -36,7 +36,7 @@ class LenormandController extends Controller
             'cards' => Cache::flexible(
                 'lenormand',
                 [5, 10],
-                fn() => Gate::check('premium-access')
+                fn () => Gate::check('premium-access')
                     ? CardResource::collection(Lenormand::all()->shuffle())
                     : null
             ),

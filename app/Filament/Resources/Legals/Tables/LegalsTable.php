@@ -15,19 +15,18 @@ class LegalsTable
         return $table
             ->columns([
                 TextColumn::make('type')
-                    ->formatStateUsing(fn(LegalType $state): string => $state->getLabel())
+                    ->formatStateUsing(fn (LegalType $state): string => $state->getLabel())
                     ->label('Название')
                     ->searchable(
                         query: function ($query, string $search): void {
                             $matchingValues = collect(LegalType::cases())
                                 ->filter(
-                                    fn($case): bool =>
-                                    str_contains(
-                                        mb_strtolower((string) $case->getLabel()),
+                                    fn ($case): bool => str_contains(
+                                        mb_strtolower($case->getLabel()),
                                         mb_strtolower($search)
                                     )
                                 )
-                                ->map(fn($case) => $case->value)
+                                ->map(fn ($case) => $case->value)
                                 ->all();
 
                             $query->whereIn('type', $matchingValues);

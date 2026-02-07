@@ -2,11 +2,11 @@
 
 namespace App\Filament\Resources\ExperienceItems\Schemas;
 
-use Filament\Infolists\Components\TextEntry;
-use Filament\Schemas\Schema;
 use Filament\Infolists\Components\ImageEntry;
+use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Text;
+use Filament\Schemas\Schema;
 use Filament\Support\Enums\FontWeight;
 
 class ExperienceItemInfolist
@@ -28,7 +28,7 @@ class ExperienceItemInfolist
                     ImageEntry::make('image.path')
                         ->imageWidth(250)
                         ->imageHeight(250)
-                        ->label('Изображение')
+                        ->label('Изображение'),
                 ]),
                 Section::make()
                     ->columnSpanFull()

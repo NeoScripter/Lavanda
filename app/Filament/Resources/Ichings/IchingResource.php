@@ -17,11 +17,12 @@ class IchingResource extends Resource
 {
     protected static ?string $model = Iching::class;
 
-
     protected static string|BackedEnum|null $navigationIcon = LucideIcon::LoaderPinwheel;
 
     protected static ?string $modelLabel = 'Знак И-Цзин';
+
     protected static ?string $pluralModelLabel = 'Знаки И-Цзин';
+
     protected static bool $hasTitleCaseModelLabel = false;
 
     public static function form(Schema $schema): Schema

@@ -2,16 +2,16 @@
 
 namespace App\Filament\Resources\Promos\Schemas;
 
-use Illuminate\Http\UploadedFile;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Textarea;
-use Filament\Schemas\Components\Section;
-use Filament\Schemas\Schema;
 use App\Services\ImageResizer;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Text;
+use Filament\Schemas\Schema;
 use Filament\Support\Enums\FontWeight;
+use Illuminate\Http\UploadedFile;
 
 class PromoForm
 {
@@ -36,14 +36,13 @@ class PromoForm
                             ->label('Изображение')
                             ->maxSize(4128)
                             ->saveUploadedFileUsing(
-                                fn(UploadedFile $file) =>
-                                resolve(ImageResizer::class)
+                                fn (UploadedFile $file) => resolve(ImageResizer::class)
                                     ->handleImage($file, 550, 'promo')
-                            )->dehydrated(fn($state): bool => filled($state)),
+                            )->dehydrated(fn ($state): bool => filled($state)),
                         Textarea::make('alt')
                             ->requiredWith('path')
                             ->label('Альтернативный текст к фото')
-                            ->dehydrated(fn($state): bool => filled($state)),
+                            ->dehydrated(fn ($state): bool => filled($state)),
                     ]),
 
                 Section::make()->schema([
@@ -53,7 +52,7 @@ class PromoForm
                         ->aboveContent(Text::make('Трактование')
                             ->size('lg')
                             ->weight(FontWeight::Bold))
-                        ->required()
+                        ->required(),
 
                 ])->columnSpanFull(),
 

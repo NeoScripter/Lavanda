@@ -21,7 +21,9 @@ class AffirmationResource extends Resource
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedBookOpen;
 
     protected static ?string $modelLabel = 'Аффирмация';
+
     protected static ?string $pluralModelLabel = 'Аффирмации';
+
     protected static bool $hasTitleCaseModelLabel = false;
 
     public static function form(Schema $schema): Schema

@@ -18,7 +18,7 @@ class IchingFactory extends Factory
     public function definition(): array
     {
         return [
-            'description' => fake()->sentences(25, true)
+            'description' => fake()->sentences(25, true),
         ];
     }
 }

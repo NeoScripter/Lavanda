@@ -10,6 +10,7 @@ use Filament\Resources\Pages\EditRecord;
 class EditPromo extends EditRecord
 {
     protected static string $resource = PromoResource::class;
+
     protected static ?string $title = 'Редактирование бонусной карты';
 
     protected function getHeaderActions(): array

@@ -1,4 +1,5 @@
 <?php
+
 // resources/lang/ru/verification.php
 
 return [

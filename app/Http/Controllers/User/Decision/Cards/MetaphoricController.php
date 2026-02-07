@@ -20,7 +20,7 @@ class MetaphoricController extends Controller
             'cards' => Cache::flexible(
                 'metaphoric',
                 [5, 10],
-                fn() => Gate::check('premium-access')
+                fn () => Gate::check('premium-access')
                     ? CardResource::collection(Metaphoric::all()->shuffle())
                     : null
             ),

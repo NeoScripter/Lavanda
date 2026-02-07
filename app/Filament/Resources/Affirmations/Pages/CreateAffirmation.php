@@ -8,6 +8,7 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateAffirmation extends CreateRecord
 {
     protected static string $resource = AffirmationResource::class;
+
     protected static ?string $title = 'Создание аффирмации';
 
     protected static bool $canCreateAnother = false;

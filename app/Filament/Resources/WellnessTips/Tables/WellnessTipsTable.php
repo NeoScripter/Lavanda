@@ -18,19 +18,18 @@ class WellnessTipsTable
             ->columns([
                 TextColumn::make('type')
                     ->label('Раздел')
-                    ->formatStateUsing(fn(WellnessTipType $state): string => $state->getLabel())
+                    ->formatStateUsing(fn (WellnessTipType $state): string => $state->getLabel())
                     ->badge()
                     ->searchable(
                         query: function ($query, string $search): void {
                             $matchingValues = collect(WellnessTipType::cases())
                                 ->filter(
-                                    fn($case): bool =>
-                                    str_contains(
-                                        mb_strtolower((string) $case->getLabel()),
+                                    fn ($case): bool => str_contains(
+                                        mb_strtolower($case->getLabel()),
                                         mb_strtolower($search)
                                     )
                                 )
-                                ->map(fn($case) => $case->value)
+                                ->map(fn ($case) => $case->value)
                                 ->all();
 
                             $query->whereIn('type', $matchingValues);

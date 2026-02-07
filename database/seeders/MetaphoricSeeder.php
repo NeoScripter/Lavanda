@@ -17,9 +17,9 @@ class MetaphoricSeeder extends Seeder
             Metaphoric::factory()->afterCreating(function ($metaphoric) use ($i): void {
                 Image::factory()->create([
                     'imageable_id' => $metaphoric,
-                    'path' => 'models/metaphoric/metaphoric-' . max($i % 4, 1) . '.webp',
-                    'tiny_path' => 'models/metaphoric/metaphoric-' . max($i % 4, 1) . '-tiny.webp',
-                    'type' => 'front'
+                    'path' => 'models/metaphoric/metaphoric-'.max($i % 4, 1).'.webp',
+                    'tiny_path' => 'models/metaphoric/metaphoric-'.max($i % 4, 1).'-tiny.webp',
+                    'type' => 'front',
                 ]);
             })
                 ->create();

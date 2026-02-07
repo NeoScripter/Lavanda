@@ -19,8 +19,7 @@ class UsersTable
     {
         return $table
             ->modifyQueryUsing(
-                fn(Builder $query) =>
-                $query->where('role', '!=', UserRole::ADMIN)
+                fn (Builder $query) => $query->where('role', '!=', UserRole::ADMIN)
             )
             ->columns([
                 TextColumn::make('name')
@@ -33,20 +32,18 @@ class UsersTable
                     ->label('Пол')
                     ->placeholder('не указан')
                     ->formatStateUsing(
-                        fn(?string $state): string =>
-                        UserGender::label(UserGender::tryFrom($state))
+                        fn (?string $state): string => UserGender::label(UserGender::tryFrom($state))
                     )
                     ->searchable(
                         query: function ($query, string $search): void {
                             $matchingValues = collect(UserGender::cases())
                                 ->filter(
-                                    fn($case): bool =>
-                                    str_contains(
-                                        mb_strtolower((string) $case->getLabel()),
+                                    fn ($case): bool => str_contains(
+                                        mb_strtolower($case->getLabel()),
                                         mb_strtolower($search)
                                     )
                                 )
-                                ->map(fn($case) => $case->value)
+                                ->map(fn ($case) => $case->value)
                                 ->all();
 
                             $query->whereIn('gender', $matchingValues);
@@ -67,11 +64,9 @@ class UsersTable
                 Filter::make('subs')
                     ->label('Пользователи с подпиской')
                     ->query(
-                        fn(Builder $query) =>
-                        $query->whereHas(
+                        fn (Builder $query) => $query->whereHas(
                             'subscription',
-                            fn($q) =>
-                            $q->where('ends_at', '>', now())
+                            fn ($q) => $q->where('ends_at', '>', now())
                         )
                     ),
             ])

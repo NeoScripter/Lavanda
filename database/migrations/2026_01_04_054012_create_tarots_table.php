@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('tarots', function (Blueprint $table): void {
             $table->id();
-            $table->string("name");
-            $table->text("html");
-            $table->text("advice");
+            $table->string('name');
+            $table->text('html');
+            $table->text('advice');
             $table->timestamps();
         });
     }

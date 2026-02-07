@@ -13,7 +13,7 @@ class SetLocale
     /**
      * Handle an incoming request.
      *
-     * @param Closure(Request):Response $next
+     * @param  Closure(Request):Response  $next
      */
     public function handle(Request $request, Closure $next): Response
     {
@@ -32,7 +32,6 @@ class SetLocale
             Session::put('locale', $locale);
             App::setLocale($locale);
         }
-
 
         return $next($request);
     }

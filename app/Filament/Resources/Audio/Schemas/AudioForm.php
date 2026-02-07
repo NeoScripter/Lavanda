@@ -34,7 +34,7 @@ class AudioForm
                         ->maxSize(4128)
                         ->label('Аудио')
                         ->required()
-                        ->dehydrated(fn($state): bool => filled($state))
+                        ->dehydrated(fn ($state): bool => filled($state)),
                 ]),
             ]);
     }

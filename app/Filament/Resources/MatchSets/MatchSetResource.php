@@ -21,9 +21,10 @@ class MatchSetResource extends Resource
     protected static string|BackedEnum|null $navigationIcon = LucideIcon::Combine;
 
     protected static ?string $modelLabel = 'Комбинация карт';
-    protected static ?string $pluralModelLabel = 'Комбинации карт';
-    protected static bool $hasTitleCaseModelLabel = false;
 
+    protected static ?string $pluralModelLabel = 'Комбинации карт';
+
+    protected static bool $hasTitleCaseModelLabel = false;
 
     public static function form(Schema $schema): Schema
     {

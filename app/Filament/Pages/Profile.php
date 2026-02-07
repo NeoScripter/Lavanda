@@ -67,14 +67,14 @@ class Profile extends Page implements HasForms
                             ->revealable()
                             ->currentPassword()
                             ->dehydrated(false)
-                            ->required(fn($get): bool => filled($get('password'))),
+                            ->required(fn ($get): bool => filled($get('password'))),
 
                         TextInput::make('password')
                             ->label('Новый пароль')
                             ->password()
                             ->revealable()
                             ->rule(Password::default())
-                            ->dehydrated(fn($state): bool => filled($state))
+                            ->dehydrated(fn ($state): bool => filled($state))
                             ->confirmed(),
 
                         TextInput::make('password_confirmation')

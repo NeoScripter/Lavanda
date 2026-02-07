@@ -23,7 +23,9 @@ class ExperienceItemResource extends Resource
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedAcademicCap;
 
     protected static ?string $modelLabel = 'Опыт автора';
+
     protected static ?string $pluralModelLabel = 'Опыт автора';
+
     protected static bool $hasTitleCaseModelLabel = false;
 
     public static function form(Schema $schema): Schema

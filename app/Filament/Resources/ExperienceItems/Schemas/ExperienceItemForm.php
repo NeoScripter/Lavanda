@@ -2,17 +2,16 @@
 
 namespace App\Filament\Resources\ExperienceItems\Schemas;
 
-use Illuminate\Http\UploadedFile;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Textarea;
-use Filament\Schemas\Schema;
 use App\Services\ImageResizer;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Text;
+use Filament\Schemas\Schema;
 use Filament\Support\Enums\FontWeight;
-
+use Illuminate\Http\UploadedFile;
 
 class ExperienceItemForm
 {
@@ -44,13 +43,12 @@ class ExperienceItemForm
                             ->label('Изображение')
                             ->maxSize(4128)
                             ->saveUploadedFileUsing(
-                                fn(UploadedFile $file) =>
-                                resolve(ImageResizer::class)
+                                fn (UploadedFile $file) => resolve(ImageResizer::class)
                                     ->handleImage($file, 700, 'experience')
                             ),
                         Textarea::make('alt')
                             ->requiredWith('path')
-                            ->label('Альтернативный текст к фото')
+                            ->label('Альтернативный текст к фото'),
                     ]),
 
                 Section::make()->schema([
@@ -60,7 +58,7 @@ class ExperienceItemForm
                         ->aboveContent(Text::make('Содержание')
                             ->size('lg')
                             ->weight(FontWeight::Bold))
-                        ->required()
+                        ->required(),
 
                 ])->columnSpanFull(),
             ]);

@@ -22,7 +22,7 @@ class ToolkitController extends Controller
         }
 
         return Inertia::render('user/ToolKit/ToolKit', [
-            'tips' => $tips
+            'tips' => $tips,
         ]);
     }
 }

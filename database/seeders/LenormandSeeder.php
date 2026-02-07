@@ -17,9 +17,9 @@ class LenormandSeeder extends Seeder
             Lenormand::factory()->afterCreating(function ($lenormand) use ($i): void {
                 Image::factory()->create([
                     'imageable_id' => $lenormand,
-                    'path' => 'models/lenormand/lenormand-' . max($i % 4, 1) . '.webp',
-                    'tiny_path' => 'models/lenormand/lenormand-' . max($i % 4, 1) . '-tiny.webp',
-                    'type' => 'front'
+                    'path' => 'models/lenormand/lenormand-'.max($i % 4, 1).'.webp',
+                    'tiny_path' => 'models/lenormand/lenormand-'.max($i % 4, 1).'-tiny.webp',
+                    'type' => 'front',
                 ]);
             })
                 ->create();

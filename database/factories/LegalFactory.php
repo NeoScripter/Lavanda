@@ -18,7 +18,7 @@ class LegalFactory extends Factory
     public function definition(): array
     {
         return [
-            'html' => 'Hello world'
+            'html' => 'Hello world',
         ];
     }
 }

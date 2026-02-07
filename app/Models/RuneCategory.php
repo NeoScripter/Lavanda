@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Database\Factories\RuneCategoryFactory;
 use App\Models\Concerns\ConvertsMarkdownToHtml;
+use Database\Factories\RuneCategoryFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class RuneCategory extends Model
 {
     /** @use HasFactory<RuneCategoryFactory> */
-    use HasFactory, ConvertsMarkdownToHtml;
+    use ConvertsMarkdownToHtml, HasFactory;
 
     public function rune(): BelongsTo
     {

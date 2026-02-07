@@ -17,7 +17,7 @@ class RunesController extends Controller
     public function __invoke()
     {
         $categories = collect(RuneCategoryName::cases())
-            ->map(fn($case) => $case->value)
+            ->map(fn ($case) => $case->value)
             ->all();
 
         $items = [
@@ -43,7 +43,7 @@ class RunesController extends Controller
             'runes' => Cache::flexible(
                 'runes',
                 [5, 10],
-                fn() => Gate::check('premium-access') ? Rune::all()
+                fn () => Gate::check('premium-access') ? Rune::all()
                     ->load('categories')
                     ->shuffle() : null
             ),

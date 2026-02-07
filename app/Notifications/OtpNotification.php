@@ -2,11 +2,11 @@
 
 namespace App\Notifications;
 
-use Illuminate\Support\HtmlString;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use Illuminate\Support\HtmlString;
 
 class OtpNotification extends Notification implements ShouldQueue
 {
@@ -15,9 +15,7 @@ class OtpNotification extends Notification implements ShouldQueue
     /**
      * Create a new notification instance.
      */
-    public function __construct(protected string $password)
-    {
-    }
+    public function __construct(protected string $password) {}
 
     /**
      * Get the notification's delivery channels.
@@ -36,11 +34,11 @@ class OtpNotification extends Notification implements ShouldQueue
     {
         return (new MailMessage)
             ->subject('Код для входа в аккаунт')
-            ->greeting('Здравствуйте, ' . $notifiable->name)
+            ->greeting('Здравствуйте, '.$notifiable->name)
             ->line('Рады видеть вас на нашем сайте! Вот ваш одноразовый пароль для входа:')
             ->line(new HtmlString(
                 '<div style="text-align: center; margin: 30px 0; font-size: 42px; font-weight: bold; letter-spacing: 10px; color: #000; font-family: monospace;">'
-                    . $this->password .
+                    .$this->password.
                     '</div>'
             ))
             ->line('Этот код действителен в течение 3 минут.')

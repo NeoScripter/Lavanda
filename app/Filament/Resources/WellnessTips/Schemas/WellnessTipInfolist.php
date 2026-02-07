@@ -16,7 +16,7 @@ class WellnessTipInfolist
             ->components([
                 Section::make()->schema([
                     TextEntry::make('type')
-                        ->formatStateUsing(fn(WellnessTipType $state): string => $state->getLabel())
+                        ->formatStateUsing(fn (WellnessTipType $state): string => $state->getLabel())
                         ->label('Раздел')
                         ->badge(),
                     TextEntry::make('description')
@@ -26,7 +26,7 @@ class WellnessTipInfolist
                     ImageEntry::make('image.path')
                         ->imageWidth(300)
                         ->imageHeight(200)
-                        ->label('Изображение')
+                        ->label('Изображение'),
                 ]),
             ]);
     }

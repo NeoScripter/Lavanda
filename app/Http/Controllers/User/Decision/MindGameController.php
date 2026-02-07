@@ -21,7 +21,7 @@ class MindGameController extends Controller
             'cards' => Cache::flexible(
                 'mind-game',
                 [5, 10],
-                fn() => Gate::check('premium-access')
+                fn () => Gate::check('premium-access')
                     ? CardResource::collection(MindGame::all()->shuffle())
                     : null
             ),

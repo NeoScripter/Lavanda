@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Otp extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'user_id',
         'code',
@@ -31,6 +32,6 @@ class Otp extends Model
 
     public function isValid(): bool
     {
-        return !$this->isExpired();
+        return ! $this->isExpired();
     }
 }

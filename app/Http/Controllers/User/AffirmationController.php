@@ -14,7 +14,7 @@ class AffirmationController extends Controller
     public function __invoke(Request $request)
     {
         $validated = $request->validate([
-            'category' => ['nullable', 'string', 'exists:affirmations,type']
+            'category' => ['nullable', 'string', 'exists:affirmations,type'],
         ]);
 
         $isMember = Gate::check('premium-access');
@@ -24,7 +24,7 @@ class AffirmationController extends Controller
                 ? Affirmation::query()->where('type', $validated['category'])->get()
                 : null,
             'categories' => Cache::flexible('affirmation-categories', [2, 4],
-                fn() => Affirmation::query()->distinct()->pluck('type')),
+                fn () => Affirmation::query()->distinct()->pluck('type')),
             'category' => $isMember && isset($validated['category']) ? $validated['category'] : null,
         ]);
     }

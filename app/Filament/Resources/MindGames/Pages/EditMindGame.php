@@ -10,6 +10,7 @@ use Filament\Resources\Pages\EditRecord;
 class EditMindGame extends EditRecord
 {
     protected static string $resource = MindGameResource::class;
+
     protected static ?string $title = 'Редактирование карты';
 
     protected function getHeaderActions(): array

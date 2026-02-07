@@ -8,6 +8,7 @@ use Filament\Resources\Pages\EditRecord;
 class EditIching extends EditRecord
 {
     protected static string $resource = IchingResource::class;
+
     protected static ?string $title = 'Редактирование толкования знака';
 
     protected function getHeaderActions(): array

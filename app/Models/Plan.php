@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Support\Facades\Date;
-use Database\Factories\PlanFactory;
 use Carbon\Carbon;
+use Database\Factories\PlanFactory;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Support\Facades\Date;
 
 class Plan extends Model
 {
@@ -30,7 +30,7 @@ class Plan extends Model
                         'parts' => 1,
                     ]);
 
-                return implode(" ", array_slice(explode(' ', $duration), 1));
+                return implode(' ', array_slice(explode(' ', $duration), 1));
             }
         )->shouldCache();
     }

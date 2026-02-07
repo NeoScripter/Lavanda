@@ -19,7 +19,7 @@ class PromoController extends Controller
             'cards' => Cache::flexible(
                 'tarot',
                 [5, 10],
-                fn() => CardResource::collection(Promo::all()->shuffle())
+                fn () => CardResource::collection(Promo::all()->shuffle())
             ),
         ]);
     }

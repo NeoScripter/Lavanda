@@ -11,6 +11,7 @@ use Filament\Resources\Pages\EditRecord;
 class EditExperienceItem extends EditRecord
 {
     protected static string $resource = ExperienceItemResource::class;
+
     protected static ?string $title = 'Редактирование элемента';
 
     protected function getHeaderActions(): array

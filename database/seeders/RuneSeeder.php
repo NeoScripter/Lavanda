@@ -46,17 +46,17 @@ class RuneSeeder extends Seeder
                     Image::factory()->create([
                         'imageable_id' => $rune,
                         'alt' => 'Иероглиф руны',
-                        'path' => 'models/runes/' . $raw['front_image'],
-                        'tiny_path' => 'models/runes/' . $raw['tiny_front_image'],
-                        'type' => 'front'
+                        'path' => 'models/runes/'.$raw['front_image'],
+                        'tiny_path' => 'models/runes/'.$raw['tiny_front_image'],
+                        'type' => 'front',
                     ]);
 
                     Image::factory()->create([
                         'imageable_id' => $rune,
                         'alt' => 'Обратная сторона руны',
-                        'path' => 'models/runes/' . $raw['back_image'],
-                        'tiny_path' => 'models/runes/' . $raw['tiny_back_image'],
-                        'type' => 'back'
+                        'path' => 'models/runes/'.$raw['back_image'],
+                        'tiny_path' => 'models/runes/'.$raw['tiny_back_image'],
+                        'type' => 'back',
                     ]);
                 })
                 ->create();

@@ -18,7 +18,7 @@ class PlansController extends Controller
             ->get()
             ->toResourceCollection();
 
-        $activeUsers = User::query()->whereHas('subscription', fn($q) =>$q
+        $activeUsers = User::query()->whereHas('subscription', fn ($q) => $q
             ->where('ends_at', '>', now()))
             ->count();
 
@@ -31,7 +31,7 @@ class PlansController extends Controller
     public function show(Plan $plan)
     {
         return Inertia::render('user/Plan/Plan', [
-            'plan' => $plan
+            'plan' => $plan,
         ]);
     }
 }

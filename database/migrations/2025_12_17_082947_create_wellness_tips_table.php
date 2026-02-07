@@ -14,9 +14,9 @@ return new class extends Migration
     {
         Schema::create('wellness_tips', function (Blueprint $table): void {
             $table->id();
-            $table->string("type")->index()->default(WellnessTipType::RELAXATION->value);
-            $table->string("description");
-            $table->string("url");
+            $table->string('type')->index()->default(WellnessTipType::RELAXATION->value);
+            $table->string('description');
+            $table->string('url');
             $table->timestamps();
         });
     }

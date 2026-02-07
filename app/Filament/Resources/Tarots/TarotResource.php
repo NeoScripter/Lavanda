@@ -21,9 +21,10 @@ class TarotResource extends Resource
     protected static string|BackedEnum|null $navigationIcon = LucideIcon::Diamond;
 
     protected static ?string $modelLabel = 'Карта Таро';
-    protected static ?string $pluralModelLabel = 'Карты Таро';
-    protected static bool $hasTitleCaseModelLabel = false;
 
+    protected static ?string $pluralModelLabel = 'Карты Таро';
+
+    protected static bool $hasTitleCaseModelLabel = false;
 
     public static function form(Schema $schema): Schema
     {

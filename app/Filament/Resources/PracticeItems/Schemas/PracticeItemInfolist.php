@@ -6,10 +6,9 @@ use Filament\Infolists\Components\ImageEntry;
 use Filament\Infolists\Components\RepeatableEntry;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Components\Section;
-use Filament\Schemas\Schema;
 use Filament\Schemas\Components\Text;
+use Filament\Schemas\Schema;
 use Filament\Support\Enums\FontWeight;
-
 
 class PracticeItemInfolist
 {
@@ -33,7 +32,7 @@ class PracticeItemInfolist
                     ImageEntry::make('image.path')
                         ->imageWidth(250)
                         ->imageHeight(250)
-                        ->label('Изображение')
+                        ->label('Изображение'),
                 ]),
                 Section::make()->schema([
                     RepeatableEntry::make('faqs')
@@ -43,11 +42,11 @@ class PracticeItemInfolist
                             ->weight(FontWeight::Bold))
                         ->schema([
                             TextEntry::make('question')->label('Вопрос'),
-                            TextEntry::make('answer')->label('Ответ')
+                            TextEntry::make('answer')->label('Ответ'),
                         ])
                         ->gap('lg')
                         ->columns(2)
-                        ->contained(false)
+                        ->contained(false),
                 ]),
             ]);
     }

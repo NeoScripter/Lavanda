@@ -25,7 +25,7 @@ class IchingController extends Controller
         return Inertia::render('user/Decision/pages/Iching/Iching', [
             'iching' => $bitmask === null
                 ? null
-                : Iching::query()->where('bitmask', $bitmask)->first()
+                : Iching::query()->where('bitmask', $bitmask)->first(),
         ]);
     }
 }

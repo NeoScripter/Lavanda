@@ -11,6 +11,7 @@ use Filament\Resources\Pages\EditRecord;
 class EditWellnessTip extends EditRecord
 {
     protected static string $resource = WellnessTipResource::class;
+
     protected static ?string $title = 'Редактировать полезный ресурс';
 
     protected function getHeaderActions(): array

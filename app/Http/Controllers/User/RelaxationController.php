@@ -22,7 +22,7 @@ class RelaxationController extends Controller
         }
 
         return Inertia::render('user/Relaxation/Relaxation', [
-            'tips' => $tips
+            'tips' => $tips,
         ]);
     }
 }

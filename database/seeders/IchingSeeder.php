@@ -88,7 +88,7 @@ class IchingSeeder extends Seeder
 
         foreach ($data as [$binary, $number]) {
             Iching::factory()->create([
-                'number'  => $number,
+                'number' => $number,
                 'bitmask' => bindec($binary),
             ]);
         }

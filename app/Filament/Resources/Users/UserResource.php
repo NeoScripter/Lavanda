@@ -23,7 +23,9 @@ class UserResource extends Resource
     protected static string|BackedEnum|null $navigationIcon = LucideIcon::UsersRound;
 
     protected static ?string $modelLabel = 'Пользователь';
+
     protected static ?string $pluralModelLabel = 'Пользователи';
+
     protected static bool $hasTitleCaseModelLabel = false;
 
     public static function form(Schema $schema): Schema
@@ -57,5 +59,4 @@ class UserResource extends Resource
             'edit' => EditUser::route('/{record}/edit'),
         ];
     }
-
 }
