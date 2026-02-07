@@ -1,0 +1,7 @@
+{
+    "preset": "laravel",
+    "ignore": {
+        "words": ["php", "infolist", "ichings", "iching", "lenormands", "lenormand", "metaphorics", "ssr", "filesystems", "otps", "otp", "fg", "js", "textarea", "csp", "esm", "shadcn", "nav", "whatsapp", "sonner", "debounce", "utils", "subcopy", "tsconfig", "profi", "scss", "svgs", "splitlayout", "wght", "stylesheet"],
+        "paths": ["./public/fonts/"]
+    }
+}
