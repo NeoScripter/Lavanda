@@ -3,6 +3,7 @@
 use App\Http\Controllers\User\AboutController;
 use App\Http\Controllers\User\AccountController;
 use App\Http\Controllers\User\AffirmationController;
+use App\Http\Controllers\User\ArticleController;
 use App\Http\Controllers\User\AudioController;
 use App\Http\Controllers\User\ContactPageController;
 use App\Http\Controllers\User\Decision\Cards\CardController;
@@ -66,6 +67,7 @@ Route::get('/affirmations', AffirmationController::class)->name('affirmations');
 Route::get('/relaxation', RelaxationController::class)->name('relaxation');
 Route::get('/toolkit', ToolkitController::class)->name('toolkit');
 Route::get('/legal/{legal:type}', LegalController::class)->name('legal');
+Route::get('/article/{article:name}', ArticleController::class)->name('article');
 Route::middleware('auth')->get('/plan/{plan}', [PlansController::class, 'show'])->name('plan');
 
 require __DIR__.'/auth.php';

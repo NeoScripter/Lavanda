@@ -5,6 +5,13 @@ export type Affirmation = {
     created_at?: string;
     updated_at?: string;
 };
+export type Article = {
+    id: number;
+    name: string;
+    html: string;
+    created_at?: string;
+    updated_at?: string;
+};
 export type Audio = {
     id: number;
     intro: string;
@@ -149,7 +156,6 @@ export type Rune = {
 export type RuneCategory = {
     id: number;
     rune_id: number;
-    order: number;
     name: string;
     html: string;
     created_at?: string;

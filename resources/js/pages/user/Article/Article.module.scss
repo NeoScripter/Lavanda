@@ -1,0 +1,45 @@
+@use 'core' as u;
+
+.layout {
+    @include u.px(pt, 92, 204, 180, 189);
+
+    h2 {
+        color: u.clr('primary', 'strong');
+    }
+}
+
+.bgLoader {
+    position: absolute;
+    inset: 0;
+    @include u.size(100%);
+}
+
+.bgImage {
+    object-position: top center;
+}
+
+.content {
+    margin-bottom: 5rem;
+    @include u.px(pb, 54, 66, 84, 84);
+    @include u.px(pt, 35, 39, 64, 88);
+    @include u.px(px, 17, 43, 80, 98);
+
+    @include u.mw(sm) {
+        grid-column: 2 !important;
+    }
+    @include u.mw(md) {
+        margin-bottom: 0;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+        margin-bottom: 1.2em;
+    }
+    p,
+    ul,
+    ol {
+        margin-bottom: 1em;
+    }
+}
