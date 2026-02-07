@@ -1,11 +1,11 @@
 import BackgroundTiny from '@/assets/images/home/about-bg-tiny.webp';
 import Background from '@/assets/images/home/about-bg.webp';
-import ForegroundTiny from '@/assets/images/home/about-fg-tiny.webp';
-import Foreground from '@/assets/images/home/about-fg.webp';
 import LazyImage from '@/components/user/ui/LazyImage/LazyImage';
 import { cn } from '@/utils/cn';
 import { FC } from 'preact/compat';
 import css from './AboutSection.module.scss';
+import AboutFgDkTinyWebp from "@/assets/images/home/about-fg-dk-tiny.webp";
+import AboutFgDkWebp from "@/assets/images/home/about-fg-dk.webp";
 
 const AboutSection: FC<{ className?: string }> = ({ className }) => {
     return (
@@ -51,8 +51,8 @@ const AboutSection: FC<{ className?: string }> = ({ className }) => {
                     alt="Абстрактный светлый фон из полупрозрачной струящейся ткани с мягкими складками и плавными линиями"
                 />
                 <LazyImage
-                    img={Foreground}
-                    tinyImg={ForegroundTiny}
+                    img={AboutFgDkWebp}
+                    tinyImg={AboutFgDkTinyWebp}
                     prtClass={css.fgParent}
                     alt="Портрет светловолосой женщины в очках с тонкой оправой, нейтральное выражение лица, мягкий дневной свет, светлый фон"
                 />

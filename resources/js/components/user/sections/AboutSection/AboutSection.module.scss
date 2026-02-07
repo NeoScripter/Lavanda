@@ -43,7 +43,6 @@
     border-radius: inherit;
     @include u.px(top, 48, 66, 145, 146);
     @include u.px(right, 52, 97, 109, 101);
-    border: 6px solid white;
     @include u.size(120%);
 }
 
