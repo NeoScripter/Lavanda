@@ -141,9 +141,9 @@ export function useRandomCardsLogic(
             dispatch({ type: 'STOP_SPINNING' });
 
             const selectedTarot =
-                cards[
+                state.faceDownCards[
                     state.highlightedIdx %
-                        (cards.length - state.selectedCards.length)
+                        (state.faceDownCards.length)
                 ];
             dispatch({ type: 'ADD_SELECTED_CARD', payload: selectedTarot });
 
@@ -175,7 +175,6 @@ export function useRandomCardsLogic(
         reset,
         hasStarted: state.selectedCards.length > 0 || state.hasStarted,
         hasEnded: cardLimit === state.selectedCards.length,
-        faceDownCardLength: cards.length - state.selectedCards.length,
         scrollRef: scrollConainerRef,
     };
 }

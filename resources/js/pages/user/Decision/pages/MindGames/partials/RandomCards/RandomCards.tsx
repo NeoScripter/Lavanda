@@ -43,7 +43,6 @@ const RandomCards = () => {
         hasStarted,
         isSpinning,
         hasEnded,
-        faceDownCardLength,
         scrollRef,
     } = useRandomCardsLogic(
         cards,
@@ -70,7 +69,7 @@ const RandomCards = () => {
                 <CardDeck
                     key="faceDownCards"
                     className={css.initialCards}
-                    size={faceDownCardLength}
+                    size={faceDownCards.length}
                 >
                     {faceDownCards.map((card, idx) => (
                         <Card

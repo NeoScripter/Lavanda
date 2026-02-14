@@ -5,7 +5,6 @@ namespace App\Http\Controllers\User\Decision\Cards;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CardResource;
 use App\Models\Tarot;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Gate;
 use Inertia\Inertia;
@@ -15,7 +14,7 @@ class TarotController extends Controller
     /**
      * Handle the incoming request.
      */
-    public function __invoke(Request $request)
+    public function __invoke()
     {
         $items = [
             [
@@ -41,7 +40,7 @@ class TarotController extends Controller
                 'tarot',
                 [5, 10],
                 fn () => Gate::check('premium-access')
-                    ? CardResource::collection(Tarot::all()->shuffle())
+                    ? CardResource::collection(Tarot::all()->take(4)->shuffle())
                     : null
             ),
         ]);
