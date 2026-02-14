@@ -1,0 +1,79 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Plan;
+
+class ProdamusController extends Controller
+{
+    public function pay(Request $request)
+    {
+        $request->validate([
+            'plan_id' => 'required|exists:plans,id',
+            'do' => 'nullable|in:link,pay'
+        ]);
+
+        $plan = Plan::findOrFail($request->plan_id);
+
+        $data = [
+            'do' => $request->input('do', 'pay'),
+            'products' => [
+                [
+                    'name' => $plan->name,
+                    'price' => $plan->price,
+                    'quantity' => 1,
+                ]
+            ]
+        ];
+
+        $data['signature'] = $this->sign($data);
+
+        $url = config('prodamus.url') . '?' . http_build_query($data);
+
+        if ($request->input('do') === 'link') {
+            return response()->json(['payment_url' => $url]);
+        }
+
+        return redirect($url);
+    }
+
+    public function webhook(Request $request)
+    {
+        $data = $request->all();
+        $signature = $request->header('Sign');
+
+        if (!$this->verify($data, $signature)) {
+            return response('Invalid signature', 400);
+        }
+
+        // Payment confirmed - do your stuff here
+        // $data contains payment info
+
+        return response('OK', 200);
+    }
+
+    private function sign($data)
+    {
+        unset($data['signature']);
+        array_walk_recursive($data, fn(&$v) => $v = (string)$v);
+        $this->ksortRecursive($data);
+        $json = str_replace('/', '\/', json_encode($data, JSON_UNESCAPED_UNICODE));
+        return hash_hmac('sha256', $json, config('prodamus.key'));
+    }
+
+    private function verify($data, $signature)
+    {
+        return hash_equals($this->sign($data), $signature);
+    }
+
+    private function ksortRecursive(&$array)
+    {
+        ksort($array);
+        foreach ($array as &$value) {
+            if (is_array($value)) {
+                $this->ksortRecursive($value);
+            }
+        }
+    }
+}
