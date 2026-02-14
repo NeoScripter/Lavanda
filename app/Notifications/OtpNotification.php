@@ -42,6 +42,7 @@ class OtpNotification extends Notification implements ShouldQueue
                     '</div>'
             ))
             ->line('Этот код действителен в течение 3 минут.')
+            ->line('Данное сообщение сгенерировано автоматически. Пожалуйста, не отвечайте на него')
             ->action('В личный кабинет', url('/account'))
             ->salutation(new HtmlString('<p>С уважением, <br>Лаванда</p>'));
     }
