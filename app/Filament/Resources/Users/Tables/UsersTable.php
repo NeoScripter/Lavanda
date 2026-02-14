@@ -19,7 +19,7 @@ class UsersTable
     {
         return $table
             ->modifyQueryUsing(
-                fn (Builder $query) => $query->where('role', '!=', UserRole::ADMIN)
+                fn(Builder $query) => $query->where('role', '!=', UserRole::ADMIN)
             )
             ->columns([
                 TextColumn::make('name')
@@ -32,18 +32,18 @@ class UsersTable
                     ->label('Пол')
                     ->placeholder('не указан')
                     ->formatStateUsing(
-                        fn (?string $state): string => UserGender::label(UserGender::tryFrom($state))
+                        fn(?string $state): string => UserGender::label(UserGender::tryFrom($state))
                     )
                     ->searchable(
                         query: function ($query, string $search): void {
                             $matchingValues = collect(UserGender::cases())
                                 ->filter(
-                                    fn ($case): bool => str_contains(
+                                    fn($case): bool => str_contains(
                                         mb_strtolower($case->getLabel()),
                                         mb_strtolower($search)
                                     )
                                 )
-                                ->map(fn ($case) => $case->value)
+                                ->map(fn($case) => $case->value)
                                 ->all();
 
                             $query->whereIn('gender', $matchingValues);
@@ -54,6 +54,28 @@ class UsersTable
                     ->placeholder('не указан')
                     ->date()
                     ->sortable(),
+                TextColumn::make('subscription')
+                    ->label('Статус')
+                    ->placeholder('нет подписки')
+                    ->badge()
+                    ->formatStateUsing(function (?string $state, $record): string {
+                        if (!$record->subscription) {
+                            return 'Нет подписки';
+                        }
+
+                        // Check if subscription is active (not expired)
+                        $isActive = $record->subscription->ends_at > now();
+
+                        if (!$isActive) {
+                            return 'Истекла';
+                        }
+
+                        return  'Активна';
+                    }),
+                TextColumn::make('subscription.ends_at')
+                    ->label('Подписка до')
+                    ->date()
+                    ->placeholder('нет подписки'),
                 TextColumn::make('updated_at')
                     ->date()
                     ->label('Дата изменения')
@@ -64,9 +86,9 @@ class UsersTable
                 Filter::make('subs')
                     ->label('Пользователи с подпиской')
                     ->query(
-                        fn (Builder $query) => $query->whereHas(
+                        fn(Builder $query) => $query->whereHas(
                             'subscription',
-                            fn ($q) => $q->where('ends_at', '>', now())
+                            fn($q) => $q->where('ends_at', '>', now())
                         )
                     ),
             ])
@@ -81,3 +103,20 @@ class UsersTable
             ]);
     }
 }
+
+                // Section::make()->relationship('subscription')
+                //     ->schema([
+                //         TextEntry::make('title')
+                //             ->inlineLabel()
+                //             ->label('Тариф'),
+                //         TextEntry::make('ends_at')
+                //             ->label('Действует до')
+                //             ->inlineLabel()
+                //             ->date(),
+                //         TextEntry::make('status')
+                //             ->label('Автопродление')
+                //             ->formatStateUsing(
+                //                 fn (SubscriptionStatus $state): string => $state === SubscriptionStatus::CANCELLED ? 'Выключено' : 'Включено'
+                //             )
+                //             ->inlineLabel(),
+                //     ])->columns(1),
