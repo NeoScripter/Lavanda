@@ -31,7 +31,10 @@ const Interpretation: FC<NodeProps> = ({ className }) => {
                 </div>
                 <p className={css.patternNum}>{iching.number}</p>
             </div>
-            <p className={css.patternDescription}>{iching.description}</p>
+            <p
+                className={css.patternDescription}
+                dangerouslySetInnerHTML={{ __html: iching.description }}
+            />
         </article>
     );
 };
