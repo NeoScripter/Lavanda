@@ -40,7 +40,7 @@ class TarotController extends Controller
                 'tarot',
                 [5, 10],
                 fn () => Gate::check('premium-access')
-                    ? CardResource::collection(Tarot::all()->take(4)->shuffle())
+                    ? CardResource::collection(Tarot::all()->shuffle())
                     : null
             ),
         ]);
