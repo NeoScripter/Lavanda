@@ -26,8 +26,6 @@ const PlanCard: FC<NodeProps<{ plan: Plan; children?: ComponentChildren }>> = ({
         }
     };
 
-    console.log(plan.perks);
-
     return (
         <article class={cn(css.wrapper, className)}>
             <header>

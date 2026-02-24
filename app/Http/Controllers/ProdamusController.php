@@ -21,27 +21,23 @@ class ProdamusController extends Controller
 
         $data = [
             'do' => $request->input('do', 'pay'),
-            'order_id' => auth()->id() . '-' . time(),
+            'order_id' => (string) (auth()->id() . '-' . time()),
             'customer_email' => $request->user()->email,
             'urlReturn' => route('home'),
             'urlSuccess' => route('payment.success'),
             'products' => [
                 [
                     'name' => 'Тариф "' . mb_convert_case($plan->title, MB_CASE_TITLE, 'UTF-8') . '"',
-                    'price' => $plan->price,
-                    'quantity' => 1,
+                    'price' => (string) $plan->price,
+                    'quantity' => '1',
                 ]
             ]
         ];
-
         $data['signature'] = $this->sign($data);
-
         $url = config('prodamus.url') . '?' . http_build_query($data);
-
         if ($request->input('do') === 'link') {
             return response()->json(['payment_url' => $url]);
         }
-
         return Inertia::location($url);
     }
 
