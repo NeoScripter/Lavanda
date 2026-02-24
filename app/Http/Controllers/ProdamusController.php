@@ -23,8 +23,8 @@ class ProdamusController extends Controller
             'do' => $request->input('do', 'pay'),
             'order_id' => (string) (auth()->id() . '-' . time()),
             'customer_email' => $request->user()->email,
-            'urlReturn' => route('home'),
-            'urlSuccess' => route('payment.success'),
+            // 'urlReturn' => route('home'),
+            // 'urlSuccess' => route('payment.success'),
             'products' => [
                 [
                     'name' => 'Тариф "' . mb_convert_case($plan->title, MB_CASE_TITLE, 'UTF-8') . '"',
@@ -33,7 +33,10 @@ class ProdamusController extends Controller
                 ]
             ]
         ];
+
+
         $data['signature'] = $this->sign($data);
+
         $url = config('prodamus.url') . '?' . http_build_query($data);
         if ($request->input('do') === 'link') {
             return response()->json(['payment_url' => $url]);
