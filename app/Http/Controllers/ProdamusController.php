@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\PlanTitle;
 use Illuminate\Http\Request;
 use App\Models\Plan;
+use App\Models\Subscription;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
 
@@ -20,6 +23,7 @@ class ProdamusController extends Controller
         $plan = Plan::findOrFail($request->plan_id);
 
         $data = [
+            'sku' => $plan->id,
             'do' => $request->input('do', 'pay'),
             'order_id' => (string) (auth()->id() . '-' . time()),
             'customer_email' => $request->user()->email,
@@ -46,37 +50,102 @@ class ProdamusController extends Controller
 
     public function webhook(Request $request)
     {
-        Log::info('hook triggered');
+        Log::info('Prodamus webhook triggered', ['data' => $request->all()]);
+
         $data = $request->all();
         $signature = $request->header('Sign');
 
+        // Verify signature first
         if (!$this->verify($data, $signature)) {
+            Log::error('Invalid signature', ['data' => $data]);
             return response('Invalid signature', 400);
         }
 
+        // Extract data
         $customerEmail = $data['customer_email'] ?? null;
         $orderId = $data['order_id'] ?? null;
         $paymentStatus = $data['payment_status'] ?? null;
 
-        // Process only if payment is successful
-        if ($paymentStatus === 'success' && $customerEmail) {
-            // Find user by email
-            $user = User::where('email', $customerEmail)->first();
-
-            if ($user) {
-                // Extend subscription logic here
-                // Example:
-                // $user->subscription_expires_at = now()->addMonth();
-                // $user->save();
-
-                Log::info('Subscription extended', [
-                    'email' => $customerEmail,
-                    'order_id' => $orderId
-                ]);
-            }
+        // Get plan_id from order_id or products
+        $planId = null;
+        if (isset($data['products'][0]['sku'])) {
+            $planId = $data['products'][0]['sku'];
         }
 
-        return response('OK', 200);
+        // Validate required fields
+        if ($paymentStatus !== 'success') {
+            Log::warning('Payment not successful', ['status' => $paymentStatus, 'order_id' => $orderId]);
+            return response('OK', 200); // Return 200 to acknowledge receipt
+        }
+
+        if (!$customerEmail) {
+            Log::error('Customer email missing', ['order_id' => $orderId]);
+            return response('OK', 200); // Return 200 to stop retries
+        }
+
+        if (!$planId) {
+            Log::error('Plan ID missing', ['order_id' => $orderId, 'data' => $data]);
+            return response('OK', 200);
+        }
+
+        // Find user and plan
+        $user = User::where('email', $customerEmail)->first();
+        $plan = Plan::find($planId);
+
+        if (!$user) {
+            Log::error('User not found', ['email' => $customerEmail, 'order_id' => $orderId]);
+            return response('OK', 200);
+        }
+
+        if (!$plan) {
+            Log::error('Plan not found', ['plan_id' => $planId, 'order_id' => $orderId]);
+            return response('OK', 200);
+        }
+
+        // Use database transaction
+        try {
+            DB::transaction(function () use ($user, $plan, $orderId) {
+                if (!$user->subscription) {
+                    // Create new subscription
+                    Subscription::create([
+                        'user_id' => $user->id,
+                        'title' => $plan->title,
+                        'starts_at' => now(),
+                        'ends_at' => now()->addDays($plan->duration_in_days),
+                    ]);
+                } else {
+                    // Extend existing subscription
+                    $subscription = $user->subscription;
+
+                    // If subscription already expired, start from now
+                    if ($subscription->ends_at->isPast()) {
+                        $subscription->ends_at = now()->addDays($plan->duration_in_days);
+                    } else {
+                        // Otherwise extend from current end date
+                        $subscription->ends_at = $subscription->ends_at->addDays($plan->duration_in_days);
+                    }
+
+                    $subscription->save();
+                }
+
+                Log::info('Subscription processed successfully', [
+                    'email' => $user->email,
+                    'order_id' => $orderId,
+                    'plan' => $plan->title
+                ]);
+            });
+
+            return response('OK', 200);
+        } catch (\Exception $e) {
+            Log::error('Failed to process subscription', [
+                'error' => $e->getMessage(),
+                'order_id' => $orderId,
+                'email' => $customerEmail
+            ]);
+
+            // Return 200 to prevent Prodamus from retrying
+            return response('OK', 200);
+        }
     }
 
     private function sign($data)
