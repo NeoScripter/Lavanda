@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Plan;
+use Inertia\Inertia;
 
 class ProdamusController extends Controller
 {
@@ -18,9 +19,11 @@ class ProdamusController extends Controller
 
         $data = [
             'do' => $request->input('do', 'pay'),
+            'order_id' => auth()->id() . '-' . time(),
+            'customer_email' => $request->user()->email,
             'products' => [
                 [
-                    'name' => $plan->name,
+                    'name' => 'Тариф "' . mb_convert_case($plan->title, MB_CASE_TITLE, 'UTF-8') . '"',
                     'price' => $plan->price,
                     'quantity' => 1,
                 ]
@@ -35,7 +38,7 @@ class ProdamusController extends Controller
             return response()->json(['payment_url' => $url]);
         }
 
-        return redirect($url);
+        return Inertia::location($url);
     }
 
     public function webhook(Request $request)

@@ -71,7 +71,7 @@ Route::get('/legal/{legal:type}', LegalController::class)->name('legal');
 Route::get('/article/{article:name}', ArticleController::class)->name('article');
 Route::middleware('auth')->get('/plan/{plan}', [PlansController::class, 'show'])->name('plan');
 
-Route::post('/pay', [ProdamusController::class, 'pay']);
+Route::post('/pay', [ProdamusController::class, 'pay'])->name('pay');
 Route::post('/prodamus/webhook', [ProdamusController::class, 'webhook']);
 
 require __DIR__.'/auth.php';

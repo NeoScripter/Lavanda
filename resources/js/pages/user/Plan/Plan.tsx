@@ -44,12 +44,14 @@ const Plans = () => {
                     plan={plan}
                 >
                     <div>
-                        <a
-                            href=""
+                        <Link
+                            href={route('pay')}
+                            method="post"
+                            data={{ plan_id: plan.id }}
                             className={cn('primary-btn', css.payBtn)}
                         >
                             Оплатить
-                        </a>
+                        </Link>
 
                         <Link
                             className={css.backLink}
