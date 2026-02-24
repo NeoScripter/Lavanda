@@ -46,6 +46,7 @@ class ProdamusController extends Controller
 
     public function webhook(Request $request)
     {
+        Log::info('hook triggered');
         $data = $request->all();
         $signature = $request->header('Sign');
 
