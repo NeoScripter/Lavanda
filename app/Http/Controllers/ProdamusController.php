@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Plan;
+use App\Models\User;
+use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
 
 class ProdamusController extends Controller
@@ -21,6 +23,8 @@ class ProdamusController extends Controller
             'do' => $request->input('do', 'pay'),
             'order_id' => auth()->id() . '-' . time(),
             'customer_email' => $request->user()->email,
+            'urlReturn' => route('home'),
+            'urlSuccess' => route('payment.success'),
             'products' => [
                 [
                     'name' => 'Тариф "' . mb_convert_case($plan->title, MB_CASE_TITLE, 'UTF-8') . '"',
@@ -50,8 +54,27 @@ class ProdamusController extends Controller
             return response('Invalid signature', 400);
         }
 
-        // Payment confirmed - do your stuff here
-        // $data contains payment info
+        $customerEmail = $data['customer_email'] ?? null;
+        $orderId = $data['order_id'] ?? null;
+        $paymentStatus = $data['payment_status'] ?? null;
+
+        // Process only if payment is successful
+        if ($paymentStatus === 'success' && $customerEmail) {
+            // Find user by email
+            $user = User::where('email', $customerEmail)->first();
+
+            if ($user) {
+                // Extend subscription logic here
+                // Example:
+                // $user->subscription_expires_at = now()->addMonth();
+                // $user->save();
+
+                Log::info('Subscription extended', [
+                    'email' => $customerEmail,
+                    'order_id' => $orderId
+                ]);
+            }
+        }
 
         return response('OK', 200);
     }
@@ -78,5 +101,10 @@ class ProdamusController extends Controller
                 $this->ksortRecursive($value);
             }
         }
+    }
+
+    public function success()
+    {
+        return Inertia::render('user/Payment/Payment');
     }
 }
