@@ -32,7 +32,7 @@ const Promo = () => {
                 }}
             >
                 <InteractiveLayout
-                    btnLabels={['Случайный выбор', 'Выбрать самой']}
+                    btnLabels={['Выбор Лаванды', 'Выбор гостя']}
                     components={[() => <RandomCards />, () => <ChosenCards />]}
                 />
             </BreadCrumbLayout>

@@ -2,6 +2,12 @@
 // import ForegroundDk from '@/assets/images/runes/foreground-dk.webp';
 // import ForegroundMbTiny from '@/assets/images/runes/foreground-mb-tiny.webp';
 // import ForegroundMb from '@/assets/images/runes/foreground-mb.webp';
+import ForegroundDkTinyWebp from '@/assets/images/runes/foreground-dk-tiny.webp';
+import ForegroundDkAvif from '@/assets/images/runes/foreground-dk.avif';
+import ForegroundDkWebp from '@/assets/images/runes/foreground-dk.webp';
+import ForegroundMbTinyWebp from '@/assets/images/runes/foreground-mb-tiny.webp';
+import ForegroundMbAvif from '@/assets/images/runes/foreground-mb.avif';
+import ForegroundMbWebp from '@/assets/images/runes/foreground-mb.webp';
 import BreadCrumbLayout from '@/layouts/user/BreadCrumbLayout/BreadCrumbLayout';
 import InteractiveLayout from '@/layouts/user/InteractiveLayout/InteractiveLayout';
 import { Rune } from '@/types/model';
@@ -12,12 +18,6 @@ import CategorySelector from './partials/CategorySelector/CategorySelector';
 import ChosenRunes from './partials/ChosenRunes';
 import RandomRunes from './partials/RandomRunes';
 import css from './Runes.module.scss';
-import ForegroundDkTinyWebp from "@/assets/images/runes/foreground-dk-tiny.webp";
-import ForegroundDkAvif from "@/assets/images/runes/foreground-dk.avif";
-import ForegroundDkWebp from "@/assets/images/runes/foreground-dk.webp";
-import ForegroundMbTinyWebp from "@/assets/images/runes/foreground-mb-tiny.webp";
-import ForegroundMbAvif from "@/assets/images/runes/foreground-mb.avif";
-import ForegroundMbWebp from "@/assets/images/runes/foreground-mb.webp";
 
 const Runes = () => {
     const { runes, categories } = usePage<{
@@ -50,7 +50,7 @@ const Runes = () => {
             }}
         >
             <InteractiveLayout
-                btnLabels={['Случайный выбор', 'Выбрать самой']}
+                btnLabels={['Выбор Лаванды', 'Выбор гостя']}
                 components={[
                     () => (
                         <RandomRunes
