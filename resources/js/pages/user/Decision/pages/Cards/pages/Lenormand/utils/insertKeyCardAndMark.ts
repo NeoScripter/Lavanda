@@ -9,6 +9,8 @@ export default function insertKeyCardAndMark(
     initialCards: Omit<LenormandCard, 'isFlipped'>[],
 ) {
     const keyCard = currentSlideId === 1 ? manKey : womanKey;
+    const discartedCardName = currentSlideId === 1 ? 'ДЖЕНТЛЬМЕН' : 'ДАМА';
+    initialCards = initialCards.filter(card => card.name !== discartedCardName);
     const randomIdx = Math.floor(Math.random() * initialCards.length);
     const completeCards = [
         ...initialCards.slice(0, randomIdx),
