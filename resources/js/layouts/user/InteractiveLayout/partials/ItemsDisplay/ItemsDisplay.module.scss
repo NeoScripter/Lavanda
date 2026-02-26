@@ -71,7 +71,7 @@
     text-align: center;
 
     @include u.px(mb, null, 36, 36, 36);
-    @include u.px(text, 24, 24, 24, 32);
+    @include u.px(text, 16, 24, 24, 32);
     @include u.mw(sm) {
         order: -1;
     }
