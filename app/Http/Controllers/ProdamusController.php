@@ -23,9 +23,8 @@ class ProdamusController extends Controller
         $plan = Plan::findOrFail($request->plan_id);
 
         $data = [
-            'sku' => $plan->id,
             'do' => $request->input('do', 'pay'),
-            'order_id' => (string) (auth()->id() . '-' . time()),
+            'order_id' => (string) ($plan->id . '-' . time()),
             'customer_email' => $request->user()->email,
             // 'urlReturn' => route('home'),
             // 'urlSuccess' => route('payment.success'),
@@ -54,6 +53,7 @@ class ProdamusController extends Controller
 
         $data = $request->all();
         $signature = $request->header('Sign');
+        $signature = preg_replace('/^Sign:\s*/', '', $signature);
 
         // Verify signature first
         if (!$this->verify($data, $signature)) {
@@ -66,11 +66,15 @@ class ProdamusController extends Controller
         $orderId = $data['order_id'] ?? null;
         $paymentStatus = $data['payment_status'] ?? null;
 
+
+        if ($orderId == null) {
+            Log::warning('Order id is not found', ['status' => $paymentStatus]);
+            return response('OK', 200); // Return 200 to acknowledge receipt
+        }
         // Get plan_id from order_id or products
         $planId = null;
-        if (isset($data['products'][0]['sku'])) {
-            $planId = $data['products'][0]['sku'];
-        }
+        $parts = explode('-', $orderId);
+        $planId = $parts[0] ?? null;
 
         // Validate required fields
         if ($paymentStatus !== 'success') {
