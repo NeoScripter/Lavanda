@@ -25,7 +25,7 @@ const AppFooter: FC<{ hasMenu?: boolean }> = ({ hasMenu = true }) => {
                 {!isDesktop && <Links />}
 
                 <p class={css.copyright}>
-                    Lavanda.Kim 2025 © Все права защищены
+                    Lavanda.Kim {new Date().getFullYear()} © Все права защищены
                 </p>
             </div>
             {isDesktop && <Links />}
