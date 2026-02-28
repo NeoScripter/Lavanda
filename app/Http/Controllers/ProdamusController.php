@@ -55,6 +55,11 @@ class ProdamusController extends Controller
         $signature = $request->header('Sign');
         $signature = preg_replace('/^Sign:\s*/', '', $signature);
 
+        Log::debug('Signature check', [
+            'received'  => $signature,
+            'computed'  => $this->sign($data),
+            'raw_body'  => $request->getContent(),
+        ]);
         // Verify signature first
         if (!$this->verify($data, $signature)) {
             Log::error('Invalid signature', ['data' => $data]);
