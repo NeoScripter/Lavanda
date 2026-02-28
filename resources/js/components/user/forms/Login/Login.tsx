@@ -1,4 +1,4 @@
-import { useForm, usePage } from '@inertiajs/react';
+import { useForm } from '@inertiajs/react';
 import { LoaderCircle } from 'lucide-preact';
 
 import FormLayout from '@/layouts/user/FormLayout/FormLayout';
@@ -8,8 +8,6 @@ import Input from '../Input/Input';
 import InputError from '../InputError/InputError';
 import Label from '../Label/Label';
 import css from './Login.module.scss';
-import { Flash } from '@/types/flash';
-import { useEffect } from 'preact/hooks';
 
 type LoginForm = {
     email: string;
@@ -17,13 +15,6 @@ type LoginForm = {
 
 export default function Login() {
     const { showOtp, showSignup } = useAuthModal();
-    const { flash } = usePage<{ flash: Flash }>().props;
-
-    useEffect(() => {
-        if (flash?.code?.email) {
-            showOtp();
-        }
-    }, [flash?.code?.email]);
 
     const { data, setData, post, processing, errors } = useForm<
         Required<LoginForm>
@@ -40,6 +31,7 @@ export default function Login() {
 
         post(route('otp.send'), {
             preserveScroll: true,
+            preserveState: true,
             onSuccess: () => {
                 showOtp();
             },
