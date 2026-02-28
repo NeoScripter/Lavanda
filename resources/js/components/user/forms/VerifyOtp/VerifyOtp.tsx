@@ -31,6 +31,8 @@ export default function VerifyOtp() {
         code: '',
     });
 
+    console.log(data.email)
+
     useEffect(() => {
         if (timeLeft <= 0) return;
 
