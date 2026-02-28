@@ -20,7 +20,7 @@ class SendSubscriptionExpiryReminder extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Send a reminder to paid users to extend their subscription';
 
     /**
      * Execute the console command.
