@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Plan;
 use App\Models\Subscription;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
@@ -126,12 +127,16 @@ class ProdamusController extends Controller
                     // Extend existing subscription
                     $subscription = $user->subscription;
 
+                    $endsAt = $subscription->ends_at instanceof Carbon
+                        ? $subscription->ends_at
+                        : Carbon::parse($subscription->ends_at);
+
                     // If subscription already expired, start from now
-                    if ($subscription->ends_at->isPast()) {
+                    if ($endsAt->isPast()) {
                         $subscription->ends_at = now()->addDays($plan->duration_in_days);
                     } else {
                         // Otherwise extend from current end date
-                        $subscription->ends_at = $subscription->ends_at->addDays($plan->duration_in_days);
+                        $subscription->ends_at = $endsAt->addDays($plan->duration_in_days);
                     }
 
                     $subscription->save();

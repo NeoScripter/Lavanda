@@ -25,8 +25,6 @@ class Subscription extends Model
     {
         return [
             'status' => SubscriptionStatus::class,
-            'starts_at' => 'datetime',
-            'ends_at' => 'datetime',
         ];
     }
 }
