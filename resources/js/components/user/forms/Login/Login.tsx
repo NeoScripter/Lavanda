@@ -31,7 +31,6 @@ export default function Login() {
 
         post(route('otp.send'), {
             preserveScroll: true,
-            preserveState: true,
             onSuccess: () => {
                 showOtp();
             },
