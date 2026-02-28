@@ -1,8 +1,10 @@
 import Logo from '@/components/user/ui/Logo/Logo';
 import { NodeProps } from '@/types/nodeProps';
 import { cn } from '@/utils/cn';
-import { FC } from 'preact/compat';
+import { FC, memo } from 'preact/compat';
 import css from './FormLayout.module.scss';
+
+const MemoLogo = memo(Logo);
 
 const FormLayout: FC<NodeProps<{ heading?: string; intro?: string }>> = ({
     className,
@@ -12,7 +14,7 @@ const FormLayout: FC<NodeProps<{ heading?: string; intro?: string }>> = ({
 }) => {
     return (
         <div class={cn(css.wrapper, className)}>
-            <Logo
+            <MemoLogo
                 className={css.logo}
                 isLink={false}
             />

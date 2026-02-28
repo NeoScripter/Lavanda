@@ -63,7 +63,6 @@ export default function VerifyOtp() {
 
         post(route('otp.verify'), {
             preserveScroll: true,
-            preserveState: true,
             onSuccess: () => {
                 toast('Добро пожаловать!');
                 router.flushAll();
