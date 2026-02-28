@@ -77,8 +77,8 @@ class ProdamusController extends Controller
             return response('OK', 200); // Return 200 to acknowledge receipt
         }
         // Get plan_id from order_id or products
-        $planId = null;
-        $parts = explode('-', $orderId);
+        $orderNum = $data['order_num'] ?? null;
+        $parts = explode('-', $orderNum);
         $planId = $parts[0] ?? null;
 
         // Validate required fields
