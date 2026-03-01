@@ -16,7 +16,7 @@ class ArticleController extends Controller
      */
     public function __invoke(Article $article)
     {
-        if (Gate::check('premium-access')) {
+        if (!Gate::check('premium-access')) {
             abort(403, 'Вам для просмотра данной страницы вам необходимо купить подписку');
         }
 
