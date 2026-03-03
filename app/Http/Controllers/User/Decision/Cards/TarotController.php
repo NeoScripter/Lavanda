@@ -34,15 +34,20 @@ class TarotController extends Controller
             ],
         ];
 
-        return Inertia::render('user/Decision/pages/Cards/pages/Tarot/Tarot', [
-            'items' => $items,
-            'cards' => Cache::flexible(
+        $cards = null;
+
+        if (Gate::check('premium-access')) {
+            $cards = Cache::flexible(
                 'tarot',
                 [5, 10],
-                fn () => Gate::check('premium-access')
-                    ? CardResource::collection(Tarot::all()->shuffle())
-                    : null
-            ),
+                fn() => Tarot::all()
+            );
+            $cards = CardResource::collection($cards->shuffle());
+        }
+
+        return Inertia::render('user/Decision/pages/Cards/pages/Tarot/Tarot', [
+            'items' => $items,
+            'cards' => $cards
         ]);
     }
 }

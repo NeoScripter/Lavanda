@@ -16,14 +16,18 @@ class MetaphoricController extends Controller
      */
     public function __invoke()
     {
-        return Inertia::render('user/Decision/pages/Cards/pages/Metaphoric/Metaphoric', [
-            'cards' => Cache::flexible(
+        $cards = null;
+
+        if (Gate::check('premium-access')) {
+            $cards = Cache::flexible(
                 'metaphoric',
                 [5, 10],
-                fn () => Gate::check('premium-access')
-                    ? CardResource::collection(Metaphoric::all()->shuffle())
-                    : null
-            ),
+                fn() => Metaphoric::all()
+            );
+            $cards = CardResource::collection($cards->shuffle());
+        }
+        return Inertia::render('user/Decision/pages/Cards/pages/Metaphoric/Metaphoric', [
+            'cards' => $cards
         ]);
     }
 }

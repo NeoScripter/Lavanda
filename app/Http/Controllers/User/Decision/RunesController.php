@@ -17,7 +17,7 @@ class RunesController extends Controller
     public function __invoke()
     {
         $categories = collect(RuneCategoryName::cases())
-            ->map(fn ($case) => $case->value)
+            ->map(fn($case) => $case->value)
             ->all();
 
         $items = [
@@ -38,15 +38,20 @@ class RunesController extends Controller
             ],
         ];
 
-        return Inertia::render('user/Decision/pages/Runes/Runes', [
-            'items' => $items,
-            'runes' => Cache::flexible(
+        $runes = null;
+
+        if (Gate::check('premium-access')) {
+            $runes = Cache::flexible(
                 'runes',
                 [5, 10],
-                fn () => Gate::check('premium-access') ? Rune::all()
-                    ->load('categories')
-                    ->shuffle() : null
-            ),
+                fn() => Rune::all()->load('categories')
+            );
+            $runes = $runes->shuffle();
+        }
+
+        return Inertia::render('user/Decision/pages/Runes/Runes', [
+            'items' => $items,
+            'runes' => $runes,
             'categories' => $categories,
         ]);
     }

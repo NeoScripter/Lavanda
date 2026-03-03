@@ -31,15 +31,20 @@ class LenormandController extends Controller
             ],
         ];
 
-        return Inertia::render('user/Decision/pages/Cards/pages/Lenormand/Lenormand', [
-            'items' => $items,
-            'cards' => Cache::flexible(
+        $cards = null;
+
+        if (Gate::check('premium-access')) {
+            $cards = Cache::flexible(
                 'lenormand',
                 [5, 10],
-                fn () => Gate::check('premium-access')
-                    ? CardResource::collection(Lenormand::all()->shuffle())
-                    : null
-            ),
+                fn() => Lenormand::all()
+            );
+            $cards = CardResource::collection($cards->shuffle());
+        }
+
+        return Inertia::render('user/Decision/pages/Cards/pages/Lenormand/Lenormand', [
+            'items' => $items,
+            'cards' => $cards,
             'combos' => MatchSet::query()->where('type', MatchSetType::LENORMAND)->get(),
         ]);
     }

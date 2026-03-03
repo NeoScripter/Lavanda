@@ -17,14 +17,19 @@ class MindGameController extends Controller
     public function __invoke()
     {
 
+        $cards = null;
+
+        if (Gate::check('premium-access')) {
+            $cards = Cache::flexible(
+                'mind-games',
+                [5, 10],
+                fn() => MindGame::all()
+            );
+            $cards = MindGameResource::collection($cards->shuffle());
+        }
+
         return Inertia::render('user/Decision/pages/MindGames/MindGames', [
-            'cards' => Cache::flexible(
-                'mind-game',
-                [0, 10],
-                fn () => Gate::check('premium-access')
-                    ? MindGameResource::collection(MindGame::all()->shuffle())
-                    : null
-            ),
+            'cards' => $cards
         ]);
     }
 }
