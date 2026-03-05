@@ -24,11 +24,13 @@ class AudioForm
                             'x-world/x-3dmf',
                             'application/vnd.sketchup.skp',
                             'audio/mpeg',
+                            'audio/mpa',
                         ])
                         ->mimeTypeMap([
                             '3dm' => 'x-world/x-3dmf',
                             'skp' => 'application/vnd.sketchup.skp',
                             'mp3' => 'audio/mpeg',
+                            'mpa' => 'audio/mpa',
                         ])
                         ->disk('public')
                         ->maxSize(4128)
