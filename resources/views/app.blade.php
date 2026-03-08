@@ -5,9 +5,21 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="preload" href="{{ asset('fonts/JTUSjIg1_i6t8kCHKm459W1hyzbi.woff2') }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ asset('fonts/JTUSjIg1_i6t8kCHKm459W1hyzbi.woff2') }}" as="font" type="font/woff2"
+        crossorigin>
     <title inertia>{{ config('app.name', 'Laravel') }}</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DW9FRDYJM7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-DW9FRDYJM7');
+    </script>
 
     <style>
         @font-face {
