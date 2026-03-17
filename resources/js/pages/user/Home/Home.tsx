@@ -18,6 +18,7 @@ import HeroSection from './partials/HeroSection/HeroSection';
 import IntroSection from './partials/IntroSection/IntroSection';
 import PlanSection from './partials/PlanSection/PlanSection';
 import ChoiceSection from './partials/ChoiceSection/ChoiceSection';
+import BenefitSection from './partials/BenefitSection/BenefitSection';
 
 const Home = () => {
     return (
@@ -47,6 +48,8 @@ const Home = () => {
                     tinyImg={NarrativeDecorTiny}
                 />
             </ChoiceSection>
+
+            <BenefitSection />
 
             <IntroSection />
 

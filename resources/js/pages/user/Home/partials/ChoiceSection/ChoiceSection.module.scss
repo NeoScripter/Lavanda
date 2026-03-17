@@ -8,6 +8,7 @@
 
 .heading {
     text-transform: uppercase;
+    @include u.px(my, null, null, 40, 20);
 }
 
 .linkList {
@@ -86,8 +87,10 @@
         background-color 0.3s ease-in-out,
         color 0.3s ease-in-out;
 
+    @include u.px(my, 20, 20, 0, 40);
     @include u.px(text, 12, 18, 20, 20);
 }
+
 .scrollBtn:hover,
 .scrollBtn:focus-visible {
     color: white;

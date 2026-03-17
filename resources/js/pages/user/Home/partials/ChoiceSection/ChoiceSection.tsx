@@ -4,9 +4,9 @@ import Choice3MbWebp from '@/assets/images/home/choice-3-mb.webp';
 import Choice4MbWebp from '@/assets/images/home/choice-4-mb.webp';
 import { NodeProps } from '@/types/nodeProps';
 import { Link } from '@inertiajs/react';
+import { ArrowRight } from 'lucide-preact';
 import { FC } from 'preact/compat';
 import css from './ChoiceSection.module.scss';
-import { ArrowRight } from 'lucide-preact';
 
 const ChoiceSection: FC<NodeProps> = ({ children }) => {
     return (
@@ -35,7 +35,10 @@ const ChoiceSection: FC<NodeProps> = ({ children }) => {
                 ))}
             </ul>
 
-            <a href="#intro-section" className={css.scrollBtn}>
+            <a
+                href="#intro-section"
+                className={css.scrollBtn}
+            >
                 Все разделы сайта
                 <ArrowRight />
             </a>
