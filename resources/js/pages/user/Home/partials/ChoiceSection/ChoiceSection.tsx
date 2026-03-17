@@ -6,6 +6,7 @@ import { NodeProps } from '@/types/nodeProps';
 import { Link } from '@inertiajs/react';
 import { FC } from 'preact/compat';
 import css from './ChoiceSection.module.scss';
+import { ArrowRight } from 'lucide-preact';
 
 const ChoiceSection: FC<NodeProps> = ({ children }) => {
     return (
@@ -33,6 +34,11 @@ const ChoiceSection: FC<NodeProps> = ({ children }) => {
                     </li>
                 ))}
             </ul>
+
+            <a href="#intro-section" className={css.scrollBtn}>
+                Все разделы сайта
+                <ArrowRight />
+            </a>
 
             {children}
         </section>

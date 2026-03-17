@@ -17,6 +17,8 @@
     gap: 1em;
     margin-inline: auto;
     place-content: center;
+    position: relative;
+    z-index: 10;
     @include u.px(max-w, 272, 397, 905, 905);
 
     @include u.mw(md) {
@@ -32,8 +34,28 @@
     border-radius: 4rem;
     align-items: center;
     background-color: u.clr('primary', 'strong');
+    transition:
+        box-shadow 0.3s ease-in-out,
+        background-color 0.3s ease-in-out;
 
     @include u.px(text, 12, 18, 20, 20);
+}
+.linkItem:hover,
+.linkItem:focus-visible {
+    animation: jump 0.25s ease-in-out forwards;
+    background-color: u.opacify(u.clr('primary', 'strong'), 90);
+    @include u.shadow(2);
+
+    @keyframes jump {
+        0% {
+            transform: none;
+            animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+        }
+        50% {
+            transform: translateY(-7%);
+            animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+        }
+    }
 }
 
 .icon {
@@ -47,4 +69,28 @@
 
 .linkLabel {
     white-space: nowrap;
+}
+
+.scrollBtn {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 0.75em;
+    color: u.clr('primary', 'strong');
+    border: 2px solid currentColor;
+    font-weight: 500;
+    border-radius: 4rem;
+    margin-inline: auto;
+    padding: 0.5em 1.25em;
+    transition:
+        background-color 0.3s ease-in-out,
+        color 0.3s ease-in-out;
+
+    @include u.px(text, 12, 18, 20, 20);
+}
+.scrollBtn:hover,
+.scrollBtn:focus-visible {
+    color: white;
+    border-color: u.clr('primary', 'strong');
+    background-color: u.clr('primary', 'strong');
 }

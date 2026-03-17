@@ -41,7 +41,7 @@ import css from './IntroSection.module.scss';
 
 const IntroSection: FC<NodeProps> = ({ className }) => {
     return (
-        <div class={cn(css.wrapper, className)}>
+        <div id="intro-section" class={cn(css.wrapper, className)}>
             <IntroWideCard
                 className={cn(css.intro1)}
                 heading="Принять решение"
