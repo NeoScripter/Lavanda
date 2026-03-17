@@ -23,6 +23,7 @@ import LazyImage from '@/components/user/ui/LazyImage/LazyImage';
 import { cn } from '@/utils/cn';
 import { Link } from '@inertiajs/react';
 import css from './HeroSection.module.scss';
+import { questions } from './pageData';
 
 const HeroSection = () => {
     return (
@@ -48,6 +49,12 @@ const HeroSection = () => {
                 <h1 className={css.contentHeading}>
                     Онлайн сервис для самопознания
                 </h1>
+
+                <ul className={css.questionList}>
+                    {questions.map((question) => (
+                        <li key={question}>{question}</li>
+                    ))}
+                </ul>
 
                 <p class={css.intro}>
                     Если такие вопросы вам знакомы - Вы в правильном месте.{' '}

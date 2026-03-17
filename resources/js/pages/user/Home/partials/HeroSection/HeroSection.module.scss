@@ -71,6 +71,34 @@
     text-wrap: balance;
 }
 
+.questionList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 90%;
+    margin-inline: auto;
+    gap: 0.4em;
+    max-width: 50rem;
+    font-size: 0.9em;
+    @include u.px(my, 26, 34, 38, 46);
+
+    @include u.mw(md) {
+        max-width: 100%;
+        justify-content: start;
+        width: 100%;
+        margin-inline: 0;
+    }
+
+    li {
+        background-color: white;
+        padding: 0.25em 0.5em;
+        border-radius: 0.5em;
+        border-bottom-right-radius: 0em;
+
+        @include u.shadow(1);
+    }
+}
+
 .intro {
     font-weight: 500;
     text-wrap: balance;
