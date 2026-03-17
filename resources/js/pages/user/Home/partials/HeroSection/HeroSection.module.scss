@@ -90,12 +90,41 @@
     }
 
     li {
+        --delay: 0s;
         background-color: white;
         padding: 0.25em 0.75em;
         border-radius: 2rem;
+        transform-origin: 100% 100%;
+        scale: 0;
         border-bottom-right-radius: 0em;
+        animation: bubble 1.3s
+            linear(
+                0,
+                0.029 1.6%,
+                0.123 3.5%,
+                0.651 10.6%,
+                0.862 14.1%,
+                1.002 17.7%,
+                1.046 19.6%,
+                1.074 21.6%,
+                1.087 23.9%,
+                1.086 26.6%,
+                1.014 38.5%,
+                0.994 46.3%,
+                1
+            )
+            var(--delay) forwards;
 
         @include u.shadow(1);
+    }
+}
+
+@keyframes bubble {
+    from {
+        scale: 0;
+    }
+    to {
+        scale: 1;
     }
 }
 

@@ -51,8 +51,13 @@ const HeroSection = () => {
                 </h1>
 
                 <ul className={css.questionList}>
-                    {questions.map((question) => (
-                        <li key={question}>{question}</li>
+                    {questions.map((question, idx) => (
+                        <li
+                            key={question}
+                            style={{ '--delay': `${idx / 4}s` }}
+                        >
+                            {question}
+                        </li>
                     ))}
                 </ul>
 
