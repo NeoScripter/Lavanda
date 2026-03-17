@@ -58,7 +58,7 @@ h1 {
     line-height: 1.4;
     text-transform: uppercase;
     text-wrap: balance;
-    @include u.px(text, 28, 48, 56, 56);
+    @include u.px(text, 24, 48, 56, 56);
     @include u.px(mb, 22, 32, 32, 32);
 }
 

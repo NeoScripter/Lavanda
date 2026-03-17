@@ -4,17 +4,25 @@ import BgTbTiny from '@/assets/images/home/hero-bg-tb-tiny.webp';
 import BgTb from '@/assets/images/home/hero-bg-tb.webp';
 import HeroDecorTiny from '@/assets/images/home/hero-decor-tiny.webp';
 import HeroDecor from '@/assets/images/home/hero-decor.webp';
-import FgMbTiny from '@/assets/images/home/hero-fg-mb-tiny.webp';
-import FgMb from '@/assets/images/home/hero-fg-mb.webp';
-import FgDkTiny from '@/assets/images/home/hero-fg-tiny.webp';
-import FgDk from '@/assets/images/home/hero-fg.webp';
+import HeroFgDkTinyWebp from '@/assets/images/home/hero-fg-dk-tiny.webp';
+import HeroFgDkAvif from '@/assets/images/home/hero-fg-dk.avif';
+import HeroFgDkWebp from '@/assets/images/home/hero-fg-dk.webp';
+import HeroFgDk2xAvif from '@/assets/images/home/hero-fg-dk2x.avif';
+import HeroFgDk2xWebp from '@/assets/images/home/hero-fg-dk2x.webp';
+import HeroFgDk3xAvif from '@/assets/images/home/hero-fg-dk3x.avif';
+import HeroFgDk3xWebp from '@/assets/images/home/hero-fg-dk3x.webp';
+import HeroFgMbTinyWebp from '@/assets/images/home/hero-fg-mb-tiny.webp';
+import HeroFgMbAvif from '@/assets/images/home/hero-fg-mb.avif';
+import HeroFgMbWebp from '@/assets/images/home/hero-fg-mb.webp';
+import HeroFgMb2xAvif from '@/assets/images/home/hero-fg-mb2x.avif';
+import HeroFgMb2xWebp from '@/assets/images/home/hero-fg-mb2x.webp';
+import HeroFgMb3xAvif from '@/assets/images/home/hero-fg-mb3x.avif';
+import HeroFgMb3xWebp from '@/assets/images/home/hero-fg-mb3x.webp';
 import BgLoader from '@/components/user/ui/BgLoader/BgLoader';
 import LazyImage from '@/components/user/ui/LazyImage/LazyImage';
-import { heroCards } from '@/lib/data/heroCards';
 import { cn } from '@/utils/cn';
 import { Link } from '@inertiajs/react';
 import css from './HeroSection.module.scss';
-import Card from './partials/Card/Card';
 
 const HeroSection = () => {
     return (
@@ -30,39 +38,24 @@ const HeroSection = () => {
                 mbTiny={BgTbTiny}
             />
 
-            <BgLoader
-                prtClass={cn(css.fgLoader)}
-                imgClass={css.fgImage}
-                dk={FgDk}
-                dkTiny={FgDkTiny}
-                tb={FgDk}
-                tbTiny={FgDkTiny}
-                mb={FgMb}
-                mbTiny={FgMbTiny}
-            />
-
             <LazyImage
                 img={HeroDecor}
                 tinyImg={HeroDecorTiny}
                 prtClass={css.decor}
             />
 
-            <ul class={css.cards}>
-                {heroCards.map((card) => (
-                    <Card
-                        key={card.id}
-                        card={card}
-                    />
-                ))}
-            </ul>
-
             <div class={css.content}>
-                <h1>Пространство поддержки и вдохновения</h1>
+                <h1 className={css.contentHeading}>
+                    Онлайн сервис для самопознания
+                </h1>
 
                 <p class={css.intro}>
-                    Уникальный веб-ресурс на стыке науки и волшебства Лаванды.
-                    Здесь инструменты, помогающие преодолеть трудности, укрепить
-                    внутреннюю силу и услышать себя.
+                    Если такие вопросы вам знакомы - Вы в правильном месте.{' '}
+                    <br />{' '}
+                    <span class="decorative-title">
+                        Lavanda<sup>Kim</sup>
+                    </span>
+                    - Ваш помощник в мире неопределенности и сомнений.
                 </p>
 
                 <div class={css.btnGroup}>
@@ -83,6 +76,32 @@ const HeroSection = () => {
                     </Link>
                 </div>
             </div>
+
+            <BgLoader
+                prtClass={cn(css.fgLoader)}
+                imgClass={css.fgImage}
+                dk={HeroFgDkWebp}
+                dk2x={HeroFgDk2xWebp}
+                dk3x={HeroFgDk3xWebp}
+                dkAvif={HeroFgDkAvif}
+                dkAvif2x={HeroFgDk2xAvif}
+                dkAvif3x={HeroFgDk3xAvif}
+                dkTiny={HeroFgDkTinyWebp}
+                tb={HeroFgDkWebp}
+                tb2x={HeroFgDk2xWebp}
+                tb3x={HeroFgDk3xWebp}
+                tbAvif={HeroFgDkAvif}
+                tbAvif2x={HeroFgDk2xAvif}
+                tbAvif3x={HeroFgDk3xAvif}
+                tbTiny={HeroFgDkTinyWebp}
+                mb={HeroFgMbWebp}
+                mb2x={HeroFgMb2xWebp}
+                mb3x={HeroFgMb3xWebp}
+                mbAvif={HeroFgMbAvif}
+                mbAvif2x={HeroFgMb2xAvif}
+                mbAvif3x={HeroFgMb3xAvif}
+                mbTiny={HeroFgMbTinyWebp}
+            />
         </section>
     );
 };

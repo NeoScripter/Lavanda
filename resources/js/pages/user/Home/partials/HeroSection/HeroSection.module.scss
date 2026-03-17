@@ -8,12 +8,14 @@
     margin-inline: auto;
     @include u.px(mt, null, null, 37, 32);
     @include u.px(--padding, null, null, 27, 45);
-    @include u.px(min-h, 905, 1350, 1022, 1032);
     @include u.px(pt, 97, 210, 140, 172);
     @include u.px(pb, 27, 30, 30, 30);
     @include u.px(pl, null, null, 73, 132);
-    @include u.px(mb, 502, 376, 196, 182);
+    @include u.px(mb, 50, 50, 46, 85);
 
+    @include u.mw(md) {
+        display: flex;
+    }
 }
 
 .bgImage {
@@ -29,17 +31,13 @@
 }
 
 .fgLoader {
-    margin-top: auto;
-    bottom: 0;
-    inset-inline: 0;
-    position: absolute;
-    width: 100%;
-    @include u.px(h, 561, 760, 901, 1005);
-    @include u.px(w, null, null, 853, 1099);
+    width: 90%;
+    margin-right: auto;
 
     @include u.mw(md) {
-        margin-left: auto;
-        margin-bottom: 0%;
+        width: auto;
+        position: relative;
+        left: -10%;
     }
 }
 .fgImage {
@@ -60,14 +58,17 @@
 }
 .content {
     text-align: center;
-    margin-inline: auto;
-    @include u.px(w, 307, 585, 610, 632);
+    @include u.px(w, null, null, 717, 752);
     text-wrap: pretty;
 
     @include u.mw(md) {
         text-align: left;
-        margin-left: 0;
+        flex-shrink: 0;
     }
+}
+
+.contentHeading {
+    text-wrap: balance;
 }
 
 .intro {

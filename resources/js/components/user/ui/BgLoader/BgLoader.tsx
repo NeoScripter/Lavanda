@@ -5,12 +5,24 @@ import css from './BgLoader.module.scss';
 type BgLoaderProps = {
     dk: string;
     dkAvif?: string;
-    tb: string;
+    dk2x?: string;
+    dkAvif2x?: string;
+    dk3x?: string;
+    dkAvif3x?: string;
     dkTiny?: string;
+    tb: string;
+    tbAvif?: string;
+    tb2x?: string;
+    tbAvif2x?: string;
+    tb3x?: string;
+    tbAvif3x?: string;
+    tbTiny?: string;
     mb: string;
     mbAvif?: string;
-    tbTiny?: string;
-    tbAvif?: string;
+    mb2x?: string;
+    mbAvif2x?: string;
+    mb3x?: string;
+    mbAvif3x?: string;
     mbTiny?: string;
     prtClass?: string;
     imgClass?: string;
@@ -22,10 +34,22 @@ type BgLoaderProps = {
 export default function BgLoader({
     dk,
     dkAvif,
+    dk2x,
+    dk3x,
+    dkAvif2x,
+    dkAvif3x,
     tb,
     tbAvif,
+    tb2x,
+    tb3x,
+    tbAvif2x,
+    tbAvif3x,
     mb,
     mbAvif,
+    mb2x,
+    mb3x,
+    mbAvif2x,
+    mbAvif3x,
     dkTiny,
     tbTiny,
     mbTiny,
@@ -51,34 +75,58 @@ export default function BgLoader({
                 {dkAvif && (
                     <source
                         type="image/avif"
-                        srcSet={dkAvif}
+                        srcSet={`
+                          ${dkAvif} 1x,
+                          ${dkAvif2x} 2x,
+                          ${dkAvif3x} 3x
+                        `}
                         media={`(min-width: ${tabletMinWidth}px)`}
                     />
                 )}
                 <source
-                    srcSet={dk}
+                    srcSet={`
+                      ${dk} 1x,
+                      ${dk2x} 2x,
+                      ${dk3x} 3x
+                    `}
                     media={`(min-width: ${tabletMinWidth}px)`}
                 />
                 {tbAvif && (
                     <source
                         type="image/avif"
-                        srcSet={tbAvif}
+                        srcSet={`
+                          ${tbAvif} 1x,
+                          ${tbAvif2x} 2x,
+                          ${tbAvif3x} 3x
+                        `}
                         media={`(min-width: ${mbMinWidth}px)`}
                     />
                 )}
                 <source
-                    srcSet={tb}
+                    srcSet={`
+                      ${tb} 1x,
+                      ${tb2x} 2x,
+                      ${tb3x} 3x
+                    `}
                     media={`(min-width: ${mbMinWidth}px)`}
                 />
                 {mbAvif && (
                     <source
                         type="image/avif"
-                        srcSet={mbAvif}
+                        srcSet={`
+                          ${mbAvif} 1x,
+                          ${mbAvif2x} 2x,
+                          ${mbAvif3x} 3x
+                        `}
                     />
                 )}
                 <img
                     onLoad={() => setIsLoading(false)}
-                    src={mb}
+                    srcSet={`
+                      ${mb} 1x,
+                      ${mb2x} 2x,
+                      ${mb3x} 3x
+                    `}
                     alt={alt}
                     loading="lazy"
                     class={cn(css.image, imgClass)}
