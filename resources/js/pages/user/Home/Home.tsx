@@ -19,6 +19,7 @@ import IntroSection from './partials/IntroSection/IntroSection';
 import PlanSection from './partials/PlanSection/PlanSection';
 import ChoiceSection from './partials/ChoiceSection/ChoiceSection';
 import BenefitSection from './partials/BenefitSection/BenefitSection';
+import HelpSection from './partials/HelpSection/HelpSection';
 
 const Home = () => {
     return (
@@ -50,6 +51,8 @@ const Home = () => {
             </ChoiceSection>
 
             <BenefitSection />
+
+            <HelpSection />
 
             <IntroSection />
 

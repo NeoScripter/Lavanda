@@ -1,0 +1,8 @@
+@use 'core' as u;
+
+.wrapper {
+    @include u.px(pb, 40, 52, 91, 93);
+    @include u.px(pt, 69, 75, 54, 89);
+    @include u.px(pl, 24, 62, 116, 259);
+    @include u.px(pr, 24, 62, 80, 215);
+}
