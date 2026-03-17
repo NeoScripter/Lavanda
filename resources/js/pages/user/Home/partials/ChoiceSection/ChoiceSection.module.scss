@@ -1,0 +1,50 @@
+@use 'core' as u;
+
+.wrapper {
+    @include u.px(mb, 60, 92, 130, 84);
+    text-align: center;
+    position: relative;
+}
+
+.heading {
+    text-transform: uppercase;
+}
+
+.linkList {
+    @include u.px(my, 60, 62, 60, 84);
+    display: grid;
+    color: white;
+    gap: 1em;
+    margin-inline: auto;
+    place-content: center;
+    @include u.px(max-w, 272, 397, 905, 905);
+
+    @include u.mw(md) {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.linkItem {
+    display: flex;
+    gap: 0.5em;
+    font-weight: 500;
+    padding: 0.5em 1.25em;
+    border-radius: 4rem;
+    align-items: center;
+    background-color: u.clr('primary', 'strong');
+
+    @include u.px(text, 12, 18, 20, 20);
+}
+
+.icon {
+    display: block;
+    @include u.px(w, 35, 48, 48, 48);
+
+    img {
+        @include u.size(100%);
+    }
+}
+
+.linkLabel {
+    white-space: nowrap;
+}
