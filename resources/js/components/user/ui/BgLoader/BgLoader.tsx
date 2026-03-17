@@ -75,58 +75,63 @@ export default function BgLoader({
                 {dkAvif && (
                     <source
                         type="image/avif"
-                        srcSet={`
-                          ${dkAvif} 1x,
-                          ${dkAvif2x} 2x,
-                          ${dkAvif3x} 3x
-                        `}
+                        srcSet={buildSrcSet([
+                            [dkAvif, '1x'],
+                            [dkAvif2x, '2x'],
+                            [dkAvif3x, '3x'],
+                        ])}
                         media={`(min-width: ${tabletMinWidth}px)`}
                     />
                 )}
+
                 <source
-                    srcSet={`
-                      ${dk} 1x,
-                      ${dk2x} 2x,
-                      ${dk3x} 3x
-                    `}
+                    srcSet={buildSrcSet([
+                        [dk, '1x'],
+                        [dk2x, '2x'],
+                        [dk3x, '3x'],
+                    ])}
                     media={`(min-width: ${tabletMinWidth}px)`}
                 />
+
                 {tbAvif && (
                     <source
                         type="image/avif"
-                        srcSet={`
-                          ${tbAvif} 1x,
-                          ${tbAvif2x} 2x,
-                          ${tbAvif3x} 3x
-                        `}
+                        srcSet={buildSrcSet([
+                            [tbAvif, '1x'],
+                            [tbAvif2x, '2x'],
+                            [tbAvif3x, '3x'],
+                        ])}
                         media={`(min-width: ${mbMinWidth}px)`}
                     />
                 )}
+
                 <source
-                    srcSet={`
-                      ${tb} 1x,
-                      ${tb2x} 2x,
-                      ${tb3x} 3x
-                    `}
+                    srcSet={buildSrcSet([
+                        [tb, '1x'],
+                        [tb2x, '2x'],
+                        [tb3x, '3x'],
+                    ])}
                     media={`(min-width: ${mbMinWidth}px)`}
                 />
+
                 {mbAvif && (
                     <source
                         type="image/avif"
-                        srcSet={`
-                          ${mbAvif} 1x,
-                          ${mbAvif2x} 2x,
-                          ${mbAvif3x} 3x
-                        `}
+                        srcSet={buildSrcSet([
+                            [mbAvif, '1x'],
+                            [mbAvif2x, '2x'],
+                            [mbAvif3x, '3x'],
+                        ])}
                     />
                 )}
+
                 <img
                     onLoad={() => setIsLoading(false)}
-                    srcSet={`
-                      ${mb} 1x,
-                      ${mb2x} 2x,
-                      ${mb3x} 3x
-                    `}
+                    srcSet={buildSrcSet([
+                        [mb, '1x'],
+                        [mb2x, '2x'],
+                        [mb3x, '3x'],
+                    ])}
                     alt={alt}
                     loading="lazy"
                     class={cn(css.image, imgClass)}
@@ -170,3 +175,9 @@ export default function BgLoader({
         </div>
     );
 }
+
+const buildSrcSet = (sources: Array<[string | undefined, string]>) =>
+    sources
+        .filter(([src]) => !!src)
+        .map(([src, dpr]) => `${src} ${dpr}`)
+        .join(', ');
