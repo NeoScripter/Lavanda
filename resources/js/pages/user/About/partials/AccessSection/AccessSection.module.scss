@@ -1,0 +1,48 @@
+@use 'core' as u;
+
+.wrapper {
+    @include u.px(pb, 52, 71, 71, 73);
+    @include u.px(pt, 49, 63, 94, 109);
+}
+
+.heading {
+    text-align: center;
+    @include u.px(pb, 15, 15, 25, 25);
+    @include u.px(text, 28, 40, 48, 48);
+}
+
+.content {
+    > * {
+        @include u.px(mb, 25, 25, 30, 35);
+    }
+}
+
+.neutralBtn {
+    background-color: transparent;
+    display: block;
+
+    &:first-of-type {
+        @include u.mw(sm) {
+            order: -2;
+        }
+    }
+}
+
+.btnWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    @include u.px(mt, 50, 50, 70, 70);
+
+    @include u.mw(sm) {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2em;
+    }
+
+    & > button {
+        scale: 105%;
+    }
+}

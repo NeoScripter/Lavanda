@@ -4,6 +4,7 @@ import { Head } from '@inertiajs/react';
 import css from './About.module.scss';
 import HeroSection from './partials/HeroSection';
 import IntroSection from './partials/IntroSection';
+import AccessSection from './partials/AccessSection';
 
 const About = () => {
     return (
@@ -17,6 +18,8 @@ const About = () => {
             <HeroSection />
 
             <IntroSection />
+
+            <AccessSection />
 
             <AboutSection />
         </AppLayout>
