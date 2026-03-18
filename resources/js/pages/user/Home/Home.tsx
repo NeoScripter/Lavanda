@@ -13,13 +13,14 @@ import AppLayout from '@/layouts/user/AppLayout/AppLayout';
 import { cn } from '@/utils/cn';
 import { Head } from '@inertiajs/react';
 import css from './Home.module.scss';
+import AboutLavanda from './partials/AboutLavanda';
+import BenefitSection from './partials/BenefitSection/BenefitSection';
+import ChoiceSection from './partials/ChoiceSection/ChoiceSection';
 import FAQSection from './partials/FAQSection/FAQSection';
+import HelpSection from './partials/HelpSection/HelpSection';
 import HeroSection from './partials/HeroSection/HeroSection';
 import IntroSection from './partials/IntroSection/IntroSection';
 import PlanSection from './partials/PlanSection/PlanSection';
-import ChoiceSection from './partials/ChoiceSection/ChoiceSection';
-import BenefitSection from './partials/BenefitSection/BenefitSection';
-import HelpSection from './partials/HelpSection/HelpSection';
 
 const Home = () => {
     return (
@@ -56,7 +57,7 @@ const Home = () => {
 
             <IntroSection />
 
-            <AboutSection className={css.aboutSection} />
+            <AboutLavanda />
 
             <PlanSection />
 

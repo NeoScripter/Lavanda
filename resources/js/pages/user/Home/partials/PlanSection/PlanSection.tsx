@@ -10,7 +10,7 @@ import css from './PlanSection.module.scss';
 
 const PlanSection = () => {
     return (
-        <PlanPicker>
+        <PlanPicker className={css.wrapper}>
             <LazyImage
                 img={Butterfly}
                 tinyImg={ButterflyTiny}

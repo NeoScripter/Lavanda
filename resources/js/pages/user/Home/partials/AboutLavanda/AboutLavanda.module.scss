@@ -1,0 +1,78 @@
+@use 'core' as u;
+
+.wrapper {
+    background-color: u.opacify(white, 72);
+    @include u.px(pt, 55, 87, 34, 40);
+    @include u.px(pb, 52, 64, 66, 60);
+    @include u.px(pl, 15, 60, 122, 266);
+    @include u.px(pr, 15, 60, 0, 140);
+    @include u.px(gap, null, null, null, 32);
+
+    @include u.mw(md) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.fgLoader {
+    display: none;
+    flex-shrink: 0;
+    height: 100%;
+
+    @include u.px(w, null, null, 647, 810);
+    @include u.px(h, null, null, 1016, 1016);
+    @include u.mw(md) {
+        display: block;
+    }
+}
+
+.fgImage {
+    object-position: left;
+    object-fit: cover;
+    height: 100%;
+}
+
+.heading {
+    @include u.px(mt, null, null, 40, 20);
+}
+
+.items {
+    @include u.rm(text, 13, 18, 20, 20);
+}
+.item {
+    display: flex;
+    align-items: start;
+    gap: 1em;
+    border-bottom: 1px solid currentColor;
+    padding-block: 1em;
+}
+
+.itemIcon {
+    flex-shrink: 0;
+    @include u.px(w, 28, 48, 48, 48);
+}
+
+.aboutBtn {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 0.75em;
+    color: u.clr('primary', 'strong');
+    border: 2px solid currentColor;
+    font-weight: 600;
+    border-radius: 4rem;
+    padding: 0.5em 1.25em;
+    transition:
+        background-color 0.3s ease-in-out,
+        color 0.3s ease-in-out;
+
+    @include u.px(my, 50, 50, 50, 50);
+}
+
+.aboutBtn:hover,
+.aboutBtn:focus-visible {
+    color: white;
+    border-color: u.clr('primary', 'strong');
+    background-color: u.clr('primary', 'strong');
+}
