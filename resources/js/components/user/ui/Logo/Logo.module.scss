@@ -2,6 +2,7 @@
 
 .image {
     object-fit: contain;
+    object-position: left;
     @include u.size(100%);
 }
 

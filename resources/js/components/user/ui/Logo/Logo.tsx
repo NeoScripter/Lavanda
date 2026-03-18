@@ -1,5 +1,5 @@
-import DarkLogo from '@/assets/images/shared/logo-dark.webp';
-import WhiteLogo from '@/assets/images/shared/logo-white.webp';
+import PurpleLogo from '@/assets/svgs/logo-purple.svg';
+import LightLogo from '@/assets/svgs/logo-white.svg';
 import { NodeProps } from '@/types/nodeProps';
 import { cn } from '@/utils/cn';
 import { Link } from '@inertiajs/react';
@@ -11,7 +11,7 @@ const Logo: FC<
 > = ({ className, variation = 'dark', isLink = true }) => {
     const LogoIcon = () => (
         <img
-            src={variation === 'dark' ? DarkLogo : WhiteLogo}
+            src={variation === 'dark' ? PurpleLogo : LightLogo}
             alt="Lavanda Kim"
             class={css.image}
         />

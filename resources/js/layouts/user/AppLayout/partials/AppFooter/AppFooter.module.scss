@@ -47,10 +47,6 @@
     @include u.px(mb, 35, 47, 21, 24);
     @include u.px(w, 183, 273, 313, 334);
     @include u.px(h, 31, 47, 54, 57);
-
-    @include u.mw(md) {
-        margin-left: -0.75em;
-    }
 }
 
 .contacts {
