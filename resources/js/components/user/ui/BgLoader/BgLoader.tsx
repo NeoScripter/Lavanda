@@ -133,7 +133,6 @@ export default function BgLoader({
                         [mb3x, '3x'],
                     ])}
                     alt={alt}
-                    loading="lazy"
                     class={cn(css.image, imgClass)}
                 />
             </picture>
@@ -151,26 +150,12 @@ export default function BgLoader({
                     class={cn(isLoading && css.skeleton)}
                 ></div>
 
-                <picture
-                    aria-hidden="true"
-                    class={cn(css.picture, imgClass)}
-                >
-                    <source
-                        srcSet={tinyDesktop}
-                        media={`(min-width: ${tabletMinWidth}px)`}
-                    />
-                    <source
-                        srcSet={tinyTablet}
-                        media={`(min-width: ${mbMinWidth}px)`}
-                    />
-
-                    <img
-                        onLoad={() => setIsLoading(false)}
-                        src={tinyMobile}
-                        alt={alt}
-                        class={cn(css.image, imgClass)}
-                    />
-                </picture>
+                <img
+                    onLoad={() => setIsLoading(false)}
+                    src={tinyMobile}
+                    alt={alt}
+                    class={cn(css.image, imgClass)}
+                />
             </div>
         </div>
     );
