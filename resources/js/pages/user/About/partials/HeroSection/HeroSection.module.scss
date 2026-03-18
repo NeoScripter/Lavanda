@@ -1,22 +1,40 @@
 @use 'core' as u;
 
-.heading {
-    text-align: center;
-}
-
-.fgParent {
-    aspect-ratio: 2/1.1;
-    @include u.px(mb, 37, 74, 67, 68);
-
+.wrapper {
+    @include u.px(gap, null, null, 42, 21);
+    @include u.px(mb, 34, 70, 65, 44);
+    @include u.px(pl, null, null, 98, 271);
+    @include u.px(pr, null, null, 44, 99);
     @include u.mw(md) {
-        max-width: 80%;
-        margin-inline: auto;
+        width: 100%;
+        grid-column: 1 / 4;
+        display: flex;
+        align-items: center;
     }
 }
 
-.breadcrumbs {
-    @include u.px(mb, 29, 36, 64, 65);
+.heading {
+    text-align: center;
+    text-transform: revert;
+    @include u.px(text, 28, 40, 48, 48);
+
     @include u.mw(md) {
-        margin-inline: auto;
+        text-align: left;
+    }
+}
+.content {
+    > * {
+        @include u.px(mb, 25, 25, 40, 40);
+    }
+}
+
+.fgParent {
+    @include u.px(w, 274, 652, 586, 700);
+    flex-shrink: 0;
+    margin-inline: auto;
+
+    @include u.mw(md) {
+        margin-inline: 0;
+        order: 2;
     }
 }

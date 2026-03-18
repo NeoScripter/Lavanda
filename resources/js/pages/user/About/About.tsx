@@ -12,11 +12,11 @@ const About = () => {
             className={css.layout}
             variation="light"
         >
-            <Head title="О ресурсе" />
+            <Head title="Секрет успеха Lavanda" />
 
             <HeroSection />
 
-            <IntroSection />
+            {/* <IntroSection /> */}
 
             <AboutSection />
         </AppLayout>

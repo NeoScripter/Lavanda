@@ -18,6 +18,6 @@ export const routeLabels: Record<string, string> = {
     iching: 'Таблица Гексаграмм',
     audios: 'Послание поддержки',
     affirmations: 'Настрой',
-    about: 'О ресурсе',
+    about: 'Секрет успеха Lavanda',
     toolkit: 'Полезные ресурсы',
 };

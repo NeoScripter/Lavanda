@@ -34,16 +34,21 @@
     position: relative;
     margin-left: auto;
     @include u.px(rounded, 28, 28, 28, 28);
-    @include u.px(w, 171, 334, 347, 362);
+    @include u.px(w, null, null, 347, 362);
     @include u.px(h, 232, 380, 466, 500);
 }
 
 .fgParent {
     position: absolute;
     border-radius: inherit;
-    @include u.px(top, 48, 66, 145, 146);
+    @include u.px(top, -40, -50, 145, 146);
+    @include u.px(w, 171, 334, 0, 0);
     @include u.px(right, 52, 97, 109, 101);
-    @include u.size(120%);
+    height: 120%;
+
+    @include u.mw(md) {
+        @include u.size(120%);
+    }
 }
 
 .bgParent {
