@@ -35,7 +35,7 @@ const IntroSquareCard: FC<
                     prefetch
                     class={cn(css.link, 'secondary-btn')}
                 >
-                    Узнать больше
+                    Перейти в раздел
                     <ArrowRight />
                 </Link>
             </div>

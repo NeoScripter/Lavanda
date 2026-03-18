@@ -56,7 +56,7 @@ const IntroWideCard: FC<
                     prefetch
                     class="secondary-btn"
                 >
-                    Узнать больше
+                    Перейти в раздел
                     <ArrowRight />
                 </Link>
             </div>
