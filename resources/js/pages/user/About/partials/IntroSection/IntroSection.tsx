@@ -1,174 +1,73 @@
+import BgDkTinyWebp from '@/assets/images/about/intro/bg-dk-tiny.webp';
+import BgDkAvif from '@/assets/images/about/intro/bg-dk.avif';
+import BgDkWebp from '@/assets/images/about/intro/bg-dk.webp';
+import BgDk2xAvif from '@/assets/images/about/intro/bg-dk2x.avif';
+import BgDk2xWebp from '@/assets/images/about/intro/bg-dk2x.webp';
+import BgDk3xAvif from '@/assets/images/about/intro/bg-dk3x.avif';
+import BgDk3xWebp from '@/assets/images/about/intro/bg-dk3x.webp';
+import BgMbTinyWebp from '@/assets/images/about/intro/bg-mb-tiny.webp';
+import BgMbAvif from '@/assets/images/about/intro/bg-mb.avif';
+import BgMbWebp from '@/assets/images/about/intro/bg-mb.webp';
+import BgMb2xAvif from '@/assets/images/about/intro/bg-mb2x.avif';
+import BgMb2xWebp from '@/assets/images/about/intro/bg-mb2x.webp';
+import BgMb3xAvif from '@/assets/images/about/intro/bg-mb3x.avif';
+import BgMb3xWebp from '@/assets/images/about/intro/bg-mb3x.webp';
+import BgTbTinyWebp from '@/assets/images/about/intro/bg-tb-tiny.webp';
+import BgTbAvif from '@/assets/images/about/intro/bg-tb.avif';
+import BgTbWebp from '@/assets/images/about/intro/bg-tb.webp';
+import BgTb2xAvif from '@/assets/images/about/intro/bg-tb2x.avif';
+import BgTb2xWebp from '@/assets/images/about/intro/bg-tb2x.webp';
+import BgTb3xAvif from '@/assets/images/about/intro/bg-tb3x.avif';
+import BgTb3xWebp from '@/assets/images/about/intro/bg-tb3x.webp';
+import BgLoader from '@/components/user/ui/BgLoader/BgLoader';
+import { cn } from '@/utils/cn';
 import css from './IntroSection.module.scss';
+import { items } from './pageData';
 
 const IntroSection = () => {
     return (
-        <div className={css.wrapper}>
-            <section>
-                <h2>О ресурсе</h2>
-                <p>
-                    <DecorativeLogo />— это онлайн-пространство для тихого
-                    времени с собой. Место, куда можно прийти, когда хочется
-                    остановиться, выдохнуть, навести внутренний порядок и
-                    взглянуть на ситуацию под новым углом — без шума лент, чужих
-                    мнений и давления «правильных решений».
-                </p>
-                <p>
-                    Лаванда создана как альтернатива бесконечному скроллу ленты
-                    и случайным советам. Здесь нет спешки и оценок — только
-                    инструменты для личной рефлексии, внимания к себе и
-                    заботливого самоисследования.
-                </p>
-            </section>
+        <section className={cn(css.wrapper, 'full-bleed')}>
+            <h2 className={css.heading}>Преимущества ресурса</h2>
 
-            <section>
-                <h2>Для чего этот ресурс</h2>
-                <p>
-                    <DecorativeLogo />
-                    появилась из простого и очень человеческого запроса — иметь
-                    место, куда можно прийти в любой момент жизни. Без
-                    необходимости что-то объяснять. Без ожиданий. Без роли
-                    «собранной», «сильной» или «знающей».
-                </p>
-                <p>
-                    Иногда хочется поговорить с близкими — и это ценно. Однако
-                    иногда важнее сначала услышать себя. В тишине. В собственном
-                    темпе. Без чужих интерпретаций и советов, даже самых
-                    заботливых.
-                </p>
-            </section>
+            <ul>
+                {items.map((item, idx) => (
+                    <li
+                        key={idx}
+                        className={css.listItem}
+                    >
+                        <h3>{`${idx + 1}. ${item.title}`}</h3>
+                        <p>{item.description}</p>
+                    </li>
+                ))}
+            </ul>
 
-            <section>
-                <h2>
-                    Что есть в <DecorativeLogo />
-                </h2>
-                <p>
-                    Я создала <DecorativeLogo />
-                    как пространство, которого мне самой когда-то не хватало.
-                    Место между рациональным анализом и интуитивным
-                    чувствованием. Между логикой и образами. Между вопросом и
-                    тем тихим ответом, который обычно звучит внутри, если дать
-                    ему время.
-                </p>
-                <p>
-                    Это онлайн-пространство, куда возможно прийти, когда вокруг
-                    слишком шумно или, наоборот, слишком пусто. Когда хочется
-                    уюта, ясности и ощущения, что с тобой всё в порядке.
-                </p>
-
-                <p>На портале собраны разные форматы:</p>
-                <ul>
-                    <li>
-                        <strong>Работа с образами и метафорами</strong> — способ
-                        обойти привычное мышление и услышать то, что обычно
-                        остается «между строк».
-                    </li>
-                    <li>
-                        <strong>Карточные и символьные форматы</strong> —
-                        используются как инструмент случайного выбора и фокуса
-                        внимания, чтобы запустить размышления и посмотреть на
-                        вопрос под новым углом.
-                    </li>
-                    <li>
-                        <strong>Практики самонаблюдения</strong> — короткие
-                        упражнения, которые возвращают контакт с собой и своим
-                        состоянием.
-                    </li>
-                    <li>
-                        <strong>Личный опыт автора и команды</strong> — полезные
-                        инструменты, которые помогли нам или вам.
-                    </li>
-                    <li>
-                        <strong>Аффирмации и тексты для настроя</strong> — чтобы
-                        поддержать себя и задать вектор.
-                    </li>
-                    <li>
-                        <strong>Структурные шаблоны</strong> — помогают спокойно
-                        разложить ситуацию по полочкам, увидеть варианты и
-                        опоры, когда в голове хаос.
-                    </li>
-                    <li>
-                        <strong>Подборки полезных ресурсов</strong> — идеи и
-                        ссылки для решения различных внутренних задач.
-                    </li>
-                    <li>
-                        <strong>Аудио-послания</strong> и многое другое.
-                    </li>
-                </ul>
-
-                <p>Ресурс постоянно пополняется и расширяется.</p>
-                <p>
-                    <DecorativeLogo />
-                    верит, что здесь вы сможете нащупать внутренний свет —
-                    маленький, но настоящий. Тот самый, который появляется,
-                    когда становится чуть яснее, чуть спокойнее и чуть ближе к
-                    себе.
-                </p>
-            </section>
-
-            <section>
-                <h2>Важные принципы</h2>
-                <ul>
-                    <li>
-                        Лаванда — это{' '}
-                        <strong>развлекательный и рефлексивный контент</strong>.
-                    </li>
-                    <li>
-                        Ресурс не является медицинской, психологической или иной
-                        профессиональной помощью.
-                    </li>
-                    <li>
-                        Материалы не содержат рекомендаций, обязательных к
-                        исполнению.
-                    </li>
-                    <li>Пользователь сам делает выводы и принимает решения.</li>
-                </ul>
-                <p>
-                    При создании материалов использовались современные подходы к
-                    работе с мышлением, вниманием и интерпретацией опыта. Часть
-                    формулировок и трактовок разрабатывалась при участии
-                    специалистов в области психотерапии, однако платформа{' '}
-                    <strong>не заменяет работу со специалистом</strong>.
-                </p>
-            </section>
-
-            <section>
-                <h2>Для кого Лаванда</h2>
-                <p>Для тех, кто:</p>
-                <ul>
-                    <li>устал от давления извне;</li>
-                    <li>нуждается в дополнительной опоре;</li>
-                    <li>хочет лучше понимать себя;</li>
-                    <li>ищет безопасное пространство для размышлений;</li>
-                    <li>любит мягкие, эстетичные форматы;</li>
-                    <li>
-                        воспринимает инструменты как повод подумать, а не как
-                        готовый ответ.
-                    </li>
-                </ul>
-            </section>
-
-            <section>
-                <h2>Небольшое напоминание</h2>
-                <p>
-                    Всё, что вы находите в <DecorativeLogo />— это приглашение к
-                    размышлению, игре с образами и внимательному диалогу с
-                    собой. Используйте материалы так, как подходит именно вам, и
-                    берите из них только то, что откликается.
-                </p>
-                <p>
-                    Добро пожаловать в <DecorativeLogo />!
-                </p>
-            </section>
-        </div>
+            <BgLoader
+                prtClass={css.fgParent}
+                imgClass={css.fgImage}
+                dk={BgDkWebp}
+                dk2x={BgDk2xWebp}
+                dk3x={BgDk3xWebp}
+                dkAvif={BgDkAvif}
+                dkAvif2x={BgDk2xAvif}
+                dkAvif3x={BgDk3xAvif}
+                dkTiny={BgDkTinyWebp}
+                tb={BgTbWebp}
+                tb2x={BgTb2xWebp}
+                tb3x={BgTb3xWebp}
+                tbAvif={BgTbAvif}
+                tbAvif2x={BgTb2xAvif}
+                tbAvif3x={BgTb3xAvif}
+                tbTiny={BgTbTinyWebp}
+                mb={BgMbWebp}
+                mb2x={BgMb2xWebp}
+                mb3x={BgMb3xWebp}
+                mbAvif={BgMbAvif}
+                mbAvif2x={BgMb2xAvif}
+                mbAvif3x={BgMb3xAvif}
+                mbTiny={BgMbTinyWebp}
+            />
+        </section>
     );
 };
 
 export default IntroSection;
-
-const DecorativeLogo = () => {
-    return (
-        <span className={css.decorativeName}>
-            Lavanda<sup>Kim</sup>
-        </span>
-    );
-};

@@ -16,7 +16,7 @@ const About = () => {
 
             <HeroSection />
 
-            {/* <IntroSection /> */}
+            <IntroSection />
 
             <AboutSection />
         </AppLayout>

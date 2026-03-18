@@ -1,57 +1,27 @@
 @use 'core' as u;
 
 .wrapper {
-    @include u.px(mb, 37, 74, 67, 68);
-
-    p,
-    ul {
-        margin-bottom: 1.5em;
-    }
-    p + ul {
-        margin-top: -1.5em;
-    }
-
-    li {
-        list-style: disc inside;
-    }
-
-    h2 {
-        margin-bottom: 1.2em;
-        font-size: 1.5rem;
-        @include u.mw(sm) {
-            font-size: 2rem;
-            margin-bottom: 1em;
-        }
-    }
-
-    @include u.mw(sm) {
-        max-width: 90%;
-        margin-inline: auto;
-    }
-    @include u.mw(md) {
-        max-width: 80%;
-    }
+    position: relative;
+    color: white;
+    @include u.px(pb, 52, 71, 71, 73);
+    @include u.px(px, 14, 55, 102, 275);
+    @include u.px(pt, 49, 63, 94, 109);
 }
 
-.logo {
-    display: inline-block;
-    height: 1.75rem;
-    transform: translateY(25%);
-    width: auto;
+.heading {
+    color: white;
+    text-align: center;
+    @include u.px(mb, 22, 45, 65, 83);
 }
 
-.logoLarge {
-    height: 2.75rem;
-    margin-left: 0.15em;
+.fgParent {
+    position: absolute;
+    inset: 0;
 }
 
-.decorativeName {
-    font-weight: 600;
-    margin-right: 0.5ch;
-    color: u.clr('primary', 'strong');
+.fgImage {
+    object-position: top;
+}
 
-    sup {
-        font-size: 0.6em;
-        margin-left: 0.1em;
-    }
+.listItem {
 }
