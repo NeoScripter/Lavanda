@@ -150,12 +150,26 @@ export default function BgLoader({
                     class={cn(isLoading && css.skeleton)}
                 ></div>
 
-                <img
-                    onLoad={() => setIsLoading(false)}
-                    src={tinyMobile}
-                    alt={alt}
-                    class={cn(css.image, imgClass)}
-                />
+                <picture
+                    aria-hidden="true"
+                    class={cn(css.picture, imgClass)}
+                >
+                    <source
+                        srcSet={tinyDesktop}
+                        media={`(min-width: ${tabletMinWidth}px)`}
+                    />
+                    <source
+                        srcSet={tinyTablet}
+                        media={`(min-width: ${mbMinWidth}px)`}
+                    />
+
+                    <img
+                        onLoad={() => setIsLoading(false)}
+                        src={tinyMobile}
+                        alt={alt}
+                        class={cn(css.image, imgClass)}
+                    />
+                </picture>
             </div>
         </div>
     );
