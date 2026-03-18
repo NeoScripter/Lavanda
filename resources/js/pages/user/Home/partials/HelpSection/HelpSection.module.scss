@@ -1,9 +1,45 @@
 @use 'core' as u;
 
 .wrapper {
-    color: transparent;
     @include u.px(pb, 40, 52, 91, 93);
     @include u.px(pt, 69, 75, 54, 89);
     @include u.px(pl, 24, 62, 116, 259);
     @include u.px(pr, 24, 62, 80, 215);
+    @include u.px(gap, null, null, 35, 51);
+
+    @include u.mw(md) {
+        display: flex;
+    }
+}
+
+.content {
+    > * {
+        @include u.px(mb, 25, 30, 40, 40);
+    }
+}
+
+.heading {
+    text-transform: uppercase;
+    @include u.px(mt, null, null, 40, 20);
+}
+
+.actions {
+    li {
+        list-style: decimal;
+        list-style-position: inside;
+    }
+}
+
+.fgLoader {
+    display: none;
+    flex-shrink: 0;
+    @include u.px(w, null, null, 444, 444);
+
+    @include u.mw(md) {
+        display: flex;
+    }
+}
+
+.signupBtn {
+    @include u.px(mt, 50, 50, 50, 50);
 }
