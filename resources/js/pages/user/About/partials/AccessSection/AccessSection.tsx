@@ -1,10 +1,12 @@
 import { useAuthModal } from '@/providers/AuthModalContext';
 import { cn } from '@/utils/cn';
-import { Link } from '@inertiajs/react';
+import { Link, usePage } from '@inertiajs/react';
 import css from './AccessSection.module.scss';
+import { Auth } from '@/types/auth';
 
 const AccessSection = () => {
     const { showLogin } = useAuthModal();
+    const { auth } = usePage<{auth: Auth}>().props;
     return (
         <section className={css.wrapper}>
             <div className={css.content}>
@@ -40,13 +42,13 @@ const AccessSection = () => {
                 </p>
             </div>
             <div className={css.btnWrapper}>
-                <button
+                {!auth.user && <button
                     onClick={showLogin}
                     type="button"
                     class={'primary-btn'}
                 >
                     Попробовать бесплатно
-                </button>
+                </button>}
                 <Link
                     href={route('home')}
                     class={cn('secondary-btn', css.neutralBtn)}
