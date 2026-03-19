@@ -63,7 +63,6 @@ const HeroSection = () => {
 
                 <p class={css.intro}>
                     Если такие вопросы вам знакомы - Вы в правильном месте.{' '}
-                    <br />{' '}
                     <span class="decorative-title">
                         Lavanda<sup>Kim</sup>
                     </span>
