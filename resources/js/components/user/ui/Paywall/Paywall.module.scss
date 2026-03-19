@@ -1,7 +1,7 @@
 @use 'core' as u;
 
 .wrapper {
-  color: u.clr('foreground', 'strong');
+    color: u.clr('foreground', 'strong');
     position: relative;
     margin-inline: auto;
     margin-top: 3.5rem;
@@ -71,4 +71,11 @@
     @include u.mw(sm) {
         width: 160px;
     }
+}
+
+.highlight {
+    display: block;
+    text-wrap: balance;
+    margin-top: 1em;
+    color: u.clr('primary', 'strong');
 }
