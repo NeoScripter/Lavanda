@@ -1,0 +1,21 @@
+@use 'core' as u;
+
+.wrapper {
+    @include u.px(mt, null, null, 130, 149);
+    margin-bottom: 11rem;
+    @include u.px(mb, null, 173, 40, 70);
+    text-align: center;
+}
+
+.neutralBtn {
+    margin-inline: auto;
+    background-color: transparent;
+    @include u.px(mt, 20, 43, 50, 70);
+}
+
+.content {
+    max-width: 85ch;
+    margin-inline: auto;
+    text-align: center;
+    text-wrap: balance;
+}

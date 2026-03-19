@@ -13,6 +13,8 @@
 
 .content {
     > * {
+        margin-inline: auto;
+        max-width: 85ch;
         @include u.px(mb, 25, 25, 30, 35);
     }
 }

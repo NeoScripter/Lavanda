@@ -52,7 +52,7 @@ class HandleInertiaRequests extends Middleware
                 'hasPremiumAccess' => in_array($request->route()?->getName(), $exemptRoutes, true)
                     || Cache::flexible(
                         'premium-access',
-                        [5, 10],
+                        [1, 2],
                         fn () => Gate::check('premium-access')
                     ),
             ],

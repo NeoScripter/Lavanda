@@ -5,6 +5,7 @@ import css from './About.module.scss';
 import HeroSection from './partials/HeroSection';
 import IntroSection from './partials/IntroSection';
 import AccessSection from './partials/AccessSection';
+import LearnMoreSection from './partials/LearnMoreSection';
 
 const About = () => {
     return (
@@ -22,6 +23,8 @@ const About = () => {
             <AccessSection />
 
             <AboutSection />
+
+            <LearnMoreSection />
         </AppLayout>
     );
 };
