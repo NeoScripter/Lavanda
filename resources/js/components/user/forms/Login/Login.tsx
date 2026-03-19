@@ -3,7 +3,9 @@ import { LoaderCircle } from 'lucide-preact';
 
 import FormLayout from '@/layouts/user/FormLayout/FormLayout';
 import { useAuthModal } from '@/providers/AuthModalContext';
+import { cn } from '@/utils/cn';
 import { TargetedEvent } from 'preact';
+import NoticeIcon from '../../ui/NoticeIcon/NoticeIcon';
 import Input from '../Input/Input';
 import InputError from '../InputError/InputError';
 import Label from '../Label/Label';
@@ -41,7 +43,7 @@ export default function Login() {
     return (
         <FormLayout
             heading="Добро пожаловать!"
-            intro="Для доступа ко всем разделам ресурса, пожалуйста, войдите в свой аккаунт."
+            intro="Для доступа ко всем разделам ресурса, пожалуйста, войдите."
         >
             <form
                 className={css.wrapper}
@@ -74,17 +76,27 @@ export default function Login() {
                     {processing && <LoaderCircle />}
                     Войти
                 </button>
-                <div>
+                <div className={css.notice}>
+                    <NoticeIcon />
                     <span>
-                        Если у вас еще нет личного кабинета, пожалуйста,
+                        Впервые на сайте? Пройдите
                         <button
                             type="button"
                             onClick={handleClick}
                         >
-                            {' '}
-                            зарегистрируйтесь.
-                        </button>
+                            экспресс регистрацию
+                        </button>{' '}
+                        за 1 минуту и получите полный доступ ко всем разделам на
+                        24 часа
                     </span>
+
+                    <button
+                        type="button"
+                        onClick={handleClick}
+                        class={cn('secondary-btn', css.signupBtn)}
+                    >
+                        Зарегистрироваться
+                    </button>
                 </div>
             </form>
         </FormLayout>

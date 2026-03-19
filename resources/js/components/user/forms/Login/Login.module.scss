@@ -1,2 +1,31 @@
 @use 'core' as u;
 
+.notice {
+    border: 1px solid u.clr('primary', 'strong');
+    border-radius: 0.75rem;
+    max-width: 25rem !important;
+    margin-inline: auto;
+    padding: 2rem 1rem 1.5rem;
+    position: relative;
+    margin-top: 2rem;
+    text-wrap: balance;
+    @include u.mw(sm) {
+        margin-top: 3rem;
+        font-size: 1rem !important;
+        max-width: 35rem !important;
+        padding: 3rem 1rem 2rem;
+    }
+}
+
+.signupBtn {
+    margin-inline: auto !important;
+    margin-top: 1rem;
+    width: fit-content;
+    text-decoration: none !important;
+    display: flex !important;
+
+    &:hover,
+    &:focus-visible {
+        color: white !important;
+    }
+}

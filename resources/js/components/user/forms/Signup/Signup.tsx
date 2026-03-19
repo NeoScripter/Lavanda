@@ -4,6 +4,7 @@ import { LoaderCircle } from 'lucide-preact';
 import FormLayout from '@/layouts/user/FormLayout/FormLayout';
 import { useAuthModal } from '@/providers/AuthModalContext';
 import { TargetedEvent } from 'preact';
+import NoticeIcon from '../../ui/NoticeIcon';
 import Checkbox from '../Checkbox/Checkbox';
 import Input from '../Input/Input';
 import InputError from '../InputError/InputError';
@@ -58,10 +59,15 @@ export default function Signup() {
     };
 
     return (
-        <FormLayout
-            heading="Регистрация"
-            intro="Пожалуйста, введите ваши данные для создания аккаунта"
-        >
+        <FormLayout heading="Регистрация">
+            <div className={css.notice}>
+                <NoticeIcon />
+                <span>
+                    Пройдите экспресс регистрацию за 1 минуту и получите полный
+                    доступ ко всем разделам на 24 часа
+                </span>
+            </div>
+
             <form onSubmit={submit}>
                 <div>
                     <Label htmlFor="email">Имя</Label>
@@ -159,18 +165,6 @@ export default function Signup() {
                         политику конфиденциальности
                     </Link>
                 </Checkbox>
-
-                <div>
-                    <span>
-                        Уже зарегистрированы?
-                        <button
-                            onClick={handleClick}
-                            type="button"
-                        >
-                            Войти
-                        </button>
-                    </span>
-                </div>
             </form>
         </FormLayout>
     );
