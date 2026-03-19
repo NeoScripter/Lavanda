@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\RegisteredUserRequest;
+use App\Models\Subscription;
 use App\Models\User;
 use App\Services\OtpService;
 use Illuminate\Auth\Events\Registered;
@@ -30,6 +31,13 @@ class RegisteredUserController extends Controller
             'email' => $validated['email'],
             'gender' => $validated['gender'],
             'birthday' => $validated['birthday'],
+        ]);
+
+        Subscription::create([
+            'user_id' => $user->id,
+            'title' => 'Доступ на 24 часа',
+            'starts_at' => now(),
+            'ends_at' => now()->addDay(),
         ]);
 
         event(new Registered($user));
