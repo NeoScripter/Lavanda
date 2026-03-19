@@ -76,7 +76,7 @@ const HeroSection = () => {
                         prefetch
                         class={'primary-btn'}
                     >
-                        Купить подписку
+                        Получить доступ
                     </Link>
                     <Link
                         href={route('about')}
@@ -84,7 +84,7 @@ const HeroSection = () => {
                         class={css.infoBtn}
                     >
                         <PlayBtn />
-                        <span class={css.underline}>Узнать больше</span>
+                        <span class={css.underline}>Подробности о ресурсе</span>
                     </Link>
                 </div>
             </div>

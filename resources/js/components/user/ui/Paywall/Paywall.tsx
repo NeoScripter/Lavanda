@@ -37,7 +37,7 @@ const Paywall: FC<NodeProps> = ({ className }) => {
                 tinyImg={ForegroundDkTinyWebp}
             />
             <p>
-                Данный раздел доступен только по подписке.
+                Этот раздел открывается после регистрации
                 <br />{' '}
                 {!auth.user && (
                     <>
