@@ -22,7 +22,8 @@
         color: white;
         background-color: u.clr('primary', 'muted');
 
-        button, a {
+        button,
+        a {
             --color: white;
             --bg-color: #{u.clr('primary', 'muted')};
         }
@@ -31,7 +32,8 @@
             color: u.clr('primary', 'strong');
             background-color: transparent;
 
-            button, a {
+            button,
+            a {
                 --color: #{u.clr('primary', 'strong')};
                 --bg-color: white;
             }
@@ -44,7 +46,8 @@
     background-color: white;
     background-color: u.opacify(white, 75);
 
-    button, a {
+    button,
+    a {
         --color: #{u.clr('primary', 'strong')};
         --bg-color: white;
         background-color: transparent;
@@ -161,3 +164,13 @@
     }
 }
 
+.intro2 {
+    @include u.mw(md) {
+        color: white !important;
+        h3,
+        a {
+            color: white;
+            border-color: white;
+        }
+    }
+}
