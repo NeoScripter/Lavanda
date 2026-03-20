@@ -14,7 +14,7 @@ const Paywall: FC<NodeProps> = ({ className }) => {
     const { auth } = usePage<{
         auth: Auth;
     }>().props;
-    const { showLogin } = useAuthModal();
+    const { showLogin, showSignup } = useAuthModal();
 
     const isLoggedIn = auth.user != null;
 
@@ -51,22 +51,32 @@ const Paywall: FC<NodeProps> = ({ className }) => {
                 )}
             </p>
 
-            <button
-                onClick={handleClick}
-                className={cn('primary-btn', css.actionBtn)}
-            >
-                {!isLoggedIn ? (
-                    <span>
-                        <CircleUser />
-                        Войти
-                    </span>
-                ) : (
-                    <span>
-                        <CalendarCheck />
-                        Выбрать тариф
-                    </span>
+            <div className={css.btnWrapper}>
+                {!isLoggedIn && (
+                    <button
+                        onClick={showSignup}
+                        className={cn('secondary-btn', css.signupBtn)}
+                    >
+                        Зарегистрироваться
+                    </button>
                 )}
-            </button>
+                <button
+                    onClick={handleClick}
+                    className={cn('primary-btn', css.actionBtn)}
+                >
+                    {!isLoggedIn ? (
+                        <span>
+                            <CircleUser />
+                            Войти
+                        </span>
+                    ) : (
+                        <span>
+                            <CalendarCheck />
+                            Выбрать тариф
+                        </span>
+                    )}
+                </button>
+            </div>
         </div>
     );
 };

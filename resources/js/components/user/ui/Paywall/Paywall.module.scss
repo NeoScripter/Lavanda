@@ -42,7 +42,6 @@
     padding-inline: 1.5em;
     padding-block: 1em;
     border-radius: 6rem;
-    margin-inline: auto;
 
     @include u.mw(md) {
         margin-top: 2rem;
@@ -57,6 +56,18 @@
         svg {
             width: 1.25em;
         }
+    }
+}
+
+.signupBtn {
+    margin-top: 1.5rem;
+    font-size: 0.85em;
+    padding-inline: 1.5em;
+    padding-block: 1em;
+    border-radius: 6rem;
+
+    @include u.mw(md) {
+        margin-top: 2rem;
     }
 }
 
@@ -78,4 +89,11 @@
     text-wrap: balance;
     margin-top: 1em;
     color: u.clr('primary', 'strong');
+}
+
+.btnWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
 }
