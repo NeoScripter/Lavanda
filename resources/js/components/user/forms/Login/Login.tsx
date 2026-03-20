@@ -1,11 +1,11 @@
 import { useForm } from '@inertiajs/react';
 import { LoaderCircle } from 'lucide-preact';
 
+import Banner from '@/components/shared/ui/Banner/Banner';
 import FormLayout from '@/layouts/user/FormLayout/FormLayout';
 import { useAuthModal } from '@/providers/AuthModalContext';
 import { cn } from '@/utils/cn';
 import { TargetedEvent } from 'preact';
-import NoticeIcon from '../../ui/NoticeIcon/NoticeIcon';
 import Input from '../Input/Input';
 import InputError from '../InputError/InputError';
 import Label from '../Label/Label';
@@ -76,8 +76,7 @@ export default function Login() {
                     {processing && <LoaderCircle />}
                     Войти
                 </button>
-                <div className={css.notice}>
-                    <NoticeIcon />
+                <Banner className={css.banner}>
                     <span>
                         Впервые на сайте? Пройдите
                         <button
@@ -97,7 +96,7 @@ export default function Login() {
                     >
                         Зарегистрироваться
                     </button>
-                </div>
+                </Banner>
             </form>
         </FormLayout>
     );

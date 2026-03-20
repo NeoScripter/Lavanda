@@ -1,19 +1,21 @@
-import Star from '@/assets/svgs/star.svg';
 import { useAuthModal } from '@/providers/AuthModalContext';
 import { Auth } from '@/types/auth';
 import { Plan } from '@/types/model';
 import { NodeProps } from '@/types/nodeProps';
 import { cn } from '@/utils/cn';
 import { router, usePage } from '@inertiajs/react';
+import { Heart } from 'lucide-preact';
 import { ComponentChildren } from 'preact';
 import { FC } from 'preact/compat';
 import css from './PlanCard.module.scss';
 
-const PlanCard: FC<NodeProps<{ plan: Plan; children?: ComponentChildren }>> = ({
-    plan,
-    className,
-    children,
-}) => {
+const PlanCard: FC<
+    NodeProps<{
+        plan: Plan;
+        isHighlighted?: boolean;
+        children?: ComponentChildren;
+    }>
+> = ({ plan, className, children, isHighlighted = false }) => {
     const { auth } = usePage<{ auth: Auth }>().props;
 
     const { showLogin } = useAuthModal();
@@ -27,16 +29,22 @@ const PlanCard: FC<NodeProps<{ plan: Plan; children?: ComponentChildren }>> = ({
     };
 
     return (
-        <article class={cn(css.wrapper, className)}>
+        <article
+            class={cn(
+                css.wrapper,
+                isHighlighted && css.wrapperHighlighted,
+                className,
+            )}
+        >
+            {isHighlighted && (
+                <div className={css.heartIcon}>
+                    <Heart fill="white" />
+                </div>
+            )}
             <header>
                 <h3 class={css.title}>{plan.title}</h3>
 
-                {/* <p class={css.duration}> */}
-                {/*     <span>Доступ на </span> */}
-                {/*     <time dateTime={`P${plan.durationInDays}D`}> */}
-                {/*         {plan.humanDuration} */}
-                {/*     </time> */}
-                {/* </p> */}
+                <p className={css.overview}>{plan.overview}</p>
 
                 <p class={css.price}>
                     <data value={plan.price}>{plan.price}₽</data>
@@ -47,7 +55,7 @@ const PlanCard: FC<NodeProps<{ plan: Plan; children?: ComponentChildren }>> = ({
                 onClick={handleClick}
                 class={cn('primary-btn', css.button)}
             >
-                Оформить подписку
+                Получить доступ
             </button>
 
             <section aria-labelledby={`perks-${plan.id}`}>
@@ -58,27 +66,13 @@ const PlanCard: FC<NodeProps<{ plan: Plan; children?: ComponentChildren }>> = ({
                     Преимущества тарифа
                 </h5>
 
-                {Array.isArray(plan.perks) && (
-                    <ul class={css.perks}>
-                        {plan.perks.map((perk) => (
-                            <li
-                                key={perk}
-                                class={css.perk}
-                            >
-                                <span
-                                    class={css.icon}
-                                    aria-hidden="true"
-                                >
-                                    <img
-                                        src={Star}
-                                        alt=""
-                                    />
-                                </span>
-                                <span>{perk}</span>
-                            </li>
-                        ))}
-                    </ul>
-                )}
+                <p class={css.perks}>
+                    {' '}
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Animi, cumqueLorem ipsum dolor sit amet consectetur
+                    adipisicing elit. Animi, cumqueLorem ipsum dolor sit amet
+                    consectetur adipisicing elit. Animi, cumque???{plan.perks}
+                </p>
             </section>
             {children}
         </article>

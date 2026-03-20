@@ -1,4 +1,6 @@
+import Banner from '@/components/shared/ui/Banner/Banner';
 import PlanCard from '@/components/user/ui/PlanCard/PlanCard';
+import { useAuthModal } from '@/providers/AuthModalContext';
 import { Plan } from '@/types/model';
 import { NodeProps } from '@/types/nodeProps';
 import { cn } from '@/utils/cn';
@@ -12,13 +14,15 @@ const PlanPicker: FC<NodeProps> = ({ children, className }) => {
         activeUsers: number;
     }>().props;
 
+    const { showSignup } = useAuthModal();
+
     return (
         <section class={cn(css.wrapper, className)}>
             <div class={css.textWrapper}>
                 <h2 class={css.heading}>Тарифы</h2>
                 <p class={css.description}>
-                    Сделайте шаг к себе — выберите подписку и получайте
-                    поддержку тогда, когда она особенно нужна.
+                    Иногда одной подсказки достаточно, чтобы стало спокойнее.
+                    Возможно, сейчас именно тот момент.
                 </p>
                 {activeUsers > 10 && (
                     <p class={css.activeUsersNote}>
@@ -27,16 +31,45 @@ const PlanPicker: FC<NodeProps> = ({ children, className }) => {
                 )}
             </div>
 
+            <Banner className={css.infoBanner}>
+                <p>
+                    Важно: после{' '}
+                    <button
+                        onClick={showSignup}
+                        type="button"
+                        className={css.inlineBtn}
+                    >
+                        экспресс-регистрации
+                    </button>{' '}
+                    у вас уже есть{' '}
+                    <strong>24 часа полного доступа бесплатно.</strong>
+                </p>
+                <p>
+                    <strong>
+                        Никаких автоматический продлений или списаний,
+                    </strong>{' '}
+                    вы управляете доступом самостоятельно.
+                </p>
+            </Banner>
+
             <ul class={css.plans}>
-                {plans.map((plan) => (
+                {plans.map((plan, idx) => (
                     <PlanCard
                         key={plan.id}
                         plan={plan}
+                        isHighlighted={idx === 1}
                     />
                 ))}
             </ul>
 
             {children}
+
+            <p className={css.footnote}>
+                Вы можете оплатить картой любой страны (РФ, СНГ, ЕС и др.).
+                <br />
+                Сумма автоматически конвертируется банком в вашу валюту по
+                актуальному курсу.
+            </p>
         </section>
     );
 };

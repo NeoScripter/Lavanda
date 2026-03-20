@@ -1,0 +1,37 @@
+@use 'core' as u;
+
+.wrapper {
+    position: relative;
+    margin-inline: auto;
+    text-align: center;
+    color: u.clr('primary', 'strong');
+    padding: 2.5rem 1.5rem 1rem;
+    border-radius: 1rem;
+    font-size: 1.25rem;
+    text-wrap: balance;
+    border: 2px solid u.clr('primary', 'strong');
+    max-width: 49rem;
+
+    > * {
+        margin-bottom: 1rem;
+    }
+}
+
+.icon {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: u.clr('primary', 'strong');
+
+    @include u.size(54px);
+
+    svg {
+        color: white;
+        @include u.size(50%);
+    }
+}

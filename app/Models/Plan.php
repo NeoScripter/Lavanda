@@ -14,10 +14,6 @@ class Plan extends Model
     /** @use HasFactory<PlanFactory> */
     use HasFactory;
 
-    protected $casts = [
-        'perks' => 'array',
-    ];
-
     protected function humanDuration(): Attribute
     {
         return Attribute::make(

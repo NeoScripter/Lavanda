@@ -1,7 +1,7 @@
 @use 'core' as u;
 
 .wrapper {
-    @include u.px(mb, 77, 153, 113, 100);
+    @include u.px(mb, 77, 153, 240, 250);
     position: relative;
     isolation: isolate;
 }
@@ -40,3 +40,18 @@
     }
 }
 
+.footnote {
+    @include u.px(mt, 76, 76, 126, 126);
+    text-align: center;
+}
+
+.infoBanner {
+    @include u.px(mb, 57, 74, 77, 78);
+}
+
+.inlineBtn {
+    display: inline;
+    font-size: 1em;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+}

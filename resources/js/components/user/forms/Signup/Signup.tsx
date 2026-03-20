@@ -11,6 +11,7 @@ import InputError from '../InputError/InputError';
 import Label from '../Label/Label';
 import RadioInput from '../RadioInput/RadioInput';
 import css from './Signup.module.scss';
+import Banner from '@/components/shared/ui/Banner/Banner';
 
 const genders = [
     { label: 'Не выбран', value: null },
@@ -60,13 +61,12 @@ export default function Signup() {
 
     return (
         <FormLayout heading="Регистрация">
-            <div className={css.notice}>
-                <NoticeIcon />
+            <Banner className={css.banner}>
                 <span>
                     Пройдите экспресс регистрацию за 1 минуту и получите полный
                     доступ ко всем разделам на 24 часа
                 </span>
-            </div>
+            </Banner>
 
             <form onSubmit={submit}>
                 <div>

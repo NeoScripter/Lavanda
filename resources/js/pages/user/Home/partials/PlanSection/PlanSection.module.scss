@@ -53,7 +53,7 @@
 .decorPlans3 {
     display: none;
 
-    @include u.mw(sm) {
+    @include u.mw(md) {
         display: block;
         position: absolute;
         z-index: 20;
