@@ -33,16 +33,25 @@
 .fgLoader {
     width: 90%;
     margin-right: auto;
+    @include u.px(w, null, null, 609, 700);
 
     @include u.mw(md) {
-        width: auto;
         position: relative;
+        height: 720px;
         left: -10%;
+    }
+    @include u.mw(lg) {
+        object-fit: contain;
+        height: 820px;
+        left: 0%;
     }
 }
 .fgImage {
     @include u.mw(md) {
         object-position: bottom;
+    }
+    @include u.mw(lg) {
+        object-fit: contain;
     }
 }
 
