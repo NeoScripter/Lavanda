@@ -76,7 +76,7 @@ const HeroSection: FC<AssymetricHeroSectionProps> = ({
                         prefetch
                         class={'primary-btn'}
                     >
-                        Купить подписку
+                        Получить доступ
                     </Link>
                 </div>
             </div>

@@ -69,7 +69,7 @@ const HeroSection: FC<AssymetricHeroSectionProps> = ({
                             href={route('plans')}
                             class={'primary-btn'}
                         >
-                            Купить подписку
+                            Получить доступ
                         </Link>
                     </div>
                 )}
