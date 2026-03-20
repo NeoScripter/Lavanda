@@ -67,11 +67,7 @@ const PlanCard: FC<
                 </h5>
 
                 <p class={css.perks}>
-                    {' '}
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Animi, cumqueLorem ipsum dolor sit amet consectetur
-                    adipisicing elit. Animi, cumqueLorem ipsum dolor sit amet
-                    consectetur adipisicing elit. Animi, cumque???{plan.perks}
+                    {plan.perks}
                 </p>
             </section>
             {children}

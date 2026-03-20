@@ -12,14 +12,18 @@ class HomeController extends Controller
 {
     public function __invoke()
     {
-        $activeUsers = User::query()->whereHas('subscription', fn($q) => $q
+        $activeUsers = User::query()->whereHas('subscription', fn ($q) => $q
             ->where('ends_at', '>', now()))
             ->count();
 
         return Inertia::render('user/Home/Home', [
-            'plans' => Plan::query()->orderBy('price')
-                ->get()
-                ->toResourceCollection(),
+            'plans' => Cache::flexible(
+                'plans',
+                [60, 600],
+                fn () => Plan::query()->orderBy('price')
+                    ->get()
+                    ->toResourceCollection()
+            ),
             'activeUsers' => $activeUsers,
         ]);
     }
