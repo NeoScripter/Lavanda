@@ -15,7 +15,7 @@ export const footerNavLinks: FooterNavLinkType[] = [
     },
     {
         id: 'subscription',
-        title: 'Подписка',
+        title: 'Доступ',
         description: 'Выберите подходящий тариф. Поддержка всегда под рукой.',
         url: '/plans',
     },
