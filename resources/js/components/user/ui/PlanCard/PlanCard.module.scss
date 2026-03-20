@@ -12,8 +12,9 @@
 
 .title {
     font-weight: bold;
-    margin-bottom: 0.5em;
+    /* margin-bottom: 0.5em; */
     @include u.rm(text, 19, 19, 19, 24);
+    @include u.px(mb, 17, 17, 17, 17);
 }
 
 .duration {

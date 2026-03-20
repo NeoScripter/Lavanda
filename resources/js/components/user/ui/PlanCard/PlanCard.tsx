@@ -31,12 +31,12 @@ const PlanCard: FC<NodeProps<{ plan: Plan; children?: ComponentChildren }>> = ({
             <header>
                 <h3 class={css.title}>{plan.title}</h3>
 
-                <p class={css.duration}>
-                    <span>Доступ на </span>
-                    <time dateTime={`P${plan.durationInDays}D`}>
-                        {plan.humanDuration}
-                    </time>
-                </p>
+                {/* <p class={css.duration}> */}
+                {/*     <span>Доступ на </span> */}
+                {/*     <time dateTime={`P${plan.durationInDays}D`}> */}
+                {/*         {plan.humanDuration} */}
+                {/*     </time> */}
+                {/* </p> */}
 
                 <p class={css.price}>
                     <data value={plan.price}>{plan.price}₽</data>
