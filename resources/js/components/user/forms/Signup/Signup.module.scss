@@ -31,7 +31,11 @@
 .banner {
     font-size: 1rem;
     font-weight: 600;
-    margin-inline: 4rem !important;
     margin-bottom: 2.5rem;
     margin-top: 3rem;
+    margin-inline: 1rem !important;
+
+    @include u.mw(sm) {
+        margin-inline: 4rem !important;
+    }
 }

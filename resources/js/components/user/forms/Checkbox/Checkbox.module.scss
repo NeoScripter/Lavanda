@@ -5,7 +5,10 @@
     flex-direction: column;
     gap: 0.5rem;
     margin-inline: auto;
-    max-width: 80%;
+
+    @include u.mw(sm) {
+        max-width: 80%;
+    }
 }
 
 // Container for input, custom checkbox, and label
