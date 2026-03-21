@@ -49,6 +49,10 @@
     text-wrap: balance;
     @include u.rm(text, 18, 18, 18, 18);
     @include u.px(mb, 17, 17, 17, 17);
+
+    @include u.mw(md) {
+        max-width: 90%;
+    }
 }
 
 .price {
@@ -65,7 +69,8 @@
 }
 
 .perks {
-    text-align: left;
+    text-align: center;
+    text-wrap: pretty;
     width: 90%;
     margin-inline: auto;
     @include u.rm(text, 16, 16, 16, 16);
