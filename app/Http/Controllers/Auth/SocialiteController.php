@@ -9,24 +9,23 @@ use Laravel\Socialite\Socialite;
 
 class SocialiteController extends Controller
 {
-    public function store()
+    public function __invoke(string $provider)
     {
-        $googleUser = Socialite::driver('google')->user();
+        $socialUser = Socialite::driver($provider)->user();
+        $column = $provider . '_id';
 
-        $user = User::where('email', $googleUser->email)->first();
-
+        $user = User::where('email', $socialUser->email)->first();
         if ($user) {
-            $user->update(['google_id' => $googleUser->id]);
+            $user->update([$column => $socialUser->id]);
         } else {
             $user = User::create([
-                'name'      => $googleUser->name,
-                'email'     => $googleUser->email,
-                'google_id' => $googleUser->id,
+                'name'    => $socialUser->name,
+                'email'   => $socialUser->email,
+                $column   => $socialUser->id,
             ]);
         }
 
         Auth::login($user);
-
         return redirect('/');
     }
 }

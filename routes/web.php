@@ -77,13 +77,9 @@ Route::post('/pay', [ProdamusController::class, 'pay'])->name('pay');
 Route::get('/prodamus/success', [ProdamusController::class, 'success'])->name('payment.success');
 Route::post('/prodamus/webhook', [ProdamusController::class, 'webhook']);
 
-
-Route::middleware('guest')->group(function (): void {
-    Route::get('/auth/redirect', function () {
-        return Socialite::driver('google')->redirect();
-    });
-
-    Route::get('/auth/callback', [SocialiteController::class, 'store'])->name('socialite.callback');
+Route::get('/auth/{provider}/callback', SocialiteController::class);
+Route::get('/auth/{provider}/redirect', function (string $provider) {
+    return Socialite::driver($provider)->redirect();
 });
 
 require __DIR__ . '/auth.php';

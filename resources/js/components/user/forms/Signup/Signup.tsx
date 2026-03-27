@@ -2,6 +2,7 @@ import { Link, useForm } from '@inertiajs/react';
 import { LoaderCircle } from 'lucide-preact';
 
 import Google from '@/assets/images/shared/google-logo.webp';
+import Yandex from '@/assets/images/shared/yandex-logo.webp';
 import Banner from '@/components/shared/ui/Banner/Banner';
 import FormLayout from '@/layouts/user/FormLayout/FormLayout';
 import { useAuthModal } from '@/providers/AuthModalContext';
@@ -166,8 +167,10 @@ export default function Signup() {
                         политику конфиденциальности
                     </Link>
                 </Checkbox>
-
+            </form>
+            <div>
                 <AuthBtn
+                    key="google-btn"
                     className={css.googleAuthBtn}
                     href="/auth/redirect"
                 >
@@ -177,9 +180,23 @@ export default function Signup() {
                             alt=""
                         />
                     </figure>
-                    Войти через Google
+                    Войти через Гугл
                 </AuthBtn>
-            </form>
+
+                <AuthBtn
+                    key="yandex-btn"
+                    className={css.yandexAuthBtn}
+                    href="/yandex/redirect"
+                >
+                    <figure aria-hidden="true">
+                        <img
+                            src={Yandex}
+                            alt=""
+                        />
+                    </figure>
+                    Войти через Яндекс
+                </AuthBtn>
+            </div>
         </FormLayout>
     );
 }

@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
@@ -43,6 +44,7 @@ class AppServiceProvider extends ServiceProvider
         $this->configureMorphMap();
         $this->configureGates();
         $this->configureRateLimiting();
+        $this->configureEventListeners();
     }
 
     private function configureCommands(): void
@@ -90,15 +92,22 @@ class AppServiceProvider extends ServiceProvider
         });
     }
 
+    private function configureEventListeners(): void
+    {
+        Event::listen(function (\SocialiteProviders\Manager\SocialiteWasCalled $event) {
+            $event->extendSocialite('yandex', \SocialiteProviders\Yandex\Provider::class);
+        });
+    }
+
     private function configureRateLimiting(): void
     {
-        RateLimiter::for('otp-send', fn (Request $request) => Limit::perMinute(3)
-            ->by(strtolower($request->input('email') ?? 'guest').'|send'));
+        RateLimiter::for('otp-send', fn(Request $request) => Limit::perMinute(3)
+            ->by(strtolower($request->input('email') ?? 'guest') . '|send'));
 
-        RateLimiter::for('otp-verify', fn (Request $request) => Limit::perMinute(3)
-            ->by(strtolower($request->input('email') ?? 'guest').'|verify'));
+        RateLimiter::for('otp-verify', fn(Request $request) => Limit::perMinute(3)
+            ->by(strtolower($request->input('email') ?? 'guest') . '|verify'));
 
-        RateLimiter::for('otp-resend', fn (Request $request) => Limit::perMinute(3)
-            ->by(strtolower($request->input('email') ?? 'guest').'|resend'));
+        RateLimiter::for('otp-resend', fn(Request $request) => Limit::perMinute(3)
+            ->by(strtolower($request->input('email') ?? 'guest') . '|resend'));
     }
 }

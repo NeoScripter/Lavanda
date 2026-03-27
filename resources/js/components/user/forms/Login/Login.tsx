@@ -1,6 +1,8 @@
 import { useForm } from '@inertiajs/react';
 import { LoaderCircle } from 'lucide-preact';
 
+import Google from '@/assets/images/shared/google-logo.webp';
+import Yandex from '@/assets/images/shared/yandex-logo.webp';
 import Banner from '@/components/shared/ui/Banner/Banner';
 import FormLayout from '@/layouts/user/FormLayout/FormLayout';
 import { useAuthModal } from '@/providers/AuthModalContext';
@@ -10,7 +12,6 @@ import AuthBtn from '../../ui/AuthBtn';
 import Input from '../Input/Input';
 import InputError from '../InputError/InputError';
 import Label from '../Label/Label';
-import Google from '@/assets/images/shared/google-logo.webp'
 import css from './Login.module.scss';
 
 type LoginForm = {
@@ -81,13 +82,31 @@ export default function Login() {
                     </button>
 
                     <AuthBtn
+                        key="google-btn"
                         className={css.googleAuthBtn}
                         href="/auth/redirect"
                     >
                         <figure aria-hidden="true">
-                            <img src={Google} alt="" />
+                            <img
+                                src={Google}
+                                alt=""
+                            />
                         </figure>
-                        Войти через Google
+                        Войти через Гугл
+                    </AuthBtn>
+
+                    <AuthBtn
+                        key="yandex-btn"
+                        className={css.yandexAuthBtn}
+                        href="/yandex/redirect"
+                    >
+                        <figure aria-hidden="true">
+                            <img
+                                src={Yandex}
+                                alt=""
+                            />
+                        </figure>
+                        Войти через Яндекс
                     </AuthBtn>
                 </div>
 
