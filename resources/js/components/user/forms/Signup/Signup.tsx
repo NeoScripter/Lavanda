@@ -125,29 +125,15 @@ export default function Signup() {
                     label="Выберите пол"
                 />
 
-                <div>
-                    <button
-                        tabIndex={6}
-                        disabled={processing}
-                        type="submit"
-                        className="primary-btn"
-                    >
-                        {processing && <LoaderCircle />}
-                        Регистрация
-                    </button>
-                    <AuthBtn
-                        className={css.googleAuthBtn}
-                        href="/auth/redirect"
-                    >
-                        <figure aria-hidden="true">
-                            <img
-                                src={Google}
-                                alt=""
-                            />
-                        </figure>
-                        Войти через Google
-                    </AuthBtn>
-                </div>
+                <button
+                    tabIndex={6}
+                    disabled={processing}
+                    type="submit"
+                    className="primary-btn"
+                >
+                    {processing && <LoaderCircle />}
+                    Регистрация
+                </button>
 
                 <Checkbox
                     checked={data.policy}
@@ -180,6 +166,19 @@ export default function Signup() {
                         политику конфиденциальности
                     </Link>
                 </Checkbox>
+
+                <AuthBtn
+                    className={css.googleAuthBtn}
+                    href="/auth/redirect"
+                >
+                    <figure aria-hidden="true">
+                        <img
+                            src={Google}
+                            alt=""
+                        />
+                    </figure>
+                    Войти через Google
+                </AuthBtn>
             </form>
         </FormLayout>
     );
