@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\ProdamusController;
 use App\Http\Controllers\User\AboutController;
 use App\Http\Controllers\User\AccountController;
@@ -26,6 +27,7 @@ use App\Http\Controllers\User\ToolkitController;
 use App\Http\Controllers\User\UpdateSubscriptionStatusController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
+use Laravel\Socialite\Socialite;
 
 Route::get('/', HomeController::class)->name('home');
 Route::get('/plans', [PlansController::class, 'index'])->name('plans');
@@ -75,5 +77,14 @@ Route::post('/pay', [ProdamusController::class, 'pay'])->name('pay');
 Route::get('/prodamus/success', [ProdamusController::class, 'success'])->name('payment.success');
 Route::post('/prodamus/webhook', [ProdamusController::class, 'webhook']);
 
-require __DIR__.'/auth.php';
-require __DIR__.'/admin.php';
+
+Route::middleware('guest')->group(function (): void {
+    Route::get('/auth/redirect', function () {
+        return Socialite::driver('google')->redirect();
+    });
+
+    Route::get('/auth/callback', [SocialiteController::class, 'store'])->name('socialite.callback');
+});
+
+require __DIR__ . '/auth.php';
+require __DIR__ . '/admin.php';

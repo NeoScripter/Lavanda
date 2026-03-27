@@ -6,9 +6,11 @@ import FormLayout from '@/layouts/user/FormLayout/FormLayout';
 import { useAuthModal } from '@/providers/AuthModalContext';
 import { cn } from '@/utils/cn';
 import { TargetedEvent } from 'preact';
+import AuthBtn from '../../ui/AuthBtn';
 import Input from '../Input/Input';
 import InputError from '../InputError/InputError';
 import Label from '../Label/Label';
+import Google from '@/assets/images/shared/google-logo.webp'
 import css from './Login.module.scss';
 
 type LoginForm = {
@@ -67,15 +69,28 @@ export default function Login() {
                     <InputError message={errors.email} />
                 </div>
 
-                <button
-                    tabIndex={4}
-                    disabled={processing}
-                    type="submit"
-                    className="primary-btn"
-                >
-                    {processing && <LoaderCircle />}
-                    Войти
-                </button>
+                <div>
+                    <button
+                        tabIndex={4}
+                        disabled={processing}
+                        type="submit"
+                        className="primary-btn"
+                    >
+                        {processing && <LoaderCircle />}
+                        Войти
+                    </button>
+
+                    <AuthBtn
+                        className={css.googleAuthBtn}
+                        href="/auth/redirect"
+                    >
+                        <figure aria-hidden="true">
+                            <img src={Google} alt="" />
+                        </figure>
+                        Войти через Google
+                    </AuthBtn>
+                </div>
+
                 <Banner className={css.banner}>
                     <span>
                         Впервые на сайте? Пройдите

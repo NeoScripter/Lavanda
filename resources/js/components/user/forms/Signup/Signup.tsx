@@ -1,17 +1,18 @@
 import { Link, useForm } from '@inertiajs/react';
 import { LoaderCircle } from 'lucide-preact';
 
+import Google from '@/assets/images/shared/google-logo.webp';
+import Banner from '@/components/shared/ui/Banner/Banner';
 import FormLayout from '@/layouts/user/FormLayout/FormLayout';
 import { useAuthModal } from '@/providers/AuthModalContext';
 import { TargetedEvent } from 'preact';
-import NoticeIcon from '../../ui/NoticeIcon';
+import AuthBtn from '../../ui/AuthBtn';
 import Checkbox from '../Checkbox/Checkbox';
 import Input from '../Input/Input';
 import InputError from '../InputError/InputError';
 import Label from '../Label/Label';
 import RadioInput from '../RadioInput/RadioInput';
 import css from './Signup.module.scss';
-import Banner from '@/components/shared/ui/Banner/Banner';
 
 const genders = [
     { label: 'Не выбран', value: null },
@@ -124,15 +125,29 @@ export default function Signup() {
                     label="Выберите пол"
                 />
 
-                <button
-                    tabIndex={6}
-                    disabled={processing}
-                    type="submit"
-                    className="primary-btn"
-                >
-                    {processing && <LoaderCircle />}
-                    Регистрация
-                </button>
+                <div>
+                    <button
+                        tabIndex={6}
+                        disabled={processing}
+                        type="submit"
+                        className="primary-btn"
+                    >
+                        {processing && <LoaderCircle />}
+                        Регистрация
+                    </button>
+                    <AuthBtn
+                        className={css.googleAuthBtn}
+                        href="/auth/redirect"
+                    >
+                        <figure aria-hidden="true">
+                            <img
+                                src={Google}
+                                alt=""
+                            />
+                        </figure>
+                        Войти через Google
+                    </AuthBtn>
+                </div>
 
                 <Checkbox
                     checked={data.policy}
