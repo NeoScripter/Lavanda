@@ -84,7 +84,7 @@ export default function Login() {
                     <AuthBtn
                         key="google-btn"
                         className={css.googleAuthBtn}
-                        href="/auth/redirect"
+                        href="/auth/google/redirect"
                     >
                         <figure aria-hidden="true">
                             <img
@@ -98,7 +98,7 @@ export default function Login() {
                     <AuthBtn
                         key="yandex-btn"
                         className={css.yandexAuthBtn}
-                        href="/yandex/redirect"
+                        href="/auth/yandex/redirect"
                     >
                         <figure aria-hidden="true">
                             <img
