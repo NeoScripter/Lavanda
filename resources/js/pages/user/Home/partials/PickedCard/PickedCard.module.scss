@@ -1,0 +1,44 @@
+@use 'core' as u;
+
+.root {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding-inline: 10px;
+    width: 100%;
+
+    @include u.px(mt, 46, 46, 46, 46);
+}
+
+.cardFrame {
+    @include u.px(h, 208, 321, 321, 321);
+}
+.imgFrame {
+    animation: fade-in 0.5s ease-in forwards;
+    @include u.px(--size, 145, 225, 225, 225);
+    height: 100%;
+    width: var(--size);
+    margin-inline: auto;
+    @include u.px(rounded, 10, 10, 15, 15);
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+}
+
+.image {
+    object-fit: contain;
+}
+
+.takeaway {
+    text-align: left;
+    @include u.px(mt, 42, 48, 58, 76);
+    @include u.rm(text, 14, 16, 18, 18);
+
+    > strong {
+        text-transform: capitalize;
+    }
+}

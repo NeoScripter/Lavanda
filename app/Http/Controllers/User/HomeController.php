@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\CardResource;
 use App\Models\Plan;
+use App\Models\Promo;
 use App\Models\User;
 use Illuminate\Support\Facades\Cache;
 use Inertia\Inertia;
@@ -25,6 +27,11 @@ class HomeController extends Controller
                     ->toResourceCollection()
             ),
             'activeUsers' => $activeUsers,
+            'cards' => Cache::flexible(
+                'tarot',
+                [10, 60],
+                fn () => CardResource::collection(Promo::all()->shuffle())
+            ),
         ]);
     }
 }

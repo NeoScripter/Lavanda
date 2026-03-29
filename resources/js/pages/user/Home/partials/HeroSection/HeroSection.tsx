@@ -21,12 +21,13 @@ import HeroFgMb3xWebp from '@/assets/images/home/hero-fg-mb3x.webp';
 import BgLoader from '@/components/user/ui/BgLoader/BgLoader';
 import LazyImage from '@/components/user/ui/LazyImage/LazyImage';
 import { cn } from '@/utils/cn';
+import PromoCards from '../PromoCards';
 import css from './HeroSection.module.scss';
 import { questions } from './pageData';
 
 const HeroSection = () => {
     return (
-        <section class={cn(css.wrapper, 'full-bleed')}>
+        <section class={cn(css.root, 'full-bleed')}>
             <BgLoader
                 prtClass={cn(css.bgLoader)}
                 imgClass={css.bgImage}
@@ -44,56 +45,69 @@ const HeroSection = () => {
                 prtClass={css.decor}
             />
 
-            <div className={css.topGroup}>
-                <h1 className={css.contentHeading}>
-                    Понять себя и свою ситуацию
-                </h1>
+            <div className={css.outer}>
+                <h1 className={css.heading}>Понять себя и свою ситуацию</h1>
                 <p class={css.intro}>
                     Иногда достаточно одной подсказки, чтобы стало легче
                 </p>
 
-                <div class={css.content}>
-                    <div className={css.questionWrapper}>
-                        <p class={css.listTitle}>
-                            Иногда достаточно одной подсказки, чтобы стало легче
-                        </p>
-                        <ul className={css.questionList}>
-                            {questions.map((question, idx) => (
-                                <li
-                                    key={question}
-                                    style={{ '--delay': `${idx / 4}s` }}
-                                >
-                                    {question}
-                                </li>
-                            ))}
-                        </ul>
+                <div className={css.main}>
+                    <div class={css.left}>
+                        <div className={css.faq}>
+                            <p class={css.faqTitle}>
+                                Иногда достаточно одной подсказки, чтобы стало
+                                легче
+                            </p>
+                            <ul className={css.faqList}>
+                                {questions.map((question, idx) => (
+                                    <li
+                                        key={question}
+                                        style={{ '--delay': `${idx / 4}s` }}
+                                    >
+                                        {question}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+
+                        <BgLoader
+                            prtClass={cn(css.fgLoader)}
+                            imgClass={css.fgImage}
+                            dk={HeroFgDkWebp}
+                            dk2x={HeroFgDk2xWebp}
+                            dk3x={HeroFgDk3xWebp}
+                            dkAvif={HeroFgDkAvif}
+                            dkAvif2x={HeroFgDk2xAvif}
+                            dkAvif3x={HeroFgDk3xAvif}
+                            dkTiny={HeroFgDkTinyWebp}
+                            tb={HeroFgDkWebp}
+                            tb2x={HeroFgDk2xWebp}
+                            tb3x={HeroFgDk3xWebp}
+                            tbAvif={HeroFgDkAvif}
+                            tbAvif2x={HeroFgDk2xAvif}
+                            tbAvif3x={HeroFgDk3xAvif}
+                            tbTiny={HeroFgDkTinyWebp}
+                            mb={HeroFgMbWebp}
+                            mb2x={HeroFgMb2xWebp}
+                            mb3x={HeroFgMb3xWebp}
+                            mbAvif={HeroFgMbAvif}
+                            mbAvif2x={HeroFgMb2xAvif}
+                            mbAvif3x={HeroFgMb3xAvif}
+                            mbTiny={HeroFgMbTinyWebp}
+                        />
                     </div>
 
-                    <BgLoader
-                        prtClass={cn(css.fgLoader)}
-                        imgClass={css.fgImage}
-                        dk={HeroFgDkWebp}
-                        dk2x={HeroFgDk2xWebp}
-                        dk3x={HeroFgDk3xWebp}
-                        dkAvif={HeroFgDkAvif}
-                        dkAvif2x={HeroFgDk2xAvif}
-                        dkAvif3x={HeroFgDk3xAvif}
-                        dkTiny={HeroFgDkTinyWebp}
-                        tb={HeroFgDkWebp}
-                        tb2x={HeroFgDk2xWebp}
-                        tb3x={HeroFgDk3xWebp}
-                        tbAvif={HeroFgDkAvif}
-                        tbAvif2x={HeroFgDk2xAvif}
-                        tbAvif3x={HeroFgDk3xAvif}
-                        tbTiny={HeroFgDkTinyWebp}
-                        mb={HeroFgMbWebp}
-                        mb2x={HeroFgMb2xWebp}
-                        mb3x={HeroFgMb3xWebp}
-                        mbAvif={HeroFgMbAvif}
-                        mbAvif2x={HeroFgMb2xAvif}
-                        mbAvif3x={HeroFgMb3xAvif}
-                        mbTiny={HeroFgMbTinyWebp}
-                    />
+                    <div className={css.right}>
+                        <div>
+                            <h2 className={css.gameHeading}>
+                                Попробуйте одну карту
+                            </h2>
+                            <p className={css.gameIntro}>
+                                Авторская колода "Почему вы сегодня здесь?"
+                            </p>
+                        </div>
+                        <PromoCards />
+                    </div>
                 </div>
             </div>
         </section>
@@ -101,29 +115,3 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
-
-const PlayBtn = () => {
-    return (
-        <svg
-            width="35"
-            height="35"
-            viewBox="0 0 35 35"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-        >
-            <circle
-                opacity="0.75"
-                cx="17.5"
-                cy="17.5"
-                r="16.5"
-                stroke="#5F4E8C"
-                stroke-width="2"
-            />
-            <path
-                opacity="0.75"
-                d="M22.5 14.9019C24.5 16.0566 24.5 18.9434 22.5 20.0981L17.25 23.1292C15.25 24.2839 12.75 22.8405 12.75 20.5311L12.75 14.4689C12.75 12.1595 15.25 10.7161 17.25 11.8708L22.5 14.9019Z"
-                fill="#5F4E8C"
-            />
-        </svg>
-    );
-};
