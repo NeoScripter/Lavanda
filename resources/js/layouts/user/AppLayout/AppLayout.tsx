@@ -32,7 +32,7 @@ const AppLayout: FC<
     const { auth } = usePage<{ auth: Auth }>().props;
 
     useEffect(() => {
-        const subEvent = getNotificationContent(auth.subEvent);
+        const subEvent = getNotificationContent(auth.subEvent, auth.user?.subscription?.ends_at);
 
         if (!subEvent) {
             return;
