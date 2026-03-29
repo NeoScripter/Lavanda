@@ -36,10 +36,10 @@ const Paywall: FC<NodeProps> = ({ className }) => {
                 img={ForegroundDkWebp}
                 tinyImg={ForegroundDkTinyWebp}
             />
-            <p>
-                Этот раздел открывается после регистрации
-                <br />{' '}
-                {!auth.user && (
+            {!auth.user ? (
+                <p>
+                    Этот раздел открывается после регистрации
+                    <br />{' '}
                     <>
                         <strong class={css.highlight}>
                             Зарегистрируйтесь за 1 минуту и получите 24 часа
@@ -48,9 +48,13 @@ const Paywall: FC<NodeProps> = ({ className }) => {
                         </strong>
                         <br /> Уже есть аккаунт? Нажмите "Войти".
                     </>
-                )}
-            </p>
-
+                </p>
+            ) : (
+                <p>
+                    Пожалуйста, купите подписку для получения доступа к данному
+                    разделу
+                </p>
+            )}
             <div className={css.btnWrapper}>
                 {!isLoggedIn && (
                     <button
