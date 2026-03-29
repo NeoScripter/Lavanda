@@ -55,7 +55,7 @@ class HandleInertiaRequests extends Middleware
             ],
             'auth' => [
                 'user' => $user,
-                'notification' => $this->handleUserNotificationUpdate($user),
+                'subEvent' => $this->handleUserNotificationUpdate($user),
                 'hasPremiumAccess' => in_array($request->route()?->getName(), $exemptRoutes, true)
                     || Cache::flexible(
                         'premium-access',

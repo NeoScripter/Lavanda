@@ -45,7 +45,7 @@ const AppLayout: FC<
                 position: 'relative',
             },
         });
-    }, []);
+    }, [auth.subEvent]);
 
     return (
         <ErrorBoundary fallback={Error}>
