@@ -1,3 +1,5 @@
+import BackDkTinyWebp from '@/assets/images/cards/promo/back-dk-tiny.webp';
+import BackDk2xWebp from '@/assets/images/cards/promo/back-dk2x.webp';
 import Card from '@/components/user/ui/Card';
 import CardDeck from '@/components/user/ui/CardDeck/CardDeck';
 import { useRandomCardsLogic } from '@/pages/user/Decision/pages/Cards/hooks/useRandomCardLogic';
@@ -8,8 +10,6 @@ import { usePage } from '@inertiajs/react';
 import { signal } from '@preact/signals';
 import PickedCard from '../PickedCard/PickedCard';
 import css from './PromoCards.module.scss';
-import BackDkTinyWebp from "@/assets/images/cards/promo/back-dk-tiny.webp";
-import BackDk2xWebp from "@/assets/images/cards/promo/back-dk2x.webp";
 
 const ANIMATION_DURATION = 200;
 
@@ -62,12 +62,15 @@ const PromoCards = () => {
             )}
 
             {!hasStarted && (
-                <button
-                    onClick={startSpinning}
-                    class={cn('primary-btn', css.actionBtn)}
-                >
-                    Открыть карту
-                </button>
+                <div class={cn(css.btnWrapper)}>
+                    <button
+                        className="primary-btn"
+                        onClick={startSpinning}
+                    >
+                        Открыть карту
+                    </button>
+                    <p>Бесплатно. Без регистрации</p>
+                </div>
             )}
         </>
     );
