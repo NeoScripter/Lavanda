@@ -194,6 +194,7 @@
     flex-shrink: 0;
     margin-left: auto;
     @include u.px(w, 298, 356, 565, 565);
+    @include u.px(h, 397, 397, 672, 672);
     left: 5%;
 
     @include u.mw(sm) {
@@ -208,11 +209,9 @@
     }
 }
 .fgImage {
+    object-fit: contain;
     @include u.mw(md) {
         object-position: bottom;
-    }
-    @include u.mw(lg) {
-        object-fit: contain;
     }
 }
 
