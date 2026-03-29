@@ -34,12 +34,8 @@ const PickedCard: FC<NodeProps<{ cards: Promo[] }>> = ({
                 )}
             </div>
 
-            <div>
-                <p className={css.takeaway}>
-                    <strong>{card.name}</strong>
-                    {' - '}
-                    {card.html}
-                </p>
+            <div className={css.takeaway}>
+                <div dangerouslySetInnerHTML={{ __html: card.html }} />
             </div>
         </div>
     );
