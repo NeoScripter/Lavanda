@@ -31,19 +31,20 @@
 }
 
 .fgLoader {
-    width: 90%;
-    margin-right: auto;
-    @include u.px(w, null, null, 609, 700);
+    flex-shrink: 0;
+    margin-left: auto;
+    @include u.px(w, 298, 356, 565, 565);
+    left: 5%;
 
+    @include u.mw(sm) {
+        left: -5%;
+    }
     @include u.mw(md) {
         position: relative;
-        height: 720px;
-        left: -10%;
+        opacity: 50%;
     }
     @include u.mw(lg) {
         object-fit: contain;
-        height: 820px;
-        left: 0%;
     }
 }
 .fgImage {
@@ -65,15 +66,19 @@
         justify-content: start;
     }
 }
-.content {
-    text-align: center;
-    @include u.px(w, null, null, 717, 752);
-    text-wrap: pretty;
 
-    @include u.mw(md) {
-        text-align: left;
-        flex-shrink: 0;
-    }
+.topGroup {
+    text-align: center;
+    text-wrap: pretty;
+    width: 100%;
+    @include u.px(--padding, 13, 38, 43, 166);
+    padding-inline: var(--padding);
+}
+
+.content {
+    display: flex;
+    @include u.px(w, null, null, 717, 752);
+    position: relative;
 }
 
 .contentHeading {
@@ -82,17 +87,23 @@
 
 .questionList {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
-    width: 90%;
-    margin-inline: auto;
     gap: 0.75em;
     max-width: 50rem;
-    font-size: 0.9em;
+    font-size: clamp(0.75rem, 3.5vw, 1rem);
+    max-width: 55%;
     @include u.px(my, 26, 34, 38, 46);
 
+    @include u.mw(sm) {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        max-width: 65%;
+    }
     @include u.mw(md) {
-        max-width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
         justify-content: start;
         width: 100%;
         margin-inline: 0;
@@ -101,7 +112,7 @@
     li {
         --delay: 0s;
         background-color: white;
-        padding: 0.25em 0.75em;
+        padding: 0.5em 0.75em;
         border-radius: 2rem;
         transform-origin: 100% 100%;
         border-bottom-right-radius: 0em;
@@ -142,34 +153,17 @@
 }
 
 .intro {
-    font-weight: 500;
+    font-weight: 600;
     @include u.px(mb, 26, 34, 38, 46);
-}
+    @include u.rm(text, 16, 20, 20, 24);
+    max-width: 90%;
+    margin-inline: auto;
 
-.infoBtn {
-    color: u.clr('primary', 'strong');
-    position: relative;
-    display: block;
-    font-weight: 500;
-    transition: transform 0.3s ease-in-out;
-    backdrop-filter: blur(5px);
-    @include u.px(gap, 5, 9, 12, 12);
-    @include u.fxc();
-    @include u.rm(text, 12, 16, 18, 18);
-
-    &:hover,
-    &:focus-visible {
-        transform: scale(1.05);
-
-        .underline::after {
-            width: 100%;
-        }
+    @include u.mw(sm) {
+        display: none;
     }
-
-    > svg {
-        flex-shrink: 0;
-        @include u.px(w, 35, 35, 45, 45);
-        @include u.px(h, 35, 35, 45, 45);
+    @include u.mw(md) {
+        display: block;
     }
 }
 
@@ -192,18 +186,30 @@
     @include u.px(w, null, null, 243, 343);
 }
 
-.cards {
-    --offsetY: 25%;
-    pointer-events: none;
+.questionWrapper {
+    width: 100%;
     position: absolute;
-    isolation: isolate;
-    display: grid;
-    align-items: start;
-    /* z-index: 20; */
-    left: 50%;
-    bottom: 0;
-    transform: translate(-50%, var(--offsetY));
-    @include u.px(--offsetY, 291, 351, 60, 70);
-    @include u.px(h, 557, 767, 553, 529);
-    @include u.px(w, 358, 668, 1172, 1338);
+    left: 0;
+    top: 0;
+
+    @include u.mw(md) {
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+.listTitle {
+    display: none;
+    font-weight: 600;
+    @include u.rm(text, 16, 20, 20, 24);
+    max-width: 50%;
+    text-align: left;
+    margin-right: auto;
+
+    @include u.mw(sm) {
+        display: block;
+    }
+    @include u.mw(md) {
+        display: none;
+    }
 }

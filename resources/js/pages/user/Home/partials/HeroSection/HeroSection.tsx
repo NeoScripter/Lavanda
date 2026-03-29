@@ -21,7 +21,6 @@ import HeroFgMb3xWebp from '@/assets/images/home/hero-fg-mb3x.webp';
 import BgLoader from '@/components/user/ui/BgLoader/BgLoader';
 import LazyImage from '@/components/user/ui/LazyImage/LazyImage';
 import { cn } from '@/utils/cn';
-import { Link } from '@inertiajs/react';
 import css from './HeroSection.module.scss';
 import { questions } from './pageData';
 
@@ -45,74 +44,58 @@ const HeroSection = () => {
                 prtClass={css.decor}
             />
 
-            <div class={css.content}>
+            <div className={css.topGroup}>
                 <h1 className={css.contentHeading}>
-                    Онлайн сервис для самопознания
+                    Понять себя и свою ситуацию
                 </h1>
-
-                <ul className={css.questionList}>
-                    {questions.map((question, idx) => (
-                        <li
-                            key={question}
-                            style={{ '--delay': `${idx / 4}s` }}
-                        >
-                            {question}
-                        </li>
-                    ))}
-                </ul>
-
                 <p class={css.intro}>
-                    Если такие вопросы вам знакомы - Вы в правильном месте.{' '}
-                    <span class="decorative-title">
-                        Lavanda<sup>Kim</sup>
-                    </span>
-                    - Ваш помощник в мире неопределенности и сомнений.
+                    Иногда достаточно одной подсказки, чтобы стало легче
                 </p>
 
-                <div class={css.btnGroup}>
-                    <Link
-                        href={route('plans')}
-                        prefetch
-                        class={'primary-btn'}
-                    >
-                        Получить доступ
-                    </Link>
-                    <Link
-                        href={route('about')}
-                        prefetch
-                        class={css.infoBtn}
-                    >
-                        <PlayBtn />
-                        <span class={css.underline}>Подробности о ресурсе</span>
-                    </Link>
+                <div class={css.content}>
+                    <div className={css.questionWrapper}>
+                        <p class={css.listTitle}>
+                            Иногда достаточно одной подсказки, чтобы стало легче
+                        </p>
+                        <ul className={css.questionList}>
+                            {questions.map((question, idx) => (
+                                <li
+                                    key={question}
+                                    style={{ '--delay': `${idx / 4}s` }}
+                                >
+                                    {question}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    <BgLoader
+                        prtClass={cn(css.fgLoader)}
+                        imgClass={css.fgImage}
+                        dk={HeroFgDkWebp}
+                        dk2x={HeroFgDk2xWebp}
+                        dk3x={HeroFgDk3xWebp}
+                        dkAvif={HeroFgDkAvif}
+                        dkAvif2x={HeroFgDk2xAvif}
+                        dkAvif3x={HeroFgDk3xAvif}
+                        dkTiny={HeroFgDkTinyWebp}
+                        tb={HeroFgDkWebp}
+                        tb2x={HeroFgDk2xWebp}
+                        tb3x={HeroFgDk3xWebp}
+                        tbAvif={HeroFgDkAvif}
+                        tbAvif2x={HeroFgDk2xAvif}
+                        tbAvif3x={HeroFgDk3xAvif}
+                        tbTiny={HeroFgDkTinyWebp}
+                        mb={HeroFgMbWebp}
+                        mb2x={HeroFgMb2xWebp}
+                        mb3x={HeroFgMb3xWebp}
+                        mbAvif={HeroFgMbAvif}
+                        mbAvif2x={HeroFgMb2xAvif}
+                        mbAvif3x={HeroFgMb3xAvif}
+                        mbTiny={HeroFgMbTinyWebp}
+                    />
                 </div>
             </div>
-
-            <BgLoader
-                prtClass={cn(css.fgLoader)}
-                imgClass={css.fgImage}
-                dk={HeroFgDkWebp}
-                dk2x={HeroFgDk2xWebp}
-                dk3x={HeroFgDk3xWebp}
-                dkAvif={HeroFgDkAvif}
-                dkAvif2x={HeroFgDk2xAvif}
-                dkAvif3x={HeroFgDk3xAvif}
-                dkTiny={HeroFgDkTinyWebp}
-                tb={HeroFgDkWebp}
-                tb2x={HeroFgDk2xWebp}
-                tb3x={HeroFgDk3xWebp}
-                tbAvif={HeroFgDkAvif}
-                tbAvif2x={HeroFgDk2xAvif}
-                tbAvif3x={HeroFgDk3xAvif}
-                tbTiny={HeroFgDkTinyWebp}
-                mb={HeroFgMbWebp}
-                mb2x={HeroFgMb2xWebp}
-                mb3x={HeroFgMb3xWebp}
-                mbAvif={HeroFgMbAvif}
-                mbAvif2x={HeroFgMb2xAvif}
-                mbAvif3x={HeroFgMb3xAvif}
-                mbTiny={HeroFgMbTinyWebp}
-            />
         </section>
     );
 };
