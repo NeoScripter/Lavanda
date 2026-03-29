@@ -154,6 +154,8 @@
         transform-origin: 100% 100%;
         border-bottom-right-radius: 0em;
         font-weight: 500;
+        -webkit-box-shadow: -17px 19px 33px 14px rgba(0, 0, 0, 0.33);
+        box-shadow: -17px 19px 33px 14px rgba(0, 0, 0, 0.33);
 
         @media (prefers-reduced-motion: no-preference) {
             scale: 0;
@@ -176,8 +178,6 @@
                 )
                 var(--delay) forwards;
         }
-
-        @include u.shadow(1);
     }
 }
 
