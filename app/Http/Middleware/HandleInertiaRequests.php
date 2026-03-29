@@ -2,6 +2,10 @@
 
 namespace App\Http\Middleware;
 
+use App\Enums\SubscriptionEventName;
+use App\Enums\UserRole;
+use App\Models\SubscriptionEvent;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Cache;
@@ -41,27 +45,88 @@ class HandleInertiaRequests extends Middleware
     {
         $exemptRoutes = ['promo'];
 
+        $user = $request->user()?->load('subscription');
+
         return [
             ...parent::share($request),
             'flash' => [
-                'message' => fn () => $request->session()->pull('message'),
-                'code' => fn () => $request->session()->pull('code'),
+                'message' => fn() => $request->session()->pull('message'),
+                'code' => fn() => $request->session()->pull('code'),
             ],
             'auth' => [
-                'user' => $request->user(...),
+                'user' => $user,
+                'notification' => $this->handleUserNotificationUpdate($user),
                 'hasPremiumAccess' => in_array($request->route()?->getName(), $exemptRoutes, true)
                     || Cache::flexible(
                         'premium-access',
                         [1, 2],
-                        fn () => Gate::check('premium-access')
+                        fn() => Gate::check('premium-access')
                     ),
             ],
-            'locale' => fn () => App::getLocale(),
-            'ziggy' => fn (): array => [
+            'locale' => fn() => App::getLocale(),
+            'ziggy' => fn(): array => [
                 ...(new Ziggy)->toArray(),
                 'location' => $request->url(),
             ],
 
         ];
+    }
+
+    private function handleUserNotificationUpdate(User | null $user)
+    {
+        if (! $user) {
+            return null;
+        }
+
+        if ($user->role === UserRole::ADMIN) {
+            return null;
+        }
+
+        if (! $user->subscription()->exists()) {
+            return null;
+        }
+
+        $subscription = $user->subscription;
+        $events = $subscription->events;
+
+        if (empty($events)) {
+            return null;
+        }
+
+        $events = $events->toArray();
+
+        $cases = SubscriptionEventName::cases();
+
+        usort(
+            $cases,
+            fn($en1, $en2) => $en1->value <=> $en2->value
+        );
+
+        foreach ($cases as $case) {
+            $event = array_find($events,
+                fn($event) => $event['name'] === $case->value
+            );
+
+            if (! $event) {
+                continue;
+            }
+
+            if ($event['is_notified']) {
+                continue;
+            }
+
+            $should_notify = match ($event['name']) {
+                SubscriptionEventName::PURCHASE->value => $subscription->ends_at > now(),
+                SubscriptionEventName::EXPIRES_SOON->value => $subscription->ends_at < now()->addHour() && $subscription->ends_at > now(),
+                SubscriptionEventName::EXPIRED->value => $subscription->ends_at < now(),
+            };
+
+            if ($should_notify) {
+                SubscriptionEvent::find($event['id'])?->update(['is_notified' => true]);
+                return $case->getLabel();
+            }
+        }
+
+        return null;
     }
 }

@@ -1,0 +1,91 @@
+@use 'core' as u;
+
+.wrapper {
+    color: u.clr('foreground', 'strong');
+    position: relative;
+    margin-inline: auto;
+    margin-top: 3.5rem;
+    border-radius: 1.5rem;
+    padding-inline: 1rem;
+    padding-top: 4.5rem;
+    padding-bottom: 2rem;
+    text-align: center;
+    font-weight: 500;
+
+    background-color: white;
+
+    @include u.shadow(3);
+
+    @include u.mw(sm) {
+        padding-top: 5.5rem;
+        font-size: 1.25rem;
+        padding-inline: 3rem;
+        max-width: 40rem;
+        transform: translate(-25%, 0%);
+        width: 40rem;
+    }
+}
+
+.content {
+    strong {
+        display: block;
+        text-wrap: balance;
+        color: u.clr('primary', 'strong');
+    }
+}
+
+.btnWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+}
+
+.imageFrame {
+    width: 120px;
+    position: absolute;
+    margin-inline: auto;
+    inset-inline: 0;
+    top: 0%;
+    transform: translateY(-50%);
+
+    @include u.mw(sm) {
+        width: 160px;
+    }
+}
+
+.actionBtn {
+    margin-top: 1.5rem;
+    font-size: 0.85em;
+    padding-inline: 1.5em;
+    padding-block: 0.75em !important;
+    border-radius: 4rem;
+
+    @include u.mw(md) {
+        margin-top: 2rem;
+    }
+
+    span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5em;
+
+        svg {
+            width: 1.25em;
+        }
+    }
+}
+
+.signupBtn {
+    margin-top: 1.5rem;
+    font-size: 0.85em;
+    padding-inline: 1.5em;
+    padding-block: 0.75em !important;
+    border-radius: 4rem;
+    border-width: 1px !important;
+
+    @include u.mw(md) {
+        margin-top: 2rem;
+    }
+}

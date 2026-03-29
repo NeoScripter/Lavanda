@@ -135,6 +135,10 @@ class ProdamusController extends Controller
                     }
 
                     $subscription->save();
+
+                    $subscription->events()->each(
+                        fn($event) => $event->update(['is_notified' => false])
+                    );
                 }
 
                 Log::info('Subscription processed successfully', [
