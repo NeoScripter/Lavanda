@@ -34,28 +34,10 @@
     font-weight: 600;
     @include u.rm(text, 20, 24, 32, 36);
 }
-
-.joinBtn {
+.joinBtnFrame {
+    width: fit-content;
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50px;
-    border: 1px solid #fff;
     margin-inline: auto;
-    font-weight: 500;
-    padding: 0.75em 1.5em;
-    overflow: visible !important;
-    @include u.rm(text, 16, 20, 20, 24);
-    @include u.px(mb, 10, 21, 21, 21);
-    background: linear-gradient(
-        90deg,
-        #b9a65b 0%,
-        #e5d3ab 49.25%,
-        #bdaa61 95.67%
-    );
-
-    @include u.shine();
 }
 
 .badge {
@@ -74,4 +56,24 @@
         right: 0%;
         top: 0%;
     }
+}
+
+.joinBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    border: 1px solid #fff;
+    font-weight: 500;
+    padding: 0.75em 1.5em;
+    @include u.rm(text, 16, 20, 20, 24);
+    @include u.px(mb, 10, 21, 21, 21);
+    background: linear-gradient(
+        90deg,
+        #b9a65b 0%,
+        #e5d3ab 49.25%,
+        #bdaa61 95.67%
+    );
+
+    @include u.shine();
 }

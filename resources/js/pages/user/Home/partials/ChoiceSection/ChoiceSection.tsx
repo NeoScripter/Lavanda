@@ -17,10 +17,12 @@ const ChoiceSection: FC<NodeProps> = ({ children }) => {
                     привязки карты. Просто осмотритесь.
                 </p>
 
-                <button className={css.joinBtn}>
+                <div className={css.joinBtnFrame}>
+                    <button className={css.joinBtn}>
+                        Открыть доступ на 24 часа
+                    </button>
                     <span className={css.badge}>Бесплатно</span>
-                    Открыть доступ на 24 часа
-                </button>
+                </div>
 
                 <p className={css.highlight}>
                     Регистрация в один клик через Google / Yandex
