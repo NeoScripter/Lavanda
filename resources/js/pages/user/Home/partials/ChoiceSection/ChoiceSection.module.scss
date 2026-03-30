@@ -97,3 +97,21 @@
     border-color: u.clr('primary', 'strong');
     background-color: u.clr('primary', 'strong');
 }
+
+.decor {
+    display: none;
+
+    @include u.mw(md) {
+        display: block;
+        position: absolute;
+        z-index: 20;
+        right: 0;
+        bottom: 0;
+        transform: translate(20%, 40%);
+    }
+
+    @include u.mw(lg) {
+        transform: translate(55%, 40%);
+    }
+    @include u.px(w, null, null, 243, 343);
+}

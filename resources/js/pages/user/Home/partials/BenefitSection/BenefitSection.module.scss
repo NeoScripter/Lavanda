@@ -1,96 +1,51 @@
 @use 'core' as u;
 
-.wrapper {
+.root {
     position: relative;
     z-index: -1;
     color: white;
-    @include u.px(px, null, null, 102, 96);
-    @include u.px(pt, null, null, 53, 76);
-    @include u.px(pb, null, null, 79, 83);
-    @include u.px(gap, null, null, 35, 35);
+    @include u.px(px, 14, 30, 60, 349);
+    @include u.px(pt, 51, 75, 98, 104);
+    @include u.px(pb, 106, 128, 112, 93);
 
-    @include u.mw(md) {
-        background-color: u.opacify(u.clr('primary', 'strong'), 80);
-        display: flex;
-        align-items: center;
-    }
-}
-
-.brandName {
-    color: white;
-}
-
-.content {
-    @include u.px(px, 24, 54, 0, null);
-    @include u.px(pt, 44, 45, 0, null);
-    @include u.px(pb, 72, 65, 0, null);
-    @include u.px(max-w, null, null, 603, 876);
     background-color: u.opacify(u.clr('primary', 'strong'), 80);
-    z-index: 5;
-    > * {
-        @include u.px(mb, 20, 25, 25, 30);
-    }
-    @include u.mw(md) {
-        background-color: transparent;
-    }
+}
+
+.intro {
+    color: white;
+    text-align: center;
+
+    @include u.px(mb, 36, 41, 62, 62);
 }
 
 .heading {
-    @include u.rm(text, 20, 36, 36, 36);
-}
-
-.fgLoader {
-    position: absolute;
-    inset: 0;
-
-    @include u.mw(md) {
-        position: static;
-        flex-shrink: 0;
-    }
-
-    @include u.px(w, null, null, 508, 575);
-}
-.fgImage {
-    object-fit: contain;
-    object-position: center;
-}
-
-.btnWrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-
-    @include u.px(mt, 40, 40, 40, 40);
-    @include u.mw(sm) {
-        flex-direction: row;
-        align-items: center;
-        gap: 1.2em;
-    }
-}
-.scrollBtn {
-    width: fit-content;
-    display: flex;
-    align-items: center;
-    gap: 0.75em;
     color: white;
-    border: 2px solid currentColor;
+    text-transform: uppercase;
+    margin-bottom: 0.5em;
+}
+
+.description {
     font-weight: 500;
-    border-radius: 4rem;
-    padding: 0.5em 1.25em;
-    transition:
-        background-color 0.3s ease-in-out,
-        color 0.3s ease-in-out;
-
-    @include u.px(text, 12, 16, 16, 16);
+    @include u.rm(text, 16, 24, 24, 24);
 }
 
-.scrollBtn:hover,
-.scrollBtn:focus-visible {
+.cardList {
+    @include u.px(mb, 78, 80, 72, 72);
+}
+
+.footnote {
+    border: 1px solid white;
+    margin-inline: auto;
+    border-radius: 0.5em;
+    position: relative;
     color: white;
-    border-color: u.clr('primary', 'strong');
-    background-color: u.clr('primary', 'strong');
-}
+    text-align: center;
+    text-wrap: pretty;
+    font-weight: 600;
 
-.prefix {
-    margin-right: -0.3em;
+    @include u.px(px, 10, 33, 30, 30);
+    @include u.px(pt, 30, 52, 32, 32);
+    @include u.px(pb, 30, 60, 57, 57);
+    @include u.px(w, 332, 720, 885, 885);
+    @include u.rm(text, 16, 24, 24, 24);
 }

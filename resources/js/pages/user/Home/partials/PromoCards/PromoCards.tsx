@@ -8,6 +8,7 @@ import checkMotionPreferences from '@/utils/checkMotionPreferences';
 import { cn } from '@/utils/cn';
 import { usePage } from '@inertiajs/react';
 import { signal } from '@preact/signals';
+import { useEffect, useState } from 'preact/hooks';
 import PickedCard from '../PickedCard/PickedCard';
 import css from './PromoCards.module.scss';
 
@@ -16,6 +17,14 @@ const ANIMATION_DURATION = 200;
 const PromoCards = () => {
     const { cards } = usePage<{ cards: Promo[] }>().props;
     const interactiveItems = signal([]);
+
+    const [shouldShine, setShouldShine] = useState(false);
+
+    useEffect(() => {
+        const interval = setInterval(() => setShouldShine((p) => !p), 3000);
+
+        return () => clearInterval(interval);
+    }, []);
 
     const isMotionEnabled = checkMotionPreferences();
 
@@ -40,6 +49,13 @@ const PromoCards = () => {
         [],
     );
 
+    function isShining(idx: number) {
+        return (
+            highlightedIdx === idx ||
+            (!hasStarted && shouldShine && idx === faceDownCards.length - 1)
+        );
+    }
+
     return (
         <>
             <PickedCard cards={selectedCards} />
@@ -55,7 +71,7 @@ const PromoCards = () => {
                             card={card}
                             backImgPath={BackDk2xWebp}
                             backImgTinyPath={BackDkTinyWebp}
-                            hasHighlightedState={highlightedIdx === idx}
+                            hasHighlightedState={isShining(idx)}
                         />
                     ))}
                 </CardDeck>

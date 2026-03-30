@@ -2,8 +2,6 @@ import BgDkTiny from '@/assets/images/home/hero-bg-dk-tiny.webp';
 import BgDk from '@/assets/images/home/hero-bg-dk.webp';
 import BgTbTiny from '@/assets/images/home/hero-bg-tb-tiny.webp';
 import BgTb from '@/assets/images/home/hero-bg-tb.webp';
-import HeroDecorTiny from '@/assets/images/home/hero-decor-tiny.webp';
-import HeroDecor from '@/assets/images/home/hero-decor.webp';
 import HeroFgDkTinyWebp from '@/assets/images/home/hero-fg-dk-tiny.webp';
 import HeroFgDkAvif from '@/assets/images/home/hero-fg-dk.avif';
 import HeroFgDkWebp from '@/assets/images/home/hero-fg-dk.webp';
@@ -19,7 +17,6 @@ import HeroFgMb2xWebp from '@/assets/images/home/hero-fg-mb2x.webp';
 import HeroFgMb3xAvif from '@/assets/images/home/hero-fg-mb3x.avif';
 import HeroFgMb3xWebp from '@/assets/images/home/hero-fg-mb3x.webp';
 import BgLoader from '@/components/user/ui/BgLoader/BgLoader';
-import LazyImage from '@/components/user/ui/LazyImage/LazyImage';
 import { cn } from '@/utils/cn';
 import PromoCards from '../PromoCards';
 import css from './HeroSection.module.scss';
@@ -37,12 +34,6 @@ const HeroSection = () => {
                 tbTiny={BgTbTiny}
                 mb={BgTb}
                 mbTiny={BgTbTiny}
-            />
-
-            <LazyImage
-                img={HeroDecor}
-                tinyImg={HeroDecorTiny}
-                prtClass={css.decor}
             />
 
             <div className={css.outer}>

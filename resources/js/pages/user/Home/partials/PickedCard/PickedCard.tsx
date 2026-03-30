@@ -13,8 +13,6 @@ const PickedCard: FC<NodeProps<{ cards: Promo[] }>> = ({
 
     const card = cards[0];
 
-    console.log(card);
-
     return (
         <div className={cn(css.root, className)}>
             <div
