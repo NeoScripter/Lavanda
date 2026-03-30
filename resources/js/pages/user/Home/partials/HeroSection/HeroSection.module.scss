@@ -11,16 +11,13 @@
     @include u.px(pt, 97, 210, 140, 172);
     @include u.px(pb, 43, 48, 80, 80);
     /* @include u.px(pl, null, null, 73, 132); */
-    @include u.px(mb, 50, 50, 46, 85);
+    /* @include u.px(mb, 50, 50, 46, 85); */
 
     @include u.mw(md) {
         display: flex;
     }
 }
 
-.bgImage {
-    object-position: top center;
-}
 
 .bgLoader {
     position: absolute;
@@ -28,6 +25,12 @@
     overflow: hidden;
     overflow: clip;
     inset: 0;
+    border: 1px solid red;
+}
+.bgImage {
+    object-position: top center;
+    height: 100%;
+    border: 1px solid blue;
 }
 
 .decor {

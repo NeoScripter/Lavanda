@@ -1,9 +1,17 @@
+import { useAuthModal } from '@/providers/AuthModalContext';
+import { Auth } from '@/types/auth';
 import { cn } from '@/utils/cn';
+import { usePage } from '@inertiajs/react';
 import css from './BenefitSection.module.scss';
 import { infoCards } from './pageData';
 import InfoCard from './partials/InfoCard';
 
 const BenefitSection = () => {
+    const { auth } = usePage<{ auth: Auth }>().props;
+    const { showLogin } = useAuthModal();
+
+    const isLoggedIn = auth.user;
+
     return (
         <section className={cn(css.root, 'full-bleed')}>
             <div className={css.intro}>
@@ -25,6 +33,15 @@ const BenefitSection = () => {
                     И это только часть. Коллекция постоянно пополняется: новые
                     карты, расклады, практики и авторские инструменты
                 </p>
+
+                {!isLoggedIn && (
+                    <button
+                        onClick={showLogin}
+                        className={cn('primary-btn', css.loginBtn)}
+                    >
+                        Открыть доступ
+                    </button>
+                )}
             </div>
         </section>
     );
