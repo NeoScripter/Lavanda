@@ -1,1 +1,69 @@
 @use 'core' as u;
+
+.root {
+    border: 1px solid white;
+    border-radius: 2rem;
+    background-color: white;
+    overflow: hidden;
+    overflow: clip;
+    @include u.shadow(3);
+    margin-inline: auto;
+    @include u.px(max-w, 333, 389, 389, 389);
+}
+
+.header {
+    color: white;
+    background: var(--, linear-gradient(90deg, #8364b2 0%, #5f4e8b 100%));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include u.px(h, 122, 122, 122, 122);
+}
+
+.title {
+    margin-inline: auto;
+    max-width: 70%;
+    text-align: center;
+    text-wrap: balance;
+    display: block;
+    font-weight: 700;
+    text-transform: uppercase;
+
+    @include u.rm(text, 24, 24, 24, 24);
+}
+
+.items {
+    display: grid;
+    @include u.px(pt, 41, 32, 40, 33);
+    @include u.px(pb, 41, 40, 42, 42);
+    @include u.px(px, 26, 26, 21, 20);
+    @include u.px(gap, 31, 25, 25, 23);
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    text-wrap: balance;
+    color: u.clr('foreground', 'strong');
+
+    @include u.px(gap, 20, 20, 12, 12);
+    @include u.rm(text, 16, 16, 16, 16);
+
+    &:hover > span {
+      text-decoration: underline;
+      text-underline-offset: 0.5ch;
+    }
+}
+
+.imageFrame {
+    flex-shrink: 0;
+    --size: 0;
+    @include u.px(--size, 84, 90, 90, 90);
+    @include u.size(var(--size));
+}
+
+.image {
+    object-fit: contain;
+    object-position: center;
+}

@@ -9,7 +9,7 @@
     @include u.px(mt, null, null, 37, 32);
     @include u.px(--padding, null, null, 27, 45);
     @include u.px(pt, 97, 210, 140, 172);
-    @include u.px(pb, 43, 48, 60, 60);
+    @include u.px(pb, 43, 48, 80, 80);
     /* @include u.px(pl, null, null, 73, 132); */
     @include u.px(mb, 50, 50, 46, 85);
 
@@ -57,7 +57,7 @@
     text-wrap: balance;
 
     @include u.mw(md) {
-        margin-bottom: 0.15em;
+        margin-bottom: 0.35em;
     }
 }
 
@@ -80,6 +80,7 @@
     @include u.mw(md) {
         display: flex;
         align-items: flex-start;
+        margin-top: 5rem;
     }
 }
 

@@ -1,5 +1,7 @@
 import { cn } from '@/utils/cn';
 import css from './BenefitSection.module.scss';
+import { infoCards } from './pageData';
+import InfoCard from './partials/InfoCard';
 
 const BenefitSection = () => {
     return (
@@ -10,10 +12,19 @@ const BenefitSection = () => {
             </div>
 
             <ul className={css.cardList}>
+                {infoCards.map((card) => (
+                    <InfoCard
+                        key={card.id}
+                        card={card}
+                    />
+                ))}
             </ul>
 
             <div className={css.footnote}>
-                <p>И это только часть. Коллекция постоянно пополняется: новые карты, расклады, практики и авторские инструменты</p>
+                <p>
+                    И это только часть. Коллекция постоянно пополняется: новые
+                    карты, расклады, практики и авторские инструменты
+                </p>
             </div>
         </section>
     );
@@ -27,10 +38,10 @@ type InfoCardItemType = {
     tinyImg: string;
     label: string;
     href: string;
-}
+};
 
-type InfoCardType = {
+export type InfoCardType = {
     id: string;
     title: string;
     items: InfoCardItemType[];
-}
+};

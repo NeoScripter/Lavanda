@@ -30,7 +30,14 @@
 }
 
 .cardList {
+    display: grid;
     @include u.px(mb, 78, 80, 72, 72);
+    @include u.px(gap, 41, 41, 36, 36);
+
+
+    @include u.mw(md) {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 .footnote {
