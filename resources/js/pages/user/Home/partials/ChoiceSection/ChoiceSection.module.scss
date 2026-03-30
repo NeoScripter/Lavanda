@@ -16,8 +16,62 @@
     @include u.px(mb, 40, 43, 40, 35);
 }
 
+.cta {
+    font-weight: 500;
+    @include u.rm(text, 16, 20, 20, 24);
+    @include u.px(mb, 46, 50, 41, 41);
+}
+
+.highlight {
+    text-wrap: balance;
+    @include u.px(mb, 36, 31, 33, 33);
+    @include u.rm(text, 12, 14, 14, 16);
+    font-weight: 500;
+}
+
 .footnote {
     color: u.clr('primary', 'strong');
     font-weight: 600;
     @include u.rm(text, 20, 24, 32, 36);
+}
+
+.joinBtn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    border: 1px solid #fff;
+    margin-inline: auto;
+    font-weight: 500;
+    padding: 0.75em 1.5em;
+    overflow: visible !important;
+    @include u.rm(text, 16, 20, 20, 24);
+    @include u.px(mb, 10, 21, 21, 21);
+    background: linear-gradient(
+        90deg,
+        #b9a65b 0%,
+        #e5d3ab 49.25%,
+        #bdaa61 95.67%
+    );
+
+    @include u.shine();
+}
+
+.badge {
+    position: absolute;
+    top: -12%;
+    right: 10%;
+    transform: translate(50%, -50%);
+    background-color: u.clr('primary', 'strong');
+    color: white;
+    text-transform: uppercase;
+    border-radius: 0.5em;
+    padding: 0.5em 0.75em;
+    @include u.rm(text, 12, 14, 14, 14);
+
+    @include u.mw(sm) {
+        right: 0%;
+        top: 0%;
+    }
 }

@@ -12,8 +12,22 @@ const ChoiceSection: FC<NodeProps> = ({ children }) => {
                     открыли для вас все залы сайта на 24 часа.
                 </h2>
 
-                <p className={css.highlight}></p>
-                <p className={css.footnote}>«Кошачий оракул» всегда открыт для вас.</p>
+                <p className={css.cta}>
+                    Посмотрите, что ещё есть внутри — это бесплатно и без
+                    привязки карты. Просто осмотритесь.
+                </p>
+
+                <button className={css.joinBtn}>
+                    <span className={css.badge}>Бесплатно</span>
+                    Открыть доступ на 24 часа
+                </button>
+
+                <p className={css.highlight}>
+                    Регистрация в один клик через Google / Yandex
+                </p>
+                <p className={css.footnote}>
+                    «Кошачий оракул» всегда открыт для вас.
+                </p>
             </div>
 
             {children}
