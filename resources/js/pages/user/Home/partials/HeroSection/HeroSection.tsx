@@ -1,7 +1,24 @@
-import BgDkTiny from '@/assets/images/home/hero-bg-dk-tiny.webp';
-import BgDk from '@/assets/images/home/hero-bg-dk.webp';
-import BgTbTiny from '@/assets/images/home/hero-bg-tb-tiny.webp';
-import BgTb from '@/assets/images/home/hero-bg-tb.webp';
+import BgDkTinyWebp from '@/assets/images/home/bg-dk-tiny.webp';
+import BgDkAvif from '@/assets/images/home/bg-dk.avif';
+import BgDkWebp from '@/assets/images/home/bg-dk.webp';
+import BgDk2xAvif from '@/assets/images/home/bg-dk2x.avif';
+import BgDk2xWebp from '@/assets/images/home/bg-dk2x.webp';
+import BgDk3xAvif from '@/assets/images/home/bg-dk3x.avif';
+import BgDk3xWebp from '@/assets/images/home/bg-dk3x.webp';
+import BgMbTinyWebp from '@/assets/images/home/bg-mb-tiny.webp';
+import BgMbAvif from '@/assets/images/home/bg-mb.avif';
+import BgMbWebp from '@/assets/images/home/bg-mb.webp';
+import BgMb2xAvif from '@/assets/images/home/bg-mb2x.avif';
+import BgMb2xWebp from '@/assets/images/home/bg-mb2x.webp';
+import BgMb3xAvif from '@/assets/images/home/bg-mb3x.avif';
+import BgMb3xWebp from '@/assets/images/home/bg-mb3x.webp';
+import BgTbTinyWebp from '@/assets/images/home/bg-tb-tiny.webp';
+import BgTbAvif from '@/assets/images/home/bg-tb.avif';
+import BgTbWebp from '@/assets/images/home/bg-tb.webp';
+import BgTb2xAvif from '@/assets/images/home/bg-tb2x.avif';
+import BgTb2xWebp from '@/assets/images/home/bg-tb2x.webp';
+import BgTb3xAvif from '@/assets/images/home/bg-tb3x.avif';
+import BgTb3xWebp from '@/assets/images/home/bg-tb3x.webp';
 import HeroFgDkTinyWebp from '@/assets/images/home/hero-fg-dk-tiny.webp';
 import HeroFgDkAvif from '@/assets/images/home/hero-fg-dk.avif';
 import HeroFgDkWebp from '@/assets/images/home/hero-fg-dk.webp';
@@ -28,12 +45,27 @@ const HeroSection = () => {
             <BgLoader
                 prtClass={cn(css.bgLoader)}
                 imgClass={css.bgImage}
-                dk={BgDk}
-                dkTiny={BgDkTiny}
-                tb={BgTb}
-                tbTiny={BgTbTiny}
-                mb={BgTb}
-                mbTiny={BgTbTiny}
+                dk={BgDkWebp}
+                dk2x={BgDk2xWebp}
+                dk3x={BgDk3xWebp}
+                dkAvif={BgDkAvif}
+                dkAvif2x={BgDk2xAvif}
+                dkAvif3x={BgDk3xAvif}
+                dkTiny={BgDkTinyWebp}
+                tb={BgTbWebp}
+                tb2x={BgTb2xWebp}
+                tb3x={BgTb3xWebp}
+                tbAvif={BgTbAvif}
+                tbAvif2x={BgTb2xAvif}
+                tbAvif3x={BgTb3xAvif}
+                tbTiny={BgTbTinyWebp}
+                mb={BgMbWebp}
+                mb2x={BgMb2xWebp}
+                mb3x={BgMb3xWebp}
+                mbAvif={BgMbAvif}
+                mbAvif2x={BgMb2xAvif}
+                mbAvif3x={BgMb3xAvif}
+                mbTiny={BgMbTinyWebp}
             />
 
             <div className={css.outer}>
