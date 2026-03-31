@@ -13,7 +13,7 @@ const LearnMoreSection = () => {
             </p>
 
             <Link
-                href={route('home') + '#faqs'}
+                href={route('faqs')}
                 class={cn('secondary-btn', css.neutralBtn)}
             >
                 Вопросы и ответы

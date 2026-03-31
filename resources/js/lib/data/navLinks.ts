@@ -157,7 +157,7 @@ export const navLinks: NavLinkType[] = [
                 id: crypto.randomUUID(),
                 label: 'Часто задаваемые вопросы',
                 type: 'link',
-                href: '/#faqs',
+                href: '/faqs',
             },
         ],
     },
