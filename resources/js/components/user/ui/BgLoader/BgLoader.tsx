@@ -133,6 +133,7 @@ export default function BgLoader({
                         [mb3x, '3x'],
                     ])}
                     alt={alt}
+                    loading="lazy"
                     class={cn(css.image, imgClass)}
                 />
             </picture>
