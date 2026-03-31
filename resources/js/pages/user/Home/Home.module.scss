@@ -1,6 +1,7 @@
 @use 'core' as u;
 
 .layout {
+  background-color: white;
     > section {
         isolation: isolate;
     }

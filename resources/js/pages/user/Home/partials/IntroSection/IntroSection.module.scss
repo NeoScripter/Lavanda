@@ -1,7 +1,10 @@
 @use 'core' as u;
 
 .wrapper {
-    @include u.px(mb, 50, 106, 67, 63);
+    position: relative;
+    @include u.px(pb, 50, 106, 67, 63);
+    @include u.px(--padding, 13, 38, 43, 166);
+    padding-inline: var(--padding);
 
     > * + * {
         @include u.px(mt, 60, 60, 60, 60);
@@ -173,4 +176,9 @@
             border-color: white;
         }
     }
+}
+
+.bgLoader {
+    position: absolute;
+    inset: 0;
 }

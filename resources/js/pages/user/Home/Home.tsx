@@ -6,7 +6,6 @@ import BgTbTiny from '@/assets/images/home/bg-tb-tiny.webp';
 import BgTb from '@/assets/images/home/bg-tb.webp';
 import NarrativeDecorTiny from '@/assets/images/home/narrative-tiny.webp';
 import NarrativeDecor from '@/assets/images/home/narrative.webp';
-import AboutSection from '@/components/user/sections/AboutSection/AboutSection';
 import BgLoader from '@/components/user/ui/BgLoader/BgLoader';
 import LazyImage from '@/components/user/ui/LazyImage/LazyImage';
 import AppLayout from '@/layouts/user/AppLayout/AppLayout';
@@ -22,6 +21,8 @@ import HeroSection from './partials/HeroSection/HeroSection';
 import IntroSection from './partials/IntroSection/IntroSection';
 import PlanSection from './partials/PlanSection/PlanSection';
 
+ '@/assets/images/home/bg.png'
+
 const Home = () => {
     return (
         <AppLayout
@@ -31,15 +32,15 @@ const Home = () => {
         >
             <Head title="Главная" />
 
-            <BgLoader
-                prtClass={cn(css.bgLoader, 'full-bleed')}
-                dk={BgDk}
-                dkTiny={BgDkTiny}
-                tb={BgTb}
-                tbTiny={BgTbTiny}
-                mb={BgMb}
-                mbTiny={BgMbTiny}
-            />
+            {/* <BgLoader */}
+            {/*     prtClass={cn(css.bgLoader, 'full-bleed')} */}
+            {/*     dk={BgDk} */}
+            {/*     dkTiny={BgDkTiny} */}
+            {/*     tb={BgTb} */}
+            {/*     tbTiny={BgTbTiny} */}
+            {/*     mb={BgMb} */}
+            {/*     mbTiny={BgMbTiny} */}
+            {/* /> */}
 
             <HeroSection />
 
