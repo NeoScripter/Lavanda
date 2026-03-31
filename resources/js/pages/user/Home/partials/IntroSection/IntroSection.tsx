@@ -31,6 +31,27 @@ import {
     default as Img6,
     default as Img6Tiny,
 } from '@/assets/images/home/intro-6.webp';
+import BgDkTinyWebp from '@/assets/images/home/intro/bg-dk-tiny.webp';
+import BgDkAvif from '@/assets/images/home/intro/bg-dk.avif';
+import BgDkWebp from '@/assets/images/home/intro/bg-dk.webp';
+import BgDk2xAvif from '@/assets/images/home/intro/bg-dk2x.avif';
+import BgDk2xWebp from '@/assets/images/home/intro/bg-dk2x.webp';
+import BgDk3xAvif from '@/assets/images/home/intro/bg-dk3x.avif';
+import BgDk3xWebp from '@/assets/images/home/intro/bg-dk3x.webp';
+import BgMbTinyWebp from '@/assets/images/home/intro/bg-mb-tiny.webp';
+import BgMbAvif from '@/assets/images/home/intro/bg-mb.avif';
+import BgMbWebp from '@/assets/images/home/intro/bg-mb.webp';
+import BgMb2xAvif from '@/assets/images/home/intro/bg-mb2x.avif';
+import BgMb2xWebp from '@/assets/images/home/intro/bg-mb2x.webp';
+import BgMb3xAvif from '@/assets/images/home/intro/bg-mb3x.avif';
+import BgMb3xWebp from '@/assets/images/home/intro/bg-mb3x.webp';
+import BgTbTinyWebp from '@/assets/images/home/intro/bg-tb-tiny.webp';
+import BgTbAvif from '@/assets/images/home/intro/bg-tb.avif';
+import BgTbWebp from '@/assets/images/home/intro/bg-tb.webp';
+import BgTb2xAvif from '@/assets/images/home/intro/bg-tb2x.avif';
+import BgTb2xWebp from '@/assets/images/home/intro/bg-tb2x.webp';
+import BgTb3xAvif from '@/assets/images/home/intro/bg-tb3x.avif';
+import BgTb3xWebp from '@/assets/images/home/intro/bg-tb3x.webp';
 import BgLoader from '@/components/user/ui/BgLoader/BgLoader';
 import LazyImage from '@/components/user/ui/LazyImage/LazyImage';
 import { NodeProps } from '@/types/nodeProps';
@@ -39,27 +60,6 @@ import { FC } from 'preact/compat';
 import IntroSquareCard from '../IntroSquareCard/IntroSquareCard';
 import IntroWideCard from '../IntroWideCard/IntroWideCard';
 import css from './IntroSection.module.scss';
-import BgDkTinyWebp from "@/assets/images/home/intro/bg-dk-tiny.webp";
-import BgDkAvif from "@/assets/images/home/intro/bg-dk.avif";
-import BgDkWebp from "@/assets/images/home/intro/bg-dk.webp";
-import BgDk2xAvif from "@/assets/images/home/intro/bg-dk2x.avif";
-import BgDk2xWebp from "@/assets/images/home/intro/bg-dk2x.webp";
-import BgDk3xAvif from "@/assets/images/home/intro/bg-dk3x.avif";
-import BgDk3xWebp from "@/assets/images/home/intro/bg-dk3x.webp";
-import BgTbTinyWebp from "@/assets/images/home/intro/bg-tb-tiny.webp";
-import BgTbAvif from "@/assets/images/home/intro/bg-tb.avif";
-import BgTbWebp from "@/assets/images/home/intro/bg-tb.webp";
-import BgTb2xAvif from "@/assets/images/home/intro/bg-tb2x.avif";
-import BgTb2xWebp from "@/assets/images/home/intro/bg-tb2x.webp";
-import BgTb3xAvif from "@/assets/images/home/intro/bg-tb3x.avif";
-import BgTb3xWebp from "@/assets/images/home/intro/bg-tb3x.webp";
-import BgMbTinyWebp from "@/assets/images/home/intro/bg-mb-tiny.webp";
-import BgMbAvif from "@/assets/images/home/intro/bg-mb.avif";
-import BgMbWebp from "@/assets/images/home/intro/bg-mb.webp";
-import BgMb2xAvif from "@/assets/images/home/intro/bg-mb2x.avif";
-import BgMb2xWebp from "@/assets/images/home/intro/bg-mb2x.webp";
-import BgMb3xAvif from "@/assets/images/home/intro/bg-mb3x.avif";
-import BgMb3xWebp from "@/assets/images/home/intro/bg-mb3x.webp";
 
 const IntroSection: FC<NodeProps> = ({ className }) => {
     return (
@@ -91,6 +91,8 @@ const IntroSection: FC<NodeProps> = ({ className }) => {
                 mbAvif3x={BgMb3xAvif}
                 mbTiny={BgMbTinyWebp}
             />
+
+            <h2 className={css.heading}>Или перейдите сразу в нужный раздел</h2>
 
             <IntroWideCard
                 className={cn(css.intro1)}

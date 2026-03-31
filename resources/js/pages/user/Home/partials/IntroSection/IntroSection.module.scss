@@ -5,6 +5,8 @@
     @include u.px(pb, 50, 106, 67, 63);
     @include u.px(--padding, 13, 38, 43, 166);
     padding-inline: var(--padding);
+    background-color: u.opacify(u.clr('primary', 'strong'), 80);
+    z-index: -1;
 
     > * + * {
         @include u.px(mt, 60, 60, 60, 60);
@@ -57,6 +59,19 @@
     }
 }
 
+.heading {
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+
+    @include u.rm(text, 32, 48, 56, 56);
+    @include u.mw(md) {
+        max-width: 60%;
+        margin-inline: auto;
+        padding-block: 1em;
+    }
+}
 .intro1 {
     & div:has(p) {
         @include u.mw(sm) {
@@ -141,8 +156,8 @@
 .freeLabel {
     position: absolute;
     top: 0;
-    left: 0;
-    transform: translate(-5%, -20%);
+    right: 0;
+    transform: translate(5%, -20%);
     text-transform: uppercase;
     color: white;
     display: flex;
@@ -157,13 +172,15 @@
     @include u.shadow(2);
 
     @include u.mw(sm) {
-        transform: translate(-10%, -30%);
+        transform: translate(10%, -50%);
     }
     @include u.mw(md) {
+        right: auto;
+        left: 0;
         transform: translate(-10%, 30%);
     }
     @include u.mw(lg) {
-        transform: translate(-15%, 20%);
+        transform: translate(-15%, 50%);
     }
 }
 

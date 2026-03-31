@@ -47,6 +47,7 @@
 
 .imageWrapper {
     position: static;
+    background-color: white;
     @include u.px(p, 8, 0);
 
     @include u.mw(sm) {
