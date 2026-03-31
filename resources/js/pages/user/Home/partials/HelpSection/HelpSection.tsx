@@ -11,6 +11,7 @@ import { Auth } from '@/types/auth';
 import { cn } from '@/utils/cn';
 import { usePage } from '@inertiajs/react';
 import css from './HelpSection.module.scss';
+import ListItem from './partials/ListItem/ListItem';
 
 const HelpSection = () => {
     const {
@@ -19,38 +20,33 @@ const HelpSection = () => {
     const { showSignup } = useAuthModal();
 
     return (
-        <section className={cn(css.wrapper, 'full-bleed')}>
+        <section className={cn(css.root, 'full-bleed')}>
             <div className={css.content}>
-                <h2 className={css.heading}>Как могу вам сегодня помочь?</h2>
-                <p>
-                    Этот сайт создан, чтобы в сложные моменты напомнить вам:
-                    ответы уже есть внутри — нужно лишь немного поддержки, чтобы
-                    их расслышать.
-                </p>
-                <p>
-                    <strong>
-                        От долгожданного ответа вас отделяет всего несколько
-                        простых шагов:
-                    </strong>
-                </p>
-                <ol className={css.actions}>
-                    <li>Войдите или зарегистрируйтесь</li>
-                    <li>Выберете интересущий раздел</li>
-                    <li>Сформулируйте ваш вопрос</li>
-                    <li>
-                        Получите подсказку в виде карты, руны или напутствия
-                    </li>
-                </ol>
+                <h2 className={css.heading}>Как это устроено?</h2>
 
-                {!user && (
+                <ul className={css.items}>
+                    {items.map((item) => (
+                        <ListItem
+                            key={item.id}
+                            item={item}
+                        />
+                    ))}
+                </ul>
+
+                <p className={css.highlight}>
+                    Никаких скрытых платежей. Дальше — только если захотите
+                    остаться
+                </p>
+
+                <div class={cn(css.btnWrapper)}>
                     <button
-                        type="button"
-                        class={cn('primary-btn', css.signupBtn)}
+                        className="primary-btn"
                         onClick={showSignup}
                     >
-                        Экспресс-регистрация
+                        Попробовать 24 часа бесплатно
                     </button>
-                )}
+                    <p>Без привязки карты</p>
+                </div>
             </div>
 
             <BgLoader
@@ -83,3 +79,28 @@ const HelpSection = () => {
 };
 
 export default HelpSection;
+
+export type ItemType = {
+    id: string;
+    title: string;
+    content: string;
+};
+
+const items: ItemType[] = [
+    {
+        id: crypto.randomUUID(),
+        title: '1. Заходите',
+        content: 'Без регистрации можно вытянуть карту Кошачьего оракула.',
+    },
+    {
+        id: crypto.randomUUID(),
+        title: '2. Входите в пространство',
+        content: 'Открываете доступ на 24 часа бесплатно. Без привязки карты.',
+    },
+    {
+        id: crypto.randomUUID(),
+        title: '3. Пользуетесь',
+        content:
+            'Любые инструменты, сколько хотите. Если нравится — остаётесь.',
+    },
+];

@@ -1,0 +1,15 @@
+@use 'core' as u;
+
+.root {
+}
+
+.heading {
+    font-weight: 600;
+    color: u.clr('primary', 'strong');
+    @include u.px(mb, 10, 10, 10, 10);
+    @include u.rm(text, 24, 24, 24, 24);
+}
+
+.content {
+    @include u.rm(text, 16, 20, 20, 20);
+}

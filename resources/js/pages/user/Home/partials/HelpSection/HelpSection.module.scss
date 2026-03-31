@@ -1,45 +1,85 @@
 @use 'core' as u;
 
-.wrapper {
-    @include u.px(pb, 40, 52, 91, 93);
-    @include u.px(pt, 69, 75, 54, 89);
-    @include u.px(pl, 24, 62, 116, 259);
-    @include u.px(pr, 24, 62, 80, 215);
-    @include u.px(gap, null, null, 35, 51);
-
-    @include u.mw(md) {
-        display: flex;
-    }
-}
-
-.content {
-    > * {
-        @include u.px(mb, 25, 30, 40, 40);
-    }
+.root {
+    position: relative;
+    @include u.px(pt, 60, 91, 95, 127);
+    @include u.px(pb, 61, 83, 80, 92);
+    @include u.px(px, 18, 53, 98, 333);
 }
 
 .heading {
     text-transform: uppercase;
-    @include u.px(mt, null, null, 40, 20);
+    font-weight: 700;
+    @include u.px(mb, 40, 68, 69, 45);
+
+    @include u.mw(sm) {
+        text-align: center;
+    }
+    @include u.mw(md) {
+        text-align: left;
+    }
 }
 
-.actions {
-    li {
-        list-style: decimal;
-        list-style-position: inside;
+.items {
+    display: grid;
+    @include u.px(max-w, null, 417, 786, 786);
+    @include u.px(gap, 24, 31, 26, 26);
+    @include u.px(mb, 42, 68, 26, 26);
+}
+
+.highlight {
+    text-align: center;
+    color: u.clr('primary', 'strong');
+    font-weight: 600;
+    border: 2px solid u.clr('primary', 'strong');
+    width: fit-content;
+    padding: 1em 0.75em;
+    border-radius: 0.5em;
+    @include u.rm(text, 16, 20, 20, 20);
+    @include u.px(mb, 46, 37, 61, 55);
+
+    @include u.mw(md) {
+        padding: 0.5em 1em;
     }
 }
 
 .fgLoader {
     display: none;
     flex-shrink: 0;
-    @include u.px(w, null, null, 444, 444);
+    @include u.px(w, null, 426, 575, 620);
+    @include u.px(h, null, 535, 721, 777);
+    @include u.px(top, null, 176, 67, 52);
+    @include u.px(left, null, 400, 830, 1073);
 
-    @include u.mw(md) {
-        display: flex;
+    @include u.mw(sm) {
+        display: block;
+        position: absolute;
     }
 }
 
-.signupBtn {
-    @include u.px(mt, 50, 50, 50, 50);
+.fgImage {
+    object-fit: contain;
+    @include u.size(100%);
+}
+
+.btnWrapper {
+    > * {
+        margin-inline: auto;
+
+        @include u.mw(md) {
+            margin-left: 0;
+        }
+    }
+
+    p {
+        margin-top: 1rem;
+        font-weight: 500;
+        text-align: center;
+        @include u.rm(text, 14, 16, 16, 16);
+
+        @include u.mw(md) {
+            text-align: left;
+            margin-left: 1rem;
+        }
+    }
 }
