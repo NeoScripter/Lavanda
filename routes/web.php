@@ -17,6 +17,7 @@ use App\Http\Controllers\User\Decision\IchingController;
 use App\Http\Controllers\User\Decision\MindGameController;
 use App\Http\Controllers\User\Decision\PracticeController;
 use App\Http\Controllers\User\Decision\RunesController;
+use App\Http\Controllers\User\FaqController;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\LegalController;
 use App\Http\Controllers\User\PlansController;
@@ -34,6 +35,7 @@ Route::get('/plans', [PlansController::class, 'index'])->name('plans');
 Route::get('/about', AboutController::class)->name('about');
 Route::get('/contacts', ContactPageController::class)->name('contacts');
 Route::get('/promo', PromoController::class)->name('promo'); // экспресс карта
+Route::get('/faqs', FaqController::class)->name('faqs');
 
 Route::middleware('auth')->group(function (): void {
     Route::get('/account', AccountController::class)->name('account');

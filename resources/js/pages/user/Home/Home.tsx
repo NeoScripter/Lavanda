@@ -6,7 +6,6 @@ import { Head } from '@inertiajs/react';
 import css from './Home.module.scss';
 import BenefitSection from './partials/BenefitSection/BenefitSection';
 import ChoiceSection from './partials/ChoiceSection/ChoiceSection';
-import FAQSection from './partials/FAQSection/FAQSection';
 import HelpSection from './partials/HelpSection/HelpSection';
 import HeroSection from './partials/HeroSection/HeroSection';
 import IntroSection from './partials/IntroSection/IntroSection';
@@ -39,8 +38,6 @@ const Home = () => {
             {/* <AboutLavanda /> */}
 
             {/* <PlanSection /> */}
-
-            <FAQSection />
         </AppLayout>
     );
 };

@@ -79,3 +79,10 @@
     @include u.px(gap, 0, 0, 22, 22);
     @include u.px(mr, 0, 0, 22, 0);
 }
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background-color: u.opacify(u.clr('primary', 'strong'), 50);
+    z-index: -1;
+}

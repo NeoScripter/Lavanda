@@ -1,7 +1,17 @@
 @use 'core' as u;
 
 .faqWrapper {
-    @include u.px(my, 123, 117, 118, 115);
+    position: relative;
+    @include u.px(mb, 123, 117, 118, 115);
+    @include u.px(pt, 97, 210, 177, 204);
+
+    @include u.px(px, 13, 38, 43, 166);
+}
+
+.bgLoader {
+    position: absolute;
+    inset-inline: 0;
+    inset-block: -10rem;
 }
 
 .heading {
@@ -17,25 +27,6 @@
     @include u.px(px, 22, 26, 26, 26);
     @include u.px(rounded, 24, 24, 24, 24);
 }
-
-/* @supports selector(::details-content) { */
-/*     .details { */
-/*         overflow: hidden; */
-/*         overflow: clip; */
-/*     } */
-/**/
-/*     .details::details-content { */
-/*         block-size: 0; */
-/*         transition: */
-/*             block-size 0.5s, */
-/*             content-visibility 0.5s; */
-/*         transition-behavior: allow-discrete; */
-/*     } */
-/**/
-/*     .details:open::details-content { */
-/*         block-size: auto; */
-/*     } */
-/* } */
 
 .summary {
     font-weight: bold;
@@ -62,7 +53,7 @@
     }
 
     p {
-        margin-bottom: .25em;
+        margin-bottom: 0.25em;
     }
 }
 
@@ -86,7 +77,6 @@
 details[open] .path {
     transform: rotate(135deg);
 }
-
 
 @media (prefers-reduced-motion: no-preference) {
     .path {
