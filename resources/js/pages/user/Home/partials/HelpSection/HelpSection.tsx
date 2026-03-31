@@ -14,10 +14,10 @@ import css from './HelpSection.module.scss';
 import ListItem from './partials/ListItem/ListItem';
 
 const HelpSection = () => {
-    const {
-        auth: { user },
-    } = usePage<{ auth: Auth }>().props;
+    const { auth } = usePage<{ auth: Auth }>().props;
     const { showSignup } = useAuthModal();
+
+    const isLoggedIn = auth.user;
 
     return (
         <section className={cn(css.root, 'full-bleed')}>
@@ -39,13 +39,17 @@ const HelpSection = () => {
                 </p>
 
                 <div class={cn(css.btnWrapper)}>
-                    <button
-                        className="primary-btn"
-                        onClick={showSignup}
-                    >
-                        Попробовать 24 часа бесплатно
-                    </button>
-                    <p>Без привязки карты</p>
+                    {!isLoggedIn && (
+                        <>
+                            <button
+                                className="primary-btn"
+                                onClick={showSignup}
+                            >
+                                Попробовать 24 часа бесплатно
+                            </button>
+                            <p>Без привязки карты</p>
+                        </>
+                    )}
                 </div>
             </div>
 

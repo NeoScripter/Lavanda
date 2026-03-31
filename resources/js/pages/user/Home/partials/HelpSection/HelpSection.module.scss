@@ -63,6 +63,7 @@
 }
 
 .btnWrapper {
+    @include u.px(min-h, 91, 91, 91, 99);
     > * {
         margin-inline: auto;
 

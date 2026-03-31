@@ -4,9 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CardResource;
-use App\Models\Plan;
 use App\Models\Promo;
-use App\Models\User;
 use Illuminate\Support\Facades\Cache;
 use Inertia\Inertia;
 
@@ -14,19 +12,19 @@ class HomeController extends Controller
 {
     public function __invoke()
     {
-        $activeUsers = User::query()->whereHas('subscription', fn ($q) => $q
-            ->where('ends_at', '>', now()))
-            ->count();
+        // $activeUsers = User::query()->whereHas('subscription', fn ($q) => $q
+        //     ->where('ends_at', '>', now()))
+        //     ->count();
 
         return Inertia::render('user/Home/Home', [
-            'plans' => Cache::flexible(
-                'plans',
-                [5 * 60, 10 * 60],
-                fn () => Plan::query()->orderBy('price')
-                    ->get()
-                    ->toResourceCollection()
-            ),
-            'activeUsers' => $activeUsers,
+            // 'plans' => Cache::flexible(
+            //     'plans',
+            //     [5 * 60, 10 * 60],
+            //     fn () => Plan::query()->orderBy('price')
+            //         ->get()
+            //         ->toResourceCollection()
+            // ),
+            // 'activeUsers' => $activeUsers,
             'cards' => Cache::flexible(
                 'tarot',
                 [5 * 60, 10 * 60],
