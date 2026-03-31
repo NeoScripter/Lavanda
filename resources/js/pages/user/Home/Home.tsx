@@ -32,16 +32,6 @@ const Home = () => {
         >
             <Head title="Главная" />
 
-            {/* <BgLoader */}
-            {/*     prtClass={cn(css.bgLoader, 'full-bleed')} */}
-            {/*     dk={BgDk} */}
-            {/*     dkTiny={BgDkTiny} */}
-            {/*     tb={BgTb} */}
-            {/*     tbTiny={BgTbTiny} */}
-            {/*     mb={BgMb} */}
-            {/*     mbTiny={BgMbTiny} */}
-            {/* /> */}
-
             <HeroSection />
 
             <ChoiceSection>
@@ -58,9 +48,9 @@ const Home = () => {
 
             <IntroSection />
 
-            <AboutLavanda />
+            {/* <AboutLavanda /> */}
 
-            <PlanSection />
+            {/* <PlanSection /> */}
 
             <FAQSection />
         </AppLayout>

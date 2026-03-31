@@ -1,7 +1,7 @@
 @use 'core' as u;
 
 .faqWrapper {
-    @include u.px(mb, 123, 117, 118, 115);
+    @include u.px(my, 123, 117, 118, 115);
 }
 
 .heading {

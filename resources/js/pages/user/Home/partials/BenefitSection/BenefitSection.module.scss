@@ -6,7 +6,7 @@
     color: white;
     @include u.px(px, 14, 30, 60, 349);
     @include u.px(pt, 51, 75, 98, 104);
-    @include u.px(pb, 106, 128, 112, 93);
+    @include u.px(pb, 106, 128, 112, 122);
 
     background-color: u.opacify(u.clr('primary', 'strong'), 80);
 }
