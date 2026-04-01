@@ -81,33 +81,35 @@ export default function Login() {
                         Войти
                     </button>
 
-                    <AuthBtn
-                        key="google-btn"
-                        className={css.googleAuthBtn}
-                        href="/auth/google/redirect"
-                    >
-                        <figure aria-hidden="true">
-                            <img
-                                src={Google}
-                                alt=""
-                            />
-                        </figure>
-                        Войти через Гугл
-                    </AuthBtn>
+                    <div className={css.authBtns}>
+                        <AuthBtn
+                            key="yandex-btn"
+                            className={css.yandexAuthBtn}
+                            href="/auth/yandex/redirect"
+                        >
+                            <figure aria-hidden="true">
+                                <img
+                                    src={Yandex}
+                                    alt=""
+                                />
+                            </figure>
+                            Войти через Яндекс
+                        </AuthBtn>
 
-                    <AuthBtn
-                        key="yandex-btn"
-                        className={css.yandexAuthBtn}
-                        href="/auth/yandex/redirect"
-                    >
-                        <figure aria-hidden="true">
-                            <img
-                                src={Yandex}
-                                alt=""
-                            />
-                        </figure>
-                        Войти через Яндекс
-                    </AuthBtn>
+                        <AuthBtn
+                            key="google-btn"
+                            className={css.googleAuthBtn}
+                            href="/auth/google/redirect"
+                        >
+                            <figure aria-hidden="true">
+                                <img
+                                    src={Google}
+                                    alt=""
+                                />
+                            </figure>
+                            Войти через Гугл
+                        </AuthBtn>
+                    </div>
                 </div>
 
                 <Banner className={css.banner}>

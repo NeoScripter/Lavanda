@@ -41,14 +41,25 @@
 }
 
 .googleAuthBtn {
-    margin-inline: auto;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    width: 17rem;
+    border-color: #4285f4;
 }
 .yandexAuthBtn {
-    margin-inline: auto;
-    width: 17rem;
+    border-color: #fc3f1d;
 }
 
+.authBtns {
+    flex-direction: column;
+    margin-bottom: 1rem;
+    margin-inline: auto;
+    margin-top: 3rem;
+    align-items: center;
+    display: flex;
+    gap: 1rem;
+    margin-inline: -2rem;
 
+    @include u.mw(sm) {
+        flex-direction: row;
+        gap: 1.5rem;
+        justify-content: center;
+    }
+}

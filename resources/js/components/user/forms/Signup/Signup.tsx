@@ -168,21 +168,7 @@ export default function Signup() {
                     </Link>
                 </Checkbox>
             </form>
-            <div>
-                <AuthBtn
-                    key="google-btn"
-                    className={css.googleAuthBtn}
-                    href="/auth/google/redirect"
-                >
-                    <figure aria-hidden="true">
-                        <img
-                            src={Google}
-                            alt=""
-                        />
-                    </figure>
-                    Войти через Гугл
-                </AuthBtn>
-
+            <div className={css.authBtns}>
                 <AuthBtn
                     key="yandex-btn"
                     className={css.yandexAuthBtn}
@@ -195,6 +181,20 @@ export default function Signup() {
                         />
                     </figure>
                     Войти через Яндекс
+                </AuthBtn>
+
+                <AuthBtn
+                    key="google-btn"
+                    className={css.googleAuthBtn}
+                    href="/auth/google/redirect"
+                >
+                    <figure aria-hidden="true">
+                        <img
+                            src={Google}
+                            alt=""
+                        />
+                    </figure>
+                    Войти через Гугл
                 </AuthBtn>
             </div>
         </FormLayout>

@@ -39,13 +39,13 @@
     @include u.mw(sm) {
         height: max-content;
         border-radius: 16px;
-        max-width: 503px;
+        max-width: 603px;
         min-height: 0;
         @include u.shadow(2);
         border: 1px solid u.clr('primary', 'muted');
 
         @include u.mw(sm) {
-            max-width: 544px;
+            max-width: 644px;
         }
     }
 
