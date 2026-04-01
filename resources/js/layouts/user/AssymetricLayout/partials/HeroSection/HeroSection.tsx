@@ -10,8 +10,10 @@ import AnimatedOutline from '@/components/user/ui/AnimatedOutline/AnimatedOutlin
 import BgLoader from '@/components/user/ui/BgLoader/BgLoader';
 import BreadCrumbs from '@/components/user/ui/BreadCrumbs';
 import { BgLoaderImg } from '@/lib/types/shared';
+import { useAuthModal } from '@/providers/AuthModalContext';
+import { Auth } from '@/types/auth';
 import { cn } from '@/utils/cn';
-import { Link } from '@inertiajs/react';
+import { Link, usePage } from '@inertiajs/react';
 import { ComponentChildren } from 'preact';
 import { FC } from 'react-dom/src';
 import css from './HeroSection.module.scss';
@@ -30,6 +32,13 @@ const HeroSection: FC<AssymetricHeroSectionProps> = ({
     decorImg,
 }) => {
     const parts = heading.split(' ');
+
+    const { showLogin } = useAuthModal();
+    const { auth } = usePage<{
+        auth: Auth;
+    }>().props;
+
+    const isLoggedIn = auth.user;
 
     return (
         <section class={cn(css.wrapper, 'full-bleed')}>
@@ -70,15 +79,14 @@ const HeroSection: FC<AssymetricHeroSectionProps> = ({
                     dangerouslySetInnerHTML={{ __html: description }}
                 />
 
-                <div class={css.btnGroup}>
-                    <Link
-                        href={route('plans')}
-                        prefetch
+                {!isLoggedIn && <div class={css.btnGroup}>
+                    <button
+                        onClick={showLogin}
                         class={'primary-btn'}
                     >
-                        Получить доступ
-                    </Link>
-                </div>
+                        Открыть доступ
+                    </button>
+                </div>}
             </div>
         </section>
     );

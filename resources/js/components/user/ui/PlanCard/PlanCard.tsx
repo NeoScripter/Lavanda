@@ -55,7 +55,7 @@ const PlanCard: FC<
                 onClick={handleClick}
                 class={cn('primary-btn', css.button)}
             >
-                Получить доступ
+                Открыть доступ
             </button>
 
             <section aria-labelledby={`perks-${plan.id}`}>
@@ -66,9 +66,7 @@ const PlanCard: FC<
                     Преимущества тарифа
                 </h5>
 
-                <p class={css.perks}>
-                    {plan.perks}
-                </p>
+                <p class={css.perks}>{plan.perks}</p>
             </section>
             {children}
         </article>

@@ -16,6 +16,7 @@ import { Link, usePage } from '@inertiajs/react';
 import { ComponentChildren } from 'preact';
 import { FC } from 'react-dom/src';
 import css from './HeroSection.module.scss';
+import { useAuthModal } from '@/providers/AuthModalContext';
 
 type AssymetricHeroSectionProps = {
     heading: string;
@@ -31,11 +32,12 @@ const HeroSection: FC<AssymetricHeroSectionProps> = ({
     decorImg,
 }) => {
     const parts = heading.split(' ');
+    const { showLogin } = useAuthModal();
     const { auth } = usePage<{
         auth: Auth;
     }>().props;
 
-    const isMember = auth.hasPremiumAccess;
+    const isLoggedIn = auth.user;
 
     return (
         <section class={cn(css.wrapper, 'full-bleed')}>
@@ -62,15 +64,14 @@ const HeroSection: FC<AssymetricHeroSectionProps> = ({
                     class={css.intro}
                 />
 
-                {!isMember && (
+                {!isLoggedIn && (
                     <div class={css.btnGroup}>
-                        <Link
-                            prefetch
-                            href={route('plans')}
+                        <button
+                            onClick={showLogin}
                             class={'primary-btn'}
                         >
-                            Получить доступ
-                        </Link>
+                            Открыть доступ
+                        </button>
                     </div>
                 )}
             </div>
