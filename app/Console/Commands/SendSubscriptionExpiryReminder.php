@@ -27,7 +27,7 @@ class SendSubscriptionExpiryReminder extends Command
      */
     public function handle()
     {
-        $targetDate = now()->addWeek()->toDateString();
+        $targetDate = now()->addHour()->toDateString();
 
         User::whereHas('subscription', function ($q) use ($targetDate) {
             $q->whereDate('ends_at', $targetDate);

@@ -23,7 +23,7 @@ return Application::configure(basePath: dirname(__DIR__))
     })
     ->withSchedule(function ($schedule) {
         $schedule->command('app:send-subscription-expiry-reminder')
-            ->dailyAt('09:00');
+            ->everyFifteenMinutes();
         $schedule->command('backup:clean')->weeklyOn(1, '1:00');
         $schedule->command('backup:run')->weeklyOn(1, '1:30');
     })

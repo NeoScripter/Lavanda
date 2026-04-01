@@ -84,5 +84,18 @@ Route::get('/auth/{provider}/redirect', function (string $provider) {
     return Socialite::driver($provider)->redirect();
 });
 
+// Route::get('/preview-email', function () {
+//     $user = new \App\Models\User([
+//         'name' => 'Test User',
+//         'email' => 'test@example.com',
+//     ]);
+
+//     $notification = new \App\Notifications\SubscriptionExpiryNotification();
+
+//     $mailMessage = $notification->locale('ru')->toMail($user);
+
+//     return $mailMessage->render();
+// });
+
 require __DIR__ . '/auth.php';
 require __DIR__ . '/admin.php';

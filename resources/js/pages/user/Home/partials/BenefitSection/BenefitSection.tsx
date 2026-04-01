@@ -35,7 +35,10 @@ const BenefitSection = () => {
     const isLoggedIn = auth.user;
 
     return (
-        <section className={cn(css.root, 'full-bleed')}>
+        <section
+            id="benefits"
+            className={cn(css.root, 'full-bleed')}
+        >
             <BgLoader
                 prtClass={cn(css.bgLoader)}
                 dk={BgDkWebp}

@@ -70,7 +70,7 @@ export const infoCards: InfoCardType[] = [
                 img: InfoCard6,
                 tinyImg: InfoCard6Tiny,
                 label: 'Легкие бизнес-практики',
-                href: route('decision.iching'),
+                href: route('decision.practice'),
             },
         ]
     },
