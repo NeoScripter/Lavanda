@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Subscription;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Socialite;
@@ -24,6 +25,13 @@ class SocialiteController extends Controller
                 $column   => $socialUser->id,
             ]);
         }
+
+        Subscription::create([
+            'user_id' => $user->id,
+            'title' => 'Доступ на 24 часа',
+            'starts_at' => now(),
+            'ends_at' => now()->addDay(),
+        ]);
 
         Auth::login($user);
         return redirect('/');
