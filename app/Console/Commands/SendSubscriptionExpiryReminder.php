@@ -27,10 +27,12 @@ class SendSubscriptionExpiryReminder extends Command
      */
     public function handle()
     {
-        $targetDate = now()->addHour()->toDateString();
+        $windowStart = now()->addHour();
+        $windowEnd = now()->addHour()->addMinutes(15);
 
-        User::whereHas('subscription', function ($q) use ($targetDate) {
-            $q->whereDate('ends_at', $targetDate);
+        User::whereHas('subscription', function ($q) use ($windowStart, $windowEnd) {
+            $q->where('ends_at', '>=', $windowStart)
+                ->where('ends_at', '<', $windowEnd);
         })
             ->chunkById(100, function ($users) {
                 foreach ($users as $user) {
