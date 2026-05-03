@@ -1,5 +1,5 @@
 import { cn } from '@/utils/cn';
-import { useState } from 'preact/hooks';
+import { useCallback, useState } from 'preact/hooks';
 import css from './BgLoader.module.scss';
 
 type BgLoaderProps = {
@@ -61,17 +61,27 @@ export default function BgLoader({
 }: BgLoaderProps) {
     const [isLoading, setIsLoading] = useState(true);
 
-    const tinyDesktop = dkTiny || dk,
-        tinyTablet = tbTiny || tb,
-        tinyMobile = mbTiny || mb;
+    const imgRef = useCallback((img: HTMLImageElement | null) => {
+        if (img?.complete) setIsLoading(false);
+    }, []);
 
     return (
         <div
             {...(alt === '' && { 'aria-hidden': 'true' })}
-            class={cn(css.wrapper, prtClass)}
+            style={{
+                '--dk-src': `url(${dkTiny ?? dk})`,
+                '--tb-src': `url(${tbTiny ?? tb})`,
+                '--mb-src': `url(${mbTiny ?? mb})`,
+            }}
+            class={cn(css.wrapper, isLoading && css.wrapperLoading, prtClass)}
         >
-            {/* Main high-quality images */}
-            <picture class={cn(css.picture, isLoading && css.pictureLoading)}>
+            <picture
+                class={cn(
+                    css.picture,
+                    isLoading && css.pictureLoading,
+                    imgClass,
+                )}
+            >
                 {dkAvif && (
                     <source
                         type="image/avif"
@@ -83,7 +93,6 @@ export default function BgLoader({
                         media={`(min-width: ${tabletMinWidth}px)`}
                     />
                 )}
-
                 <source
                     srcSet={buildSrcSet([
                         [dk, '1x'],
@@ -92,7 +101,6 @@ export default function BgLoader({
                     ])}
                     media={`(min-width: ${tabletMinWidth}px)`}
                 />
-
                 {tbAvif && (
                     <source
                         type="image/avif"
@@ -104,7 +112,6 @@ export default function BgLoader({
                         media={`(min-width: ${mbMinWidth}px)`}
                     />
                 )}
-
                 <source
                     srcSet={buildSrcSet([
                         [tb, '1x'],
@@ -113,7 +120,6 @@ export default function BgLoader({
                     ])}
                     media={`(min-width: ${mbMinWidth}px)`}
                 />
-
                 {mbAvif && (
                     <source
                         type="image/avif"
@@ -124,7 +130,6 @@ export default function BgLoader({
                         ])}
                     />
                 )}
-
                 <img
                     onLoad={() => setIsLoading(false)}
                     srcSet={buildSrcSet([
@@ -134,44 +139,17 @@ export default function BgLoader({
                     ])}
                     alt={alt}
                     loading="lazy"
-                    class={cn(css.image, imgClass)}
+                    ref={imgRef}
+                    class={css.image}
                 />
             </picture>
 
-            <div
-                role="status"
-                aria-label="Фото загружается"
-                class={cn(
-                    css.loadingOverlay,
-                    !isLoading && css.loadingOverlayHidden,
-                )}
-            >
+            {isLoading && (
                 <div
-                    {...(alt === '' && { 'aria-hidden': 'true' })}
-                    class={cn(isLoading && css.skeleton)}
-                ></div>
-
-                <picture
                     aria-hidden="true"
-                    class={cn(css.picture, imgClass)}
-                >
-                    <source
-                        srcSet={tinyDesktop}
-                        media={`(min-width: ${tabletMinWidth}px)`}
-                    />
-                    <source
-                        srcSet={tinyTablet}
-                        media={`(min-width: ${mbMinWidth}px)`}
-                    />
-
-                    <img
-                        onLoad={() => setIsLoading(false)}
-                        src={tinyMobile}
-                        alt={alt}
-                        class={cn(css.image, imgClass)}
-                    />
-                </picture>
-            </div>
+                    class={css.skeleton}
+                />
+            )}
         </div>
     );
 }

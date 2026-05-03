@@ -3,57 +3,41 @@
 .wrapper {
     position: relative;
     isolation: isolate;
-    overflow: hidden;
     overflow: clip;
 }
 
+.wrapperLoading {
+    background-image: var(--tiny-src);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(8px);
+    transform: scale(1.05);
+}
+
 .image {
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
-    transition: all 0.5s ease-in-out;
+    transition: opacity 500ms ease-in-out;
 }
 
-.image.loading {
+.imageLoading {
     opacity: 0;
 }
 
-.loader {
+.skeleton {
     position: absolute;
     inset: 0;
-    z-index: 10;
     width: 100%;
     height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 5px;
-}
-
-.pulse {
-    position: absolute;
-    inset: 0;
-    z-index: 10;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(229, 231, 235, 0.5);
     animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-.placeholder {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
+    background-color: rgba(229, 231, 235, 0.5);
 }
 
 @keyframes pulse {
-    0%,
-    100% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.5;
-    }
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.5; }
 }

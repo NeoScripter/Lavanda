@@ -1,11 +1,10 @@
 import { cn } from '@/utils/cn';
-import { useState } from 'preact/hooks';
+import { useCallback, useState } from 'preact/hooks';
 import css from './LazyImage.module.scss';
 
 type LazyImageProps = {
     prtClass?: string;
     imgClass?: string;
-    placeholderClass?: string;
     img: string;
     alt?: string;
     tinyImg: string;
@@ -19,17 +18,22 @@ export default function LazyImage({
     alt = '',
     tinyImg,
     isLazy = true,
-    placeholderClass,
 }: LazyImageProps) {
     const [isLoading, setIsLoading] = useState(true);
+
+    const imgRef = useCallback((el: HTMLImageElement | null) => {
+        if (el?.complete) setIsLoading(false);
+    }, []);
 
     return (
         <figure
             role="img"
-            class={cn(css.wrapper, prtClass)}
+            style={{ '--tiny-src': `url(${tinyImg})` }}
+            class={cn(css.wrapper, isLoading && css.wrapperLoading, prtClass)}
             {...(alt === '' && { 'aria-hidden': 'true' })}
         >
             <img
+                ref={imgRef}
                 onLoad={() => setIsLoading(false)}
                 onError={(e) => {
                     console.error('Image failed to load:', img, e);
@@ -38,26 +42,15 @@ export default function LazyImage({
                 src={img}
                 alt={alt}
                 loading={isLazy ? 'lazy' : undefined}
-                class={cn(css.image, isLoading && css.loading, imgClass)}
+                class={cn(css.image, isLoading && css.imageLoading, imgClass)}
                 aria-hidden={isLoading}
             />
+
             {isLoading && (
                 <div
-                    role="status"
-                    aria-label="Фото загружается"
-                    class={cn(css.loader, placeholderClass)}
-                >
-                    <div
-                        aria-hidden="true"
-                        class={css.pulse}
-                    ></div>
-                    <img
-                        aria-hidden={!isLoading}
-                        src={tinyImg}
-                        alt={alt}
-                        class={css.placeholder}
-                    />
-                </div>
+                    aria-hidden="true"
+                    class={css.skeleton}
+                />
             )}
         </figure>
     );
