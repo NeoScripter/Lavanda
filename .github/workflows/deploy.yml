@@ -5,7 +5,6 @@ on:
     branches:
       - develop
       - main
-  # workflow_dispatch:
 
 jobs:
   deploy:
@@ -23,14 +22,11 @@ jobs:
           script: |
             cd www/Lavanda && \
             git pull origin main && \
+            composer install --no-dev --optimize-autoloader --classmap-authoritative && \
             npm install && \
             npm run build && \
-            composer install --no-dev --optimize-autoloader --classmap-authoritative && \
-            php artisan config:clear && \
-            php artisan view:clear && \
-            php artisan route:clear && \
+            php artisan optimize:clear && \
             php artisan config:cache && \
             php artisan route:cache && \
             php artisan view:cache && \
             sudo service php8.3-fpm reload
-
