@@ -25,6 +25,7 @@ jobs:
             git pull origin main && \
             npm install && \
             npm run build && \
+            composer install --no-dev --optimize-autoloader --classmap-authoritative && \
             php artisan config:clear && \
             php artisan view:clear && \
             php artisan route:clear && \
