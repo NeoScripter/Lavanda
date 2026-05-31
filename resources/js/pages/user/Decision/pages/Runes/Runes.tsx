@@ -1,7 +1,3 @@
-// import ForegroundDkTiny from '@/assets/images/runes/foreground-dk-tiny.webp';
-// import ForegroundDk from '@/assets/images/runes/foreground-dk.webp';
-// import ForegroundMbTiny from '@/assets/images/runes/foreground-mb-tiny.webp';
-// import ForegroundMb from '@/assets/images/runes/foreground-mb.webp';
 import ForegroundDkTinyWebp from '@/assets/images/runes/foreground-dk-tiny.webp';
 import ForegroundDkAvif from '@/assets/images/runes/foreground-dk.avif';
 import ForegroundDkWebp from '@/assets/images/runes/foreground-dk.webp';

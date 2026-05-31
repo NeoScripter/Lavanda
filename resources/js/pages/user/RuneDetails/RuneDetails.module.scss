@@ -1,0 +1,20 @@
+@use 'core' as u;
+
+.layout {
+    @include u.px(mt, null, null, 37, 32);
+    @include u.px(--padding, null, null, 27, 45);
+    @include u.px(pt, 97, 210, 140, 172);
+    /* @include u.px(pb, 43, 48, 80, 80); */
+}
+
+.wrapper {
+    margin-inline: auto;
+    width: 100%;
+    @include u.px(max-w, null, null, 1211, 1553);
+    /* @include u.px(mt, 56, 85, 111, 122); */
+    @include u.px(mb, 100, 85, 111, 122);
+}
+
+.itemWrapper {
+    @include u.px(mt, 56, 85, 111, 122);
+}
