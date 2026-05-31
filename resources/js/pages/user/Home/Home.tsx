@@ -38,6 +38,7 @@ const Home = () => {
             {/* <AboutLavanda /> */}
 
             {/* <PlanSection /> */}
+
         </AppLayout>
     );
 };

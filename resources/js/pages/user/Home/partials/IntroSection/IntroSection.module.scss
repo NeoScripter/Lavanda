@@ -2,7 +2,9 @@
 
 .wrapper {
     position: relative;
-    @include u.px(pb, 50, 106, 67, 63);
+
+    @include u.px(top, 28, 26, 32, 28);
+    @include u.px(pb, 50 + 28, 106 + 26, 67 + 32, 63 + 28);
     @include u.px(--padding, 13, 38, 43, 166);
     padding-inline: var(--padding);
     background-color: u.opacify(u.clr('primary', 'strong'), 80);

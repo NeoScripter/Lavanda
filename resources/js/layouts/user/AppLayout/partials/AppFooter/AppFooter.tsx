@@ -13,7 +13,6 @@ const AppFooter: FC<{ hasMenu?: boolean }> = ({ hasMenu = true }) => {
         <footer
             class={cn(css.footer, 'full-bleed', hasMenu && css.footerWithMenu)}
         >
-            {!hasMenu && <span className={css.overlay}></span>}
             {hasMenu && <FooterMenu />}
 
             <div class={css.logoWrapper}>
