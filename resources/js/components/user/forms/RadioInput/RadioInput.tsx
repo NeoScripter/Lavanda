@@ -10,9 +10,10 @@ import {
 } from '@headlessui/react';
 import { FC } from 'preact/compat';
 import css from './RadioInput.module.scss';
+import { ComponentChildren } from 'preact';
 
 export type OptionType = {
-    label: string;
+    label: ComponentChildren;
     value: string | null;
 };
 

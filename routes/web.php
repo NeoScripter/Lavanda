@@ -26,6 +26,7 @@ use App\Http\Controllers\User\RelaxationController;
 use App\Http\Controllers\User\RuneDetailsController;
 use App\Http\Controllers\User\RunesController as UserRunesController;
 use App\Http\Controllers\User\Sadness\SadnessController;
+use App\Http\Controllers\User\SurveyController;
 use App\Http\Controllers\User\ToolkitController;
 use App\Http\Controllers\User\UpdateSubscriptionStatusController;
 use App\Http\Controllers\User\UserController;
@@ -87,6 +88,7 @@ Route::get('/auth/{provider}/redirect', function (string $provider) {
 });
 
 Route::get('/rune-details', RuneDetailsController::class)->name('rune-details');
+Route::get('/survey', [SurveyController::class, 'index'])->name('survey');
 
 // Route::get('/preview-email', function () {
 //     $user = new \App\Models\User([
