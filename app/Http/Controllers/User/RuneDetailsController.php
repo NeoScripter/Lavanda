@@ -6,6 +6,7 @@ use App\Enums\RuneCategoryName;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 use Inertia\Inertia;
 
@@ -41,8 +42,8 @@ class RuneDetailsController extends Controller
                 'html' => $rune->html,
                 'front_image' => [
                     'id' => $rune->img_id,
-                    'path' => $rune->path,
-                    'tiny_path' => $rune->tiny_path,
+                    'path' => Storage::disk('public')->url($rune->path),
+                    'tiny_path' => Storage::disk('public')->url($rune->tiny_path),
                     'alt' => $rune->alt,
                 ]
             ];
