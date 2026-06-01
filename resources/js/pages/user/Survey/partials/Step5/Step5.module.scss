@@ -1,0 +1,11 @@
+@use 'core' as u;
+
+.legalLink {
+    text-decoration: underline;
+    text-underline-offset: 0.3em;
+    transition: color 0.3s;
+
+    &:hover {
+        color: u.clr('primary', 'strong');
+    }
+}

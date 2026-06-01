@@ -11,6 +11,15 @@
     color: u.clr('foreground', 'neutral');
     position: relative;
     isolation: isolate;
+
+    label {
+        font-size: 1.05rem !important;
+        text-wrap: balance;
+    }
+    fieldset > div {
+        font-size: 1.05rem !important;
+        text-wrap: balance;
+    }
 }
 
 .wrapper {

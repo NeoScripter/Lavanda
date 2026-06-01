@@ -1,24 +1,24 @@
 import { NodeProps } from '@/types/nodeProps';
 import { FC, useState } from 'preact/compat';
-import css from './Step2.module.scss';
+import css from './Step3.module.scss';
 
 import RadioInput from '@/components/user/forms/RadioInput';
 import { ArrowLeft, ArrowRight } from 'lucide-preact';
 import { TargetedEvent } from 'preact';
 import { StepProps } from '../../Survey';
-import { tools } from './pageData';
+import { spheres } from './pageData';
 
-const Step2: FC<NodeProps<StepProps>> = ({ answers, popState, poped, pushState }) => {
-    const [selectedTool, setSelectedTool] = useState<string | null>(poped.value?.tool ?? null);
+const Step3: FC<NodeProps<StepProps>> = ({ answers, popState, pushState, poped }) => {
+    const [selectedSphere, setSelectedSphere] = useState<string | null>(poped.value?.sphere ?? null);
 
     const submit = (e: TargetedEvent<HTMLFormElement, SubmitEvent>) => {
         e.preventDefault();
 
-        if (selectedTool == null) {
+        if (selectedSphere == null) {
             return;
         }
 
-        pushState({ tool: selectedTool });
+        pushState({ sphere: selectedSphere });
     };
 
     const currentStep = answers.value.length + 1;
@@ -26,11 +26,11 @@ const Step2: FC<NodeProps<StepProps>> = ({ answers, popState, poped, pushState }
     return (
         <form onSubmit={submit}>
             <RadioInput
-                selected={selectedTool}
-                setSelected={(value) => setSelectedTool(value)}
-                options={tools}
+                selected={selectedSphere}
+                setSelected={(value) => setSelectedSphere(value)}
+                options={spheres}
                 className={css.radio}
-                label="Выбор инструмента"
+                label="Выберите сферу, которая волнует сейчас больше всего"
             />
 
             <div data-type="button-wrapper">
@@ -46,7 +46,7 @@ const Step2: FC<NodeProps<StepProps>> = ({ answers, popState, poped, pushState }
                     type="submit"
                     data-type="step-button"
                     className="primary-btn"
-                    disabled={selectedTool == null}
+                    disabled={selectedSphere == null}
                 >
                     шаг {currentStep + 1}
                     <ArrowRight />
@@ -56,4 +56,4 @@ const Step2: FC<NodeProps<StepProps>> = ({ answers, popState, poped, pushState }
     );
 };
 
-export default Step2;
+export default Step3;
