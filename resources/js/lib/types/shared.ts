@@ -9,3 +9,5 @@ export type BgLoaderImg = {
     mbAvif?: string;
     mbTiny: string;
 };
+
+export type ValidationError = Record<string, string>;

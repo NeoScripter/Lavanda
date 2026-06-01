@@ -89,6 +89,7 @@ Route::get('/auth/{provider}/redirect', function (string $provider) {
 
 Route::get('/rune-details', RuneDetailsController::class)->name('rune-details');
 Route::get('/survey', [SurveyController::class, 'index'])->name('survey');
+Route::post('/survey', [SurveyController::class, 'store'])->name('survey.store');
 
 // Route::get('/preview-email', function () {
 //     $user = new \App\Models\User([

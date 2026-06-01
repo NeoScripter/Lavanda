@@ -3,9 +3,13 @@ import { FC, useReducer } from 'preact/compat';
 import css from './Step5.module.scss';
 
 import Checkbox from '@/components/user/forms/Checkbox/Checkbox';
+import InputError from '@/components/user/forms/InputError/InputError';
+import { ValidationError } from '@/lib/types/shared';
+import { router } from '@inertiajs/react';
+import { useSignal } from '@preact/signals';
 import { ArrowLeft, ArrowRight } from 'lucide-preact';
 import { TargetedEvent } from 'preact';
-import { StepProps } from '../../Survey';
+import { AnswerType, StepProps } from '../../Survey';
 
 type FormState = {
     policy: boolean;
@@ -39,11 +43,36 @@ const reducer = (state: FormState, action: FormAction) => {
 
 const Step5: FC<NodeProps<StepProps>> = ({ answers, popState }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
+    const error = useSignal('');
 
     const submit = (e: TargetedEvent<HTMLFormElement, SubmitEvent>) => {
         e.preventDefault();
+        const reduced: AnswerType = {};
 
-        console.log(answers.value);
+        for (const obj of answers.value) {
+            for (const key in obj) {
+                reduced[key] = obj[key];
+            }
+        }
+
+        router.visit(route('survey.store'), {
+            method: 'post',
+            data: reduced,
+            preserveState: true,
+            onError: (err: ValidationError) => {
+                console.error(err);
+
+                for (const key in err) {
+                    error.value = err[key];
+                    break;
+                }
+
+                window.scrollTo({
+                    top: 1000,
+                    behavior: 'smooth',
+                });
+            },
+        });
     };
 
     const currentStep = answers.value.length + 1;
@@ -119,6 +148,7 @@ const Step5: FC<NodeProps<StepProps>> = ({ answers, popState }) => {
                     <ArrowRight />
                 </button>
             </div>
+            {error.value !== '' && <InputError message={error.value} />}
         </form>
     );
 };
