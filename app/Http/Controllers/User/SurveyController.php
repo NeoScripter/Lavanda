@@ -5,23 +5,27 @@ namespace App\Http\Controllers\User;
 use App\Enums\UserRole;
 use App\Http\Controllers\Controller;
 use App\Models\Subscription;
+use App\Models\Survey;
 use App\Models\User;
 use App\Notifications\FreeAccessNotification;
 use App\Notifications\SurveyNotification;
-use App\Services\OtpService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 use Inertia\Inertia;
 
 class SurveyController extends Controller
 {
-    public function __construct(
-        protected OtpService $otpService
-    ) {}
-
     public function index()
     {
+        if (Auth::check()) {
+            $user = Auth::user();
+
+            if ($user->survey()->exists()) {
+                return redirect(route('home'));
+            }
+        }
         return Inertia::render('user/Survey/Survey');
     }
 
@@ -36,7 +40,6 @@ class SurveyController extends Controller
             'sphere' => ['required', 'string', 'max:200'],
             'description' => ['required', 'string', 'min:1', 'max:40000'],
         ]);
-
 
         // Check if the user is logged in
         if (! Auth::check()) {
@@ -85,6 +88,10 @@ class SurveyController extends Controller
             $user = Auth::user();
         }
 
+        if ($user->survey()->exists()) {
+            return back()->withErrors(['name' => 'Вы уже проходили опрос и ваши ответы уже получены.']);
+        }
+
         // log in the user
         Auth::login($user);
 
@@ -93,6 +100,8 @@ class SurveyController extends Controller
 
         $admin->notify(new SurveyNotification($survey));
         $user->notify(new FreeAccessNotification());
+
+        Survey::create(['user_id' => $user->id, 'is_taken' => true]);
         // redirect to the home page
         return redirect(route('home'));
     }
