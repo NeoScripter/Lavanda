@@ -6,6 +6,7 @@ use App\Enums\UserRole;
 use App\Http\Controllers\Controller;
 use App\Models\Subscription;
 use App\Models\User;
+use App\Notifications\FreeAccessNotification;
 use App\Notifications\SurveyNotification;
 use App\Services\OtpService;
 use Carbon\Carbon;
@@ -91,7 +92,7 @@ class SurveyController extends Controller
         $survey = json_decode(json_encode($validated), FALSE);
 
         $admin->notify(new SurveyNotification($survey));
-
+        $user->notify(new FreeAccessNotification());
         // redirect to the home page
         return redirect(route('home'));
     }
