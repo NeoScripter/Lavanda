@@ -44,9 +44,12 @@ const reducer = (state: FormState, action: FormAction) => {
 const Step5: FC<NodeProps<StepProps>> = ({ answers, popState }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
     const error = useSignal('');
+    const loading = useSignal(false);
 
     const submit = (e: TargetedEvent<HTMLFormElement, SubmitEvent>) => {
         e.preventDefault();
+        loading.value = true;
+
         const reduced: AnswerType = {};
 
         for (const obj of answers.value) {
@@ -59,6 +62,7 @@ const Step5: FC<NodeProps<StepProps>> = ({ answers, popState }) => {
             method: 'post',
             data: reduced,
             preserveState: true,
+            onSuccess: () => loading.value = false,
             onError: (err: ValidationError) => {
                 console.error(err);
 
@@ -141,7 +145,8 @@ const Step5: FC<NodeProps<StepProps>> = ({ answers, popState }) => {
                     disabled={
                         !state.consent ||
                         !state.policy ||
-                        !state.acknowledgement
+                        !state.acknowledgement ||
+                        loading.value
                     }
                 >
                     Закончить опрос
