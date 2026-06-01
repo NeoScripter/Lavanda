@@ -1,0 +1,58 @@
+@use 'core' as u;
+
+.root {
+    margin-inline: auto;
+    margin-block: 2rem;
+    max-width: u.bp('xl');
+    overflow-x: hidden;
+    overflow-x: clip;
+    isolation: isolate;
+    background-color: u.clr('background', 'muted');
+    color: u.clr('foreground', 'neutral');
+    position: relative;
+    isolation: isolate;
+
+    label {
+        font-size: 1.05rem !important;
+        text-wrap: balance;
+    }
+    fieldset > div {
+        font-size: 1.05rem !important;
+        text-wrap: balance;
+    }
+}
+
+.wrapper {
+    background-color: white;
+    max-width: 40rem;
+    margin-inline: auto;
+    border-radius: 0.5rem;
+}
+
+.banner {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 2.5rem;
+    margin-top: 3rem;
+    margin-inline: 1rem !important;
+
+    @include u.mw(sm) {
+        margin-inline: 4rem !important;
+    }
+}
+
+.header {
+    margin-inline: auto;
+    width: 90%;
+    color: u.clr('primary', 'strong');
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-block: 2.5rem;
+
+    @include u.mw(sm) {
+        width: 80%;
+    }
+    @include u.mw(md) {
+        width: 80%;
+    }
+}

@@ -23,6 +23,7 @@ use App\Http\Controllers\User\LegalController;
 use App\Http\Controllers\User\PlansController;
 use App\Http\Controllers\User\PromoController;
 use App\Http\Controllers\User\RelaxationController;
+use App\Http\Controllers\User\ReviewController;
 use App\Http\Controllers\User\RuneDetailsController;
 use App\Http\Controllers\User\RunesController as UserRunesController;
 use App\Http\Controllers\User\Sadness\SadnessController;
@@ -90,6 +91,9 @@ Route::get('/auth/{provider}/redirect', function (string $provider) {
 Route::get('/rune-details', RuneDetailsController::class)->name('rune-details');
 Route::get('/survey', [SurveyController::class, 'index'])->name('survey');
 Route::post('/survey', [SurveyController::class, 'store'])->name('survey.store');
+
+Route::middleware('auth')->get('/review', [ReviewController::class, 'index'])->name('review');
+Route::post('/review', [ReviewController::class, 'store'])->name('review.store');
 
 // Route::get('/preview-email', function () {
 //     $user = new \App\Models\User([

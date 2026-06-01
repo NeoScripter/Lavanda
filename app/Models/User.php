@@ -66,6 +66,11 @@ class User extends Authenticatable implements FilamentUser
         return $this->hasOne(Survey::class);
     }
 
+    public function review(): HasOne
+    {
+        return $this->hasOne(Review::class);
+    }
+
     public function otps(): HasMany
     {
         return $this->hasMany(Otp::class);
