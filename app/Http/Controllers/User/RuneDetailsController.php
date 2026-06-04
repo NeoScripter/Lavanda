@@ -17,7 +17,10 @@ class RuneDetailsController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $validated = $request->validate(['category' => ['nullable', Rule::enum(RuneCategoryName::class)]]);
+        $validated = $request->validate([
+            'category' => ['nullable', Rule::enum(RuneCategoryName::class)],
+            'runeId' => ['nullable', 'integer']
+        ]);
 
         $category = empty($validated['category']) ? 'Общая' : $validated['category'];
 

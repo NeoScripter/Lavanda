@@ -15,6 +15,19 @@
     @include u.px(mb, 100, 85, 111, 122);
 }
 
+.runeSearch {
+    @include u.px(mt, 56, 62, 62, 62);
+
+    label {
+        text-align: center;
+        display: block;
+        margin-bottom: 1em;
+        margin-inline: auto;
+    }
+
+}
+
 .itemWrapper {
     @include u.px(mt, 56, 85, 111, 122);
 }
+

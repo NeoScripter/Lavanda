@@ -15,7 +15,6 @@ import DeleteUser from '@/components/user/forms/DeleteUser/DeleteUser';
 import UpdateUser from '@/components/user/forms/UpdateUser/UpdateUser';
 import BgLoader from '@/components/user/ui/BgLoader/BgLoader';
 import LazyImage from '@/components/user/ui/LazyImage/LazyImage';
-import Toggle from '@/components/user/ui/Toggle/Toggle';
 import AppLayout from '@/layouts/user/AppLayout/AppLayout';
 import DialogLayout from '@/layouts/user/DialogLayout/DialogLayout';
 import { User } from '@/lib/types';
@@ -85,16 +84,16 @@ const Account = () => {
                 <UpdateUser />
 
                 <div className={css.actions}>
-                    {sub && (
-                        <div className={css.subToggle}>
-                            <Toggle
-                                checked={sub.status === 1}
-                                onChange={() => handleToggle(sub)}
-                                ariaLabel="Переключить подписку"
-                            />
-                            <p>Автопродление подписки</p>
-                        </div>
-                    )}
+                    {/* {sub && ( */}
+                    {/*     <div className={css.subToggle}> */}
+                    {/*         <Toggle */}
+                    {/*             checked={sub.status === 1} */}
+                    {/*             onChange={() => handleToggle(sub)} */}
+                    {/*             ariaLabel="Переключить подписку" */}
+                    {/*         /> */}
+                    {/*         <p>Автопродление подписки</p> */}
+                    {/*     </div> */}
+                    {/* )} */}
                     <button
                         onClick={() => setShowDeleteDialog(true)}
                         type="button"
@@ -103,14 +102,13 @@ const Account = () => {
                         <X />
                         Удалить аккаунт
                     </button>
+                    <button
+                        onClick={handleLogoutClick}
+                        className={cn('primary-btn', css.logoutBtn)}
+                    >
+                        Выйти
+                    </button>
                 </div>
-
-                <button
-                    onClick={handleLogoutClick}
-                    className={cn('primary-btn', css.logoutBtn)}
-                >
-                    Выйти
-                </button>
 
                 {sub?.ends_at && (
                     <h3 className={css.planDetails}>

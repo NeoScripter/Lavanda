@@ -45,30 +45,19 @@ const ItemWrapper = () => {
         params.get('category') ?? (categories.length > 0 ? categories[0] : ''),
     );
 
-    const runeId = useSignal<string | undefined>(params.get('runeId') ?? '');
+    const runeId = useSignal<number | undefined>(undefined);
     const debouncedRuneId = useDebounce(runeId.value, 400);
 
     const handleCategorySelection = (newCategory: string) => {
         selectedCategory.value = newCategory;
-        url.searchParams.set('category', newCategory);
-        router.visit(url);
+        params.set('category', newCategory);
+        router.visit(window.location.href);
     };
-
-    const handleRuneSelection = (newId: number) => {
-        const stringified = newId.toString();
-        runeId.value = stringified;
-        url.searchParams.set('runeId', stringified);
-        router.visit(url, {
-            preserveState: true,
-            preserveScroll: true,
-        });
-    };
-
     const { interactiveItems } = useInteractiveItems();
 
     useEffect(() => {
         interactiveItems.value = runes;
-    }, [selectedCategory.value, runeId.value]);
+    }, [selectedCategory.value]);
 
     return (
         <>
@@ -83,7 +72,7 @@ const ItemWrapper = () => {
                     name="rune_id"
                     placeholder="23"
                     value={runeId.value}
-                    onInput={(e) =>  handleRuneSelection(e.target.value)}
+                    onInput={(e) => (runeId.value = e.target.value)}
                 />
             </div>
             <div className={css.itemWrapper}>
