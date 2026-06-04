@@ -67,7 +67,7 @@ const Step1: FC<NodeProps<StepProps>> = ({ answers, poped, pushState }) => {
     return (
         <form onSubmit={submit}>
             <div>
-                <Label htmlFor="email">Имя</Label>
+                <Label htmlFor="email">Как к тебе обращаться</Label>
                 <Input
                     id="name"
                     name="name"
@@ -108,11 +108,11 @@ const Step1: FC<NodeProps<StepProps>> = ({ answers, poped, pushState }) => {
                     dispatch({ type: 'SET_GENDER', payload: value as string })
                 }
                 options={genders}
-                label="Выберите пол"
+                label="Выбери пол"
             />
 
             <div>
-                <Label htmlFor="birthday">День рождения</Label>
+                <Label htmlFor="birthday">Твоя дата рождения</Label>
                 <Input
                     id="birthday"
                     name="birthday"
