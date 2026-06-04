@@ -51,7 +51,7 @@ class SurveyController extends Controller
                     'name' => $validated['name'],
                     'email' => $validated['email'],
                     'birthday' => $validated['birthday'],
-                    'gender' => $validated['gender'],
+                    'gender' => $validated['gender'] === 'Мужчина' ? 'male' : 'female',
                 ]);
             } else {
                 $user = User::where('email', $validated['email'])->first();
