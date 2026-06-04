@@ -12,6 +12,7 @@ use App\Notifications\SurveyNotification;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 use Inertia\Inertia;
 
@@ -38,6 +39,7 @@ class SurveyController extends Controller
             'birthday' => ['required', 'string', 'max:200'],
             'tool' => ['required', 'string', 'max:200'],
             'sphere' => ['required', 'string', 'max:200'],
+            'gender' => ['required', 'string', 'max:200', Rule::in(['Мужчина', 'Женщина'])],
             'description' => ['required', 'string', 'min:1', 'max:40000'],
         ]);
 
@@ -49,6 +51,7 @@ class SurveyController extends Controller
                     'name' => $validated['name'],
                     'email' => $validated['email'],
                     'birthday' => $validated['birthday'],
+                    'gender' => $validated['gender'],
                 ]);
             } else {
                 $user = User::where('email', $validated['email'])->first();

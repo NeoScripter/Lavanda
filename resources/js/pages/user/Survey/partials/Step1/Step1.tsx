@@ -5,19 +5,26 @@ import css from './Step1.module.scss';
 import Input from '@/components/user/forms/Input/Input';
 import InputError from '@/components/user/forms/InputError/InputError';
 import Label from '@/components/user/forms/Label/Label';
+import RadioInput from '@/components/user/forms/RadioInput';
 import { cn } from '@/utils/cn';
 import { ArrowRight } from 'lucide-preact';
 import { TargetedEvent } from 'preact';
 import { StepProps } from '../../Survey';
 
+const genders = [
+    { label: 'Мужчина', value: 'Мужчина' },
+    { label: 'Женщина', value: 'Женщина' },
+];
+
 type FormState = {
     name: string;
     email: string;
     birthday: string;
+    gender: string;
 };
 
 type FormAction = {
-    type: 'SET_NAME' | 'SET_EMAIL' | 'SET_BIRTHDAY';
+    type: 'SET_NAME' | 'SET_EMAIL' | 'SET_BIRTHDAY' | 'SET_GENDER';
     payload: string;
 };
 
@@ -25,6 +32,7 @@ const initialState: FormState = {
     name: '',
     email: '',
     birthday: '',
+    gender: 'Женщина',
 };
 
 const reducer = (state: FormState, action: FormAction) => {
@@ -35,18 +43,23 @@ const reducer = (state: FormState, action: FormAction) => {
             return { ...state, email: action.payload };
         case 'SET_BIRTHDAY':
             return { ...state, birthday: action.payload };
+        case 'SET_GENDER':
+            return { ...state, gender: action.payload };
         default:
             throw new Error('unexpected action');
     }
 };
 
 const Step1: FC<NodeProps<StepProps>> = ({ answers, poped, pushState }) => {
-    const [state, dispatch] = useReducer(reducer, poped.value as FormState ?? initialState);
+    const [state, dispatch] = useReducer(
+        reducer,
+        (poped.value as FormState) ?? initialState,
+    );
 
     const submit = (e: TargetedEvent<HTMLFormElement, SubmitEvent>) => {
         e.preventDefault();
 
-        pushState(state)
+        pushState(state);
     };
 
     const currentStep = answers.value.length + 1;
@@ -88,6 +101,15 @@ const Step1: FC<NodeProps<StepProps>> = ({ answers, poped, pushState }) => {
                 />
                 <InputError />
             </div>
+
+            <RadioInput
+                selected={state.gender}
+                setSelected={(value) =>
+                    dispatch({ type: 'SET_GENDER', payload: value as string })
+                }
+                options={genders}
+                label="Выберите пол"
+            />
 
             <div>
                 <Label htmlFor="birthday">День рождения</Label>

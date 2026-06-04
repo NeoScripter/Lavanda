@@ -44,6 +44,7 @@ class SurveyNotification extends Notification implements ShouldQueue
             ->line("Имя: {$this->survey?->name}")
             ->line("Email: {$this->survey?->email}")
             ->line("Дата рождения: {$this->survey?->birthday}")
+            ->line("Пол: {$this->survey?->gender}")
             ->line("Выбор инструмента: {$this->survey?->tool}")
             ->line("Наиболее волнующая сфера: {$this->survey?->sphere}")
             ->line("Подробное описание ситуации: {$this->survey?->description}")
