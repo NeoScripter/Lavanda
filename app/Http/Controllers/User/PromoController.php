@@ -17,7 +17,7 @@ class PromoController extends Controller
     {
         return Inertia::render('user/Decision/pages/Cards/pages/Promo/Promo', [
             'cards' => Cache::flexible(
-                'tarot',
+                'promo',
                 [5, 10],
                 fn () => CardResource::collection(Promo::all()->shuffle())
             ),
