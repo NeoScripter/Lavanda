@@ -24,8 +24,8 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withSchedule(function ($schedule) {
         $schedule->command('app:send-subscription-expiry-reminder')
             ->everyFifteenMinutes();
-        $schedule->command('backup:clean')->weeklyOn(1, '1:00');
-        $schedule->command('backup:run')->weeklyOn(1, '1:30');
+        $schedule->command('backup_database')
+            ->weeklyOn(1, '01:00');
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
