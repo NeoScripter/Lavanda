@@ -15,7 +15,7 @@ Artisan::command('backup_database', function (): void {
     $password = config('database.connections.mysql.password');
     $path = storage_path('app/private/backup.sql');
 
-    exec("mysqldump -u {$username} --password={$password} {$database} > {$path}");
+    exec("mysqldump -u {$username} --password={$password} {$database} > {$path} --no-tablespaces");
 
     $gzdata = gzencode(file_get_contents($path));
     file_put_contents("{$path}.gz", $gzdata);
@@ -32,4 +32,3 @@ Artisan::command('backup_database', function (): void {
 
     $this->comment('db successfully backed up');
 })->purpose('Backup mysql database');
-
