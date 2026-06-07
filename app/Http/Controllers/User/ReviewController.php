@@ -21,6 +21,8 @@ class ReviewController extends Controller
             if ($user->review()->exists()) {
                 return redirect(route('home'));
             }
+        } else {
+            return redirect(route('home'))->with('login', ['login' => 'open']);
         }
         return Inertia::render('user/Review/Review');
     }

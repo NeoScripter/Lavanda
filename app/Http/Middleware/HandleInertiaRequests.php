@@ -52,6 +52,7 @@ class HandleInertiaRequests extends Middleware
             'flash' => [
                 'message' => fn() => $request->session()->pull('message'),
                 'code' => fn() => $request->session()->pull('code'),
+                'login' => fn() => $request->session()->pull('login'),
             ],
             'auth' => [
                 'user' => $user,

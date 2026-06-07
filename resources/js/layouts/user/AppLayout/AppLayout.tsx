@@ -32,7 +32,10 @@ const AppLayout: FC<
     const { auth } = usePage<{ auth: Auth }>().props;
 
     useEffect(() => {
-        const subEvent = getNotificationContent(auth.subEvent, auth.user?.subscription?.ends_at);
+        const subEvent = getNotificationContent(
+            auth.subEvent,
+            auth.user?.subscription?.ends_at,
+        );
 
         if (!subEvent) {
             return;
@@ -62,7 +65,7 @@ const AppLayout: FC<
                     <AppHeader />
 
                     <AppFooter hasMenu={extendedFooter} />
-                    {!auth?.user && <AppModals />}
+                    <AppModals />
                 </div>
 
                 <BackToTopBtn />
@@ -82,12 +85,15 @@ const AppLayout: FC<
 export default AppLayout;
 
 const AppModals = () => {
-    const { activeModal, closeModal } = useAuthModal();
+    const { activeModal, closeModal, showLogin } = useAuthModal();
     const { flash } = usePage<{ flash: Flash }>().props;
 
     useEffect(() => {
         if (flash?.message) {
             toast(flash.message);
+        }
+        if (flash?.login) {
+            showLogin();
         }
     }, []);
 

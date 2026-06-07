@@ -92,7 +92,7 @@ Route::get('/rune-details', RuneDetailsController::class)->name('rune-details');
 Route::get('/survey', [SurveyController::class, 'index'])->name('survey');
 Route::post('/survey', [SurveyController::class, 'store'])->name('survey.store');
 
-Route::middleware('auth')->get('/review', [ReviewController::class, 'index'])->name('review');
+Route::get('/review', [ReviewController::class, 'index'])->name('review');
 Route::post('/review', [ReviewController::class, 'store'])->name('review.store');
 
 // Route::get('/preview-email', function () {
