@@ -1,9 +1,9 @@
 <?php
 
 use App\Models\User;
-use App\Notifications\SendBackupNotification;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
+use App\Notifications\SendBackupNotification;
 
 Artisan::command('inspire', function (): void {
     $this->comment(Inspiring::quote());
