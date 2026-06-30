@@ -69,6 +69,7 @@
     color: u.clr('primary', 'strong');
     text-transform: uppercase;
     text-align: center;
+    word-break: break-all;
 
     @include u.px(mb, null, 36, 36, 36);
     @include u.px(text, 16, 24, 24, 32);
