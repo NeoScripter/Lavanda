@@ -37,11 +37,7 @@ class TarotController extends Controller
         $cards = null;
 
         if (Gate::check('premium-access')) {
-            $cards = Cache::flexible(
-                'tarot',
-                [5, 10],
-                fn() => Tarot::all()
-            );
+            $cards = Tarot::all();
             $cards = CardResource::collection($cards->shuffle());
         }
 
