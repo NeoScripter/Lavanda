@@ -30,11 +30,11 @@ class SurveyController extends Controller
         }
 
         $userCount = User::where('role', UserRole::USER->value)->count();
-        $stats = Stats::first();
+        // $stats = Stats::first();
 
         return Inertia::render('user/Survey/Survey', [
             'userCount' => $userCount,
-            'stats' => $stats
+            // 'stats' => $stats
         ]);
     }
 

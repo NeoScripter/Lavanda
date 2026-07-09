@@ -22,11 +22,6 @@ export type StepProps = {
 };
 
 const Survey = () => {
-    const { userCount, stats } = usePage<{
-        userCount: number;
-        stats: { joined: number; sent: number; replied: number };
-    }>().props;
-
     const surveyAnswers = useSignal<AnswerType[]>([]);
     const currentStep = surveyAnswers.value.length + 1;
     const lastResult = useSignal<AnswerType | undefined>(undefined);
@@ -81,24 +76,6 @@ const Survey = () => {
                         Если наше пространство станет вам близким — оставайтесь
                         с нами.
                     </p>
-
-                    <ul
-                        className={css.stats}
-                        style={{ '--image-path': `url(${Star})` }}
-                    >
-                        <li>
-                            Сегодня уже отправлено {stats.sent} персональных
-                            разборов.
-                        </li>
-                        <li>
-                            За эту неделю мы подготовили {stats.replied}{' '}
-                            ответов.
-                        </li>
-                        <li>
-                            К сервису уже присоединилось более {userCount}{' '}
-                            пользователей.
-                        </li>
-                    </ul>
                 </Banner>
 
                 <header className={css.header}>Шаг {currentStep} из 5:</header>
