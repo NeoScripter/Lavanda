@@ -34,6 +34,8 @@
     font-weight: 600;
     margin-bottom: 2.5rem;
     margin-top: 3rem;
+    text-align: left !important;
+    text-wrap: revert !important;
     margin-inline: 1rem !important;
 
     @include u.mw(sm) {
@@ -55,4 +57,11 @@
     @include u.mw(md) {
         width: 80%;
     }
+}
+
+.bannerListItem li {
+    background-repeat: no-repeat;
+    background-position: 0 0.125em;
+    background-size: 1.25em;
+    text-indent: 2rem;
 }

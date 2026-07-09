@@ -2,6 +2,7 @@ import { Signal, useSignal } from '@preact/signals';
 import '../../../../scss/app.scss';
 import css from './Survey.module.scss';
 
+import Star from '@/assets/images/home/about-lavanda/icon-mb.webp';
 import Banner from '@/components/shared/ui/Banner/Banner';
 import FormLayout from '@/layouts/user/FormLayout/FormLayout';
 import Step1 from './partials/Step1/Step1';
@@ -36,10 +37,7 @@ const Survey = () => {
     const pushState = (payload: AnswerType) => {
         lastResult.value = undefined;
 
-        surveyAnswers.value = [
-            ...surveyAnswers.value,
-            { ...payload },
-        ];
+        surveyAnswers.value = [...surveyAnswers.value, { ...payload }];
     };
 
     return (
@@ -49,9 +47,35 @@ const Survey = () => {
                 className={css.wrapper}
             >
                 <Banner className={css.banner}>
-                    <span>
-                        Поделись тем, что волнует тебя прямо сейчас. Первые 20 человек получат подробный личный разбор бесплатно, а взамен мы попросим тебя поделиться честным отзывом. Система автоматически создаст для тебя профиль, и ответ придет на указанную почту.
-                    </span>
+                    <p>Что тревожит вас сегодня?</p>
+
+                    <p>Расскажите нам.</p>
+
+                    <p>
+                        Мы подготовим персональный разбор вашей ситуации. Взамен
+                        попросим только честный отзыв.
+                    </p>
+
+                    <p>Вы получите:</p>
+                    <ul className={css.bannerListItem}>
+                        <li style={{ backgroundImage: `url(${Star})` }}>
+                            Персональный разбор на e-mail.
+                        </li>
+                        <li style={{ backgroundImage: `url(${Star})` }}>
+                            Личный кабинет.
+                        </li>
+                        <li style={{ backgroundImage: `url(${Star})` }}>
+                            24 часа полного доступа ко всем возможностям
+                            Lavanda.Kim.
+                        </li>
+                    </ul>
+
+                    <p>Без оплаты, без привязки карты и без обязательств.</p>
+
+                    <p>
+                        Если наше пространство станет вам близким — оставайтесь
+                        с нами.
+                    </p>
                 </Banner>
 
                 <header className={css.header}>Шаг {currentStep} из 5:</header>
