@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Enums\UserRole;
 use App\Http\Controllers\Controller;
+use App\Models\Stats;
 use App\Models\Subscription;
 use App\Models\Survey;
 use App\Models\User;
@@ -27,7 +28,14 @@ class SurveyController extends Controller
                 return redirect(route('home'));
             }
         }
-        return Inertia::render('user/Survey/Survey');
+
+        $userCount = User::where('role', UserRole::USER->value)->count();
+        $stats = Stats::first();
+
+        return Inertia::render('user/Survey/Survey', [
+            'userCount' => $userCount,
+            'stats' => $stats
+        ]);
     }
 
     public function store(Request $request)

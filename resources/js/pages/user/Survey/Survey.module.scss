@@ -59,9 +59,23 @@
     }
 }
 
-.bannerListItem li {
+.starListStyle li {
+    background-image: var(--image-path);
     background-repeat: no-repeat;
     background-position: 0 0.125em;
     background-size: 1.25em;
     text-indent: 2rem;
+}
+
+.stats {
+  margin-top: 1.5rem;
+}
+
+.stats li {
+    font-size: 1rem;
+    background-image: var(--image-path);
+    background-repeat: no-repeat;
+    background-position: 0 0.125em;
+    background-size: 1.25em;
+    text-indent: 1.65rem;
 }

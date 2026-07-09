@@ -5,6 +5,7 @@ import css from './Survey.module.scss';
 import Star from '@/assets/images/home/about-lavanda/icon-mb.webp';
 import Banner from '@/components/shared/ui/Banner/Banner';
 import FormLayout from '@/layouts/user/FormLayout/FormLayout';
+import { usePage } from '@inertiajs/react';
 import Step1 from './partials/Step1/Step1';
 import Step2 from './partials/Step2/Step2';
 import Step3 from './partials/Step3/Step3';
@@ -21,6 +22,11 @@ export type StepProps = {
 };
 
 const Survey = () => {
+    const { userCount, stats } = usePage<{
+        userCount: number;
+        stats: { joined: number; sent: number; replied: number };
+    }>().props;
+
     const surveyAnswers = useSignal<AnswerType[]>([]);
     const currentStep = surveyAnswers.value.length + 1;
     const lastResult = useSignal<AnswerType | undefined>(undefined);
@@ -57,14 +63,13 @@ const Survey = () => {
                     </p>
 
                     <p>Вы получите:</p>
-                    <ul className={css.bannerListItem}>
-                        <li style={{ backgroundImage: `url(${Star})` }}>
-                            Персональный разбор на e-mail.
-                        </li>
-                        <li style={{ backgroundImage: `url(${Star})` }}>
-                            Личный кабинет.
-                        </li>
-                        <li style={{ backgroundImage: `url(${Star})` }}>
+                    <ul
+                        className={css.starListStyle}
+                        style={{ '--image-path': `url(${Star})` }}
+                    >
+                        <li>Персональный разбор на e-mail.</li>
+                        <li>Личный кабинет.</li>
+                        <li>
                             24 часа полного доступа ко всем возможностям
                             Lavanda.Kim.
                         </li>
@@ -76,6 +81,24 @@ const Survey = () => {
                         Если наше пространство станет вам близким — оставайтесь
                         с нами.
                     </p>
+
+                    <ul
+                        className={css.stats}
+                        style={{ '--image-path': `url(${Star})` }}
+                    >
+                        <li>
+                            Сегодня уже отправлено {stats.sent} персональных
+                            разборов.
+                        </li>
+                        <li>
+                            За эту неделю мы подготовили {stats.replied}{' '}
+                            ответов.
+                        </li>
+                        <li>
+                            К сервису уже присоединилось более {userCount}{' '}
+                            пользователей.
+                        </li>
+                    </ul>
                 </Banner>
 
                 <header className={css.header}>Шаг {currentStep} из 5:</header>
