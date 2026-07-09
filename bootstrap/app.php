@@ -26,6 +26,10 @@ return Application::configure(basePath: dirname(__DIR__))
             ->everyFifteenMinutes();
         $schedule->command('backup_database')
             ->weeklyOn(1, '01:00');
+        $schedule->command('stats:increment_replied')
+            ->weeklyOn(1, '01:00');
+        $schedule->command('stats:increment_sent')
+            ->dailyAt('01:00');
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
