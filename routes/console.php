@@ -12,13 +12,13 @@ Artisan::command('inspire', function (): void {
 
 Artisan::command('stats:increment_sent', function (): void {
     $stats = Stats::first();
-    $stats->update(['sent', $stats->sent + rand(2, 5)]);
+    $stats->update(['sent' => $stats->sent + rand(2, 5)]);
     $stats->save();
 })->purpose('Increment the sent column in the stats for survey requests');
 
 Artisan::command('stats:increment_replied', function (): void {
     $stats = Stats::first();
-    $stats->update(['replied', $stats->replied + rand(8, 14)]);
+    $stats->update(['replied' => $stats->replied + rand(8, 14)]);
     $stats->save();
 })->purpose('Increment the replied column in the stats for survey requests');
 
