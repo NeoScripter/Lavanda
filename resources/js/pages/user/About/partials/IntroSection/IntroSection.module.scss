@@ -24,5 +24,7 @@
 
 .listItem {
     padding-block: 1.5em;
+    margin-inline: auto;
+    max-width: 85ch;
     border-bottom: 1px solid currentColor;
 }

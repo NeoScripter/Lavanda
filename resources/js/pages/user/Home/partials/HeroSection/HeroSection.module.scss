@@ -18,7 +18,6 @@
     }
 }
 
-
 .bgLoader {
     position: absolute;
     @include u.px(rounded, null, null, 36, 36);
@@ -237,5 +236,12 @@
 
 .gameIntro {
     font-weight: 500;
-    @include u.rm(text, 16, 20, 20, 24);
+    text-wrap: balance;
+    @include u.rm(text, 14, 18, 18, 22);
+    margin-bottom: 3em;
+
+    @include u.mw(lg) {
+        max-width: 50ch;
+        margin-left: auto;
+    }
 }

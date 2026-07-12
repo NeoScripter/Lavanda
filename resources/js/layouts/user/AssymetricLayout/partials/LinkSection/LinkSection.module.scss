@@ -37,7 +37,7 @@
     position: relative;
     isolation: isolate;
     text-align: center;
-    text-wrap: pretty;
+    text-wrap: balance;
     background-color: white;
     cursor: pointer;
     @include u.shadow(3);

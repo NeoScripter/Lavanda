@@ -14,7 +14,7 @@ const About = () => {
             className={css.layout}
             variation="light"
         >
-            <Head title="Секрет успеха Lavanda" />
+            <Head title="Lavanda - то, во что мы верим" />
 
             <HeroSection />
 

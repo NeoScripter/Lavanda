@@ -27,7 +27,7 @@ import { items } from './pageData';
 const IntroSection = () => {
     return (
         <section className={cn(css.wrapper, 'full-bleed')}>
-            <h2 className={css.heading}>Преимущества ресурса</h2>
+            <h2 className={css.heading}>Что делает Lavanda особенной</h2>
 
             <ul>
                 {items.map((item, idx) => (
